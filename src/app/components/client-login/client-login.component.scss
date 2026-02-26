@@ -1,0 +1,64 @@
+@import '../../../styles/tokens';
+
+.client-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 20px;
+
+  &__card {
+    width: 100%;
+    max-width: 440px;
+    background: $white-500;
+    border-radius: 16px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  &__logo {
+    text-align: center;
+    margin-bottom: 32px;
+
+    img {
+      height: 36px;
+      width: auto;
+    }
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #222222;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+
+  &__subtitle {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: $grey-400;
+    text-align: center;
+    margin: 0 0 32px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__error {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f44336;
+    text-align: center;
+    padding: 10px 16px;
+    background: rgba(244, 67, 54, 0.08);
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,42 @@
+<div class="login">
+  <div class="login__card">
+    <div class="login__logo">
+      <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" />
+    </div>
+
+    <h1 class="login__title">Iniciar sesión</h1>
+    <p class="login__subtitle">Ingresa tus credenciales para acceder al panel</p>
+
+    <div class="login__form">
+      <app-text-input
+        type="email"
+        label="Correo electrónico"
+        placeholder="correo@ejemplo.com"
+        [leftIcon]="MailIcon"
+        [(value)]="email"
+        [errorMessage]="errorMessage && !email ? 'Campo requerido' : ''">
+      </app-text-input>
+
+      <app-text-input
+        type="password"
+        label="Contraseña"
+        placeholder="Ingresa tu contraseña"
+        [leftIcon]="LockIcon"
+        [(value)]="password"
+        [errorMessage]="errorMessage && !password ? 'Campo requerido' : ''">
+      </app-text-input>
+
+      @if (errorMessage && email && password) {
+        <div class="login__error">{{ errorMessage }}</div>
+      }
+
+      <app-button
+        variant="primary"
+        size="large"
+        [fullWidth]="true"
+        (clicked)="onLogin()">
+        Iniciar sesión
+      </app-button>
+    </div>
+  </div>
+</div>

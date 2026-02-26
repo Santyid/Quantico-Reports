@@ -1,12 +1,28 @@
 import { Routes } from '@angular/router';
+import { generalAuthGuard } from './guards/auth.guard';
+import { clientAuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
+  // Login routes (no guards, no layout)
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./components/login/login.component')
+        .then(m => m.LoginComponent)
+  },
+  {
+    path: 'cliente/login',
+    loadComponent: () =>
+      import('./components/client-login/client-login.component')
+        .then(m => m.ClientLoginComponent)
+  },
   // Quantico routes (existing product)
   {
     path: '',
     loadComponent: () =>
       import('./layouts/quantico-layout.component')
         .then(m => m.QuanticoLayoutComponent),
+    canActivate: [generalAuthGuard],
     children: [
       {
         path: '',
@@ -70,6 +86,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./layouts/socialgest-layout.component')
         .then(m => m.SocialgestLayoutComponent),
+    canActivate: [generalAuthGuard],
     children: [
       {
         path: 'metricas',
@@ -91,6 +108,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./layouts/client-layout.component')
         .then(m => m.ClientLayoutComponent),
+    canActivate: [clientAuthGuard],
     children: [
       {
         path: '',

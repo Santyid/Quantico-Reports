@@ -1,0 +1,33 @@
+<div class="client-login">
+  <div class="client-login__card">
+    <div class="client-login__logo">
+      <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" />
+    </div>
+
+    <h1 class="client-login__title">Acceso Cliente</h1>
+    <p class="client-login__subtitle">Ingresa tu código de acceso para ver los reportes</p>
+
+    <div class="client-login__form">
+      <app-text-input
+        type="text"
+        label="Código de acceso"
+        placeholder="Ingresa tu código"
+        [leftIcon]="KeyIcon"
+        [(value)]="code"
+        [errorMessage]="errorMessage && !code ? 'Campo requerido' : ''">
+      </app-text-input>
+
+      @if (errorMessage && code) {
+        <div class="client-login__error">{{ errorMessage }}</div>
+      }
+
+      <app-button
+        variant="primary"
+        size="large"
+        [fullWidth]="true"
+        (clicked)="onLogin()">
+        Acceder
+      </app-button>
+    </div>
+  </div>
+</div>
