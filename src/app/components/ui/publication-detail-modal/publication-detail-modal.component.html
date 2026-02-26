@@ -1,0 +1,98 @@
+@if (isOpen && data) {
+  <div class="pub-modal-overlay" (click)="onOverlayClick($event)">
+    <div class="pub-modal" role="dialog" aria-modal="true" aria-label="Detalle de publicación">
+      <!-- Close button -->
+      <button
+        class="pub-modal__close"
+        (click)="closed.emit()"
+        aria-label="Cerrar">
+        <lucide-icon [img]="CloseIcon" [size]="22" [strokeWidth]="2"></lucide-icon>
+      </button>
+
+      <!-- Left: Image -->
+      <div class="pub-modal__image-side">
+        <img [src]="data.image" alt="Publicación" class="pub-modal__image" />
+      </div>
+
+      <!-- Right: Details -->
+      <div class="pub-modal__details">
+        <!-- Header -->
+        <div class="pub-modal__header">
+          <div class="pub-modal__account">
+            <div class="pub-modal__account-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#0061fe"/>
+                <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="pub-modal__account-name">{{ data.accountName }}</span>
+          </div>
+          <span class="pub-modal__date">{{ data.date }}</span>
+        </div>
+
+        <!-- Type -->
+        <span class="pub-modal__type">{{ data.type }}</span>
+
+        <!-- Description -->
+        <p class="pub-modal__description">{{ data.description }}</p>
+
+        <!-- Collaborators -->
+        @if (data.collaborators && data.collaborators.length > 0) {
+          <div class="pub-modal__collaborators">
+            <span class="pub-modal__section-label">Colaboradores</span>
+            <div class="pub-modal__collaborators-list">
+              @for (collab of data.collaborators; track collab.username) {
+                <div class="pub-modal__collaborator">
+                  <div class="pub-modal__collaborator-avatar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="#0061fe"/>
+                      <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <span class="pub-modal__collaborator-name">{{ collab.username }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Metrics -->
+        <div class="pub-modal__metrics">
+          @for (metric of data.metrics; track metric.label) {
+            <div class="pub-modal__metric">
+              <span class="pub-modal__metric-label">{{ metric.label }}</span>
+              <span class="pub-modal__metric-value">{{ metric.value }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Profile Activity -->
+        @if (data.profileActivity && data.profileActivity.length > 0) {
+          <div class="pub-modal__activity">
+            <div class="pub-modal__activity-header">
+              <span class="pub-modal__section-label">Actividad de Perfil</span>
+              <lucide-icon [img]="InfoIcon" [size]="16" [strokeWidth]="1.5" class="pub-modal__activity-info"></lucide-icon>
+            </div>
+            <div class="pub-modal__metrics pub-modal__metrics--activity">
+              @for (activity of data.profileActivity; track activity.label) {
+                <div class="pub-modal__metric">
+                  <span class="pub-modal__metric-label">{{ activity.label }}</span>
+                  <span class="pub-modal__metric-value">{{ activity.value }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Post link -->
+        @if (data.postUrl) {
+          <div class="pub-modal__footer">
+            <a [href]="data.postUrl" target="_blank" rel="noopener" class="pub-modal__link">
+              Ir a la publicación
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

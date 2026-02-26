@@ -1,0 +1,82 @@
+@import '../../../../styles/tokens';
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: $white-500;
+  border: 1px solid #dae1ed;
+  border-radius: 8px;
+  font-family: $select-font-family;
+  font-size: 14px;
+  font-weight: 500;
+  color: $grey-500;
+  cursor: pointer;
+  transition: $button-transition;
+  white-space: nowrap;
+
+  &:hover:not(.filter-chip--disabled) {
+    border-color: $grey-200;
+    background-color: #f9f9f9;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--has-dropdown {
+    padding-right: 10px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__label {
+    color: $grey-400;
+  }
+
+  &__value {
+    color: $grey-600;
+    font-weight: 600;
+  }
+
+  &__chevron {
+    color: $grey-300;
+    transition: transform 0.2s ease;
+  }
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: $grey-300;
+    cursor: pointer;
+    transition: $button-transition;
+
+    &:hover {
+      background-color: $grey-50;
+      color: $grey-500;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-500;
+      outline-offset: 1px;
+    }
+  }
+}

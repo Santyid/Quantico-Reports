@@ -1,0 +1,21 @@
+<div class="aud-demografia">
+  <div class="aud-demografia__grid">
+    @for (kpi of kpis; track kpi.label) {
+      <div class="aud-demografia__item">
+        <span class="aud-demografia__flag">{{ kpi.flag }}</span>
+        <div class="aud-demografia__text">
+          <span class="aud-demografia__value">{{ kpi.value }}</span>
+          <div class="aud-demografia__label-row">
+            <span class="aud-demografia__label">{{ kpi.label }}</span>
+            <lucide-icon
+              [img]="InfoIcon"
+              [size]="14"
+              [strokeWidth]="1.5"
+              class="aud-demografia__info-icon">
+            </lucide-icon>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="rendimiento-global">
+  <h3 class="rendimiento-global__title">Redimiento global</h3>
+  <div class="rendimiento-global__grid">
+    @for (metric of metrics; track metric.label) {
+      <div class="rendimiento-global__kpi">
+        <div class="rendimiento-global__kpi-content">
+          <div class="rendimiento-global__kpi-top">
+            <span class="rendimiento-global__kpi-value">{{ metric.value }}</span>
+            <span
+              class="rendimiento-global__kpi-badge"
+              [class.rendimiento-global__kpi-badge--negative]="metric.change < 0">
+              <lucide-icon
+                [img]="metric.change >= 0 ? TrendingUpIcon : TrendingDownIcon"
+                [size]="12"
+                [strokeWidth]="2">
+              </lucide-icon>
+              <span>{{ metric.change > 0 ? '+' : '' }}{{ metric.change }}%</span>
+            </span>
+          </div>
+          <div class="rendimiento-global__kpi-label-row">
+            <span class="rendimiento-global__kpi-label">{{ metric.label }}</span>
+            <lucide-icon
+              [img]="InfoIcon"
+              [size]="14"
+              [strokeWidth]="1.5"
+              class="rendimiento-global__kpi-info-icon">
+            </lucide-icon>
+          </div>
+        </div>
+        <div class="rendimiento-global__sparkline">
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+            <defs>
+              <linearGradient [attr.id]="'sparkGrad-' + metric.label" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" [attr.stop-color]="metric.change >= 0 ? '#3ace76' : '#f44336'" stop-opacity="0.3"/>
+                <stop offset="100%" [attr.stop-color]="metric.change >= 0 ? '#3ace76' : '#f44336'" stop-opacity="0.02"/>
+              </linearGradient>
+            </defs>
+            <path
+              [attr.d]="getSparklineAreaPath(metric.sparklineData)"
+              [attr.fill]="'url(#sparkGrad-' + metric.label + ')'" />
+            <path
+              [attr.d]="getSparklinePath(metric.sparklineData)"
+              fill="none"
+              [attr.stroke]="metric.change >= 0 ? '#3ace76' : '#f44336'"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    }
+  </div>
+</div>

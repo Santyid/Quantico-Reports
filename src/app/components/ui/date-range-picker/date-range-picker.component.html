@@ -1,0 +1,39 @@
+<div class="date-range-picker" [class.date-range-picker--disabled]="disabled">
+  <button
+    class="date-range-picker__date"
+    type="button"
+    [disabled]="disabled"
+    (click)="onStartDateClick()">
+    {{ formatDate(value.startDate) }}
+  </button>
+
+  <span class="date-range-picker__separator">→</span>
+
+  <button
+    class="date-range-picker__date"
+    type="button"
+    [disabled]="disabled"
+    (click)="onEndDateClick()">
+    {{ formatDate(value.endDate) }}
+  </button>
+
+  <div class="date-range-picker__nav">
+    <button
+      class="date-range-picker__nav-btn"
+      type="button"
+      [disabled]="disabled"
+      (click)="previousDay()"
+      aria-label="Día anterior">
+      <lucide-icon [img]="ChevronLeftIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+    </button>
+
+    <button
+      class="date-range-picker__nav-btn"
+      type="button"
+      [disabled]="disabled"
+      (click)="nextDay()"
+      aria-label="Día siguiente">
+      <lucide-icon [img]="ChevronRightIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+    </button>
+  </div>
+</div>

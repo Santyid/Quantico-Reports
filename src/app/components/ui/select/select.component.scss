@@ -1,0 +1,214 @@
+@import '../../../../styles/tokens';
+
+.app-select {
+  // Base select styles
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  background-color: $select-bg;
+  border: $select-border-width solid $select-border;
+  border-radius: $select-border-radius;
+  padding: $select-padding;
+
+  font-family: $select-font-family;
+  font-weight: $select-font-weight;
+
+  cursor: pointer;
+  transition: $select-transition;
+  user-select: none;
+  outline: none;
+
+  // Focus styles for accessibility
+  &:focus-visible {
+    border-color: $select-border-focus;
+    box-shadow: 0 0 0 2px rgba($primary-500, 0.2);
+  }
+
+  // ========================================
+  // Size Variants (from Figma)
+  // ========================================
+
+  &--small {
+    height: $select-height-small;
+    font-size: $select-font-size-small;
+  }
+
+  &--medium {
+    height: $select-height-medium;
+    font-size: $select-font-size-medium;
+  }
+
+  &--large {
+    height: $select-height-large;
+    font-size: $select-font-size-large;
+  }
+
+  // ========================================
+  // States
+  // ========================================
+
+  &--open {
+    border-color: $select-border-focus;
+  }
+
+  &--disabled {
+    background-color: $select-disabled-bg;
+    border-color: $select-disabled-border;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .app-select__value {
+      color: $select-disabled-text;
+    }
+
+    .app-select__icon {
+      color: $select-disabled-text;
+    }
+  }
+
+  &--has-value {
+    .app-select__value {
+      color: $select-text-color;
+    }
+  }
+
+  // ========================================
+  // Content Layout
+  // ========================================
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $select-gap;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: $select-gap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__value {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $select-text-color;
+
+    &--placeholder {
+      color: $select-placeholder-color;
+    }
+  }
+
+  // ========================================
+  // Label
+  // ========================================
+
+  &__label {
+    font-family: $select-font-family;
+    font-size: $select-label-font-size;
+    font-weight: $select-font-weight;
+    color: $select-label-color;
+    line-height: normal;
+
+    &--small {
+      font-size: $select-label-font-size-small;
+    }
+  }
+
+  // ========================================
+  // Icon Styles
+  // ========================================
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: $select-icon-color;
+    transition: transform 0.2s ease;
+
+    &--right {
+      margin-left: auto;
+    }
+
+    &--rotated {
+      transform: rotate(180deg);
+    }
+  }
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ========================================
+  // Dropdown
+  // ========================================
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    margin-top: 4px;
+    padding: 8px 0;
+
+    background-color: $select-bg;
+    border: $select-border-width solid $select-border;
+    border-radius: $select-border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px $select-padding;
+    font-family: $select-font-family;
+    font-size: $select-font-size-medium;
+    font-weight: $select-font-weight;
+    color: $select-text-color;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover:not(.app-select__option--disabled) {
+      background-color: $primary-50;
+    }
+
+    &--selected {
+      background-color: $primary-100;
+      color: $primary-700;
+
+      .app-select__option-icon {
+        color: $primary-500;
+      }
+    }
+
+    &--disabled {
+      color: $select-disabled-text;
+      cursor: not-allowed;
+    }
+  }
+
+  &__option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: $grey-400;
+    transition: color 0.15s ease;
+  }
+
+  &__option-label {
+    flex: 1;
+  }
+}

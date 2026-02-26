@@ -1,0 +1,21 @@
+<div class="fb-aud-demografia">
+  <div class="fb-aud-demografia__grid">
+    @for (kpi of kpis; track kpi.label) {
+      <div class="fb-aud-demografia__item">
+        <span class="fb-aud-demografia__flag">{{ kpi.flag }}</span>
+        <div class="fb-aud-demografia__text">
+          <span class="fb-aud-demografia__value">{{ kpi.value }}</span>
+          <div class="fb-aud-demografia__label-row">
+            <span class="fb-aud-demografia__label">{{ kpi.label }}</span>
+            <lucide-icon
+              [img]="InfoIcon"
+              [size]="14"
+              [strokeWidth]="1.5"
+              class="fb-aud-demografia__info-icon">
+            </lucide-icon>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

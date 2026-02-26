@@ -1,0 +1,532 @@
+<section class="menciones">
+  <div class="menciones__layout">
+    <!-- Sidebar Filters -->
+    <aside class="menciones__sidebar">
+      <div class="menciones__sidebar-content">
+        <!-- Query Input -->
+        <div class="menciones__sidebar-query">
+          <app-search-input
+            size="medium"
+            placeholder="Escribe lo que quieres buscar..."
+            [expandable]="true"
+            [fullWidth]="true"
+            [showClearIcon]="false"
+            (valueChange)="onQueryInputChange($event)">
+          </app-search-input>
+          <button class="menciones__sidebar-history-link" (click)="openRecentSearchesModal()">
+            <lucide-icon [img]="ClockIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+            Búsquedas recientes
+          </button>
+        </div>
+
+        <!-- Segmentos -->
+        <div class="menciones__sidebar-field">
+          <app-select
+            size="small"
+            label="Segmentos"
+            placeholder="Seleccionar segmentos..."
+            [options]="segmentoOptions"
+            [value]="selectedSegmento"
+            (selectionChange)="onSegmentoChange($event)">
+          </app-select>
+        </div>
+
+        <!-- Etiquetas (antes Categorías) -->
+        <div class="menciones__sidebar-field">
+          <app-select
+            size="small"
+            label="Etiquetas"
+            placeholder="Seleccionar etiquetas..."
+            [options]="etiquetasOptions"
+            [value]="selectedEtiquetas"
+            (selectionChange)="onEtiquetasChange($event)">
+          </app-select>
+        </div>
+
+        <!-- Fuentes -->
+        <div class="menciones__sidebar-field">
+          <app-select
+            size="small"
+            label="Fuentes"
+            placeholder="Seleccionar fuentes..."
+            [options]="fuentesOptions"
+            [value]="selectedFuentes"
+            (selectionChange)="onFuentesChange($event)">
+          </app-select>
+        </div>
+
+        <!-- Fecha (rango) - FUERA de avanzados -->
+        <div class="menciones__sidebar-field">
+          <label class="menciones__sidebar-label">Fecha</label>
+          <div class="menciones__sidebar-date-range">
+            <div class="menciones__sidebar-date">
+              <lucide-icon [img]="CalendarIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>{{ formatDisplayDate(dateRange.startDate) }}</span>
+            </div>
+            <span class="menciones__sidebar-date-separator">-</span>
+            <div class="menciones__sidebar-date">
+              <lucide-icon [img]="CalendarIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>{{ formatDisplayDate(dateRange.endDate) }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros X / Twitter (colapsable) -->
+        <div class="menciones__sidebar-section" [class.menciones__sidebar-section--active]="hasTwitterFiltersActive">
+          <button class="menciones__sidebar-section-toggle" (click)="toggleTwitterFilters()">
+            <div class="menciones__sidebar-section-header">
+              <img src="images/x-twitter-icon.svg" alt="X" class="menciones__sidebar-section-icon">
+              <span>Filtros X / Twitter</span>
+            </div>
+            <lucide-icon [img]="isTwitterFiltersOpen ? ChevronDownIcon : ChevronRightIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+
+          @if (isTwitterFiltersOpen) {
+            <div class="menciones__sidebar-section-content">
+              <!-- Género -->
+              <div class="menciones__sidebar-field">
+                <app-select
+                  size="small"
+                  label="Género"
+                  placeholder="Seleccionar género..."
+                  [options]="generoOptions"
+                  [value]="selectedGenero"
+                  (selectionChange)="onGeneroChange($event)">
+                </app-select>
+              </div>
+
+              <!-- Edades -->
+              <div class="menciones__sidebar-field">
+                <app-select
+                  size="small"
+                  label="Edades"
+                  placeholder="Seleccionar edades..."
+                  [options]="edadesOptions"
+                  [value]="selectedEdades"
+                  (selectionChange)="onEdadesChange($event)">
+                </app-select>
+              </div>
+
+              <!-- Países -->
+              <div class="menciones__sidebar-field">
+                <app-select
+                  size="small"
+                  label="Países"
+                  placeholder="Seleccionar países..."
+                  [options]="paisesOptions"
+                  [value]="selectedPaises"
+                  (selectionChange)="onPaisesChange($event)">
+                </app-select>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Filtros Avanzados (colapsable) -->
+        <div class="menciones__sidebar-section" [class.menciones__sidebar-section--active]="hasAdvancedFiltersActive">
+          <button class="menciones__sidebar-section-toggle" (click)="toggleAdvancedFilters()">
+            <div class="menciones__sidebar-section-header">
+              <lucide-icon [img]="SlidersIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Filtros Avanzados</span>
+            </div>
+            <lucide-icon [img]="isAdvancedFiltersOpen ? ChevronDownIcon : ChevronRightIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+
+          @if (isAdvancedFiltersOpen) {
+            <div class="menciones__sidebar-section-content">
+              <!-- Sentimiento -->
+              <div class="menciones__sidebar-field">
+                <app-select
+                  size="small"
+                  label="Sentimiento"
+                  placeholder="Seleccionar sentimiento..."
+                  [options]="sentimientoOptions"
+                  [value]="selectedSentimiento"
+                  (selectionChange)="onSentimientoChange($event)">
+                </app-select>
+              </div>
+
+              <!-- Influencia -->
+              <div class="menciones__sidebar-field">
+                <app-select
+                  size="small"
+                  label="Influencia"
+                  placeholder="Seleccionar influencia..."
+                  [options]="influenciaOptions"
+                  [value]="selectedInfluencia"
+                  (selectionChange)="onInfluenciaChange($event)">
+                </app-select>
+              </div>
+
+              <!-- Checkboxes -->
+              <label class="menciones__sidebar-checkbox">
+                <input type="checkbox" [(ngModel)]="filterContenidoPropio">
+                <span>Contenido propio</span>
+              </label>
+              <label class="menciones__sidebar-checkbox">
+                <input type="checkbox" [(ngModel)]="filterMencionesRevisadas">
+                <span>Menciones revisadas</span>
+              </label>
+              <label class="menciones__sidebar-checkbox">
+                <input type="checkbox" [(ngModel)]="filterMencionesBorradas">
+                <span>Menciones borradas</span>
+              </label>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="menciones__sidebar-footer">
+        <app-button
+          variant="white"
+          size="medium"
+          [leftIcon]="EraserIcon"
+          (clicked)="clearFilters()">
+          Limpiar
+        </app-button>
+        <app-button
+          variant="secondary"
+          size="medium"
+          [leftIcon]="SearchIcon"
+          (clicked)="onSearch()">
+          Buscar
+        </app-button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="menciones__main">
+      <!-- Header -->
+      <header class="menciones__header">
+        <div class="menciones__header-left">
+          <div class="menciones__header-icon">
+            <lucide-icon [img]="AtSignIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+          </div>
+          <h1 class="menciones__title">Menciones</h1>
+        </div>
+      </header>
+
+      <!-- AI Insight -->
+      <button class="menciones__ai-insight" [class.menciones__ai-insight--expanded]="isAiInsightExpanded" (click)="toggleAiInsight()">
+        <!-- SVG Gradient Definition -->
+        <svg width="0" height="0" style="position: absolute;">
+          <defs>
+            <linearGradient id="insight-sparkles-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#5495fe"/>
+              <stop offset="100%" stop-color="#0061fe"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5" class="menciones__ai-insight-icon"></lucide-icon>
+        <p class="menciones__ai-insight-text">{{ aiInsight }}</p>
+        <lucide-icon [img]="ChevronDownIcon" [size]="18" [strokeWidth]="1.5" class="menciones__ai-insight-chevron"></lucide-icon>
+      </button>
+
+    <!-- KPIs Row -->
+    <div class="menciones__kpis-row">
+      <!-- KPIs Generales -->
+      <div class="menciones__kpis-card">
+        <h3 class="menciones__kpis-card-title">Resultados</h3>
+        <div class="menciones__kpis">
+          @for (kpi of kpiDataGeneral; track kpi.label) {
+            <div class="menciones__kpi">
+              <span class="menciones__kpi-value">{{ kpi.value }}</span>
+              <span class="menciones__kpi-label">
+                {{ kpi.label }}
+                @if (kpi.hasXIcon) {
+                  <img src="images/x-twitter-icon.svg" alt="X" class="menciones__kpi-x-icon">
+                }
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- KPIs Influencia -->
+      <div class="menciones__kpis-card">
+        <h3 class="menciones__kpis-card-title">Influencia</h3>
+        <div class="menciones__kpis menciones__kpis--influencia">
+          @for (kpi of kpiDataInfluencia; track kpi.label) {
+            <div class="menciones__kpi">
+              <span class="menciones__kpi-value">{{ kpi.value }}</span>
+              <span class="menciones__kpi-label">{{ kpi.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="menciones__charts-row">
+      <!-- Platform Results -->
+      <div class="menciones__chart-card">
+        <h3 class="menciones__chart-title">Redes</h3>
+        <div class="menciones__platform-list">
+          @for (platform of platformResults; track platform.name) {
+            <div class="menciones__platform-item">
+              <div class="menciones__platform-info">
+                <div class="menciones__platform-icon" [class]="'menciones__platform-icon--' + platform.icon">
+                  <lucide-icon [img]="getPlatformIcon(platform.icon)" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+                <span class="menciones__platform-name">{{ platform.name }}</span>
+              </div>
+              <div class="menciones__platform-bar-container">
+                <div
+                  class="menciones__platform-bar"
+                  [style.width]="getBarWidth(platform.value, platform.maxValue)"
+                  [style.background-color]="platform.color">
+                </div>
+              </div>
+              <span class="menciones__platform-value">{{ platform.value | number }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Sentiment Chart -->
+      <div class="menciones__chart-card">
+        <h3 class="menciones__chart-title">Sentimiento</h3>
+        <div class="menciones__sentiment-chart">
+          <app-pie-chart
+            [data]="sentimentData"
+            [size]="220"
+            [donut]="true"
+            [donutWidth]="35"
+            [showLegend]="false"
+            [useGradient]="true"
+            centerLabel="Total"
+            centerValue="52,1232">
+          </app-pie-chart>
+        </div>
+        <div class="menciones__sentiment-legend">
+          @for (item of sentimentData; track item.label) {
+            <div class="menciones__sentiment-legend-item">
+              <span class="menciones__sentiment-dot" [style.background-color]="item.color"></span>
+              <span class="menciones__sentiment-label">{{ item.label }}</span>
+              <span class="menciones__sentiment-value">{{ item.value }}%</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Mentions List -->
+    <div class="menciones__list">
+      @for (mention of mentions; track mention.id) {
+        <div class="menciones__mention-card" [class.menciones__mention-card--with-image]="mention.imageUrl">
+          <div class="menciones__mention-body">
+            @if (mention.imageUrl) {
+              <img [src]="mention.imageUrl" [alt]="mention.userName" class="menciones__mention-image">
+            }
+            <div class="menciones__mention-main">
+              <!-- Mention Header -->
+              <div class="menciones__mention-header">
+            <div class="menciones__mention-user">
+              <div class="menciones__mention-avatar">
+                @if (mention.avatarUrl) {
+                  <img [src]="mention.avatarUrl" [alt]="mention.userName">
+                } @else {
+                  <div class="menciones__mention-avatar-placeholder">
+                    {{ mention.userName.charAt(0) }}
+                  </div>
+                }
+                <div class="menciones__mention-source" [class]="'menciones__mention-source--' + mention.source">
+                  <lucide-icon [img]="getSourceIcon(mention.source)" [size]="12" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+              </div>
+              <div class="menciones__mention-user-info">
+                <div class="menciones__mention-user-top">
+                  <span class="menciones__mention-username">{{ mention.userName }}</span>
+                  @if (mention.followers) {
+                    <span class="menciones__mention-followers">({{ mention.followers }})</span>
+                  }
+                </div>
+                <div class="menciones__mention-user-bottom">
+                  <span class="menciones__mention-handle">{{ mention.userType }}</span>
+                  <span class="menciones__mention-handle-at">{{ mention.userHandle }}</span>
+                  @if (mention.source === 'facebook') {
+                    <span class="menciones__mention-badge">Comentario</span>
+                  }
+                  <button class="menciones__star-btn" (click)="onToggleFavorite(mention)">
+                    <lucide-icon [img]="StarIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="menciones__mention-actions">
+              <div class="menciones__sentiment-wrapper">
+                <button
+                  class="menciones__sentiment-dropdown"
+                  [class]="'menciones__sentiment-dropdown--' + mention.sentiment"
+                  (click)="toggleSentimentDropdown(mention)">
+                  <span>{{ getSentimentLabel(mention.sentiment) }}</span>
+                  <lucide-icon [img]="ChevronDownIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </button>
+                @if (openSentimentDropdown === mention.id) {
+                  <div class="menciones__sentiment-menu">
+                    <button
+                      class="menciones__sentiment-option menciones__sentiment-option--positive"
+                      [class.menciones__sentiment-option--active]="mention.sentiment === 'positive'"
+                      (click)="changeSentiment(mention, 'positive')">
+                      Sentimiento positiva
+                    </button>
+                    <button
+                      class="menciones__sentiment-option menciones__sentiment-option--neutral"
+                      [class.menciones__sentiment-option--active]="mention.sentiment === 'neutral'"
+                      (click)="changeSentiment(mention, 'neutral')">
+                      Sentimiento neutra
+                    </button>
+                    <button
+                      class="menciones__sentiment-option menciones__sentiment-option--negative"
+                      [class.menciones__sentiment-option--active]="mention.sentiment === 'negative'"
+                      (click)="changeSentiment(mention, 'negative')">
+                      Sentimiento negativo
+                    </button>
+                  </div>
+                }
+              </div>
+              <div class="menciones__options-wrapper">
+                <button class="menciones__more-btn" (click)="onMentionOptions(mention)">
+                  <lucide-icon [img]="MoreIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                </button>
+                @if (openOptionsMenu === mention.id) {
+                  <div class="menciones__options-menu">
+                    <button class="menciones__options-item" (click)="copyMentionId(mention, $event)">
+                      <lucide-icon [img]="CopyIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Copiar ID</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'select')">
+                      <lucide-icon [img]="CheckSquareIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Seleccionar</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'logs')">
+                      <lucide-icon [img]="FileTextIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Ver Logs</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'report')">
+                      <lucide-icon [img]="BarChartIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Reporte</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'reviewed')">
+                      <lucide-icon [img]="ClipboardCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Revisado</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'related')">
+                      <lucide-icon [img]="LinkIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Ver relacionados</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'retweets')">
+                      <lucide-icon [img]="RepeatIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Ver RTs</span>
+                    </button>
+                    <button class="menciones__options-item" (click)="onMenuAction(mention, 'replies')">
+                      <lucide-icon [img]="MessageCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Ver replies</span>
+                    </button>
+                    <button class="menciones__options-item menciones__options-item--danger" (click)="onMenuAction(mention, 'delete')">
+                      <lucide-icon [img]="TrashIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Borrar</span>
+                    </button>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+
+              <!-- Mention Content -->
+              <div class="menciones__mention-content">
+                <div class="menciones__mention-content-right">
+                  <!-- Meta (date, time, category) above text -->
+                  <div class="menciones__mention-meta">
+                    <div class="menciones__mention-meta-item">
+                      <lucide-icon [img]="CalendarIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      <span>{{ formatDate(mention.date) }}</span>
+                    </div>
+                    <div class="menciones__mention-meta-item">
+                      <lucide-icon [img]="ClockIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      <span>{{ mention.time }}</span>
+                    </div>
+                    <div class="menciones__mention-meta-item">
+                      <lucide-icon [img]="LayoutDashboardIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      <span>{{ mention.category }}</span>
+                    </div>
+                  </div>
+                  <p class="menciones__mention-text">{{ mention.content }}</p>
+                </div>
+              </div>
+
+              <!-- Mention Footer (inside main for image layout) -->
+              <div class="menciones__mention-footer">
+                <div class="menciones__mention-tags">
+                  @if (mention.tags.length === 0) {
+                    <span class="menciones__mention-tags-label">Etiquetas</span>
+                  }
+                  @for (tag of mention.tags; track tag; let i = $index) {
+                    <span class="menciones__mention-tag" [class]="'menciones__mention-tag--' + getTagColor(i)">
+                      {{ tag }}
+                      <button class="menciones__mention-tag-remove" (click)="onRemoveTag(mention, tag)">
+                        <lucide-icon [img]="XIcon" [size]="12" [strokeWidth]="2"></lucide-icon>
+                      </button>
+                    </span>
+                  }
+                  <button class="menciones__mention-tag-add" (click)="onAddTag(mention)">
+                    <lucide-icon [img]="PlusIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+                  </button>
+                </div>
+
+                <div class="menciones__mention-actions-bottom">
+                  <button class="menciones__view-btn" (click)="onViewMention(mention)">
+                    <lucide-icon [img]="EyeIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                    Ver mencion
+                  </button>
+                  <button class="menciones__send-btn" (click)="onSendTo(mention)">
+                    Enviar a
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    </div>
+  </div>
+
+  <app-toast
+    [message]="toastMessage"
+    [visible]="toastVisible"
+    (visibleChange)="toastVisible = $event">
+  </app-toast>
+
+  <!-- Modal Búsquedas Recientes -->
+  @if (isRecentSearchesModalOpen) {
+    <div class="menciones__modal-overlay" (click)="closeRecentSearchesModal()">
+      <div class="menciones__modal" (click)="$event.stopPropagation()">
+        <div class="menciones__modal-header">
+          <h3 class="menciones__modal-title">Búsquedas recientes</h3>
+          <button class="menciones__modal-close" (click)="closeRecentSearchesModal()">
+            <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        </div>
+        <p class="menciones__modal-subtitle">Selecciona una de las búsquedas anteriores para cargar los filtros:</p>
+        <div class="menciones__modal-content">
+          @for (search of recentSearches; track search.id) {
+            <div class="menciones__modal-item" (click)="selectRecentSearch(search)">
+              <div class="menciones__modal-item-info">
+                <span class="menciones__modal-item-name">{{ search.name }}</span>
+                <span class="menciones__modal-item-date">{{ search.date }}</span>
+                <span class="menciones__modal-item-filters">{{ search.filtersCount }} filtros</span>
+              </div>
+              <button class="menciones__modal-item-delete" (click)="deleteRecentSearch(search, $event)">
+                <lucide-icon [img]="TrashIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+              </button>
+            </div>
+          }
+          @if (recentSearches.length === 0) {
+            <p class="menciones__modal-empty">No hay búsquedas recientes</p>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</section>

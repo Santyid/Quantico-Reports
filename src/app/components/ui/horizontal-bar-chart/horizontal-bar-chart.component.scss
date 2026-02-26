@@ -1,0 +1,47 @@
+@import '../../../../styles/tokens';
+
+.horizontal-bar-chart {
+  width: 100%;
+
+  // Override ApexCharts legend markers to be circular
+  ::ng-deep .apexcharts-legend-marker {
+    border-radius: 50% !important;
+  }
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+
+    &--with-icons {
+      gap: 8px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+
+  &__icon-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  &__chart-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__insights {
+    margin-top: 24px;
+  }
+}

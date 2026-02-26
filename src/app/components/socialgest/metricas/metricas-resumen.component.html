@@ -1,0 +1,88 @@
+<div class="metricas-page">
+  <app-socialgest-sidebar
+    [channels]="channels"
+    [selectedChannelId]="selectedChannelId"
+    (channelSelected)="onChannelSelected($event)">
+  </app-socialgest-sidebar>
+
+  <div class="metricas-page__content">
+    <header class="metricas-page__header">
+      <div class="metricas-page__header-left">
+        <div class="metricas-page__header-icon">
+          <lucide-icon [img]="ChartIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <h1 class="metricas-page__title">Metricas</h1>
+      </div>
+      <div class="metricas-page__header-right">
+        <div class="metricas-page__date-range">
+          <span>12 Dic 2025 - 26 Dic 2025</span>
+          <lucide-icon [img]="CalendarIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <button class="metricas-page__orange-btn">Boton</button>
+      </div>
+    </header>
+
+    <nav class="metricas-page__tabs">
+      @for (tab of tabs; track tab) {
+        <button
+          class="metricas-page__tab"
+          [class.metricas-page__tab--active]="activeTab === tab"
+          (click)="setTab(tab)">
+          {{ tab }}
+        </button>
+      }
+    </nav>
+
+    @if (activeTab === 'Resumen') {
+      <div class="metricas-page__grid">
+        <app-rendimiento-global></app-rendimiento-global>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--large">
+            <app-crecimiento-seguidores></app-crecimiento-seguidores>
+            <app-total-espectadores></app-total-espectadores>
+            <app-estimado-crecimiento></app-estimado-crecimiento>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-vistas-publicaciones></app-vistas-publicaciones>
+            <app-acciones-negocio></app-acciones-negocio>
+            <app-interacciones></app-interacciones>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (activeTab === 'Publicaciones') {
+      <div class="metricas-page__grid">
+        <app-pub-rendimiento></app-pub-rendimiento>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--large">
+            <app-pub-por-dia></app-pub-por-dia>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-pub-tipos></app-pub-tipos>
+          </div>
+        </div>
+
+        <app-pub-tabla></app-pub-tabla>
+      </div>
+    }
+
+    @if (activeTab === 'Audiencia') {
+      <div class="metricas-page__grid">
+        <app-aud-demografia></app-aud-demografia>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--large">
+            <app-aud-ubicaciones></app-aud-ubicaciones>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-aud-genero></app-aud-genero>
+            <app-aud-edades></app-aud-edades>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

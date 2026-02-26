@@ -1,0 +1,745 @@
+@import '../../../../../styles/tokens';
+
+.analisis-competitivo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ========================================
+  // Overview Section (2x2 grid)
+  // ========================================
+  &__overview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  &__overview-card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Card 1: Sentimiento General
+  &__sentiment-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex: 1;
+  }
+
+  &__sentiment-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__sentiment-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__sentiment-legend-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 36px;
+  }
+
+  &__sentiment-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  &__sentiment-legend-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: $grey-500;
+  }
+
+  // Bar Chart List (like insights-marca)
+  &__bars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &__bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__bar-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__platform-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &--x { background: #000000; color: white; }
+    &--facebook { background: #1877F2; color: white; }
+    &--tiktok { background: #000000; color: white; }
+    &--instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+    &--linkedin { background: #0A66C2; color: white; }
+
+    img { filter: invert(1); }
+  }
+
+  &__bar-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-500;
+  }
+
+  &__bar-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b2b2b;
+  }
+
+  &__bar-track {
+    height: 12px;
+    background: $grey-50;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.4s ease;
+
+    &--main {
+      background: linear-gradient(90deg, $secondary-400 0%, $secondary-500 100%);
+    }
+
+    &--secondary {
+      background: linear-gradient(90deg, rgba($grey-300, 0.35) 0%, rgba($grey-300, 0.55) 100%);
+    }
+  }
+
+  // Card 3: Share of Voice
+  &__sov-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex: 1;
+  }
+
+  &__sov-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__sov-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__sov-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__sov-legend-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: $grey-500;
+  }
+
+  // Benchmark Evolutivo
+  &__benchmark-chart {
+    margin-bottom: 32px;
+  }
+
+  &__benchmark-highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-top: 1px solid $grey-50;
+    padding-top: 24px;
+  }
+
+  &__highlight-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__highlight-date {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #262626;
+  }
+
+  &__highlight-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__highlight-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  // SOV Grid (2 columns)
+  &__sov-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  // Card with title inside
+  &__card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 24px 0;
+  }
+
+  &__card-insight {
+    margin-top: 24px;
+  }
+
+  // Pie Chart Card
+  &__pie-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__pie-content {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__pie-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__pie-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__legend-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 120px;
+  }
+
+  &__legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  &__legend-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey-500;
+  }
+
+  &__legend-values {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__legend-percentage {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #2b2b2b;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  &__legend-nss {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3ace76;
+    min-width: 70px;
+
+    &--negative {
+      color: #f07070;
+    }
+  }
+
+  // Individual bar rows (3 bars stacked vertically)
+  &__bars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__bar-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__bar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+
+    &--main {
+      background: linear-gradient(180deg, $secondary-400 0%, $secondary-500 100%);
+    }
+
+    &--comp1 {
+      background: rgba($grey-300, 0.5);
+    }
+
+    &--comp2 {
+      background: rgba($grey-300, 0.3);
+    }
+  }
+
+  &__bar-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-500;
+  }
+
+  &__bar-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b2b2b;
+  }
+
+  &__bar-track {
+    height: 12px;
+    background: $grey-50;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.4s ease;
+
+    &--main {
+      background: linear-gradient(90deg, $secondary-400 0%, $secondary-500 100%);
+    }
+
+    &--comp1 {
+      background: linear-gradient(90deg, rgba($grey-300, 0.35) 0%, rgba($grey-300, 0.55) 100%);
+    }
+
+    &--comp2 {
+      background: linear-gradient(90deg, rgba($grey-300, 0.2) 0%, rgba($grey-300, 0.35) 100%);
+    }
+  }
+
+  // Insights Container (like ai-recommendations)
+  &__insights-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+    border-radius: 16px;
+    background: linear-gradient(-80deg, rgb(247, 235, 255) 1%, rgb(255, 255, 255) 36%, rgb(255, 253, 252) 42%, rgb(237, 244, 255) 99%);
+  }
+
+  &__insights-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $primary-500;
+  }
+
+  &__insights-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(5deg, $primary-500 3%, #00aaff 106%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  // Insights Grid
+  &__insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+  }
+
+  // Insight Card (white card inside gradient container)
+  &__insight-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+
+    &--success {
+      .analisis-competitivo__insight-header {
+        color: #3ace76;
+      }
+    }
+
+    &--warning {
+      .analisis-competitivo__insight-header {
+        color: #f4b137;
+      }
+    }
+  }
+
+  &__insight-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__insight-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: $grey-500;
+    margin: 0;
+  }
+
+  &__insight-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__insight-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 1.6;
+  }
+
+  &__insight-competitor {
+    font-weight: 600;
+    color: $grey-500;
+  }
+
+  // ========================================
+  // Top Content Section
+  // ========================================
+  &__top-content-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  &__content-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  // 1. Brand Logo
+  &__content-brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 28px;
+  }
+
+  &__content-brand-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  // 2. Content Image
+  &__content-image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  &__content-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+
+  // 3. Description Card
+  &__content-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__content-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  &__content-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // 4. Sentiment Bar (like executive-summary)
+  &__content-sentiment-bar {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__content-sentiment-segment {
+    height: 16px;
+    border-radius: 4px;
+
+    &--positive {
+      background: linear-gradient(90deg, rgba(62, 204, 128, 0.75) 0%, rgba(62, 204, 128, 0.38) 100%);
+    }
+
+    &--neutral {
+      background: linear-gradient(90deg, rgba(168, 213, 229, 0.85) 0%, rgba(168, 213, 229, 0.5) 100%);
+    }
+
+    &--negative {
+      background: linear-gradient(90deg, rgba(246, 26, 74, 0.75) 0%, rgba(246, 26, 74, 0.38) 100%);
+    }
+  }
+
+  // 5. Sentiment Legend
+  &__content-sentiment-legend {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__content-sentiment-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__content-sentiment-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+
+    &--positive {
+      background: linear-gradient(180deg, rgba(62, 204, 128, 0.5) 0%, #3ecc80 100%);
+    }
+
+    &--neutral {
+      background: linear-gradient(180deg, rgba(168, 213, 229, 0.5) 0%, #a8d5e5 100%);
+    }
+
+    &--negative {
+      background: linear-gradient(180deg, rgba(246, 26, 74, 0.5) 0%, #f61a4a 100%);
+    }
+  }
+
+  &__content-sentiment-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: $grey-400;
+  }
+
+  &__content-sentiment-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $grey-500;
+  }
+
+  // 6. KPIs
+  &__content-kpis {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid $grey-50;
+  }
+
+  &__content-kpi {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+
+    lucide-icon {
+      color: $secondary-500;
+    }
+  }
+
+  &__content-kpi-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2b2b2b;
+  }
+
+  &__content-kpi-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-400;
+  }
+}
+
+@media (max-width: 1200px) {
+  .analisis-competitivo {
+    &__overview-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__benchmark-highlights {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__top-content-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .analisis-competitivo {
+    &__overview-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__sentiment-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__sov-content {
+      flex-direction: column;
+    }
+
+    &__pie-content {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__legend-percentage {
+      font-size: 20px;
+    }
+
+    &__sov-grid,
+    &__insights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__benchmark-highlights {
+      grid-template-columns: 1fr;
+    }
+
+    &__top-content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

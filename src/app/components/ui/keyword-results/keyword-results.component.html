@@ -1,0 +1,80 @@
+<div class="keyword-results">
+  <!-- Header -->
+  <div class="keyword-results__header">
+    <h3 class="keyword-results__title">{{ title }}</h3>
+    <button
+      class="keyword-results__collapse-btn"
+      (click)="toggleCollapse()"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-label="Expandir/Colapsar">
+      <lucide-icon [img]="isCollapsed ? PlusIcon : MinusIcon" [size]="20" [strokeWidth]="2"></lucide-icon>
+    </button>
+  </div>
+
+  @if (!isCollapsed) {
+    <div class="keyword-results__content">
+      <!-- Legend -->
+      <div class="keyword-results__legend">
+        @for (item of legendItems; track item.label) {
+          <div class="keyword-results__legend-item">
+            <span class="keyword-results__legend-dot" [style.background-color]="item.color"></span>
+            <span class="keyword-results__legend-label">{{ item.label }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Results List -->
+      <div class="keyword-results__list">
+        @for (result of results; track result.keyword) {
+          <div class="keyword-results__row">
+            <div class="keyword-results__keyword">
+              {{ result.keyword }}
+            </div>
+
+            <div class="keyword-results__bar-container">
+              <div class="keyword-results__bar">
+                @if (result.sentiment.positive > 0) {
+                  <div
+                    class="keyword-results__bar-segment keyword-results__bar-segment--positive"
+                    [style.width]="getBarWidth(result.sentiment.positive, result.total)">
+                    @if (getPercentage(result.sentiment.positive, result.total) >= 10) {
+                      <span class="keyword-results__bar-label">{{ getPercentage(result.sentiment.positive, result.total) }}%</span>
+                    }
+                  </div>
+                }
+                @if (result.sentiment.neutral > 0) {
+                  <div
+                    class="keyword-results__bar-segment keyword-results__bar-segment--neutral"
+                    [style.width]="getBarWidth(result.sentiment.neutral, result.total)">
+                    @if (getPercentage(result.sentiment.neutral, result.total) >= 10) {
+                      <span class="keyword-results__bar-label">{{ getPercentage(result.sentiment.neutral, result.total) }}%</span>
+                    }
+                  </div>
+                }
+                @if (result.sentiment.negative > 0) {
+                  <div
+                    class="keyword-results__bar-segment keyword-results__bar-segment--negative"
+                    [style.width]="getBarWidth(result.sentiment.negative, result.total)">
+                    @if (getPercentage(result.sentiment.negative, result.total) >= 10) {
+                      <span class="keyword-results__bar-label">{{ getPercentage(result.sentiment.negative, result.total) }}%</span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div class="keyword-results__total">
+              {{ result.total }}
+            </div>
+          </div>
+        }
+
+        @if (results.length === 0) {
+          <div class="keyword-results__empty">
+            No hay resultados disponibles
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

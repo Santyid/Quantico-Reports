@@ -1,0 +1,196 @@
+@import '../../../../../styles/tokens';
+
+.voice-of-customer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Grid of voice cards
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    // First card spans full width
+    .voice-of-customer__card:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // White card style
+  &__card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  // Card header with icon badge, title and percentage
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  // Gradient icon badge
+  &__icon-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    ::ng-deep svg {
+      color: white;
+      stroke: white;
+    }
+
+    &--red {
+      background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+    }
+
+    &--orange {
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+    }
+
+    &--green {
+      background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    }
+
+    &--blue {
+      background: linear-gradient(135deg, #5495fe 0%, #0061fe 100%);
+    }
+
+    &--purple {
+      background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    }
+  }
+
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+    flex: 1;
+  }
+
+  &__percentage-group {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  &__percentage {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #2b2b2b;
+  }
+
+  &__percentage-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: $grey-400;
+  }
+
+  // Metadata section
+  &__metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__meta-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: $grey-400;
+  }
+
+  &__meta-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+  }
+
+  // AI Insight Box
+  &__insight-box {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: linear-gradient(119deg, rgba(230, 239, 255, 0.33) 0.5%, rgba(185, 211, 255, 0.33) 25%, rgba(176, 206, 255, 0.33) 70%, rgba(133, 177, 255, 0.33) 98%);
+  }
+
+  &__insight-icon {
+    flex-shrink: 0;
+    padding: 4px 0;
+    color: $primary-500;
+  }
+
+  &__insight-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__insight-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-700;
+  }
+
+  &__insight-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: $primary-900;
+  }
+}
+
+@media (max-width: 1024px) {
+  .voice-of-customer {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .voice-of-customer {
+    &__card {
+      padding: 20px;
+    }
+
+    &__icon-badge {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__percentage {
+      font-size: 24px;
+    }
+  }
+}

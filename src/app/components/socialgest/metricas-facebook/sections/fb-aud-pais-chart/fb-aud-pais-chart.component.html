@@ -1,0 +1,28 @@
+<div class="fb-aud-pais-chart">
+  <h3 class="fb-aud-pais-chart__title">Personas a las que le gusta esta página por país.</h3>
+  <p class="fb-aud-pais-chart__subtitle">Consulta el número de personas a las que le gusta esta página según su país</p>
+  <div class="fb-aud-pais-chart__chart">
+    <div class="fb-aud-pais-chart__y-axis">
+      @for (country of countries; let i = $index; track country.name) {
+        <span class="fb-aud-pais-chart__y-label">{{ i + 1 }}</span>
+      }
+    </div>
+    <div class="fb-aud-pais-chart__bars">
+      @for (country of countries; track country.name) {
+        <div class="fb-aud-pais-chart__bar-row">
+          <div class="fb-aud-pais-chart__bar-fill" [style.width.%]="getBarWidth(country.value)"></div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="fb-aud-pais-chart__x-axis">
+    <span>0</span>
+    <span>2</span>
+    <span>4</span>
+    <span>6</span>
+    <span>8</span>
+    <span>10</span>
+    <span>12</span>
+    <span>14</span>
+  </div>
+</div>

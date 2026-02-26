@@ -1,0 +1,26 @@
+<div class="fb-aud-ciudad">
+  <h3 class="fb-aud-ciudad__title">Personas a las que le gusta esta página por ciudad.</h3>
+  <p class="fb-aud-ciudad__subtitle">Consulta el número de personas a las que le gusta esta página según su ciudad</p>
+  <div class="fb-aud-ciudad__chart">
+    <div class="fb-aud-ciudad__y-axis">
+      @for (city of cities; let i = $index; track city.name) {
+        <span class="fb-aud-ciudad__y-label">{{ i + 1 }}</span>
+      }
+    </div>
+    <div class="fb-aud-ciudad__bars">
+      @for (city of cities; track city.name) {
+        <div class="fb-aud-ciudad__bar-row">
+          <div class="fb-aud-ciudad__bar-fill" [style.width.%]="getBarWidth(city.value)"></div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="fb-aud-ciudad__x-axis">
+    <span>0</span>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+  </div>
+</div>

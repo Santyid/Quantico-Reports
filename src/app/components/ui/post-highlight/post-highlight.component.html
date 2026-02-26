@@ -1,0 +1,66 @@
+@if (post) {
+  <div class="post-highlight">
+    <!-- Image with rank badge -->
+    <div class="post-highlight__image-container">
+      @if (post.imageUrl) {
+        <img [src]="post.imageUrl" [alt]="post.title || post.content" class="post-highlight__image">
+      } @else {
+        <div class="post-highlight__image-placeholder"></div>
+      }
+      @if (post.rank) {
+        <div class="post-highlight__rank">{{ post.rank }}</div>
+      }
+    </div>
+
+    <!-- Content area -->
+    <div class="post-highlight__content">
+      <!-- Header: Date + Metrics -->
+      <div class="post-highlight__header">
+        <span class="post-highlight__date">{{ post.date }}</span>
+        <div class="post-highlight__metrics">
+          @if (post.bookmarks !== undefined) {
+            <div class="post-highlight__metric">
+              <lucide-icon [img]="BookmarkIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+              <span>{{ formatNumber(post.bookmarks) }}</span>
+            </div>
+          }
+          <div class="post-highlight__metric">
+            <lucide-icon [img]="ShareIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            <span>{{ formatNumber(post.shares) }}</span>
+          </div>
+          @if (post.comments !== undefined) {
+            <div class="post-highlight__metric">
+              <lucide-icon [img]="CommentsIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+              <span>{{ formatNumber(post.comments) }}</span>
+            </div>
+          }
+          <div class="post-highlight__metric">
+            <lucide-icon [img]="ReactionsIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            <span>{{ formatNumber(post.reactions) }}</span>
+          </div>
+          <div class="post-highlight__metric">
+            <lucide-icon [img]="EngagementIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            <span>{{ formatNumber(post.engagement) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h4 class="post-highlight__title">{{ post.title || post.content }}</h4>
+
+      <!-- AI Insight -->
+      <div class="post-highlight__insight">
+        <lucide-icon
+          [img]="AiIcon"
+          [size]="20"
+          [strokeWidth]="1.5"
+          class="post-highlight__insight-icon">
+        </lucide-icon>
+        <p class="post-highlight__insight-text">
+          <span class="post-highlight__insight-label">Análisis</span>:
+          <span class="post-highlight__insight-content">{{ post.insight }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+}

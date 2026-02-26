@@ -1,0 +1,41 @@
+<div class="horizontal-bar-chart">
+  @if (chartOptions.series) {
+    <div class="horizontal-bar-chart__container" [class.horizontal-bar-chart__container--with-icons]="hasIcons">
+      @if (hasIcons) {
+        <div class="horizontal-bar-chart__icons" [style.paddingTop.px]="30">
+          @for (bar of data; track bar.label) {
+            <div class="horizontal-bar-chart__icon-row" [style.height.px]="barHeight + 19">
+              <img [src]="bar.icon" [alt]="bar.label" class="horizontal-bar-chart__icon">
+            </div>
+          }
+        </div>
+      }
+      <div class="horizontal-bar-chart__chart-wrapper">
+        <apx-chart
+          #chart
+          [series]="chartOptions.series!"
+          [chart]="chartOptions.chart!"
+          [xaxis]="chartOptions.xaxis!"
+          [yaxis]="chartOptions.yaxis!"
+          [dataLabels]="chartOptions.dataLabels!"
+          [plotOptions]="chartOptions.plotOptions!"
+          [legend]="chartOptions.legend!"
+          [tooltip]="chartOptions.tooltip!"
+          [grid]="chartOptions.grid!"
+          [colors]="chartOptions.colors!"
+          [stroke]="chartOptions.stroke!">
+        </apx-chart>
+      </div>
+    </div>
+  }
+
+  @if (showInsights && hasInsights) {
+    <div class="horizontal-bar-chart__insights">
+      <app-insight-card
+        title="Análisis por Plataforma"
+        [content]="insightsContent"
+        [showAiBadge]="true">
+      </app-insight-card>
+    </div>
+  }
+</div>

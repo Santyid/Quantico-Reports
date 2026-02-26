@@ -1,0 +1,52 @@
+<div class="app-channel-selector">
+  @if (label) {
+    <label class="app-channel-selector__label">
+      {{ label }}
+    </label>
+  }
+
+  <div
+    class="app-channel-selector__options"
+    [class.app-channel-selector__options--horizontal]="layout === 'horizontal'"
+    [class.app-channel-selector__options--vertical]="layout === 'vertical'"
+    role="group"
+    [attr.aria-label]="label">
+    @for (option of options; track option.value) {
+      <div
+        class="app-channel-selector__card"
+        [class.app-channel-selector__card--selected]="isSelected(option.value)"
+        [class.app-channel-selector__card--disabled]="option.disabled || disabled"
+        [class.app-channel-selector__card--with-description]="option.description"
+        [class.app-channel-selector__card--image-only]="option.image && !option.description"
+        role="checkbox"
+        [attr.aria-checked]="isSelected(option.value)"
+        [attr.aria-disabled]="option.disabled || disabled"
+        [attr.aria-label]="option.label"
+        tabindex="0"
+        (click)="toggleOption(option)"
+        (keydown)="onKeyDown($event, option)">
+        <div class="app-channel-selector__card-inner">
+          @if (option.image) {
+            <img
+              class="app-channel-selector__image"
+              [src]="option.image"
+              [alt]="option.label"
+            />
+          } @else {
+            @if (option.icon) {
+              <span class="app-channel-selector__icon">
+                <lucide-icon [img]="option.icon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+              </span>
+            }
+            <div class="app-channel-selector__content">
+              <span class="app-channel-selector__title">{{ option.label }}</span>
+              @if (option.description) {
+                <span class="app-channel-selector__description">{{ option.description }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

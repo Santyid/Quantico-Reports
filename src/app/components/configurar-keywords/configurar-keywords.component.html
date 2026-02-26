@@ -1,0 +1,288 @@
+<section class="configurar-keywords">
+  <!-- SVG Gradient Definition for AI Icon -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="ai-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00AAFF" />
+        <stop offset="100%" stop-color="#0061fe" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="configurar-keywords__container">
+    <!-- Header -->
+    <header class="configurar-keywords__header">
+      <div class="configurar-keywords__header-left">
+        <div class="configurar-keywords__header-icon">
+          <lucide-icon [img]="HeaderIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <h1 class="configurar-keywords__title">Configurar Keywords</h1>
+      </div>
+    </header>
+
+    <!-- Tabs Navigation -->
+    <div class="configurar-keywords__tabs">
+      <button
+        class="configurar-keywords__tab"
+        [class.configurar-keywords__tab--active]="activeTab === 'ai'"
+        (click)="setActiveTab('ai')">
+        <lucide-icon [img]="AIIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+        <span>Configurar con IA</span>
+      </button>
+      <button
+        class="configurar-keywords__tab"
+        [class.configurar-keywords__tab--active]="activeTab === 'list'"
+        (click)="setActiveTab('list')">
+        <lucide-icon [img]="SettingsIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+        <span>Listado de Keywords</span>
+      </button>
+    </div>
+
+    <!-- Tab Content: AI Configuration -->
+    @if (activeTab === 'ai') {
+      <div class="configurar-keywords__tab-content">
+        <!-- AI Configuration Card -->
+        <div class="configurar-keywords__card configurar-keywords__card--ai">
+          <!-- Card Header -->
+          <div class="configurar-keywords__card-header configurar-keywords__card-header--ai">
+            <div class="configurar-keywords__card-header-left">
+              <lucide-icon [img]="AIIcon" [size]="20" [strokeWidth]="1.5" class="configurar-keywords__ai-icon"></lucide-icon>
+              <span class="configurar-keywords__card-title">Configuración asistida por IA</span>
+            </div>
+            <span class="configurar-keywords__card-badge">Recomendado</span>
+          </div>
+
+          <div class="configurar-keywords__ai-content">
+            @if (isGenerating) {
+              <!-- Skeleton Loading State -->
+              <div class="configurar-keywords__skeleton">
+                <div class="configurar-keywords__skeleton-header">
+                  <div class="configurar-keywords__skeleton-icon"></div>
+                  <div class="configurar-keywords__skeleton-text configurar-keywords__skeleton-text--title"></div>
+                </div>
+                <div class="configurar-keywords__skeleton-body">
+                  <div class="configurar-keywords__skeleton-text configurar-keywords__skeleton-text--line"></div>
+                  <div class="configurar-keywords__skeleton-text configurar-keywords__skeleton-text--line configurar-keywords__skeleton-text--short"></div>
+                  <div class="configurar-keywords__skeleton-chips">
+                    <div class="configurar-keywords__skeleton-chip"></div>
+                    <div class="configurar-keywords__skeleton-chip"></div>
+                    <div class="configurar-keywords__skeleton-chip"></div>
+                    <div class="configurar-keywords__skeleton-chip"></div>
+                  </div>
+                  <div class="configurar-keywords__skeleton-text configurar-keywords__skeleton-text--line"></div>
+                  <div class="configurar-keywords__skeleton-chips">
+                    <div class="configurar-keywords__skeleton-chip"></div>
+                    <div class="configurar-keywords__skeleton-chip"></div>
+                  </div>
+                </div>
+                <p class="configurar-keywords__skeleton-message">Generando configuración con IA...</p>
+              </div>
+            } @else {
+              <!-- AI Input Form -->
+              <div class="configurar-keywords__ai-form">
+                <div class="configurar-keywords__ai-description">
+                  <lucide-icon [img]="AIIcon" [size]="32" [strokeWidth]="1" class="configurar-keywords__ai-description-icon"></lucide-icon>
+                  <p class="configurar-keywords__ai-description-text">
+                    Describe detalladamente lo que quieres monitorear. Incluye información sobre tu marca, industria, competidores, idiomas y redes sociales preferidas.
+                  </p>
+                  <p class="configurar-keywords__ai-description-hint">
+                    Ejemplo: "Quiero monitorear menciones sobre tecnología y startups en español en Twitter y LinkedIn"
+                  </p>
+                </div>
+
+                <div class="configurar-keywords__chat-input">
+                  <textarea
+                    class="configurar-keywords__chat-textarea"
+                    [class.configurar-keywords__chat-textarea--disabled]="hasConfigured && !isEditingConfig"
+                    placeholder="Describe detalladamente lo que quieres configurar..."
+                    [(ngModel)]="userInput"
+                    [disabled]="hasConfigured && !isEditingConfig"
+                    rows="6"
+                  ></textarea>
+                  <div class="configurar-keywords__chat-actions">
+                    @if (!hasConfigured || isEditingConfig) {
+                      <!-- Not configured or editing: show generate button -->
+                      <app-button
+                        variant="secondary"
+                        size="medium"
+                        [leftIcon]="AIIcon"
+                        [disabled]="!userInput.trim()"
+                        (clicked)="generateConfiguration()">
+                        Generar configuración
+                      </app-button>
+                    } @else {
+                      <!-- Already configured: show edit and view results buttons -->
+                      <app-button
+                        variant="white"
+                        size="medium"
+                        [leftIcon]="PencilIcon"
+                        (clicked)="editConfiguration()">
+                        Editar configuración
+                      </app-button>
+                      <app-button
+                        variant="primary"
+                        size="medium"
+                        [leftIcon]="EyeIcon"
+                        (clicked)="viewResults()">
+                        Ver resultados
+                      </app-button>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="configurar-keywords__manual-link">
+        <span>O </span>
+        <a (click)="goToManualConfig()">configura los keywords manualmente</a>
+      </div>
+    }
+
+    <!-- Tab Content: Keywords List -->
+    @if (activeTab === 'list') {
+      <div class="configurar-keywords__tab-content">
+        <!-- List Header -->
+        <div class="configurar-keywords__list-header configurar-keywords__list-header--right">
+          <app-button
+            variant="secondary"
+            size="medium"
+            [leftIcon]="PlusIcon"
+            (clicked)="openManualModal()">
+            Agregar keyword
+          </app-button>
+        </div>
+
+        <!-- Keywords Table -->
+        <div class="configurar-keywords__card">
+          @if (savedKeywords.length > 0) {
+            <app-table
+              [columns]="tableColumns"
+              [data]="tableData"
+              (actionClick)="onTableActionClick($event)">
+            </app-table>
+          } @else {
+            <div class="configurar-keywords__table-empty">
+              No hay keywords configurados. Usa la IA o configura manualmente.
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Manual Configuration Modal -->
+  <app-modal
+    [isOpen]="isManualModalOpen"
+    title="Agregar keyword"
+    subtitle="Configura los keywords que deseas monitorear"
+    maxWidth="600px"
+    cancelText="Cancelar"
+    confirmText="Agregar"
+    [confirmDisabled]="!manualKeywordInput.trim()"
+    (close)="closeManualModal()"
+    (cancel)="closeManualModal()"
+    (confirm)="addManualKeyword()">
+
+    <div class="modal-form">
+      <!-- Channel Selector -->
+      <div class="modal-form__field">
+        <app-channel-selector
+          [(ngModel)]="selectedChannels"
+          label="Redes sociales a monitorear"
+          [options]="channelOptions"
+          layout="horizontal">
+        </app-channel-selector>
+      </div>
+
+      <!-- Keywords Input -->
+      <div class="modal-form__field">
+        <label class="modal-form__label">Keywords</label>
+        <textarea
+          class="modal-form__textarea"
+          placeholder="Ingresa los keywords separados por coma (ej: coca-cola, cocacola, #cocacola)"
+          [(ngModel)]="manualKeywordInput"
+          rows="4"
+        ></textarea>
+        <span class="modal-form__hint">Separa múltiples keywords con comas</span>
+      </div>
+
+      <!-- Filter Selects -->
+      <div class="modal-form__filter-grid">
+        <div class="modal-form__field">
+          <app-select
+            size="small"
+            label="Segmento"
+            placeholder="Todos"
+            [options]="segmentoOptions"
+            (selectionChange)="onSegmentoChange($event?.value ?? '')">
+          </app-select>
+        </div>
+        <div class="modal-form__field">
+          <app-select
+            size="small"
+            label="Etiquetas"
+            placeholder="Todas"
+            [options]="etiquetasOptions"
+            (selectionChange)="onEtiquetasChange($event?.value ?? '')">
+          </app-select>
+        </div>
+      </div>
+
+      <!-- Date Range -->
+      <div class="modal-form__field">
+        <label class="modal-form__label">Rango de fechas</label>
+        <div class="modal-form__date-range">
+          <div class="modal-form__date">
+            <lucide-icon [img]="CalendarIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+            <span>{{ formatDisplayDate(dateRange.startDate) }}</span>
+          </div>
+          <span class="modal-form__date-separator">-</span>
+          <div class="modal-form__date">
+            <lucide-icon [img]="CalendarIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+            <span>{{ formatDisplayDate(dateRange.endDate) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Options -->
+      <div class="modal-form__advanced-section">
+        <button type="button" class="modal-form__advanced-toggle" (click)="showAdvancedModal = !showAdvancedModal">
+          <lucide-icon
+            [img]="ChevronDownIcon"
+            [size]="14"
+            [strokeWidth]="2"
+            class="modal-form__advanced-toggle-icon"
+            [class.modal-form__advanced-toggle-icon--open]="showAdvancedModal">
+          </lucide-icon>
+          Opciones avanzadas
+        </button>
+
+        @if (showAdvancedModal) {
+          <div class="modal-form__advanced">
+            <div class="modal-form__field">
+              <app-select
+                size="small"
+                label="Influencia"
+                placeholder="Todas"
+                [options]="influenciaOptions"
+                (selectionChange)="onInfluenciaChange($event?.value ?? '')">
+              </app-select>
+            </div>
+            <div class="modal-form__field">
+              <app-select
+                size="small"
+                label="Sentimiento"
+                placeholder="Todos"
+                [options]="sentimientoOptions"
+                (selectionChange)="onSentimientoChange($event?.value ?? '')">
+              </app-select>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </app-modal>
+</section>

@@ -1,0 +1,534 @@
+@import '../../../../../styles/tokens';
+
+.insights-marca {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__section-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0;
+  }
+
+  // Card with title inside
+  &__card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 24px 0;
+  }
+
+  // ========================================
+  // Overview Section
+  // ========================================
+  &__overview-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  &__overview-card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__overview-card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: $grey-500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px 0;
+    align-self: flex-start;
+  }
+
+  &__overview-legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  &__overview-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__overview-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__overview-legend-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: $grey-500;
+  }
+
+  &__overview-legend-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #262626;
+  }
+
+  // Sentiment Card (pie chart with title)
+  &__overview-card--sentiment {
+    justify-content: flex-start;
+    align-items: stretch;
+
+    .insights-marca__card-title {
+      text-align: left;
+    }
+  }
+
+  &__sentiment-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 16px;
+  }
+
+  // Platform Activity Card
+  &__overview-card--activity {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  // Bar Chart List (Share of Voice style)
+  &__bars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__bar-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__platform-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &--x { background: #000000; color: white; }
+    &--facebook { background: #1877F2; color: white; }
+    &--tiktok { background: #000000; color: white; }
+    &--youtube { background: #FF0000; color: white; }
+    &--linkedin { background: #0A66C2; color: white; }
+
+    img { filter: invert(1); }
+  }
+
+  &__bar-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-500;
+  }
+
+  &__bar-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b2b2b;
+  }
+
+  &__bar-track {
+    height: 12px;
+    background: $grey-50;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.4s ease;
+
+    &--main {
+      background: linear-gradient(90deg, $secondary-400 0%, $secondary-500 100%);
+    }
+
+    &--secondary {
+      background: linear-gradient(90deg, rgba($grey-300, 0.35) 0%, rgba($grey-300, 0.55) 100%);
+    }
+  }
+
+  // AI Insight Banner
+  &__ai-insight-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px 24px;
+    background: linear-gradient(90deg, #0061fe 0%, #5495fe 100%);
+    border-radius: 12px;
+    color: white;
+  }
+
+  &__ai-insight-icon {
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  &__ai-insight-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // Drivers Grid (3 cards)
+  &__drivers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  &__driver-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    background: linear-gradient(141.6deg, rgba(62, 204, 128, 0) 15.2%, rgba(62, 204, 128, 0.08) 52.7%, rgba(62, 204, 128, 0) 112%), white;
+    border-radius: 16px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(62, 204, 128, 0.1) 0%, rgba(62, 204, 128, 0.5) 50%, rgba(62, 204, 128, 0.1) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  }
+
+  &__driver-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__driver-percentage {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: #3ecc80;
+  }
+
+  &__driver-emotion {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    background: rgba(62, 204, 128, 0.15);
+    color: #1a7a3e;
+    border-radius: 20px;
+  }
+
+  &__driver-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  &__driver-example {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+    color: $grey-400;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &__driver-trend {
+    margin-top: auto;
+  }
+
+  // Negative Driver Cards
+  &__drivers-grid--negative {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__driver-card--negative {
+    background: linear-gradient(141.6deg, rgba(246, 26, 74, 0) 15.2%, rgba(246, 26, 74, 0.08) 52.7%, rgba(246, 26, 74, 0) 112%), white;
+
+    &::before {
+      background: linear-gradient(135deg, rgba(246, 26, 74, 0.1) 0%, rgba(246, 26, 74, 0.5) 50%, rgba(246, 26, 74, 0.1) 100%);
+    }
+  }
+
+  &__driver-card--moderado {
+    background: linear-gradient(141.6deg, rgba(245, 124, 0, 0) 15.2%, rgba(245, 124, 0, 0.08) 52.7%, rgba(245, 124, 0, 0) 112%), white;
+
+    &::before {
+      background: linear-gradient(135deg, rgba(245, 124, 0, 0.1) 0%, rgba(245, 124, 0, 0.5) 50%, rgba(245, 124, 0, 0.1) 100%);
+    }
+  }
+
+  &__driver-percentage--negative {
+    color: #f61a4a;
+  }
+
+  &__driver-percentage--moderado {
+    color: #f57c00;
+  }
+
+  // Customer Quote Card
+  &__customer-quote-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 48px;
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  &__customer-quote-icon {
+    color: $primary-300;
+    opacity: 0.6;
+  }
+
+  &__customer-quote-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    color: $grey-600;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 1000px;
+  }
+
+  &__customer-quote-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__customer-quote-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary-500;
+  }
+
+  // Table styles
+  &__table-container {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+
+    thead {
+      tr {
+        background: $secondary-500;
+      }
+
+      th {
+        font-family: 'Urbanist', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 16px 20px;
+        text-align: left;
+      }
+    }
+
+    tbody {
+      tr {
+        background: white;
+        border-bottom: 1px solid $grey-50;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      td {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: $grey-500;
+        padding: 16px 20px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__driver-name {
+    font-weight: 600 !important;
+    color: #262626 !important;
+  }
+
+  &__example {
+    font-style: italic;
+    color: $grey-400 !important;
+  }
+
+  // Trend badges
+  &__trend {
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: white;
+    color: $grey-400;
+  }
+
+  // Quote box
+  &__quote {
+    padding: 24px;
+    padding-left: 28px;
+    border-left: 4px solid $primary-500;
+    background: #fafbfc;
+    border-radius: 0 8px 8px 0;
+
+    p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic;
+      color: $grey-500;
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .insights-marca {
+    &__overview-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .insights-marca {
+    &__drivers-grid--negative {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .insights-marca {
+    &__overview-row {
+      grid-template-columns: 1fr;
+    }
+
+    &__overview-legend {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    &__drivers-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__drivers-grid--negative {
+      grid-template-columns: 1fr;
+    }
+
+    &__customer-quote-card {
+      padding: 24px;
+    }
+
+    &__customer-quote-text {
+      font-size: 16px;
+    }
+
+    &__table {
+      thead th,
+      tbody td {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+    }
+
+    &__quote {
+      padding: 16px;
+      padding-left: 20px;
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}

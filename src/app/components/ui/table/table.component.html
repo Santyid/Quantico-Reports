@@ -1,0 +1,79 @@
+<div class="app-table__container">
+  @if (title) {
+    <h2 class="app-table__title">{{ title }}</h2>
+  }
+
+  <div [class]="tableClasses.join(' ')" role="table">
+    <!-- Header Row -->
+    <div class="app-table__header" role="rowgroup">
+      <div class="app-table__row app-table__row--header" role="row">
+        @for (column of columns; track column.key) {
+          <div
+            class="app-table__cell app-table__cell--header"
+            [style]="getColumnStyle(column)"
+            [class.app-table__cell--center]="column.align === 'center'"
+            [class.app-table__cell--right]="column.align === 'right'"
+            role="columnheader">
+            {{ column.header }}
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Body Rows -->
+    <div class="app-table__body" role="rowgroup">
+      @for (row of data; track $index; let rowIndex = $index) {
+        <div
+          class="app-table__row app-table__row--body"
+          role="row"
+          (click)="onRowClick(row, rowIndex)">
+          @for (column of columns; track column.key) {
+            <div
+              class="app-table__cell app-table__cell--body"
+              [style]="getColumnStyle(column)"
+              [class.app-table__cell--center]="column.align === 'center'"
+              [class.app-table__cell--right]="column.align === 'right'"
+              role="cell">
+
+              <!-- Badge Type -->
+              @if (column.type === 'badge' && isBadgeData(getCellValue(row, column.key))) {
+                <app-status-badge
+                  [label]="$any(getCellValue(row, column.key)).label"
+                  [variant]="$any(getCellValue(row, column.key)).variant">
+                </app-status-badge>
+              }
+
+              <!-- Icon/Action Type -->
+              @else if (column.type === 'icon') {
+                @if (isIconActionArray(getCellValue(row, column.key))) {
+                  @for (iconAction of $any(getCellValue(row, column.key)); track iconAction.action) {
+                    <button
+                      type="button"
+                      class="app-table__action-btn"
+                      [attr.aria-label]="iconAction.ariaLabel || iconAction.action"
+                      (click)="onActionClick($event, iconAction.action, row, rowIndex)">
+                      <lucide-icon [img]="iconAction.icon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                    </button>
+                  }
+                } @else if (isIconAction(getCellValue(row, column.key))) {
+                  <button
+                    type="button"
+                    class="app-table__action-btn"
+                    [attr.aria-label]="$any(getCellValue(row, column.key)).ariaLabel || $any(getCellValue(row, column.key)).action"
+                    (click)="onActionClick($event, $any(getCellValue(row, column.key)).action, row, rowIndex)">
+                    <lucide-icon [img]="$any(getCellValue(row, column.key)).icon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                  </button>
+                }
+              }
+
+              <!-- Default Text Type -->
+              @else {
+                <span class="app-table__text">{{ getCellValue(row, column.key) }}</span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

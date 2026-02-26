@@ -1,0 +1,609 @@
+@import '../../../../../styles/tokens';
+
+.tendencias {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Card with title inside
+  &__card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 32px;
+
+    &--gradient {
+      background: linear-gradient(135deg, $primary-50 0%, white 100%);
+      border: 1px solid $primary-100;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: $grey-200;
+
+    .tendencias__card-title {
+      margin-bottom: 0;
+    }
+  }
+
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 24px 0;
+  }
+
+  // Context
+  &__context-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: $grey-600;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+  }
+
+  &__context-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid $primary-100;
+  }
+
+  &__context-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: $primary-500;
+  }
+
+  &__context-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: $grey-400;
+  }
+
+  // Trends Grid
+  &__trends-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  &__trend-item {
+    padding: 20px;
+    border: 1px solid $grey-50;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $grey-50;
+    }
+  }
+
+  &__trend-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__trend-category {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: $primary-500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    background: $primary-50;
+    border-radius: 20px;
+  }
+
+  &__trend-growth {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $chart-positive;
+  }
+
+  &__trend-name {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: $grey-800;
+    margin: 0 0 12px 0;
+  }
+
+  &__trend-insight {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: $grey-500;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+  }
+
+  &__trend-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid $grey-50;
+  }
+
+  &__trend-mentions,
+  &__trend-timeframe {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: $grey-400;
+  }
+
+  // Patterns
+  &__patterns-list {
+    border: 1px solid $grey-50;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  &__pattern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid $grey-50;
+    transition: background 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: $grey-50;
+    }
+
+    &--down {
+      .tendencias__pattern-change {
+        color: $chart-negative;
+      }
+    }
+  }
+
+  &__pattern-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__pattern-category {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $grey-700;
+  }
+
+  &__pattern-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: $grey-400;
+  }
+
+  &__pattern-change {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $chart-positive;
+
+    &--negative {
+      color: $chart-negative;
+    }
+  }
+
+  // Signals
+  &__signals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__signal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 24px 32px 24px;
+    background: linear-gradient(141.6deg, rgba(58, 206, 118, 0) 15.2%, rgba(58, 206, 118, 0.08) 52.7%, rgba(58, 206, 118, 0) 112%), white;
+    border-radius: 16px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    position: relative;
+
+    // Gradient border around the card (diagonal)
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(58, 206, 118, 0.1) 0%, rgba(58, 206, 118, 0.5) 50%, rgba(58, 206, 118, 0.1) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    &:hover {
+      box-shadow: 2px 5px 35px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    // Variant for medium confidence (yellow/orange)
+    &--warning {
+      background: linear-gradient(141.6deg, rgba(244, 177, 55, 0) 15.2%, rgba(244, 177, 55, 0.08) 52.7%, rgba(244, 177, 55, 0) 112%), white;
+
+      &::before {
+        background: linear-gradient(135deg, rgba(244, 177, 55, 0.1) 0%, rgba(244, 177, 55, 0.5) 50%, rgba(244, 177, 55, 0.1) 100%);
+      }
+    }
+
+    // Variant for low confidence (red)
+    &--low {
+      background: linear-gradient(141.6deg, rgba(240, 112, 112, 0) 15.2%, rgba(240, 112, 112, 0.08) 52.7%, rgba(240, 112, 112, 0) 112%), white;
+
+      &::before {
+        background: linear-gradient(135deg, rgba(240, 112, 112, 0.1) 0%, rgba(240, 112, 112, 0.5) 50%, rgba(240, 112, 112, 0.1) 100%);
+      }
+    }
+  }
+
+  &__signal-badge {
+    align-self: flex-start;
+  }
+
+  &__signal-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2b2b2b;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  // Insights Container (like analisis-competitivo)
+  &__insights-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+    border-radius: 16px;
+    background: linear-gradient(-80deg, rgb(247, 235, 255) 1%, rgb(255, 255, 255) 36%, rgb(255, 253, 252) 42%, rgb(237, 244, 255) 99%);
+  }
+
+  &__insights-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $primary-500;
+  }
+
+  &__insights-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(5deg, $primary-500 3%, #00aaff 106%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  // Insights Grid
+  &__insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  // Insight Card (white card inside gradient container)
+  &__insight-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+
+    &--bordered {
+      box-shadow: none;
+      border: 1px solid $grey-50;
+      border-radius: 12px;
+    }
+  }
+
+  &__insight-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $primary-500;
+
+    &--grey {
+      color: $grey-300;
+    }
+  }
+
+  &__insight-card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: $grey-500;
+    margin: 0;
+  }
+
+  &__insight-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__insight-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--change {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__insight-item-title {
+    font-weight: 600;
+    color: $grey-700;
+  }
+
+  &__insight-item-desc {
+    font-size: 13px;
+    color: $grey-400;
+  }
+
+  &__insight-from {
+    color: $grey-400;
+  }
+
+  &__insight-arrow {
+    color: $primary-500;
+    font-weight: 600;
+  }
+
+  &__insight-to {
+    font-weight: 600;
+    color: $chart-positive;
+  }
+
+  // Temas Emergentes Grid
+  &__emergentes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  &__emergente-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &__emergente-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey-500;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &__emergente-value-container {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  &__emergente-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: $grey-500;
+    letter-spacing: -0.5px;
+  }
+
+  &__emergente-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-400;
+  }
+
+  // Análisis de Tendencias Cards (standalone)
+  &__analisis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  &__analisis-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 12px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  &__analisis-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__analisis-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  &__analisis-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: $grey-700;
+    margin: 0;
+  }
+
+  &__analisis-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__analisis-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      background: $grey-200;
+      border-radius: 50%;
+    }
+  }
+
+  &__analisis-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+
+  &__analisis-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__analisis-detail {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: $grey-500;
+    margin: 0;
+  }
+
+  &__analisis-label {
+    font-weight: 500;
+    color: $grey-400;
+    margin-right: 8px;
+  }
+
+  &__analisis-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px;
+    background: linear-gradient(90deg, rgba($primary-500, 0.08) 0%, rgba($primary-500, 0.04) 100%);
+    border-radius: 10px;
+    color: $primary-500;
+  }
+
+  &__analisis-insight-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__analisis-insight-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-500;
+  }
+
+  &__analisis-insight-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-600;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tendencias {
+    &__signals,
+    &__insights-grid,
+    &__emergentes-grid,
+    &__analisis-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .tendencias {
+    &__trends-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tendencias {
+    &__signals,
+    &__insights-grid,
+    &__emergentes-grid,
+    &__analisis-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

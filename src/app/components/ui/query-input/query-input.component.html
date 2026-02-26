@@ -1,0 +1,16 @@
+<div class="query-input">
+  @if (label) {
+    <label class="query-input__label">{{ label }}</label>
+  }
+
+  <div class="query-input__container">
+    <lucide-icon [img]="SearchIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+    <textarea
+      #textarea
+      class="query-input__textarea"
+      [placeholder]="placeholder"
+      [value]="value"
+      rows="1"
+      (input)="onInputChange($event)"></textarea>
+  </div>
+</div>

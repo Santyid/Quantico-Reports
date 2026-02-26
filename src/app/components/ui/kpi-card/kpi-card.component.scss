@@ -1,0 +1,109 @@
+@import '../../../../styles/tokens';
+
+.kpi-card {
+  background: $kpi-card-bg;
+  border: 1px solid $kpi-card-border;
+  border-radius: $kpi-card-border-radius;
+  padding: $kpi-card-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $kpi-card-gap;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  // Sizes
+  &--small {
+    padding: 16px;
+
+    .kpi-card__value {
+      font-size: 24px;
+    }
+
+    .kpi-card__label {
+      font-size: 12px;
+    }
+  }
+
+  &--large {
+    padding: 24px;
+
+    .kpi-card__value {
+      font-size: 36px;
+    }
+
+    .kpi-card__label {
+      font-size: 16px;
+    }
+  }
+
+  // Variants
+  &--success {
+    border-left: 4px solid $status-success;
+  }
+
+  &--warning {
+    border-left: 4px solid $status-warning;
+  }
+
+  &--error {
+    border-left: 4px solid $status-error;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: $primary-50;
+    border-radius: 8px;
+    color: $primary-500;
+  }
+
+  &__label {
+    font-family: $kpi-label-font-family;
+    font-size: $kpi-label-font-size;
+    font-weight: $kpi-label-font-weight;
+    color: $kpi-label-color;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__value {
+    font-family: $kpi-value-font-family;
+    font-size: $kpi-value-font-size;
+    font-weight: $kpi-value-font-weight;
+    color: $kpi-value-color;
+    line-height: 1.2;
+  }
+
+  &__change {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: $kpi-change-font-size;
+    font-weight: 500;
+
+    &--positive {
+      color: $kpi-change-positive;
+    }
+
+    &--negative {
+      color: $kpi-change-negative;
+    }
+  }
+
+  &__change-label {
+    color: $grey-300;
+    margin-left: 4px;
+  }
+}

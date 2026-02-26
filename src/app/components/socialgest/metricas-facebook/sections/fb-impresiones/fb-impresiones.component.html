@@ -1,0 +1,39 @@
+<div class="fb-impresiones">
+  <div class="fb-impresiones__header">
+    <h3 class="fb-impresiones__title">Impresiones</h3>
+    <button class="fb-impresiones__menu-btn" aria-label="More options">
+      <lucide-icon [img]="MoreHorizontalIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="fb-impresiones__content">
+    <div class="fb-impresiones__value-row">
+      <span class="fb-impresiones__value">{{ total }}</span>
+      <span class="fb-impresiones__value-label">total</span>
+    </div>
+    <div class="fb-impresiones__bar">
+      @for (seg of segments; track seg.label) {
+        <div
+          class="fb-impresiones__bar-segment"
+          [style.width.%]="seg.value"
+          [style.background]="'linear-gradient(90deg, ' + seg.color + 'cc 0%, ' + seg.color + ' 100%)'">
+        </div>
+      }
+    </div>
+    <div class="fb-impresiones__legend">
+      @for (seg of segments; track seg.label) {
+        <div class="fb-impresiones__legend-item">
+          <span class="fb-impresiones__legend-dot" [style.background]="seg.color"></span>
+          <span class="fb-impresiones__legend-label">{{ seg.label }}</span>
+          <lucide-icon
+            class="fb-impresiones__legend-info"
+            [img]="InfoIcon"
+            [size]="14"
+            [strokeWidth]="1.5"
+            aria-label="Info">
+          </lucide-icon>
+          <span class="fb-impresiones__legend-value">{{ seg.count }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

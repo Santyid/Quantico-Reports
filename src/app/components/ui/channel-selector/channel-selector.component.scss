@@ -1,0 +1,182 @@
+@import '../../../../styles/tokens';
+
+// Channel Selector Design Tokens (from Figma)
+$channel-card-border-color: #dae1ed;
+$channel-card-border-radius-outer: 14px;
+$channel-card-border-radius-inner: 10px;
+$channel-card-padding-outer: 7px;
+$channel-card-padding-inner: 20px 24px;
+$channel-card-gap: 8px;
+
+// Typography (from Figma - DM Sans)
+$channel-title-font-family: 'DM Sans', sans-serif;
+$channel-title-font-size: 16px;
+$channel-title-font-weight: 600; // SemiBold
+$channel-title-letter-spacing: -0.32px;
+$channel-title-color: #222222;
+
+$channel-description-font-family: 'DM Sans', sans-serif;
+$channel-description-font-size: 14px;
+$channel-description-font-weight: 400; // Regular
+$channel-description-letter-spacing: -0.28px;
+$channel-description-color: #7d7d7d;
+
+.app-channel-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  // Label
+  &__label {
+    font-family: $select-font-family;
+    font-size: $select-label-font-size;
+    font-weight: $select-font-weight;
+    color: $select-label-color;
+    line-height: normal;
+  }
+
+  // Options container
+  &__options {
+    display: flex;
+    gap: 12px;
+
+    &--horizontal {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &--vertical {
+      flex-direction: column;
+    }
+  }
+
+  // Card option (outer wrapper for hover/selected border)
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: $channel-card-padding-outer;
+    border-radius: $channel-card-border-radius-outer;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    outline: none;
+
+    // Hover state - purple border
+    &:hover:not(.app-channel-selector__card--disabled):not(.app-channel-selector__card--selected) {
+      border-color: $secondary-500;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $secondary-500;
+      outline-offset: 2px;
+    }
+
+    // Selected state - purple border
+    &--selected {
+      border-color: $secondary-500;
+
+      .app-channel-selector__card-inner {
+        background-color: $secondary-50;
+        border-color: transparent;
+      }
+    }
+
+    // Disabled state
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    // Card with description modifier (taller card)
+    &--with-description {
+      .app-channel-selector__card-inner {
+        min-height: 85px;
+      }
+    }
+  }
+
+  // Card inner container (the visible card)
+  &__card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: $channel-card-gap;
+    flex: 1;
+    padding: $channel-card-padding-inner;
+    background-color: $white-500;
+    border: 1px solid $channel-card-border-color;
+    border-radius: $channel-card-border-radius-inner;
+    transition: all 0.2s ease-in-out;
+  }
+
+  // Content wrapper for title and description
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $channel-card-gap;
+    width: 100%;
+  }
+
+  // Title
+  &__title {
+    font-family: $channel-title-font-family;
+    font-size: $channel-title-font-size;
+    font-weight: $channel-title-font-weight;
+    letter-spacing: $channel-title-letter-spacing;
+    color: $channel-title-color;
+    line-height: normal;
+  }
+
+  // Description
+  &__description {
+    font-family: $channel-description-font-family;
+    font-size: $channel-description-font-size;
+    font-weight: $channel-description-font-weight;
+    letter-spacing: $channel-description-letter-spacing;
+    color: $channel-description-color;
+    line-height: normal;
+  }
+
+  // Icon (when used with icon)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $grey-300;
+    transition: color 0.2s ease-in-out;
+  }
+
+  // Selected state icon color
+  &__card--selected {
+    .app-channel-selector__icon {
+      color: $secondary-500;
+    }
+  }
+
+  // Image-only variant (for social media icons)
+  &__card--image-only {
+    .app-channel-selector__card-inner {
+      width: 70px;
+      height: 90px;
+      padding: 20px;
+      min-height: auto;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+
+  // Image
+  &__image {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,57 @@
+<div class="fb-pub-tabla">
+  <div class="fb-pub-tabla__filters">
+    <app-select
+      size="small"
+      placeholder="Todos"
+      [options]="contentTypeOptions"
+      [value]="activeFilter"
+      (selectionChange)="onFilterChange($event)">
+    </app-select>
+  </div>
+
+  <table class="fb-pub-tabla__table">
+    <thead>
+      <tr class="fb-pub-tabla__header-row">
+        <th class="fb-pub-tabla__th fb-pub-tabla__th--pub">Publicación</th>
+        <th class="fb-pub-tabla__th">Alcance</th>
+        <th class="fb-pub-tabla__th">Reacciones</th>
+        <th class="fb-pub-tabla__th">Comentarios</th>
+        <th class="fb-pub-tabla__th">Compartidos</th>
+        <th class="fb-pub-tabla__th">Clicks</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pub of filteredPublications; track $index) {
+        <tr class="fb-pub-tabla__row fb-pub-tabla__row--clickable" (click)="openDetail(pub)">
+          <td class="fb-pub-tabla__td fb-pub-tabla__td--pub">
+            <div class="fb-pub-tabla__pub-cell">
+              <div class="fb-pub-tabla__thumbnail" [style.background-image]="'url(' + pub.thumbnail + ')'"></div>
+              <div class="fb-pub-tabla__pub-info">
+                <span class="fb-pub-tabla__pub-date">{{ pub.date }}</span>
+                <span class="fb-pub-tabla__pub-title">{{ pub.title }}</span>
+              </div>
+            </div>
+          </td>
+          <td class="fb-pub-tabla__td">{{ pub.alcance | number }}</td>
+          <td class="fb-pub-tabla__td">{{ pub.reacciones | number }}</td>
+          <td class="fb-pub-tabla__td">{{ pub.comentarios | number }}</td>
+          <td class="fb-pub-tabla__td">{{ pub.compartidos | number }}</td>
+          <td class="fb-pub-tabla__td">{{ pub.clicks | number }}</td>
+        </tr>
+      }
+      @if (filteredPublications.length === 0) {
+        <tr>
+          <td class="fb-pub-tabla__td fb-pub-tabla__td--empty" colspan="6">
+            No hay publicaciones de este tipo
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-publication-detail-modal
+  [isOpen]="modalOpen"
+  [data]="selectedPublication"
+  (closed)="closeDetail()">
+</app-publication-detail-modal>

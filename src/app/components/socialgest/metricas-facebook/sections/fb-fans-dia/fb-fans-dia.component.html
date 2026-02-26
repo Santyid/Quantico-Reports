@@ -1,0 +1,83 @@
+<div class="fb-fans-dia">
+  <div class="fb-fans-dia__header">
+    <div>
+      <h3 class="fb-fans-dia__title">Movimiento de fans por día</h3>
+      <p class="fb-fans-dia__subtitle">Consulta el total de fans ganados al día según el rango de tiempo.</p>
+    </div>
+  </div>
+
+  <div class="fb-fans-dia__top-row">
+    <div class="fb-fans-dia__kpis">
+      <div class="fb-fans-dia__kpi">
+        <div class="fb-fans-dia__kpi-icon fb-fans-dia__kpi-icon--gained">
+          <lucide-icon [img]="UserPlusIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <div class="fb-fans-dia__kpi-content">
+          <span class="fb-fans-dia__kpi-value">{{ totalGained }}</span>
+          <span class="fb-fans-dia__kpi-label">Fans ganados</span>
+        </div>
+      </div>
+      <div class="fb-fans-dia__kpi">
+        <div class="fb-fans-dia__kpi-icon fb-fans-dia__kpi-icon--lost">
+          <lucide-icon [img]="UserMinusIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <div class="fb-fans-dia__kpi-content">
+          <span class="fb-fans-dia__kpi-value">{{ totalLost }}</span>
+          <span class="fb-fans-dia__kpi-label">Fans perdidos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fb-fans-dia__controls">
+      <div class="fb-fans-dia__toggle">
+        <button
+          class="fb-fans-dia__toggle-btn"
+          [class.fb-fans-dia__toggle-btn--active]="activeRange === 'Diario'"
+          (click)="setRange('Diario')">Diario</button>
+        <button
+          class="fb-fans-dia__toggle-btn"
+          [class.fb-fans-dia__toggle-btn--active]="activeRange === 'Mensual'"
+          (click)="setRange('Mensual')">Mensual</button>
+      </div>
+      <button class="fb-fans-dia__menu" aria-label="More options">
+        <lucide-icon [img]="MoreIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="fb-fans-dia__chart-wrapper">
+    <div class="fb-fans-dia__y-axis">
+      @for (label of yAxisLabels; track label) {
+        <span class="fb-fans-dia__y-label">{{ label }}</span>
+      }
+    </div>
+    <div class="fb-fans-dia__chart">
+      <svg viewBox="0 0 800 180" preserveAspectRatio="none" class="fb-fans-dia__svg">
+        <line x1="0" y1="0" x2="800" y2="0" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="0" y1="45" x2="800" y2="45" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="0" y1="90" x2="800" y2="90" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="0" y1="135" x2="800" y2="135" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="0" y1="179" x2="800" y2="179" stroke="#f0f0f0" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="fb-fans-dia__x-labels">
+    @for (item of data; let i = $index; track item.date) {
+      @if (i % 4 === 0 || i === data.length - 1) {
+        <span class="fb-fans-dia__x-label">{{ item.date }}</span>
+      }
+    }
+  </div>
+
+  <div class="fb-fans-dia__legend">
+    <div class="fb-fans-dia__legend-item">
+      <span class="fb-fans-dia__legend-dot fb-fans-dia__legend-dot--gained"></span>
+      <span class="fb-fans-dia__legend-label">Ganados</span>
+    </div>
+    <div class="fb-fans-dia__legend-item">
+      <span class="fb-fans-dia__legend-dot fb-fans-dia__legend-dot--lost"></span>
+      <span class="fb-fans-dia__legend-label">Perdidos</span>
+    </div>
+  </div>
+</div>

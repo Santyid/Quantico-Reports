@@ -1,0 +1,36 @@
+<div class="pub-por-dia">
+  <div class="pub-por-dia__header">
+    <div>
+      <h3 class="pub-por-dia__title">Publicaciones por días</h3>
+      <p class="pub-por-dia__subtitle">Subtitulo del panel</p>
+    </div>
+    <div class="pub-por-dia__streak">
+      <lucide-icon [img]="FlameIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+      <span>14 días seguidos publicando</span>
+    </div>
+  </div>
+  <div class="pub-por-dia__chart-wrapper">
+    <div class="pub-por-dia__y-axis">
+      @for (yLabel of yAxisLabels; track yLabel) {
+        <span class="pub-por-dia__y-label">{{ yLabel }}</span>
+      }
+    </div>
+    <div class="pub-por-dia__chart">
+      <svg viewBox="0 0 600 200" preserveAspectRatio="none" class="pub-por-dia__svg">
+        <defs>
+          <linearGradient id="pubDiaGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f47a37" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#f47a37" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <path [attr.d]="getAreaPath()" fill="url(#pubDiaGradient)" />
+        <path [attr.d]="getLinePath()" fill="none" stroke="#f47a37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="pub-por-dia__labels">
+        @for (label of labels; track label) {
+          <span class="pub-por-dia__label">{{ label }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>

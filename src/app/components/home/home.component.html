@@ -1,0 +1,306 @@
+<!-- Button Demo Section -->
+<section class="button-demo">
+  <div class="container">
+    <h2>Button Components Demo</h2>
+
+    <div class="demo-section">
+      <h3>Primary Buttons</h3>
+      <div class="button-group">
+        <app-button variant="primary" size="small" (clicked)="handleButtonClick('Primary Small')">
+          Small Primary
+        </app-button>
+        <app-button variant="primary" size="medium" (clicked)="handleButtonClick('Primary Medium')">
+          Medium Primary
+        </app-button>
+        <app-button variant="primary" size="large" (clicked)="handleButtonClick('Primary Large')">
+          Large Primary
+        </app-button>
+        <app-button variant="primary" size="medium" [disabled]="true">
+          Disabled Primary
+        </app-button>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Secondary Buttons</h3>
+      <div class="button-group">
+        <app-button variant="secondary" size="small" (clicked)="handleButtonClick('Secondary Small')">
+          Small Secondary
+        </app-button>
+        <app-button variant="secondary" size="medium" (clicked)="handleButtonClick('Secondary Medium')">
+          Medium Secondary
+        </app-button>
+        <app-button variant="secondary" size="large" (clicked)="handleButtonClick('Secondary Large')">
+          Large Secondary
+        </app-button>
+        <app-button variant="secondary" size="medium" [disabled]="true">
+          Disabled Secondary
+        </app-button>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>White Buttons</h3>
+      <div class="button-group">
+        <app-button variant="white" size="small" (clicked)="handleButtonClick('White Small')">
+          Small White
+        </app-button>
+        <app-button variant="white" size="medium" (clicked)="handleButtonClick('White Medium')">
+          Medium White
+        </app-button>
+        <app-button variant="white" size="large" (clicked)="handleButtonClick('White Large')">
+          Large White
+        </app-button>
+        <app-button variant="white" size="medium" [disabled]="true">
+          Disabled White
+        </app-button>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Text Buttons</h3>
+      <div class="button-group">
+        <app-button variant="text" size="small" (clicked)="handleButtonClick('Text Small')">
+          Small Text
+        </app-button>
+        <app-button variant="text" size="medium" (clicked)="handleButtonClick('Text Medium')">
+          Medium Text
+        </app-button>
+        <app-button variant="text" size="large" (clicked)="handleButtonClick('Text Large')">
+          Large Text
+        </app-button>
+        <app-button variant="text" size="medium" [disabled]="true">
+          Disabled Text
+        </app-button>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Full Width Button</h3>
+      <app-button variant="primary" size="medium" [fullWidth]="true" (clicked)="handleButtonClick('Full Width')">
+        Full Width Button
+      </app-button>
+    </div>
+  </div>
+</section>
+
+<!-- Select Demo Section -->
+<section class="select-demo">
+  <div class="container">
+    <h2>Select Components Demo</h2>
+
+    <div class="demo-section">
+      <h3>Select Sizes</h3>
+      <div class="select-group">
+        <app-select
+          size="small"
+          label="Small Select"
+          placeholder="Select an option"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="medium"
+          label="Medium Select"
+          placeholder="Select an option"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="large"
+          label="Large Select"
+          placeholder="Select an option"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Select with Left Icon</h3>
+      <div class="select-group">
+        <app-select
+          size="large"
+          label="With Megaphone Icon"
+          placeholder="Placeholder input"
+          [leftIcon]="MegaphoneIcon"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="medium"
+          label="With Search Icon"
+          placeholder="Search..."
+          [leftIcon]="SearchIcon"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="small"
+          label="With User Icon"
+          placeholder="Select user"
+          [leftIcon]="UserIcon"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Select States</h3>
+      <div class="select-group">
+        <app-select
+          size="large"
+          label="Normal State"
+          placeholder="Click to open"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="large"
+          label="Disabled State"
+          placeholder="Cannot select"
+          [disabled]="true"
+          [options]="selectOptions">
+        </app-select>
+
+        <app-select
+          size="large"
+          label="Without Chevron"
+          placeholder="No chevron icon"
+          [showChevron]="false"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Select without Label</h3>
+      <div class="select-group">
+        <app-select
+          size="large"
+          placeholder="No label - Large"
+          [leftIcon]="MegaphoneIcon"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="medium"
+          placeholder="No label - Medium"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+
+        <app-select
+          size="small"
+          placeholder="No label - Small"
+          [options]="selectOptions"
+          (selectionChange)="handleSelectChange($event)">
+        </app-select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Input Demo Section -->
+<section class="search-demo">
+  <div class="container">
+    <h2>Search Input Components Demo</h2>
+
+    <div class="demo-section">
+      <h3>Search Input Sizes</h3>
+      <div class="search-group">
+        <app-search-input
+          size="small"
+          placeholder="Small search..."
+          (valueChange)="handleSearchChange($event)"
+          (search)="handleSearch($event)"
+          (cleared)="handleSearchCleared()">
+        </app-search-input>
+
+        <app-search-input
+          size="medium"
+          placeholder="Medium search..."
+          (valueChange)="handleSearchChange($event)"
+          (search)="handleSearch($event)"
+          (cleared)="handleSearchCleared()">
+        </app-search-input>
+
+        <app-search-input
+          size="large"
+          placeholder="Large search..."
+          (valueChange)="handleSearchChange($event)"
+          (search)="handleSearch($event)"
+          (cleared)="handleSearchCleared()">
+        </app-search-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Search Input States</h3>
+      <div class="search-group">
+        <app-search-input
+          size="large"
+          placeholder="Normal state..."
+          (valueChange)="handleSearchChange($event)"
+          (search)="handleSearch($event)">
+        </app-search-input>
+
+        <app-search-input
+          size="large"
+          placeholder="Disabled state..."
+          [disabled]="true">
+        </app-search-input>
+
+        <app-search-input
+          size="large"
+          placeholder="Without clear icon..."
+          [showClearIcon]="false"
+          (valueChange)="handleSearchChange($event)"
+          (search)="handleSearch($event)">
+        </app-search-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Full Width Search</h3>
+      <app-search-input
+        size="large"
+        placeholder="Full width search input..."
+        [fullWidth]="true"
+        (valueChange)="handleSearchChange($event)"
+        (search)="handleSearch($event)"
+        (cleared)="handleSearchCleared()">
+      </app-search-input>
+    </div>
+  </div>
+</section>
+
+<!-- Table Demo Section -->
+<section class="table-demo">
+  <div class="container">
+    <h2>Table Component Demo</h2>
+
+    <div class="demo-section">
+      <app-table
+        title="Mis ordenes"
+        [columns]="tableColumns"
+        [data]="tableData"
+        (rowClick)="handleTableRowClick($event)"
+        (actionClick)="handleTableActionClick($event)">
+      </app-table>
+    </div>
+  </div>
+</section>
+
+<!-- Usuarios Section (High Fidelity) -->
+<app-usuarios></app-usuarios>
+
+<app-projects></app-projects>

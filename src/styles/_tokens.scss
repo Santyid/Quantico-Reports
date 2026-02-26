@@ -1,0 +1,375 @@
+// Design Tokens - SocialGest Color System
+// Based on Figma design specifications (exact values from Figma MCP)
+
+// ========================================
+// Primary Color Scale (Blue)
+// ========================================
+$primary-50: #e6edff;   // rgb(230, 239, 255)
+$primary-100: #b0ceff;  // rgb(176, 206, 255)
+$primary-200: #8ab6ff;  // rgb(138, 182, 255)
+$primary-300: #5495fe;  // rgb(84, 149, 254)
+$primary-400: #338ffe;  // rgb(51, 143, 254)
+$primary-500: #0061fe;  // rgb(0, 97, 254) - Base Primary (from Figma)
+$primary-600: #0058e7;  // rgb(0, 88, 231) - Hover
+$primary-700: #0045b4;  // rgb(0, 69, 180) - Active (from Figma)
+$primary-800: #00358c;  // rgb(0, 53, 140)
+$primary-900: #00296b;  // rgb(0, 41, 107)
+
+// ========================================
+// Secondary Color Scale (Purple)
+// ========================================
+$secondary-50: #f5eefc;   // rgb(245, 238, 252)
+$secondary-100: #e1caf6;  // rgb(225, 202, 246)
+$secondary-200: #d2b0f2;  // rgb(210, 176, 242)
+$secondary-300: #be8cec;  // rgb(190, 140, 236)
+$secondary-400: #b176e8;  // rgb(177, 118, 232)
+$secondary-500: #9e54e2;  // rgb(158, 84, 226) - Base Secondary
+$secondary-600: #904cce;  // rgb(144, 76, 206) - Hover
+$secondary-700: #703ca0;  // rgb(112, 60, 160) - Active
+$secondary-800: #572e7c;  // rgb(87, 46, 124)
+$secondary-900: #42235f;  // rgb(66, 35, 95)
+
+// ========================================
+// Grey Color Scale (from Figma)
+// ========================================
+$grey-50: #ececec;   // rgb(236, 236, 236)
+$grey-100: #c3c3c3;  // rgb(195, 195, 195)
+$grey-200: #a6a6a6;  // rgb(166, 166, 166)
+$grey-300: #7d7d7d;  // rgb(125, 125, 125)
+$grey-400: #646464;  // rgb(100, 100, 100)
+$grey-500: #3d3d3d;  // rgb(61, 61, 61)
+$grey-600: #383838;  // rgb(56, 56, 56)
+$grey-700: #2b2b2b;  // rgb(43, 43, 43)
+$grey-800: #222222;  // rgb(34, 34, 34)
+$grey-900: #1a1a1a;  // rgb(26, 26, 26)
+
+// ========================================
+// White Color Scale
+// ========================================
+$white-500: #ffffff;  // from Figma - White button background
+$white-800: #f1f1f1;  // from Figma - Text on primary/secondary buttons
+
+// ========================================
+// Button Design Tokens
+// ========================================
+
+// Primary Button
+$button-primary-bg: $primary-500;           // #0061fe
+$button-primary-text: $white-800;           // #f1f1f1
+$button-primary-hover: $primary-600;        // #0058e7
+$button-primary-active: $primary-700;       // #0045b4
+$button-primary-disabled-bg: rgba($primary-500, 0.4);
+$button-primary-disabled-text: rgba($white-800, 0.6);
+
+// Secondary Button (Purple)
+$button-secondary-bg: $secondary-500;       // #9e54e2
+$button-secondary-text: $white-800;         // #f1f1f1
+$button-secondary-hover: $secondary-600;    // #904cce
+$button-secondary-active: $secondary-700;   // #703ca0
+$button-secondary-disabled-bg: rgba($secondary-500, 0.4);
+$button-secondary-disabled-text: rgba($white-800, 0.6);
+
+// White Button (Outline style)
+$button-white-bg: $white-500;               // #ffffff
+$button-white-text: $grey-500;              // #3d3d3d - darker text
+$button-white-border: $grey-100;            // #c3c3c3 - from Figma
+$button-white-hover-bg: $grey-50;           // #ececec
+$button-white-hover-text: $grey-600;
+$button-white-active-bg: $grey-100;
+$button-white-active-text: $grey-700;
+$button-white-disabled-bg: $white-500;
+$button-white-disabled-text: rgba($grey-300, 0.5);
+$button-white-disabled-border: rgba($grey-100, 0.5);
+
+// Text Button
+$button-text-color: $primary-500;
+$button-text-hover: $primary-600;
+$button-text-active: $primary-700;
+$button-text-disabled: rgba($primary-500, 0.4);
+
+// ========================================
+// Button Spacing (from Figma measurements)
+// ========================================
+$button-padding-small: 8px 20px;    // 36px height
+$button-padding-medium: 10px 24px;  // 40px height
+$button-padding-large: 14px 28px;   // 48px height
+
+$button-gap: 8px; // Space between icon and text
+
+// ========================================
+// Button Typography (from Figma)
+// ========================================
+$button-font-family: 'Urbanist', sans-serif;
+$button-font-size-small: 14px;
+$button-font-size-medium: 16px;
+$button-font-size-large: 18px;
+$button-font-weight: 600;  // SemiBold from Figma
+$button-line-height: normal;
+
+// ========================================
+// Button Border & Shape (from Figma)
+// ========================================
+$button-border-radius: 12px;  // Rounded corners
+$button-border-width: 1px;
+
+// ========================================
+// Button Transitions & Animations
+// ========================================
+$button-transition: all 0.2s ease-in-out;
+
+// ========================================
+// Button States
+// ========================================
+$button-disabled-cursor: not-allowed;
+
+// ========================================
+// Select Design Tokens (from Figma)
+// ========================================
+
+// Select Colors
+$select-bg: $white-500;                     // #ffffff
+$select-border: #c3c3c3;                    // grey-100 from Figma
+$select-border-focus: $primary-500;         // #0061fe
+$select-border-error: #ff4444;              // Error state
+$select-placeholder-color: $grey-300;       // #7d7d7d
+$select-text-color: #222222;                // grey-800 from Figma
+$select-label-color: #222222;               // grey-800 from Figma
+$select-icon-color: $grey-300;              // #7d7d7d
+$select-disabled-bg: $grey-100;             // #f5f5f5
+$select-disabled-border: rgba(#c3c3c3, 0.5);
+$select-disabled-text: rgba($grey-300, 0.5);
+
+// Select Spacing (from Figma measurements)
+$select-padding: 10px;
+$select-gap: 8px;                           // Gap between icon and text
+
+// Select Heights (from Figma)
+$select-height-small: 36px;
+$select-height-medium: 40px;
+$select-height-large: 48px;
+
+// Select Icon Sizes (from Figma)
+$select-icon-size-small: 16px;
+$select-icon-size-medium: 20px;
+$select-icon-size-large: 20px;
+
+// Select Typography (from Figma)
+$select-font-family: 'Urbanist', sans-serif;
+$select-font-size-small: 14px;
+$select-font-size-medium: 16px;
+$select-font-size-large: 18px;
+$select-label-font-size: 16px;
+$select-label-font-size-small: 14px;
+$select-font-weight: 600;                   // SemiBold
+
+// Select Border & Shape (from Figma)
+$select-border-radius: 10px;
+$select-border-width: 1px;
+
+// Select Transitions
+$select-transition: all 0.2s ease-in-out;
+
+// ========================================
+// Search Input Design Tokens (from Figma)
+// ========================================
+
+// Search Input Colors
+$search-input-bg: $white-500;               // #ffffff
+$search-input-border: #c3c3c3;              // grey border from Figma
+$search-input-border-focus: $primary-500;   // #0061fe
+$search-input-placeholder-color: #a6a6a6;   // grey-200 from Figma
+$search-input-text-color: #222222;          // grey-800 from Figma
+$search-input-icon-color: #a6a6a6;          // grey-200 from Figma
+$search-input-clear-icon-color: #a6a6a6;    // grey-200 from Figma
+$search-input-disabled-bg: $grey-100;       // #f5f5f5
+$search-input-disabled-border: rgba(#c3c3c3, 0.5);
+$search-input-disabled-text: rgba(#a6a6a6, 0.5);
+
+// Search Input Spacing (from Figma measurements)
+$search-input-padding: 10px;
+$search-input-gap: 16px;                    // Gap between icon and text
+
+// Search Input Heights (from Figma)
+$search-input-height-small: 36px;
+$search-input-height-medium: 40px;
+$search-input-height-large: 50px;
+
+// Search Input Icon Sizes (from Figma)
+$search-input-icon-size: 24px;              // Search icon
+$search-input-clear-icon-size: 20px;        // X/Clear icon
+
+// Search Input Typography (from Figma)
+$search-input-font-family: 'Urbanist', sans-serif;
+$search-input-font-size-small: 16px;
+$search-input-font-size-medium: 16px;
+$search-input-font-size-large: 20px;
+$search-input-font-weight: 500;             // Medium
+
+// Search Input Border & Shape (from Figma)
+$search-input-border-radius: 50px;          // Pill shape
+$search-input-border-width: 1px;
+$search-input-width: 302px;                 // Default width from Figma
+
+// Search Input Transitions
+$search-input-transition: all 0.2s ease-in-out;
+
+// ========================================
+// Table Design Tokens (from Figma)
+// ========================================
+
+// Table Colors
+$table-bg: $white-500;                      // #ffffff
+$table-border-color: #ececec;               // grey-50 from Figma
+$table-header-text-color: #3d3d3d;          // grey-500 from Figma
+$table-body-text-color: #3d3d3d;            // grey-500 from Figma
+$table-title-color: #222222;                // grey-800 from Figma
+$table-row-hover-bg: #f9f9f9;               // Subtle hover
+
+// Table Spacing (from Figma measurements)
+$table-padding: 24px;                       // Container padding
+$table-cell-padding: 10px 20px;             // Cell padding
+$table-gap: 48px;                           // Gap between title and table
+
+// Table Row Heights (from Figma)
+$table-header-height: 44px;
+$table-row-height: 44px;
+
+// Table Typography (from Figma)
+$table-title-font-family: 'Urbanist', sans-serif;
+$table-title-font-size: 24px;
+$table-title-font-weight: 700;              // Bold
+
+$table-header-font-family: 'Urbanist', sans-serif;
+$table-header-font-size: 16px;
+$table-header-font-weight: 700;             // Bold
+$table-header-letter-spacing: -0.32px;
+
+$table-body-font-family: 'DM Sans', sans-serif;
+$table-body-font-size: 16px;
+$table-body-font-weight: 400;               // Regular
+$table-body-font-weight-medium: 500;        // Medium
+$table-body-letter-spacing: -0.32px;
+
+// Table Border
+$table-border-width: 1px;
+
+// ========================================
+// Status Badge Design Tokens (from Figma)
+// ========================================
+
+// Status Badge Colors
+$status-badge-bg: transparent;
+$status-badge-border: #c3c3c3;              // grey-100 from Figma
+$status-badge-text-color: #3d3d3d;          // grey-500 from Figma
+
+// Status Colors
+$status-success: #3ace76;                   // Green indicator
+$status-warning: #f4b137;                   // Yellow/Orange indicator
+$status-error: #f44336;                     // Red indicator
+$status-info: $primary-500;                 // Blue indicator
+$status-neutral: #9e9e9e;                   // Grey indicator
+
+// Status Badge Spacing
+$status-badge-padding: 4px 10px;
+$status-badge-gap: 10px;
+
+// Status Badge Sizes
+$status-badge-height: 30px;
+$status-badge-dot-size: 10px;
+
+// Status Badge Typography
+$status-badge-font-family: 'Urbanist', sans-serif;
+$status-badge-font-size: 14px;
+$status-badge-font-weight: 600;             // SemiBold
+
+// Status Badge Border
+$status-badge-border-radius: 50px;          // Pill shape
+$status-badge-border-width: 1px;
+
+// Table Action Icon
+$table-action-icon-color: $secondary-500;   // #9e54e2
+$table-action-icon-size: 20px;
+
+// ========================================
+// Chart Design Tokens
+// ========================================
+
+// Chart Sentiment Colors (Figma gradients - base colors)
+$chart-positive: #3ECC80;  // rgba(62, 204, 128)
+$chart-neutral: #9EA1A6;   // rgba(158, 161, 166)
+$chart-negative: #F61A4A;  // rgba(246, 26, 74)
+
+// Chart Platform Colors
+$chart-instagram: #E4405F;
+$chart-facebook: #1877F2;
+$chart-twitter: #1DA1F2;
+$chart-tiktok: #000000;
+$chart-youtube: #FF0000;
+$chart-linkedin: #0A66C2;
+
+// Chart Competitor Colors (max 10)
+$chart-brand-1: $primary-500;
+$chart-brand-2: #f47a37;
+$chart-brand-3: #3ace76;
+$chart-brand-4: #f4b137;
+$chart-brand-5: #9e54e2;
+$chart-brand-6: #00bcd4;
+$chart-brand-7: #ff5722;
+$chart-brand-8: #795548;
+$chart-brand-9: #607d8b;
+$chart-brand-10: #e91e63;
+
+// ========================================
+// KPI Card Design Tokens
+// ========================================
+$kpi-card-bg: $white-500;
+$kpi-card-border: $grey-50;
+$kpi-card-border-radius: 12px;
+$kpi-card-padding: 20px;
+$kpi-card-gap: 8px;
+
+$kpi-label-font-family: 'Urbanist', sans-serif;
+$kpi-label-font-size: 14px;
+$kpi-label-font-weight: 500;
+$kpi-label-color: $grey-400;
+
+$kpi-value-font-family: 'DM Sans', sans-serif;
+$kpi-value-font-size: 28px;
+$kpi-value-font-weight: 700;
+$kpi-value-color: $grey-800;
+
+$kpi-change-font-size: 12px;
+$kpi-change-positive: $status-success;
+$kpi-change-negative: $status-error;
+
+// ========================================
+// Insight Card Design Tokens
+// ========================================
+$insight-card-bg: $white-500;
+$insight-card-border-radius: 16px;
+$insight-card-padding: 24px;
+$insight-card-border-gradient: linear-gradient(135deg, #00AAFF 0%, $primary-500 100%);
+
+$insight-title-font-family: 'Urbanist', sans-serif;
+$insight-title-font-size: 16px;
+$insight-title-font-weight: 600;
+$insight-title-color: $grey-800;
+
+$insight-text-font-family: 'DM Sans', sans-serif;
+$insight-text-font-size: 14px;
+$insight-text-font-weight: 400;
+$insight-text-color: $grey-500;
+
+// ========================================
+// Report Section Tokens
+// ========================================
+$report-section-bg: $white-500;
+$report-section-border: $grey-50;
+$report-section-border-radius: 12px;
+$report-section-padding: 24px;
+$report-section-gap: 24px;
+
+$report-title-font-family: 'Urbanist', sans-serif;
+$report-title-font-size: 20px;
+$report-title-font-weight: 700;
+$report-title-color: $grey-800;

@@ -1,0 +1,46 @@
+<div [class]="inputClasses.join(' ')">
+  <div class="search-input__content">
+    <span class="search-input__icon search-input__icon--search">
+      <lucide-icon [img]="SearchIcon" [size]="searchIconSize" [strokeWidth]="1.5"></lucide-icon>
+    </span>
+
+    @if (expandable) {
+      <textarea
+        #textareaRef
+        class="search-input__field search-input__field--textarea"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [value]="value"
+        [attr.aria-label]="ariaLabel || placeholder"
+        rows="1"
+        (input)="onInput($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (keydown)="onKeyDown($event)"
+      ></textarea>
+    } @else {
+      <input
+        type="text"
+        class="search-input__field"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [value]="value"
+        [attr.aria-label]="ariaLabel || placeholder"
+        (input)="onInput($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (keydown)="onKeyDown($event)"
+      />
+    }
+  </div>
+
+  @if (showClear) {
+    <button
+      type="button"
+      class="search-input__clear"
+      [attr.aria-label]="'Clear search'"
+      (click)="clearValue()">
+      <lucide-icon [img]="XIcon" [size]="clearIconSize" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  }
+</div>

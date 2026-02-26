@@ -1,0 +1,32 @@
+<div
+  class="kpi-card"
+  [class.kpi-card--small]="size === 'small'"
+  [class.kpi-card--large]="size === 'large'"
+  [class.kpi-card--success]="variant === 'success'"
+  [class.kpi-card--warning]="variant === 'warning'"
+  [class.kpi-card--error]="variant === 'error'">
+
+  <div class="kpi-card__header">
+    @if (icon) {
+      <div class="kpi-card__icon">
+        <lucide-icon [img]="icon" [size]="20"></lucide-icon>
+      </div>
+    }
+    <span class="kpi-card__label">{{ label }}</span>
+  </div>
+
+  <div class="kpi-card__value">{{ value }}</div>
+
+  @if (change !== undefined) {
+    <div
+      class="kpi-card__change"
+      [class.kpi-card__change--positive]="isPositiveChange"
+      [class.kpi-card__change--negative]="!isPositiveChange">
+      <lucide-icon [img]="changeIcon" [size]="14"></lucide-icon>
+      <span>{{ formattedChange }}</span>
+      @if (changeLabel) {
+        <span class="kpi-card__change-label">{{ changeLabel }}</span>
+      }
+    </div>
+  }
+</div>

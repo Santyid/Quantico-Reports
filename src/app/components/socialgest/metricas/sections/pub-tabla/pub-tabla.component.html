@@ -1,0 +1,59 @@
+<div class="pub-tabla">
+  <div class="pub-tabla__filters">
+    <app-select
+      size="small"
+      placeholder="Todos"
+      [options]="contentTypeOptions"
+      [value]="activeFilter"
+      (selectionChange)="onFilterChange($event)">
+    </app-select>
+  </div>
+
+  <table class="pub-tabla__table">
+    <thead>
+      <tr class="pub-tabla__header-row">
+        <th class="pub-tabla__th pub-tabla__th--pub">Publicación</th>
+        <th class="pub-tabla__th">Vistas</th>
+        <th class="pub-tabla__th">Comentarios</th>
+        <th class="pub-tabla__th">Likes</th>
+        <th class="pub-tabla__th">Engagement</th>
+        <th class="pub-tabla__th">Guardados</th>
+        <th class="pub-tabla__th">Alcance</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pub of filteredPublications; track $index) {
+        <tr class="pub-tabla__row pub-tabla__row--clickable" (click)="openDetail(pub)">
+          <td class="pub-tabla__td pub-tabla__td--pub">
+            <div class="pub-tabla__pub-cell">
+              <div class="pub-tabla__thumbnail" [style.background-image]="'url(' + pub.thumbnail + ')'"></div>
+              <div class="pub-tabla__pub-info">
+                <span class="pub-tabla__pub-date">{{ pub.date }}</span>
+                <span class="pub-tabla__pub-title">{{ pub.title }}</span>
+              </div>
+            </div>
+          </td>
+          <td class="pub-tabla__td">{{ pub.vistas }}</td>
+          <td class="pub-tabla__td">{{ pub.comentarios }}</td>
+          <td class="pub-tabla__td">{{ pub.likes }}</td>
+          <td class="pub-tabla__td">{{ pub.engagement }}</td>
+          <td class="pub-tabla__td">{{ pub.guardados }}</td>
+          <td class="pub-tabla__td">{{ pub.alcance }}</td>
+        </tr>
+      }
+      @if (filteredPublications.length === 0) {
+        <tr>
+          <td class="pub-tabla__td pub-tabla__td--empty" colspan="7">
+            No hay publicaciones de este tipo
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-publication-detail-modal
+  [isOpen]="modalOpen"
+  [data]="selectedPublication"
+  (closed)="closeDetail()">
+</app-publication-detail-modal>

@@ -1,0 +1,25 @@
+<div class="fb-aud-genero">
+  <h3 class="fb-aud-genero__title">Genero</h3>
+  <div class="fb-aud-genero__bar">
+    <div
+      class="fb-aud-genero__segment fb-aud-genero__segment--male"
+      [style.width.%]="masculino">
+      <span class="fb-aud-genero__segment-label">{{ masculino }}%</span>
+    </div>
+    <div
+      class="fb-aud-genero__segment fb-aud-genero__segment--female"
+      [style.width.%]="femenino">
+      <span class="fb-aud-genero__segment-label">{{ femenino }}%</span>
+    </div>
+  </div>
+  <div class="fb-aud-genero__legend">
+    <div class="fb-aud-genero__legend-item">
+      <span class="fb-aud-genero__legend-dot fb-aud-genero__legend-dot--male"></span>
+      <span class="fb-aud-genero__legend-label">Masculino</span>
+    </div>
+    <div class="fb-aud-genero__legend-item">
+      <span class="fb-aud-genero__legend-dot fb-aud-genero__legend-dot--female"></span>
+      <span class="fb-aud-genero__legend-label">Femenino</span>
+    </div>
+  </div>
+</div>

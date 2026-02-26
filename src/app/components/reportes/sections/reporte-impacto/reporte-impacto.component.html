@@ -1,0 +1,214 @@
+<div class="reporte-impacto">
+  <!-- Header -->
+  <header class="reporte-impacto__header">
+    <div class="reporte-impacto__header-left">
+      <div class="reporte-impacto__header-icon">
+        <lucide-icon [img]="TrendingUpIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+      </div>
+      <h1 class="reporte-impacto__title">Reporte de Impacto</h1>
+    </div>
+    <div class="reporte-impacto__date-range">
+      <lucide-icon [img]="CalendarIcon" [size]="18" class="reporte-impacto__date-range-icon"></lucide-icon>
+      <input
+        type="date"
+        class="reporte-impacto__date-input"
+        [value]="todayString">
+    </div>
+  </header>
+
+  <!-- KPIs Grid -->
+  <section class="reporte-impacto__kpis">
+    <app-kpi-group-card
+      [kpis]="kpis"
+      [compact]="true">
+    </app-kpi-group-card>
+  </section>
+
+  <!-- Charts Grid -->
+  <section class="reporte-impacto__charts">
+    <!-- Sentiment Evolution -->
+    <div class="reporte-impacto__chart-card">
+      <h3 class="reporte-impacto__chart-title">Evolución de menciones por sentimiento</h3>
+      <app-vertical-bar-chart
+        [data]="sentimentEvolutionData"
+        [legend]="sentimentLegend"
+        [height]="250"
+        [stacked]="true"
+        [showLegend]="true">
+      </app-vertical-bar-chart>
+      <app-insight-card
+        variant="highlight"
+        [showAiBadge]="false"
+        content="El pico de negatividad ocurrió entre las 18:00-18:02 del Jueves 16, coincidiendo con la inhabilitación del panel denunciador. La conversación se mantuvo elevada pero con tendencia descendente.">
+      </app-insight-card>
+    </div>
+
+    <!-- Platform Activity -->
+    <div class="reporte-impacto__chart-card">
+      <h3 class="reporte-impacto__chart-title">Plataformas con mayor actividad</h3>
+      <app-horizontal-bar-chart
+        [data]="platformData"
+        [showLabels]="false"
+        [showValues]="true"
+        [showLegend]="false">
+      </app-horizontal-bar-chart>
+      <app-insight-card
+        variant="highlight"
+        [showAiBadge]="false"
+        content="X concentró el 82% de las menciones y lideró la amplificación. La crisis se replicó en otras plataformas pero con menor intensidad, con X siendo el epicentro de conversación donde ocurrió la ampliación viral en X.">
+      </app-insight-card>
+    </div>
+  </section>
+
+  <!-- Topics Section -->
+  <section class="reporte-impacto__section">
+    <div class="reporte-impacto__card">
+      <h3 class="reporte-impacto__card-title">Temas de la conversación</h3>
+      <div class="reporte-impacto__topics">
+        @for (topic of topics; track topic.title) {
+          <div class="reporte-impacto__topic-card">
+            <div class="reporte-impacto__topic-header">
+              <h4 class="reporte-impacto__topic-title">{{ topic.title }}</h4>
+              <span class="reporte-impacto__topic-mentions">{{ formatNumber(topic.mentions) }} menciones</span>
+            </div>
+            <div class="reporte-impacto__topic-sentiment">
+              <span class="reporte-impacto__topic-badge reporte-impacto__topic-badge--negative">{{ topic.sentiment.negative }}% Neg</span>
+              <span class="reporte-impacto__topic-badge reporte-impacto__topic-badge--neutral">{{ topic.sentiment.neutral }}% Neu</span>
+            </div>
+          </div>
+        }
+      </div>
+      <app-insight-card
+        variant="highlight"
+        [showAiBadge]="false"
+        content='Los usuarios no solo criticaron la falla técnica sino la respuesta de la marca. La conversación sobre "alternativas" indicó riesgo real de logo de clientes. Existe memoria de incidentes previos que se reactiva.'>
+      </app-insight-card>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="reporte-impacto__section">
+    <div class="reporte-impacto__card">
+      <h3 class="reporte-impacto__card-title">Post más destacado</h3>
+      <div class="reporte-impacto__featured-post">
+        <div class="reporte-impacto__post-header">
+          <div class="reporte-impacto__post-avatar">TR</div>
+          <div class="reporte-impacto__post-user">
+            <span class="reporte-impacto__post-username">{{ featuredPost.username }} ✓</span>
+            <span class="reporte-impacto__post-handle">{{ featuredPost.handle }} · {{ featuredPost.date }}</span>
+          </div>
+          <button class="reporte-impacto__post-close">×</button>
+        </div>
+        <p class="reporte-impacto__post-content">{{ featuredPost.content }}</p>
+        <div class="reporte-impacto__post-stats">
+          <span class="reporte-impacto__post-stat">💬 {{ featuredPost.replies }}</span>
+          <span class="reporte-impacto__post-stat">🔁 {{ featuredPost.retweets }}</span>
+          <span class="reporte-impacto__post-stat">❤️ {{ featuredPost.likes }}</span>
+          <span class="reporte-impacto__post-stat">👁️ {{ featuredPost.views }}</span>
+        </div>
+      </div>
+      <app-insight-card
+        variant="highlight"
+        [showAiBadge]="false"
+        [content]="featuredPost.insight">
+      </app-insight-card>
+    </div>
+  </section>
+
+  <!-- Bottom Grid: Top Users & Risk Signals -->
+  <section class="reporte-impacto__bottom-grid">
+    <!-- Top Users -->
+    <div class="reporte-impacto__card">
+      <h3 class="reporte-impacto__card-title">Top 5 de usuarios que más participaron en la conversación</h3>
+      <div class="reporte-impacto__user-list">
+        @for (user of topUsers; track user.rank) {
+          <div class="reporte-impacto__user-item">
+            <span class="reporte-impacto__user-rank">{{ user.rank }}</span>
+            <div class="reporte-impacto__user-info">
+              <span class="reporte-impacto__user-username">{{ user.username }}</span>
+              <span class="reporte-impacto__user-handle">{{ user.handle }}</span>
+            </div>
+          </div>
+        }
+      </div>
+      <app-insight-card
+        variant="highlight"
+        [showAiBadge]="false"
+        content="La crisis fue amplificada por perfiles tech y medios especializados. No hubo. Esto corrobora la credibilidad del reclamo y dificulta su contención.">
+      </app-insight-card>
+    </div>
+
+    <!-- Risk Signals -->
+    <div class="reporte-impacto__card">
+      <h3 class="reporte-impacto__card-title">Señales de riesgo identificadas</h3>
+      <div class="reporte-impacto__risk-list">
+        @for (signal of riskSignals; track signal.title) {
+          <div class="reporte-impacto__risk-item">
+            <lucide-icon
+              [img]="AlertTriangleIcon"
+              [size]="16"
+              [strokeWidth]="2"
+              [class.reporte-impacto__risk-icon--high]="signal.type === 'high'"
+              [class.reporte-impacto__risk-icon--medium]="signal.type === 'medium'">
+            </lucide-icon>
+            <div class="reporte-impacto__risk-content">
+              <span class="reporte-impacto__risk-title">{{ signal.title }}:</span>
+              <span class="reporte-impacto__risk-description">{{ signal.description }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Insight -->
+  <section class="reporte-impacto__section">
+    <div class="reporte-impacto__executive">
+      <div class="reporte-impacto__executive-header">
+        <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="2"></lucide-icon>
+        <h3 class="reporte-impacto__executive-title">{{ executiveInsight.title }}</h3>
+      </div>
+
+      <div class="reporte-impacto__executive-grid">
+        <!-- Situación -->
+        <div class="reporte-impacto__executive-card">
+          <div class="reporte-impacto__executive-card-header">
+            <lucide-icon [img]="AlertTriangleIcon" [size]="18"></lucide-icon>
+            <h4 class="reporte-impacto__executive-card-title">Situación</h4>
+          </div>
+          <p class="reporte-impacto__executive-card-text">{{ executiveInsight.situation }}</p>
+        </div>
+
+        <!-- Por qué importa -->
+        <div class="reporte-impacto__executive-card">
+          <div class="reporte-impacto__executive-card-header">
+            <lucide-icon [img]="TrendingUpIcon" [size]="18"></lucide-icon>
+            <h4 class="reporte-impacto__executive-card-title">Por qué importa</h4>
+          </div>
+          <p class="reporte-impacto__executive-card-text">{{ executiveInsight.impact }}</p>
+        </div>
+
+        <!-- Nivel de riesgo -->
+        <div class="reporte-impacto__executive-card">
+          <div class="reporte-impacto__executive-card-header">
+            <lucide-icon [img]="AlertTriangleIcon" [size]="18"></lucide-icon>
+            <h4 class="reporte-impacto__executive-card-title">Nivel de riesgo</h4>
+          </div>
+          <div class="reporte-impacto__executive-risk-badge">
+            <app-status-badge label="Riesgo Alto" variant="error"></app-status-badge>
+          </div>
+          <p class="reporte-impacto__executive-card-text">{{ executiveInsight.risk }}</p>
+        </div>
+
+        <!-- Recomendación inmediata -->
+        <div class="reporte-impacto__executive-card reporte-impacto__executive-card--full">
+          <div class="reporte-impacto__executive-card-header">
+            <lucide-icon [img]="SparklesIcon" [size]="18"></lucide-icon>
+            <h4 class="reporte-impacto__executive-card-title">Recomendación inmediata</h4>
+          </div>
+          <p class="reporte-impacto__executive-card-text">{{ executiveInsight.recommendation }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,126 @@
+<section class="reportes">
+  <div class="reportes__container">
+    <!-- Header -->
+    <header class="reportes__header">
+      <div class="reportes__header-left">
+        <div class="reportes__header-icon">
+          <lucide-icon [img]="HeaderIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <h1 class="reportes__title">Reportes</h1>
+      </div>
+    </header>
+
+    <!-- Report Type Selector and Toolbar -->
+    <div class="reportes__toolbar">
+      <div class="reportes__selector-container">
+        <button
+          class="reportes__nav-button"
+          [class.reportes__nav-button--disabled]="!canNavigatePrev"
+          [disabled]="!canNavigatePrev"
+          (click)="navigateToPreviousReport()"
+          aria-label="Reporte anterior">
+          <lucide-icon [img]="ChevronLeftIcon" [size]="16"></lucide-icon>
+        </button>
+
+        <div class="reportes__selector">
+          <app-select
+            size="medium"
+            placeholder="Seleccionar tipo de reporte"
+            [options]="reportTypeOptions"
+            [value]="selectedReportType"
+            (selectionChange)="onReportTypeChange($event)">
+          </app-select>
+        </div>
+
+        <button
+          class="reportes__nav-button"
+          [class.reportes__nav-button--disabled]="!canNavigateNext"
+          [disabled]="!canNavigateNext"
+          (click)="navigateToNextReport()"
+          aria-label="Reporte siguiente">
+          <lucide-icon [img]="ChevronRightIcon" [size]="16"></lucide-icon>
+        </button>
+      </div>
+
+      <div class="reportes__toolbar-right">
+        <div class="reportes__date-range">
+          <lucide-icon [img]="CalendarIcon" [size]="18" class="reportes__date-range-icon"></lucide-icon>
+          <input
+            type="date"
+            class="reportes__date-input"
+            [value]="startDateString"
+            (change)="onStartDateChange($any($event.target).value)">
+          <span class="reportes__date-separator">–</span>
+          <input
+            type="date"
+            class="reportes__date-input"
+            [value]="endDateString"
+            (change)="onEndDateChange($any($event.target).value)">
+        </div>
+
+        <div class="reportes__share-container">
+          <app-button
+            variant="secondary"
+            size="medium"
+            [leftIcon]="ShareIcon"
+            (clicked)="toggleShareDropdown()">
+            Compartir
+          </app-button>
+
+          @if (showShareDropdown) {
+            <div class="reportes__share-dropdown">
+              <button class="reportes__share-option" (click)="onShareWeb()">
+                <lucide-icon [img]="GlobeIcon" [size]="18"></lucide-icon>
+                <span>Compartir Web</span>
+              </button>
+              <button class="reportes__share-option" (click)="onSharePdf()">
+                <lucide-icon [img]="PdfIcon" [size]="18"></lucide-icon>
+                <span>Compartir PDF</span>
+              </button>
+              <button class="reportes__share-option" (click)="onShareVideo()">
+                <lucide-icon [img]="VideoIcon" [size]="18"></lucide-icon>
+                <span>Compartir Video</span>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Subtitle & Description -->
+    <div class="reportes__report-intro">
+      <h2 class="reportes__report-subtitle">{{ reportMeta[selectedReportType].subtitle }}</h2>
+      <p class="reportes__report-description">{{ reportMeta[selectedReportType].description }}</p>
+    </div>
+
+    <!-- Report Content -->
+    <div class="reportes__content">
+      @switch (selectedReportType) {
+        @case ('executive-summary') {
+          <app-executive-summary-2></app-executive-summary-2>
+        }
+        @case ('insights-marca') {
+          <app-insights-marca></app-insights-marca>
+        }
+        @case ('performance-plataforma') {
+          <app-performance-plataforma></app-performance-plataforma>
+        }
+        @case ('analisis-competitivo') {
+          <app-analisis-competitivo></app-analisis-competitivo>
+        }
+        @case ('tendencias') {
+          <app-tendencias></app-tendencias>
+        }
+        @case ('recomendaciones-area') {
+          <app-recomendaciones-area></app-recomendaciones-area>
+        }
+        @case ('voice-of-customer') {
+          <app-voice-of-customer></app-voice-of-customer>
+        }
+        @case ('usuarios-influyentes') {
+          <app-usuarios-influyentes></app-usuarios-influyentes>
+        }
+      }
+    </div>
+  </div>
+</section>

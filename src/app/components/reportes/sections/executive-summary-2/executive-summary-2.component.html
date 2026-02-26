@@ -1,0 +1,182 @@
+<div class="executive-summary">
+  <!-- SVG Gradient Definitions -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="sparkles-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#5495fe"/>
+        <stop offset="100%" stop-color="#0061fe"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- All 5 KPIs in a single row -->
+  <section class="executive-summary__section">
+    <app-kpi-group-card
+      title="Métricas Clave"
+      [kpis]="allKpis"
+      [compact]="true">
+    </app-kpi-group-card>
+  </section>
+
+  <!-- Top 3 Topics -->
+  <section class="executive-summary__section">
+    <div class="executive-summary__topics-card">
+      <div class="executive-summary__topics-header">
+        <h3 class="executive-summary__topics-title">Top 3 Temas Resaltantes</h3>
+        <p class="executive-summary__topics-total">
+          <span class="executive-summary__topics-total-value">{{ getTotalTopicMentions() }}</span>
+          <span class="executive-summary__topics-total-label">menciones combinadas</span>
+        </p>
+      </div>
+
+      <div class="executive-summary__topics-grid">
+        @for (topic of topTopics; track topic.topic; let i = $index) {
+          <div class="executive-summary__topic-item">
+            <div class="executive-summary__topic-header">
+              <span class="executive-summary__topic-rank">{{ i + 1 }}</span>
+              <div class="executive-summary__topic-info">
+                <h4 class="executive-summary__topic-name">{{ topic.topic }}</h4>
+                <span class="executive-summary__topic-mentions">{{ formatNumber(topic.mentions) }} menciones</span>
+              </div>
+            </div>
+
+            <div class="executive-summary__topic-bar">
+              <div
+                class="executive-summary__topic-segment executive-summary__topic-segment--positive"
+                [style.flex]="topic.sentiment.positive">
+              </div>
+              <div
+                class="executive-summary__topic-segment executive-summary__topic-segment--neutral"
+                [style.flex]="topic.sentiment.neutral">
+              </div>
+              <div
+                class="executive-summary__topic-segment executive-summary__topic-segment--negative"
+                [style.flex]="topic.sentiment.negative">
+              </div>
+            </div>
+
+            <div class="executive-summary__topic-legend">
+              <div class="executive-summary__topic-legend-item">
+                <span class="executive-summary__topic-dot executive-summary__topic-dot--positive"></span>
+                <span class="executive-summary__topic-legend-value">{{ topic.sentiment.positive }}%</span>
+              </div>
+              <div class="executive-summary__topic-legend-item">
+                <span class="executive-summary__topic-dot executive-summary__topic-dot--neutral"></span>
+                <span class="executive-summary__topic-legend-value">{{ topic.sentiment.neutral }}%</span>
+              </div>
+              <div class="executive-summary__topic-legend-item">
+                <span class="executive-summary__topic-dot executive-summary__topic-dot--negative"></span>
+                <span class="executive-summary__topic-legend-value">{{ topic.sentiment.negative }}%</span>
+              </div>
+            </div>
+
+            <div class="executive-summary__topic-insight">
+              <p class="executive-summary__topic-description">{{ topic.insight }}</p>
+              <app-insight-card
+                [content]="topic.action"
+                variant="highlight">
+              </app-insight-card>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sentiment Breakdown - Full width -->
+  <section class="executive-summary__section">
+    <div class="executive-summary__sentiment-card">
+      <div class="executive-summary__sentiment-header">
+        <h3 class="executive-summary__sentiment-title">Distribución de Sentimiento</h3>
+        <p class="executive-summary__sentiment-total">
+          <span class="executive-summary__sentiment-total-value">2,157</span>
+          <span class="executive-summary__sentiment-total-label">menciones</span>
+        </p>
+      </div>
+
+      <div class="executive-summary__sentiment-bar">
+        <div
+          class="executive-summary__sentiment-segment executive-summary__sentiment-segment--positive"
+          [style.flex]="sentimentBreakdown.positive">
+        </div>
+        <div
+          class="executive-summary__sentiment-segment executive-summary__sentiment-segment--neutral"
+          [style.flex]="sentimentBreakdown.neutral">
+        </div>
+        <div
+          class="executive-summary__sentiment-segment executive-summary__sentiment-segment--negative"
+          [style.flex]="sentimentBreakdown.negative">
+        </div>
+      </div>
+
+      <div class="executive-summary__sentiment-legend">
+        <div class="executive-summary__sentiment-item">
+          <div class="executive-summary__sentiment-item-header">
+            <span class="executive-summary__sentiment-dot executive-summary__sentiment-dot--positive"></span>
+            <span class="executive-summary__sentiment-item-label">Positivo</span>
+          </div>
+          <span class="executive-summary__sentiment-item-value">89%</span>
+        </div>
+        <div class="executive-summary__sentiment-item">
+          <div class="executive-summary__sentiment-item-header">
+            <span class="executive-summary__sentiment-dot executive-summary__sentiment-dot--neutral"></span>
+            <span class="executive-summary__sentiment-item-label">Neutro</span>
+          </div>
+          <span class="executive-summary__sentiment-item-value">8%</span>
+        </div>
+        <div class="executive-summary__sentiment-item">
+          <div class="executive-summary__sentiment-item-header">
+            <span class="executive-summary__sentiment-dot executive-summary__sentiment-dot--negative"></span>
+            <span class="executive-summary__sentiment-item-label">Negativo</span>
+          </div>
+          <span class="executive-summary__sentiment-item-value">3%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Early Warning Alerts -->
+  <section class="executive-summary__section">
+    <div class="executive-summary__card">
+      <h3 class="executive-summary__card-title">Señales de Alerta Temprana</h3>
+      <div class="executive-summary__alerts">
+        @for (alert of earlyWarnings; track alert.topic) {
+          <div class="executive-summary__alert"
+               [class.executive-summary__alert--high]="alert.riskLevel === 'high'"
+               [class.executive-summary__alert--medium]="alert.riskLevel === 'medium'"
+               [class.executive-summary__alert--low]="alert.riskLevel === 'low'">
+            <div class="executive-summary__alert-badge">
+              <app-status-badge
+                [label]="alert.riskLevel === 'high' ? 'Riesgo Alto' : alert.riskLevel === 'medium' ? 'Riesgo Medio' : 'Riesgo Bajo'"
+                [variant]="getRiskBadgeVariant(alert.riskLevel)">
+              </app-status-badge>
+            </div>
+            <p class="executive-summary__alert-text">{{ alert.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Recomendaciones Priorizadas por Área -->
+  <section class="executive-summary__section">
+    <div class="executive-summary__ai-recommendations">
+      <div class="executive-summary__ai-header">
+        <lucide-icon [img]="SparklesIcon" [size]="20"></lucide-icon>
+        <h3 class="executive-summary__ai-title">Recomendaciones Priorizadas por Área</h3>
+      </div>
+
+      <div class="executive-summary__ai-grid">
+        @for (rec of areaRecommendations; track rec.area) {
+          <div class="executive-summary__ai-card">
+            <div class="executive-summary__ai-card-header">
+              <lucide-icon [img]="rec.icon" [size]="18"></lucide-icon>
+              <span class="executive-summary__ai-card-area">{{ rec.area }}</span>
+            </div>
+            <p class="executive-summary__ai-card-text">{{ rec.action }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</div>

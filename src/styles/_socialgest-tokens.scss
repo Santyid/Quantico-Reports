@@ -1,0 +1,43 @@
+// SocialGest Design Tokens
+// Imports base tokens and overrides secondary color scale with orange
+@import './tokens';
+
+// ========================================
+// SocialGest Secondary Color Scale (Orange)
+// ========================================
+$sg-secondary-50: #fef3ec;
+$sg-secondary-100: #fddbc4;
+$sg-secondary-200: #fcc9a7;
+$sg-secondary-300: #fbb17f;
+$sg-secondary-400: #f89358;
+$sg-secondary-500: #f47a37;   // Base SocialGest secondary
+$sg-secondary-600: #de6f32;
+$sg-secondary-700: #ad5627;
+$sg-secondary-800: #86431e;
+$sg-secondary-900: #663317;
+
+// ========================================
+// SocialGest Sidebar Tokens
+// ========================================
+$sg-sidebar-width: 356px;
+$sg-sidebar-bg: $white-500;
+$sg-sidebar-border: #dae1ed;
+$sg-sidebar-item-height: 80px;
+$sg-sidebar-item-active-bg: $primary-50;
+$sg-sidebar-item-active-text: $primary-500;
+$sg-sidebar-item-text: $grey-500;
+
+// ========================================
+// SocialGest Card Tokens
+// ========================================
+$sg-card-bg: $white-500;
+$sg-card-border: #dae1ed;
+$sg-card-border-radius: 16px;
+$sg-card-padding: 32px;
+
+// ========================================
+// SocialGest Metrics Tokens
+// ========================================
+$sg-metrics-positive: #3ace76;
+$sg-metrics-negative: #f44336;
+$sg-metrics-content-max-width: 1200px;

@@ -1,0 +1,35 @@
+<div class="fb-fans">
+  <h3 class="fb-fans__title">Movimiento de fans</h3>
+
+  <div class="fb-fans__row">
+    <div class="fb-fans__stat fb-fans__stat--main">
+      <div class="fb-fans__value-row">
+        <span class="fb-fans__value">{{ total }}</span>
+        <div class="fb-fans__change">
+          <lucide-icon [img]="ArrowUpRightIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+          <span>{{ change }}%</span>
+        </div>
+      </div>
+      <div class="fb-fans__label">
+        <span>Total de fans</span>
+        <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="fb-fans__info-icon"></lucide-icon>
+      </div>
+    </div>
+
+    <div class="fb-fans__stat">
+      <span class="fb-fans__stat-value">{{ gained }}</span>
+      <div class="fb-fans__label">
+        <span>Nuevos fans</span>
+        <lucide-icon [img]="InfoIcon" [size]="12" [strokeWidth]="1.5" class="fb-fans__info-icon"></lucide-icon>
+      </div>
+    </div>
+
+    <div class="fb-fans__stat">
+      <span class="fb-fans__stat-value">{{ lost }}</span>
+      <div class="fb-fans__label">
+        <span>Fans perdidos</span>
+        <lucide-icon [img]="InfoIcon" [size]="12" [strokeWidth]="1.5" class="fb-fans__info-icon"></lucide-icon>
+      </div>
+    </div>
+  </div>
+</div>

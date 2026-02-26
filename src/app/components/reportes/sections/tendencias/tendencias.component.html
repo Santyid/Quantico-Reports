@@ -1,0 +1,57 @@
+<div class="tendencias">
+  <!-- Temas Emergentes (gradient container) -->
+  <section class="tendencias__section">
+    <div class="tendencias__insights-container">
+      <div class="tendencias__insights-header">
+        <lucide-icon [img]="TrendingUpIcon" [size]="20"></lucide-icon>
+        <h3 class="tendencias__insights-title">Temas Emergentes (+300% crecimiento)</h3>
+      </div>
+      <div class="tendencias__emergentes-grid">
+        @for (tema of temasEmergentes; track tema.title) {
+          <div class="tendencias__emergente-card">
+            <p class="tendencias__emergente-title">{{ tema.title }}</p>
+            <div class="tendencias__emergente-value-container">
+              <span class="tendencias__emergente-value">{{ tema.value }}</span>
+              @if (tema.label) {
+                <span class="tendencias__emergente-label">{{ tema.label }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Análisis de Tendencias (dentro de card padre) -->
+  <section class="tendencias__section">
+    <div class="tendencias__card">
+      <h3 class="tendencias__card-title">Análisis de Tendencias</h3>
+      <div class="tendencias__analisis-grid">
+        @for (item of analisisTendencias; track item.title) {
+          <div class="tendencias__analisis-card">
+            <div class="tendencias__analisis-header">
+              <div class="tendencias__analisis-icon" [style.background]="item.iconBg">
+                @if (item.icon === 'package') {
+                  <lucide-icon [img]="PackageIcon" [size]="20" color="white"></lucide-icon>
+                }
+                @if (item.icon === 'message') {
+                  <lucide-icon [img]="MessageCircleIcon" [size]="20" color="white"></lucide-icon>
+                }
+                @if (item.icon === 'calendar') {
+                  <lucide-icon [img]="CalendarDaysIcon" [size]="20" color="white"></lucide-icon>
+                }
+              </div>
+              <h4 class="tendencias__analisis-title">{{ item.title }}</h4>
+            </div>
+            <ul class="tendencias__analisis-list">
+              @for (punto of item.puntos; track punto) {
+                <li class="tendencias__analisis-item">{{ punto }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+</div>

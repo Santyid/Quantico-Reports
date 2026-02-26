@@ -1,0 +1,85 @@
+@import '../../../../styles/tokens';
+
+$sg-sidebar-width: 356px;
+
+.sg-sidebar {
+  width: $sg-sidebar-width;
+  min-height: calc(100vh - 80px);
+  background-color: $white-500;
+  border-right: 1px solid #dae1ed;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+
+  &__search {
+    padding: 24px 20px;
+    border-bottom: 1px solid #dae1ed;
+  }
+
+  &__channels {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__channel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: 72px;
+    padding: 0 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-bottom: 1px solid rgba(#dae1ed, 0.4);
+
+    &:hover {
+      background-color: rgba($primary-50, 0.5);
+    }
+
+    &--active {
+      background-color: $primary-50;
+
+      .sg-sidebar__channel-name {
+        color: $primary-500;
+        font-weight: 600;
+      }
+
+      .sg-sidebar__channel-icon--all {
+        color: $primary-500;
+      }
+    }
+  }
+
+  &__channel-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    &--all {
+      color: $grey-400;
+    }
+
+    img {
+      border-radius: 8px;
+    }
+  }
+
+  &__channel-name {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: $grey-500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

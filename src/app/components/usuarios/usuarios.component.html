@@ -1,0 +1,52 @@
+<section class="usuarios">
+  <div class="usuarios__container">
+    <!-- Header with title -->
+    <header class="usuarios__header">
+      <h1 class="usuarios__title">Usuarios</h1>
+      <p class="usuarios__subtitle">Gestiona los usuarios de tu plataforma</p>
+    </header>
+
+    <!-- Filters row -->
+    <div class="usuarios__filters">
+      <div class="usuarios__search">
+        <app-search-input
+          size="large"
+          placeholder="Buscar usuarios..."
+          [fullWidth]="true"
+          (valueChange)="handleSearchChange($event)"
+          (search)="handleSearch($event)"
+          (cleared)="handleSearchCleared()">
+        </app-search-input>
+      </div>
+
+      <div class="usuarios__actions">
+        <app-select
+          size="medium"
+          placeholder="Filtrar por rol"
+          [options]="rolOptions"
+          [leftIcon]="FilterIcon"
+          (selectionChange)="handleRolFilterChange($event)">
+        </app-select>
+
+        <app-button
+          variant="primary"
+          size="medium"
+          [leftIcon]="PlusIcon"
+          (clicked)="handleAddUser()">
+          Añadir Usuario
+        </app-button>
+      </div>
+    </div>
+
+    <!-- Users table -->
+    <div class="usuarios__table-container">
+      <app-table
+        title="Lista de Usuarios"
+        [columns]="tableColumns"
+        [data]="usuarios"
+        (rowClick)="handleRowClick($event)"
+        (actionClick)="handleActionClick($event)">
+      </app-table>
+    </div>
+  </div>
+</section>

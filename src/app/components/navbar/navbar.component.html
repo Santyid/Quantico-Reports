@@ -1,0 +1,129 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <!-- Platform Selector -->
+    @if (showPlatformSelector) {
+      <div class="navbar__platform-selector">
+        <button
+          class="navbar__platform-toggle"
+          (click)="togglePlatformDropdown()"
+          aria-label="Cambiar plataforma"
+          [attr.aria-expanded]="platformDropdownOpen">
+          <div class="navbar__platform-current">
+            @if (selectedPlatform.icon === 'quantico') {
+              <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-img" />
+            } @else {
+              <div class="navbar__logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" fill="#0061fe"/>
+                  <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="navbar__logo-text">SocialGest</span>
+            }
+          </div>
+          <lucide-icon
+            [img]="ChevronDownIcon"
+            [size]="16"
+            [strokeWidth]="2"
+            class="navbar__platform-chevron"
+            [class.navbar__platform-chevron--open]="platformDropdownOpen">
+          </lucide-icon>
+        </button>
+
+        @if (platformDropdownOpen) {
+          <div class="navbar__platform-dropdown">
+            @for (platform of platforms; track platform.id) {
+              <button
+                class="navbar__platform-option"
+                [class.navbar__platform-option--active]="platform.id === selectedPlatform.id"
+                (click)="selectPlatform(platform)">
+                @if (platform.icon === 'quantico') {
+                  <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-option-img" />
+                } @else {
+                  <div class="navbar__logo-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="#0061fe"/>
+                      <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                }
+                <span class="navbar__platform-option-text">{{ platform.name }}</span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="navbar__logo-static">
+        <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-img" />
+      </div>
+    }
+
+    <!-- Navigation Links -->
+    <div class="navbar__nav">
+      @for (item of navItems; track item.label) {
+        @if (item.children) {
+          <!-- Dropdown Item -->
+          <div
+            class="navbar__nav-dropdown"
+            (mouseenter)="openDropdown = item.label"
+            (mouseleave)="closeDropdown()">
+            <button
+              class="navbar__nav-link navbar__nav-link--dropdown"
+              [class.navbar__nav-link--open]="openDropdown === item.label">
+              <span>{{ item.label }}</span>
+              <lucide-icon
+                [img]="ChevronDownIcon"
+                [size]="14"
+                [strokeWidth]="2"
+                class="navbar__nav-chevron"
+                [class.navbar__nav-chevron--open]="openDropdown === item.label">
+              </lucide-icon>
+            </button>
+
+            @if (openDropdown === item.label) {
+              <div class="navbar__dropdown">
+                @for (child of item.children; track child.path) {
+                  <a
+                    [routerLink]="child.path"
+                    routerLinkActive="navbar__dropdown-link--active"
+                    class="navbar__dropdown-link">
+                    {{ child.label }}
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        } @else {
+          <!-- Regular Link -->
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="navbar__nav-link--active"
+            class="navbar__nav-link">
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      }
+    </div>
+
+    <!-- Right Section -->
+    <div class="navbar__right">
+      <!-- Language Selector -->
+      <button class="navbar__language-btn" (click)="onLanguageClick()" aria-label="Cambiar idioma">
+        <span class="navbar__language-text">{{ currentLanguage }}</span>
+        <lucide-icon [img]="ChevronDownIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+      </button>
+
+      <!-- User Avatar -->
+      <button class="navbar__avatar-btn" (click)="onProfileClick()" aria-label="Perfil de usuario">
+        @if (userAvatarUrl) {
+          <img [src]="userAvatarUrl" alt="Avatar" class="navbar__avatar-img" />
+        } @else {
+          <div class="navbar__avatar-placeholder">
+            <lucide-icon [img]="UserIcon" [size]="24" color="#c3c3c3" [strokeWidth]="1.5"></lucide-icon>
+          </div>
+        }
+      </button>
+    </div>
+  </div>
+</nav>

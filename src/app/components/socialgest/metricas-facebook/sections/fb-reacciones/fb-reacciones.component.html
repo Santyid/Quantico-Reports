@@ -1,0 +1,33 @@
+<div class="fb-reacciones">
+  <div class="fb-reacciones__header">
+    <h3 class="fb-reacciones__title">Reacciones</h3>
+    <div class="fb-reacciones__header-right">
+      <span class="fb-reacciones__header-value">{{ total }}</span>
+      <span class="fb-reacciones__header-label">total</span>
+      <button class="fb-reacciones__menu-btn" aria-label="More options">
+        <lucide-icon [img]="MoreHorizontalIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+      </button>
+    </div>
+  </div>
+  <div class="fb-reacciones__content">
+    <div class="fb-reacciones__bar">
+      @for (type of types; track type.label) {
+        <div
+          class="fb-reacciones__bar-segment"
+          [style.width.%]="type.value"
+          [style.background]="'linear-gradient(90deg, ' + type.color + 'cc 0%, ' + type.color + ' 100%)'">
+        </div>
+      }
+    </div>
+    <div class="fb-reacciones__legend">
+      @for (type of types; track type.label) {
+        <div class="fb-reacciones__legend-item">
+          <span class="fb-reacciones__legend-dot" [style.background]="type.color"></span>
+          <span class="fb-reacciones__legend-label">{{ type.label }}</span>
+          <lucide-icon class="fb-reacciones__legend-info" [img]="InfoIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+          <span class="fb-reacciones__legend-count">{{ type.count }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<section class="projects">
+  <div class="container">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <p class="section-subtitle">Una selección de trabajos que combinan diseño y desarrollo</p>
+
+    <div class="projects-grid">
+      @for (project of projects; track project.title) {
+        <div class="project-card">
+          <div class="project-image">
+            <img [src]="project.image" [alt]="project.title" />
+            <div class="project-overlay">
+              <span class="category-badge">{{ project.category }}</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="technologies">
+              @for (tech of project.technologies; track tech) {
+                <span class="tech-badge">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

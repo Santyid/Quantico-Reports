@@ -1,0 +1,35 @@
+<div class="driver-list" [class.driver-list--negative]="type === 'negative'">
+  <div class="driver-list__header">
+    <div class="driver-list__header-icon">
+      <lucide-icon [img]="headerIcon" [size]="20"></lucide-icon>
+    </div>
+    <h4 class="driver-list__title">{{ defaultTitle }}</h4>
+  </div>
+
+  <div class="driver-list__items">
+    @for (driver of displayDrivers; track driver.driver; let i = $index) {
+      <div class="driver-list__item">
+        <div class="driver-list__item-header">
+          <span class="driver-list__rank">{{ i + 1 }}</span>
+          <div class="driver-list__item-info">
+            <span class="driver-list__driver">{{ driver.driver }}</span>
+            <span class="driver-list__emotion">{{ driver.emotion }}</span>
+          </div>
+          <span class="driver-list__percentage">{{ driver.percentage }}%</span>
+        </div>
+
+        <div class="driver-list__comment">
+          <lucide-icon [img]="QuoteIcon" [size]="14" class="driver-list__quote-icon"></lucide-icon>
+          <p class="driver-list__comment-text">"{{ driver.exampleComment }}"</p>
+        </div>
+
+        <div class="driver-list__source">
+          <img [src]="getSocialIconPath(driver.source)" [alt]="driver.source" class="driver-list__source-icon">
+          @if (driver.sourceHandle) {
+            <span class="driver-list__source-handle">{{ driver.sourceHandle }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

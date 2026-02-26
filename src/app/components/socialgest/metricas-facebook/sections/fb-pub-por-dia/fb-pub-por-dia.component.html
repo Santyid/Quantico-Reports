@@ -1,0 +1,36 @@
+<div class="fb-pub-por-dia">
+  <div class="fb-pub-por-dia__header">
+    <div>
+      <h3 class="fb-pub-por-dia__title">Publicaciones por días</h3>
+      <p class="fb-pub-por-dia__subtitle">Frecuencia de publicación en Facebook</p>
+    </div>
+    <div class="fb-pub-por-dia__streak">
+      <lucide-icon [img]="FlameIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+      <span>14 días seguidos publicando</span>
+    </div>
+  </div>
+  <div class="fb-pub-por-dia__chart-wrapper">
+    <div class="fb-pub-por-dia__y-axis">
+      @for (yLabel of yAxisLabels; track yLabel) {
+        <span class="fb-pub-por-dia__y-label">{{ yLabel }}</span>
+      }
+    </div>
+    <div class="fb-pub-por-dia__chart">
+      <svg viewBox="0 0 600 200" preserveAspectRatio="none" class="fb-pub-por-dia__svg">
+        <defs>
+          <linearGradient id="fbPubDiaGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f47a37" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#f47a37" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <path [attr.d]="getAreaPath()" fill="url(#fbPubDiaGradient)" />
+        <path [attr.d]="getLinePath()" fill="none" stroke="#f47a37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="fb-pub-por-dia__labels">
+        @for (label of labels; track label) {
+          <span class="fb-pub-por-dia__label">{{ label }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>

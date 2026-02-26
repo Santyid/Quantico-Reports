@@ -1,0 +1,53 @@
+<div class="app-text-input__wrapper">
+  @if (label) {
+    <label class="app-text-input__label" [class.app-text-input__label--small]="size === 'small'">
+      {{ label }}
+      @if (required) {
+        <span class="app-text-input__required">*</span>
+      }
+    </label>
+  }
+
+  <div [class]="inputClasses.join(' ')">
+    @if (leftIcon) {
+      <span class="app-text-input__icon app-text-input__icon--left">
+        <lucide-icon [img]="leftIcon" [size]="iconSize" [strokeWidth]="1.5"></lucide-icon>
+      </span>
+    }
+
+    <input
+      [type]="type"
+      class="app-text-input__field"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [required]="required"
+      [value]="value"
+      [min]="min"
+      [max]="max"
+      [step]="step"
+      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-invalid]="!!errorMessage"
+      [attr.aria-required]="required"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+
+    @if (rightIcon) {
+      <button
+        type="button"
+        class="app-text-input__icon app-text-input__icon--right"
+        [disabled]="disabled"
+        (click)="onRightIconClick()"
+        tabindex="-1">
+        <lucide-icon [img]="rightIcon" [size]="iconSize" [strokeWidth]="1.5"></lucide-icon>
+      </button>
+    }
+  </div>
+
+  @if (errorMessage) {
+    <span class="app-text-input__error" role="alert">
+      {{ errorMessage }}
+    </span>
+  }
+</div>

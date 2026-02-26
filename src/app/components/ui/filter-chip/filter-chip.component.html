@@ -1,0 +1,33 @@
+<button
+  class="filter-chip"
+  [class.filter-chip--disabled]="disabled"
+  [class.filter-chip--has-dropdown]="hasDropdown"
+  [disabled]="disabled"
+  (click)="onClick()"
+  type="button">
+  <span class="filter-chip__content">
+    @if (label) {
+      <span class="filter-chip__label">{{ label }}:</span>
+    }
+    <span class="filter-chip__value">{{ value }}</span>
+  </span>
+
+  @if (hasDropdown) {
+    <lucide-icon
+      class="filter-chip__chevron"
+      [img]="ChevronDownIcon"
+      [size]="14"
+      [strokeWidth]="2">
+    </lucide-icon>
+  }
+
+  @if (removable && !disabled) {
+    <button
+      class="filter-chip__remove"
+      (click)="onRemove($event)"
+      type="button"
+      aria-label="Eliminar filtro">
+      <lucide-icon [img]="XIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+    </button>
+  }
+</button>

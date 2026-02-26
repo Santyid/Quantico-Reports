@@ -1,0 +1,253 @@
+<section class="crear-usuario">
+  <div class="crear-usuario__container">
+    <header class="crear-usuario__header">
+      <div class="crear-usuario__header-left">
+        <div class="crear-usuario__header-icon">
+          <lucide-icon [img]="HeaderIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <h1 class="crear-usuario__title">Crear cuenta/contrato para Gustavo</h1>
+      </div>
+    </header>
+
+    <form class="crear-usuario__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Nombre + Nombre fiscal -->
+      <div class="crear-usuario__row">
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="nombre"
+            type="text"
+            size="medium"
+            label="Nombre"
+            placeholder="Ingrese el nombre"
+            [leftIcon]="UserIcon"
+            [required]="true"
+            [errorMessage]="getErrorMessage('nombre')">
+          </app-text-input>
+        </div>
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="nombreFiscal"
+            type="text"
+            size="medium"
+            label="Nombre fiscal de la empresa"
+            placeholder="Ingrese el nombre fiscal"
+            [leftIcon]="BuildingIcon"
+            [required]="true"
+            [errorMessage]="getErrorMessage('nombreFiscal')">
+          </app-text-input>
+        </div>
+      </div>
+
+      <!-- Fechas -->
+      <div class="crear-usuario__row">
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="fechaInicio"
+            type="date"
+            size="medium"
+            label="Fecha de inicio"
+            [leftIcon]="CalendarIcon"
+            [required]="true"
+            [errorMessage]="getErrorMessage('fechaInicio')">
+          </app-text-input>
+        </div>
+
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="fechaFin"
+            type="date"
+            size="medium"
+            label="Fecha de fin"
+            [leftIcon]="CalendarIcon"
+            [required]="true"
+            [errorMessage]="getErrorMessage('fechaFin')">
+          </app-text-input>
+        </div>
+      </div>
+
+      <!-- País y Moneda -->
+      <div class="crear-usuario__row">
+        <div class="crear-usuario__field">
+          <app-select
+            formControlName="pais"
+            label="País"
+            placeholder="Seleccionar país"
+            [options]="countryOptions"
+            [leftIcon]="GlobeIcon"
+            size="medium">
+          </app-select>
+        </div>
+
+        <div class="crear-usuario__field">
+          <app-select
+            formControlName="moneda"
+            label="Moneda"
+            placeholder="Seleccionar moneda"
+            [options]="currencyOptions"
+            [leftIcon]="CoinsIcon"
+            size="medium">
+          </app-select>
+        </div>
+      </div>
+
+      <!-- Monto total -->
+      <div class="crear-usuario__field crear-usuario__field--full">
+        <app-text-input
+          formControlName="montoTotal"
+          type="number"
+          size="medium"
+          label="Monto total"
+          placeholder="0.00"
+          [leftIcon]="DollarIcon"
+          [min]="0"
+          [required]="true"
+          [errorMessage]="getErrorMessage('montoTotal')">
+        </app-text-input>
+      </div>
+
+      <!-- Cantidades: Usuarios y Menciones -->
+      <div class="crear-usuario__row">
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="cantidadUsuarios"
+            type="number"
+            size="medium"
+            label="Cantidad de usuarios"
+            placeholder="1"
+            [leftIcon]="UsersIcon"
+            [min]="1"
+            [required]="true"
+            [errorMessage]="getErrorMessage('cantidadUsuarios')">
+          </app-text-input>
+        </div>
+
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="cantidadMenciones"
+            type="number"
+            size="medium"
+            label="Cantidad de menciones"
+            placeholder="0"
+            [leftIcon]="MessageIcon"
+            [min]="0"
+            [required]="true"
+            [errorMessage]="getErrorMessage('cantidadMenciones')">
+          </app-text-input>
+        </div>
+      </div>
+
+      <!-- Cantidades: Segmentos y Reportes -->
+      <div class="crear-usuario__row">
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="cantidadSegmentos"
+            type="number"
+            size="medium"
+            label="Cantidad de segmentos"
+            placeholder="1"
+            [leftIcon]="LayersIcon"
+            [min]="1"
+            [required]="true"
+            [errorMessage]="getErrorMessage('cantidadSegmentos')">
+          </app-text-input>
+        </div>
+
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="cantidadReportes"
+            type="number"
+            size="medium"
+            label="Cantidad de reportes"
+            placeholder="0"
+            [leftIcon]="FileTextIcon"
+            [min]="0"
+            [required]="true"
+            [errorMessage]="getErrorMessage('cantidadReportes')">
+          </app-text-input>
+        </div>
+      </div>
+
+      <!-- Cantidades: Alertas y Keywords -->
+      <div class="crear-usuario__row">
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="cantidadAlertas"
+            type="number"
+            size="medium"
+            label="Cantidad de alertas"
+            placeholder="0"
+            [leftIcon]="BellIcon"
+            [min]="0"
+            [required]="true"
+            [errorMessage]="getErrorMessage('cantidadAlertas')">
+          </app-text-input>
+        </div>
+
+        <div class="crear-usuario__field">
+          <app-text-input
+            formControlName="cantidadKeywords"
+            type="number"
+            size="medium"
+            label="Cantidad de keywords"
+            placeholder="0"
+            [leftIcon]="KeyIcon"
+            [min]="0"
+            [required]="true"
+            [errorMessage]="getErrorMessage('cantidadKeywords')">
+          </app-text-input>
+        </div>
+      </div>
+
+      <!-- Email administrador -->
+      <div class="crear-usuario__field crear-usuario__field--full">
+        <app-text-input
+          formControlName="emailAdministrador"
+          type="email"
+          size="medium"
+          label="Email del administrador"
+          placeholder="admin@ejemplo.com"
+          [leftIcon]="MailIcon"
+          [required]="true"
+          [errorMessage]="getErrorMessage('emailAdministrador')">
+        </app-text-input>
+      </div>
+
+      <!-- Canales -->
+      <div class="crear-usuario__field crear-usuario__field--full">
+        <app-channel-selector
+          formControlName="canales"
+          label="Canales"
+          [options]="channelOptions"
+          layout="horizontal">
+        </app-channel-selector>
+      </div>
+
+      <!-- Servicios adicionales -->
+      <div class="crear-usuario__field crear-usuario__field--full">
+        <app-checkbox-group
+          formControlName="serviciosAdicionales"
+          label="Servicios adicionales"
+          [options]="serviceOptions"
+          layout="horizontal">
+        </app-checkbox-group>
+      </div>
+
+      <div class="crear-usuario__actions">
+        <app-button
+          variant="white"
+          size="medium"
+          type="button"
+          (clicked)="onCancel()">
+          Cancelar
+        </app-button>
+
+        <app-button
+          variant="primary"
+          size="medium"
+          type="submit">
+          Crear cuenta/contrato
+        </app-button>
+      </div>
+    </form>
+  </div>
+</section>

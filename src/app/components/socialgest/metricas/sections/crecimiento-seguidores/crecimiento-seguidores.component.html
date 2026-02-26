@@ -1,0 +1,35 @@
+<div class="crecimiento-seg">
+  <h3 class="crecimiento-seg__title">Crecimiento de seguidores</h3>
+
+  <div class="crecimiento-seg__row">
+    <div class="crecimiento-seg__stat crecimiento-seg__stat--main">
+      <div class="crecimiento-seg__value-row">
+        <span class="crecimiento-seg__value">{{ total }}</span>
+        <div class="crecimiento-seg__change">
+          <lucide-icon [img]="ArrowUpRightIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+          <span>{{ change }}%</span>
+        </div>
+      </div>
+      <div class="crecimiento-seg__label">
+        <span>Total de seguidores</span>
+        <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="crecimiento-seg__info-icon"></lucide-icon>
+      </div>
+    </div>
+
+    <div class="crecimiento-seg__stat">
+      <span class="crecimiento-seg__stat-value">{{ gained }}</span>
+      <div class="crecimiento-seg__label">
+        <span>Ganados</span>
+        <lucide-icon [img]="InfoIcon" [size]="12" [strokeWidth]="1.5" class="crecimiento-seg__info-icon"></lucide-icon>
+      </div>
+    </div>
+
+    <div class="crecimiento-seg__stat">
+      <span class="crecimiento-seg__stat-value">{{ lost }}</span>
+      <div class="crecimiento-seg__label">
+        <span>Perdidos</span>
+        <lucide-icon [img]="InfoIcon" [size]="12" [strokeWidth]="1.5" class="crecimiento-seg__info-icon"></lucide-icon>
+      </div>
+    </div>
+  </div>
+</div>

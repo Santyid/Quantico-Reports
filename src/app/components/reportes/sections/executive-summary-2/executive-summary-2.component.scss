@@ -1,0 +1,533 @@
+@import '../../../../../styles/tokens';
+
+.executive-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  // Generic Card
+  &__card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: $primary-500;
+
+    .executive-summary__card-title {
+      margin-bottom: 0;
+    }
+  }
+
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 24px 0;
+  }
+
+  // KPIs Groups
+  &__kpi-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  // Sentiment Card (Figma style)
+  &__sentiment-card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 36px;
+  }
+
+  &__sentiment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__sentiment-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-500;
+    margin: 0;
+    line-height: 24px;
+  }
+
+  &__sentiment-total {
+    margin: 0;
+  }
+
+  &__sentiment-total-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #2b2b2b;
+    letter-spacing: -0.48px;
+  }
+
+  &__sentiment-total-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: $grey-300;
+    margin-left: 4px;
+  }
+
+  &__sentiment-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  &__sentiment-segment {
+    height: 20px;
+    border-radius: 4px;
+
+    &--positive {
+      background: linear-gradient(90deg, rgba(62, 204, 128, 0.75) 0%, rgba(62, 204, 128, 0.38) 100%);
+    }
+
+    &--neutral {
+      background: linear-gradient(90deg, rgba(168, 213, 229, 0.85) 0%, rgba(168, 213, 229, 0.5) 100%);
+    }
+
+    &--negative {
+      background: linear-gradient(90deg, rgba(246, 26, 74, 0.75) 0%, rgba(246, 26, 74, 0.38) 100%);
+    }
+  }
+
+  &__sentiment-legend {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__sentiment-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__sentiment-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__sentiment-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    opacity: 0.8;
+
+    &--positive {
+      background: linear-gradient(180deg, rgba(62, 204, 128, 0.5) 0%, #3ecc80 100%);
+    }
+
+    &--neutral {
+      background: linear-gradient(180deg, rgba(168, 213, 229, 0.5) 0%, #a8d5e5 100%);
+    }
+
+    &--negative {
+      background: linear-gradient(180deg, rgba(246, 26, 74, 0.5) 0%, #f61a4a 100%);
+    }
+  }
+
+  &__sentiment-item-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 24px;
+  }
+
+  &__sentiment-item-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 24px;
+  }
+
+  &__sentiment-insight {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid $grey-50;
+  }
+
+  // Alerts
+  &__alerts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__alert {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 24px 32px 24px;
+    background: linear-gradient(141.6deg, rgba(240, 112, 112, 0) 15.2%, rgba(240, 112, 112, 0.08) 52.7%, rgba(240, 112, 112, 0) 112%), white;
+    border-radius: 16px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    position: relative;
+
+    // Gradient border around the card (diagonal)
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(240, 112, 112, 0.1) 0%, rgba(240, 112, 112, 0.5) 50%, rgba(240, 112, 112, 0.1) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    &:hover {
+      box-shadow: 2px 5px 35px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    // Variant for high risk (red) - default for alerts
+    &--high {
+      background: linear-gradient(141.6deg, rgba(240, 112, 112, 0) 15.2%, rgba(240, 112, 112, 0.08) 52.7%, rgba(240, 112, 112, 0) 112%), white;
+
+      &::before {
+        background: linear-gradient(135deg, rgba(240, 112, 112, 0.1) 0%, rgba(240, 112, 112, 0.5) 50%, rgba(240, 112, 112, 0.1) 100%);
+      }
+    }
+
+    // Variant for medium risk (yellow/orange)
+    &--medium {
+      background: linear-gradient(141.6deg, rgba(244, 177, 55, 0) 15.2%, rgba(244, 177, 55, 0.08) 52.7%, rgba(244, 177, 55, 0) 112%), white;
+
+      &::before {
+        background: linear-gradient(135deg, rgba(244, 177, 55, 0.1) 0%, rgba(244, 177, 55, 0.5) 50%, rgba(244, 177, 55, 0.1) 100%);
+      }
+    }
+
+    // Variant for low risk (green)
+    &--low {
+      background: linear-gradient(141.6deg, rgba(58, 206, 118, 0) 15.2%, rgba(58, 206, 118, 0.08) 52.7%, rgba(58, 206, 118, 0) 112%), white;
+
+      &::before {
+        background: linear-gradient(135deg, rgba(58, 206, 118, 0.1) 0%, rgba(58, 206, 118, 0.5) 50%, rgba(58, 206, 118, 0.1) 100%);
+      }
+    }
+  }
+
+  &__alert-badge {
+    align-self: flex-start;
+  }
+
+  &__alert-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2b2b2b;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  // Topics Card (Figma style - similar to sentiment)
+  &__topics-card {
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 36px;
+  }
+
+  &__topics-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__topics-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-500;
+    margin: 0;
+    line-height: 24px;
+  }
+
+  &__topics-total {
+    margin: 0;
+  }
+
+  &__topics-total-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #2b2b2b;
+    letter-spacing: -0.48px;
+  }
+
+  &__topics-total-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: $grey-300;
+    margin-left: 4px;
+  }
+
+  &__topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  &__topic-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid $grey-50;
+    border-radius: 12px;
+  }
+
+  &__topic-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__topic-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #f5f7fa;
+    border-radius: 50%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: $grey-300;
+    flex-shrink: 0;
+  }
+
+  &__topic-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__topic-name {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: $grey-700;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  &__topic-mentions {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-400;
+  }
+
+  &__topic-bar {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__topic-segment {
+    height: 16px;
+    border-radius: 3px;
+
+    &--positive {
+      background: linear-gradient(90deg, rgba(62, 204, 128, 0.75) 0%, rgba(62, 204, 128, 0.38) 100%);
+    }
+
+    &--neutral {
+      background: linear-gradient(90deg, rgba(168, 213, 229, 0.85) 0%, rgba(168, 213, 229, 0.5) 100%);
+    }
+
+    &--negative {
+      background: linear-gradient(90deg, rgba(246, 26, 74, 0.75) 0%, rgba(246, 26, 74, 0.38) 100%);
+    }
+  }
+
+  &__topic-legend {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__topic-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__topic-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    opacity: 0.8;
+
+    &--positive {
+      background: linear-gradient(180deg, rgba(62, 204, 128, 0.5) 0%, #3ecc80 100%);
+    }
+
+    &--neutral {
+      background: linear-gradient(180deg, rgba(168, 213, 229, 0.5) 0%, #a8d5e5 100%);
+    }
+
+    &--negative {
+      background: linear-gradient(180deg, rgba(246, 26, 74, 0.5) 0%, #f61a4a 100%);
+    }
+  }
+
+  &__topic-legend-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: $grey-500;
+  }
+
+  // Additional style for topic insight cards
+  &__topic-insight {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #ececec;
+  }
+
+  &__topic-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-500;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// AI Recommendations Section (Figma style)
+.executive-summary__ai-recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  border-radius: 16px;
+  background: linear-gradient(-80deg, rgb(247, 235, 255) 1%, rgb(255, 255, 255) 36%, rgb(255, 253, 252) 42%, rgb(237, 244, 255) 99%);
+}
+
+.executive-summary__ai-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $primary-500;
+}
+
+.executive-summary__ai-title {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  background: linear-gradient(5deg, $primary-500 3%, #00aaff 106%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.executive-summary__ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.executive-summary__ai-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+}
+
+.executive-summary__ai-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $grey-500;
+}
+
+.executive-summary__ai-card-area {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: $grey-500;
+}
+
+.executive-summary__ai-card-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: $grey-500;
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .executive-summary {
+    &__alerts,
+    &__topics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .executive-summary__ai-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .executive-summary {
+    &__sentiment-header,
+    &__topics-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    &__sentiment-legend {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    &__sentiment-total-label,
+    &__topics-total-label {
+      font-size: 16px;
+    }
+  }
+}

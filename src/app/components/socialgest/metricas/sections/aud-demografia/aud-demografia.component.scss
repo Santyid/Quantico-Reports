@@ -1,0 +1,66 @@
+@import '../../../../../../styles/tokens';
+
+.aud-demografia {
+  background: $white-500;
+  border: 1px solid #dae1ed;
+  border-radius: 16px;
+  padding: 32px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__flag {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: $grey-800;
+    line-height: 1.2;
+  }
+
+  &__label-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-300;
+  }
+
+  &__info-icon {
+    color: $grey-200;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .aud-demografia__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

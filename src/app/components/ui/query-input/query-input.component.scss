@@ -1,0 +1,53 @@
+@import '../../../../styles/tokens';
+
+.query-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &__label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $grey-600;
+  }
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid $grey-100;
+    border-radius: 10px;
+    transition: border-color 0.2s ease;
+
+    &:focus-within {
+      border-color: $primary-500;
+    }
+
+    lucide-icon {
+      color: $grey-300;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+
+  &__textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: $grey-800;
+    resize: none;
+    overflow: hidden;
+    min-height: 20px;
+    line-height: 1.4;
+
+    &::placeholder {
+      color: $grey-300;
+    }
+  }
+}

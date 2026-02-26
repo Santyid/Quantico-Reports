@@ -1,0 +1,64 @@
+<div class="fb-estimado-fans">
+  <div class="fb-estimado-fans__header">
+    <div>
+      <h3 class="fb-estimado-fans__title">Estimado aumento de fans</h3>
+      <p class="fb-estimado-fans__subtitle">Consulta el estimado aumento de fans dentro del periodo seleccionado.</p>
+    </div>
+  </div>
+
+  <div class="fb-estimado-fans__top-row">
+    <div class="fb-estimado-fans__kpis">
+      <div class="fb-estimado-fans__kpi">
+        <span class="fb-estimado-fans__kpi-value">67 <span class="fb-estimado-fans__kpi-change">(+0%)</span></span>
+        <span class="fb-estimado-fans__kpi-label">Seguidores a final de periodo</span>
+      </div>
+      <div class="fb-estimado-fans__kpi">
+        <span class="fb-estimado-fans__kpi-value">0</span>
+        <span class="fb-estimado-fans__kpi-label">Est. aumento de seguidores</span>
+      </div>
+      <div class="fb-estimado-fans__kpi">
+        <span class="fb-estimado-fans__kpi-value">0</span>
+        <span class="fb-estimado-fans__kpi-label">Est. seguidores perdidos</span>
+      </div>
+    </div>
+
+    <div class="fb-estimado-fans__controls">
+      <div class="fb-estimado-fans__toggle">
+        <button
+          class="fb-estimado-fans__toggle-btn"
+          [class.fb-estimado-fans__toggle-btn--active]="activeRange === 'Diario'"
+          (click)="setRange('Diario')">Diario</button>
+        <button
+          class="fb-estimado-fans__toggle-btn"
+          [class.fb-estimado-fans__toggle-btn--active]="activeRange === 'Mensual'"
+          (click)="setRange('Mensual')">Mensual</button>
+      </div>
+      <button class="fb-estimado-fans__menu" aria-label="More options">
+        <lucide-icon [img]="MoreIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="fb-estimado-fans__chart-wrapper">
+    <div class="fb-estimado-fans__y-axis">
+      @for (label of yAxisLabels; track label) {
+        <span class="fb-estimado-fans__y-label">{{ label }}</span>
+      }
+    </div>
+    <div class="fb-estimado-fans__chart">
+      @for (item of data; track item.date) {
+        <div class="fb-estimado-fans__bar-col">
+          <div class="fb-estimado-fans__bar-fill" [style.height.%]="getBarHeight(item.value)"></div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="fb-estimado-fans__x-labels">
+    @for (item of data; let i = $index; track item.date) {
+      @if (i % 4 === 0 || i === data.length - 1) {
+        <span class="fb-estimado-fans__x-label">{{ item.date }}</span>
+      }
+    }
+  </div>
+</div>

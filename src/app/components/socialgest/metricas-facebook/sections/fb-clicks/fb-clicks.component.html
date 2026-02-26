@@ -1,0 +1,25 @@
+<div class="fb-clicks">
+  <div class="fb-clicks__header">
+    <h3 class="fb-clicks__title">Resumen de clicks</h3>
+    <button class="fb-clicks__menu-btn" aria-label="Más opciones">
+      <lucide-icon [img]="MoreHorizontalIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="fb-clicks__content">
+    @for (action of actions; track action.label) {
+      <div class="fb-clicks__stat">
+        <div class="fb-clicks__stat-top">
+          <span class="fb-clicks__stat-value">{{ action.value }}</span>
+          <span class="fb-clicks__stat-badge">
+            <lucide-icon [img]="ArrowUpRightIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+            +{{ action.change }}%
+          </span>
+        </div>
+        <div class="fb-clicks__stat-label-row">
+          <span class="fb-clicks__stat-label">{{ action.label }}</span>
+          <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="fb-clicks__info-icon"></lucide-icon>
+        </div>
+      </div>
+    }
+  </div>
+</div>

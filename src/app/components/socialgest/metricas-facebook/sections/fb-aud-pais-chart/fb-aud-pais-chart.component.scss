@@ -1,0 +1,81 @@
+@import '../../../../../../styles/tokens';
+
+.fb-aud-pais-chart {
+  background: $white-500;
+  border: 1px solid #dae1ed;
+  border-radius: 16px;
+  padding: 32px;
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0 0 4px 0;
+  }
+
+  &__subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-300;
+    margin: 0 0 24px 0;
+  }
+
+  &__chart {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 16px;
+  }
+
+  &__y-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-200;
+    text-align: right;
+  }
+
+  &__bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: space-around;
+  }
+
+  &__bar-row {
+    height: 24px;
+    background: #f0f4fa;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, $primary-200 0%, $primary-400 100%);
+    border-radius: 4px;
+    min-width: 4px;
+    transition: width 0.3s ease;
+  }
+
+  &__x-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-left: 28px;
+
+    span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: $grey-200;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<div class="fb-alcance">
+  <div class="fb-alcance__header">
+    <h3 class="fb-alcance__title">Alcance diario</h3>
+    <button class="fb-alcance__menu-btn" aria-label="More options">
+      <lucide-icon [img]="MoreHorizontalIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="fb-alcance__subtitle">Personas alcanzadas por día en el periodo seleccionado</div>
+  <div class="fb-alcance__chart-wrapper">
+    <div class="fb-alcance__y-axis">
+      @for (yLabel of yAxisLabels; track yLabel) {
+        <span class="fb-alcance__y-label">{{ yLabel }}</span>
+      }
+    </div>
+    <div class="fb-alcance__chart">
+      <svg viewBox="0 0 600 200" preserveAspectRatio="none" class="fb-alcance__svg">
+        <defs>
+          <linearGradient id="fbAlcanceGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f47a37" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#f47a37" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <path [attr.d]="getAreaPath()" fill="url(#fbAlcanceGradient)" />
+        <path [attr.d]="getLinePath()" fill="none" stroke="#f47a37" stroke-width="2.5"/>
+      </svg>
+      <div class="fb-alcance__labels">
+        @for (label of labels; track label) {
+          <span class="fb-alcance__label">{{ label }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>

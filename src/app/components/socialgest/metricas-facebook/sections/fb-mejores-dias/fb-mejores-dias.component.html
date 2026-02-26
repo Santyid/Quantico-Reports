@@ -1,0 +1,28 @@
+<div class="fb-mejores-dias">
+  <div class="fb-mejores-dias__header">
+    <div>
+      <h3 class="fb-mejores-dias__title">Mejores días</h3>
+      <p class="fb-mejores-dias__subtitle">Consulta los mejores días para programar tu contenido.</p>
+    </div>
+    <button class="fb-mejores-dias__menu" aria-label="More options">
+      <lucide-icon [img]="MoreIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="fb-mejores-dias__chart-wrapper">
+    <div class="fb-mejores-dias__y-axis">
+      @for (label of yAxisLabels; track label) {
+        <span class="fb-mejores-dias__y-label">{{ label }}</span>
+      }
+    </div>
+    <div class="fb-mejores-dias__chart">
+      @for (day of days; track day.day) {
+        <div class="fb-mejores-dias__bar-group">
+          <div class="fb-mejores-dias__bar-track">
+            <div class="fb-mejores-dias__bar-fill" [style.height.%]="getBarHeight(day.value)"></div>
+          </div>
+          <span class="fb-mejores-dias__bar-label">{{ day.day }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

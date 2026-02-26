@@ -1,0 +1,151 @@
+<section class="alertas">
+  <div class="alertas__container">
+  <!-- Header -->
+  <header class="alertas__header">
+    <div class="alertas__header-left">
+      <div class="alertas__header-icon">
+        <lucide-icon [img]="SlidersIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+      </div>
+      <h1 class="alertas__title">Configuración de alertas</h1>
+    </div>
+    <app-button
+      variant="primary"
+      size="medium"
+      [leftIcon]="PlusIcon"
+      (clicked)="onAgregar()">
+      Agregar
+    </app-button>
+  </header>
+
+  <!-- Table Card -->
+  <div class="alertas__card">
+    <!-- Filters -->
+    <div class="alertas__filters">
+      <div class="alertas__filter-search">
+        <input
+          type="text"
+          class="alertas__search-input"
+          placeholder="Ingrese nombre"
+          [value]="searchValue"
+          (input)="onSearchInput($event)" />
+      </div>
+      <div class="alertas__filter-actions">
+        <app-select
+          size="small"
+          placeholder="Fecha de creación"
+          [options]="dateOptions">
+        </app-select>
+        <app-select
+          size="small"
+          placeholder="Por etiquetas"
+          [options]="tagOptions">
+        </app-select>
+        <button
+          type="button"
+          class="alertas__icon-btn"
+          aria-label="Buscar"
+          (click)="onSearch()">
+          <lucide-icon [img]="SearchIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="alertas__table" role="table">
+      <!-- Header -->
+      <div class="alertas__table-header" role="row">
+        <div class="alertas__cell alertas__cell--header alertas__cell--id" role="columnheader">IDs</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--nombre" role="columnheader">Nombres</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--vol" role="columnheader">Vol.</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--dias" role="columnheader">Días</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--hora" role="columnheader">H. inicial</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--hora" role="columnheader">H. final</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--sent" role="columnheader">Ver sent.</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--vigente" role="columnheader">Vigente</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--estado" role="columnheader">Estado</div>
+        <div class="alertas__cell alertas__cell--header alertas__cell--actions" role="columnheader"></div>
+      </div>
+
+      <!-- Body -->
+      @for (alerta of alertas; track $index) {
+        <div class="alertas__table-row" role="row">
+          <div class="alertas__cell alertas__cell--body alertas__cell--id" role="cell">{{ alerta.id }}</div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--nombre" role="cell">{{ alerta.nombre }}</div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--vol" role="cell">{{ alerta.volumen }}</div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--dias" role="cell">
+            <span class="alertas__days">
+              @for (day of dayLabels; track $index; let i = $index) {
+                <span
+                  class="alertas__day"
+                  [class.alertas__day--active]="alerta.dias[i]">
+                  {{ day }}
+                </span>
+              }
+            </span>
+          </div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--hora" role="cell">{{ alerta.horaInicial }}</div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--hora" role="cell">{{ alerta.horaFinal }}</div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--sent" role="cell">
+            <span class="alertas__dot-indicator">
+              <span
+                class="alertas__dot"
+                [class.alertas__dot--active]="alerta.verSentimiento"
+                [class.alertas__dot--inactive]="!alerta.verSentimiento">
+              </span>
+              {{ alerta.verSentimiento ? 'Si' : 'No' }}
+            </span>
+          </div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--vigente" role="cell">{{ alerta.vigente }}</div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--estado" role="cell">
+            <app-status-badge
+              [label]="alerta.estado"
+              [variant]="getEstadoVariant(alerta.estado)">
+            </app-status-badge>
+          </div>
+          <div class="alertas__cell alertas__cell--body alertas__cell--actions" role="cell">
+            <button
+              type="button"
+              class="alertas__menu-btn"
+              aria-label="Más opciones"
+              (click)="onMenuClick(alerta)">
+              <lucide-icon [img]="EllipsisIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Pagination -->
+    <div class="alertas__pagination">
+      <span class="alertas__pagination-label">Items por pagina:</span>
+      <div class="alertas__pagination-select">
+        <app-select
+          size="medium"
+          placeholder="6"
+          [options]="itemsPerPageOptions"
+          (selectionChange)="onItemsPerPageChange($event)">
+        </app-select>
+      </div>
+      <span class="alertas__pagination-info">{{ startItem }} - {{ endItem }} de {{ totalItems }}</span>
+      <div class="alertas__pagination-nav">
+        <button
+          type="button"
+          class="alertas__icon-btn"
+          [disabled]="!canGoPrev"
+          aria-label="Página anterior"
+          (click)="onPrevPage()">
+          <lucide-icon [img]="ChevronLeftIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+        <button
+          type="button"
+          class="alertas__icon-btn"
+          [disabled]="!canGoNext"
+          aria-label="Página siguiente"
+          (click)="onNextPage()">
+          <lucide-icon [img]="ChevronRightIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

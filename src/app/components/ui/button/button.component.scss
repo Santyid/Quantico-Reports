@@ -1,0 +1,190 @@
+@import '../../../../styles/tokens';
+
+.app-button {
+  // Base button styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $button-gap;
+
+  font-family: $button-font-family;
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
+  text-align: center;
+  text-decoration: none;
+
+  border: none;
+  border-radius: $button-border-radius;
+  cursor: pointer;
+
+  transition: $button-transition;
+  user-select: none;
+
+  // Remove default button styles
+  outline: none;
+  appearance: none;
+
+  // Focus styles for accessibility
+  &:focus-visible {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+
+  // ========================================
+  // Size Variants (from Figma)
+  // ========================================
+
+  &--small {
+    padding: $button-padding-small;
+    font-size: $button-font-size-small;
+    min-height: 36px;
+  }
+
+  &--medium {
+    padding: $button-padding-medium;
+    font-size: $button-font-size-medium;
+    min-height: 40px;
+  }
+
+  &--large {
+    padding: $button-padding-large;
+    font-size: $button-font-size-large;
+    min-height: 48px;
+  }
+
+  // ========================================
+  // Primary Variant (Blue - from Figma)
+  // ========================================
+
+  &--primary {
+    background-color: $button-primary-bg;
+    color: $button-primary-text;
+
+    &:hover:not(.app-button--disabled) {
+      background-color: $button-primary-hover;
+    }
+
+    &:active:not(.app-button--disabled) {
+      background-color: $button-primary-active;
+    }
+
+    &.app-button--disabled {
+      background-color: $button-primary-disabled-bg;
+      color: $button-primary-disabled-text;
+      cursor: $button-disabled-cursor;
+    }
+  }
+
+  // ========================================
+  // Secondary Variant (Orange - from Figma)
+  // ========================================
+
+  &--secondary {
+    background-color: $button-secondary-bg;
+    color: $button-secondary-text;
+
+    &:hover:not(.app-button--disabled) {
+      background-color: $button-secondary-hover;
+    }
+
+    &:active:not(.app-button--disabled) {
+      background-color: $button-secondary-active;
+    }
+
+    &.app-button--disabled {
+      background-color: $button-secondary-disabled-bg;
+      color: $button-secondary-disabled-text;
+      cursor: $button-disabled-cursor;
+    }
+  }
+
+  // ========================================
+  // White Variant (Outlined - from Figma)
+  // ========================================
+
+  &--white {
+    background-color: $button-white-bg;
+    color: $button-white-text;
+    border: $button-border-width solid $button-white-border;
+
+    &:hover:not(.app-button--disabled) {
+      background-color: $button-white-hover-bg;
+      color: $button-white-hover-text;
+    }
+
+    &:active:not(.app-button--disabled) {
+      background-color: $button-white-active-bg;
+      color: $button-white-active-text;
+    }
+
+    &.app-button--disabled {
+      background-color: $button-white-disabled-bg;
+      color: $button-white-disabled-text;
+      border-color: $button-white-disabled-border;
+      cursor: $button-disabled-cursor;
+    }
+  }
+
+  // ========================================
+  // Text Variant
+  // ========================================
+
+  &--text {
+    background-color: transparent;
+    color: $button-text-color;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover:not(.app-button--disabled) {
+      color: $button-text-hover;
+      text-decoration: underline;
+    }
+
+    &:active:not(.app-button--disabled) {
+      color: $button-text-active;
+    }
+
+    &.app-button--disabled {
+      color: $button-text-disabled;
+      cursor: $button-disabled-cursor;
+    }
+  }
+
+  // ========================================
+  // Full Width Modifier
+  // ========================================
+
+  &--full-width {
+    width: 100%;
+  }
+
+  // ========================================
+  // Disabled State
+  // ========================================
+
+  &--disabled {
+    pointer-events: none;
+  }
+
+  // ========================================
+  // Icon Styles
+  // ========================================
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+  }
+}

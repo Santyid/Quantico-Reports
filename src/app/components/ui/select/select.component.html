@@ -1,0 +1,63 @@
+<div class="app-select__wrapper">
+  @if (label) {
+    <label class="app-select__label" [class.app-select__label--small]="size === 'small'">
+      {{ label }}
+    </label>
+  }
+
+  <div
+    [class]="selectClasses.join(' ')"
+    role="combobox"
+    [attr.aria-expanded]="isOpen"
+    [attr.aria-haspopup]="'listbox'"
+    [attr.aria-label]="ariaLabel || label"
+    [attr.aria-disabled]="disabled"
+    tabindex="0"
+    (click)="toggleDropdown()"
+    (keydown)="onKeyDown($event)">
+
+    <div class="app-select__content">
+      @if (leftIcon) {
+        <span class="app-select__icon app-select__icon--left">
+          <lucide-icon [img]="leftIcon" [size]="iconSize" [strokeWidth]="1.5"></lucide-icon>
+        </span>
+      } @else if (selectedOption && selectedOption.icon) {
+        <span class="app-select__icon app-select__icon--left">
+          <lucide-icon [img]="selectedOption.icon" [size]="iconSize" [strokeWidth]="1.5"></lucide-icon>
+        </span>
+      }
+
+      <span class="app-select__value" [class.app-select__value--placeholder]="!selectedOption">
+        {{ displayValue }}
+      </span>
+    </div>
+
+    @if (showChevron) {
+      <span class="app-select__icon app-select__icon--right" [class.app-select__icon--rotated]="isOpen">
+        <lucide-icon [img]="ChevronDownIcon" [size]="iconSize" [strokeWidth]="1.5"></lucide-icon>
+      </span>
+    }
+  </div>
+
+  @if (isOpen && options.length > 0) {
+    <div class="app-select__dropdown" role="listbox">
+      @for (option of options; track option.value) {
+        <div
+          class="app-select__option"
+          [class.app-select__option--selected]="selectedOption?.value === option.value"
+          [class.app-select__option--disabled]="option.disabled"
+          role="option"
+          [attr.aria-selected]="selectedOption?.value === option.value"
+          [attr.aria-disabled]="option.disabled"
+          (click)="selectOption(option); $event.stopPropagation()">
+          @if (option.icon) {
+            <span class="app-select__option-icon">
+              <lucide-icon [img]="option.icon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+            </span>
+          }
+          <span class="app-select__option-label">{{ option.label }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

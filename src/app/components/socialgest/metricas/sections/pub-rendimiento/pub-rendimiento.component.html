@@ -1,0 +1,53 @@
+<div class="pub-rendimiento">
+  <h3 class="pub-rendimiento__title">Rendimiento de tus publicaciones</h3>
+  <div class="pub-rendimiento__grid">
+    @for (metric of metrics; track metric.label; let i = $index) {
+      <div class="pub-rendimiento__kpi">
+        <div class="pub-rendimiento__kpi-content">
+          <div class="pub-rendimiento__kpi-top">
+            <span class="pub-rendimiento__kpi-value">{{ metric.value }}</span>
+            <span
+              class="pub-rendimiento__kpi-badge"
+              [class.pub-rendimiento__kpi-badge--negative]="metric.change < 0">
+              <lucide-icon
+                [img]="metric.change >= 0 ? TrendingUpIcon : TrendingDownIcon"
+                [size]="12"
+                [strokeWidth]="2">
+              </lucide-icon>
+              <span>{{ metric.change > 0 ? '+' : '' }}{{ metric.change }}%</span>
+            </span>
+          </div>
+          <div class="pub-rendimiento__kpi-label-row">
+            <span class="pub-rendimiento__kpi-label">{{ metric.label }}</span>
+            <lucide-icon
+              [img]="InfoIcon"
+              [size]="14"
+              [strokeWidth]="1.5"
+              class="pub-rendimiento__kpi-info-icon">
+            </lucide-icon>
+          </div>
+        </div>
+        <div class="pub-rendimiento__sparkline">
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+            <defs>
+              <linearGradient [attr.id]="'pubSparkGrad-' + i" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" [attr.stop-color]="metric.change >= 0 ? '#3ace76' : '#f44336'" stop-opacity="0.3"/>
+                <stop offset="100%" [attr.stop-color]="metric.change >= 0 ? '#3ace76' : '#f44336'" stop-opacity="0.02"/>
+              </linearGradient>
+            </defs>
+            <path
+              [attr.d]="getSparklineAreaPath(metric.sparklineData)"
+              [attr.fill]="'url(#pubSparkGrad-' + i + ')'" />
+            <path
+              [attr.d]="getSparklinePath(metric.sparklineData)"
+              fill="none"
+              [attr.stroke]="metric.change >= 0 ? '#3ace76' : '#f44336'"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="fb-aud-ubicaciones">
+  <div class="fb-aud-ubicaciones__header">
+    <div>
+      <h3 class="fb-aud-ubicaciones__title">Ubicaciones</h3>
+      <p class="fb-aud-ubicaciones__subtitle">Distribución geográfica de la audiencia de Facebook</p>
+    </div>
+    <button class="fb-aud-ubicaciones__menu">
+      <lucide-icon [img]="MoreIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="fb-aud-ubicaciones__chart">
+    @for (country of countries; track country.name) {
+      <div class="fb-aud-ubicaciones__bar-group">
+        <div class="fb-aud-ubicaciones__bar-track">
+          <div
+            class="fb-aud-ubicaciones__bar-fill"
+            [style.height.%]="getBarHeight(country.value)">
+            <span class="fb-aud-ubicaciones__bar-value">{{ country.value }}</span>
+          </div>
+        </div>
+        <span class="fb-aud-ubicaciones__bar-flag">{{ country.flag }}</span>
+      </div>
+    }
+  </div>
+</div>

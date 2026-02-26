@@ -1,0 +1,217 @@
+@import '../../../../../../styles/tokens';
+
+.fb-fans-dia {
+  background: $white-500;
+  border: 1px solid #dae1ed;
+  border-radius: 16px;
+  padding: 32px;
+
+  &__header {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0 0 4px 0;
+  }
+
+  &__subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-300;
+    margin: 0;
+  }
+
+  &__top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__kpis {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__kpi {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f5f8ff;
+    border: 1px solid #e0eaff;
+    border-radius: 12px;
+    padding: 12px 20px;
+  }
+
+  &__kpi-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--gained {
+      background: rgba(#3ace76, 0.15);
+      color: #3ace76;
+    }
+
+    &--lost {
+      background: rgba(#f44336, 0.15);
+      color: #f44336;
+    }
+  }
+
+  &__kpi-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__kpi-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: $grey-800;
+    line-height: 1;
+  }
+
+  &__kpi-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-300;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__toggle {
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__toggle-btn {
+    padding: 8px 16px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: $grey-300;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--active {
+      background: $grey-800;
+      color: $white-500;
+      border-radius: 6px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #dae1ed;
+    border-radius: 10px;
+    background: $white-500;
+    cursor: pointer;
+    color: $grey-400;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+  }
+
+  &__chart-wrapper {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 28px;
+  }
+
+  &__y-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-200;
+    text-align: right;
+  }
+
+  &__chart {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__svg {
+    width: 100%;
+    height: 180px;
+  }
+
+  &__x-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-left: 40px;
+  }
+
+  &__x-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: $grey-200;
+  }
+
+  &__legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &--gained {
+      background: $primary-400;
+    }
+
+    &--lost {
+      background: $primary-200;
+    }
+  }
+
+  &__legend-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-300;
+  }
+}

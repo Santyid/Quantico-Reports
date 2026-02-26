@@ -1,0 +1,25 @@
+<div class="aud-ubicaciones">
+  <div class="aud-ubicaciones__header">
+    <div>
+      <h3 class="aud-ubicaciones__title">Ubicaciones</h3>
+      <p class="aud-ubicaciones__subtitle">Descripción de la gráfica detallada y los KPI que la componen</p>
+    </div>
+    <button class="aud-ubicaciones__menu">
+      <lucide-icon [img]="MoreIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="aud-ubicaciones__chart">
+    @for (country of countries; track country.name) {
+      <div class="aud-ubicaciones__bar-group">
+        <div class="aud-ubicaciones__bar-track">
+          <div
+            class="aud-ubicaciones__bar-fill"
+            [style.height.%]="getBarHeight(country.value)">
+            <span class="aud-ubicaciones__bar-value">{{ country.value }}</span>
+          </div>
+        </div>
+        <span class="aud-ubicaciones__bar-flag">{{ country.flag }}</span>
+      </div>
+    }
+  </div>
+</div>

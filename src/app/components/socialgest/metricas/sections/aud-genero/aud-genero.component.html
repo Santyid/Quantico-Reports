@@ -1,0 +1,25 @@
+<div class="aud-genero">
+  <h3 class="aud-genero__title">Genero</h3>
+  <div class="aud-genero__bar">
+    <div
+      class="aud-genero__segment aud-genero__segment--male"
+      [style.width.%]="masculino">
+      <span class="aud-genero__segment-label">{{ masculino }}%</span>
+    </div>
+    <div
+      class="aud-genero__segment aud-genero__segment--female"
+      [style.width.%]="femenino">
+      <span class="aud-genero__segment-label">{{ femenino }}%</span>
+    </div>
+  </div>
+  <div class="aud-genero__legend">
+    <div class="aud-genero__legend-item">
+      <span class="aud-genero__legend-dot aud-genero__legend-dot--male"></span>
+      <span class="aud-genero__legend-label">Masculino</span>
+    </div>
+    <div class="aud-genero__legend-item">
+      <span class="aud-genero__legend-dot aud-genero__legend-dot--female"></span>
+      <span class="aud-genero__legend-label">Femenino</span>
+    </div>
+  </div>
+</div>

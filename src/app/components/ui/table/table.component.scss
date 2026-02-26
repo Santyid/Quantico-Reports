@@ -1,0 +1,158 @@
+@import '../../../../styles/tokens';
+
+.app-table {
+  // ========================================
+  // Container
+  // ========================================
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: $table-gap;
+    padding: $table-padding;
+    background-color: $table-bg;
+    width: 100%;
+  }
+
+  // ========================================
+  // Title
+  // ========================================
+
+  &__title {
+    font-family: $table-title-font-family;
+    font-size: $table-title-font-size;
+    font-weight: $table-title-font-weight;
+    color: $table-title-color;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  // ========================================
+  // Table Structure
+  // ========================================
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header,
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &--header {
+      .app-table__cell {
+        font-family: $table-header-font-family;
+        font-size: $table-header-font-size;
+        font-weight: $table-header-font-weight;
+        color: $table-header-text-color;
+        letter-spacing: $table-header-letter-spacing;
+      }
+    }
+
+    &--body {
+      .app-table__cell {
+        font-family: $table-body-font-family;
+        font-size: $table-body-font-size;
+        font-weight: $table-body-font-weight;
+        color: $table-body-text-color;
+        letter-spacing: $table-body-letter-spacing;
+      }
+    }
+  }
+
+  // ========================================
+  // Cells
+  // ========================================
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    padding: $table-cell-padding;
+    min-height: $table-row-height;
+    line-height: 24px;
+    overflow: hidden;
+    gap: 16px;
+
+    &--header {
+      min-height: $table-header-height;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+  }
+
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // ========================================
+  // Bordered Variant
+  // ========================================
+
+  &--bordered {
+    .app-table__cell {
+      border-bottom: $table-border-width solid $table-border-color;
+    }
+  }
+
+  // ========================================
+  // Hoverable Variant
+  // ========================================
+
+  &--hoverable {
+    .app-table__row--body {
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        background-color: $table-row-hover-bg;
+      }
+    }
+  }
+
+  // ========================================
+  // Action Button
+  // ========================================
+
+  &__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: $table-action-icon-color;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-500;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    lucide-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

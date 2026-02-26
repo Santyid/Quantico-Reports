@@ -1,0 +1,65 @@
+<div class="kpi-group-card" [class.kpi-group-card--compact]="compact">
+  @if (title) {
+    <h3 class="kpi-group-card__title">{{ title }}</h3>
+  }
+
+  <div class="kpi-group-card__content">
+    @for (kpi of kpis; track kpi.label) {
+      <div class="kpi-group-card__item">
+        <div class="kpi-group-card__metrics">
+          <div class="kpi-group-card__value-row">
+            <span class="kpi-group-card__value">{{ kpi.value }}</span>
+            @if (kpi.change !== undefined) {
+              <div
+                class="kpi-group-card__change"
+                [class.kpi-group-card__change--positive]="isPositiveChange(kpi.change)"
+                [class.kpi-group-card__change--negative]="!isPositiveChange(kpi.change)">
+                <lucide-icon
+                  [img]="isPositiveChange(kpi.change) ? TrendingUpIcon : TrendingDownIcon"
+                  [size]="18">
+                </lucide-icon>
+                <span>{{ formatChange(kpi.change) }}</span>
+              </div>
+            }
+          </div>
+          <div class="kpi-group-card__label-row">
+            <span class="kpi-group-card__label">{{ kpi.label }}</span>
+            <lucide-icon
+              [img]="InfoIcon"
+              [size]="16"
+              class="kpi-group-card__info-icon">
+            </lucide-icon>
+          </div>
+        </div>
+
+        @if (kpi.showSparkline && kpi.sparklineData) {
+          <div class="kpi-group-card__sparkline">
+            <svg viewBox="0 0 138 50" preserveAspectRatio="none">
+              <defs>
+                <linearGradient [attr.id]="'sparklineGradient' + $index" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#9e54e2" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#9e54e2" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Area fill with gradient -->
+              <path
+                [attr.d]="getSparklineAreaPath(kpi.sparklineData)"
+                [attr.fill]="'url(#sparklineGradient' + $index + ')'"
+                stroke="none">
+              </path>
+              <!-- Line stroke -->
+              <path
+                [attr.d]="getSparklinePath(kpi.sparklineData)"
+                fill="none"
+                stroke="#9e54e2"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+              </path>
+            </svg>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,180 @@
+@import '../../../../styles/tokens';
+
+// Chip Input Design Tokens (matching text-input)
+$chip-input-bg: $white-500;
+$chip-input-border: #c3c3c3;
+$chip-input-border-focus: $primary-500;
+$chip-input-placeholder-color: $grey-300;
+$chip-input-text-color: #222222;
+$chip-input-label-color: #222222;
+$chip-input-disabled-bg: $grey-100;
+$chip-input-disabled-border: rgba(#c3c3c3, 0.5);
+$chip-input-disabled-text: rgba($grey-300, 0.5);
+
+$chip-input-font-family: 'Urbanist', sans-serif;
+$chip-input-label-font-size: 16px;
+$chip-input-label-font-size-small: 14px;
+$chip-input-font-weight: 600;
+$chip-input-border-radius: 10px;
+$chip-input-border-width: 1px;
+
+// Chip tokens
+$chip-bg: $primary-50;
+$chip-text-color: $primary-700;
+$chip-remove-color: $grey-300;
+$chip-remove-hover-color: $grey-500;
+$chip-border-radius: 6px;
+$chip-font-family: 'DM Sans', sans-serif;
+$chip-font-size: 13px;
+
+.chip-input {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__label {
+    font-family: $chip-input-font-family;
+    font-size: $chip-input-label-font-size;
+    font-weight: $chip-input-font-weight;
+    color: $chip-input-label-color;
+    line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &--small {
+      font-size: $chip-input-label-font-size-small;
+    }
+  }
+
+  &__required {
+    color: #f44336;
+    margin-left: 2px;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    background-color: $chip-input-bg;
+    border: $chip-input-border-width solid $chip-input-border;
+    border-radius: $chip-input-border-radius;
+    padding: 6px 12px;
+    transition: all 0.2s ease-in-out;
+    cursor: text;
+
+    &--small {
+      min-height: 36px;
+
+      .chip-input__input {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    &--medium {
+      min-height: 40px;
+
+      .chip-input__input {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    &--large {
+      min-height: 48px;
+
+      .chip-input__input {
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+    &--focused {
+      border-color: $chip-input-border-focus;
+      box-shadow: 0 0 0 2px rgba($primary-500, 0.2);
+    }
+
+    &--disabled {
+      background-color: $chip-input-disabled-bg;
+      border-color: $chip-input-disabled-border;
+      cursor: not-allowed;
+
+      .chip-input__input {
+        color: $chip-input-disabled-text;
+        cursor: not-allowed;
+      }
+
+      .chip-input__chip {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: $chip-bg;
+    border-radius: $chip-border-radius;
+    font-family: $chip-font-family;
+    font-size: $chip-font-size;
+    color: $chip-text-color;
+    line-height: 1;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__chip-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: $chip-remove-color;
+    transition: color 0.15s ease;
+    flex-shrink: 0;
+
+    &:hover:not(:disabled) {
+      color: $chip-remove-hover-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    lucide-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 80px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: $chip-input-font-family;
+    color: $chip-input-text-color;
+    line-height: normal;
+    padding: 0;
+
+    &::placeholder {
+      color: $chip-input-placeholder-color;
+    }
+  }
+}

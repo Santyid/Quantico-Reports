@@ -1,0 +1,207 @@
+<div class="usuarios-influyentes">
+  <!-- Overview Section: Two columns -->
+  <section class="usuarios-influyentes__section">
+    <div class="usuarios-influyentes__overview-grid">
+      <!-- Column 1: Sentiment Donut -->
+      <div class="usuarios-influyentes__card usuarios-influyentes__card--sentiment">
+        <app-pie-chart
+          [data]="sentimentData"
+          [size]="180"
+          [donut]="true"
+          [donutWidth]="30"
+          [showLegend]="false"
+          [useGradient]="true"
+          centerLabel="menciones"
+          [centerValue]="formatNumber(totalMentions)">
+        </app-pie-chart>
+        <div class="usuarios-influyentes__overview-legend">
+          @for (item of sentimentLegend; track item.label) {
+            <div class="usuarios-influyentes__overview-legend-item">
+              <span class="usuarios-influyentes__overview-legend-dot" [style.background-color]="item.color"></span>
+              <span class="usuarios-influyentes__overview-legend-label">{{ item.label }}</span>
+              <span class="usuarios-influyentes__overview-legend-value">{{ item.value }}%</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Column 2: KPIs + Insight -->
+      <div class="usuarios-influyentes__right-column">
+        <!-- Card: 3 KPIs -->
+        <div class="usuarios-influyentes__card">
+          <h3 class="usuarios-influyentes__card-title">Métricas de Influencia</h3>
+          <div class="usuarios-influyentes__kpis-row">
+            <!-- KPI: Usuarios con influencia (Alta) -->
+            <div class="usuarios-influyentes__kpi-block">
+              <div class="usuarios-influyentes__kpi-value-row">
+                <span class="usuarios-influyentes__kpi-value">{{ influenciaAlta }}</span>
+                <div class="usuarios-influyentes__kpi-change usuarios-influyentes__kpi-change--positive">
+                  <lucide-icon [img]="TrendingUpIcon" [size]="18" [strokeWidth]="2"></lucide-icon>
+                  <span>+8%</span>
+                </div>
+              </div>
+              <div class="usuarios-influyentes__kpi-label-row">
+                <span class="usuarios-influyentes__kpi-label">Usuarios con influencia (Alta)</span>
+                <lucide-icon [img]="InfoIcon" [size]="16" class="usuarios-influyentes__kpi-info-icon"></lucide-icon>
+              </div>
+            </div>
+
+            <!-- KPI: Usuarios con influencia (Media) -->
+            <div class="usuarios-influyentes__kpi-block">
+              <div class="usuarios-influyentes__kpi-value-row">
+                <span class="usuarios-influyentes__kpi-value">{{ influenciaMedia }}</span>
+                <div class="usuarios-influyentes__kpi-change usuarios-influyentes__kpi-change--positive">
+                  <lucide-icon [img]="TrendingUpIcon" [size]="18" [strokeWidth]="2"></lucide-icon>
+                  <span>+12%</span>
+                </div>
+              </div>
+              <div class="usuarios-influyentes__kpi-label-row">
+                <span class="usuarios-influyentes__kpi-label">Usuarios con influencia (Media)</span>
+                <lucide-icon [img]="InfoIcon" [size]="16" class="usuarios-influyentes__kpi-info-icon"></lucide-icon>
+              </div>
+            </div>
+
+            <!-- KPI: Audiencia Potencial -->
+            <div class="usuarios-influyentes__kpi-block">
+              <div class="usuarios-influyentes__kpi-value-row">
+                <span class="usuarios-influyentes__kpi-value">{{ formatNumber(audienciaPotencial) }}</span>
+                <div class="usuarios-influyentes__kpi-change usuarios-influyentes__kpi-change--positive">
+                  <lucide-icon [img]="TrendingUpIcon" [size]="18" [strokeWidth]="2"></lucide-icon>
+                  <span>+15%</span>
+                </div>
+              </div>
+              <div class="usuarios-influyentes__kpi-label-row">
+                <span class="usuarios-influyentes__kpi-label">Audiencia Potencial</span>
+                <lucide-icon [img]="InfoIcon" [size]="16" class="usuarios-influyentes__kpi-info-icon"></lucide-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insight Card -->
+        <app-insight-card
+          title="Análisis de Usuarios Influyentes"
+          [content]="insightText"
+          variant="highlight">
+        </app-insight-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Users Section -->
+  <section class="usuarios-influyentes__section">
+    <div class="usuarios-influyentes__users-grid">
+      <!-- Usuarios Promotores -->
+      <div class="usuarios-influyentes__card">
+        <h3 class="usuarios-influyentes__card-title">Usuarios promotores</h3>
+        <div class="usuarios-influyentes__bars-list">
+          @for (user of usuariosPromotores; track user.name) {
+            <div class="usuarios-influyentes__bar-row">
+              <div class="usuarios-influyentes__bar-header">
+                <div class="usuarios-influyentes__bar-label">
+                  <div class="usuarios-influyentes__bar-platform">
+                    <img src="images/x-twitter-icon.svg" alt="X" width="14" height="14">
+                  </div>
+                  <img [src]="user.avatar" [alt]="user.name" class="usuarios-influyentes__bar-avatar">
+                  <span class="usuarios-influyentes__bar-name">{{ user.name }}</span>
+                </div>
+                <span class="usuarios-influyentes__bar-value">{{ user.count }}</span>
+              </div>
+              <div class="usuarios-influyentes__bar-track">
+                <div class="usuarios-influyentes__bar-fill usuarios-influyentes__bar-fill--promoter" [style.width]="getBarWidth(user.count, 'promoter')"></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Usuarios Detractores -->
+      <div class="usuarios-influyentes__card">
+        <h3 class="usuarios-influyentes__card-title">Usuarios detractores</h3>
+        <div class="usuarios-influyentes__bars-list">
+          @for (user of usuariosDetractores; track user.name) {
+            <div class="usuarios-influyentes__bar-row">
+              <div class="usuarios-influyentes__bar-header">
+                <div class="usuarios-influyentes__bar-label">
+                  <div class="usuarios-influyentes__bar-platform">
+                    <img src="images/x-twitter-icon.svg" alt="X" width="14" height="14">
+                  </div>
+                  <img [src]="user.avatar" [alt]="user.name" class="usuarios-influyentes__bar-avatar">
+                  <span class="usuarios-influyentes__bar-name">{{ user.name }}</span>
+                </div>
+                <span class="usuarios-influyentes__bar-value">{{ user.count }}</span>
+              </div>
+              <div class="usuarios-influyentes__bar-track">
+                <div class="usuarios-influyentes__bar-fill usuarios-influyentes__bar-fill--detractor" [style.width]="getBarWidth(user.count, 'detractor')"></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Publications Section -->
+  <section class="usuarios-influyentes__section">
+    <div class="usuarios-influyentes__card">
+      <h3 class="usuarios-influyentes__card-title">Publicaciones con mayor conversación</h3>
+      <div class="usuarios-influyentes__top-posts">
+        @for (pub of topPublications; track pub.position) {
+          <div class="usuarios-influyentes__post-row">
+            <!-- Thumbnail with position badge -->
+            <div class="usuarios-influyentes__post-thumbnail">
+              <img [src]="pub.imageUrl" [alt]="pub.title" class="usuarios-influyentes__post-image">
+              <span class="usuarios-influyentes__post-position">{{ pub.position }}</span>
+            </div>
+
+            <!-- Post content -->
+            <div class="usuarios-influyentes__post-content">
+              <!-- Header: User info + Date + Metrics -->
+              <div class="usuarios-influyentes__post-header">
+                <div class="usuarios-influyentes__post-user">
+                  <img [src]="pub.avatar" [alt]="pub.username" class="usuarios-influyentes__post-avatar">
+                  <span class="usuarios-influyentes__post-username">{{ pub.username }}</span>
+                  <span class="usuarios-influyentes__post-date">{{ pub.date }}</span>
+                </div>
+                <div class="usuarios-influyentes__post-metrics">
+                  <div class="usuarios-influyentes__post-metric">
+                    <lucide-icon [img]="BookmarkIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                    <span>{{ pub.metrics.bookmarks }}</span>
+                  </div>
+                  <div class="usuarios-influyentes__post-metric">
+                    <lucide-icon [img]="Share2Icon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                    <span>{{ pub.metrics.shares }}</span>
+                  </div>
+                  <div class="usuarios-influyentes__post-metric">
+                    <lucide-icon [img]="MessageCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                    <span>{{ pub.metrics.comments }}</span>
+                  </div>
+                  <div class="usuarios-influyentes__post-metric">
+                    <lucide-icon [img]="ThumbsUpIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                    <span>{{ pub.metrics.likes }}</span>
+                  </div>
+                  <div class="usuarios-influyentes__post-metric">
+                    <lucide-icon [img]="ZapIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                    <span>{{ pub.metrics.engagement }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h4 class="usuarios-influyentes__post-title">{{ pub.title }}</h4>
+
+              <!-- Analysis box -->
+              <div class="usuarios-influyentes__post-analysis">
+                <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5" class="usuarios-influyentes__post-analysis-icon"></lucide-icon>
+                <p class="usuarios-influyentes__post-analysis-text">
+                  <span class="usuarios-influyentes__post-analysis-label">Análisis:</span>
+                  {{ pub.analysis }}
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</div>

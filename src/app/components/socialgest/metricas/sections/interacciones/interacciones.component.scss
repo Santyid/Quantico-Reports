@@ -1,0 +1,128 @@
+@import '../../../../../../styles/tokens';
+
+.interacciones {
+  background: $white-500;
+  border: 1px solid #dae1ed;
+  border-radius: 16px;
+  padding: 32px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0;
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__header-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-800;
+  }
+
+  &__header-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-300;
+  }
+
+  &__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: $grey-300;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: $grey-500;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__bar {
+    display: flex;
+    height: 14px;
+    border-radius: 10px;
+    overflow: hidden;
+    gap: 2px;
+  }
+
+  &__bar-segment {
+    height: 100%;
+    transition: width 0.3s ease;
+
+    &:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+
+    &:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+  }
+
+  &__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__legend-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: $grey-500;
+    white-space: nowrap;
+  }
+
+  &__legend-info {
+    flex-shrink: 0;
+    color: $grey-300;
+    cursor: pointer;
+  }
+
+  &__legend-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: $grey-800;
+    white-space: nowrap;
+  }
+}

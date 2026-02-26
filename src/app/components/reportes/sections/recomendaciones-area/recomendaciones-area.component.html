@@ -1,0 +1,80 @@
+<div class="recomendaciones-area">
+  <!-- SVG Gradient Definitions -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="icon-gradient-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff9a56"/>
+        <stop offset="100%" stop-color="#ff6b35"/>
+      </linearGradient>
+      <linearGradient id="icon-gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#5495fe"/>
+        <stop offset="100%" stop-color="#0061fe"/>
+      </linearGradient>
+      <linearGradient id="icon-gradient-green" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4ade80"/>
+        <stop offset="100%" stop-color="#22c55e"/>
+      </linearGradient>
+      <linearGradient id="icon-gradient-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#a78bfa"/>
+        <stop offset="100%" stop-color="#8b5cf6"/>
+      </linearGradient>
+      <linearGradient id="icon-gradient-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#5eead4"/>
+        <stop offset="100%" stop-color="#14b8a6"/>
+      </linearGradient>
+      <linearGradient id="insight-sparkles-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#5495fe"/>
+        <stop offset="100%" stop-color="#0061fe"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Department Cards Grid -->
+  <section class="recomendaciones-area__section">
+    <div class="recomendaciones-area__grid">
+      @for (dept of departments; track dept.department) {
+        <div class="recomendaciones-area__card">
+          <!-- Card Header -->
+          <div class="recomendaciones-area__card-header">
+            <div class="recomendaciones-area__icon-badge recomendaciones-area__icon-badge--{{ dept.iconColor }}">
+              <lucide-icon [img]="dept.icon" [size]="20"></lucide-icon>
+            </div>
+            <div class="recomendaciones-area__card-titles">
+              <h3 class="recomendaciones-area__card-title">{{ dept.department }}</h3>
+              <p class="recomendaciones-area__card-subtitle">{{ dept.subtitle }}</p>
+            </div>
+          </div>
+
+          <!-- AI Insight Box with Actions -->
+          <div class="recomendaciones-area__insight-box">
+            <div class="recomendaciones-area__insight-icon">
+              <lucide-icon [img]="SparklesIcon" [size]="16"></lucide-icon>
+            </div>
+            <ul class="recomendaciones-area__actions">
+              @for (action of dept.actions; track action) {
+                <li class="recomendaciones-area__action">{{ action }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Final Strategic Insight - AI Prediction Style -->
+  <section class="recomendaciones-area__section">
+    <div class="recomendaciones-area__prediction-section">
+      <div class="recomendaciones-area__prediction-header">
+        <lucide-icon [img]="SparklesIcon" [size]="20"></lucide-icon>
+        <h3 class="recomendaciones-area__prediction-title">Predicción de la IA</h3>
+      </div>
+      <div class="recomendaciones-area__prediction-card">
+        <div class="recomendaciones-area__confidence-badge">
+          <span class="recomendaciones-area__confidence-dot"></span>
+          <span class="recomendaciones-area__confidence-text">Alta confianza</span>
+        </div>
+        <p class="recomendaciones-area__prediction-text">{{ finalInsight }}</p>
+      </div>
+    </div>
+  </section>
+</div>

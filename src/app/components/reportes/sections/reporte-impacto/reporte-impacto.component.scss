@@ -1,0 +1,499 @@
+@import '../../../../../styles/tokens';
+
+.reporte-impacto {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 0;
+
+  // ===================================
+  // Header
+  // ===================================
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #F5F7FA;
+    border-radius: 50%;
+    color: $primary-500;
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  &__date-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid #dae1ed;
+    border-radius: 10px;
+  }
+
+  &__date-range-icon {
+    color: $grey-400;
+  }
+
+  &__date-input {
+    border: none;
+    outline: none;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+    cursor: pointer;
+
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
+  }
+
+  // ===================================
+  // KPIs Section
+  // ===================================
+  &__kpis {
+    // Container for kpi-group-card component
+  }
+
+  // ===================================
+  // Charts Grid
+  // ===================================
+  &__charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  &__chart-card {
+    background: white;
+    border: 1px solid #dae1ed;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__chart-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  // ===================================
+  // Section
+  // ===================================
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  // ===================================
+  // Topics
+  // ===================================
+  &__topics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__topic-card {
+    background: white;
+    border: 1px solid #dae1ed;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__topic-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__topic-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0;
+  }
+
+  &__topic-mentions {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: $grey-400;
+  }
+
+  &__topic-sentiment {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__topic-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+
+    &--negative {
+      background: rgba(#f61a4a, 0.1);
+      color: #c91437;
+    }
+
+    &--neutral {
+      background: rgba(#a8d5e5, 0.2);
+      color: #4a7d8f;
+    }
+  }
+
+  // ===================================
+  // Featured Post
+  // ===================================
+  &__featured-post {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background: #f9fafb;
+    border: 1px solid #eef1f5;
+    border-radius: 12px;
+  }
+
+  &__post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__post-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $primary-500;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__post-user {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+  }
+
+  &__post-username {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #262626;
+  }
+
+  &__post-handle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: $grey-400;
+  }
+
+  &__post-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: $grey-400;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: $grey-600;
+    }
+  }
+
+  &__post-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #262626;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &__post-stats {
+    display: flex;
+    gap: 20px;
+    padding-top: 8px;
+    border-top: 1px solid #eef1f5;
+  }
+
+  &__post-stat {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-500;
+  }
+
+  // ===================================
+  // Bottom Grid
+  // ===================================
+  &__bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  &__card {
+    background: white;
+    border: 1px solid #dae1ed;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 24px 0;
+  }
+
+  // ===================================
+  // User List
+  // ===================================
+  &__user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__user-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+  }
+
+  &__user-rank {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: $primary-500;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__user-username {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #262626;
+  }
+
+  &__user-handle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-400;
+  }
+
+  // ===================================
+  // Risk List
+  // ===================================
+  &__risk-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__risk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+  }
+
+  &__risk-icon--high {
+    color: #f61a4a;
+  }
+
+  &__risk-icon--medium {
+    color: #f4b137;
+  }
+
+  &__risk-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+  }
+
+  &__risk-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #262626;
+  }
+
+  &__risk-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-500;
+  }
+
+  // ===================================
+  // Executive Insight
+  // ===================================
+  &__executive {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+    border-radius: 16px;
+    background: linear-gradient(-80deg, rgb(247, 235, 255) 1%, rgb(255, 255, 255) 36%, rgb(255, 253, 252) 42%, rgb(237, 244, 255) 99%);
+  }
+
+  &__executive-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $primary-500;
+  }
+
+  &__executive-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(5deg, $primary-500 3%, #00aaff 106%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__executive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  &__executive-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 2px 5px 27px 0px rgba(0, 0, 0, 0.05);
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__executive-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $grey-500;
+  }
+
+  &__executive-card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: $grey-500;
+    margin: 0;
+  }
+
+  &__executive-card-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: $grey-500;
+    margin: 0;
+  }
+
+  &__executive-risk-badge {
+    align-self: flex-start;
+  }
+}
+
+// Responsive
+@media (max-width: 1200px) {
+  .reporte-impacto {
+    &__topics {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .reporte-impacto {
+    &__charts,
+    &__topics,
+    &__bottom-grid,
+    &__executive-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<div class="vistas-pub">
+  <div class="vistas-pub__header">
+    <h3 class="vistas-pub__title">Vistas en publicaciones</h3>
+    <div class="vistas-pub__total">
+      <span class="vistas-pub__total-value">{{ total }}</span>
+      <span class="vistas-pub__total-label">total</span>
+    </div>
+  </div>
+  <div class="vistas-pub__content">
+    <div class="vistas-pub__chart">
+      <svg viewBox="0 0 140 140" class="vistas-pub__donut">
+        @for (segment of getDonutSegments(); track $index) {
+          <circle
+            cx="70" cy="70" r="52"
+            fill="none"
+            [attr.stroke]="segment.color"
+            stroke-width="16"
+            [attr.stroke-dasharray]="segment.dash"
+            [attr.stroke-dashoffset]="segment.offset"
+          />
+        }
+      </svg>
+    </div>
+    <div class="vistas-pub__legend">
+      @for (cat of categories; track cat.label) {
+        <div class="vistas-pub__legend-item">
+          <span class="vistas-pub__legend-dot" [style.background]="cat.color"></span>
+          <span class="vistas-pub__legend-label">{{ cat.label }}</span>
+          <span class="vistas-pub__legend-value">{{ cat.value }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

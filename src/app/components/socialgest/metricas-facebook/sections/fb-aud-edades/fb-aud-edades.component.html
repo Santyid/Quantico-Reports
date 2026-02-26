@@ -1,0 +1,21 @@
+<div class="fb-aud-edades">
+  <h3 class="fb-aud-edades__title">Rangos de edad</h3>
+  <div class="fb-aud-edades__bar">
+    @for (range of ranges; track range.label) {
+      <div
+        class="fb-aud-edades__segment"
+        [style.width.%]="range.percentage"
+        [style.background]="range.gradient">
+        <span class="fb-aud-edades__segment-label">{{ range.percentage }}%</span>
+      </div>
+    }
+  </div>
+  <div class="fb-aud-edades__legend">
+    @for (range of ranges; track range.label) {
+      <div class="fb-aud-edades__legend-item">
+        <span class="fb-aud-edades__legend-dot" [style.background]="range.color"></span>
+        <span class="fb-aud-edades__legend-label">{{ range.label }}</span>
+      </div>
+    }
+  </div>
+</div>

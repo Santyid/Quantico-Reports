@@ -1,0 +1,123 @@
+<nav class="sg-navbar">
+  <div class="sg-navbar__container">
+    <div class="sg-navbar__platform-selector">
+      <button
+        class="sg-navbar__platform-toggle"
+        (click)="togglePlatformDropdown()"
+        aria-label="Cambiar plataforma"
+        [attr.aria-expanded]="platformDropdownOpen">
+        <div class="sg-navbar__platform-current">
+          @if (selectedPlatform.icon === 'socialgest') {
+            <div class="sg-navbar__logo-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#0061fe"/>
+                <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="sg-navbar__logo-text">SocialGest</span>
+          } @else {
+            <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="sg-navbar__platform-img" />
+          }
+        </div>
+        <lucide-icon
+          [img]="ChevronDownIcon"
+          [size]="16"
+          [strokeWidth]="2"
+          class="sg-navbar__platform-chevron"
+          [class.sg-navbar__platform-chevron--open]="platformDropdownOpen">
+        </lucide-icon>
+      </button>
+
+      @if (platformDropdownOpen) {
+        <div class="sg-navbar__platform-dropdown">
+          @for (platform of platforms; track platform.id) {
+            <button
+              class="sg-navbar__platform-option"
+              [class.sg-navbar__platform-option--active]="platform.id === selectedPlatform.id"
+              (click)="selectPlatform(platform)">
+              @if (platform.icon === 'socialgest') {
+                <div class="sg-navbar__logo-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" fill="#0061fe"/>
+                    <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              } @else {
+                <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="sg-navbar__platform-option-img" />
+              }
+              <span class="sg-navbar__platform-option-text">{{ platform.name }}</span>
+            </button>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="sg-navbar__nav">
+      @for (item of navItems; track item.label) {
+        @if (item.children) {
+          <div
+            class="sg-navbar__nav-dropdown"
+            (mouseenter)="openDropdown = item.label"
+            (mouseleave)="closeDropdown()">
+            <button
+              class="sg-navbar__nav-link sg-navbar__nav-link--dropdown"
+              [class.sg-navbar__nav-link--active]="openDropdown === item.label">
+              <span>{{ item.label }}</span>
+              <lucide-icon
+                [img]="ChevronDownIcon"
+                [size]="14"
+                [strokeWidth]="2"
+                class="sg-navbar__nav-chevron"
+                [class.sg-navbar__nav-chevron--open]="openDropdown === item.label">
+              </lucide-icon>
+            </button>
+            @if (openDropdown === item.label) {
+              <div class="sg-navbar__dropdown">
+                @for (child of item.children; track child.path) {
+                  <a
+                    [routerLink]="child.path"
+                    routerLinkActive="sg-navbar__dropdown-link--active"
+                    class="sg-navbar__dropdown-link">
+                    {{ child.label }}
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        } @else {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="sg-navbar__nav-link--active"
+            class="sg-navbar__nav-link">
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      }
+    </div>
+
+    <div class="sg-navbar__right">
+      <app-button variant="primary" size="medium">
+        Crear publicacion
+      </app-button>
+
+      <button class="sg-navbar__icon-btn" aria-label="Notificaciones">
+        <lucide-icon [img]="BellIcon" [size]="22" [strokeWidth]="1.5" color="#222222"></lucide-icon>
+        <span class="sg-navbar__notification-badge">2</span>
+      </button>
+
+      <button class="sg-navbar__icon-btn" aria-label="Ayuda">
+        <lucide-icon [img]="HelpIcon" [size]="22" [strokeWidth]="1.5" color="#222222"></lucide-icon>
+      </button>
+
+      <button class="sg-navbar__language-btn" aria-label="Cambiar idioma">
+        <span class="sg-navbar__language-text">ES</span>
+      </button>
+
+      <button class="sg-navbar__avatar-btn" aria-label="Perfil de usuario">
+        <div class="sg-navbar__avatar-placeholder">
+          <lucide-icon [img]="UserIcon" [size]="24" color="#c3c3c3" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>

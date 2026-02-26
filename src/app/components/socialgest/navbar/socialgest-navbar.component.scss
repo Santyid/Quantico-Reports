@@ -1,0 +1,348 @@
+@import '../../../../styles/tokens';
+
+$sg-navbar-height: 80px;
+$sg-navbar-border-color: #ececec;
+$sg-navbar-font-family: 'Urbanist', sans-serif;
+
+.sg-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: $white-500;
+  border-bottom: 1px solid $sg-navbar-border-color;
+  padding: .7rem 0;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 32px;
+    gap: 48px;
+  }
+
+  &__platform-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__platform-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba($primary-500, 0.04);
+      border-color: #ececec;
+    }
+  }
+
+  &__platform-current {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__platform-img {
+    height: 26px;
+    width: auto;
+  }
+
+  &__platform-chevron {
+    color: $grey-300;
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__platform-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 220px;
+    background: $white-500;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  &__platform-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: rgba($primary-500, 0.06);
+    }
+
+    &--active {
+      background: rgba($primary-500, 0.08);
+    }
+  }
+
+  &__platform-option-img {
+    height: 20px;
+    width: auto;
+  }
+
+  &__platform-option-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: $grey-800;
+  }
+
+  &__logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__logo-text {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: $primary-500;
+    white-space: nowrap;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+    height: 100%;
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    padding: 0 4px;
+    text-decoration: none;
+    font-family: $sg-navbar-font-family;
+    font-size: 15px;
+    font-weight: 600;
+    color: $grey-400;
+    transition: color 0.2s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-500;
+    }
+
+    &--active {
+      color: $primary-500;
+    }
+
+    &--dropdown {
+      position: relative;
+    }
+  }
+
+  &__nav-chevron {
+    margin-top: 2px;
+    transition: transform 0.2s ease;
+    color: currentColor;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__nav-dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 200px;
+    background: $white-500;
+    border: 1px solid $sg-navbar-border-color;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 8px 0;
+    z-index: 1001;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+    }
+  }
+
+  &__dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    font-family: $sg-navbar-font-family;
+    font-size: 14px;
+    font-weight: 600;
+    color: $grey-400;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba($primary-500, 0.05);
+      color: $primary-500;
+    }
+
+    &--active {
+      color: $primary-500;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  &__icon-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background-color: #ff4444;
+    border-radius: 50%;
+    font-family: $sg-navbar-font-family;
+    font-size: 10px;
+    font-weight: 700;
+    color: $white-500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  &__language-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__language-text {
+    font-family: $sg-navbar-font-family;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222222;
+  }
+
+  &__avatar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ececec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sg-navbar {
+    &__nav {
+      gap: 20px;
+    }
+
+    &__right {
+      gap: 12px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .sg-navbar {
+    &__container {
+      gap: 20px;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__right {
+      gap: 12px;
+    }
+  }
+}

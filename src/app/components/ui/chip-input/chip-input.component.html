@@ -1,0 +1,36 @@
+<div class="chip-input__wrapper">
+  @if (label) {
+    <label class="chip-input__label" [class.chip-input__label--small]="size === 'small'">
+      {{ label }}
+      @if (required) {
+        <span class="chip-input__required">*</span>
+      }
+    </label>
+  }
+
+  <div [class]="containerClasses.join(' ')" (click)="chipInputRef.focus()">
+    @for (chip of chips; track chip; let i = $index) {
+      <span class="chip-input__chip">
+        {{ chip }}
+        <button
+          type="button"
+          class="chip-input__chip-remove"
+          (click)="removeChip(i); $event.stopPropagation()"
+          [disabled]="disabled"
+          [attr.aria-label]="'Eliminar ' + chip">
+          <lucide-icon [img]="XIcon" [size]="12" [strokeWidth]="2"></lucide-icon>
+        </button>
+      </span>
+    }
+    <input
+      #chipInputRef
+      class="chip-input__input"
+      [placeholder]="chips.length === 0 ? placeholder : ''"
+      [(ngModel)]="inputValue"
+      [disabled]="disabled"
+      (keydown.enter)="addChip($event)"
+      (keydown.backspace)="onBackspace()"
+      (focus)="onFocus()"
+      (blur)="onBlur()" />
+  </div>
+</div>

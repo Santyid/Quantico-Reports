@@ -1,0 +1,34 @@
+<div class="performance-plataforma">
+  @for (platform of platformKpis; track platform.platform) {
+    <div class="performance-plataforma__platform-card">
+      <!-- KPIs row with platform info inline -->
+      <div class="performance-plataforma__kpis-row">
+        <div class="performance-plataforma__platform-info">
+          <img [src]="platform.icon" [alt]="platform.platform" class="performance-plataforma__platform-icon">
+          <span class="performance-plataforma__platform-name">{{ platform.platform }}</span>
+        </div>
+        <div class="performance-plataforma__kpi-item">
+          <span class="performance-plataforma__kpi-value">{{ platform.mentionsPercentage }}%</span>
+          <span class="performance-plataforma__kpi-label">Del total de menciones</span>
+        </div>
+        <div class="performance-plataforma__kpi-item">
+          <span class="performance-plataforma__kpi-value">{{ formatNumber(platform.mentions) }}</span>
+          <span class="performance-plataforma__kpi-label">Menciones</span>
+        </div>
+        <div class="performance-plataforma__kpi-item">
+          <span class="performance-plataforma__kpi-value">{{ platform.engagementRate }}%</span>
+          <span class="performance-plataforma__kpi-label">Engagement Rate</span>
+        </div>
+        <div class="performance-plataforma__kpi-item">
+          <span class="performance-plataforma__kpi-value">{{ platform.sentiment }}</span>
+          <span class="performance-plataforma__kpi-label">Sentiment</span>
+        </div>
+      </div>
+
+      <!-- Best post -->
+      <div class="performance-plataforma__best-post">
+        <app-post-highlight [post]="platform.bestPost"></app-post-highlight>
+      </div>
+    </div>
+  }
+</div>

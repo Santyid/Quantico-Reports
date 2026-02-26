@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Import design tokens
+@import 'styles/tokens';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}

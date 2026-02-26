@@ -1,0 +1,17 @@
+<div class="pie-chart">
+  @if (chartOptions.series) {
+    <apx-chart
+      #chart
+      [series]="chartOptions.series!"
+      [chart]="chartOptions.chart!"
+      [labels]="chartOptions.labels!"
+      [dataLabels]="chartOptions.dataLabels!"
+      [legend]="chartOptions.legend!"
+      [tooltip]="chartOptions.tooltip!"
+      [colors]="chartOptions.colors!"
+      [plotOptions]="chartOptions.plotOptions!"
+      [responsive]="chartOptions.responsive!"
+      [fill]="chartOptions.fill!">
+    </apx-chart>
+  }
+</div>

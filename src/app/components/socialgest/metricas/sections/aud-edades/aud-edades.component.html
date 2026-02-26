@@ -1,0 +1,21 @@
+<div class="aud-edades">
+  <h3 class="aud-edades__title">Rangos de edad</h3>
+  <div class="aud-edades__bar">
+    @for (range of ranges; track range.label) {
+      <div
+        class="aud-edades__segment"
+        [style.width.%]="range.percentage"
+        [style.background]="range.gradient">
+        <span class="aud-edades__segment-label">{{ range.percentage }}%</span>
+      </div>
+    }
+  </div>
+  <div class="aud-edades__legend">
+    @for (range of ranges; track range.label) {
+      <div class="aud-edades__legend-item">
+        <span class="aud-edades__legend-dot" [style.background]="range.color"></span>
+        <span class="aud-edades__legend-label">{{ range.label }}</span>
+      </div>
+    }
+  </div>
+</div>

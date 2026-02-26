@@ -1,0 +1,73 @@
+@import '../../../../styles/tokens';
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $status-badge-gap;
+
+  height: $status-badge-height;
+  padding: $status-badge-padding;
+
+  background-color: white;
+  border: $status-badge-border-width solid $status-badge-border;
+  border-radius: $status-badge-border-radius;
+
+  // ========================================
+  // Dot Indicator
+  // ========================================
+
+  &__dot {
+    width: $status-badge-dot-size;
+    height: $status-badge-dot-size;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  // ========================================
+  // Label
+  // ========================================
+
+  &__label {
+    font-family: $status-badge-font-family;
+    font-size: $status-badge-font-size;
+    font-weight: $status-badge-font-weight;
+    color: $status-badge-text-color;
+    white-space: nowrap;
+    line-height: normal;
+  }
+
+  // ========================================
+  // Variants
+  // ========================================
+
+  &--success {
+    .status-badge__dot {
+      background-color: $status-success;
+    }
+  }
+
+  &--warning {
+    .status-badge__dot {
+      background-color: $status-warning;
+    }
+  }
+
+  &--error {
+    .status-badge__dot {
+      background-color: $status-error;
+    }
+  }
+
+  &--info {
+    .status-badge__dot {
+      background-color: $status-info;
+    }
+  }
+
+  &--neutral {
+    .status-badge__dot {
+      background-color: $status-neutral;
+    }
+  }
+}

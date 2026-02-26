@@ -1,0 +1,94 @@
+@import '../../../../../styles/tokens';
+
+.performance-plataforma {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  // Platform card
+  &__platform-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  // Platform info (inline in kpis row)
+  &__platform-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+    padding-right: 32px;
+    border-right: 1px solid $grey-50;
+  }
+
+  &__platform-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  &__platform-name {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    white-space: nowrap;
+  }
+
+  // KPIs row - platform info + KPIs in same row
+  &__kpis-row {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 24px;
+  }
+
+  &__kpi-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  &__kpi-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #2b2b2b;
+    letter-spacing: -0.48px;
+  }
+
+  &__kpi-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #262626;
+  }
+
+  // Best post section
+  &__best-post {
+    padding-top: 24px;
+    border-top: 1px solid $grey-50;
+  }
+}
+
+@media (max-width: 768px) {
+  .performance-plataforma {
+    &__platform-card {
+      padding: 24px;
+    }
+
+    &__kpis-row {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    &__kpi-value {
+      font-size: 20px;
+    }
+  }
+}

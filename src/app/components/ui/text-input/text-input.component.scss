@@ -1,0 +1,240 @@
+@import '../../../../styles/tokens';
+
+// Text Input Design Tokens (from Figma)
+$text-input-bg: $white-500;
+$text-input-border: #c3c3c3;
+$text-input-border-focus: $primary-500;
+$text-input-border-error: #f44336;
+$text-input-placeholder-color: $grey-300;
+$text-input-text-color: #222222;
+$text-input-label-color: #222222;
+$text-input-icon-color: $grey-300;
+$text-input-disabled-bg: $grey-100;
+$text-input-disabled-border: rgba(#c3c3c3, 0.5);
+$text-input-disabled-text: rgba($grey-300, 0.5);
+
+// Heights (from Figma)
+$text-input-height-small: 36px;
+$text-input-height-medium: 40px;
+$text-input-height-large: 48px;
+
+// Typography (from Figma)
+$text-input-font-family: 'Urbanist', sans-serif;
+$text-input-font-size-small: 14px;
+$text-input-font-size-medium: 16px;
+$text-input-font-size-large: 18px;
+$text-input-label-font-size: 16px;
+$text-input-label-font-size-small: 14px;
+$text-input-font-weight: 600; // SemiBold for labels
+$text-input-font-weight-field-large: 500; // Medium for Large input
+$text-input-font-weight-field-medium: 500; // Medium for Medium input
+$text-input-font-weight-field-small: 400; // Regular for Small input
+
+// Spacing (from Figma)
+$text-input-padding-x: 16px;
+$text-input-padding-y: 10px;
+$text-input-gap: 8px;
+$text-input-border-radius: 10px;
+$text-input-border-width: 1px;
+
+// Icon sizes (from Figma)
+$text-input-icon-size-large: 20px;
+$text-input-icon-size-medium: 20px;
+$text-input-icon-size-small: 16px;
+
+.app-text-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  background-color: $text-input-bg;
+  border: $text-input-border-width solid $text-input-border;
+  border-radius: $text-input-border-radius;
+  padding: $text-input-padding-y $text-input-padding-x;
+
+  font-family: $text-input-font-family;
+
+  transition: all 0.2s ease-in-out;
+  outline: none;
+
+  // Size Variants
+  &--small {
+    height: $text-input-height-small;
+
+    .app-text-input__field {
+      font-size: $text-input-font-size-small;
+      font-weight: $text-input-font-weight-field-small;
+    }
+  }
+
+  &--medium {
+    height: $text-input-height-medium;
+
+    .app-text-input__field {
+      font-size: $text-input-font-size-medium;
+      font-weight: $text-input-font-weight-field-medium;
+    }
+  }
+
+  &--large {
+    height: $text-input-height-large;
+
+    .app-text-input__field {
+      font-size: $text-input-font-size-large;
+      font-weight: $text-input-font-weight-field-large;
+    }
+  }
+
+  // States
+  &--focused {
+    border-color: $text-input-border-focus;
+    box-shadow: 0 0 0 2px rgba($primary-500, 0.2);
+  }
+
+  &--error {
+    border-color: $text-input-border-error;
+
+    &.app-text-input--focused {
+      box-shadow: 0 0 0 2px rgba($text-input-border-error, 0.2);
+    }
+  }
+
+  &--disabled {
+    background-color: $text-input-disabled-bg;
+    border-color: $text-input-disabled-border;
+    cursor: not-allowed;
+
+    .app-text-input__field {
+      color: $text-input-disabled-text;
+      cursor: not-allowed;
+    }
+
+    .app-text-input__icon {
+      color: $text-input-disabled-text;
+    }
+  }
+
+  &--has-value {
+    .app-text-input__field {
+      color: $text-input-text-color;
+    }
+  }
+
+  // Wrapper
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $text-input-gap;
+    width: 100%;
+    min-width: 0; // Allow shrinking in grid/flex containers
+  }
+
+  // Label
+  &__label {
+    font-family: $text-input-font-family;
+    font-size: $text-input-label-font-size;
+    font-weight: $text-input-font-weight;
+    color: $text-input-label-color;
+    line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &--small {
+      font-size: $text-input-label-font-size-small;
+    }
+  }
+
+  &__required {
+    color: $text-input-border-error;
+    margin-left: 2px;
+  }
+
+  // Icon (shared styles)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: $text-input-icon-color;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
+      color: $text-input-text-color;
+    }
+
+    &--left {
+      margin-right: $text-input-gap;
+    }
+
+    &--right {
+      margin-left: $text-input-gap;
+    }
+  }
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Input field
+  &__field {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-family: inherit;
+    color: $text-input-text-color;
+    line-height: normal;
+
+    &::placeholder {
+      color: $text-input-placeholder-color;
+    }
+
+    // Remove number input spinners
+    &[type="number"] {
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    // Style date input
+    &[type="date"] {
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // Error message
+  &__error {
+    font-family: $text-input-font-family;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-input-border-error;
+    margin-top: -4px;
+  }
+}

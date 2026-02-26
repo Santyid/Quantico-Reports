@@ -1,0 +1,34 @@
+<div class="fb-pub-tipos">
+  <div class="fb-pub-tipos__header">
+    <h3 class="fb-pub-tipos__title">Publicaciones</h3>
+    <div class="fb-pub-tipos__total">
+      <span class="fb-pub-tipos__total-value">{{ total }}</span>
+      <span class="fb-pub-tipos__total-label">total</span>
+    </div>
+  </div>
+  <div class="fb-pub-tipos__content">
+    <div class="fb-pub-tipos__chart">
+      <svg viewBox="0 0 180 180" class="fb-pub-tipos__donut">
+        @for (segment of getDonutSegments(); track $index) {
+          <circle
+            cx="90" cy="90" r="70"
+            fill="none"
+            [attr.stroke]="segment.color"
+            stroke-width="16"
+            [attr.stroke-dasharray]="segment.dash"
+            [attr.stroke-dashoffset]="segment.offset"
+          />
+        }
+      </svg>
+    </div>
+    <div class="fb-pub-tipos__legend">
+      @for (cat of categories; track cat.label) {
+        <div class="fb-pub-tipos__legend-item">
+          <span class="fb-pub-tipos__legend-dot" [style.background]="cat.color"></span>
+          <span class="fb-pub-tipos__legend-label">{{ cat.label }}</span>
+          <span class="fb-pub-tipos__legend-value">{{ cat.value }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

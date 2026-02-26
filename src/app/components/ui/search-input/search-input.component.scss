@@ -1,0 +1,188 @@
+@import '../../../../styles/tokens';
+
+.search-input {
+  // Base styles
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: $search-input-width;
+
+  background-color: $search-input-bg;
+  border: $search-input-border-width solid $search-input-border;
+  border-radius: $search-input-border-radius;
+  padding: $search-input-padding;
+
+  transition: $search-input-transition;
+
+  // ========================================
+  // Size Variants (from Figma)
+  // ========================================
+
+  &--small {
+    height: $search-input-height-small;
+
+    .search-input__field {
+      font-size: $search-input-font-size-small;
+    }
+  }
+
+  &--medium {
+    height: $search-input-height-medium;
+
+    .search-input__field {
+      font-size: $search-input-font-size-medium;
+    }
+  }
+
+  &--large {
+    height: $search-input-height-large;
+
+    .search-input__field {
+      font-size: $search-input-font-size-large;
+    }
+  }
+
+  // ========================================
+  // States
+  // ========================================
+
+  &--focused {
+    border-color: $search-input-border-focus;
+    box-shadow: 0 0 0 2px rgba($primary-500, 0.2);
+  }
+
+  &--disabled {
+    background-color: $search-input-disabled-bg;
+    border-color: $search-input-disabled-border;
+    cursor: not-allowed;
+
+    .search-input__field {
+      color: $search-input-disabled-text;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $search-input-disabled-text;
+      }
+    }
+
+    .search-input__icon {
+      color: $search-input-disabled-text;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--expandable {
+    height: auto;
+    min-height: $search-input-height-medium;
+    align-items: center;
+    border-radius: 24px;
+
+    .search-input__content {
+      align-items: center;
+    }
+
+    .search-input__field--textarea {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // ========================================
+  // Content Layout
+  // ========================================
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: $search-input-gap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__field {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0;
+    margin: 0;
+
+    font-family: $search-input-font-family;
+    font-weight: $search-input-font-weight;
+    color: $search-input-text-color;
+    line-height: normal;
+
+    &::placeholder {
+      color: $search-input-placeholder-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &--textarea {
+      resize: none;
+      overflow: hidden;
+      min-height: 20px;
+      line-height: 1.4;
+    }
+  }
+
+  // ========================================
+  // Icon Styles
+  // ========================================
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: $search-input-icon-color;
+
+    &--search {
+      width: $search-input-icon-size;
+      height: $search-input-icon-size;
+    }
+  }
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ========================================
+  // Clear Button
+  // ========================================
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: $search-input-clear-icon-size;
+    height: $search-input-clear-icon-size;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    color: $search-input-clear-icon-color;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: $grey-600;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-500;
+      outline-offset: 2px;
+      border-radius: 50%;
+    }
+  }
+}

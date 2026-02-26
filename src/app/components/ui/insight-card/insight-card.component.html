@@ -1,0 +1,29 @@
+<!-- SVG Gradient Definition -->
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <linearGradient id="insight-sparkles-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5495fe"/>
+      <stop offset="100%" stop-color="#0061fe"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div
+  class="insight-card"
+  [class.insight-card--highlight]="variant === 'highlight'"
+  [class.insight-card--warning]="variant === 'warning'"
+  [class.insight-card--success]="variant === 'success'">
+
+  <lucide-icon [img]="displayIcon" [size]="20" class="insight-card__icon"></lucide-icon>
+
+  <p class="insight-card__content">
+    @if (title) {
+      <span class="insight-card__title">{{ title }}: </span>
+    }
+    @if (actionPrefix) {
+      <span class="insight-card__action-prefix">{{ actionPrefix }}</span>{{ actionContent }}
+    } @else {
+      {{ content }}
+    }
+  </p>
+</div>

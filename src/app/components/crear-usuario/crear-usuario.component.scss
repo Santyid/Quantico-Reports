@@ -1,0 +1,156 @@
+@import '../../../styles/tokens';
+
+.crear-usuario {
+  background-color: $white-500;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background-color: #F5F7FA;
+    border-radius: 50%;
+    flex-shrink: 0;
+    padding: 12px;
+    box-sizing: border-box;
+
+    lucide-icon {
+      color: $primary-500;
+    }
+  }
+
+  &__title {
+    font-family: $table-title-font-family;
+    font-size: 28px;
+    font-weight: $table-title-font-weight;
+    color: $grey-600;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  &__subtitle {
+    font-family: $table-body-font-family;
+    font-size: 16px;
+    font-weight: $table-body-font-weight;
+    color: $grey-300;
+    margin: 0;
+    padding-left: 80px; // Align with title (56px icon + 24px gap)
+  }
+
+  &__form {
+    background-color: $white-500;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid #dae1ed;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    &--three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__field {
+    min-width: 0; // Allow fields to shrink in grid
+
+    // Make child components stretch to full width
+    app-select,
+    app-text-input {
+      display: block;
+      width: 100%;
+    }
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid #ececec;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 24px 16px;
+
+    &__container {
+      gap: 24px;
+    }
+
+    &__header-left {
+      gap: 16px;
+    }
+
+    &__header-icon {
+      width: 48px;
+      height: 48px;
+
+      lucide-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__subtitle {
+      padding-left: 64px; // 48px icon + 16px gap
+    }
+
+    &__form {
+      padding: 24px;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+
+      &--three {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__actions {
+      flex-direction: column-reverse;
+
+      app-button {
+        width: 100%;
+      }
+    }
+  }
+}

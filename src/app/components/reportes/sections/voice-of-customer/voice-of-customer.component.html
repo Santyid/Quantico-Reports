@@ -1,0 +1,45 @@
+<div class="voice-of-customer">
+  <!-- Voice Topics Grid -->
+  <section class="voice-of-customer__section">
+    <div class="voice-of-customer__grid">
+      @for (topic of voiceTopics; track topic.topic) {
+        <div class="voice-of-customer__card">
+          <!-- Card Header with icon, title and percentage -->
+          <div class="voice-of-customer__card-header">
+            <div class="voice-of-customer__icon-badge voice-of-customer__icon-badge--{{ topic.iconColor }}">
+              <lucide-icon [img]="topic.icon" [size]="20"></lucide-icon>
+            </div>
+            <h3 class="voice-of-customer__card-title">{{ topic.topic }}</h3>
+            <div class="voice-of-customer__percentage-group">
+              <span class="voice-of-customer__percentage">{{ topic.percentage }}%</span>
+              <span class="voice-of-customer__percentage-label">de las conversaciones</span>
+            </div>
+          </div>
+
+          <!-- Metadata -->
+          <div class="voice-of-customer__metadata">
+            <div class="voice-of-customer__meta-item">
+              <span class="voice-of-customer__meta-label">Emoción:</span>
+              <span class="voice-of-customer__meta-value">{{ topic.emotion }}</span>
+            </div>
+            <div class="voice-of-customer__meta-item">
+              <span class="voice-of-customer__meta-label">Journey:</span>
+              <span class="voice-of-customer__meta-value">{{ topic.journey }}</span>
+            </div>
+          </div>
+
+          <!-- AI Insight Box -->
+          <div class="voice-of-customer__insight-box">
+            <div class="voice-of-customer__insight-icon">
+              <lucide-icon [img]="SparklesIcon" [size]="16"></lucide-icon>
+            </div>
+            <div class="voice-of-customer__insight-content">
+              <span class="voice-of-customer__insight-label">Insight:</span>
+              <span class="voice-of-customer__insight-text">{{ topic.insight }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>

@@ -1,0 +1,39 @@
+<div class="total-esp">
+  <div class="total-esp__header">
+    <h3 class="total-esp__title">Total espectadores</h3>
+    <button class="total-esp__menu-btn" aria-label="More options">
+      <lucide-icon [img]="MoreHorizontalIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+    </button>
+  </div>
+  <div class="total-esp__content">
+    <div class="total-esp__value-row">
+      <span class="total-esp__value">{{ total }}</span>
+      <span class="total-esp__value-label">total</span>
+    </div>
+    <div class="total-esp__bar">
+      @for (seg of segments; track seg.label) {
+        <div
+          class="total-esp__bar-segment"
+          [style.width.%]="seg.value"
+          [style.background]="'linear-gradient(90deg, ' + seg.color + 'cc 0%, ' + seg.color + ' 100%)'">
+        </div>
+      }
+    </div>
+    <div class="total-esp__legend">
+      @for (seg of segments; track seg.label) {
+        <div class="total-esp__legend-item">
+          <span class="total-esp__legend-dot" [style.background]="seg.color"></span>
+          <span class="total-esp__legend-label">{{ seg.label }}</span>
+          <lucide-icon
+            class="total-esp__legend-info"
+            [img]="InfoIcon"
+            [size]="14"
+            [strokeWidth]="1.5"
+            aria-label="Info">
+          </lucide-icon>
+          <span class="total-esp__legend-value">{{ seg.count }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

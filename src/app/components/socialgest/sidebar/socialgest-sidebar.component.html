@@ -1,0 +1,37 @@
+<aside class="sg-sidebar">
+  <div class="sg-sidebar__search">
+    <app-search-input
+      size="medium"
+      placeholder="Buscar canal..."
+      (valueChange)="onSearchChange($event)">
+    </app-search-input>
+  </div>
+
+  <div class="sg-sidebar__channels">
+    <button
+      class="sg-sidebar__channel"
+      [class.sg-sidebar__channel--active]="selectedChannelId === 'all'"
+      (click)="selectChannel('all')">
+      <div class="sg-sidebar__channel-icon sg-sidebar__channel-icon--all">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <span class="sg-sidebar__channel-name">Todos los canales</span>
+    </button>
+
+    @for (channel of filteredChannels; track channel.id) {
+      <button
+        class="sg-sidebar__channel"
+        [class.sg-sidebar__channel--active]="selectedChannelId === channel.id"
+        (click)="selectChannel(channel.id)">
+        <div class="sg-sidebar__channel-icon">
+          <img [src]="channel.icon" [alt]="channel.platform" width="28" height="28" />
+        </div>
+        <span class="sg-sidebar__channel-name">{{ channel.name }}</span>
+      </button>
+    }
+  </div>
+</aside>

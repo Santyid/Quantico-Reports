@@ -1,0 +1,102 @@
+<div class="metricas-page">
+  <app-socialgest-sidebar
+    [channels]="channels"
+    [selectedChannelId]="selectedChannelId"
+    (channelSelected)="onChannelSelected($event)">
+  </app-socialgest-sidebar>
+
+  <div class="metricas-page__content">
+    <header class="metricas-page__header">
+      <div class="metricas-page__header-left">
+        <div class="metricas-page__header-icon">
+          <lucide-icon [img]="ChartIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <h1 class="metricas-page__title">Metricas Facebook</h1>
+      </div>
+      <div class="metricas-page__header-right">
+        <div class="metricas-page__date-range">
+          <span>12 Dic 2025 - 26 Dic 2025</span>
+          <lucide-icon [img]="CalendarIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <button class="metricas-page__orange-btn">Boton</button>
+      </div>
+    </header>
+
+    <nav class="metricas-page__tabs">
+      @for (tab of tabs; track tab) {
+        <button
+          class="metricas-page__tab"
+          [class.metricas-page__tab--active]="activeTab === tab"
+          (click)="setTab(tab)">
+          {{ tab }}
+        </button>
+      }
+    </nav>
+
+    @if (activeTab === 'Resumen') {
+      <div class="metricas-page__grid">
+        <app-fb-rendimiento-global></app-fb-rendimiento-global>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--large">
+            <app-fb-movimiento-fans></app-fb-movimiento-fans>
+            <app-fb-impresiones></app-fb-impresiones>
+            <app-fb-alcance-diario></app-fb-alcance-diario>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-fb-reacciones></app-fb-reacciones>
+            <app-fb-clicks></app-fb-clicks>
+            <app-fb-publicaciones></app-fb-publicaciones>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (activeTab === 'Publicaciones') {
+      <div class="metricas-page__grid">
+        <app-fb-pub-rendimiento></app-fb-pub-rendimiento>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--large">
+            <app-fb-pub-por-dia></app-fb-pub-por-dia>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-fb-pub-tipos></app-fb-pub-tipos>
+          </div>
+        </div>
+
+        <app-fb-pub-tabla></app-fb-pub-tabla>
+      </div>
+    }
+
+    @if (activeTab === 'Audiencia') {
+      <div class="metricas-page__grid">
+        <app-fb-aud-mapa></app-fb-aud-mapa>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-fb-aud-ciudad></app-fb-aud-ciudad>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-fb-aud-pais-chart></app-fb-aud-pais-chart>
+          </div>
+        </div>
+
+        <app-fb-mejores-dias></app-fb-mejores-dias>
+
+        <div class="metricas-page__columns">
+          <div class="metricas-page__col metricas-page__col--large">
+            <app-fb-aud-ubicaciones></app-fb-aud-ubicaciones>
+          </div>
+          <div class="metricas-page__col metricas-page__col--small">
+            <app-fb-aud-genero></app-fb-aud-genero>
+            <app-fb-aud-edades></app-fb-aud-edades>
+          </div>
+        </div>
+
+        <app-fb-fans-dia></app-fb-fans-dia>
+        <app-fb-estimado-fans></app-fb-estimado-fans>
+      </div>
+    }
+  </div>
+</div>
