@@ -77,6 +77,30 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./components/crear-alerta-v2/crear-alerta-v2.component')
             .then(m => m.CrearAlertaV2Component)
+      },
+      {
+        path: 'segmentos',
+        loadComponent: () =>
+          import('./components/segmentos/segmentos.component')
+            .then(m => m.SegmentosComponent)
+      },
+      {
+        path: 'segmentos-cards',
+        loadComponent: () =>
+          import('./components/segmentos/segmentos-cards/segmentos-cards.component')
+            .then(m => m.SegmentosCardsComponent)
+      },
+      {
+        path: 'segmentos/editar/:id',
+        loadComponent: () =>
+          import('./components/segmentos/editar-segmento/editar-segmento.component')
+            .then(m => m.EditarSegmentoComponent)
+      },
+      {
+        path: 'segmentos/canal/:canalId',
+        loadComponent: () =>
+          import('./components/segmentos/detalle-canal/detalle-canal.component')
+            .then(m => m.DetalleCanalComponent)
       }
     ]
   },

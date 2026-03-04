@@ -1,0 +1,236 @@
+@import '../../../../styles/tokens';
+
+// Warning palette
+$warning-50: #fff5ea;
+$warning-500: #f4b137;
+$warning-600: #e5a22e;
+$warning-700: #d49325;
+$warning-icon: #e8922d;
+
+// Error palette
+$error-50: #fff0f0;
+$error-icon: #f44336;
+
+// Info palette
+$info-50: $primary-50;
+$info-icon: $primary-500;
+
+.confirm-modal {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: confirmFadeIn 0.2s ease-out;
+  }
+
+  position: relative;
+  background: $white-500;
+  border: 1px solid $grey-50;
+  border-radius: 24px;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 680px;
+  animation: confirmSlideIn 0.25s ease-out;
+
+  // ============================
+  // Close button
+  // ============================
+  &__close {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: $grey-300;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0;
+    transition: color 0.15s, background 0.15s;
+
+    &:hover {
+      color: $grey-500;
+      background: $grey-50;
+    }
+  }
+
+  // ============================
+  // Header
+  // ============================
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  &__icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.48px;
+    color: $grey-800;
+    margin: 0;
+  }
+
+  // ============================
+  // Message box
+  // ============================
+  &__message-box {
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+
+  &__message {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: -0.32px;
+    color: $grey-800;
+    margin: 0;
+  }
+
+  // ============================
+  // Actions
+  // ============================
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+  }
+
+  &__confirm-btn {
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: normal;
+    color: $white-500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+
+  // ============================
+  // Variant: warning
+  // ============================
+  &--warning {
+    .confirm-modal__icon-wrap {
+      background: $warning-50;
+      color: $warning-icon;
+    }
+
+    .confirm-modal__message-box {
+      background: $warning-50;
+    }
+
+    .confirm-modal__confirm-btn {
+      background: $warning-500;
+
+      &:hover {
+        background: $warning-600;
+      }
+
+      &:active {
+        background: $warning-700;
+      }
+    }
+  }
+
+  // ============================
+  // Variant: error
+  // ============================
+  &--error {
+    .confirm-modal__icon-wrap {
+      background: $error-50;
+      color: $error-icon;
+    }
+
+    .confirm-modal__message-box {
+      background: $error-50;
+    }
+
+    .confirm-modal__confirm-btn {
+      background: $status-error;
+
+      &:hover {
+        background: darken($status-error, 8%);
+      }
+
+      &:active {
+        background: darken($status-error, 15%);
+      }
+    }
+  }
+
+  // ============================
+  // Variant: info
+  // ============================
+  &--info {
+    .confirm-modal__icon-wrap {
+      background: $info-50;
+      color: $info-icon;
+    }
+
+    .confirm-modal__message-box {
+      background: $info-50;
+    }
+
+    .confirm-modal__confirm-btn {
+      background: $primary-500;
+
+      &:hover {
+        background: $primary-600;
+      }
+
+      &:active {
+        background: $primary-700;
+      }
+    }
+  }
+}
+
+// ============================
+// Animations
+// ============================
+@keyframes confirmFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes confirmSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

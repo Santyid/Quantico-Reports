@@ -1,0 +1,31 @@
+<div
+  class="app-toast"
+  [class.app-toast--visible]="animVisible"
+  [class.app-toast--success]="variant === 'success'"
+  [class.app-toast--error]="variant === 'error'"
+  [class.app-toast--warning]="variant === 'warning'"
+  [class.app-toast--info]="variant === 'info'"
+  role="alert"
+  aria-live="assertive">
+
+  <!-- Left accent bar -->
+  <div class="app-toast__accent"></div>
+
+  <!-- Icon -->
+  <div class="app-toast__icon-wrap">
+    <lucide-icon [img]="CircleCheckBigIcon" [size]="28" [strokeWidth]="2"></lucide-icon>
+  </div>
+
+  <!-- Message -->
+  <p class="app-toast__message">{{ message }}</p>
+
+  <!-- Close button -->
+  <button
+    type="button"
+    class="app-toast__close"
+    aria-label="Cerrar notificación"
+    (click)="dismiss()">
+    <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="2"></lucide-icon>
+  </button>
+
+</div>

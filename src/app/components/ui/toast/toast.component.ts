@@ -1,92 +1,67 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+  ViewEncapsulation,
+  ChangeDetectorRef
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, Check, X, AlertCircle, Info } from 'lucide-angular';
+import { LucideAngularModule, CircleCheckBig, X } from 'lucide-angular';
 
-export type ToastType = 'success' | 'error' | 'warning' | 'info';
+export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 
 @Component({
   selector: 'app-toast',
   standalone: true,
   imports: [CommonModule, LucideAngularModule],
-  template: `
-    @if (visible) {
-      <div class="toast" [class]="'toast--' + type" [@fadeInOut]>
-        <div class="toast__icon">
-          <lucide-icon [img]="getIcon()" [size]="18" [strokeWidth]="2"></lucide-icon>
-        </div>
-        <span class="toast__message">{{ message }}</span>
-        <button class="toast__close" (click)="close()">
-          <lucide-icon [img]="XIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
-        </button>
-      </div>
-    }
-  `,
-  styles: [`
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      z-index: 9999;
-      animation: slideIn 0.3s ease;
-    }
-    @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    .toast__icon { display: flex; }
-    .toast--success .toast__icon { color: #3ace76; }
-    .toast--error .toast__icon { color: #f44336; }
-    .toast--warning .toast__icon { color: #f4b137; }
-    .toast--info .toast__icon { color: #0061fe; }
-    .toast__message { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #262626; }
-    .toast__close { display: flex; background: none; border: none; cursor: pointer; color: #7d7d7d; padding: 0; }
-    .toast__close:hover { color: #262626; }
-  `]
+  templateUrl: './toast.component.html',
+  styleUrl: './toast.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
-export class ToastComponent {
-  @Input() message: string = '';
-  @Input() type: ToastType = 'success';
-  @Input() visible: boolean = false;
-  @Input() duration: number = 3000;
+export class ToastComponent implements OnDestroy {
+  @Input() message = '';
+  @Input() variant: ToastVariant = 'success';
+  @Input() autoDismissMs = 4000;
+
+  @Input() set visible(val: boolean) {
+    if (val === this._visible) return;
+    this._visible = val;
+
+    if (val) {
+      this.animVisible = true;
+      this.cdr.detectChanges();
+      if (this.autoDismissMs > 0) {
+        if (this.timer) clearTimeout(this.timer);
+        this.timer = setTimeout(() => this.dismiss(), this.autoDismissMs);
+      }
+    } else {
+      this.animVisible = false;
+      this.cdr.detectChanges();
+      if (this.timer) { clearTimeout(this.timer); this.timer = null; }
+    }
+  }
+  get visible(): boolean { return this._visible; }
+
   @Output() visibleChange = new EventEmitter<boolean>();
 
-  readonly CheckIcon = Check;
+  readonly CircleCheckBigIcon = CircleCheckBig;
   readonly XIcon = X;
-  readonly AlertIcon = AlertCircle;
-  readonly InfoIcon = Info;
 
-  private timeoutId: any;
+  animVisible = false;
+  private _visible = false;
+  private timer: ReturnType<typeof setTimeout> | null = null;
 
-  ngOnChanges(): void {
-    if (this.visible && this.duration > 0) {
-      this.startAutoClose();
-    }
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnDestroy(): void {
+    if (this.timer) clearTimeout(this.timer);
   }
 
-  getIcon() {
-    switch (this.type) {
-      case 'success': return this.CheckIcon;
-      case 'error': return this.XIcon;
-      case 'warning': return this.AlertIcon;
-      default: return this.InfoIcon;
-    }
-  }
-
-  close(): void {
-    this.visible = false;
-    this.visibleChange.emit(false);
-    if (this.timeoutId) clearTimeout(this.timeoutId);
-  }
-
-  private startAutoClose(): void {
-    if (this.timeoutId) clearTimeout(this.timeoutId);
-    this.timeoutId = setTimeout(() => this.close(), this.duration);
+  dismiss(): void {
+    this.animVisible = false;
+    this.cdr.detectChanges();
+    setTimeout(() => this.visibleChange.emit(false), 300);
   }
 }
