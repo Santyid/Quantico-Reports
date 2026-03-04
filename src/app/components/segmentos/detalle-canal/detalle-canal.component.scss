@@ -1,0 +1,729 @@
+@import '../../../../styles/tokens';
+
+.detalle-canal {
+  min-height: 100vh;
+  background: $white-500;
+  padding-bottom: 60px;
+
+  // ========================================
+  // Page Header
+  // ========================================
+  &__header-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__back-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid $grey-100;
+    background: $white-500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    color: $grey-800;
+    transition: background 0.15s, border-color 0.15s;
+
+    &:hover { background: #fafafa; }
+    &:active { background: #f1f1f1; }
+  }
+
+  &__channel-logo {
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    svg {
+      width: 41px;
+      height: 41px;
+    }
+  }
+
+  &__title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: $grey-800;
+    letter-spacing: -0.48px;
+    margin: 0;
+  }
+
+  // ========================================
+  // Tabs
+  // ========================================
+  &__tabs-wrap {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+  }
+
+  &__tabs {
+    border-bottom: 1px solid $grey-50;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__tab-btn {
+    height: 40px;
+    padding: 0 24px;
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: $grey-100;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-start;
+    transition: color 0.15s, border-color 0.15s;
+
+    &:hover { color: $grey-300; }
+
+    &--active {
+      font-weight: 700;
+      color: $grey-800;
+      border-bottom-color: $primary-500;
+
+      &:hover { color: $grey-800; }
+    }
+  }
+
+  // ========================================
+  // Panel
+  // ========================================
+  &__panel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 0;
+  }
+
+  // ========================================
+  // Table Wrapper
+  // ========================================
+  &__table-wrap {
+    background: $white-500;
+    border: 1px solid $grey-50;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  // ========================================
+  // Table
+  // ========================================
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__th {
+    height: 44px;
+    padding: 10px 20px;
+    background: $white-500;
+    border-bottom: 1px solid $grey-50;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.32px;
+    color: $grey-500;
+    text-align: left;
+    white-space: nowrap;
+
+    &--nombres { width: 260px; }
+    &--url { /* flex: takes remaining space */ }
+    &--estado { width: 195px; }
+    &--marca { width: 138px; }
+    &--actions { width: 67px; }
+
+    // URL tab columns
+    &--nombres-url { width: 260px; }
+    &--url-col { width: 531px; }
+    &--tipo { width: 276px; }
+  }
+
+  &__tr {
+    transition: background 0.1s;
+
+    &:hover { background: #f9f9f9; }
+
+    &:not(:last-child) {
+      .detalle-canal__td { border-bottom: 1px solid $grey-50; }
+    }
+  }
+
+  &__td {
+    height: 44px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.32px;
+    color: $grey-500;
+    vertical-align: middle;
+
+    &--nombre {
+      font-weight: 500;
+      color: $grey-800;
+    }
+
+    &--url {
+      color: $grey-300;
+    }
+
+    &--action {
+      text-align: center;
+      width: 67px;
+    }
+  }
+
+  // ========================================
+  // Toggle Switch
+  // ========================================
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__toggle-track {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background: $grey-50;
+    border-radius: 11px;
+    transition: background 0.2s;
+  }
+
+  &__toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: $white-500;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+  }
+
+  &__toggle input:checked + &__toggle-track {
+    background: $secondary-500;
+  }
+
+  &__toggle input:checked + &__toggle-track &__toggle-thumb {
+    transform: translateX(18px);
+  }
+
+  // ========================================
+  // Delete Button
+  // ========================================
+  &__delete-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fc3e3e;
+    padding: 0;
+    transition: background 0.15s;
+
+    &:hover { background: #fff0f0; }
+  }
+
+  // ========================================
+  // Tipo Badge (URL tab)
+  // ========================================
+  &__tipo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    padding: 0 10px 0 12px;
+    border-radius: 50px;
+    border: none;
+    background: $secondary-50;
+    color: $secondary-500;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: $secondary-100; }
+  }
+
+  &__tipo-badge-icon {
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  // ========================================
+  // Icon Button (shared for pagination nav)
+  // ========================================
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: $white-500;
+    border: 1px solid $grey-100;
+    border-radius: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: $grey-300;
+    transition: border-color 0.15s ease, color 0.15s ease;
+
+    &:hover:not(:disabled) {
+      border-color: $primary-500;
+      color: $primary-500;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  // ========================================
+  // Pagination
+  // ========================================
+  &__pagination {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 16px 20px;
+    border-top: 1px solid $grey-50;
+  }
+
+  &__pagination-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: $grey-300;
+  }
+
+  &__pagination-select {
+    width: 91px;
+
+    .app-select__dropdown {
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: 4px;
+      z-index: 300;
+    }
+  }
+
+  &__pagination-info {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: $grey-300;
+  }
+
+  &__pagination-nav {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  // ========================================
+  // Shared Modal Overlay
+  // ========================================
+  &__modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(75, 75, 75, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: dcFadeIn 0.2s ease-out;
+  }
+
+  // ========================================
+  // Modal 1: Connection Type Selector
+  // ========================================
+  &__conn-modal {
+    background: $white-500;
+    border: 1px solid $grey-50;
+    border-radius: 24px;
+    padding: 40px 50px;
+    width: 620px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    animation: dcSlideIn 0.25s ease-out;
+  }
+
+  &__conn-modal-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $grey-300;
+    padding: 0;
+
+    &:hover { color: $grey-500; }
+  }
+
+  &__conn-modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__conn-modal-step {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: $grey-300;
+    letter-spacing: -0.28px;
+  }
+
+  &__conn-modal-title {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    color: $grey-800;
+    margin: 0;
+  }
+
+  &__conn-modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__conn-option {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    border: 1px solid $grey-100;
+    border-radius: 10px;
+    background: $white-500;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, background 0.15s;
+
+    &:hover { border-color: $grey-300; }
+
+    &--active {
+      border-color: $secondary-500;
+      background: $secondary-50;
+    }
+  }
+
+  &__conn-option-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.32px;
+    color: $grey-800;
+  }
+
+  &__conn-option-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: $grey-300;
+  }
+
+  &__conn-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+  }
+
+  &__conn-modal-cancel {
+    height: 40px;
+    padding: 0 20px;
+    background: $white-500;
+    border: 1px solid $grey-100;
+    border-radius: 12px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: $grey-300;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: #fafafa; }
+  }
+
+  &__conn-modal-next {
+    height: 40px;
+    padding: 0 20px;
+    background: $primary-500;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: $white-800;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: $primary-600; }
+
+    &--disabled {
+      background: $primary-200;
+      cursor: not-allowed;
+
+      &:hover { background: $primary-200; }
+    }
+  }
+
+  // ========================================
+  // Modal 2: URL Connection Form
+  // ========================================
+  &__url-modal {
+    background: $white-500;
+    border: 1px solid $grey-50;
+    border-radius: 24px;
+    padding: 40px 50px;
+    width: 700px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    animation: dcSlideIn 0.25s ease-out;
+  }
+
+  &__url-modal-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $grey-300;
+    padding: 0;
+
+    &:hover { color: $grey-500; }
+  }
+
+  &__url-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__url-modal-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    svg { width: 34px; height: 34px; }
+  }
+
+  &__url-modal-title {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #232323;
+    margin: 0;
+  }
+
+  &__url-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__url-modal-label {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: $grey-800;
+  }
+
+  &__url-modal-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid $grey-100;
+    border-radius: 10px;
+    background: $white-500;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: $grey-800;
+    outline: none;
+
+    &::placeholder { color: $grey-200; }
+    &:focus { border-color: $primary-500; }
+    &:disabled {
+      background: #f9f9f9;
+      color: $grey-300;
+      cursor: not-allowed;
+    }
+  }
+
+  &__url-modal-tipo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__url-modal-tipo-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.32px;
+    color: $grey-700;
+    margin: 0;
+  }
+
+  &__url-modal-tipo-chips {
+    display: flex;
+    gap: 17px;
+  }
+
+  &__url-modal-chip {
+    height: 36px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $grey-100;
+    border-radius: 16px;
+    background: $white-500;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: $grey-300;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+
+    // Inner pill padding
+    padding: 4px 10px;
+
+    &:hover { border-color: $grey-300; }
+
+    &--active {
+      border-color: $secondary-500;
+      background: $secondary-50;
+      color: $secondary-500;
+    }
+  }
+
+  &__url-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+  }
+
+  &__url-modal-back {
+    height: 40px;
+    padding: 0 20px;
+    background: $white-500;
+    border: 1px solid $grey-100;
+    border-radius: 12px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: $grey-300;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: #fafafa; }
+  }
+
+  &__url-modal-connect {
+    height: 40px;
+    padding: 0 20px;
+    background: $primary-500;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: $white-800;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: $primary-600; }
+  }
+}
+
+@keyframes dcFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dcSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

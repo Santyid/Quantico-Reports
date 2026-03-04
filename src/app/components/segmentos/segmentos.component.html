@@ -1,0 +1,167 @@
+<section class="segmentos">
+  <div class="segmentos__container">
+
+    <!-- Header -->
+    <header class="segmentos__header">
+      <div class="segmentos__header-left">
+        <div class="segmentos__header-icon">
+          <lucide-icon [img]="LayersIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+        </div>
+        <h1 class="segmentos__title">Segmentos</h1>
+      </div>
+      <div class="segmentos__header-actions">
+        <button type="button" class="segmentos__view-toggle" title="Vista cards" (click)="goToCardView()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="1" width="7" height="7" rx="2"/>
+            <rect x="10" y="1" width="7" height="7" rx="2"/>
+            <rect x="1" y="10" width="7" height="7" rx="2"/>
+            <rect x="10" y="10" width="7" height="7" rx="2"/>
+          </svg>
+        </button>
+        <app-button
+          variant="secondary"
+          size="medium"
+          [leftIcon]="PlusIcon"
+          (clicked)="onCrearSegmento()">
+          Crear segmento
+        </app-button>
+      </div>
+    </header>
+
+    <!-- Table Card -->
+    <div class="segmentos__card">
+
+      <!-- Toolbar -->
+      <div class="segmentos__toolbar">
+        <div class="segmentos__search-wrap">
+          <app-search-input
+            size="medium"
+            placeholder="Buscar..."
+            [fullWidth]="true"
+            (valueChange)="onSearchChange($event)">
+          </app-search-input>
+        </div>
+        <div class="segmentos__toolbar-right">
+          <app-select
+            size="small"
+            placeholder="Ordenar por"
+            [options]="sortOptions"
+            (selectionChange)="onSortChange($event)">
+          </app-select>
+          <app-select
+            size="small"
+            placeholder="Filtrar por estado"
+            [options]="statusOptions"
+            (selectionChange)="onStatusFilterChange($event)">
+          </app-select>
+          <button type="button" class="segmentos__icon-btn" aria-label="Ordenar" (click)="onToggleSortDirection()">
+            <lucide-icon [img]="sortDirection === 'desc' ? ArrowDownNarrowWideIcon : ArrowUpNarrowWideIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="segmentos__table" role="table">
+
+        <!-- Header -->
+        <div class="segmentos__table-header" role="row">
+          <div class="segmentos__cell segmentos__cell--header segmentos__cell--nombre" role="columnheader">Nombres</div>
+          <div class="segmentos__cell segmentos__cell--header segmentos__cell--limite" role="columnheader">Límite de menciones</div>
+          <div class="segmentos__cell segmentos__cell--header segmentos__cell--fecha" role="columnheader">Fecha de creación</div>
+          <div class="segmentos__cell segmentos__cell--header segmentos__cell--fecha" role="columnheader">Fecha de modificación</div>
+          <div class="segmentos__cell segmentos__cell--header segmentos__cell--estado" role="columnheader">Estado</div>
+          <div class="segmentos__cell segmentos__cell--header segmentos__cell--actions" role="columnheader"></div>
+        </div>
+
+        <!-- Body -->
+        @for (segmento of filteredSegmentos; track segmento.id; let i = $index) {
+          <div class="segmentos__table-row" role="row" (click)="onRowClick(segmento)">
+            <div class="segmentos__cell segmentos__cell--body segmentos__cell--nombre" role="cell">
+              {{ segmento.nombre }}
+            </div>
+            <div class="segmentos__cell segmentos__cell--body segmentos__cell--limite" role="cell">
+              {{ formatMenciones(segmento.limiteMenciones) }}
+            </div>
+            <div class="segmentos__cell segmentos__cell--body segmentos__cell--fecha" role="cell">
+              {{ segmento.fechaCreacion }}
+            </div>
+            <div class="segmentos__cell segmentos__cell--body segmentos__cell--fecha" role="cell">
+              {{ segmento.fechaModificacion }}
+            </div>
+            <div class="segmentos__cell segmentos__cell--body segmentos__cell--estado" role="cell">
+              <app-status-badge
+                [label]="segmento.estado"
+                [variant]="getEstadoVariant(segmento.estado)">
+              </app-status-badge>
+            </div>
+            <div class="segmentos__cell segmentos__cell--body segmentos__cell--actions" role="cell">
+              <div class="segmentos__menu-wrap" (click)="$event.stopPropagation()">
+                <button
+                  type="button"
+                  class="segmentos__menu-btn"
+                  aria-label="Más opciones"
+                  (click)="onToggleMenu(i)">
+                  <lucide-icon [img]="EllipsisIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                </button>
+                @if (openMenuIndex === i) {
+                  <div class="segmentos__menu-dropdown" role="menu">
+                    <button
+                      type="button"
+                      class="segmentos__menu-item"
+                      role="menuitem"
+                      (click)="onEditarSegmento(segmento)">
+                      <lucide-icon [img]="PencilIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      Editar segmento
+                    </button>
+                    <button
+                      type="button"
+                      class="segmentos__menu-item segmentos__menu-item--danger"
+                      role="menuitem"
+                      (click)="onEliminarSegmento(segmento)">
+                      <lucide-icon [img]="TrashIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                      Eliminar
+                    </button>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="segmentos__pagination">
+        <span class="segmentos__pagination-label">Items por página:</span>
+        <div class="segmentos__pagination-select">
+          <app-select
+            size="medium"
+            placeholder="6"
+            [options]="itemsPerPageOptions"
+            (selectionChange)="onItemsPerPageChange($event)">
+          </app-select>
+        </div>
+        <span class="segmentos__pagination-info">{{ startItem }} - {{ endItem }} de {{ totalItems }}</span>
+        <div class="segmentos__pagination-nav">
+          <button
+            type="button"
+            class="segmentos__icon-btn"
+            [disabled]="!canGoPrev"
+            aria-label="Página anterior"
+            (click)="onPrevPage()">
+            <lucide-icon [img]="ChevronLeftIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+          <button
+            type="button"
+            class="segmentos__icon-btn"
+            [disabled]="!canGoNext"
+            aria-label="Página siguiente"
+            (click)="onNextPage()">
+            <lucide-icon [img]="ChevronRightIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

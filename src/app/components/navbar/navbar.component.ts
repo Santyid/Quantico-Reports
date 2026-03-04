@@ -45,7 +45,8 @@ export class NavbarComponent {
       ]
     },
     { label: 'Menciones', path: '/menciones' },
-    { label: 'Alertas', path: '/alertas' }
+    { label: 'Alertas', path: '/alertas' },
+    { label: 'Segmentos', path: '/segmentos' }
   ];
 
   @Input() showPlatformSelector: boolean = true;

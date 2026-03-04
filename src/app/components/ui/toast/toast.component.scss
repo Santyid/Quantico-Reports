@@ -1,0 +1,142 @@
+@import '../../../../styles/tokens';
+
+// ── Toast host (fixed overlay container) ────────────────────────────────────
+app-toast {
+  display: block;
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+// ── Toast card ───────────────────────────────────────────────────────────────
+.app-toast {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: $white-500;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  pointer-events: all;
+  min-width: 360px;
+  max-width: 680px;
+  padding-right: 24px;
+
+  // Entrance / exit animation (slides in from right)
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  // ── Accent bar ─────────────────────────────────────────────────────────────
+  &__accent {
+    width: 13px;
+    align-self: stretch;
+    flex-shrink: 0;
+    border-radius: 10px 0 0 10px;
+  }
+
+  // ── Icon wrapper ───────────────────────────────────────────────────────────
+  &__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    flex-shrink: 0;
+    padding: 10px;
+    margin: 16px 0;
+    box-sizing: border-box;
+
+    lucide-icon {
+      display: flex;
+    }
+  }
+
+  // ── Message ────────────────────────────────────────────────────────────────
+  &__message {
+    flex: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 27px;
+    color: #212427;
+    margin: 16px 0;
+    padding: 0;
+  }
+
+  // ── Close button ───────────────────────────────────────────────────────────
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: $grey-300;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $grey-500;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-500;
+      outline-offset: 2px;
+    }
+  }
+
+  // ── Variant: success ───────────────────────────────────────────────────────
+  &--success {
+    .app-toast__accent {
+      background: $status-success;
+    }
+    .app-toast__icon-wrap {
+      background: #ebfaf1;
+      color: $status-success;
+    }
+  }
+
+  // ── Variant: error ─────────────────────────────────────────────────────────
+  &--error {
+    .app-toast__accent {
+      background: $status-error;
+    }
+    .app-toast__icon-wrap {
+      background: #fdecea;
+      color: $status-error;
+    }
+  }
+
+  // ── Variant: warning ───────────────────────────────────────────────────────
+  &--warning {
+    .app-toast__accent {
+      background: $status-warning;
+    }
+    .app-toast__icon-wrap {
+      background: #fff8ec;
+      color: $status-warning;
+    }
+  }
+
+  // ── Variant: info ──────────────────────────────────────────────────────────
+  &--info {
+    .app-toast__accent {
+      background: $primary-500;
+    }
+    .app-toast__icon-wrap {
+      background: #e6edff;
+      color: $primary-500;
+    }
+  }
+}

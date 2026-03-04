@@ -1,0 +1,356 @@
+@import '../../../styles/tokens';
+
+.segmentos {
+  min-height: 100vh;
+  background: $white-500;
+  padding: 40px 20px;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  // ========================================
+  // Header
+  // ========================================
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: $grey-50;
+    border-radius: 50%;
+    color: $primary-500;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__view-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid $grey-100;
+    background: $white-500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $grey-300;
+    padding: 0;
+    transition: border-color 0.15s, color 0.15s;
+
+    &:hover {
+      border-color: $primary-500;
+      color: $primary-500;
+    }
+  }
+
+  // ========================================
+  // Card Container
+  // ========================================
+  &__card {
+    background: $white-500;
+    border: 1px solid $grey-50;
+    border-radius: 12px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  // ========================================
+  // Toolbar
+  // ========================================
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__search-wrap {
+    width: 555px;
+    flex-shrink: 0;
+  }
+
+  &__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    app-select {
+      width: 164px;
+    }
+  }
+
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: $white-500;
+    border: 1px solid $grey-100;
+    border-radius: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: $grey-300;
+    transition: border-color 0.15s ease, color 0.15s ease;
+
+    &:hover:not(:disabled) {
+      border-color: $primary-500;
+      color: $primary-500;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  // ========================================
+  // Table
+  // ========================================
+  &__table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__table-header,
+  &__table-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__table-header {
+    border-bottom: 1px solid $grey-50;
+  }
+
+  &__table-row {
+    border-bottom: 1px solid $grey-50;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
+  }
+
+  // ========================================
+  // Cells
+  // ========================================
+  &__cell {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    overflow: hidden;
+
+    &--header {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: $grey-500;
+      letter-spacing: -0.32px;
+      line-height: 24px;
+      white-space: nowrap;
+    }
+
+    &--body {
+      height: 56px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: $grey-500;
+      letter-spacing: -0.32px;
+      line-height: 24px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    // Column widths
+    &--nombre {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    &--limite {
+      width: 200px;
+      flex: 0 0 200px;
+    }
+
+    &--fecha {
+      width: 190px;
+      flex: 0 0 190px;
+    }
+
+    &--estado {
+      width: 130px;
+      flex: 0 0 130px;
+    }
+
+    &--actions {
+      width: 67px;
+      flex: 0 0 67px;
+      justify-content: center;
+      overflow: visible;
+    }
+  }
+
+  // ========================================
+  // Ellipsis Menu
+  // ========================================
+  &__menu-wrap {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $grey-300;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: $grey-500;
+    }
+  }
+
+  &__menu-dropdown {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 4px;
+    background: $white-500;
+    border: 1px solid #dae1ed;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    z-index: 9999;
+    min-width: 180px;
+    overflow: hidden;
+  }
+
+  &__menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey-500;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    transition: background 0.1s ease;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    &--danger {
+      color: #dc2626;
+    }
+  }
+
+  // ========================================
+  // Pagination
+  // ========================================
+  &__pagination {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+  }
+
+  &__pagination-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: $grey-300;
+  }
+
+  &__pagination-select {
+    width: 91px;
+  }
+
+  &__pagination-info {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: $grey-300;
+  }
+
+  &__pagination-nav {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+}
+
+// ========================================
+// Responsive
+// ========================================
+@media (max-width: 1400px) {
+  .segmentos {
+    &__search-wrap {
+      width: auto;
+      flex: 1;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .segmentos {
+    &__cell--fecha {
+      width: 160px;
+      flex: 0 0 160px;
+    }
+
+    &__cell--limite {
+      width: 160px;
+      flex: 0 0 160px;
+    }
+  }
+}
