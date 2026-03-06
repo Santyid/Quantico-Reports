@@ -3,14 +3,14 @@
 .segmentos {
   min-height: 100vh;
   background: $white-500;
-  padding: 40px 20px;
+  padding: 40px 20px 60px;
 
   &__container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0;
   }
 
   // ========================================
@@ -21,7 +21,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    flex-wrap: wrap;
+    margin-bottom: 40px;
   }
 
   &__header-left {
@@ -50,249 +50,304 @@
     margin: 0;
   }
 
-  &__header-actions {
+  &__header-right {
     display: flex;
     align-items: center;
     gap: 16px;
   }
 
-  &__view-toggle {
+  // ========================================
+  // Tabs + Search Row
+  // ========================================
+  &__tabs-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 19px;
+    margin-bottom: 32px;
+  }
+
+  &__tabs {
+    flex: 1;
+    border-bottom: 1px solid $grey-50;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__tab {
+    height: 40px;
+    padding: 0 24px;
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: $grey-100;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-start;
+    transition: color 0.15s, border-color 0.15s;
+
+    &:hover { color: $grey-300; }
+
+    &--active {
+      font-weight: 700;
+      color: $grey-800;
+      border-bottom-color: $primary-500;
+
+      &:hover { color: $grey-800; }
+    }
+  }
+
+  &__search-btn {
     width: 40px;
     height: 40px;
-    border-radius: 12px;
+    border-radius: 50%;
     border: 1px solid $grey-100;
     background: $white-500;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: $grey-300;
+    flex-shrink: 0;
     padding: 0;
-    transition: border-color 0.15s, color 0.15s;
+    color: $grey-300;
+    transition: background 0.15s, border-color 0.15s;
 
     &:hover {
-      border-color: $primary-500;
-      color: $primary-500;
+      background: #fafafa;
+      border-color: $grey-300;
     }
   }
 
+  &__search-expand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid $grey-100;
+    border-radius: 50px;
+    background: $white-500;
+    flex-shrink: 0;
+    width: 280px;
+    animation: segSearchExpand 0.25s ease-out;
+    transition: border-color 0.15s;
+
+    &:focus-within { border-color: $primary-500; }
+
+    lucide-icon { flex-shrink: 0; color: $grey-200; display: flex; }
+  }
+
+  &__search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: $grey-800;
+    min-width: 0;
+
+    &::placeholder { color: $grey-200; }
+  }
+
+  &__search-close {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $grey-300;
+    flex-shrink: 0;
+
+    &:hover { color: $grey-500; }
+  }
+
   // ========================================
-  // Card Container
+  // Cards Grid
   // ========================================
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
   &__card {
     background: $white-500;
     border: 1px solid $grey-50;
-    border-radius: 12px;
-    padding: 36px;
+    border-radius: 10px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: 32px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+
+    &:hover {
+      border-color: $grey-100;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  &__card-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: $grey-500;
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  &__card-dates {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: $grey-300;
+    margin: -25px 0 0 0;
+    letter-spacing: -0.28px;
   }
 
   // ========================================
-  // Toolbar
+  // Card Middle: Channels + Menciones
   // ========================================
-  &__toolbar {
+  &__card-middle {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
   }
 
-  &__search-wrap {
-    width: 555px;
-    flex-shrink: 0;
-  }
-
-  &__toolbar-right {
+  &__card-channels {
     display: flex;
     align-items: center;
-    gap: 20px;
-
-    app-select {
-      width: 164px;
-    }
+    gap: 0;
   }
 
-  &__icon-btn {
+  &__card-channel-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid $white-500;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: $white-500;
-    border: 1px solid $grey-100;
-    border-radius: 12px;
-    cursor: pointer;
-    flex-shrink: 0;
+
+    & + & { margin-left: -8px; }
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__card-menciones {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
     color: $grey-300;
-    transition: border-color 0.15s ease, color 0.15s ease;
-
-    &:hover:not(:disabled) {
-      border-color: $primary-500;
-      color: $primary-500;
-    }
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
+    letter-spacing: -0.32px;
+    white-space: nowrap;
   }
 
   // ========================================
-  // Table
+  // Card Footer: Chips + Menu
   // ========================================
-  &__table {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  &__table-header,
-  &__table-row {
+  &__card-footer {
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
   }
 
-  &__table-header {
-    border-bottom: 1px solid $grey-50;
-  }
-
-  &__table-row {
-    border-bottom: 1px solid $grey-50;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #f9f9f9;
-    }
-  }
-
-  // ========================================
-  // Cells
-  // ========================================
-  &__cell {
+  &__card-chips {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
-    overflow: hidden;
-
-    &--header {
-      font-family: 'Urbanist', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: $grey-500;
-      letter-spacing: -0.32px;
-      line-height: 24px;
-      white-space: nowrap;
-    }
-
-    &--body {
-      height: 56px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: $grey-500;
-      letter-spacing: -0.32px;
-      line-height: 24px;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    // Column widths
-    &--nombre {
-      flex: 1 1 0;
-      min-width: 0;
-    }
-
-    &--limite {
-      width: 200px;
-      flex: 0 0 200px;
-    }
-
-    &--fecha {
-      width: 190px;
-      flex: 0 0 190px;
-    }
-
-    &--estado {
-      width: 130px;
-      flex: 0 0 130px;
-    }
-
-    &--actions {
-      width: 67px;
-      flex: 0 0 67px;
-      justify-content: center;
-      overflow: visible;
-    }
+    gap: 10px;
   }
 
-  // ========================================
-  // Ellipsis Menu
-  // ========================================
-  &__menu-wrap {
+  &__card-chip {
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 14px;
+    background: #fafafa;
+    border: 1px solid $grey-100;
+    border-radius: 23px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: $grey-500;
+    letter-spacing: -0.28px;
+    white-space: nowrap;
+  }
+
+  &__card-menu-wrap {
     position: relative;
     display: inline-flex;
   }
 
-  &__menu-btn {
+  &__card-menu-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    border: 1px solid $grey-50;
+    background: $white-500;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    background: transparent;
-    border: none;
     cursor: pointer;
+    padding: 0;
     color: $grey-300;
-    transition: color 0.15s ease;
+    transition: background 0.15s, border-color 0.15s;
 
     &:hover {
-      color: $grey-500;
+      background: #fafafa;
+      border-color: $grey-100;
     }
   }
 
-  &__menu-dropdown {
+  &__card-dropdown {
     position: absolute;
     bottom: 100%;
     right: 0;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     background: $white-500;
     border: 1px solid #dae1ed;
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
-    z-index: 9999;
+    z-index: 50;
     min-width: 180px;
     overflow: hidden;
   }
 
-  &__menu-item {
+  &__card-dropdown-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 16px;
+    gap: 8px;
+    padding: 10px 14px;
     font-family: 'Urbanist', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: $grey-500;
     cursor: pointer;
+    white-space: nowrap;
     border: none;
     background: none;
     width: 100%;
     text-align: left;
-    white-space: nowrap;
-    transition: background 0.1s ease;
+    transition: background 0.1s;
 
-    &:hover {
-      background: #f5f5f5;
-    }
+    &:hover { background: #f5f5f5; }
 
-    &--danger {
-      color: #dc2626;
-    }
+    &--delete { color: #dc2626; }
   }
 
   // ========================================
@@ -327,30 +382,40 @@
     align-items: center;
     gap: 13px;
   }
-}
 
-// ========================================
-// Responsive
-// ========================================
-@media (max-width: 1400px) {
-  .segmentos {
-    &__search-wrap {
-      width: auto;
-      flex: 1;
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: $white-500;
+    border: 1px solid $grey-100;
+    border-radius: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: $grey-300;
+    transition: border-color 0.15s, color 0.15s;
+
+    &:hover:not(:disabled) {
+      border-color: $primary-500;
+      color: $primary-500;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
   }
 }
 
-@media (max-width: 1100px) {
-  .segmentos {
-    &__cell--fecha {
-      width: 160px;
-      flex: 0 0 160px;
-    }
-
-    &__cell--limite {
-      width: 160px;
-      flex: 0 0 160px;
-    }
+@keyframes segSearchExpand {
+  from {
+    width: 40px;
+    opacity: 0.5;
+  }
+  to {
+    width: 280px;
+    opacity: 1;
   }
 }

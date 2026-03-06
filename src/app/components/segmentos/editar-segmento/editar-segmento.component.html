@@ -171,9 +171,138 @@
   <!-- ===== TAB: KEYWORDS ===== -->
   @if (activeTab === 'keywords') {
     <div class="editar-segmento__panel editar-segmento__panel--wide">
-      <div class="editar-segmento__card editar-segmento__card--empty">
-        <p class="editar-segmento__empty-text">Sin definir</p>
+      <!-- Top bar: segment select + button -->
+      <div class="editar-segmento__kw-topbar">
+        <div class="editar-segmento__kw-select">
+          <button type="button" class="editar-segmento__kw-select-item"
+            [class.editar-segmento__kw-select-item--active]="activeKeywordsTab === 'ai'"
+            (click)="activeKeywordsTab = 'ai'">
+            <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+            <span>Configurar con IA</span>
+          </button>
+          <button type="button" class="editar-segmento__kw-select-item"
+            [class.editar-segmento__kw-select-item--active]="activeKeywordsTab === 'list'"
+            (click)="activeKeywordsTab = 'list'">
+            <lucide-icon [img]="KeyIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+            <span>Listado de Keywords</span>
+          </button>
+        </div>
+        @if (activeKeywordsTab === 'list') {
+          <app-button variant="secondary" size="small" [leftIcon]="PlusIcon" (clicked)="openKwModal()">
+            Agregar nuevo
+          </app-button>
+        }
       </div>
+
+      <!-- SUB-TAB: Listado de Keywords -->
+      @if (activeKeywordsTab === 'list') {
+        @if (savedKeywords.length > 0) {
+          <div class="editar-segmento__kw-table-card">
+            <table class="editar-segmento__kw-table">
+              <thead>
+                <tr>
+                  <th>Keywords</th>
+                  <th>Palabra no contenida</th>
+                  <th>Fecha creación</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (kw of savedKeywords; track kw.id) {
+                  <tr>
+                    <td>{{ kw.keywords.join(', ') }}</td>
+                    <td>{{ kw.excludedKeywords.length > 0 ? kw.excludedKeywords.join(', ') : '-' }}</td>
+                    <td>{{ kw.createdAt.getDate().toString().padStart(2, '0') }}/{{ (kw.createdAt.getMonth() + 1).toString().padStart(2, '0') }}/{{ kw.createdAt.getFullYear() }}</td>
+                    <td><app-status-badge [label]="kw.status === 'active' ? 'Activo' : 'Pausado'" [variant]="kw.status === 'active' ? 'success' : 'neutral'"></app-status-badge></td>
+                    <td class="editar-segmento__kw-table-actions">
+                      <div class="editar-segmento__kw-menu-wrap" (click)="$event.stopPropagation()">
+                        <button type="button" class="editar-segmento__kw-ellipsis" (click)="toggleKwMenu(kw.id, $event)" title="Opciones">
+                          <lucide-icon [img]="EllipsisHIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                        </button>
+                        @if (openKwMenuId === kw.id) {
+                          <div class="editar-segmento__kw-dropdown">
+                            <button type="button" class="editar-segmento__kw-dropdown-item" (click)="openKwMenuId = null">
+                              <lucide-icon [img]="PencilIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                              Editar
+                            </button>
+                            <button type="button" class="editar-segmento__kw-dropdown-item editar-segmento__kw-dropdown-item--delete" (click)="deleteKeyword(kw.id)">
+                              <lucide-icon [img]="TrashIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                              Eliminar
+                            </button>
+                          </div>
+                        }
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        } @else {
+          <div class="editar-segmento__card">
+            <p class="editar-segmento__empty-text">No hay keywords configurados. Usa la IA o agrega manualmente.</p>
+          </div>
+        }
+      }
+
+      <!-- SUB-TAB: Configurar con IA -->
+      @if (activeKeywordsTab === 'ai') {
+        <div class="editar-segmento__kw-ai-card">
+          <div class="editar-segmento__kw-ai-header">
+            <div class="editar-segmento__kw-ai-header-left">
+              <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+              <span class="editar-segmento__kw-ai-title">Configuración asistida por IA</span>
+            </div>
+            <span class="editar-segmento__kw-ai-badge">Recomendado</span>
+          </div>
+
+          <div class="editar-segmento__kw-ai-body">
+            @if (kwIsGenerating) {
+              <div class="editar-segmento__kw-skeleton">
+                <div class="editar-segmento__kw-skeleton-line"></div>
+                <div class="editar-segmento__kw-skeleton-line editar-segmento__kw-skeleton-line--short"></div>
+                <div class="editar-segmento__kw-skeleton-chips">
+                  <div class="editar-segmento__kw-skeleton-chip"></div>
+                  <div class="editar-segmento__kw-skeleton-chip"></div>
+                  <div class="editar-segmento__kw-skeleton-chip"></div>
+                </div>
+                <p class="editar-segmento__kw-skeleton-msg">Generando configuración con IA...</p>
+              </div>
+            } @else {
+              <div class="editar-segmento__kw-ai-desc">
+                <lucide-icon [img]="SparklesIcon" [size]="32" [strokeWidth]="1"></lucide-icon>
+                <p>Describe detalladamente lo que quieres monitorear. Incluye información sobre tu marca, industria, competidores, idiomas y redes sociales preferidas.</p>
+                <p class="editar-segmento__kw-ai-hint">Ejemplo: "Quiero monitorear menciones sobre tecnología y startups en español en Twitter y LinkedIn"</p>
+              </div>
+              <textarea
+                class="editar-segmento__kw-ai-textarea"
+                [class.editar-segmento__kw-ai-textarea--disabled]="kwHasConfigured && !kwIsEditingConfig"
+                placeholder="Describe detalladamente lo que quieres configurar..."
+                [(ngModel)]="kwUserInput"
+                [disabled]="kwHasConfigured && !kwIsEditingConfig"
+                rows="6"></textarea>
+              <div class="editar-segmento__kw-ai-actions">
+                <div class="editar-segmento__kw-manual-link">
+                  <span>O </span><a (click)="kwGoToManual()">configura los keywords manualmente</a>
+                </div>
+                @if (!kwHasConfigured || kwIsEditingConfig) {
+                  <app-button variant="primary" size="medium" [leftIcon]="SparklesIcon" [disabled]="!kwUserInput.trim()" (clicked)="generateKwConfig()">
+                    Generar configuración
+                  </app-button>
+                } @else {
+                  <app-button variant="white" size="medium" [leftIcon]="PencilIcon" (clicked)="kwEditConfig()">
+                    Editar configuración
+                  </app-button>
+                  <app-button variant="primary" size="medium" [leftIcon]="EyeIcon" (clicked)="kwViewResults()">
+                    Ver resultados
+                  </app-button>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
     </div>
   }
 
@@ -212,11 +341,26 @@
           <!-- Competidores -->
           <div class="editar-segmento__field-group">
             <label class="editar-segmento__field-label">Competidores</label>
-            <textarea
-              class="editar-segmento__sent-textarea editar-segmento__sent-textarea--small"
-              [(ngModel)]="sentCompetidores"
-              placeholder="Escribe nombre separados por coma. Ej. Nike, Adidas, Rebook"
-              rows="3"></textarea>
+            <div class="editar-segmento__chips-box">
+              <input
+                type="text"
+                class="editar-segmento__chips-input"
+                [(ngModel)]="newCompetidor"
+                placeholder="Escribe el nombre, luego dale enter"
+                (keydown.enter)="addCompetidor()">
+              @if (sentCompetidores.length) {
+                <div class="editar-segmento__chips-wrap">
+                  @for (comp of sentCompetidores; track $index) {
+                    <span class="editar-segmento__chip">
+                      <span class="editar-segmento__chip-text">{{ comp }}</span>
+                      <button type="button" class="editar-segmento__chip-remove" (click)="removeCompetidor($index)" aria-label="Eliminar">
+                        <lucide-icon [img]="XIcon" [size]="12" [strokeWidth]="2"></lucide-icon>
+                      </button>
+                    </span>
+                  }
+                </div>
+              }
+            </div>
           </div>
         </div>
 
@@ -230,55 +374,104 @@
             <p class="editar-segmento__sent-section-desc">Personaliza los ejemplos para cada categoría</p>
           </div>
 
-          <!-- 3-column sentiment cards -->
-          <div class="editar-segmento__sent-grid">
-
-            <!-- Positivo -->
-            <div class="editar-segmento__sent-col editar-segmento__sent-col--positive">
-              <div class="editar-segmento__sent-col-header">
-                <div class="editar-segmento__sent-badge">
-                  <span class="editar-segmento__sent-dot editar-segmento__sent-dot--positive"></span>
-                  <span class="editar-segmento__sent-badge-label">Positivo</span>
-                </div>
-                <span class="editar-segmento__sent-count">{{ getExampleCount(sentPositivo) }} ejemplos</span>
+          <!-- Sentiment Tab Selector -->
+          <div class="editar-segmento__sent-tabs">
+            <button
+              type="button"
+              class="editar-segmento__sent-tab"
+              [class.editar-segmento__sent-tab--active]="activeSentimentTab === 'positivo'"
+              (click)="activeSentimentTab = 'positivo'">
+              <div class="editar-segmento__sent-tab-left">
+                <lucide-icon
+                  class="editar-segmento__sent-tab-icon"
+                  [img]="CircleCheckIcon" [size]="16" [strokeWidth]="2">
+                </lucide-icon>
+                <span class="editar-segmento__sent-tab-label">Positivo</span>
               </div>
-              <textarea
-                class="editar-segmento__sent-textarea"
-                [(ngModel)]="sentPositivo"
-                placeholder="Un ejemplo por linea"
-                rows="8"></textarea>
-            </div>
-
-            <!-- Negativa -->
-            <div class="editar-segmento__sent-col editar-segmento__sent-col--negative">
-              <div class="editar-segmento__sent-col-header">
-                <div class="editar-segmento__sent-badge">
-                  <span class="editar-segmento__sent-dot editar-segmento__sent-dot--negative"></span>
-                  <span class="editar-segmento__sent-badge-label">Negativa</span>
-                </div>
-                <span class="editar-segmento__sent-count">{{ getExampleCount(sentNegativo) }} ejemplos</span>
+              <span class="editar-segmento__sent-tab-badge"
+                [class.editar-segmento__sent-tab-badge--positive]="activeSentimentTab === 'positivo'"
+                [class.editar-segmento__sent-tab-badge--grey]="activeSentimentTab !== 'positivo'">
+                {{ getExampleCount(sentPositivo) }}
+              </span>
+            </button>
+            <button
+              type="button"
+              class="editar-segmento__sent-tab"
+              [class.editar-segmento__sent-tab--active]="activeSentimentTab === 'neutro'"
+              (click)="activeSentimentTab = 'neutro'">
+              <div class="editar-segmento__sent-tab-left">
+                <lucide-icon
+                  class="editar-segmento__sent-tab-icon"
+                  [img]="CircleMinusIcon" [size]="16" [strokeWidth]="2">
+                </lucide-icon>
+                <span class="editar-segmento__sent-tab-label">Neutro</span>
               </div>
-              <textarea
-                class="editar-segmento__sent-textarea"
-                [(ngModel)]="sentNegativo"
-                placeholder="Un ejemplo por linea"
-                rows="8"></textarea>
-            </div>
-
-            <!-- Neutro -->
-            <div class="editar-segmento__sent-col editar-segmento__sent-col--neutral">
-              <div class="editar-segmento__sent-col-header">
-                <div class="editar-segmento__sent-badge">
-                  <span class="editar-segmento__sent-dot editar-segmento__sent-dot--neutral"></span>
-                  <span class="editar-segmento__sent-badge-label">Neutro</span>
-                </div>
-                <span class="editar-segmento__sent-count">{{ getExampleCount(sentNeutro) }} ejemplos</span>
+              <span class="editar-segmento__sent-tab-badge"
+                [class.editar-segmento__sent-tab-badge--neutral]="activeSentimentTab === 'neutro'"
+                [class.editar-segmento__sent-tab-badge--grey]="activeSentimentTab !== 'neutro'">
+                {{ getExampleCount(sentNeutro) }}
+              </span>
+            </button>
+            <button
+              type="button"
+              class="editar-segmento__sent-tab"
+              [class.editar-segmento__sent-tab--active]="activeSentimentTab === 'negativo'"
+              (click)="activeSentimentTab = 'negativo'">
+              <div class="editar-segmento__sent-tab-left">
+                <lucide-icon
+                  class="editar-segmento__sent-tab-icon"
+                  [img]="BanIcon" [size]="16" [strokeWidth]="2">
+                </lucide-icon>
+                <span class="editar-segmento__sent-tab-label">Negativo</span>
               </div>
-              <textarea
-                class="editar-segmento__sent-textarea"
-                [(ngModel)]="sentNeutro"
-                placeholder="Un ejemplo por linea"
-                rows="8"></textarea>
+              <span class="editar-segmento__sent-tab-badge"
+                [class.editar-segmento__sent-tab-badge--negative]="activeSentimentTab === 'negativo'"
+                [class.editar-segmento__sent-tab-badge--grey]="activeSentimentTab !== 'negativo'">
+                {{ getExampleCount(sentNegativo) }}
+              </span>
+            </button>
+          </div>
+
+          <!-- Single full-width gradient card -->
+          <div class="editar-segmento__sent-card-single"
+            [class.editar-segmento__sent-card-single--positive]="activeSentimentTab === 'positivo'"
+            [class.editar-segmento__sent-card-single--negative]="activeSentimentTab === 'negativo'"
+            [class.editar-segmento__sent-card-single--neutral]="activeSentimentTab === 'neutro'">
+            <p class="editar-segmento__sent-hint"
+              [class.editar-segmento__sent-hint--positive]="activeSentimentTab === 'positivo'"
+              [class.editar-segmento__sent-hint--negative]="activeSentimentTab === 'negativo'"
+              [class.editar-segmento__sent-hint--neutral]="activeSentimentTab === 'neutro'">
+              {{ sentimentHint }}
+            </p>
+            <div class="editar-segmento__sent-lines-wrap">
+              @for (line of activeSentimentLines; track $index) {
+                <div class="editar-segmento__sent-line-row">
+                  <span class="editar-segmento__sent-line-bullet"
+                    [class.editar-segmento__sent-line-bullet--positive]="activeSentimentTab === 'positivo'"
+                    [class.editar-segmento__sent-line-bullet--negative]="activeSentimentTab === 'negativo'"
+                    [class.editar-segmento__sent-line-bullet--neutral]="activeSentimentTab === 'neutro'">
+                  </span>
+                  <input
+                    type="text"
+                    class="editar-segmento__sent-line-text"
+                    [value]="line"
+                    (input)="updateLine($index, $any($event.target).value)"
+                    (blur)="onLineBlur($index, $any($event.target).value)">
+                </div>
+              }
+              <div class="editar-segmento__sent-line-row editar-segmento__sent-line-row--new">
+                <span class="editar-segmento__sent-line-bullet editar-segmento__sent-line-bullet--faded"
+                  [class.editar-segmento__sent-line-bullet--positive]="activeSentimentTab === 'positivo'"
+                  [class.editar-segmento__sent-line-bullet--negative]="activeSentimentTab === 'negativo'"
+                  [class.editar-segmento__sent-line-bullet--neutral]="activeSentimentTab === 'neutro'">
+                </span>
+                <input
+                  type="text"
+                  class="editar-segmento__sent-line-text"
+                  placeholder="Un ejemplo por linea"
+                  [(ngModel)]="newExampleLine"
+                  (keydown.enter)="addExampleLine()">
+              </div>
             </div>
           </div>
         </div>
@@ -328,7 +521,7 @@
                     </button>
                     @if (openTagMenuId === tag.id) {
                       <div class="editar-segmento__tag-dropdown">
-                        <button type="button" class="editar-segmento__tag-dropdown-item">
+                        <button type="button" class="editar-segmento__tag-dropdown-item" (click)="openEditTagModal(tag)">
                           <lucide-icon [img]="PencilIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
                           Editar
                         </button>
@@ -381,7 +574,7 @@
         <div class="editar-segmento__canales-grid">
 
           @for (canal of canales; track canal.id) {
-            <div class="editar-segmento__channel-card">
+            <div class="editar-segmento__channel-card" (click)="onChannelCardClick(canal)">
               <div class="editar-segmento__channel-header">
                 <div class="editar-segmento__channel-icon" [class]="'editar-segmento__channel-icon ' + (canal.bgClass ? 'editar-segmento__channel-icon--' + canal.bgClass : '')">
                   <!-- Brand icon via ng-container + @switch -->
@@ -423,7 +616,7 @@
                 </div>
                 <span class="editar-segmento__channel-name">{{ canal.nombre }}</span>
               </div>
-              <div class="editar-segmento__channel-footer">
+              <div class="editar-segmento__channel-footer" (click)="$event.stopPropagation()">
                 <div class="editar-segmento__channel-status">
                   <span
                     class="editar-segmento__channel-status-dot"
@@ -505,20 +698,6 @@
           placeholder="Nombre de la etiqueta">
       </div>
       <div class="editar-segmento__modal-field">
-        <label class="editar-segmento__modal-label">Tipo de etiqueta</label>
-        <div class="editar-segmento__modal-select-wrap">
-          <select class="editar-segmento__modal-select" [(ngModel)]="modalTagTipo">
-            <option value="" disabled>Seleccionar tipo de etiqueta</option>
-            @for (tipo of tipoOptions; track tipo) {
-              <option [value]="tipo">{{ tipo }}</option>
-            }
-          </select>
-          <span class="editar-segmento__modal-select-arrow">
-            <lucide-icon [img]="ChevronDownIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
-          </span>
-        </div>
-      </div>
-      <div class="editar-segmento__modal-field">
         <label class="editar-segmento__modal-label">Color de la etiqueta</label>
         <div class="editar-segmento__color-swatches">
           @for (color of tagColors; track $index) {
@@ -542,6 +721,53 @@
       <div class="editar-segmento__modal-footer">
         <button type="button" class="editar-segmento__btn-modal-cancelar" (click)="closeTagModal()">Cancelar</button>
         <button type="button" class="editar-segmento__btn-modal-crear" [disabled]="!modalTagNombre.trim()" (click)="onCreateTag()">Crear</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ===== MODAL: EDITAR ETIQUETA ===== -->
+@if (showEditTagModal) {
+  <div class="editar-segmento__modal-overlay" (click)="closeEditTagModal()">
+    <div class="editar-segmento__modal-card" (click)="$event.stopPropagation()">
+      <div class="editar-segmento__modal-header">
+        <h2 class="editar-segmento__modal-title">Editar etiqueta</h2>
+        <button type="button" class="editar-segmento__modal-close" (click)="closeEditTagModal()">
+          <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="2"></lucide-icon>
+        </button>
+      </div>
+      <div class="editar-segmento__modal-field">
+        <label class="editar-segmento__modal-label">Nombre de la etiqueta</label>
+        <input
+          type="text"
+          class="editar-segmento__modal-input"
+          [(ngModel)]="editTagNombre"
+          placeholder="Nombre de la etiqueta">
+      </div>
+      <div class="editar-segmento__modal-field">
+        <label class="editar-segmento__modal-label">Color de la etiqueta</label>
+        <div class="editar-segmento__color-swatches">
+          @for (color of tagColors; track $index) {
+            <button
+              type="button"
+              class="editar-segmento__color-swatch"
+              [class.editar-segmento__color-swatch--selected]="editTagColorIdx === $index"
+              (click)="editTagColorIdx = $index"
+              [title]="color.label">
+              <span class="editar-segmento__color-swatch-inner" [style.background]="color.bg"></span>
+            </button>
+          }
+        </div>
+      </div>
+      <div class="editar-segmento__modal-preview-section">
+        <label class="editar-segmento__modal-label">Vista previa</label>
+        <div class="editar-segmento__modal-preview-tag" [ngStyle]="editPreviewStyle">
+          {{ editTagNombre || 'Etiqueta' }}
+        </div>
+      </div>
+      <div class="editar-segmento__modal-footer">
+        <button type="button" class="editar-segmento__btn-modal-cancelar" (click)="closeEditTagModal()">Cancelar</button>
+        <button type="button" class="editar-segmento__btn-modal-crear" [disabled]="!editTagNombre.trim()" (click)="onUpdateTag()">Guardar</button>
       </div>
     </div>
   </div>
@@ -697,6 +923,60 @@
     </div>
   </div>
 }
+
+<!-- ===== MODAL: AGREGAR KEYWORD ===== -->
+<app-modal
+  [isOpen]="kwModalOpen"
+  title="Agregar keyword"
+  subtitle="Configura los keywords que deseas monitorear"
+  maxWidth="600px"
+  cancelText="Cancelar"
+  confirmText="Agregar"
+  [confirmDisabled]="!kwManualInput.trim()"
+  (close)="closeKwModal()"
+  (cancel)="closeKwModal()"
+  (confirm)="addManualKeyword()">
+  <div class="editar-segmento__kw-modal-form">
+    <div class="editar-segmento__kw-modal-field">
+      <app-channel-selector
+        [(ngModel)]="kwSelectedChannels"
+        label="Redes sociales a monitorear"
+        [options]="kwChannelOptions"
+        layout="horizontal">
+      </app-channel-selector>
+    </div>
+    <div class="editar-segmento__kw-modal-field">
+      <label class="editar-segmento__kw-modal-label">Keywords</label>
+      <textarea
+        class="editar-segmento__kw-modal-textarea"
+        placeholder="Ingresa los keywords separados por coma (ej: coca-cola, cocacola, #cocacola)"
+        [(ngModel)]="kwManualInput"
+        rows="4"></textarea>
+      <span class="editar-segmento__kw-modal-hint">Separa múltiples keywords con comas</span>
+    </div>
+    <div class="editar-segmento__kw-modal-grid">
+      <div class="editar-segmento__kw-modal-field">
+        <app-select size="small" label="Segmento" placeholder="Todos" [options]="kwSegmentoOptions" (selectionChange)="kwSelectedSegmento = $event?.value?.toString() ?? ''"></app-select>
+      </div>
+      <div class="editar-segmento__kw-modal-field">
+        <app-select size="small" label="Etiquetas" placeholder="Todas" [options]="kwEtiquetasOptions" (selectionChange)="kwSelectedEtiquetas = $event?.value?.toString() ?? ''"></app-select>
+      </div>
+    </div>
+    <div class="editar-segmento__kw-modal-advanced-section">
+      <button type="button" class="editar-segmento__kw-modal-advanced-toggle" (click)="kwShowAdvanced = !kwShowAdvanced">
+        <lucide-icon [img]="ChevronDownIcon" [size]="14" [strokeWidth]="2"
+          [class.editar-segmento__kw-modal-chevron--open]="kwShowAdvanced"></lucide-icon>
+        Opciones avanzadas
+      </button>
+      @if (kwShowAdvanced) {
+        <div class="editar-segmento__kw-modal-advanced">
+          <app-select size="small" label="Influencia" placeholder="Todas" [options]="kwInfluenciaOptions" (selectionChange)="kwSelectedInfluencia = $event?.value?.toString() ?? ''"></app-select>
+          <app-select size="small" label="Sentimiento" placeholder="Todos" [options]="kwSentimientoOptions" (selectionChange)="kwSelectedSentimiento = $event?.value?.toString() ?? ''"></app-select>
+        </div>
+      }
+    </div>
+  </div>
+</app-modal>
 
 <!-- ===== MODAL: DESACTIVAR SEGMENTO ===== -->
 <app-confirm-modal

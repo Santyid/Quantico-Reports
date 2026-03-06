@@ -1,30 +1,35 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import {
   LucideAngularModule,
   Layers,
   Plus,
-  ArrowDownNarrowWide,
-  ArrowUpNarrowWide,
+  Search,
+  X,
   EllipsisVertical,
   Pencil,
   Trash2,
   ChevronLeft,
   ChevronRight
 } from 'lucide-angular';
-import { SelectComponent, SelectOption } from '../ui/select/select.component';
-import { SearchInputComponent } from '../ui/search-input/search-input.component';
-import { StatusBadgeComponent } from '../ui/status-badge/status-badge.component';
 import { ButtonComponent } from '../ui/button/button.component';
+import { SelectComponent, SelectOption } from '../ui/select/select.component';
+import { StatusBadgeComponent } from '../ui/status-badge/status-badge.component';
+import { ConfirmModalComponent } from '../ui/confirm-modal/confirm-modal.component';
 
-export interface SegmentoRow {
+export type SegmentoTab = 'activos' | 'inactivos';
+
+export interface SegmentoCard {
   id: number;
   nombre: string;
   limiteMenciones: number;
   fechaCreacion: string;
   fechaModificacion: string;
   estado: 'Activo' | 'Inactivo';
+  canales: string[];
+  totalMenciones: number;
 }
 
 @Component({
@@ -32,66 +37,103 @@ export interface SegmentoRow {
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     LucideAngularModule,
+    ButtonComponent,
     SelectComponent,
-    SearchInputComponent,
     StatusBadgeComponent,
-    ButtonComponent
+    ConfirmModalComponent
   ],
   templateUrl: './segmentos.component.html',
   styleUrl: './segmentos.component.scss'
 })
 export class SegmentosComponent {
-  // Icons
   readonly LayersIcon = Layers;
   readonly PlusIcon = Plus;
-  readonly ArrowDownNarrowWideIcon = ArrowDownNarrowWide;
-  readonly ArrowUpNarrowWideIcon = ArrowUpNarrowWide;
+  readonly SearchIcon = Search;
+  readonly XIcon = X;
   readonly EllipsisIcon = EllipsisVertical;
   readonly PencilIcon = Pencil;
   readonly TrashIcon = Trash2;
   readonly ChevronLeftIcon = ChevronLeft;
   readonly ChevronRightIcon = ChevronRight;
 
-  // Sort options
-  readonly sortOptions: SelectOption[] = [
-    { value: 'nombre', label: 'Nombre' },
-    { value: 'fecha', label: 'Fecha de creación' }
-  ];
+  activeTab: SegmentoTab = 'activos';
+  searchOpen = false;
+  searchValue = '';
+  openMenuId: number | null = null;
 
-  // Status filter options
-  readonly statusOptions: SelectOption[] = [
-    { value: 'all', label: 'Todos' },
-    { value: 'activo', label: 'Activo' },
-    { value: 'inactivo', label: 'Inactivo' }
-  ];
+  // Pagination
+  currentPage = 1;
+  itemsPerPage = 6;
 
-  // Items per page options
   readonly itemsPerPageOptions: SelectOption[] = [
     { value: 6, label: '6' },
     { value: 10, label: '10' },
-    { value: 20, label: '20' },
-    { value: 50, label: '50' }
+    { value: 20, label: '20' }
   ];
 
-  // State
-  searchValue = '';
-  sortValue = '';
-  statusFilter = '';
-  sortDirection: 'asc' | 'desc' = 'desc';
-  openMenuIndex: number | null = null;
+  segmentos: SegmentoCard[] = [
+    { id: 1,  nombre: 'Prueba N1',            limiteMenciones: 1000,  fechaCreacion: '17 Feb 2026', fechaModificacion: '17 Feb 2026', estado: 'Activo',   canales: ['facebook', 'instagram', 'x'],                totalMenciones: 842 },
+    { id: 2,  nombre: 'Prueba N2',            limiteMenciones: 25000, fechaCreacion: '17 Feb 2026', fechaModificacion: '20 Feb 2026', estado: 'Activo',   canales: ['facebook', 'linkedin', 'youtube', 'tiktok'], totalMenciones: 12450 },
+    { id: 3,  nombre: 'Prueba N3',            limiteMenciones: 1000,  fechaCreacion: '17 Feb 2026', fechaModificacion: '18 Feb 2026', estado: 'Activo',   canales: ['instagram', 'tiktok'],                       totalMenciones: 320 },
+    { id: 4,  nombre: 'Prueba N4',            limiteMenciones: 25000, fechaCreacion: '17 Feb 2026', fechaModificacion: '17 Feb 2026', estado: 'Activo',   canales: ['facebook'],                                  totalMenciones: 5200 },
+    { id: 5,  nombre: 'Prueba N5',            limiteMenciones: 1000,  fechaCreacion: '17 Feb 2026', fechaModificacion: '22 Feb 2026', estado: 'Inactivo', canales: ['facebook', 'instagram'],                     totalMenciones: 0 },
+    { id: 6,  nombre: 'Prueba N6',            limiteMenciones: 25000, fechaCreacion: '17 Feb 2026', fechaModificacion: '17 Feb 2026', estado: 'Activo',   canales: ['linkedin', 'youtube'],                       totalMenciones: 8900 },
+    { id: 7,  nombre: 'Marca Competencia',    limiteMenciones: 5000,  fechaCreacion: '01 Mar 2026', fechaModificacion: '02 Mar 2026', estado: 'Activo',   canales: ['facebook', 'x', 'linkedin'],                 totalMenciones: 2100 },
+    { id: 8,  nombre: 'Monitoreo Producto',   limiteMenciones: 10000, fechaCreacion: '25 Feb 2026', fechaModificacion: '01 Mar 2026', estado: 'Inactivo', canales: ['instagram', 'tiktok', 'youtube'],             totalMenciones: 0 },
+    { id: 9,  nombre: 'Campaña Verano',       limiteMenciones: 50000, fechaCreacion: '10 Feb 2026', fechaModificacion: '28 Feb 2026', estado: 'Activo',   canales: ['facebook', 'instagram', 'x', 'tiktok'],      totalMenciones: 34200 },
+    { id: 10, nombre: 'Servicio al Cliente',  limiteMenciones: 15000, fechaCreacion: '05 Feb 2026', fechaModificacion: '03 Mar 2026', estado: 'Activo',   canales: ['facebook', 'x'],                             totalMenciones: 9800 },
+  ];
 
-  // Pagination
-  currentPage = 3;
-  itemsPerPage = 6;
-  totalItems = 120;
+  // Delete confirmation
+  showDeleteModal = false;
+  deleteTarget: SegmentoCard | null = null;
+
+  constructor(private router: Router) {}
+
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    this.openMenuId = null;
+  }
+
+  setTab(tab: SegmentoTab): void {
+    this.activeTab = tab;
+    this.currentPage = 1;
+  }
+
+  get filteredSegmentos(): SegmentoCard[] {
+    let result = [...this.segmentos];
+
+    if (this.activeTab === 'activos') {
+      result = result.filter(s => s.estado === 'Activo');
+    } else {
+      result = result.filter(s => s.estado === 'Inactivo');
+    }
+
+    if (this.searchValue.trim()) {
+      const q = this.searchValue.toLowerCase();
+      result = result.filter(s => s.nombre.toLowerCase().includes(q));
+    }
+
+    return result;
+  }
+
+  get paginatedSegmentos(): SegmentoCard[] {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.filteredSegmentos.slice(start, start + this.itemsPerPage);
+  }
+
+  get totalFiltered(): number {
+    return this.filteredSegmentos.length;
+  }
 
   get startItem(): number {
-    return (this.currentPage - 1) * this.itemsPerPage + 1;
+    return this.totalFiltered === 0 ? 0 : (this.currentPage - 1) * this.itemsPerPage + 1;
   }
 
   get endItem(): number {
-    return Math.min(this.currentPage * this.itemsPerPage, this.totalItems);
+    return Math.min(this.currentPage * this.itemsPerPage, this.totalFiltered);
   }
 
   get canGoPrev(): boolean {
@@ -99,93 +141,44 @@ export class SegmentosComponent {
   }
 
   get canGoNext(): boolean {
-    return this.endItem < this.totalItems;
+    return this.endItem < this.totalFiltered;
   }
 
-  // Table data
-  segmentos: SegmentoRow[] = [
-    { id: 1, nombre: 'Prueba N1', limiteMenciones: 1000,  fechaCreacion: '17/02/2026 15:26', fechaModificacion: '17/02/2026 15:26', estado: 'Activo' },
-    { id: 2, nombre: 'Prueba N2', limiteMenciones: 25000, fechaCreacion: '17/02/2026 15:26', fechaModificacion: '17/02/2026 15:26', estado: 'Activo' },
-    { id: 3, nombre: 'Prueba N3', limiteMenciones: 1000,  fechaCreacion: '17/02/2026 15:26', fechaModificacion: '17/02/2026 15:26', estado: 'Activo' },
-    { id: 4, nombre: 'Prueba N4', limiteMenciones: 25000, fechaCreacion: '17/02/2026 15:26', fechaModificacion: '17/02/2026 15:26', estado: 'Activo' },
-    { id: 5, nombre: 'Prueba N5', limiteMenciones: 1000,  fechaCreacion: '17/02/2026 15:26', fechaModificacion: '17/02/2026 15:26', estado: 'Activo' },
-    { id: 6, nombre: 'Prueba N6', limiteMenciones: 25000, fechaCreacion: '17/02/2026 15:26', fechaModificacion: '17/02/2026 15:26', estado: 'Activo' }
-  ];
-
-  get filteredSegmentos(): SegmentoRow[] {
-    let result = [...this.segmentos];
-
-    if (this.searchValue.trim()) {
-      const q = this.searchValue.toLowerCase();
-      result = result.filter(s => s.nombre.toLowerCase().includes(q));
-    }
-
-    if (this.statusFilter && this.statusFilter !== 'all') {
-      result = result.filter(s => s.estado.toLowerCase() === this.statusFilter);
-    }
-
-    if (this.sortValue === 'nombre') {
-      result.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    } else if (this.sortValue === 'fecha') {
-      result.sort((a, b) => a.fechaCreacion.localeCompare(b.fechaCreacion));
-    }
-
-    if (this.sortDirection === 'desc') {
-      result.reverse();
-    }
-
-    return result;
+  toggleMenu(id: number, event: Event): void {
+    event.stopPropagation();
+    this.openMenuId = this.openMenuId === id ? null : id;
   }
 
-  constructor(private router: Router) {}
-
-  @HostListener('document:click')
-  onDocumentClick(): void {
-    this.openMenuIndex = null;
-  }
-
-  onToggleSortDirection(): void {
-    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-  }
-
-  onRowClick(segmento: SegmentoRow): void {
+  onCardClick(segmento: SegmentoCard): void {
     this.router.navigate(['/segmentos/editar', segmento.id]);
+  }
+
+  onEditarSegmento(segmento: SegmentoCard): void {
+    this.openMenuId = null;
+    this.router.navigate(['/segmentos/editar', segmento.id]);
+  }
+
+  onRequestDelete(segmento: SegmentoCard): void {
+    this.openMenuId = null;
+    this.deleteTarget = segmento;
+    this.showDeleteModal = true;
+  }
+
+  onConfirmDelete(): void {
+    if (this.deleteTarget) {
+      this.segmentos = this.segmentos.filter(s => s.id !== this.deleteTarget!.id);
+    }
+    this.showDeleteModal = false;
+    this.deleteTarget = null;
+  }
+
+  onCancelDelete(): void {
+    this.showDeleteModal = false;
+    this.deleteTarget = null;
   }
 
   onCrearSegmento(): void {
     this.router.navigate(['/segmentos/crear']);
-  }
-
-  goToCardView(): void {
-    this.router.navigate(['/segmentos-cards']);
-  }
-
-  onSearchChange(value: string): void {
-    this.searchValue = value;
-  }
-
-  onSortChange(option: SelectOption | null): void {
-    this.sortValue = option ? String(option.value) : '';
-  }
-
-  onStatusFilterChange(option: SelectOption | null): void {
-    this.statusFilter = option ? String(option.value) : '';
-  }
-
-  onToggleMenu(index: number): void {
-    this.openMenuIndex = this.openMenuIndex === index ? null : index;
-  }
-
-  onEditarSegmento(segmento: SegmentoRow): void {
-    this.openMenuIndex = null;
-    this.router.navigate(['/segmentos/editar', segmento.id]);
-  }
-
-  onEliminarSegmento(segmento: SegmentoRow): void {
-    this.openMenuIndex = null;
-    if (confirm(`¿Eliminar el segmento "${segmento.nombre}"?`)) {
-      this.segmentos = this.segmentos.filter(s => s.id !== segmento.id);
-    }
   }
 
   getEstadoVariant(estado: string): 'success' | 'neutral' {
@@ -196,11 +189,11 @@ export class SegmentosComponent {
     return value.toLocaleString('es');
   }
 
-  onPrevPage(): void {
+  prevPage(): void {
     if (this.canGoPrev) this.currentPage--;
   }
 
-  onNextPage(): void {
+  nextPage(): void {
     if (this.canGoNext) this.currentPage++;
   }
 
