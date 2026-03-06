@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, HostListener, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,12 +17,24 @@ import {
   Link2,
   RefreshCw,
   Search,
-  Info
+  Info,
+  CircleCheck,
+  Ban,
+  CircleMinus,
+  Sparkles,
+  Key,
+  Edit3,
+  Eye,
+  Calendar
 } from 'lucide-angular';
 import { StatusBadgeComponent } from '../../ui/status-badge/status-badge.component';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { ToastComponent } from '../../ui/toast/toast.component';
 import { ConfirmModalComponent } from '../../ui/confirm-modal/confirm-modal.component';
+import { TableComponent, TableColumn, TableIconAction } from '../../ui/table/table.component';
+import { SelectComponent, SelectOption } from '../../ui/select/select.component';
+import { ModalComponent } from '../../ui/modal/modal.component';
+import { ChannelSelectorComponent, ChannelOption } from '../../ui/channel-selector/channel-selector.component';
 
 export type ActiveTab = 'general' | 'canales' | 'keywords' | 'sentimiento' | 'etiquetas' | 'etiquetas-automatizadas';
 
@@ -38,6 +50,15 @@ export interface Etiqueta {
   tipo: string;
   colorIdx: number;
   selected: boolean;
+}
+
+export interface SavedKeyword {
+  id: string;
+  name: string;
+  keywords: string[];
+  excludedKeywords: string[];
+  createdAt: Date;
+  status: 'active' | 'paused';
 }
 
 export interface Canal {
@@ -58,7 +79,11 @@ export interface Canal {
     StatusBadgeComponent,
     ButtonComponent,
     ToastComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    TableComponent,
+    SelectComponent,
+    ModalComponent,
+    ChannelSelectorComponent
   ],
   templateUrl: './editar-segmento.component.html',
   styleUrl: './editar-segmento.component.scss'
@@ -78,6 +103,123 @@ export class EditarSegmentoComponent implements OnInit {
   readonly RefreshIcon = RefreshCw;
   readonly SearchIcon = Search;
   readonly InfoIcon = Info;
+  readonly CircleCheckIcon = CircleCheck;
+  readonly BanIcon = Ban;
+  readonly CircleMinusIcon = CircleMinus;
+  readonly SparklesIcon = Sparkles;
+  readonly KeyIcon = Key;
+  readonly EditIcon = Edit3;
+  readonly EyeIcon = Eye;
+  readonly CalendarIcon = Calendar;
+
+  private cdr = inject(ChangeDetectorRef);
+
+  // Keywords
+  activeKeywordsTab: 'ai' | 'list' = 'ai';
+  openKwMenuId: string | null = null;
+  kwModalOpen = false;
+  kwManualInput = '';
+  kwSelectedChannels: string[] = [];
+  kwShowAdvanced = false;
+  kwSelectedSegmento = '';
+  kwSelectedEtiquetas = '';
+  kwSelectedInfluencia = '';
+  kwSelectedSentimiento = '';
+  kwUserInput = '';
+  kwIsGenerating = false;
+  kwHasConfigured = false;
+  kwIsEditingConfig = false;
+
+  savedKeywords: SavedKeyword[] = [
+    { id: '1', name: 'cocacola', keywords: ['coca-cola', 'cocacola', '#cocacola'], excludedKeywords: ['zero', 'light'], createdAt: new Date('2024-01-15'), status: 'active' },
+    { id: '2', name: 'pepsi', keywords: ['pepsi', 'pepsico', '#pepsi'], excludedKeywords: ['zero', 'light'], createdAt: new Date('2024-01-10'), status: 'active' },
+  ];
+
+  readonly kwColumns: TableColumn[] = [
+    { key: 'keywords', header: 'Keywords' },
+    { key: 'excludedKeywords', header: 'Palabra no contenida' },
+    { key: 'createdAt', header: 'Fecha creación', width: '180px' },
+    { key: 'status', header: 'Estado', type: 'badge', width: '160px' },
+    { key: 'actions', header: '', type: 'text', width: '50px', align: 'center' }
+  ];
+
+  readonly kwChannelOptions: ChannelOption[] = [
+    { value: 'instagram', label: 'Instagram', image: 'images/instagram-icon.svg' },
+    { value: 'facebook', label: 'Facebook', image: 'images/facebook-icon.svg' },
+    { value: 'twitter', label: 'X (Twitter)', image: 'images/x-twitter-icon.svg' },
+    { value: 'tiktok', label: 'TikTok', image: 'images/tiktok-icon.svg' },
+    { value: 'youtube', label: 'YouTube', image: 'images/youtube-icon.svg' },
+    { value: 'linkedin', label: 'LinkedIn', image: 'images/linkedin-icon.svg' },
+  ];
+
+  readonly kwSegmentoOptions: SelectOption[] = [
+    { value: 'todos', label: 'Todos' }, { value: 'clientes', label: 'Clientes' }, { value: 'prospectos', label: 'Prospectos' }
+  ];
+  readonly kwEtiquetasOptions: SelectOption[] = [
+    { value: 'todas', label: 'Todas' }, { value: 'urgente', label: 'Urgente' }, { value: 'importante', label: 'Importante' }
+  ];
+  readonly kwInfluenciaOptions: SelectOption[] = [
+    { value: 'todas', label: 'Todas' }, { value: 'alta', label: 'Alta' }, { value: 'media', label: 'Media' }, { value: 'baja', label: 'Baja' }
+  ];
+  readonly kwSentimientoOptions: SelectOption[] = [
+    { value: 'todos', label: 'Todos' }, { value: 'positivo', label: 'Positivo' }, { value: 'neutral', label: 'Neutral' }, { value: 'negativo', label: 'Negativo' }
+  ];
+
+  get kwTableData(): Record<string, unknown>[] {
+    return this.savedKeywords.map(kw => ({
+      id: kw.id,
+      keywords: kw.keywords.length <= 3 ? kw.keywords.join(', ') : kw.keywords.slice(0, 3).join(', ') + ` (+${kw.keywords.length - 3} más)`,
+      excludedKeywords: kw.excludedKeywords.length > 0 ? kw.excludedKeywords.join(', ') : '-',
+      createdAt: `${String(kw.createdAt.getDate()).padStart(2, '0')}/${String(kw.createdAt.getMonth() + 1).padStart(2, '0')}/${kw.createdAt.getFullYear()}`,
+      status: { label: kw.status === 'active' ? 'Activo' : 'Pausado', variant: kw.status === 'active' ? 'success' : 'neutral' },
+      actions: ''
+    }));
+  }
+
+  openKwModal(): void { this.kwModalOpen = true; this.kwManualInput = ''; this.kwSelectedChannels = []; }
+  closeKwModal(): void { this.kwModalOpen = false; }
+
+  addManualKeyword(): void {
+    if (!this.kwManualInput.trim()) return;
+    const keywords = this.kwManualInput.split(',').map(k => k.trim()).filter(k => k.length > 0);
+    if (keywords.length > 0) {
+      this.savedKeywords.unshift({ id: Date.now().toString(), name: keywords[0], keywords, excludedKeywords: [], createdAt: new Date(), status: 'active' });
+    }
+    this.closeKwModal();
+  }
+
+  toggleKwMenu(id: string, event: Event): void {
+    event.stopPropagation();
+    this.openKwMenuId = this.openKwMenuId === id ? null : id;
+  }
+
+  deleteKeyword(id: string): void {
+    this.savedKeywords = this.savedKeywords.filter(k => k.id !== id);
+    this.openKwMenuId = null;
+  }
+
+  onKwTableAction(event: { action: string; row: Record<string, unknown>; index: number }): void {
+    const id = event.row['id'] as string;
+    if (event.action === 'delete') this.deleteKeyword(id);
+  }
+
+  generateKwConfig(): void {
+    if (!this.kwUserInput.trim()) return;
+    this.kwIsGenerating = true;
+    setTimeout(() => {
+      const words = this.kwUserInput.split(/\s+/).filter(w => w.length > 4).slice(0, 5);
+      const keywords = words.length > 0 ? words : ['keyword-1', 'keyword-2', 'keyword-3'];
+      this.savedKeywords.unshift({ id: Date.now().toString(), name: keywords[0], keywords, excludedKeywords: [], createdAt: new Date(), status: 'active' });
+      this.kwIsGenerating = false;
+      this.kwHasConfigured = true;
+      this.kwIsEditingConfig = false;
+      this.cdr.detectChanges();
+    }, 2500);
+  }
+
+  kwEditConfig(): void { this.kwIsEditingConfig = true; }
+  kwViewResults(): void { this.activeKeywordsTab = 'list'; }
+  kwGoToManual(): void { this.activeKeywordsTab = 'list'; this.openKwModal(); }
 
   // General
   segmentoId: number | null = null;
@@ -101,10 +243,13 @@ export class EditarSegmentoComponent implements OnInit {
   // Sentimiento
   sentMarca = '';
   sentIndustria = '';
-  sentCompetidores = '';
+  sentCompetidores: string[] = ['Adidas', 'Rebook', 'Nike'];
+  newCompetidor = '';
+  activeSentimentTab: 'positivo' | 'negativo' | 'neutro' = 'positivo';
   sentPositivo = 'Interes en adquirir el producto\nConsultar donde obtener el producto\nRecomendar la marca a otros\nComparar favorablemente contra competidores';
   sentNegativo = 'Quejas sobre cobros o dinero retenido\nMala experiencia con servicio al cliente\nIntencion de cancelar o darse de baja\nPreferir un competidor sobre la marca';
   sentNeutro = 'Preguntas simples sobre horarios o ubicaciones\nSaludos sin carga emocional';
+  newExampleLine = '';
 
   // Tag colors palette
   readonly tagColors: TagColor[] = [
@@ -118,7 +263,7 @@ export class EditarSegmentoComponent implements OnInit {
     { bg: '#fee2e2', text: '#991b1b', label: 'Rojo' },
   ];
 
-  readonly tipoOptions = ['General', 'Sentimiento', 'Producto', 'Canal', 'Campaña'];
+  readonly tipoOptions = ['General', 'Sentimiento', 'Producto', 'Canal', 'Campaña']; // kept for data compatibility
 
   etiquetas: Etiqueta[] = EditarSegmentoComponent.generateEtiquetas(500);
 
@@ -132,9 +277,14 @@ export class EditarSegmentoComponent implements OnInit {
   // Modal: agregar etiqueta
   showTagModal = false;
   modalTagNombre = '';
-  modalTagTipo = '';
   modalTagColorIdx = 0;
   private nextTagId = 501;
+
+  // Modal: editar etiqueta
+  showEditTagModal = false;
+  editTagTarget: Etiqueta | null = null;
+  editTagNombre = '';
+  editTagColorIdx = 0;
 
   // Modal: desactivar segmento
   showDesactivarModal = false;
@@ -192,6 +342,7 @@ export class EditarSegmentoComponent implements OnInit {
   onDocumentClick(): void {
     this.openTagMenuId = null;
     this.openChannelMenuId = null;
+    this.openKwMenuId = null;
     this.statusDropdownOpen = false;
   }
 
@@ -264,7 +415,8 @@ export class EditarSegmentoComponent implements OnInit {
   onResetSentimiento(): void {
     this.sentMarca = '';
     this.sentIndustria = '';
-    this.sentCompetidores = '';
+    this.sentCompetidores = [];
+    this.newCompetidor = '';
     this.sentPositivo = '';
     this.sentNegativo = '';
     this.sentNeutro = '';
@@ -314,7 +466,6 @@ export class EditarSegmentoComponent implements OnInit {
 
   openAddTagModal(): void {
     this.modalTagNombre = '';
-    this.modalTagTipo = '';
     this.modalTagColorIdx = 0;
     this.showTagModal = true;
   }
@@ -328,16 +479,102 @@ export class EditarSegmentoComponent implements OnInit {
     this.etiquetas.push({
       id: this.nextTagId++,
       nombre: this.modalTagNombre.trim(),
-      tipo: this.modalTagTipo || 'General',
+      tipo: 'General',
       colorIdx: this.modalTagColorIdx,
       selected: false
     });
     this.closeTagModal();
   }
 
+  openEditTagModal(tag: Etiqueta): void {
+    this.openTagMenuId = null;
+    this.editTagTarget = tag;
+    this.editTagNombre = tag.nombre;
+    this.editTagColorIdx = tag.colorIdx;
+    this.showEditTagModal = true;
+  }
+
+  closeEditTagModal(): void {
+    this.showEditTagModal = false;
+    this.editTagTarget = null;
+  }
+
+  onUpdateTag(): void {
+    if (!this.editTagTarget || !this.editTagNombre.trim()) return;
+    this.editTagTarget.nombre = this.editTagNombre.trim();
+    this.editTagTarget.colorIdx = this.editTagColorIdx;
+    this.closeEditTagModal();
+  }
+
+  get editPreviewStyle(): { background: string; color: string } {
+    return this.getTagStyle(this.editTagColorIdx);
+  }
+
   onDeleteTag(id: number): void {
     this.openTagMenuId = null;
     this.etiquetas = this.etiquetas.filter(t => t.id !== id);
+  }
+
+  get activeSentimentText(): string {
+    if (this.activeSentimentTab === 'positivo') return this.sentPositivo;
+    if (this.activeSentimentTab === 'negativo') return this.sentNegativo;
+    return this.sentNeutro;
+  }
+
+  set activeSentimentText(value: string) {
+    if (this.activeSentimentTab === 'positivo') this.sentPositivo = value;
+    else if (this.activeSentimentTab === 'negativo') this.sentNegativo = value;
+    else this.sentNeutro = value;
+  }
+
+  get sentimentHint(): string {
+    if (this.activeSentimentTab === 'positivo') return 'Escribe ejemplos de mensajes con sentimiento positivo hacia tu marca.';
+    if (this.activeSentimentTab === 'negativo') return 'Escribe ejemplos de mensajes con sentimiento negativo hacia tu marca.';
+    return 'Escribe ejemplos de mensajes con sentimiento neutro hacia tu marca.';
+  }
+
+  get activeSentimentLines(): string[] {
+    const text = this.activeSentimentText;
+    if (!text.trim()) return [];
+    return text.split('\n').filter(l => l.trim().length > 0);
+  }
+
+  updateLine(index: number, value: string): void {
+    const lines = this.activeSentimentLines;
+    lines[index] = value;
+    this.activeSentimentText = lines.join('\n');
+  }
+
+  removeLine(index: number): void {
+    const lines = this.activeSentimentLines;
+    lines.splice(index, 1);
+    this.activeSentimentText = lines.join('\n');
+  }
+
+  addCompetidor(): void {
+    const val = this.newCompetidor.trim();
+    if (!val) return;
+    if (!this.sentCompetidores.includes(val)) {
+      this.sentCompetidores = [...this.sentCompetidores, val];
+    }
+    this.newCompetidor = '';
+  }
+
+  removeCompetidor(index: number): void {
+    this.sentCompetidores = this.sentCompetidores.filter((_, i) => i !== index);
+  }
+
+  addExampleLine(): void {
+    if (!this.newExampleLine.trim()) return;
+    const text = this.activeSentimentText.trim();
+    this.activeSentimentText = text ? text + '\n' + this.newExampleLine.trim() : this.newExampleLine.trim();
+    this.newExampleLine = '';
+  }
+
+  onLineBlur(index: number, value: string): void {
+    if (!value.trim()) {
+      this.removeLine(index);
+    }
   }
 
   getTagStyle(colorIdx: number): { background: string; color: string } {
@@ -412,6 +649,14 @@ export class EditarSegmentoComponent implements OnInit {
   onContactarWhatsApp(): void {
     window.open('https://wa.me/', '_blank');
     this.showContratarModal = false;
+  }
+
+  onChannelCardClick(canal: Canal): void {
+    if (canal.estado === 'conectado') {
+      this.router.navigate(['/segmentos/canal', canal.id]);
+    } else {
+      this.openContratarModal(canal);
+    }
   }
 
   onVerCanal(canal: Canal): void {

@@ -85,12 +85,6 @@ export const routes: Routes = [
             .then(m => m.SegmentosComponent)
       },
       {
-        path: 'segmentos-cards',
-        loadComponent: () =>
-          import('./components/segmentos/segmentos-cards/segmentos-cards.component')
-            .then(m => m.SegmentosCardsComponent)
-      },
-      {
         path: 'segmentos/editar/:id',
         loadComponent: () =>
           import('./components/segmentos/editar-segmento/editar-segmento.component')
