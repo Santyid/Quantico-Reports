@@ -12,7 +12,8 @@ import {
   ApexGrid,
   ApexStroke,
   ApexMarkers,
-  ApexFill
+  ApexFill,
+  ApexAxisChartSeries
 } from 'ng-apexcharts';
 
 export interface LineChartSeries {

@@ -12,7 +12,8 @@ import {
   ApexTooltip,
   ApexGrid,
   ApexStroke,
-  ApexFill
+  ApexFill,
+  ApexAxisChartSeries
 } from 'ng-apexcharts';
 import { InsightCardComponent } from '../insight-card/insight-card.component';
 

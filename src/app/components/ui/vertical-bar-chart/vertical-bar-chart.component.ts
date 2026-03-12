@@ -12,7 +12,8 @@ import {
   ApexLegend,
   ApexTooltip,
   ApexGrid,
-  ApexPlotOptions
+  ApexPlotOptions,
+  ApexAxisChartSeries
 } from 'ng-apexcharts';
 
 export interface VerticalBarData {
