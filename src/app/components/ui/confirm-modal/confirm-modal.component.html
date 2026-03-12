@@ -1,6 +1,6 @@
 @if (visible) {
   <div class="confirm-modal__overlay" (click)="onOverlayClick($event)">
-    <div class="confirm-modal" [class]="'confirm-modal confirm-modal--' + variant" role="dialog" aria-modal="true">
+    <div [class]="'confirm-modal confirm-modal--' + resolvedVariant" role="dialog" aria-modal="true">
 
       <!-- Close button -->
       <button type="button" class="confirm-modal__close" aria-label="Cerrar" (click)="onCancel()">
@@ -10,14 +10,14 @@
       <!-- Header -->
       <div class="confirm-modal__header">
         <div class="confirm-modal__icon-wrap">
-          <lucide-icon [img]="TriangleAlertIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+          <lucide-icon [img]="variantIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
         </div>
         <h2 class="confirm-modal__title">{{ title }}</h2>
       </div>
 
       <!-- Message -->
       <div class="confirm-modal__message-box">
-        <p class="confirm-modal__message">{{ message }}</p>
+        <p class="confirm-modal__message" [innerHTML]="message"></p>
       </div>
 
       <!-- Actions -->

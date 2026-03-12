@@ -1,0 +1,62 @@
+<div class="app-menu" [class]="'app-menu app-menu--' + type">
+  @for (item of items; track item.id) {
+    <div
+      class="app-menu__item"
+      [class.app-menu__item--selected]="isSelected(item.id)"
+      [class.app-menu__item--disabled]="item.disabled"
+      [class.app-menu__item--hovered]="hoveredId === item.id"
+      (click)="onItemClick(item)"
+      (mouseenter)="hoveredId = item.id"
+      (mouseleave)="hoveredId = null"
+      role="menuitem"
+      [attr.aria-selected]="isSelected(item.id)"
+      [attr.aria-disabled]="item.disabled">
+
+      <!-- Radio indicator -->
+      @if (type === 'radio') {
+        <span class="app-menu__radio" [class.app-menu__radio--selected]="isSelected(item.id)">
+          @if (isSelected(item.id)) {
+            <span class="app-menu__radio-dot"></span>
+          }
+        </span>
+      }
+
+      <!-- Checkbox indicator -->
+      @if (type === 'checkbox') {
+        <span class="app-menu__checkbox" [class.app-menu__checkbox--selected]="isSelected(item.id)">
+          @if (isSelected(item.id)) {
+            <lucide-icon [img]="CheckIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+          }
+        </span>
+      }
+
+      <!-- Left icon -->
+      @if (type === 'icon' && item.icon) {
+        <span class="app-menu__icon">
+          <lucide-icon [img]="item.icon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+        </span>
+      }
+
+      <!-- Avatar -->
+      @if (type === 'avatar' && item.avatarUrl) {
+        <app-avatar-social
+          size="large"
+          [avatarUrl]="item.avatarUrl"
+          [platformIconUrl]="item.platformIconUrl"
+          [showBadge]="!!item.platformIconUrl"
+          [alt]="item.label">
+        </app-avatar-social>
+      }
+
+      <!-- Label -->
+      <span class="app-menu__label">{{ item.label }}</span>
+
+      <!-- Right chevron for icon/avatar types -->
+      @if (type === 'icon' || type === 'avatar') {
+        <span class="app-menu__chevron">
+          <lucide-icon [img]="ChevronRightIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+        </span>
+      }
+    </div>
+  }
+</div>

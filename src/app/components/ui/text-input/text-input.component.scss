@@ -1,46 +1,5 @@
 @import '../../../../styles/tokens';
-
-// Text Input Design Tokens (from Figma)
-$text-input-bg: $white-500;
-$text-input-border: #c3c3c3;
-$text-input-border-focus: $primary-500;
-$text-input-border-error: #f44336;
-$text-input-placeholder-color: $grey-300;
-$text-input-text-color: #222222;
-$text-input-label-color: #222222;
-$text-input-icon-color: $grey-300;
-$text-input-disabled-bg: $grey-100;
-$text-input-disabled-border: rgba(#c3c3c3, 0.5);
-$text-input-disabled-text: rgba($grey-300, 0.5);
-
-// Heights (from Figma)
-$text-input-height-small: 36px;
-$text-input-height-medium: 40px;
-$text-input-height-large: 48px;
-
-// Typography (from Figma)
-$text-input-font-family: 'Urbanist', sans-serif;
-$text-input-font-size-small: 14px;
-$text-input-font-size-medium: 16px;
-$text-input-font-size-large: 18px;
-$text-input-label-font-size: 16px;
-$text-input-label-font-size-small: 14px;
-$text-input-font-weight: 600; // SemiBold for labels
-$text-input-font-weight-field-large: 500; // Medium for Large input
-$text-input-font-weight-field-medium: 500; // Medium for Medium input
-$text-input-font-weight-field-small: 400; // Regular for Small input
-
-// Spacing (from Figma)
-$text-input-padding-x: 16px;
-$text-input-padding-y: 10px;
-$text-input-gap: 8px;
-$text-input-border-radius: 10px;
-$text-input-border-width: 1px;
-
-// Icon sizes (from Figma)
-$text-input-icon-size-large: 20px;
-$text-input-icon-size-medium: 20px;
-$text-input-icon-size-small: 16px;
+// All text-input tokens are centralized in _tokens.scss
 
 .app-text-input {
   display: flex;

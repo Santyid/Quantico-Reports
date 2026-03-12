@@ -4,21 +4,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  background-color: $white-500;
-  border: 1px solid #dae1ed;
-  border-radius: 8px;
-  font-family: $select-font-family;
-  font-size: 14px;
-  font-weight: 500;
-  color: $grey-500;
+  padding: $filter-chip-padding;
+  background-color: $filter-chip-bg;
+  border: 1px solid $filter-chip-border;
+  border-radius: $filter-chip-border-radius;
+  font-family: $filter-chip-font;
+  font-size: $filter-chip-font-size;
+  font-weight: $filter-chip-font-weight;
+  color: $filter-chip-color;
   cursor: pointer;
   transition: $button-transition;
   white-space: nowrap;
 
   &:hover:not(.filter-chip--disabled) {
-    border-color: $grey-200;
-    background-color: #f9f9f9;
+    border-color: $filter-chip-hover-border;
+    background-color: $filter-chip-hover-bg;
   }
 
   &:focus-visible {
@@ -59,8 +59,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 18px;
+    width: $filter-chip-remove-size;
+    height: $filter-chip-remove-size;
     padding: 0;
     background: none;
     border: none;

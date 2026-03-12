@@ -15,13 +15,13 @@ app-toast {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: $white-500;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: $toast-bg;
+  border-radius: $toast-border-radius;
+  box-shadow: $toast-shadow;
   overflow: hidden;
   pointer-events: all;
-  min-width: 360px;
-  max-width: 680px;
+  min-width: $toast-min-width;
+  max-width: $toast-max-width;
   padding-right: 24px;
 
   // Entrance / exit animation (slides in from right)
@@ -36,10 +36,10 @@ app-toast {
 
   // ── Accent bar ─────────────────────────────────────────────────────────────
   &__accent {
-    width: 13px;
+    width: $toast-accent-width;
     align-self: stretch;
     flex-shrink: 0;
-    border-radius: 10px 0 0 10px;
+    border-radius: $toast-border-radius 0 0 $toast-border-radius;
   }
 
   // ── Icon wrapper ───────────────────────────────────────────────────────────
@@ -47,9 +47,9 @@ app-toast {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50px;
+    width: $toast-icon-size;
+    height: $toast-icon-size;
+    border-radius: $toast-icon-radius;
     flex-shrink: 0;
     padding: 10px;
     margin: 16px 0;
@@ -63,11 +63,11 @@ app-toast {
   // ── Message ────────────────────────────────────────────────────────────────
   &__message {
     flex: 1;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 27px;
-    color: #212427;
+    font-family: $toast-msg-font;
+    font-size: $toast-msg-size;
+    font-weight: $toast-msg-weight;
+    line-height: $toast-msg-line-height;
+    color: $toast-msg-color;
     margin: 16px 0;
     padding: 0;
   }
@@ -102,7 +102,7 @@ app-toast {
       background: $status-success;
     }
     .app-toast__icon-wrap {
-      background: #ebfaf1;
+      background: $toast-success-bg;
       color: $status-success;
     }
   }
@@ -113,7 +113,7 @@ app-toast {
       background: $status-error;
     }
     .app-toast__icon-wrap {
-      background: #fdecea;
+      background: $toast-error-bg;
       color: $status-error;
     }
   }
@@ -124,7 +124,7 @@ app-toast {
       background: $status-warning;
     }
     .app-toast__icon-wrap {
-      background: #fff8ec;
+      background: $toast-warning-bg;
       color: $status-warning;
     }
   }
@@ -135,7 +135,7 @@ app-toast {
       background: $primary-500;
     }
     .app-toast__icon-wrap {
-      background: #e6edff;
+      background: $toast-info-bg;
       color: $primary-500;
     }
   }

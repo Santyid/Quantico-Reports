@@ -1,0 +1,49 @@
+@import '../../../../styles/tokens';
+
+.app-card {
+  background: $white-500;
+  border: 1px solid $grey-50;
+  width: 100%;
+
+  &--simple {
+    border-radius: $card-simple-radius;
+    padding: $card-simple-padding;
+  }
+
+  &--titled {
+    border-radius: $card-titled-radius;
+    padding: $card-titled-padding;
+  }
+
+  &--large {
+    border-radius: $card-large-radius;
+    padding: $card-large-padding;
+  }
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0;
+    line-height: normal;
+
+    .app-card--titled & {
+      font-size: $card-titled-title-size;
+      margin-bottom: $card-titled-gap;
+    }
+
+    .app-card--large & {
+      font-size: $card-large-title-size;
+      margin-bottom: $card-large-gap;
+    }
+  }
+
+  &__content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: $grey-500;
+    letter-spacing: -0.32px;
+  }
+}

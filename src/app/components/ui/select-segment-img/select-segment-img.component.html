@@ -1,0 +1,29 @@
+<div class="select-segment-img">
+  @for (option of options; track option.id) {
+    <button
+      class="select-segment-img__item"
+      [class.select-segment-img__item--hover]="hoveredId === option.id"
+      [class.select-segment-img__item--selected]="isSelected(option)"
+      (click)="onSelect(option)"
+      (mouseenter)="onMouseEnter(option.id)"
+      (mouseleave)="onMouseLeave()"
+      type="button"
+      [attr.aria-label]="'Seleccionar ' + option.title"
+      [attr.aria-pressed]="isSelected(option)">
+      <div class="select-segment-img__inner"
+        [class.select-segment-img__inner--selected]="isSelected(option)">
+        <div class="select-segment-img__image"
+          [style.background-image]="option.imageUrl ? 'url(' + option.imageUrl + ')' : ''">
+        </div>
+        <div class="select-segment-img__content">
+          <span class="select-segment-img__title">{{ option.title }}</span>
+          <p class="select-segment-img__description"
+            [class.select-segment-img__description--selected]="isSelected(option)">
+            {{ option.description }}
+          </p>
+          <span class="select-segment-img__date">{{ option.date }}</span>
+        </div>
+      </div>
+    </button>
+  }
+</div>

@@ -98,6 +98,22 @@ export const routes: Routes = [
       }
     ]
   },
+  // AdvocatesPro routes
+  {
+    path: 'advocatespro',
+    loadComponent: () =>
+      import('./layouts/advocatespro-layout.component')
+        .then(m => m.AdvocatesproLayoutComponent),
+    canActivate: [generalAuthGuard],
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./components/advocatespro/dashboard/advocatespro-dashboard.component')
+            .then(m => m.AdvocatesproDashboardComponent)
+      }
+    ]
+  },
   // SocialGest routes (new product)
   {
     path: 'socialgest',

@@ -1,0 +1,158 @@
+@import '../../../../../../styles/socialgest-tokens';
+
+.ia-top-posts {
+  background: $white-500;
+  border: 1px solid $sg-card-border;
+  border-radius: 16px;
+  padding: 32px;
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0 0 24px 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: $white-500;
+    border: 1px solid $sg-card-border;
+    border-radius: 16px;
+    align-items: flex-start;
+  }
+
+  &__thumbnail {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, $primary-50 0%, $primary-100 50%, rgba($primary-200, 0.5) 100%);
+  }
+
+  &__position {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: $primary-500;
+    color: $white-500;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey-300;
+    white-space: nowrap;
+  }
+
+  &__metrics {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__metric {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $grey-400;
+
+    lucide-icon {
+      color: $primary-500;
+    }
+  }
+
+  &__post-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  &__ai-box {
+    display: flex;
+    gap: 10px;
+    background: linear-gradient(149deg, $primary-50 0.5%, rgba(185, 211, 255, 0.33) 25%, $primary-100 70%, rgba(133, 177, 255, 0.33) 98%);
+    border-radius: 12px;
+    padding: 14px;
+    align-items: flex-start;
+
+    lucide-icon {
+      color: $primary-500;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: $grey-500;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ia-top-posts {
+    &__row {
+      flex-direction: column;
+    }
+
+    &__thumbnail {
+      width: 100%;
+      height: 180px;
+    }
+
+    &__top-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

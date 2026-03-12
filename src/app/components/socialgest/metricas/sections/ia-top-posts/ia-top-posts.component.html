@@ -1,0 +1,35 @@
+<div class="ia-top-posts">
+  <h3 class="ia-top-posts__title">Top posts del período</h3>
+
+  <div class="ia-top-posts__list">
+    @for (post of posts; track post.position) {
+      <div class="ia-top-posts__row">
+        <div class="ia-top-posts__thumbnail">
+          <div class="ia-top-posts__placeholder"></div>
+          <span class="ia-top-posts__position">{{ post.position }}</span>
+        </div>
+
+        <div class="ia-top-posts__content">
+          <div class="ia-top-posts__top-row">
+            <span class="ia-top-posts__date">{{ post.date }}</span>
+            <div class="ia-top-posts__metrics">
+              @for (metric of post.metrics; track $index) {
+                <div class="ia-top-posts__metric">
+                  <lucide-icon [img]="metric.icon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  <span>{{ metric.value }}</span>
+                </div>
+              }
+            </div>
+          </div>
+
+          <h4 class="ia-top-posts__post-title">{{ post.title }}</h4>
+
+          <div class="ia-top-posts__ai-box">
+            <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+            <p>{{ post.aiAnalysis }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

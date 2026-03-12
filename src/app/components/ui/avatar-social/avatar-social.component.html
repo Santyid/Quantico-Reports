@@ -1,0 +1,14 @@
+<div class="app-avatar-social" [class]="'app-avatar-social app-avatar-social--' + size">
+  <img
+    class="app-avatar-social__img"
+    [src]="avatarUrl"
+    [alt]="alt"
+    loading="lazy">
+  @if (showBadge && platformIconUrl) {
+    <img
+      class="app-avatar-social__badge"
+      [src]="platformIconUrl"
+      alt=""
+      loading="lazy">
+  }
+</div>

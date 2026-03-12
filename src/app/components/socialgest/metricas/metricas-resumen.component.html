@@ -33,6 +33,28 @@
       }
     </nav>
 
+    @if (activeTab === 'Análisis con IA') {
+      <div class="metricas-page__ia-filters">
+        @for (filter of iaFilters; track filter.label) {
+          <button
+            class="metricas-page__ia-filter"
+            [class.metricas-page__ia-filter--active]="activeIaFilter === filter.label"
+            (click)="activeIaFilter = filter.label">
+            <lucide-icon [img]="filter.icon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+            {{ filter.label }}
+          </button>
+        }
+      </div>
+
+      <div class="metricas-page__grid metricas-page__grid--ia">
+        <app-ia-rendimiento></app-ia-rendimiento>
+        <app-ia-recomendaciones></app-ia-recomendaciones>
+        <app-ia-top-posts></app-ia-top-posts>
+        <app-ia-insights></app-ia-insights>
+        <app-ia-predicciones></app-ia-predicciones>
+      </div>
+    }
+
     @if (activeTab === 'Resumen') {
       <div class="metricas-page__grid">
         <app-rendimiento-global></app-rendimiento-global>

@@ -1,25 +1,10 @@
 @import '../../../../styles/tokens';
 
-// Warning palette
-$warning-50: #fff5ea;
-$warning-500: #f4b137;
-$warning-600: #e5a22e;
-$warning-700: #d49325;
-$warning-icon: #e8922d;
-
-// Error palette
-$error-50: #fff0f0;
-$error-icon: #f44336;
-
-// Info palette
-$info-50: $primary-50;
-$info-icon: $primary-500;
-
 .confirm-modal {
   &__overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: $confirm-modal-overlay-bg;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,15 +13,16 @@ $info-icon: $primary-500;
   }
 
   position: relative;
-  background: $white-500;
-  border: 1px solid $grey-50;
-  border-radius: 24px;
-  padding: 40px 48px;
+  background: $confirm-modal-bg;
+  border: 1px solid $confirm-modal-border;
+  border-radius: $confirm-modal-border-radius;
+  padding: $confirm-modal-padding;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: $confirm-modal-gap;
+  align-items: flex-end;
   width: 100%;
-  max-width: 680px;
+  max-width: $confirm-modal-max-width;
   animation: confirmSlideIn 0.25s ease-out;
 
   // ============================
@@ -72,12 +58,13 @@ $info-icon: $primary-500;
     display: flex;
     align-items: center;
     gap: 18px;
+    width: 100%;
   }
 
   &__icon-wrap {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
+    width: $confirm-modal-icon-size;
+    height: $confirm-modal-icon-size;
+    border-radius: $confirm-modal-icon-radius;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,12 +72,12 @@ $info-icon: $primary-500;
   }
 
   &__title {
-    font-family: 'Urbanist', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-    letter-spacing: -0.48px;
-    color: $grey-800;
+    font-family: $confirm-modal-title-font;
+    font-weight: $confirm-modal-title-weight;
+    font-size: $confirm-modal-title-size;
+    line-height: $confirm-modal-title-size;
+    letter-spacing: $confirm-modal-title-tracking;
+    color: $confirm-modal-title-color;
     margin: 0;
   }
 
@@ -98,18 +85,23 @@ $info-icon: $primary-500;
   // Message box
   // ============================
   &__message-box {
-    border-radius: 10px;
-    padding: 16px 20px;
+    border-radius: $confirm-modal-msg-radius;
+    padding: $confirm-modal-msg-padding;
+    width: 100%;
   }
 
   &__message {
-    font-family: 'DM Sans', sans-serif;
+    font-family: $confirm-modal-msg-font;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 28px;
-    letter-spacing: -0.32px;
-    color: $grey-800;
+    font-size: $confirm-modal-msg-size;
+    line-height: $confirm-modal-msg-line-height;
+    letter-spacing: $confirm-modal-msg-tracking;
+    color: $confirm-modal-msg-color;
     margin: 0;
+
+    strong, b {
+      font-weight: 700;
+    }
   }
 
   // ============================
@@ -119,17 +111,17 @@ $info-icon: $primary-500;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 32px;
+    gap: $confirm-modal-gap;
   }
 
   &__confirm-btn {
-    height: 40px;
-    padding: 10px 20px;
-    border-radius: 12px;
+    height: $confirm-modal-btn-height;
+    padding: $confirm-modal-btn-padding;
+    border-radius: $confirm-modal-btn-radius;
     border: none;
-    font-family: 'Urbanist', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
+    font-family: $confirm-modal-btn-font;
+    font-weight: $confirm-modal-btn-weight;
+    font-size: $confirm-modal-btn-size;
     line-height: normal;
     color: $white-500;
     cursor: pointer;
@@ -138,80 +130,86 @@ $info-icon: $primary-500;
   }
 
   // ============================
-  // Variant: warning
+  // Variant: general (blue)
   // ============================
-  &--warning {
+  &--general {
     .confirm-modal__icon-wrap {
-      background: $warning-50;
-      color: $warning-icon;
+      background: $confirm-general-icon-bg;
+      color: $confirm-general-icon-color;
     }
 
     .confirm-modal__message-box {
-      background: $warning-50;
+      background: $confirm-general-msg-bg;
     }
 
     .confirm-modal__confirm-btn {
-      background: $warning-500;
+      background: $confirm-general-btn-bg;
 
-      &:hover {
-        background: $warning-600;
-      }
-
-      &:active {
-        background: $warning-700;
-      }
+      &:hover { background: $confirm-general-btn-hover; }
+      &:active { background: $confirm-general-btn-active; }
     }
   }
 
   // ============================
-  // Variant: error
+  // Variant: confirmation (green)
+  // ============================
+  &--confirmation {
+    .confirm-modal__icon-wrap {
+      background: $confirm-confirmation-icon-bg;
+      color: $confirm-confirmation-icon-color;
+    }
+
+    .confirm-modal__message-box {
+      background: $confirm-confirmation-msg-bg;
+    }
+
+    .confirm-modal__confirm-btn {
+      background: $confirm-confirmation-btn-bg;
+
+      &:hover { background: $confirm-confirmation-btn-hover; }
+      &:active { background: $confirm-confirmation-btn-active; }
+    }
+  }
+
+  // ============================
+  // Variant: alert (pink/secondary)
+  // ============================
+  &--alert {
+    .confirm-modal__icon-wrap {
+      background: $confirm-alert-icon-bg;
+      color: $confirm-alert-icon-color;
+    }
+
+    .confirm-modal__message-box {
+      background: $confirm-alert-msg-bg;
+    }
+
+    .confirm-modal__confirm-btn {
+      background: $confirm-alert-btn-bg;
+
+      &:hover { background: $confirm-alert-btn-hover; }
+      &:active { background: $confirm-alert-btn-active; }
+    }
+  }
+
+  // ============================
+  // Variant: error (red)
   // ============================
   &--error {
     .confirm-modal__icon-wrap {
-      background: $error-50;
-      color: $error-icon;
+      background: $confirm-error-icon-bg;
+      color: $confirm-error-icon-color;
     }
 
     .confirm-modal__message-box {
-      background: $error-50;
+      background: $confirm-error-msg-bg;
     }
 
     .confirm-modal__confirm-btn {
-      background: $status-error;
+      background: $confirm-error-btn-bg;
 
-      &:hover {
-        background: darken($status-error, 8%);
-      }
-
-      &:active {
-        background: darken($status-error, 15%);
-      }
-    }
-  }
-
-  // ============================
-  // Variant: info
-  // ============================
-  &--info {
-    .confirm-modal__icon-wrap {
-      background: $info-50;
-      color: $info-icon;
-    }
-
-    .confirm-modal__message-box {
-      background: $info-50;
-    }
-
-    .confirm-modal__confirm-btn {
-      background: $primary-500;
-
-      &:hover {
-        background: $primary-600;
-      }
-
-      &:active {
-        background: $primary-700;
-      }
+      &:hover { background: $confirm-error-btn-hover; }
+      &:active { background: $confirm-error-btn-active; }
     }
   }
 }

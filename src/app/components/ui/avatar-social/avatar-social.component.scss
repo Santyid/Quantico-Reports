@@ -1,0 +1,97 @@
+@import '../../../../styles/tokens';
+
+.app-avatar-social {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-shrink: 0;
+
+  &__img {
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    border-radius: 50%;
+    border: $avatar-social-badge-border;
+    object-fit: cover;
+    display: block;
+  }
+
+  // ─── Size: Small (18px) ───
+  &--small {
+    width: $avatar-social-size-sm;
+    height: $avatar-social-size-sm;
+
+    .app-avatar-social__img {
+      width: $avatar-social-size-sm;
+      height: $avatar-social-size-sm;
+    }
+
+    .app-avatar-social__badge {
+      width: $avatar-social-badge-sm;
+      height: $avatar-social-badge-sm;
+      bottom: -$avatar-social-offset-sm;
+      right: -$avatar-social-offset-sm;
+    }
+  }
+
+  // ─── Size: Medium (26px) ───
+  &--medium {
+    width: $avatar-social-size-md;
+    height: $avatar-social-size-md;
+
+    .app-avatar-social__img {
+      width: $avatar-social-size-md;
+      height: $avatar-social-size-md;
+    }
+
+    .app-avatar-social__badge {
+      width: $avatar-social-badge-md;
+      height: $avatar-social-badge-md;
+      bottom: -$avatar-social-offset-md;
+      right: -$avatar-social-offset-md;
+    }
+  }
+
+  // ─── Size: Large (36px) ───
+  &--large {
+    width: $avatar-social-size-lg;
+    height: $avatar-social-size-lg;
+
+    .app-avatar-social__img {
+      width: $avatar-social-size-lg;
+      height: $avatar-social-size-lg;
+    }
+
+    .app-avatar-social__badge {
+      width: $avatar-social-badge-lg;
+      height: $avatar-social-badge-lg;
+      bottom: -$avatar-social-offset-lg;
+      right: -$avatar-social-offset-lg;
+    }
+  }
+
+  // ─── Size: Extra Large (50px) ───
+  &--xlarge {
+    width: $avatar-social-size-xl;
+    height: $avatar-social-size-xl;
+
+    .app-avatar-social__img {
+      width: $avatar-social-size-xl;
+      height: $avatar-social-size-xl;
+    }
+
+    .app-avatar-social__badge {
+      width: $avatar-social-badge-xl;
+      height: $avatar-social-badge-xl;
+      bottom: -$avatar-social-offset-xl;
+      right: -$avatar-social-offset-xl;
+    }
+  }
+}

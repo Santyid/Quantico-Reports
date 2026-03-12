@@ -1,0 +1,8 @@
+<div class="app-card" [class]="'app-card app-card--' + variant">
+  @if (title && variant !== 'simple') {
+    <h3 class="app-card__title">{{ title }}</h3>
+  }
+  <div class="app-card__content">
+    <ng-content></ng-content>
+  </div>
+</div>
