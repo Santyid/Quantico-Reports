@@ -1,31 +1,5 @@
 @import '../../../../styles/tokens';
-
-// Chip Input Design Tokens (matching text-input)
-$chip-input-bg: $white-500;
-$chip-input-border: #c3c3c3;
-$chip-input-border-focus: $primary-500;
-$chip-input-placeholder-color: $grey-300;
-$chip-input-text-color: #222222;
-$chip-input-label-color: #222222;
-$chip-input-disabled-bg: $grey-100;
-$chip-input-disabled-border: rgba(#c3c3c3, 0.5);
-$chip-input-disabled-text: rgba($grey-300, 0.5);
-
-$chip-input-font-family: 'Urbanist', sans-serif;
-$chip-input-label-font-size: 16px;
-$chip-input-label-font-size-small: 14px;
-$chip-input-font-weight: 600;
-$chip-input-border-radius: 10px;
-$chip-input-border-width: 1px;
-
-// Chip tokens
-$chip-bg: $primary-50;
-$chip-text-color: $primary-700;
-$chip-remove-color: $grey-300;
-$chip-remove-hover-color: $grey-500;
-$chip-border-radius: 6px;
-$chip-font-family: 'DM Sans', sans-serif;
-$chip-font-size: 13px;
+// All chip-input tokens are centralized in _tokens.scss
 
 .chip-input {
   &__wrapper {
@@ -52,7 +26,7 @@ $chip-font-size: 13px;
   }
 
   &__required {
-    color: #f44336;
+    color: $status-error;
     margin-left: 2px;
   }
 

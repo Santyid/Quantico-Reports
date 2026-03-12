@@ -11,6 +11,8 @@
           <div class="navbar__platform-current">
             @if (selectedPlatform.icon === 'quantico') {
               <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-img" />
+            } @else if (selectedPlatform.icon === 'advocatespro') {
+              <img src="images/AdvocatesPro-Imagotipo-Blue.svg" alt="AdvocatesPro" class="navbar__platform-img" />
             } @else {
               <div class="navbar__logo-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -39,6 +41,8 @@
                 (click)="selectPlatform(platform)">
                 @if (platform.icon === 'quantico') {
                   <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-option-img" />
+                } @else if (platform.icon === 'advocatespro') {
+                  <img src="images/AdvocatesPro-Imagotipo-Blue.svg" alt="AdvocatesPro" class="navbar__platform-option-img" />
                 } @else {
                   <div class="navbar__logo-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

@@ -1,0 +1,324 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "AdvocatesPro / SocialGest / Quantico Design System",
+    "version": "1.0.0",
+    "source": "Figma",
+    "lastUpdated": "2026-03-09"
+  },
+
+  "colors": {
+    "primary": {
+      "50":  { "value": "#e6edff", "rgb": "rgb(230, 239, 255)" },
+      "100": { "value": "#b0ceff", "rgb": "rgb(176, 206, 255)" },
+      "200": { "value": "#8ab6ff", "rgb": "rgb(138, 182, 255)" },
+      "300": { "value": "#5495fe", "rgb": "rgb(84, 149, 254)" },
+      "400": { "value": "#338ffe", "rgb": "rgb(51, 143, 254)" },
+      "500": { "value": "#0061fe", "rgb": "rgb(0, 97, 254)", "isBase": true },
+      "600": { "value": "#0058e7", "rgb": "rgb(0, 88, 231)", "usage": "hover" },
+      "700": { "value": "#0045b4", "rgb": "rgb(0, 69, 180)", "usage": "active" },
+      "800": { "value": "#00358c", "rgb": "rgb(0, 53, 140)" },
+      "900": { "value": "#00296b", "rgb": "rgb(0, 41, 107)" }
+    },
+    "secondary": {
+      "50":  { "value": "#f5eefc", "rgb": "rgb(245, 238, 252)" },
+      "100": { "value": "#e1caf6", "rgb": "rgb(225, 202, 246)" },
+      "200": { "value": "#d2b0f2", "rgb": "rgb(210, 176, 242)" },
+      "300": { "value": "#be8cec", "rgb": "rgb(190, 140, 236)" },
+      "400": { "value": "#b176e8", "rgb": "rgb(177, 118, 232)" },
+      "500": { "value": "#9e54e2", "rgb": "rgb(158, 84, 226)", "isBase": true },
+      "600": { "value": "#904cce", "rgb": "rgb(144, 76, 206)", "usage": "hover" },
+      "700": { "value": "#703ca0", "rgb": "rgb(112, 60, 160)", "usage": "active" },
+      "800": { "value": "#572e7c", "rgb": "rgb(87, 46, 124)" },
+      "900": { "value": "#42235f", "rgb": "rgb(66, 35, 95)" }
+    },
+    "grey": {
+      "50":  { "value": "#ececec", "rgb": "rgb(236, 236, 236)", "usage": "borders, dividers" },
+      "100": { "value": "#c3c3c3", "rgb": "rgb(195, 195, 195)" },
+      "200": { "value": "#a6a6a6", "rgb": "rgb(166, 166, 166)" },
+      "300": { "value": "#7d7d7d", "rgb": "rgb(125, 125, 125)", "usage": "placeholder, secondary text" },
+      "400": { "value": "#646464", "rgb": "rgb(100, 100, 100)" },
+      "500": { "value": "#3d3d3d", "rgb": "rgb(61, 61, 61)", "isBase": true },
+      "600": { "value": "#383838", "rgb": "rgb(56, 56, 56)" },
+      "700": { "value": "#2b2b2b", "rgb": "rgb(43, 43, 43)" },
+      "800": { "value": "#222222", "rgb": "rgb(34, 34, 34)", "usage": "primary text, headings" },
+      "900": { "value": "#1a1a1a", "rgb": "rgb(26, 26, 26)" }
+    },
+    "white": {
+      "500": { "value": "#ffffff", "usage": "backgrounds" },
+      "800": { "value": "#f1f1f1", "usage": "text on primary/secondary buttons" }
+    },
+    "status": {
+      "success": { "value": "#3ace76", "usage": "positive states, success indicators" },
+      "warning": { "value": "#f4b137", "usage": "warning states, caution indicators" },
+      "error":   { "value": "#f44336", "usage": "error states, destructive actions" },
+      "info":    { "value": "#0061fe", "ref": "primary.500", "usage": "informational states" },
+      "neutral": { "value": "#9e9e9e", "usage": "neutral/inactive indicators" }
+    },
+    "chart": {
+      "sentiment": {
+        "positive": { "value": "#3ECC80" },
+        "neutral":  { "value": "#9EA1A6" },
+        "negative": { "value": "#F61A4A" }
+      },
+      "platforms": {
+        "instagram": { "value": "#E4405F" },
+        "facebook":  { "value": "#1877F2" },
+        "twitter":   { "value": "#1DA1F2" },
+        "tiktok":    { "value": "#000000" },
+        "youtube":   { "value": "#FF0000" },
+        "linkedin":  { "value": "#0A66C2" }
+      },
+      "brands": [
+        "#0061fe", "#f47a37", "#3ace76", "#f4b137", "#9e54e2",
+        "#00bcd4", "#ff5722", "#795548", "#607d8b", "#e91e63"
+      ]
+    },
+    "advocatespro": {
+      "primary": {
+        "500": { "value": "#0061fe", "ref": "primary.500" }
+      },
+      "secundary": {
+        "500": { "value": "#ee4a79", "usage": "AdvocatesPro accent / CTA" },
+        "600": { "value": "#d9436e", "usage": "hover" },
+        "700": { "value": "#a93556", "usage": "active" },
+        "disabled": { "value": "#f7acc1" }
+      }
+    }
+  },
+
+  "typography": {
+    "fontFamilies": {
+      "heading":  "'Urbanist', sans-serif",
+      "body":     "'DM Sans', sans-serif",
+      "mono":     "'Inter', sans-serif",
+      "logo":     "'Montserrat Alternates', sans-serif"
+    },
+    "fontWeights": {
+      "regular":  400,
+      "medium":   500,
+      "semibold": 600,
+      "bold":     700
+    },
+    "scales": {
+      "h1":       { "size": "28px", "weight": 700, "family": "heading", "lineHeight": "1.2" },
+      "h2":       { "size": "24px", "weight": 700, "family": "heading", "lineHeight": "1.3" },
+      "h3":       { "size": "22px", "weight": 700, "family": "heading", "lineHeight": "1.3" },
+      "h4":       { "size": "20px", "weight": 600, "family": "heading", "lineHeight": "1.4" },
+      "body":     { "size": "16px", "weight": 400, "family": "body",    "lineHeight": "1.5" },
+      "bodyBold": { "size": "16px", "weight": 700, "family": "body",    "lineHeight": "1.5" },
+      "small":    { "size": "14px", "weight": 400, "family": "body",    "lineHeight": "1.4" },
+      "caption":  { "size": "12px", "weight": 400, "family": "body",    "lineHeight": "1.4" },
+      "label":    { "size": "14px", "weight": 600, "family": "heading", "lineHeight": "1.4" }
+    }
+  },
+
+  "spacing": {
+    "unit": 4,
+    "scale": {
+      "2xs": "4px",
+      "xs":  "8px",
+      "sm":  "12px",
+      "md":  "16px",
+      "lg":  "24px",
+      "xl":  "32px",
+      "2xl": "40px",
+      "3xl": "48px"
+    },
+    "gestalt": {
+      "withinGroup": "12-16px",
+      "betweenGroups": "24-32px",
+      "betweenSections": "48px"
+    }
+  },
+
+  "radii": {
+    "none":   "0px",
+    "sm":     "8px",
+    "md":     "10px",
+    "lg":     "12px",
+    "xl":     "16px",
+    "pill":   "50px",
+    "circle": "50%"
+  },
+
+  "shadows": {
+    "sm":   "0 2px 4px rgba(0, 0, 0, 0.05)",
+    "md":   "0 4px 12px rgba(0, 0, 0, 0.08)",
+    "lg":   "0 8px 24px rgba(0, 0, 0, 0.1)",
+    "card": "2px 5px 27px 0px rgba(0, 0, 0, 0.05)"
+  },
+
+  "components": {
+    "button": {
+      "borderRadius": "12px",
+      "fontFamily": "'Urbanist', sans-serif",
+      "fontWeight": 700,
+      "transition": "all 0.2s ease-in-out",
+      "sizes": {
+        "large":  { "height": "48px", "fontSize": "18px", "iconSize": "20px", "padding": "14px 28px" },
+        "medium": { "height": "40px", "fontSize": "16px", "iconSize": "20px", "padding": "10px 24px" },
+        "small":  { "height": "36px", "fontSize": "14px", "iconSize": "16px", "padding": "8px 20px" }
+      },
+      "variants": {
+        "primary": {
+          "default":  { "bg": "#0061fe", "text": "#f1f1f1", "border": "none" },
+          "hover":    { "bg": "#0058e7", "text": "#f1f1f1" },
+          "active":   { "bg": "#0045b4", "text": "#f1f1f1" },
+          "disabled": { "bg": "#8ab6ff", "text": "#f1f1f1" }
+        },
+        "secondary": {
+          "default":  { "bg": "#9e54e2", "text": "#f1f1f1", "border": "none" },
+          "hover":    { "bg": "#904cce", "text": "#f1f1f1" },
+          "active":   { "bg": "#703ca0", "text": "#f1f1f1" },
+          "disabled": { "bg": "rgba(158, 84, 226, 0.4)", "text": "rgba(241, 241, 241, 0.6)" }
+        },
+        "secundary_advocatespro": {
+          "default":  { "bg": "#ee4a79", "text": "#ffffff", "border": "none" },
+          "hover":    { "bg": "#d9436e", "text": "#ffffff" },
+          "active":   { "bg": "#a93556", "text": "#ffffff" },
+          "disabled": { "bg": "#f7acc1", "text": "#ffffff" }
+        },
+        "white": {
+          "default":  { "bg": "#ffffff", "text": "#7d7d7d", "border": "1px solid #c3c3c3" },
+          "hover":    { "bg": "#fafafa", "text": "#7d7d7d" },
+          "active":   { "bg": "#f1f1f1", "text": "#7d7d7d" },
+          "disabled": { "bg": "#ffffff", "text": "#c3c3c3", "border": "1px solid #c3c3c3" }
+        },
+        "text": {
+          "default":  { "bg": "transparent", "text": "#0061fe" },
+          "hover":    { "bg": "transparent", "text": "#0058e7" },
+          "active":   { "bg": "transparent", "text": "#0045b4" },
+          "disabled": { "bg": "transparent", "text": "rgba(0, 97, 254, 0.4)" }
+        }
+      }
+    },
+    "select": {
+      "borderRadius": "10px",
+      "fontFamily": "'Urbanist', sans-serif",
+      "fontWeight": 600,
+      "border": "1px solid #c3c3c3",
+      "focusBorder": "1px solid #0061fe",
+      "sizes": {
+        "large":  { "height": "48px", "fontSize": "18px", "iconSize": "20px" },
+        "medium": { "height": "40px", "fontSize": "16px", "iconSize": "20px" },
+        "small":  { "height": "36px", "fontSize": "14px", "iconSize": "16px" }
+      }
+    },
+    "searchInput": {
+      "borderRadius": "50px",
+      "fontFamily": "'Urbanist', sans-serif",
+      "fontWeight": 500,
+      "border": "1px solid #c3c3c3",
+      "focusBorder": "1px solid #0061fe",
+      "defaultWidth": "302px",
+      "sizes": {
+        "large":  { "height": "50px", "fontSize": "20px" },
+        "medium": { "height": "40px", "fontSize": "16px" },
+        "small":  { "height": "36px", "fontSize": "16px" }
+      }
+    },
+    "statusBadge": {
+      "borderRadius": "50px",
+      "fontFamily": "'Urbanist', sans-serif",
+      "fontSize": "14px",
+      "fontWeight": 600,
+      "height": "30px",
+      "dotSize": "10px",
+      "padding": "4px 10px",
+      "border": "1px solid #c3c3c3",
+      "variants": {
+        "success": { "dotColor": "#3ace76" },
+        "warning": { "dotColor": "#f4b137" },
+        "error":   { "dotColor": "#f44336" },
+        "info":    { "dotColor": "#0061fe" },
+        "neutral": { "dotColor": "#9e9e9e" }
+      }
+    },
+    "table": {
+      "borderColor": "#ececec",
+      "headerHeight": "44px",
+      "rowHeight": "44px",
+      "cellPadding": "10px 20px",
+      "headerFont": { "family": "'Urbanist', sans-serif", "size": "16px", "weight": 700, "letterSpacing": "-0.32px" },
+      "bodyFont":   { "family": "'DM Sans', sans-serif",  "size": "16px", "weight": 400, "letterSpacing": "-0.32px" },
+      "actionIconColor": "#9e54e2",
+      "actionIconSize": "20px",
+      "rowHoverBg": "#f9f9f9"
+    },
+    "card": {
+      "bg": "#ffffff",
+      "border": "1px solid #ececec",
+      "borderRadius": "16px",
+      "padding": "32px"
+    },
+    "kpiCard": {
+      "bg": "#ffffff",
+      "border": "1px solid #ececec",
+      "borderRadius": "12px",
+      "padding": "20px",
+      "labelFont":  { "family": "'Urbanist', sans-serif", "size": "14px", "weight": 500, "color": "#646464" },
+      "valueFont":  { "family": "'DM Sans', sans-serif",  "size": "28px", "weight": 700, "color": "#222222" },
+      "changeFont": { "size": "12px", "positive": "#3ace76", "negative": "#f44336" }
+    },
+    "navbar": {
+      "height": "80px",
+      "bg": "#ffffff",
+      "borderBottom": "1px solid #ececec",
+      "fontFamily": "'Urbanist', sans-serif",
+      "linkColor": "#646464",
+      "linkActiveColor": "#0061fe",
+      "avatarSize": "51px"
+    }
+  },
+
+  "icons": {
+    "library": "lucide-angular",
+    "package": "lucide-angular",
+    "defaultSize": 24,
+    "defaultStrokeWidth": 1.5,
+    "commonIcons": [
+      "Plus", "PlusCircle", "Bell", "CircleHelp", "ChevronDown",
+      "User", "Search", "Trash2", "Edit", "X", "Check",
+      "ArrowUp", "ArrowDown", "TrendingUp", "TrendingDown",
+      "Eye", "Download", "Upload", "Filter", "Settings"
+    ]
+  },
+
+  "gradients": {
+    "charts": {
+      "barVertical": {
+        "type": "vertical",
+        "opacityFrom": 1,
+        "opacityTo": 0.6,
+        "stops": [0, 90, 100]
+      }
+    },
+    "sentiment": {
+      "positive": "linear-gradient(90deg, rgba(62, 204, 128, 0.75) 0%, rgba(62, 204, 128, 0.38) 100%)",
+      "neutral":  "linear-gradient(90deg, rgba(168, 213, 229, 0.85) 0%, rgba(168, 213, 229, 0.5) 100%)",
+      "negative": "linear-gradient(90deg, rgba(246, 26, 74, 0.75) 0%, rgba(246, 26, 74, 0.38) 100%)"
+    },
+    "alertCards": {
+      "green":  "linear-gradient(141.6deg, rgba(58, 206, 118, 0) 15.2%, rgba(58, 206, 118, 0.08) 52.7%, rgba(58, 206, 118, 0) 112%)",
+      "yellow": "linear-gradient(141.6deg, rgba(244, 177, 55, 0) 15.2%, rgba(244, 177, 55, 0.08) 52.7%, rgba(244, 177, 55, 0) 112%)",
+      "red":    "linear-gradient(141.6deg, rgba(240, 112, 112, 0) 15.2%, rgba(240, 112, 112, 0.08) 52.7%, rgba(240, 112, 112, 0) 112%)"
+    }
+  },
+
+  "accessibility": {
+    "focusOutline": "2px solid #0061fe",
+    "focusOffset": "2px",
+    "minimumTouchTarget": "44px",
+    "contrastRatio": "4.5:1 (AA)"
+  },
+
+  "breakpoints": {
+    "sm":  "576px",
+    "md":  "768px",
+    "lg":  "992px",
+    "xl":  "1200px",
+    "2xl": "1400px",
+    "max": "1920px"
+  }
+}

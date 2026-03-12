@@ -1,0 +1,154 @@
+<div class="hour-date-picker">
+  @if (label) {
+    <label
+      class="hour-date-picker__label"
+      [class.hour-date-picker__label--small]="size === 'small' || size === 'medium'">
+      {{ label }}
+    </label>
+  }
+
+  <div class="hour-date-picker__container">
+    <!-- Trigger Input -->
+    <button
+      type="button"
+      [class]="triggerClasses"
+      [disabled]="disabled"
+      (click)="toggleDropdown()"
+      [attr.aria-expanded]="isOpen"
+      aria-haspopup="dialog"
+      [attr.aria-label]="label || 'Seleccionar fecha y hora'">
+
+      <span
+        class="hour-date-picker__value"
+        [class.hour-date-picker__value--placeholder]="!value">
+        {{ value ? displayValue : 'DD-MM-AAAA  HH:MM AM' }}
+      </span>
+
+      <span class="hour-date-picker__icon">
+        <lucide-icon [img]="CalendarIcon" [size]="iconSize" [strokeWidth]="1.5"></lucide-icon>
+      </span>
+    </button>
+
+    <!-- Dropdown -->
+    @if (isOpen) {
+      <div class="hour-date-picker__dropdown" role="dialog" aria-label="Calendario y hora">
+
+        <!-- Calendar Header -->
+        <div class="hour-date-picker__calendar-header">
+          <button
+            type="button"
+            class="hour-date-picker__nav-btn"
+            (click)="previousMonth(); $event.stopPropagation()"
+            aria-label="Mes anterior">
+            <lucide-icon [img]="ChevronLeftIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+          </button>
+
+          <span class="hour-date-picker__month-label">{{ currentMonthName }}</span>
+
+          <button
+            type="button"
+            class="hour-date-picker__nav-btn"
+            (click)="nextMonth(); $event.stopPropagation()"
+            aria-label="Mes siguiente">
+            <lucide-icon [img]="ChevronRightIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+          </button>
+        </div>
+
+        <!-- Weekday Headers -->
+        <div class="hour-date-picker__weekdays">
+          @for (day of weekDays; track day) {
+            <span class="hour-date-picker__weekday">{{ day }}</span>
+          }
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="hour-date-picker__grid">
+          @for (day of calendarDays; track $index) {
+            @if (day === null) {
+              <span class="hour-date-picker__day hour-date-picker__day--empty"></span>
+            } @else {
+              <button
+                type="button"
+                class="hour-date-picker__day"
+                [class.hour-date-picker__day--selected]="isDaySelected(day)"
+                [class.hour-date-picker__day--today]="isToday(day)"
+                (click)="selectDay(day); $event.stopPropagation()"
+                [attr.aria-label]="day + ' de ' + monthNames[currentMonth]"
+                [attr.aria-selected]="isDaySelected(day)">
+                {{ day }}
+              </button>
+            }
+          }
+        </div>
+
+        <!-- Divider -->
+        <div class="hour-date-picker__divider"></div>
+
+        <!-- Time Picker -->
+        <div class="hour-date-picker__time">
+          <!-- Hours Spinner -->
+          <div class="hour-date-picker__spinner">
+            <button
+              type="button"
+              class="hour-date-picker__spinner-btn"
+              (click)="incrementHours(); $event.stopPropagation()"
+              aria-label="Incrementar hora">
+              <lucide-icon [img]="ChevronUpIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+            </button>
+            <span class="hour-date-picker__spinner-value">{{ formattedHours }}</span>
+            <button
+              type="button"
+              class="hour-date-picker__spinner-btn"
+              (click)="decrementHours(); $event.stopPropagation()"
+              aria-label="Decrementar hora">
+              <lucide-icon [img]="ChevronDownIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+            </button>
+          </div>
+
+          <span class="hour-date-picker__colon">:</span>
+
+          <!-- Minutes Spinner -->
+          <div class="hour-date-picker__spinner">
+            <button
+              type="button"
+              class="hour-date-picker__spinner-btn"
+              (click)="incrementMinutes(); $event.stopPropagation()"
+              aria-label="Incrementar minutos">
+              <lucide-icon [img]="ChevronUpIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+            </button>
+            <span class="hour-date-picker__spinner-value">{{ formattedMinutes }}</span>
+            <button
+              type="button"
+              class="hour-date-picker__spinner-btn"
+              (click)="decrementMinutes(); $event.stopPropagation()"
+              aria-label="Decrementar minutos">
+              <lucide-icon [img]="ChevronDownIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+            </button>
+          </div>
+
+          <span class="hour-date-picker__colon">:</span>
+
+          <!-- AM/PM Spinner -->
+          <div class="hour-date-picker__spinner">
+            <button
+              type="button"
+              class="hour-date-picker__spinner-btn"
+              (click)="togglePeriod(); $event.stopPropagation()"
+              aria-label="Cambiar AM/PM">
+              <lucide-icon [img]="ChevronUpIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+            </button>
+            <span class="hour-date-picker__spinner-value">{{ period }}</span>
+            <button
+              type="button"
+              class="hour-date-picker__spinner-btn"
+              (click)="togglePeriod(); $event.stopPropagation()"
+              aria-label="Cambiar AM/PM">
+              <lucide-icon [img]="ChevronDownIcon" [size]="14" [strokeWidth]="2.5"></lucide-icon>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+</div>

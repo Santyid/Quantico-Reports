@@ -1,0 +1,31 @@
+<div class="select-segment">
+  @for (option of options; track option.id) {
+    <button
+      class="select-segment__item"
+      [class.select-segment__item--hover]="hoveredId === option.id"
+      [class.select-segment__item--selected]="isSelected(option)"
+      (click)="onSelect(option)"
+      (mouseenter)="onMouseEnter(option.id)"
+      (mouseleave)="onMouseLeave()"
+      type="button"
+      [attr.aria-label]="'Seleccionar ' + option.title"
+      [attr.aria-pressed]="isSelected(option)">
+      <div class="select-segment__inner"
+        [class.select-segment__inner--selected]="isSelected(option)">
+        <div class="select-segment__header">
+          <span class="select-segment__title">{{ option.title }}</span>
+          @if (option.recommended) {
+            <div class="select-segment__badge">
+              <lucide-icon [img]="CheckIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+              <span>Recomendado</span>
+            </div>
+          }
+        </div>
+        <p class="select-segment__description"
+          [class.select-segment__description--selected]="isSelected(option)">
+          {{ option.description }}
+        </p>
+      </div>
+    </button>
+  }
+</div>

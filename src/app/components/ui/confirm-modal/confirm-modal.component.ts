@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, TriangleAlert, X } from 'lucide-angular';
+import { LucideAngularModule, TriangleAlert, CircleCheckBig, CircleX, X, LucideIconData } from 'lucide-angular';
 import { ButtonComponent } from '../button/button.component';
 
-export type ConfirmModalVariant = 'warning' | 'error' | 'info';
+export type ConfirmModalVariant = 'general' | 'confirmation' | 'alert' | 'error' | 'warning' | 'info';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -14,7 +14,7 @@ export type ConfirmModalVariant = 'warning' | 'error' | 'info';
   encapsulation: ViewEncapsulation.None
 })
 export class ConfirmModalComponent {
-  @Input() variant: ConfirmModalVariant = 'warning';
+  @Input() variant: ConfirmModalVariant = 'general';
   @Input() title = '';
   @Input() message = '';
   @Input() cancelText = 'Cancelar';
@@ -24,8 +24,27 @@ export class ConfirmModalComponent {
   @Output() confirmed = new EventEmitter<void>();
   @Output() cancelled = new EventEmitter<void>();
 
-  readonly TriangleAlertIcon = TriangleAlert;
   readonly XIcon = X;
+
+  private readonly iconMap: Record<string, LucideIconData> = {
+    general: CircleCheckBig,
+    confirmation: CircleCheckBig,
+    alert: TriangleAlert,
+    error: CircleX,
+    warning: TriangleAlert,
+    info: CircleCheckBig,
+  };
+
+  get variantIcon(): LucideIconData {
+    return this.iconMap[this.variant] || CircleCheckBig;
+  }
+
+  get resolvedVariant(): string {
+    // Map legacy variants to the new variant system for CSS
+    if (this.variant === 'info') return 'general';
+    if (this.variant === 'warning') return 'alert';
+    return this.variant;
+  }
 
   onCancel(): void {
     this.cancelled.emit();

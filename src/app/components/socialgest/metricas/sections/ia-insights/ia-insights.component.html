@@ -1,0 +1,80 @@
+<div class="ia-insights">
+  <div class="ia-insights__container">
+    <h3 class="ia-insights__title">Insights estratégicos</h3>
+
+    <div class="ia-insights__grid">
+      @for (insight of insights; track insight.title; let i = $index) {
+        <div class="ia-insights__card">
+          <div class="ia-insights__card-header">
+            <div
+              class="ia-insights__card-icon"
+              [class.ia-insights__card-icon--blue]="insight.iconColor === 'blue'"
+              [class.ia-insights__card-icon--yellow]="insight.iconColor === 'yellow'"
+              [class.ia-insights__card-icon--orange]="insight.iconColor === 'orange'"
+              [class.ia-insights__card-icon--purple]="insight.iconColor === 'purple'">
+              <lucide-icon [img]="insight.icon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            </div>
+            <div class="ia-insights__card-info">
+              <div class="ia-insights__card-title-row">
+                <h4 class="ia-insights__card-title">{{ insight.title }}</h4>
+                <lucide-icon [img]="ChevronDownIcon" [size]="18" [strokeWidth]="2"></lucide-icon>
+              </div>
+              <p class="ia-insights__card-subtitle">{{ insight.subtitle }}</p>
+            </div>
+          </div>
+
+          @if (insight.type === 'stats') {
+            <div class="ia-insights__stats">
+              @for (stat of insight.stats; track stat.label) {
+                <div class="ia-insights__stat">
+                  <span class="ia-insights__stat-value">{{ stat.value }}</span>
+                  <div class="ia-insights__stat-label-row">
+                    <span class="ia-insights__stat-label">{{ stat.label }}</span>
+                    <lucide-icon [img]="InfoIcon" [size]="12" [strokeWidth]="1.5"></lucide-icon>
+                  </div>
+                  <span class="ia-insights__stat-change">
+                    <lucide-icon [img]="TrendingUpIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+                    {{ stat.change }}%
+                  </span>
+                </div>
+              }
+            </div>
+          }
+
+          @if (insight.type === 'ranking') {
+            <div class="ia-insights__ranking">
+              @for (item of insight.rankingItems; track item.name; let j = $index) {
+                <div class="ia-insights__ranking-row">
+                  <span class="ia-insights__ranking-num">{{ j + 1 }}</span>
+                  <span class="ia-insights__ranking-name">{{ item.name }}</span>
+                  <div class="ia-insights__ranking-value">
+                    <lucide-icon [img]="TrendingUpIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+                    <span>{{ item.value }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          @if (insight.type === 'table') {
+            <div class="ia-insights__table">
+              <div class="ia-insights__table-header">
+                @for (col of insight.tableColumns; track col) {
+                  <span>{{ col }}</span>
+                }
+              </div>
+              @for (row of insight.tableRows; track row.format) {
+                <div class="ia-insights__table-row">
+                  <span class="ia-insights__table-cell--name">{{ row.format }}</span>
+                  <span>{{ row.engage }}</span>
+                  <span>{{ row.acciones }}</span>
+                  <span>{{ row.saves }}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

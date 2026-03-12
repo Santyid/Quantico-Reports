@@ -1,0 +1,75 @@
+<div class="select-date" [class.select-date--disabled]="disabled">
+  @if (label) {
+    <label class="select-date__label" [class.select-date__label--small]="size === 'small' || size === 'medium'">
+      {{ label }}
+    </label>
+  }
+
+  <button
+    type="button"
+    class="select-date__trigger"
+    [class.select-date__trigger--small]="size === 'small'"
+    [class.select-date__trigger--medium]="size === 'medium'"
+    [class.select-date__trigger--large]="size === 'large'"
+    [class.select-date__trigger--open]="isOpen"
+    [disabled]="disabled"
+    (click)="toggle()"
+    aria-haspopup="dialog"
+    [attr.aria-expanded]="isOpen"
+    aria-label="Select date">
+    <span class="select-date__value" [class.select-date__value--placeholder]="!formattedDate">
+      {{ formattedDate || 'MM/DD/YYYY' }}
+    </span>
+    <lucide-icon
+      class="select-date__icon"
+      [img]="CalendarIcon"
+      [size]="size === 'small' ? 16 : 20"
+      [strokeWidth]="1.5">
+    </lucide-icon>
+  </button>
+
+  @if (isOpen) {
+    <div class="select-date__dropdown" role="dialog" aria-label="Calendar">
+      <div class="select-date__nav">
+        <button
+          type="button"
+          class="select-date__nav-btn"
+          (click)="prevMonth()"
+          aria-label="Previous month">
+          <lucide-icon [img]="ChevronLeftIcon" [size]="18" [strokeWidth]="2"></lucide-icon>
+        </button>
+        <span class="select-date__nav-title">{{ currentMonthName }} {{ currentYear }}</span>
+        <button
+          type="button"
+          class="select-date__nav-btn"
+          (click)="nextMonth()"
+          aria-label="Next month">
+          <lucide-icon [img]="ChevronRightIcon" [size]="18" [strokeWidth]="2"></lucide-icon>
+        </button>
+      </div>
+
+      <div class="select-date__divider"></div>
+
+      <div class="select-date__day-names">
+        @for (name of dayNames; track name) {
+          <span class="select-date__day-name">{{ name }}</span>
+        }
+      </div>
+
+      <div class="select-date__grid">
+        @for (dayObj of getDaysInMonth(); track $index) {
+          <button
+            type="button"
+            class="select-date__day"
+            [class.select-date__day--other-month]="!dayObj.currentMonth"
+            [class.select-date__day--selected]="isSelected(dayObj.date)"
+            [class.select-date__day--today]="isToday(dayObj.date) && !isSelected(dayObj.date)"
+            (click)="selectDay(dayObj)"
+            [attr.aria-label]="dayObj.date.toDateString()">
+            {{ dayObj.day }}
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>

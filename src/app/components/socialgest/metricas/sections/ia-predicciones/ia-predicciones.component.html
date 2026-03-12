@@ -1,0 +1,24 @@
+<div class="ia-predicciones">
+  <div class="ia-predicciones__container">
+    <h3 class="ia-predicciones__title">Predicciones</h3>
+
+    <div class="ia-predicciones__grid">
+      @for (pred of predicciones; track pred.confianza) {
+        <div
+          class="ia-predicciones__card"
+          [class.ia-predicciones__card--alta]="pred.confianza === 'Alta'"
+          [class.ia-predicciones__card--media]="pred.confianza === 'Media'"
+          [class.ia-predicciones__card--baja]="pred.confianza === 'Baja'">
+          <div class="ia-predicciones__badge">
+            <span
+              class="ia-predicciones__badge-dot"
+              [style.background]="getConfianzaColor(pred.confianza)">
+            </span>
+            <span class="ia-predicciones__badge-label">{{ getConfianzaLabel(pred.confianza) }}</span>
+          </div>
+          <p class="ia-predicciones__text">{{ pred.texto }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, Link, Calendar } from 'lucide-angular';
+import { LucideAngularModule, Link, Calendar, Crosshair, Eye, Heart, LucideIconData } from 'lucide-angular';
 import { SocialgestSidebarComponent, SidebarChannel } from '../sidebar/socialgest-sidebar.component';
 import { RendimientoGlobalComponent } from './sections/rendimiento-global/rendimiento-global.component';
 import { CrecimientoSeguidoresComponent } from './sections/crecimiento-seguidores/crecimiento-seguidores.component';
@@ -17,6 +17,11 @@ import { AudDemografiaComponent } from './sections/aud-demografia/aud-demografia
 import { AudUbicacionesComponent } from './sections/aud-ubicaciones/aud-ubicaciones.component';
 import { AudGeneroComponent } from './sections/aud-genero/aud-genero.component';
 import { AudEdadesComponent } from './sections/aud-edades/aud-edades.component';
+import { IaRendimientoComponent } from './sections/ia-rendimiento/ia-rendimiento.component';
+import { IaRecomendacionesComponent } from './sections/ia-recomendaciones/ia-recomendaciones.component';
+import { IaTopPostsComponent } from './sections/ia-top-posts/ia-top-posts.component';
+import { IaInsightsComponent } from './sections/ia-insights/ia-insights.component';
+import { IaPrediccionesComponent } from './sections/ia-predicciones/ia-predicciones.component';
 
 @Component({
   selector: 'app-metricas-resumen',
@@ -39,7 +44,12 @@ import { AudEdadesComponent } from './sections/aud-edades/aud-edades.component';
     AudDemografiaComponent,
     AudUbicacionesComponent,
     AudGeneroComponent,
-    AudEdadesComponent
+    AudEdadesComponent,
+    IaRendimientoComponent,
+    IaRecomendacionesComponent,
+    IaTopPostsComponent,
+    IaInsightsComponent,
+    IaPrediccionesComponent
   ],
   templateUrl: './metricas-resumen.component.html',
   styleUrl: './metricas-resumen.component.scss'
@@ -48,8 +58,15 @@ export class MetricasResumenComponent {
   readonly ChartIcon = Link;
   readonly CalendarIcon = Calendar;
 
-  readonly tabs = ['Resumen', 'Publicaciones', 'Audiencia'];
-  activeTab = 'Resumen';
+  readonly tabs = ['Análisis con IA', 'Resumen', 'Publicaciones', 'Audiencia'];
+  activeTab = 'Análisis con IA';
+
+  readonly iaFilters: { label: string; icon: LucideIconData }[] = [
+    { label: 'Lead generation', icon: Crosshair },
+    { label: 'Brand awareness', icon: Eye },
+    { label: 'Engagement', icon: Heart },
+  ];
+  activeIaFilter = 'Lead generation';
 
   readonly channels: SidebarChannel[] = [
     { id: 'fb-1', name: 'Mi Empresa', platform: 'Facebook', icon: 'images/facebook-icon.svg' },

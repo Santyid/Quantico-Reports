@@ -1,0 +1,99 @@
+@import '../../../../styles/tokens';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.select-segment {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    width: 100%;
+    padding: 7px;
+    border-radius: 14px;
+    border: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: $select-seg-transition;
+    text-align: left;
+
+    &:hover,
+    &--hover {
+      border-color: $ap-accent-500;
+    }
+
+    &--selected {
+      border-color: $ap-accent-500;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    background: $white-500;
+    border: 1px solid $select-seg-border-color;
+    border-radius: 10px;
+    transition: $select-seg-transition;
+
+    &--selected {
+      background: $ap-accent-50;
+      border-color: transparent;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: $select-seg-font-family;
+    font-size: $select-seg-title-size;
+    font-weight: $select-seg-title-weight;
+    color: $grey-800;
+    letter-spacing: -0.32px;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px 11px;
+    height: 26px;
+    background: $ap-accent-100;
+    border-radius: 23px;
+    box-sizing: border-box;
+
+    lucide-icon {
+      color: $ap-accent-500;
+    }
+
+    span {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: $ap-accent-500;
+      white-space: nowrap;
+    }
+  }
+
+  &__description {
+    font-family: $select-seg-font-family;
+    font-size: $select-seg-desc-size;
+    font-weight: 400;
+    color: $grey-300;
+    letter-spacing: -0.28px;
+    margin: 0;
+
+    &--selected {
+      color: $grey-500;
+    }
+  }
+}

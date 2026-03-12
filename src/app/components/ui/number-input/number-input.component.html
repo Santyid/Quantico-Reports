@@ -1,0 +1,59 @@
+@if (variant === 'buttons') {
+  <div
+    class="number-input number-input--buttons number-input--{{ size }}"
+    [class.number-input--disabled]="disabled"
+  >
+    <button
+      class="number-input__btn number-input__btn--minus"
+      type="button"
+      [disabled]="!canDecrement"
+      (click)="decrement()"
+      aria-label="Decrease value"
+    >
+      <lucide-icon [img]="MinusIcon" [size]="iconSize" [strokeWidth]="2"></lucide-icon>
+    </button>
+
+    <span class="number-input__value">{{ value }}</span>
+
+    <button
+      class="number-input__btn number-input__btn--plus"
+      type="button"
+      [disabled]="!canIncrement"
+      (click)="increment()"
+      aria-label="Increase value"
+    >
+      <lucide-icon [img]="PlusIcon" [size]="iconSize" [strokeWidth]="2"></lucide-icon>
+    </button>
+  </div>
+}
+
+@if (variant === 'spinner') {
+  <div
+    class="number-input number-input--spinner number-input--{{ size }}"
+    [class.number-input--disabled]="disabled"
+  >
+    <span class="number-input__value">{{ value }}</span>
+
+    <div class="number-input__arrows">
+      <button
+        class="number-input__arrow number-input__arrow--up"
+        type="button"
+        [disabled]="!canIncrement"
+        (click)="increment()"
+        aria-label="Increase value"
+      >
+        <lucide-icon [img]="ChevronUpIcon" [size]="iconSize" [strokeWidth]="2"></lucide-icon>
+      </button>
+
+      <button
+        class="number-input__arrow number-input__arrow--down"
+        type="button"
+        [disabled]="!canDecrement"
+        (click)="decrement()"
+        aria-label="Decrease value"
+      >
+        <lucide-icon [img]="ChevronDownIcon" [size]="iconSize" [strokeWidth]="2"></lucide-icon>
+      </button>
+    </div>
+  </div>
+}

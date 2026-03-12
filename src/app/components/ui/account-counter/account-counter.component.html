@@ -1,0 +1,7 @@
+<div class="account-counter"
+     [class.account-counter--small]="size === 'small'"
+     [class.account-counter--medium]="size === 'medium'"
+     [class.account-counter--large]="size === 'large'">
+  <lucide-icon [img]="UsersIcon" [size]="size === 'small' ? 16 : 20" [strokeWidth]="1.5"></lucide-icon>
+  <span class="account-counter__count">{{ count }}</span>
+</div>

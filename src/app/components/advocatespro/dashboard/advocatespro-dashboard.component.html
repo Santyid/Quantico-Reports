@@ -1,0 +1,1954 @@
+<div class="style-guide">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HEADER + SEARCH                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="style-guide__header" [class.style-guide__header--scrolled]="headerScrolled">
+    <h1 class="style-guide__title">Style Guide</h1>
+
+    <div class="style-guide__header-actions">
+      <div class="style-guide__search">
+        <lucide-icon [img]="SearchIcon" [size]="18" [strokeWidth]="1.5" class="style-guide__search-icon"></lucide-icon>
+        <input
+          type="text"
+          class="style-guide__search-input"
+          placeholder="Buscar componentes..."
+          [(ngModel)]="searchQuery"
+          (keydown.escape)="clearSearch()">
+        @if (searchQuery) {
+          <button class="style-guide__search-clear" (click)="clearSearch()">
+            <lucide-icon [img]="XIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        }
+      </div>
+
+      <div class="style-guide__nav-select-wrapper">
+        <button class="style-guide__nav-select" (click)="toggleNavDropdown()">
+          <span>{{ navSelectLabel }}</span>
+          <lucide-icon [img]="ChevronDownIcon" [size]="18" [strokeWidth]="1.5"
+            [class.style-guide__nav-select-chevron--open]="navDropdownOpen"></lucide-icon>
+        </button>
+        @if (navDropdownOpen) {
+          <div class="style-guide__nav-dropdown">
+            @for (section of filteredSections; track section.id) {
+              <button class="style-guide__nav-dropdown-item" (click)="scrollToSection(section.id)">
+                {{ section.label }}
+              </button>
+            }
+            @if (filteredSections.length === 0) {
+              <span class="style-guide__nav-dropdown-empty">Sin resultados</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 1. COLOR PALETTES                      -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('colors')) {
+  <section class="style-guide__section" id="sg-colors">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Colors</h2>
+      <p class="style-guide__card-desc">Paleta de colores del sistema. Click en la variable SCSS para copiarla.</p>
+
+      <div class="style-guide__palettes">
+        @for (palette of palettes; track palette.title) {
+          <div class="style-guide__palette">
+            <h3 class="style-guide__palette-title">{{ palette.title }}</h3>
+            <div class="style-guide__swatches">
+              @for (swatch of palette.swatches; track swatch.name) {
+                <div class="style-guide__swatch" [class.style-guide__swatch--base]="swatch.isBase"
+                     (click)="copyToClipboard(swatch.scssVar)">
+                  <div class="style-guide__swatch-color" [style.background-color]="swatch.hex"></div>
+                  <div class="style-guide__swatch-info">
+                    <span class="style-guide__swatch-name">{{ swatch.name }}</span>
+                    <span class="style-guide__swatch-hex">{{ swatch.hex }}</span>
+                    <span class="style-guide__swatch-var">{{ swatch.scssVar }}</span>
+                  </div>
+                  @if (copiedToken === swatch.scssVar) {
+                    <span class="style-guide__copied-badge">Copiado!</span>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 2. TYPOGRAPHY                          -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('typography')) {
+  <section class="style-guide__section" id="sg-typography">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Typography</h2>
+      <p class="style-guide__card-desc">Fuentes: <strong>Urbanist</strong> para headings, botones y UI. <strong>DM Sans</strong> para cuerpo y tablas. <strong>Inter</strong> para codigo y tokens.</p>
+
+      <div class="style-guide__type-preview">
+        <div class="style-guide__type-sample style-guide__type-sample--h1">Heading 1 — Urbanist 28px Bold</div>
+        <div class="style-guide__type-sample style-guide__type-sample--h2">Heading 2 — Urbanist 24px Bold</div>
+        <div class="style-guide__type-sample style-guide__type-sample--h3">Heading 3 — Urbanist 22px Bold</div>
+        <div class="style-guide__type-sample style-guide__type-sample--h4">Heading 4 — Urbanist 20px SemiBold</div>
+        <div class="style-guide__type-sample style-guide__type-sample--body">Body — DM Sans 16px Regular</div>
+        <div class="style-guide__type-sample style-guide__type-sample--small">Small — DM Sans 14px Regular</div>
+        <div class="style-guide__type-sample style-guide__type-sample--caption">Caption — DM Sans 12px Regular</div>
+        <div class="style-guide__type-sample style-guide__type-sample--label">Label — Urbanist 14px SemiBold</div>
+      </div>
+
+      <table class="style-guide__table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Font Family</th>
+            <th>Size</th>
+            <th>Weight</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of typographyRows; track row.name) {
+            <tr>
+              <td><strong>{{ row.name }}</strong></td>
+              <td><code>{{ row.family }}</code></td>
+              <td>{{ row.size }}</td>
+              <td>{{ row.weight }}</td>
+              <td>{{ row.usage }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 3. SPACING                             -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('spacing')) {
+  <section class="style-guide__section" id="sg-spacing">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Spacing</h2>
+      <p class="style-guide__card-desc">Sistema de espaciado basado en principios de Gestalt. Usar proximidad para agrupar elementos relacionados.</p>
+
+      <div class="style-guide__spacing-grid">
+        @for (row of spacingRows; track row.name) {
+          <div class="style-guide__spacing-item">
+            <div class="style-guide__spacing-visual">
+              <div class="style-guide__spacing-bar" [style.width]="row.value"></div>
+            </div>
+            <div class="style-guide__spacing-info">
+              <span class="style-guide__spacing-name">{{ row.name }}</span>
+              <span class="style-guide__spacing-value">{{ row.value }}</span>
+            </div>
+            <span class="style-guide__spacing-usage">{{ row.usage }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 3b. BORDER RADIUS                      -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('radius')) {
+  <section class="style-guide__section" id="sg-radius">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Border Radius</h2>
+      <p class="style-guide__card-desc">Valores de redondeo por tipo de componente.</p>
+
+      <div class="style-guide__radius-grid">
+        @for (row of radiusRows; track row.name) {
+          <div class="style-guide__radius-item">
+            <div class="style-guide__radius-visual" [style.border-radius]="row.value"></div>
+            <div class="style-guide__radius-info">
+              <span class="style-guide__radius-name">{{ row.name }}</span>
+              <span class="style-guide__radius-value">{{ row.value }}</span>
+            </div>
+            <span class="style-guide__radius-usage">{{ row.usage }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 4. BUTTONS (all button types)          -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('buttons')) {
+  <section class="style-guide__section" id="sg-buttons">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Buttons</h2>
+      <p class="style-guide__card-desc">Pasa el mouse para ver hover, haz click para ver active. Los estados son CSS nativos.</p>
+
+      <!-- Regular Buttons -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Button</h3>
+        <p class="style-guide__control-desc">Boton estandar con icono y texto. 3 variantes (primary, secundary, white) × 3 tamanos.</p>
+
+        @for (type of buttonTypes; track type) {
+          <div class="style-guide__btn-variant">
+            <h3 class="style-guide__btn-variant-title">{{ type }}</h3>
+
+            @for (size of buttonSizes; track size) {
+              <div class="style-guide__btn-size-group">
+                <span class="style-guide__btn-size-label">{{ size }}</span>
+                <div class="style-guide__btn-states">
+                  <div class="style-guide__btn-state">
+                    <button class="style-guide__btn style-guide__btn--{{ type }} style-guide__btn--{{ size }}">
+                      <lucide-icon [img]="PlusCircleIcon" [size]="size === 'small' ? 16 : 20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Boton con icono</span>
+                    </button>
+                    <span class="style-guide__btn-state-label">Interactive</span>
+                  </div>
+                  <div class="style-guide__btn-state">
+                    <button class="style-guide__btn style-guide__btn--{{ type }} style-guide__btn--{{ size }}" disabled>
+                      <lucide-icon [img]="PlusCircleIcon" [size]="size === 'small' ? 16 : 20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Boton con icono</span>
+                    </button>
+                    <span class="style-guide__btn-state-label">Disabled</span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- AI Button -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">AI Button</h3>
+        <p class="style-guide__control-desc">Boton con borde cyan (#00AAFF) e icono AI. Hover y active con fondo celeste. 3 tamanos.</p>
+
+        <div class="style-guide__btn-size-group">
+          <span class="style-guide__btn-size-label">large</span>
+          <div class="style-guide__btn-states">
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--large">
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <span>AI</span>
+              </button>
+              <span class="style-guide__btn-state-label">Interactive</span>
+            </div>
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--large" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <span>AI</span>
+              </button>
+              <span class="style-guide__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="style-guide__btn-size-group">
+          <span class="style-guide__btn-size-label">medium</span>
+          <div class="style-guide__btn-states">
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--medium">
+                <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                <span>AI</span>
+              </button>
+              <span class="style-guide__btn-state-label">Interactive</span>
+            </div>
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--medium" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                <span>AI</span>
+              </button>
+              <span class="style-guide__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="style-guide__btn-size-group">
+          <span class="style-guide__btn-size-label">small</span>
+          <div class="style-guide__btn-states">
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--small">
+                <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                <span>AI</span>
+              </button>
+              <span class="style-guide__btn-state-label">Interactive</span>
+            </div>
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--small" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                <span>AI</span>
+              </button>
+              <span class="style-guide__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Icon Buttons -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Icon Button</h3>
+        <p class="style-guide__control-desc">Boton cuadrado solo con icono. Mismas variantes y tamanos que el boton regular.</p>
+
+        @for (type of buttonTypes; track type) {
+          <div class="style-guide__control-subgroup">
+            <span class="style-guide__control-sublabel">{{ type }}</span>
+            <div class="style-guide__control-row">
+              @for (size of buttonSizes; track size) {
+                <div class="style-guide__control-item">
+                  <button class="style-guide__icon-btn style-guide__icon-btn--{{ type }} style-guide__icon-btn--{{ size }}">
+                    <lucide-icon [img]="PlusCircleIcon" [size]="size === 'small' ? 16 : 20" [strokeWidth]="1.5"></lucide-icon>
+                  </button>
+                  <span class="style-guide__btn-state-label">{{ size }}</span>
+                </div>
+              }
+              <div class="style-guide__control-item">
+                <button class="style-guide__icon-btn style-guide__icon-btn--{{ type }} style-guide__icon-btn--large" disabled>
+                  <lucide-icon [img]="PlusCircleIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                </button>
+                <span class="style-guide__btn-state-label">disabled</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Toggle Button -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Toggle Button</h3>
+        <p class="style-guide__control-desc">Boton pill que alterna activo/inactivo. Fondo y borde secundary cuando activo.</p>
+        <div class="style-guide__control-row">
+          <div class="style-guide__control-item">
+            <button class="style-guide__toggle-btn"
+                    [class.style-guide__toggle-btn--active]="toggleBtnActive['btn1']"
+                    (click)="toggleBtnActive['btn1'] = !toggleBtnActive['btn1']">
+              <lucide-icon [img]="PlusCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Filtro A</span>
+            </button>
+          </div>
+          <div class="style-guide__control-item">
+            <button class="style-guide__toggle-btn"
+                    [class.style-guide__toggle-btn--active]="toggleBtnActive['btn2']"
+                    (click)="toggleBtnActive['btn2'] = !toggleBtnActive['btn2']">
+              <lucide-icon [img]="PlusCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Filtro B</span>
+            </button>
+          </div>
+          <div class="style-guide__control-item">
+            <button class="style-guide__toggle-btn"
+                    [class.style-guide__toggle-btn--active]="toggleBtnActive['btn3']"
+                    (click)="toggleBtnActive['btn3'] = !toggleBtnActive['btn3']">
+              <lucide-icon [img]="PlusCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Filtro C</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 5. CONTROLS (form components)          -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('controls')) {
+  <section class="style-guide__section" id="sg-controls">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Controls</h2>
+      <p class="style-guide__card-desc">Componentes interactivos de formulario. Haz click para ver las acciones en tiempo real.</p>
+
+      <!-- Toggle -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Toggle / Switch</h3>
+        <p class="style-guide__control-desc">Switch on/off. Color secundary (#ee4a79) cuando encendido, grey-100 (#c3c3c3) cuando apagado.</p>
+        <div class="style-guide__control-row">
+          <div class="style-guide__control-item">
+            <button class="style-guide__toggle style-guide__toggle--large"
+                    [class.style-guide__toggle--on]="toggleStates['large']"
+                    (click)="toggleStates['large'] = !toggleStates['large']">
+              <div class="style-guide__toggle-thumb"></div>
+            </button>
+            <span class="style-guide__btn-state-label">Large (56×32)</span>
+          </div>
+          <div class="style-guide__control-item">
+            <button class="style-guide__toggle style-guide__toggle--medium"
+                    [class.style-guide__toggle--on]="toggleStates['medium']"
+                    (click)="toggleStates['medium'] = !toggleStates['medium']">
+              <div class="style-guide__toggle-thumb"></div>
+            </button>
+            <span class="style-guide__btn-state-label">Medium (48×28)</span>
+          </div>
+          <div class="style-guide__control-item">
+            <button class="style-guide__toggle style-guide__toggle--small"
+                    [class.style-guide__toggle--on]="toggleStates['small']"
+                    (click)="toggleStates['small'] = !toggleStates['small']">
+              <div class="style-guide__toggle-thumb"></div>
+            </button>
+            <span class="style-guide__btn-state-label">Small (40×24)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkbox -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Checkbox</h3>
+        <p class="style-guide__control-desc">24×24px, border-radius 8px. Fondo secundary (#ee4a79) con check blanco cuando activo.</p>
+        <div class="style-guide__control-row">
+          <div class="style-guide__control-item">
+            <button class="style-guide__checkbox"
+                    [class.style-guide__checkbox--active]="checkboxStates['demo1']"
+                    (click)="checkboxStates['demo1'] = !checkboxStates['demo1']">
+              @if (checkboxStates['demo1']) {
+                <lucide-icon [img]="CheckIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
+              }
+            </button>
+            <span class="style-guide__btn-state-label">{{ checkboxStates['demo1'] ? 'Active' : 'Default' }}</span>
+          </div>
+          <div class="style-guide__control-item">
+            <button class="style-guide__checkbox"
+                    [class.style-guide__checkbox--active]="checkboxStates['demo2']"
+                    (click)="checkboxStates['demo2'] = !checkboxStates['demo2']">
+              @if (checkboxStates['demo2']) {
+                <lucide-icon [img]="CheckIcon" [size]="16" [strokeWidth]="2.5"></lucide-icon>
+              }
+            </button>
+            <span class="style-guide__btn-state-label">{{ checkboxStates['demo2'] ? 'Active' : 'Default' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radio Button (PrimeNG Lara) -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Radio Button (PrimeNG - Lara Theme)</h3>
+        <p class="style-guide__control-desc">PrimeNG RadioButton con tema Lara y colores custom del proyecto. Color activo: secundary (#ee4a79).</p>
+
+        <!-- Default Size -->
+        <div class="style-guide__control-subgroup">
+          <span class="style-guide__control-subtitle">Default</span>
+          <div class="style-guide__control-row style-guide__primeng-radios">
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemo" value="option1" [(ngModel)]="radioSelected" inputId="radio1"></p-radiobutton>
+              <label for="radio1" class="style-guide__radio-label">Opcion 1</label>
+            </div>
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemo" value="option2" [(ngModel)]="radioSelected" inputId="radio2"></p-radiobutton>
+              <label for="radio2" class="style-guide__radio-label">Opcion 2</label>
+            </div>
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemo" value="option3" [(ngModel)]="radioSelected" inputId="radio3"></p-radiobutton>
+              <label for="radio3" class="style-guide__radio-label">Opcion 3</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small Size -->
+        <div class="style-guide__control-subgroup">
+          <span class="style-guide__control-subtitle">Small</span>
+          <div class="style-guide__control-row style-guide__primeng-radios">
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoSm" value="optionA" [(ngModel)]="radioSelectedSm" inputId="radioSm1" size="small"></p-radiobutton>
+              <label for="radioSm1" class="style-guide__radio-label style-guide__radio-label--sm">Opcion A</label>
+            </div>
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoSm" value="optionB" [(ngModel)]="radioSelectedSm" inputId="radioSm2" size="small"></p-radiobutton>
+              <label for="radioSm2" class="style-guide__radio-label style-guide__radio-label--sm">Opcion B</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Large Size -->
+        <div class="style-guide__control-subgroup">
+          <span class="style-guide__control-subtitle">Large</span>
+          <div class="style-guide__control-row style-guide__primeng-radios">
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoLg" value="optionX" [(ngModel)]="radioSelectedLg" inputId="radioLg1" size="large"></p-radiobutton>
+              <label for="radioLg1" class="style-guide__radio-label style-guide__radio-label--lg">Opcion X</label>
+            </div>
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoLg" value="optionY" [(ngModel)]="radioSelectedLg" inputId="radioLg2" size="large"></p-radiobutton>
+              <label for="radioLg2" class="style-guide__radio-label style-guide__radio-label--lg">Opcion Y</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disabled State -->
+        <div class="style-guide__control-subgroup">
+          <span class="style-guide__control-subtitle">Disabled</span>
+          <div class="style-guide__control-row style-guide__primeng-radios">
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoDisabled" value="disabledA" [(ngModel)]="radioDisabledVal" inputId="radioDis1" [disabled]="true"></p-radiobutton>
+              <label for="radioDis1" class="style-guide__radio-label style-guide__radio-label--disabled">Disabled</label>
+            </div>
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoDisabled" value="disabledB" [(ngModel)]="radioDisabledVal" inputId="radioDis2" [disabled]="true"></p-radiobutton>
+              <label for="radioDis2" class="style-guide__radio-label style-guide__radio-label--disabled">Disabled Selected</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filled Variant -->
+        <div class="style-guide__control-subgroup">
+          <span class="style-guide__control-subtitle">Filled Variant</span>
+          <div class="style-guide__control-row style-guide__primeng-radios">
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoFilled" value="filled1" [(ngModel)]="radioFilledVal" inputId="radioFill1" variant="filled"></p-radiobutton>
+              <label for="radioFill1" class="style-guide__radio-label">Filled 1</label>
+            </div>
+            <div class="style-guide__control-item">
+              <p-radiobutton name="radioDemoFilled" value="filled2" [(ngModel)]="radioFilledVal" inputId="radioFill2" variant="filled"></p-radiobutton>
+              <label for="radioFill2" class="style-guide__radio-label">Filled 2</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radio Tab -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Radio Tab</h3>
+        <p class="style-guide__control-desc">Tab pill para seleccion unica. Borde y texto secundary (#ee4a79) cuando activo, fondo secundary-50.</p>
+        <div class="style-guide__control-row">
+          <button class="style-guide__radio-tab"
+                  [class.style-guide__radio-tab--active]="radioTabSelected === 'tab1'"
+                  (click)="radioTabSelected = 'tab1'">
+            Tab 1
+          </button>
+          <button class="style-guide__radio-tab"
+                  [class.style-guide__radio-tab--active]="radioTabSelected === 'tab2'"
+                  (click)="radioTabSelected = 'tab2'">
+            Tab 2
+          </button>
+          <button class="style-guide__radio-tab"
+                  [class.style-guide__radio-tab--active]="radioTabSelected === 'tab3'"
+                  (click)="radioTabSelected = 'tab3'">
+            Tab 3
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 6. STATUS BADGE                        -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('badges')) {
+  <section class="style-guide__section" id="sg-badges">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Status Badge</h2>
+      <p class="style-guide__card-desc">Badge pill con dot de color indicador. 4 variantes de estado × 2 tamanos (Small 30px, Large 36px).</p>
+
+      <!-- Small Size -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Small (30px)</h3>
+        <div class="style-guide__control-row">
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--small style-guide__status-badge--positiva">
+              <span class="style-guide__status-badge-dot"></span>
+              Positiva
+            </span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--small style-guide__status-badge--negativa">
+              <span class="style-guide__status-badge-dot"></span>
+              Negativa
+            </span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--small style-guide__status-badge--neutra">
+              <span class="style-guide__status-badge-dot"></span>
+              Neutra
+            </span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--small style-guide__status-badge--desactivado">
+              <span class="style-guide__status-badge-dot"></span>
+              Desactivado
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Large Size -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Large (36px)</h3>
+        <div class="style-guide__control-row">
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--large style-guide__status-badge--positiva">
+              <span class="style-guide__status-badge-dot"></span>
+              Positiva
+            </span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--large style-guide__status-badge--negativa">
+              <span class="style-guide__status-badge-dot"></span>
+              Negativo
+            </span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--large style-guide__status-badge--neutra">
+              <span class="style-guide__status-badge-dot"></span>
+              Neutra
+            </span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__status-badge style-guide__status-badge--large style-guide__status-badge--desactivado">
+              <span class="style-guide__status-badge-dot"></span>
+              Desactivado
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 7. CHIPS                               -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('chips')) {
+  <section class="style-guide__section" id="sg-chips">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Chips</h2>
+      <p class="style-guide__card-desc">Chip/tag pill con iconos opcionales. 4 variantes: White, Primary, Secundary, Disabled. Click en la X para remover.</p>
+
+      <!-- Variants -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Variantes</h3>
+        <div class="style-guide__control-row">
+          <div class="style-guide__control-item">
+            <span class="style-guide__chip style-guide__chip--white">
+              <lucide-icon [img]="CircleCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Chips</span>
+              <lucide-icon [img]="CircleXIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__chip-close"></lucide-icon>
+            </span>
+            <span class="style-guide__btn-state-label">White</span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__chip style-guide__chip--primary">
+              <lucide-icon [img]="CircleCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Chips</span>
+              <lucide-icon [img]="CircleXIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__chip-close"></lucide-icon>
+            </span>
+            <span class="style-guide__btn-state-label">Primary</span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__chip style-guide__chip--secundary">
+              <lucide-icon [img]="CircleCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Chips</span>
+              <lucide-icon [img]="CircleXIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__chip-close"></lucide-icon>
+            </span>
+            <span class="style-guide__btn-state-label">Secundary</span>
+          </div>
+          <div class="style-guide__control-item">
+            <span class="style-guide__chip style-guide__chip--disabled">
+              <lucide-icon [img]="CircleCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>Chips</span>
+              <lucide-icon [img]="CircleXIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__chip-close"></lucide-icon>
+            </span>
+            <span class="style-guide__btn-state-label">Disabled</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive demo -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Demo interactivo</h3>
+        <p class="style-guide__control-desc">Haz click en la X para remover chips. Usa el boton + para agregar nuevos.</p>
+        <div class="style-guide__chips-demo">
+          @for (chip of chips; track $index) {
+            <span class="style-guide__chip style-guide__chip--{{ chip.variant }}">
+              <lucide-icon [img]="CircleCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <span>{{ chip.label }}</span>
+              <button class="style-guide__chip-remove" (click)="removeChip($index)">
+                <lucide-icon [img]="CircleXIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              </button>
+            </span>
+          }
+          <button class="style-guide__chip-add" (click)="addChip()">
+            <lucide-icon [img]="PlusCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+            <span>Agregar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 8. TOASTERS                            -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('toasters')) {
+  <section class="style-guide__section" id="sg-toasters">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Toasters</h2>
+      <p class="style-guide__card-desc">Notificaciones tipo toast con barra lateral de color, icono circular y boton de cierre. 4 variantes. Click en la X para ocultar, usa los botones para mostrar de nuevo.</p>
+
+      <!-- Success -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Success</h3>
+        @if (toasterVisible['success']) {
+          <div class="style-guide__toaster style-guide__toaster--success">
+            <div class="style-guide__toaster-stripe"></div>
+            <div class="style-guide__toaster-icon-wrap">
+              <lucide-icon [img]="CircleCheckBigIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+            </div>
+            <div class="style-guide__toaster-content">
+              <p class="style-guide__toaster-title">¡Todo bien!</p>
+              <p class="style-guide__toaster-message">Se ha agregado un miembro correctamente.</p>
+            </div>
+            <button class="style-guide__toaster-close" (click)="dismissToaster('success')">
+              <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            </button>
+          </div>
+        } @else {
+          <button class="style-guide__btn style-guide__btn--primary style-guide__btn--small" (click)="showToaster('success')">
+            <span>Mostrar Success</span>
+          </button>
+        }
+      </div>
+
+      <!-- Warning -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Warning</h3>
+        @if (toasterVisible['warning']) {
+          <div class="style-guide__toaster style-guide__toaster--warning">
+            <div class="style-guide__toaster-stripe"></div>
+            <div class="style-guide__toaster-icon-wrap">
+              <lucide-icon [img]="TriangleAlertIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+            </div>
+            <div class="style-guide__toaster-content">
+              <p class="style-guide__toaster-title">Alerta</p>
+              <p class="style-guide__toaster-message">Esta accion borrara toda la informacion y <strong>no podras recuperarla.</strong></p>
+            </div>
+            <button class="style-guide__toaster-close" (click)="dismissToaster('warning')">
+              <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            </button>
+          </div>
+        } @else {
+          <button class="style-guide__btn style-guide__btn--primary style-guide__btn--small" (click)="showToaster('warning')">
+            <span>Mostrar Warning</span>
+          </button>
+        }
+      </div>
+
+      <!-- Error -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Error</h3>
+        @if (toasterVisible['error']) {
+          <div class="style-guide__toaster style-guide__toaster--error">
+            <div class="style-guide__toaster-stripe"></div>
+            <div class="style-guide__toaster-icon-wrap">
+              <lucide-icon [img]="CircleXIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+            </div>
+            <div class="style-guide__toaster-content">
+              <p class="style-guide__toaster-title">Error</p>
+              <p class="style-guide__toaster-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <button class="style-guide__toaster-close" (click)="dismissToaster('error')">
+              <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            </button>
+          </div>
+        } @else {
+          <button class="style-guide__btn style-guide__btn--primary style-guide__btn--small" (click)="showToaster('error')">
+            <span>Mostrar Error</span>
+          </button>
+        }
+      </div>
+
+      <!-- Info -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Info</h3>
+        @if (toasterVisible['info']) {
+          <div class="style-guide__toaster style-guide__toaster--info">
+            <div class="style-guide__toaster-stripe"></div>
+            <div class="style-guide__toaster-icon-wrap">
+              <lucide-icon [img]="InfoIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+            </div>
+            <div class="style-guide__toaster-content">
+              <p class="style-guide__toaster-title">Informacion</p>
+              <p class="style-guide__toaster-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <button class="style-guide__toaster-close" (click)="dismissToaster('info')">
+              <lucide-icon [img]="XIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+            </button>
+          </div>
+        } @else {
+          <button class="style-guide__btn style-guide__btn--primary style-guide__btn--small" (click)="showToaster('info')">
+            <span>Mostrar Info</span>
+          </button>
+        }
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 9. SELECT SEGMENTS                     -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('selects-seg')) {
+  <section class="style-guide__section" id="sg-selects-seg">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Select Segments</h2>
+      <p class="style-guide__card-desc">Componentes de seleccion con estados <strong>Default</strong>, <strong>Hover</strong> (borde rosa) y <strong>Selected</strong> (borde rosa + fondo rosa). Haz click para seleccionar.</p>
+
+      <!-- Tabs -->
+      <div class="style-guide__tabs">
+        @for (tab of selectTabs; track tab.id) {
+          <button class="style-guide__tab"
+            [class.style-guide__tab--active]="activeSelectTab === tab.id"
+            (click)="activeSelectTab = tab.id">
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+
+      <!-- Tab: Select Segment -->
+      @if (activeSelectTab === 'segment') {
+        <div class="style-guide__tab-content">
+          <app-select-segment
+            [options]="selectSegmentOptions"
+            [(selectedId)]="selectSegmentSelectedId">
+          </app-select-segment>
+        </div>
+      }
+
+      <!-- Tab: Select User -->
+      @if (activeSelectTab === 'user') {
+        <div class="style-guide__tab-content">
+          <div class="style-guide__select-block">
+            <span class="style-guide__select-label">Large</span>
+            <app-select-user
+              [options]="selectUserOptions"
+              [(selectedId)]="selectUserSelectedId"
+              size="large">
+            </app-select-user>
+          </div>
+          <div class="style-guide__select-block">
+            <span class="style-guide__select-label">Medium</span>
+            <app-select-user
+              [options]="selectUserOptions"
+              [(selectedId)]="selectUserSelectedId"
+              size="medium">
+            </app-select-user>
+          </div>
+        </div>
+      }
+
+      <!-- Tab: Select Segment con Imagen -->
+      @if (activeSelectTab === 'segment-img') {
+        <div class="style-guide__tab-content">
+          <app-select-segment-img
+            [options]="selectSegmentImgOptions"
+            [(selectedId)]="selectSegImgSelectedId">
+          </app-select-segment-img>
+        </div>
+      }
+
+      <!-- Tab: Select Colorpicker -->
+      @if (activeSelectTab === 'colorpicker') {
+        <div class="style-guide__tab-content">
+          <app-select-colorpicker
+            [options]="selectColorpickerOptions"
+            [(selectedId)]="selectColorSelectedId">
+          </app-select-colorpicker>
+        </div>
+      }
+
+      <!-- Tab: Select Segment con Chips -->
+      @if (activeSelectTab === 'chips') {
+        <div class="style-guide__tab-content">
+          <div class="style-guide__select-block">
+            <span class="style-guide__select-label">Large</span>
+            <app-select-segment-chips
+              [options]="selectChipsOptions"
+              [(selectedId)]="selectChipsSelectedId"
+              size="large">
+            </app-select-segment-chips>
+          </div>
+          <div class="style-guide__select-block">
+            <span class="style-guide__select-label">Small</span>
+            <app-select-segment-chips
+              [options]="selectChipsOptions"
+              [(selectedId)]="selectChipsSelectedId"
+              size="small">
+            </app-select-segment-chips>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 10. MODALS                             -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('modals')) {
+  <section class="style-guide__section" id="sg-modals">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Confirm Modals</h2>
+      <p class="style-guide__card-desc">Dialogos de confirmacion con 4 variantes: <strong>General</strong> (azul), <strong>Confirmación</strong> (verde), <strong>Alerta</strong> (rosa) y <strong>Error</strong> (rojo). Cada uno con icono, mensaje y botones de accion.</p>
+
+      <div class="style-guide__modal-grid">
+        @for (m of modalVariants; track m.variant) {
+          <button class="style-guide__modal-trigger"
+            [class]="'style-guide__modal-trigger style-guide__modal-trigger--' + m.variant"
+            (click)="openModal(m.variant)">
+            <span class="style-guide__modal-trigger-label">{{ m.label }}</span>
+            <span class="style-guide__modal-trigger-hint">Click para abrir</span>
+          </button>
+        }
+      </div>
+
+      <!-- Confirm Code Modal (2FA) -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Confirm Code Modal (Doble Factor)</h3>
+        <p class="style-guide__control-desc">Modal de confirmacion destructiva con codigo de verificacion. El usuario debe copiar y escribir el codigo para habilitar el boton de accion.</p>
+
+        <button class="style-guide__modal-trigger style-guide__modal-trigger--warning"
+          (click)="codeModalVisible = true">
+          <span class="style-guide__modal-trigger-label">Doble Factor</span>
+          <span class="style-guide__modal-trigger-hint">Click para abrir</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  }
+
+  @for (m of modalVariants; track m.variant) {
+    <app-confirm-modal
+      [variant]="m.variant"
+      [title]="m.title"
+      [message]="m.message"
+      [visible]="activeModal === m.variant"
+      cancelText="Boton"
+      confirmText="Boton"
+      (cancelled)="closeModal()"
+      (confirmed)="closeModal()">
+    </app-confirm-modal>
+  }
+
+  <app-confirm-code-modal
+    title="¿Estás seguro de eliminar (X)?"
+    message="Esta acción borrará toda la información de cuentas asociadas dentro de SocialGest y <strong>no podrás recuperarla.</strong>"
+    code="01234"
+    cancelText="Cancelar"
+    confirmText="Eliminar"
+    [visible]="codeModalVisible"
+    (cancelled)="codeModalVisible = false"
+    (confirmed)="codeModalVisible = false">
+  </app-confirm-code-modal>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- STEPPERS                               -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('steppers')) {
+  <section class="style-guide__section" id="sg-steppers">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Steppers</h2>
+      <p class="style-guide__card-desc">Barra de progreso por pasos. Configurable con <code>currentStep</code> y <code>totalSteps</code>.</p>
+
+      <!-- Interactive demo -->
+      <div class="style-guide__stepper-demo">
+        <div class="style-guide__stepper-preview">
+          <app-stepper [currentStep]="stepperCurrent" [totalSteps]="stepperTotal"></app-stepper>
+        </div>
+
+        <div class="style-guide__stepper-controls">
+          <button
+            class="style-guide__stepper-btn"
+            [disabled]="stepperCurrent <= 1"
+            (click)="stepperPrev()">
+            Anterior
+          </button>
+          <span class="style-guide__stepper-info">{{ stepperCurrent }} / {{ stepperTotal }}</span>
+          <button
+            class="style-guide__stepper-btn style-guide__stepper-btn--primary"
+            [disabled]="stepperCurrent >= stepperTotal"
+            (click)="stepperNext()">
+            Siguiente
+          </button>
+          <button
+            class="style-guide__stepper-btn"
+            (click)="stepperReset()">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Static variants -->
+      <h3 class="style-guide__subtitle">Variantes por cantidad de pasos</h3>
+      <div class="style-guide__stepper-variants">
+        <div class="style-guide__stepper-variant">
+          <span class="style-guide__stepper-variant-label">2 pasos (paso 1)</span>
+          <app-stepper [currentStep]="1" [totalSteps]="2"></app-stepper>
+        </div>
+        <div class="style-guide__stepper-variant">
+          <span class="style-guide__stepper-variant-label">3 pasos (paso 2)</span>
+          <app-stepper [currentStep]="2" [totalSteps]="3"></app-stepper>
+        </div>
+        <div class="style-guide__stepper-variant">
+          <span class="style-guide__stepper-variant-label">4 pasos (paso 3)</span>
+          <app-stepper [currentStep]="3" [totalSteps]="4"></app-stepper>
+        </div>
+        <div class="style-guide__stepper-variant">
+          <span class="style-guide__stepper-variant-label">5 pasos (paso 5 — completo)</span>
+          <app-stepper [currentStep]="5" [totalSteps]="5"></app-stepper>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FORM INPUTS (TextArea, NumberInput, existing Input/Select) -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('form-inputs')) {
+  <section class="style-guide__section" id="sg-form-inputs">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Form Inputs</h2>
+      <p class="style-guide__card-desc">Componentes de formulario: TextArea, Number Input, y los existentes Input Text y Select.</p>
+
+      <!-- TextArea -->
+      <h3 class="style-guide__subtitle">TextArea</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Default</span>
+          <app-textarea
+            label="Dirección"
+            placeholder="Escribe aquí..."
+            [rows]="3">
+          </app-textarea>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Con valor</span>
+          <app-textarea
+            label="Descripción"
+            [(ngModel)]="textareaValue"
+            placeholder="Al venir al mundo fueron delicadamente mecidas..."
+            [rows]="3">
+          </app-textarea>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Disabled</span>
+          <app-textarea
+            label="Notas"
+            placeholder="No disponible"
+            [disabled]="true"
+            [rows]="3">
+          </app-textarea>
+        </div>
+      </div>
+
+      <!-- Number Input -->
+      <h3 class="style-guide__subtitle">Number Input — Variante Botones (−/+)</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large</span>
+          <app-number-input
+            [(value)]="numberValue1"
+            size="large"
+            variant="buttons"
+            [min]="0"
+            [max]="100">
+          </app-number-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-number-input
+            [(value)]="numberValue2"
+            size="medium"
+            variant="buttons"
+            [min]="0"
+            [max]="50">
+          </app-number-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-number-input
+            [(value)]="numberValue3"
+            size="small"
+            variant="buttons"
+            [min]="0"
+            [max]="20">
+          </app-number-input>
+        </div>
+      </div>
+
+      <h3 class="style-guide__subtitle">Number Input — Variante Spinner (↑↓)</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large</span>
+          <app-number-input
+            [(value)]="numberSpinnerValue"
+            size="large"
+            variant="spinner">
+          </app-number-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-number-input
+            [value]="numberSpinnerValue"
+            size="medium"
+            variant="spinner">
+          </app-number-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-number-input
+            [value]="numberSpinnerValue"
+            size="small"
+            variant="spinner">
+          </app-number-input>
+        </div>
+      </div>
+
+      <h3 class="style-guide__subtitle">Number Input — Disabled</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <app-number-input [value]="7" variant="buttons" [disabled]="true"></app-number-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <app-number-input [value]="3" variant="spinner" [disabled]="true"></app-number-input>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- DATE PICKERS                           -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('date-pickers')) {
+  <section class="style-guide__section" id="sg-date-pickers">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Date Pickers</h2>
+      <p class="style-guide__card-desc">Componentes para selección de fecha y fecha+hora con calendario desplegable.</p>
+
+      <!-- Select Date -->
+      <h3 class="style-guide__subtitle">Select Date</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large</span>
+          <app-select-date
+            label="Select date"
+            size="large"
+            [(value)]="selectedDate">
+          </app-select-date>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-select-date
+            label="Select date"
+            size="medium"
+            [value]="selectedDate">
+          </app-select-date>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-select-date
+            label="Select date"
+            size="small"
+            [value]="selectedDate">
+          </app-select-date>
+        </div>
+      </div>
+
+      <!-- Hour & Date Picker -->
+      <h3 class="style-guide__subtitle">Hour &amp; Date Picker</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large</span>
+          <app-hour-date-picker
+            label="Select date"
+            size="large"
+            [(value)]="selectedDateTime">
+          </app-hour-date-picker>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-hour-date-picker
+            label="Select date"
+            size="medium"
+            [value]="selectedDateTime">
+          </app-hour-date-picker>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-hour-date-picker
+            label="Select date"
+            size="small"
+            [value]="selectedDateTime">
+          </app-hour-date-picker>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- COUNTERS                               -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('counters')) {
+  <section class="style-guide__section" id="sg-counters">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Account Counter</h2>
+      <p class="style-guide__card-desc">Badge compacto que muestra un icono de usuario + número de cuentas.</p>
+
+      <h3 class="style-guide__subtitle">Tamaños</h3>
+      <div class="style-guide__demo-row" style="align-items: center;">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large</span>
+          <app-account-counter [count]="counterValue" size="large"></app-account-counter>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-account-counter [count]="counterValue" size="medium"></app-account-counter>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-account-counter [count]="counterValue" size="small"></app-account-counter>
+        </div>
+      </div>
+
+      <h3 class="style-guide__subtitle">Demo interactiva</h3>
+      <div class="style-guide__demo-row" style="align-items: center; gap: 16px;">
+        <app-account-counter [count]="counterValue" size="large"></app-account-counter>
+        <button class="style-guide__stepper-btn" (click)="decrementCounter()" [disabled]="counterValue <= 0">−</button>
+        <span class="style-guide__stepper-info">{{ counterValue }}</span>
+        <button class="style-guide__stepper-btn style-guide__stepper-btn--primary" (click)="incrementCounter()">+</button>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SELECTS                                -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('selects')) {
+  <section class="style-guide__section" id="sg-selects">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Selects</h2>
+      <p class="style-guide__card-desc">Componente dropdown con soporte para iconos, tamaños, estados y Reactive Forms.</p>
+
+      <!-- Select Sizes -->
+      <h3 class="style-guide__subtitle">Select Sizes</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large (default)</span>
+          <app-select
+            size="large"
+            label="Framework"
+            placeholder="Selecciona uno"
+            [options]="selectOptions"
+            (selectionChange)="onSelectChange($event)">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-select
+            size="medium"
+            label="Framework"
+            placeholder="Selecciona uno"
+            [options]="selectOptions"
+            (selectionChange)="onSelectChange($event)">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-select
+            size="small"
+            label="Framework"
+            placeholder="Selecciona uno"
+            [options]="selectOptions"
+            (selectionChange)="onSelectChange($event)">
+          </app-select>
+        </div>
+      </div>
+
+      <!-- Select with Left Icon -->
+      <h3 class="style-guide__subtitle">Select with Left Icon</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Globe icon</span>
+          <app-select
+            size="large"
+            label="País"
+            placeholder="Selecciona un país"
+            [leftIcon]="GlobeIcon"
+            [options]="countryOptions"
+            (selectionChange)="onSelectChange($event)">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">User icon</span>
+          <app-select
+            size="large"
+            label="Rol"
+            placeholder="Selecciona un rol"
+            [leftIcon]="UserIcon"
+            [options]="roleOptions"
+            (selectionChange)="onSelectChange($event)">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Mail icon (medium)</span>
+          <app-select
+            size="medium"
+            label="Contacto"
+            placeholder="Tipo de contacto"
+            [leftIcon]="MailIcon"
+            [options]="[{value: 'email', label: 'Email'}, {value: 'phone', label: 'Teléfono'}, {value: 'social', label: 'Red Social'}]"
+            (selectionChange)="onSelectChange($event)">
+          </app-select>
+        </div>
+      </div>
+
+      <!-- Select States -->
+      <h3 class="style-guide__subtitle">Select States</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Default (vacío)</span>
+          <app-select
+            label="Estado default"
+            placeholder="Placeholder input"
+            [options]="selectOptions">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Con valor seleccionado</span>
+          <app-select
+            label="Estado con valor"
+            placeholder="Placeholder input"
+            [options]="selectOptions"
+            [value]="'react'">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Disabled</span>
+          <app-select
+            label="Estado disabled"
+            placeholder="No disponible"
+            [options]="selectOptions"
+            [value]="'react'"
+            [disabled]="true">
+          </app-select>
+        </div>
+      </div>
+
+      <!-- Select without Label -->
+      <h3 class="style-guide__subtitle">Select without Label</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Sin label (Large)</span>
+          <app-select
+            size="large"
+            placeholder="Selecciona una opción"
+            [options]="selectOptions">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Sin label + Icon (Medium)</span>
+          <app-select
+            size="medium"
+            placeholder="Ubicación"
+            [leftIcon]="MapPinIcon"
+            [options]="countryOptions">
+          </app-select>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Sin label (Small)</span>
+          <app-select
+            size="small"
+            placeholder="Filtrar"
+            [options]="roleOptions">
+          </app-select>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SEARCH INPUTS                          -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('search-inputs')) {
+  <section class="style-guide__section" id="sg-search-inputs">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Search Inputs</h2>
+      <p class="style-guide__card-desc">Input de búsqueda pill-shaped con icono, clear button y soporte para Reactive Forms.</p>
+
+      <!-- Search Input Sizes -->
+      <h3 class="style-guide__subtitle">Search Input Sizes</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large (default)</span>
+          <app-search-input
+            size="large"
+            placeholder="Buscar...">
+          </app-search-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-search-input
+            size="medium"
+            placeholder="Buscar...">
+          </app-search-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-search-input
+            size="small"
+            placeholder="Buscar...">
+          </app-search-input>
+        </div>
+      </div>
+
+      <!-- Search Input States -->
+      <h3 class="style-guide__subtitle">Search Input States</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Default (vacío)</span>
+          <app-search-input
+            placeholder="Escribe para buscar...">
+          </app-search-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Disabled</span>
+          <app-search-input
+            placeholder="No disponible"
+            [disabled]="true">
+          </app-search-input>
+        </div>
+      </div>
+
+      <!-- Search with live action -->
+      <h3 class="style-guide__subtitle">Search con acción en vivo</h3>
+      <p class="style-guide__card-desc" style="margin-bottom: 16px;">Escribe para filtrar elementos de una lista mock. Resultados aparecen debajo.</p>
+      <div class="style-guide__search-live-demo">
+        <app-search-input
+          size="large"
+          placeholder="Buscar secciones..."
+          (valueChange)="onSearchDemo($event)"
+          (cleared)="onSearchCleared()">
+        </app-search-input>
+        @if (searchResults.length > 0) {
+        <div class="style-guide__search-results">
+          @for (result of searchResults; track result) {
+          <div class="style-guide__search-result-item">{{ result }}</div>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Full Width Search -->
+      <h3 class="style-guide__subtitle">Full Width Search</h3>
+      <div class="style-guide__demo-fullwidth">
+        <app-search-input
+          size="large"
+          placeholder="Buscar en toda la plataforma..."
+          [fullWidth]="true">
+        </app-search-input>
+      </div>
+      <div class="style-guide__demo-fullwidth" style="margin-top: 16px;">
+        <app-search-input
+          size="medium"
+          placeholder="Buscar componentes..."
+          [fullWidth]="true">
+        </app-search-input>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TEXT INPUTS                             -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('text-inputs')) {
+  <section class="style-guide__section" id="sg-text-inputs">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Text Inputs</h2>
+      <p class="style-guide__card-desc">Input de texto con label, iconos, estados y 3 tamanos. Soporta Reactive Forms (ControlValueAccessor).</p>
+
+      <!-- Sizes -->
+      <h3 class="style-guide__subtitle">Tamanos</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Large</span>
+          <app-text-input size="large" label="Nombre completo" placeholder="Escribe tu nombre..."></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Medium</span>
+          <app-text-input size="medium" label="Nombre completo" placeholder="Escribe tu nombre..."></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Small</span>
+          <app-text-input size="small" label="Nombre completo" placeholder="Escribe tu nombre..."></app-text-input>
+        </div>
+      </div>
+
+      <!-- With Icons -->
+      <h3 class="style-guide__subtitle">Con Iconos</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Icono izquierdo</span>
+          <app-text-input size="large" label="Email" placeholder="correo@ejemplo.com" type="email" [leftIcon]="MailIcon"></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Icono derecho</span>
+          <app-text-input size="large" label="Ubicacion" placeholder="Ciudad, Pais" [rightIcon]="MapPinIcon"></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Ambos iconos</span>
+          <app-text-input size="large" label="Buscar usuario" placeholder="@username" [leftIcon]="UserIcon" [rightIcon]="SearchIcon"></app-text-input>
+        </div>
+      </div>
+
+      <!-- States -->
+      <h3 class="style-guide__subtitle">Estados</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Con valor</span>
+          <app-text-input size="large" label="Empresa" [value]="'Quantico Reports'"></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Error</span>
+          <app-text-input size="large" label="Email" placeholder="correo@ejemplo.com" errorMessage="El email no es valido" [leftIcon]="MailIcon"></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Disabled</span>
+          <app-text-input size="large" label="Campo bloqueado" placeholder="No disponible" [disabled]="true"></app-text-input>
+        </div>
+      </div>
+
+      <!-- Required -->
+      <h3 class="style-guide__subtitle">Requerido</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <app-text-input size="large" label="Nombre" placeholder="Obligatorio" [required]="true"></app-text-input>
+        </div>
+        <div class="style-guide__demo-col">
+          <app-text-input size="medium" label="Apellido" placeholder="Obligatorio" [required]="true" [leftIcon]="UserIcon"></app-text-input>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CARDS                                   -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('cards')) {
+  <section class="style-guide__section" id="sg-cards">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Cards</h2>
+      <p class="style-guide__card-desc">Contenedor de contenido con 3 variantes de tamano. Usa <code>ng-content</code> para contenido flexible.</p>
+
+      <!-- Simple -->
+      <h3 class="style-guide__subtitle">Simple</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <app-card variant="simple">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac rhoncus quam. Suspendisse potenti. Curabitur et lorem et sem consequat facilisis vel a nunc.
+          </app-card>
+        </div>
+        <div class="style-guide__demo-col">
+          <app-card variant="simple">
+            Las metricas del ultimo mes muestran un crecimiento del 23% en engagement, con un aumento significativo en las interacciones organicas.
+          </app-card>
+        </div>
+      </div>
+
+      <!-- Titled -->
+      <h3 class="style-guide__subtitle">Con Titulo (titled)</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <app-card variant="titled" title="Metricas de Engagement">
+            El engagement rate promedio del trimestre fue de 4.8%, superando el benchmark de la industria (3.2%). Las publicaciones con contenido visual obtuvieron un 67% mas de interacciones.
+          </app-card>
+        </div>
+        <div class="style-guide__demo-col">
+          <app-card variant="titled" title="Segmentos Activos">
+            Actualmente hay 12 segmentos activos en la plataforma. El segmento "Millennials Tech" tiene el mayor volumen de menciones con 2,450 en los ultimos 30 dias.
+          </app-card>
+        </div>
+      </div>
+
+      <!-- Large -->
+      <h3 class="style-guide__subtitle">Grande (large)</h3>
+      <div class="style-guide__demo-fullwidth">
+        <app-card variant="large" title="Resumen General del Periodo">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac rhoncus quam. Si vis pacem, para bellum. Suspendisse potenti. Curabitur et lorem et sem consequat facilisis vel a nunc. Praesent a enim ut nisi blandit semper. Fusce vel erat vitae risus sagittis bibendum at non urna. Donec lacinia accumsan turpis, non dictum magna elementum quis.
+        </app-card>
+      </div>
+      <div class="style-guide__demo-fullwidth" style="margin-top: 16px;">
+        <app-card variant="large" title="Analisis de Competencia">
+          Se identificaron 5 competidores principales en el sector. La marca lidera en share of voice con un 34%, seguida de CompetidorA (28%) y CompetidorB (19%). Las oportunidades de mejora se concentran en el contenido de video corto.
+        </app-card>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MENUS                                   -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('menus')) {
+  <section class="style-guide__section" id="sg-menus">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Menus</h2>
+      <p class="style-guide__card-desc">Menu desplegable con 4 tipos: iconos, avatar, radio (seleccion unica) y checkbox (seleccion multiple).</p>
+
+      <!-- Icon Menu -->
+      <h3 class="style-guide__subtitle">Menu con Iconos</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Default</span>
+          <app-menu type="icon" [items]="menuIconItems" (itemClick)="menuIconSelected = [$event.id]"></app-menu>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Con seleccion</span>
+          <app-menu type="icon" [items]="menuIconItems" [selectedIds]="['m1']"></app-menu>
+        </div>
+      </div>
+
+      <!-- Avatar Menu -->
+      <h3 class="style-guide__subtitle">Menu con Avatar</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <app-menu type="avatar" [items]="menuAvatarItems" (itemClick)="menuAvatarSelected = [$event.id]"></app-menu>
+        </div>
+      </div>
+
+      <!-- Radio Menu -->
+      <h3 class="style-guide__subtitle">Menu con Radio (seleccion unica)</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Interactivo</span>
+          <app-menu type="radio" [items]="menuRadioItems" [selectedIds]="menuRadioSelected" (selectionChange)="menuRadioSelected = $event"></app-menu>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Sin seleccion</span>
+          <app-menu type="radio" [items]="menuRadioItems" [selectedIds]="[]"></app-menu>
+        </div>
+      </div>
+
+      <!-- Checkbox Menu -->
+      <h3 class="style-guide__subtitle">Menu con Checkbox (seleccion multiple)</h3>
+      <div class="style-guide__demo-row">
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Interactivo</span>
+          <app-menu type="checkbox" [items]="menuCheckboxItems" [selectedIds]="menuCheckboxSelected" (selectionChange)="menuCheckboxSelected = $event"></app-menu>
+        </div>
+        <div class="style-guide__demo-col">
+          <span class="style-guide__demo-label">Todas seleccionadas</span>
+          <app-menu type="checkbox" [items]="menuCheckboxItems" [selectedIds]="['c1','c2','c3','c4','c5']"></app-menu>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- AVATARES                                -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('avatars')) {
+  <section class="style-guide__section" id="sg-avatars">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Avatares</h2>
+      <p class="style-guide__card-desc">Avatar circular reutilizable con 4 tamanos. Integrado en Select User, Menu Avatar y otros componentes que muestran fotos de perfil.</p>
+
+      <!-- All 4 sizes -->
+      <h3 class="style-guide__subtitle">Tamanos</h3>
+      <div class="style-guide__demo-row" style="align-items: flex-end;">
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Extra Large (50px)</span>
+          <app-avatar-social size="xlarge" avatarUrl="images/avatar-demo.png" [showBadge]="false" alt="Usuario XL"></app-avatar-social>
+        </div>
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Large (36px)</span>
+          <app-avatar-social size="large" avatarUrl="images/avatar-demo.png" [showBadge]="false" alt="Usuario L"></app-avatar-social>
+        </div>
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Medium (26px)</span>
+          <app-avatar-social size="medium" avatarUrl="images/avatar-demo.png" [showBadge]="false" alt="Usuario M"></app-avatar-social>
+        </div>
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Small (18px)</span>
+          <app-avatar-social size="small" avatarUrl="images/avatar-demo.png" [showBadge]="false" alt="Usuario S"></app-avatar-social>
+        </div>
+      </div>
+
+      <!-- Usage in components -->
+      <h3 class="style-guide__subtitle">Uso en Componentes</h3>
+      <p class="style-guide__card-desc" style="margin-bottom: 16px;">El componente <code>app-avatar-social</code> se usa internamente en <strong>Select User</strong> (large/medium) y <strong>Menu Avatar</strong> (large). Tambien soporta badge de plataforma social opcional.</p>
+      <div class="style-guide__demo-row" style="align-items: flex-end;">
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Con badge Instagram</span>
+          <app-avatar-social size="xlarge" avatarUrl="images/avatar-demo.png" platformIconUrl="images/instagram-icon.svg" alt="Con badge"></app-avatar-social>
+        </div>
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Con badge Facebook</span>
+          <app-avatar-social size="xlarge" avatarUrl="images/avatar-demo.png" platformIconUrl="images/facebook-icon.svg" alt="Con badge"></app-avatar-social>
+        </div>
+        <div class="style-guide__demo-col" style="align-items: center;">
+          <span class="style-guide__demo-label">Sin badge</span>
+          <app-avatar-social size="xlarge" avatarUrl="images/avatar-demo.png" [showBadge]="false" alt="Sin badge"></app-avatar-social>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 11. DESIGN TOKENS REFERENCE            -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('tokens')) {
+  <section class="style-guide__section" id="sg-tokens">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Design Tokens (SCSS)</h2>
+      <p class="style-guide__card-desc">Variables SCSS disponibles en <code>src/styles/_tokens.scss</code>. Importar con <code>&#64;import 'styles/tokens';</code></p>
+
+      @for (group of tokenGroups; track group.title) {
+        <div class="style-guide__token-group">
+          <h3 class="style-guide__token-group-title">{{ group.title }}</h3>
+          <table class="style-guide__table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Valor</th>
+                <th>Uso</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (token of group.tokens; track token.token) {
+                <tr>
+                  <td>
+                    <code class="style-guide__token-name">{{ token.token }}</code>
+                  </td>
+                  <td>
+                    <div class="style-guide__token-value">
+                      @if (extractHex(token.value); as hex) {
+                        <span class="style-guide__token-swatch" [style.background-color]="hex"></span>
+                      }
+                      <code>{{ resolveTokenDisplay(token.value) }}</code>
+                    </div>
+                  </td>
+                  <td>{{ token.usage }}</td>
+                  <td>
+                    <button class="style-guide__copy-btn" (click)="copyToClipboard(token.token)"
+                            [attr.aria-label]="'Copiar ' + token.token">
+                      @if (copiedToken === token.token) {
+                        <lucide-icon [img]="CheckIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+                      } @else {
+                        <lucide-icon [img]="CopyIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      }
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 7. ICONS                               -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('icons')) {
+  <section class="style-guide__section" id="sg-icons">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Icons (Lucide)</h2>
+      <p class="style-guide__card-desc">Todos los iconos provienen de <code>lucide-angular</code>. NO instalar otras librerias de iconos.</p>
+
+      <div class="style-guide__code-block">
+        <div class="style-guide__code-header">
+          <span>Instalacion y uso</span>
+          <button class="style-guide__copy-btn" (click)="copyToClipboard('import { LucideAngularModule, Bell } from \'lucide-angular\';')">
+            @if (copiedToken === "import { LucideAngularModule, Bell } from 'lucide-angular';") {
+              <lucide-icon [img]="CheckIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+            } @else {
+              <lucide-icon [img]="CopyIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+            }
+          </button>
+        </div>
+        <pre class="style-guide__code"><code>// En el componente .ts
+import &#123; LucideAngularModule, Bell, Plus &#125; from 'lucide-angular';
+
+&#64;Component(&#123;
+  imports: [LucideAngularModule],
+&#125;)
+export class MyComponent &#123;
+  readonly BellIcon = Bell;
+&#125;
+
+// En el template .html
+&lt;lucide-icon [img]="BellIcon" [size]="24" [strokeWidth]="1.5"&gt;&lt;/lucide-icon&gt;</code></pre>
+      </div>
+
+      <h3 class="style-guide__token-group-title">Iconos comunes del proyecto</h3>
+      <div class="style-guide__icon-list">
+        @for (icon of iconExamples; track icon) {
+          <div class="style-guide__icon-item" (click)="copyToClipboard(icon)">
+            <code>{{ icon }}</code>
+            @if (copiedToken === icon) {
+              <span class="style-guide__copied-badge">Copiado!</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 8. COMPONENT API                       -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('components')) {
+  <section class="style-guide__section" id="sg-components">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Component API</h2>
+      <p class="style-guide__card-desc">Referencia de uso de cada componente reutilizable del sistema.</p>
+
+      @for (comp of componentDocs; track comp.name) {
+        <div class="style-guide__comp-doc">
+          <div class="style-guide__comp-header">
+            <h3 class="style-guide__comp-name">{{ comp.name }}</h3>
+            <code class="style-guide__comp-selector">{{ comp.selector }}</code>
+          </div>
+          <p class="style-guide__comp-desc">{{ comp.description }}</p>
+
+          <!-- Inputs table -->
+          <table class="style-guide__table style-guide__table--compact">
+            <thead>
+              <tr>
+                <th>Propiedad</th>
+                <th>Tipo</th>
+                <th>Default</th>
+                <th>Descripcion</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (input of comp.inputs; track input.name) {
+                <tr>
+                  <td><code>{{ input.name }}</code></td>
+                  <td><code class="style-guide__type-code">{{ input.type }}</code></td>
+                  <td><code>{{ input.default }}</code></td>
+                  <td>{{ input.description }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+
+          <!-- Collapsible code example -->
+          <div class="style-guide__code-toggle" (click)="toggleCode(comp.name)">
+            <lucide-icon [img]="ChevronDownIcon" [size]="16" [class.style-guide__code-chevron--open]="expandedCode[comp.name]" class="style-guide__code-chevron"></lucide-icon>
+            <span>{{ expandedCode[comp.name] ? 'Ocultar codigo' : 'Ver codigo' }}</span>
+          </div>
+
+          @if (expandedCode[comp.name]) {
+          <div class="style-guide__code-block style-guide__code-block--animated">
+            <div class="style-guide__code-header">
+              <span>Ejemplo de uso</span>
+              <button class="style-guide__copy-btn" (click)="copyCode(comp.codeExample, comp.name); $event.stopPropagation()">
+                @if (copiedCode === comp.name) {
+                  <lucide-icon [img]="CheckIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+                  <span class="style-guide__copy-label">Copiado</span>
+                } @else {
+                  <lucide-icon [img]="CopyIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                  <span class="style-guide__copy-label">Copiar</span>
+                }
+              </button>
+            </div>
+            <pre class="style-guide__code"><code>{{ comp.codeExample }}</code></pre>
+          </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 9. RULES & CONVENTIONS                 -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('rules')) {
+  <section class="style-guide__section" id="sg-rules">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Reglas y Convenciones</h2>
+
+      <div class="style-guide__rules">
+        <div class="style-guide__rule">
+          <h3 class="style-guide__rule-title">Estructura de archivos</h3>
+          <div class="style-guide__code-block">
+            <pre class="style-guide__code"><code>src/app/components/
+  ui/                          # Componentes reutilizables
+    button/
+      button.component.ts
+      button.component.html
+      button.component.scss
+    select/
+    search-input/
+    status-badge/
+    table/
+  reportes/sections/           # Secciones del modulo reportes
+  segmentos/                   # Modulo de segmentos
+  navbar/                      # Navbar compartido
+
+src/styles/
+  _tokens.scss                 # Design tokens (IMPORTAR SIEMPRE)
+  design-tokens.json           # Tokens en JSON para herramientas</code></pre>
+          </div>
+        </div>
+
+        <div class="style-guide__rule">
+          <h3 class="style-guide__rule-title">Reglas de CSS</h3>
+          <ul class="style-guide__rule-list">
+            <li><strong>BEM naming:</strong> <code>.componente__elemento--modificador</code></li>
+            <li><strong>NUNCA hardcodear colores hex</strong> — siempre usar variables de <code>_tokens.scss</code></li>
+            <li><strong>Import de tokens:</strong> <code>&#64;import '../../../../styles/tokens';</code> (ajustar ruta relativa)</li>
+            <li><strong>Componentes standalone:</strong> siempre <code>standalone: true</code>, sin NgModules</li>
+            <li><strong>Selector prefix:</strong> siempre <code>app-</code> (ej: <code>app-button</code>, <code>app-select</code>)</li>
+          </ul>
+        </div>
+
+        <div class="style-guide__rule">
+          <h3 class="style-guide__rule-title">Reglas de Charts</h3>
+          <ul class="style-guide__rule-list">
+            <li><strong>Siempre usar gradientes</strong> en graficos, nunca colores solidos</li>
+            <li>Barras verticales: gradiente vertical con <code>opacityFrom: 1, opacityTo: 0.6</code></li>
+            <li>Pie charts: siempre con <code>[useGradient]="true"</code></li>
+            <li>Sentiment bars: gradientes horizontales con transparencia</li>
+          </ul>
+        </div>
+
+        <div class="style-guide__rule">
+          <h3 class="style-guide__rule-title">Reglas de Reportes</h3>
+          <ul class="style-guide__rule-list">
+            <li><strong>Todos los titulos de seccion DENTRO de cards</strong> — nunca titulos sueltos</li>
+            <li>Cards: fondo blanco, borde <code>1px solid $kpi-card-border</code>, radius <code>16px</code></li>
+            <li>Siempre <code>24px</code> de margin-bottom debajo de titulos de card</li>
+            <li>Cards de alertas/insights: usar gradientes diagonales (verde, amarillo, rojo)</li>
+          </ul>
+        </div>
+
+        <div class="style-guide__rule">
+          <h3 class="style-guide__rule-title">Accesibilidad</h3>
+          <ul class="style-guide__rule-list">
+            <li>Todos los elementos interactivos con <code>aria-label</code></li>
+            <li>Soporte de teclado: Tab, Enter, Space, Escape, Arrow keys</li>
+            <li>Estados <code>:focus-visible</code> para usuarios de teclado</li>
+            <li>Contraste WCAG AA minimo (4.5:1)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+</div>

@@ -80,9 +80,8 @@ $navbar-font-family: 'Urbanist', sans-serif;
   &__platform-dropdown {
     position: absolute;
     top: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 220px;
+    left: 0;
+    min-width: 260px;
     background: $white-500;
     border: 1px solid #ececec;
     border-radius: 12px;
@@ -115,6 +114,8 @@ $navbar-font-family: 'Urbanist', sans-serif;
   &__platform-option-img {
     height: 20px;
     width: auto;
+    max-width: 140px;
+    object-fit: contain;
   }
 
   &__platform-option-text {

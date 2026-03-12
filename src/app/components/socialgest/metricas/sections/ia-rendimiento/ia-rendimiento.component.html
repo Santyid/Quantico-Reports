@@ -1,0 +1,37 @@
+<div class="ia-rendimiento">
+  <div class="ia-rendimiento__top">
+    <div class="ia-rendimiento__score-badge">
+      <span class="ia-rendimiento__score-letter">{{ score }}</span>
+    </div>
+    <div class="ia-rendimiento__score-info">
+      <div class="ia-rendimiento__score-title-row">
+        <lucide-icon [img]="CheckIcon" [size]="20" [strokeWidth]="2"></lucide-icon>
+        <h3 class="ia-rendimiento__score-title">{{ scoreLabel }}</h3>
+      </div>
+      <div class="ia-rendimiento__score-desc-box">
+        <p class="ia-rendimiento__score-desc">{{ scoreDescription }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ia-rendimiento__divider"></div>
+
+  <div class="ia-rendimiento__kpis">
+    @for (kpi of kpis; track kpi.label) {
+      <div class="ia-rendimiento__kpi">
+        <span class="ia-rendimiento__kpi-value">{{ kpi.value }}</span>
+        <span class="ia-rendimiento__kpi-label">{{ kpi.label }}</span>
+        <span
+          class="ia-rendimiento__kpi-badge"
+          [class.ia-rendimiento__kpi-badge--negative]="kpi.change < 0">
+          <lucide-icon
+            [img]="kpi.change >= 0 ? TrendingUpIcon : TrendingDownIcon"
+            [size]="12"
+            [strokeWidth]="2">
+          </lucide-icon>
+          <span>{{ kpi.change > 0 ? '+' : '' }}{{ kpi.change }}%</span>
+        </span>
+      </div>
+    }
+  </div>
+</div>

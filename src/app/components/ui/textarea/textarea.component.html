@@ -1,0 +1,18 @@
+<div class="app-textarea" [class.app-textarea--focused]="focused" [class.app-textarea--disabled]="disabled">
+  @if (label) {
+    <label class="app-textarea__label">{{ label }}</label>
+  }
+  <div class="app-textarea__wrapper">
+    <textarea
+      class="app-textarea__field"
+      [placeholder]="placeholder"
+      [rows]="rows"
+      [disabled]="disabled"
+      [attr.maxlength]="maxLength"
+      [value]="value"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    ></textarea>
+  </div>
+</div>

@@ -13,7 +13,7 @@ export interface Platform {
   id: string;
   name: string;
   route: string;
-  icon: 'socialgest' | 'quantico';
+  icon: 'socialgest' | 'quantico' | 'advocatespro';
 }
 
 @Component({
@@ -31,7 +31,8 @@ export class NavbarComponent {
 
   @Input() platforms: Platform[] = [
     { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
-    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' }
+    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' },
+    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' }
   ];
 
   @Input() navItems: NavItem[] = [

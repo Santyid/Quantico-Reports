@@ -1,0 +1,39 @@
+<div class="select-chips"
+  [class.select-chips--medium]="size === 'medium'"
+  [class.select-chips--small]="size === 'small'">
+  @for (option of options; track option.id) {
+    <button
+      class="select-chips__item"
+      [class.select-chips__item--hover]="hoveredId === option.id"
+      [class.select-chips__item--selected]="isSelected(option)"
+      (click)="onSelect(option)"
+      (mouseenter)="onMouseEnter(option.id)"
+      (mouseleave)="onMouseLeave()"
+      type="button"
+      [attr.aria-label]="'Seleccionar ' + option.name"
+      [attr.aria-pressed]="isSelected(option)">
+      <div class="select-chips__inner"
+        [class.select-chips__inner--selected]="isSelected(option)">
+        <span class="select-chips__name">{{ option.name }}</span>
+        @if (option.chips && option.chips.length > 0) {
+          <div class="select-chips__tags">
+            @for (chip of option.chips; track chip.label) {
+              <div class="select-chips__chip"
+                [class.select-chips__chip--disabled]="!chip.removable">
+                <span>{{ chip.label }}</span>
+                @if (chip.removable) {
+                  <lucide-icon
+                    [img]="XIcon"
+                    [size]="12"
+                    [strokeWidth]="2"
+                    (click)="onRemoveChip($event, option, chip)">
+                  </lucide-icon>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </button>
+  }
+</div>

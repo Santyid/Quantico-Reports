@@ -1,0 +1,63 @@
+@import '../../../../styles/tokens';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.select-colorpicker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    width: 100%;
+    padding: $select-seg-outer-padding;
+    border-radius: $select-seg-outer-radius-lg;
+    border: 1.5px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: $select-seg-transition;
+    text-align: left;
+
+    &:hover,
+    &--hover {
+      border-color: $ap-accent-500;
+    }
+
+    &--selected {
+      border-color: $ap-accent-500;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 16px 24px;
+    background: $white-500;
+    border: 1px solid $select-seg-border-color;
+    border-radius: $select-seg-inner-radius-lg;
+    transition: $select-seg-transition;
+
+    &--selected {
+      background: $ap-accent-50;
+      border-color: transparent;
+    }
+  }
+
+  &__dot {
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-family: $select-seg-font-family;
+    font-size: $select-seg-title-size;
+    font-weight: $select-seg-title-weight;
+    color: $grey-800;
+    letter-spacing: -0.32px;
+  }
+}

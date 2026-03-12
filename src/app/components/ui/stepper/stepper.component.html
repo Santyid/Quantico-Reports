@@ -1,0 +1,9 @@
+<div class="stepper">
+  <p class="stepper__label">Paso {{ currentStep }} de {{ totalSteps }}</p>
+  <div class="stepper__track">
+    <div
+      class="stepper__progress"
+      [style.width.%]="progressPercent">
+    </div>
+  </div>
+</div>

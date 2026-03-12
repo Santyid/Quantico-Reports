@@ -373,3 +373,396 @@ $report-title-font-family: 'Urbanist', sans-serif;
 $report-title-font-size: 20px;
 $report-title-font-weight: 700;
 $report-title-color: $grey-800;
+
+// ========================================
+// AdvocatesPro Accent Color Scale (Pink/Rose)
+// ========================================
+$ap-accent-50: #fdedf2;    // secundary-50 — Selected background
+$ap-accent-100: #fac7d5;   // secundary-100 — Badge background
+$ap-accent-500: #ee4a79;   // secundary-500 — Base accent
+$ap-accent-600: #d9426e;   // secundary-600 — Hover
+$ap-accent-700: #a93556;   // secundary-700 — Active/pressed
+
+// ========================================
+// Select Segment Design Tokens (AdvocatesPro)
+// ========================================
+$select-seg-outer-radius-lg: 10px;
+$select-seg-outer-radius-md: 8px;
+$select-seg-inner-radius-lg: 8px;
+$select-seg-inner-radius-md: 6px;
+$select-seg-outer-padding: 6px;
+$select-seg-inner-padding-lg: 16px 24px;
+$select-seg-inner-padding-md: 12px 24px;
+$select-seg-border-color: $grey-100;
+$select-seg-border-width: 1px;
+$select-seg-hover-border-width: 1.5px;
+$select-seg-selected-bg: $ap-accent-50;
+$select-seg-hover-border: $ap-accent-500;
+$select-seg-selected-border: $ap-accent-500;
+$select-seg-font-family: 'DM Sans', sans-serif;
+$select-seg-title-size: 16px;
+$select-seg-title-weight: 600;
+$select-seg-desc-size: 14px;
+$select-seg-transition: all 0.2s ease;
+
+// ========================================
+// Semantic Color Scale — Error (Red)
+// ========================================
+$error-50: #ffecec;    // rgb(255, 236, 236) — light bg
+$error-100: #feb0b0;   // rgb(254, 176, 176)
+$error-200: #fd8f8f;   // rgb(253, 143, 143)
+$error-300: #fd5f5f;   // rgb(253, 95, 95)
+$error-400: #fc3e3e;   // rgb(252, 62, 62) — base
+$error-500: #b02b2b;   // rgb(176, 43, 43)
+$error-600: #9a2626;   // rgb(154, 38, 38)
+
+// ========================================
+// Semantic Color Scale — Warning (Orange)
+// ========================================
+$warning-50: #fff5ea;  // rgb(255, 245, 234) — light bg
+$warning-100: #ffd4a8; // rgb(255, 212, 168)
+$warning-200: #ffc285; // rgb(255, 194, 133)
+$warning-300: #ffa850; // rgb(255, 168, 80)
+$warning-400: #ff962c; // rgb(255, 150, 44) — base
+$warning-500: #b3691f; // rgb(179, 105, 31)
+$warning-600: #9c5c1b; // rgb(156, 92, 27)
+$warning-icon: #e8922d; // Icon-specific orange
+
+// ========================================
+// Semantic Color Scale — Success (Green)
+// ========================================
+$success-50: #ebfaf1;  // rgb(235, 250, 241) — light bg
+$success-100: #aeebc7; // rgb(174, 235, 199)
+$success-200: #8de3b0; // rgb(141, 227, 176)
+$success-300: #5bd68d; // rgb(91, 214, 141)
+$success-400: #3ace76; // rgb(58, 206, 118) — base
+$success-500: #299053; // rgb(41, 144, 83)
+$success-600: #237e48; // rgb(35, 126, 72)
+
+// ========================================
+// Semantic Color Scale — Neutral
+// ========================================
+$neutral-50: #fafafa;  // rgb(250, 250, 250) — subtle bg / message boxes
+$neutral-100: #f5f7fa; // rgb(245, 247, 250)
+$neutral-200: #f1f1f1; // rgb(241, 241, 241)
+
+// ========================================
+// Confirm Modal Design Tokens
+// ========================================
+$confirm-modal-bg: $white-500;
+$confirm-modal-border: $grey-50;
+$confirm-modal-border-radius: 12px;
+$confirm-modal-padding: 40px 48px;
+$confirm-modal-gap: 32px;
+$confirm-modal-max-width: 700px;
+$confirm-modal-overlay-bg: rgba(0, 0, 0, 0.4);
+
+// Confirm Modal — Icon
+$confirm-modal-icon-size: 56px;
+$confirm-modal-icon-radius: 50%;
+
+// Confirm Modal — Title
+$confirm-modal-title-font: 'Urbanist', sans-serif;
+$confirm-modal-title-size: 24px;
+$confirm-modal-title-weight: 700;
+$confirm-modal-title-color: $grey-800;
+$confirm-modal-title-tracking: -0.48px;
+
+// Confirm Modal — Message box
+$confirm-modal-msg-radius: 10px;
+$confirm-modal-msg-padding: 16px 20px;
+$confirm-modal-msg-font: 'DM Sans', sans-serif;
+$confirm-modal-msg-size: 16px;
+$confirm-modal-msg-line-height: 28px;
+$confirm-modal-msg-color: $grey-800;
+$confirm-modal-msg-tracking: -0.32px;
+
+// Confirm Modal — Buttons
+$confirm-modal-btn-height: 40px;
+$confirm-modal-btn-padding: 10px 20px;
+$confirm-modal-btn-radius: 12px;
+$confirm-modal-btn-font: 'Urbanist', sans-serif;
+$confirm-modal-btn-size: 16px;
+$confirm-modal-btn-weight: 700;
+
+// Confirm Modal — Variant: General (blue)
+$confirm-general-icon-bg: $primary-50;
+$confirm-general-icon-color: $primary-500;
+$confirm-general-msg-bg: $neutral-50;
+$confirm-general-btn-bg: $primary-500;
+$confirm-general-btn-hover: $primary-600;
+$confirm-general-btn-active: $primary-700;
+
+// Confirm Modal — Variant: Confirmation (green)
+$confirm-confirmation-icon-bg: $success-50;
+$confirm-confirmation-icon-color: $success-400;
+$confirm-confirmation-msg-bg: $neutral-50;
+$confirm-confirmation-btn-bg: $primary-500;
+$confirm-confirmation-btn-hover: $primary-600;
+$confirm-confirmation-btn-active: $primary-700;
+
+// Confirm Modal — Variant: Alert (pink)
+$confirm-alert-icon-bg: $ap-accent-50;
+$confirm-alert-icon-color: $ap-accent-500;
+$confirm-alert-msg-bg: $ap-accent-50;
+$confirm-alert-btn-bg: $ap-accent-500;
+$confirm-alert-btn-hover: $ap-accent-600;
+$confirm-alert-btn-active: darken($ap-accent-500, 15%);
+
+// Confirm Modal — Variant: Error (red)
+$confirm-error-icon-bg: rgba($error-400, 0.1);
+$confirm-error-icon-color: $error-400;
+$confirm-error-msg-bg: rgba($error-400, 0.1);
+$confirm-error-btn-bg: $error-400;
+$confirm-error-btn-hover: darken($error-400, 8%);
+$confirm-error-btn-active: darken($error-400, 15%);
+
+// ========================================
+// Confirm Code Modal Design Tokens
+// ========================================
+$code-modal-border-radius: 24px;
+$code-modal-icon-bg: $warning-50;
+$code-modal-icon-color: $warning-icon;
+$code-modal-msg-bg: $warning-50;
+$code-modal-btn-bg: $error-400;
+$code-modal-btn-hover: darken($error-400, 8%);
+$code-modal-btn-active: darken($error-400, 15%);
+$code-modal-code-size: 40px;
+$code-modal-code-spacing: 4px;
+$code-modal-input-width: 334px;
+$code-modal-input-height: 48px;
+
+// ========================================
+// Toast Design Tokens
+// ========================================
+$toast-bg: $white-500;
+$toast-border-radius: 10px;
+$toast-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+$toast-min-width: 360px;
+$toast-max-width: 680px;
+$toast-accent-width: 13px;
+$toast-icon-size: 48px;
+$toast-icon-radius: 50px;
+$toast-msg-font: 'DM Sans', sans-serif;
+$toast-msg-size: 16px;
+$toast-msg-weight: 500;
+$toast-msg-line-height: 27px;
+$toast-msg-color: $grey-800;
+
+// Toast Variant Backgrounds (light tints)
+$toast-success-bg: $success-50;    // #ebfaf1
+$toast-error-bg: #fdecea;                   // light red tint
+$toast-warning-bg: #fff8ec;                 // light yellow tint
+$toast-info-bg: $primary-50;       // #e6edff
+
+// ========================================
+// Stepper Design Tokens
+// ========================================
+$stepper-gap: 17px;
+$stepper-label-font: 'DM Sans', sans-serif;
+$stepper-label-size: 14px;
+$stepper-label-weight: 500;
+$stepper-label-color: $grey-300;
+$stepper-label-tracking: -0.28px;
+$stepper-track-height: 5px;
+$stepper-track-bg: $grey-50;
+$stepper-track-radius: 10px;
+$stepper-progress-bg: $primary-500;
+$stepper-transition: width 0.4s ease;
+
+// ========================================
+// Filter Chip Design Tokens
+// ========================================
+$filter-chip-bg: $white-500;
+$filter-chip-border: #dae1ed;               // light blue-grey border
+$filter-chip-border-radius: 8px;
+$filter-chip-padding: 8px 12px;
+$filter-chip-font: $select-font-family;
+$filter-chip-font-size: 14px;
+$filter-chip-font-weight: 500;
+$filter-chip-color: $grey-500;
+$filter-chip-hover-border: $grey-200;
+$filter-chip-hover-bg: $neutral-50;
+$filter-chip-remove-size: 18px;
+
+// ========================================
+// Text Input Design Tokens
+// ========================================
+$text-input-bg: $white-500;
+$text-input-border: $grey-100;             // #c3c3c3
+$text-input-border-focus: $primary-500;
+$text-input-border-error: $status-error;   // #f44336
+$text-input-placeholder-color: $grey-300;
+$text-input-text-color: $grey-800;         // #222222
+$text-input-label-color: $grey-800;
+$text-input-icon-color: $grey-300;
+$text-input-disabled-bg: $grey-100;
+$text-input-disabled-border: rgba($grey-100, 0.5);
+$text-input-disabled-text: rgba($grey-300, 0.5);
+
+// Text Input Heights
+$text-input-height-small: 36px;
+$text-input-height-medium: 40px;
+$text-input-height-large: 48px;
+
+// Text Input Typography
+$text-input-font-family: 'Urbanist', sans-serif;
+$text-input-font-size-small: 14px;
+$text-input-font-size-medium: 16px;
+$text-input-font-size-large: 18px;
+$text-input-label-font-size: 16px;
+$text-input-label-font-size-small: 14px;
+$text-input-font-weight: 600;
+$text-input-font-weight-field-large: 500;
+$text-input-font-weight-field-medium: 500;
+$text-input-font-weight-field-small: 400;
+
+// Text Input Spacing
+$text-input-padding-x: 16px;
+$text-input-padding-y: 10px;
+$text-input-gap: 8px;
+$text-input-border-radius: 10px;
+$text-input-border-width: 1px;
+$text-input-icon-size-large: 20px;
+$text-input-icon-size-medium: 20px;
+$text-input-icon-size-small: 16px;
+
+// ========================================
+// Chip Input Design Tokens
+// ========================================
+$chip-input-bg: $white-500;
+$chip-input-border: $grey-100;             // #c3c3c3
+$chip-input-border-focus: $primary-500;
+$chip-input-placeholder-color: $grey-300;
+$chip-input-text-color: $grey-800;
+$chip-input-label-color: $grey-800;
+$chip-input-disabled-bg: $grey-100;
+$chip-input-disabled-border: rgba($grey-100, 0.5);
+$chip-input-disabled-text: rgba($grey-300, 0.5);
+$chip-input-font-family: 'Urbanist', sans-serif;
+$chip-input-label-font-size: 16px;
+$chip-input-label-font-size-small: 14px;
+$chip-input-font-weight: 600;
+$chip-input-border-radius: 10px;
+$chip-input-border-width: 1px;
+
+// Chip tokens (inside chip-input)
+$chip-bg: $primary-50;
+$chip-text-color: $primary-700;
+$chip-remove-color: $grey-300;
+$chip-remove-hover-color: $grey-500;
+$chip-border-radius: 6px;
+$chip-font-family: 'DM Sans', sans-serif;
+$chip-font-size: 13px;
+
+// ========================================
+// Select Segment — Image Variant Tokens
+// ========================================
+$select-seg-img-outer-radius: 14px;
+$select-seg-img-outer-padding: 7px;
+$select-seg-img-outer-border-width: 2px;
+$select-seg-img-inner-padding: 20px 24px;
+$select-seg-img-inner-gap: 20px;
+$select-seg-img-width: 101px;
+$select-seg-img-height: 101px;
+$select-seg-img-radius: 8px;
+$select-seg-img-placeholder: #d9d9d9;       // placeholder grey
+$select-seg-img-date-size: 12px;
+$select-seg-img-date-weight: 700;
+
+// ========================================
+// Select Segment — Chips Variant Tokens
+// ========================================
+$select-seg-chip-radius: 23px;
+$select-seg-chip-padding: 6px 11px;
+$select-seg-chip-font: 'Urbanist', sans-serif;
+$select-seg-chip-font-size: 14px;
+$select-seg-chip-font-weight: 600;
+$select-seg-chip-color: $grey-500;
+$select-seg-chip-border: $grey-100;
+$select-seg-chip-bg: $white-500;
+
+// ========================================
+// Select Segment — User Variant Tokens
+// ========================================
+$select-user-avatar-size-lg: 36px;
+$select-user-avatar-size-md: 26px;
+$select-user-platform-size-lg: 18px;
+$select-user-platform-size-md: 13px;
+$select-user-inner-gap: 13px;
+
+// ========================================
+// Select Segment — Colorpicker Variant Tokens
+// ========================================
+$select-colorpicker-dot-size: 25px;
+
+// ========================================
+// Card Design Tokens (from Figma)
+// ========================================
+
+// Card — Simple variant
+$card-simple-radius: 10px;
+$card-simple-padding: 30px 25px;
+
+// Card — Titled variant
+$card-titled-radius: 12px;
+$card-titled-padding: 30px;
+$card-titled-gap: 20px;
+$card-titled-title-size: 20px;
+
+// Card — Large variant
+$card-large-radius: 24px;
+$card-large-padding: 40px;
+$card-large-gap: 31px;
+$card-large-title-size: 24px;
+
+// ========================================
+// Menu Design Tokens (from Figma)
+// ========================================
+$menu-border-radius: 10px;
+$menu-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$menu-padding-y: 8px;
+$menu-min-width: 220px;
+$menu-item-height: 36px;
+$menu-item-gap: 10px;
+$menu-item-padding: 0 12px;
+$menu-item-hover-bg: $grey-50;
+$menu-item-selected-bg: $ap-accent-50;
+$menu-font-size: 14px;
+
+// Menu — Avatar variant
+$menu-avatar-item-height: 48px;
+$menu-avatar-size: 36px;
+$menu-platform-badge-size: 18px;
+
+// Menu — Radio variant
+$menu-radio-size: 20px;
+
+// Menu — Checkbox variant
+$menu-checkbox-size: 24px;
+$menu-checkbox-radius: 8px;
+
+// ========================================
+// Avatar Social Media Design Tokens (from Figma)
+// ========================================
+
+// Avatar sizes
+$avatar-social-size-sm: 18px;
+$avatar-social-size-md: 26px;
+$avatar-social-size-lg: 36px;
+$avatar-social-size-xl: 50px;
+
+// Badge sizes (platform icon)
+$avatar-social-badge-sm: 8px;
+$avatar-social-badge-md: 13px;
+$avatar-social-badge-lg: 18px;
+$avatar-social-badge-xl: 18px;
+
+// Badge offset (overlap from bottom-right)
+$avatar-social-offset-sm: 3px;
+$avatar-social-offset-md: 6px;
+$avatar-social-offset-lg: 8px;
+$avatar-social-offset-xl: 8px;
+
+// Badge border
+$avatar-social-badge-border: 2px solid $white-500;
