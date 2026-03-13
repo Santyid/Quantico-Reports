@@ -1,0 +1,9 @@
+<div class="app-trend-indicator" [class.app-trend-indicator--positive]="isPositive" [class.app-trend-indicator--negative]="!isPositive">
+  <lucide-icon
+    [img]="isPositive ? TrendingUpIcon : TrendingDownIcon"
+    [size]="18"
+    [strokeWidth]="2.5"
+    class="app-trend-indicator__icon">
+  </lucide-icon>
+  <span class="app-trend-indicator__value">{{ displayValue }}</span>
+</div>

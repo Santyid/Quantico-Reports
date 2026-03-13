@@ -1,0 +1,36 @@
+<div class="app-sparkline" [class]="'app-sparkline--' + variant + ' app-sparkline--' + size">
+  <svg
+    [attr.viewBox]="'0 0 ' + svgWidth + ' ' + svgHeight"
+    [attr.width]="svgWidth"
+    [attr.height]="svgHeight"
+    class="app-sparkline__svg"
+    preserveAspectRatio="none">
+    <defs>
+      <!-- Primary gradient -->
+      <linearGradient id="sparkline-primary-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5495fe" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#b0ceff" stop-opacity="0.02" />
+      </linearGradient>
+      <!-- Secondary gradient -->
+      <linearGradient id="sparkline-secondary-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f486a5" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#fdedf2" stop-opacity="0.02" />
+      </linearGradient>
+    </defs>
+
+    @if (showArea && areaPath) {
+      <path
+        [attr.d]="areaPath"
+        [attr.fill]="variant === 'primary' ? 'url(#sparkline-primary-area)' : 'url(#sparkline-secondary-area)'"
+        class="app-sparkline__area" />
+    }
+
+    @if (linePath) {
+      <path
+        [attr.d]="linePath"
+        fill="none"
+        class="app-sparkline__line"
+        [attr.stroke-width]="size === 'large' ? 2 : 1.5" />
+    }
+  </svg>
+</div>

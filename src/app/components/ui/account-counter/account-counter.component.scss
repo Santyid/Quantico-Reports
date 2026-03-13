@@ -4,34 +4,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px;
-  background: $grey-50;
-  border-radius: 12px;
+  padding: $account-counter-padding;
+  background: $account-counter-bg;
+  border-radius: $account-counter-border-radius;
   box-sizing: border-box;
 
   lucide-icon {
-    color: $grey-300;
+    color: $account-counter-icon-color;
   }
 
   &__count {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: $grey-300;
+    font-family: $account-counter-font;
+    font-size: $account-counter-font-size;
+    font-weight: $account-counter-font-weight;
+    color: $account-counter-color;
   }
 
   &--large {
-    width: 80px;
-    height: 48px;
+    width: $account-counter-lg-width;
+    height: $account-counter-lg-height;
   }
 
   &--medium {
-    width: 67px;
-    height: 40px;
+    width: $account-counter-md-width;
+    height: $account-counter-md-height;
   }
 
   &--small {
-    width: 61px;
-    height: 36px;
+    width: $account-counter-sm-width;
+    height: $account-counter-sm-height;
   }
 }

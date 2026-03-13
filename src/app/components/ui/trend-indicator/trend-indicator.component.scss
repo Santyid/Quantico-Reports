@@ -1,0 +1,31 @@
+@import '../../../../styles/tokens';
+
+.app-trend-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 19px;
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &__value {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  // Positive (green)
+  &--positive {
+    color: $success-400;
+  }
+
+  // Negative (red)
+  &--negative {
+    color: $error-400;
+  }
+}

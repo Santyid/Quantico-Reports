@@ -1,5 +1,47 @@
+<!-- HEADER + SEARCH -->
+<div class="quantico-header" [class.quantico-header--scrolled]="headerScrolled">
+  <h1 class="quantico-header__title">Quantico</h1>
+
+  <div class="quantico-header__actions">
+    <div class="quantico-header__search">
+      <lucide-icon [img]="SearchIcon" [size]="18" [strokeWidth]="1.5" class="quantico-header__search-icon"></lucide-icon>
+      <input
+        type="text"
+        class="quantico-header__search-input"
+        placeholder="Buscar..."
+        [(ngModel)]="headerSearchQuery"
+        (keydown.escape)="clearHeaderSearch()">
+      @if (headerSearchQuery) {
+        <button class="quantico-header__search-clear" (click)="clearHeaderSearch()">
+          <lucide-icon [img]="XIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+      }
+    </div>
+
+    <div class="quantico-header__nav-select-wrapper">
+      <button class="quantico-header__nav-select" (click)="toggleNavDropdown()">
+        <span>{{ navSelectLabel }}</span>
+        <lucide-icon [img]="ChevronDownIcon" [size]="18" [strokeWidth]="1.5"
+          [class.quantico-header__nav-select-chevron--open]="navDropdownOpen"></lucide-icon>
+      </button>
+      @if (navDropdownOpen) {
+        <div class="quantico-header__nav-dropdown">
+          @for (section of filteredHeaderSections; track section.id) {
+            <button class="quantico-header__nav-dropdown-item" (click)="scrollToSection(section.id)">
+              {{ section.label }}
+            </button>
+          }
+          @if (filteredHeaderSections.length === 0) {
+            <span class="quantico-header__nav-dropdown-empty">Sin resultados</span>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
 <!-- Button Demo Section -->
-<section class="button-demo">
+<section class="button-demo" id="q-buttons">
   <div class="container">
     <h2>Button Components Demo</h2>
 
@@ -85,7 +127,7 @@
 </section>
 
 <!-- Select Demo Section -->
-<section class="select-demo">
+<section class="select-demo" id="q-selects">
   <div class="container">
     <h2>Select Components Demo</h2>
 
@@ -210,7 +252,7 @@
 </section>
 
 <!-- Search Input Demo Section -->
-<section class="search-demo">
+<section class="search-demo" id="q-search">
   <div class="container">
     <h2>Search Input Components Demo</h2>
 
@@ -284,7 +326,7 @@
 </section>
 
 <!-- Table Demo Section -->
-<section class="table-demo">
+<section class="table-demo" id="q-table">
   <div class="container">
     <h2>Table Component Demo</h2>
 
@@ -301,6 +343,8 @@
 </section>
 
 <!-- Usuarios Section (High Fidelity) -->
+<div id="q-usuarios">
 <app-usuarios></app-usuarios>
+</div>
 
 <app-projects></app-projects>

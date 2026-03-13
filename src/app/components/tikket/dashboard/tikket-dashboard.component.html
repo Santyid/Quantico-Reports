@@ -1,0 +1,67 @@
+<div class="tikket-dashboard">
+
+  <!-- HEADER + SEARCH -->
+  <div class="tikket-dashboard__header" [class.tikket-dashboard__header--scrolled]="headerScrolled">
+    <h1 class="tikket-dashboard__title">Tikket</h1>
+
+    <div class="tikket-dashboard__header-actions">
+      <div class="tikket-dashboard__search">
+        <lucide-icon [img]="SearchIcon" [size]="18" [strokeWidth]="1.5" class="tikket-dashboard__search-icon"></lucide-icon>
+        <input
+          type="text"
+          class="tikket-dashboard__search-input"
+          placeholder="Buscar..."
+          [(ngModel)]="searchQuery"
+          (keydown.escape)="clearSearch()">
+        @if (searchQuery) {
+          <button class="tikket-dashboard__search-clear" (click)="clearSearch()">
+            <lucide-icon [img]="XIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        }
+      </div>
+
+      <div class="tikket-dashboard__nav-select-wrapper">
+        <button class="tikket-dashboard__nav-select" (click)="toggleNavDropdown()">
+          <span>{{ navSelectLabel }}</span>
+          <lucide-icon [img]="ChevronDownIcon" [size]="18" [strokeWidth]="1.5"
+            [class.tikket-dashboard__nav-select-chevron--open]="navDropdownOpen"></lucide-icon>
+        </button>
+        @if (navDropdownOpen) {
+          <div class="tikket-dashboard__nav-dropdown">
+            @for (section of filteredSections; track section.id) {
+              <button class="tikket-dashboard__nav-dropdown-item" (click)="scrollToSection(section.id)">
+                {{ section.label }}
+              </button>
+            }
+            @if (filteredSections.length === 0) {
+              <span class="tikket-dashboard__nav-dropdown-empty">Sin resultados</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT PLACEHOLDER -->
+  <section class="tikket-dashboard__section" id="tk-overview">
+    <div class="tikket-dashboard__card">
+      <h2 class="tikket-dashboard__card-title">Overview</h2>
+      <p class="tikket-dashboard__card-desc">Bienvenido a Tikket. Este es el panel principal del entorno.</p>
+    </div>
+  </section>
+
+  <section class="tikket-dashboard__section" id="tk-tickets">
+    <div class="tikket-dashboard__card">
+      <h2 class="tikket-dashboard__card-title">Tickets</h2>
+      <p class="tikket-dashboard__card-desc">Gestiona tus tickets desde aqui.</p>
+    </div>
+  </section>
+
+  <section class="tikket-dashboard__section" id="tk-analytics">
+    <div class="tikket-dashboard__card">
+      <h2 class="tikket-dashboard__card-title">Analytics</h2>
+      <p class="tikket-dashboard__card-desc">Metricas y estadisticas de Tikket.</p>
+    </div>
+  </section>
+
+</div>

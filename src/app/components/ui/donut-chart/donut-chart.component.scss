@@ -1,0 +1,25 @@
+@import '../../../../styles/tokens';
+
+.app-donut-chart {
+  display: inline-block;
+  position: relative;
+
+  &__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // No rotation needed — arcs start at top (-90deg) in code
+  }
+
+  &__segment {
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover &__segment {
+    opacity: 0.85;
+  }
+
+  &:hover &__segment:hover {
+    opacity: 1;
+  }
+}

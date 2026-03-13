@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Hero } from '../hero/hero';
 import { Projects } from '../projects/projects';
 import { ButtonComponent } from '../ui/button/button.component';
@@ -6,12 +8,20 @@ import { SelectComponent, SelectOption } from '../ui/select/select.component';
 import { SearchInputComponent } from '../ui/search-input/search-input.component';
 import { TableComponent, TableColumn } from '../ui/table/table.component';
 import { UsuariosComponent } from '../usuarios/usuarios.component';
-import { Megaphone, Search, User, Trash2 } from 'lucide-angular';
+import { LucideAngularModule, Megaphone, Search, User, Trash2, X, ChevronDown } from 'lucide-angular';
+
+interface NavSection {
+  id: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    CommonModule,
+    FormsModule,
+    LucideAngularModule,
     Hero,
     Projects,
     ButtonComponent,
@@ -29,6 +39,52 @@ export class HomeComponent {
   readonly SearchIcon = Search;
   readonly UserIcon = User;
   readonly TrashIcon = Trash2;
+  readonly XIcon = X;
+  readonly ChevronDownIcon = ChevronDown;
+
+  // Header state
+  headerSearchQuery = '';
+  headerScrolled = false;
+  navDropdownOpen = false;
+
+  readonly headerSections: NavSection[] = [
+    { id: 'buttons', label: 'Buttons' },
+    { id: 'selects', label: 'Selects' },
+    { id: 'search', label: 'Search' },
+    { id: 'table', label: 'Table' },
+    { id: 'usuarios', label: 'Usuarios' }
+  ];
+
+  get navSelectLabel(): string {
+    return 'Secciones';
+  }
+
+  get filteredHeaderSections(): NavSection[] {
+    if (!this.headerSearchQuery) return this.headerSections;
+    const q = this.headerSearchQuery.toLowerCase();
+    return this.headerSections.filter(s => s.label.toLowerCase().includes(q));
+  }
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.headerScrolled = window.scrollY > 20;
+  }
+
+  clearHeaderSearch(): void {
+    this.headerSearchQuery = '';
+  }
+
+  toggleNavDropdown(): void {
+    this.navDropdownOpen = !this.navDropdownOpen;
+  }
+
+  scrollToSection(sectionId: string): void {
+    this.navDropdownOpen = false;
+    const el = document.getElementById('q-' + sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   // Select demo options
   readonly selectOptions: SelectOption[] = [

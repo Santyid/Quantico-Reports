@@ -40,7 +40,7 @@
     width: 100%;
     background-color: $white-500;
     border: 1px solid $grey-100;
-    border-radius: 12px;
+    border-radius: $hour-picker-dropdown-radius;
     padding: 0 $select-padding;
     font-family: 'Urbanist', sans-serif;
     font-weight: 600;
@@ -129,12 +129,12 @@
     top: calc(100% + 4px);
     left: 0;
     z-index: 100;
-    width: 267px;
-    background-color: $white-500;
-    border: 1px solid $grey-50;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    padding: 16px;
+    width: $hour-picker-dropdown-width;
+    background-color: $hour-picker-dropdown-bg;
+    border: 1px solid $hour-picker-dropdown-border;
+    border-radius: $hour-picker-dropdown-radius;
+    box-shadow: $hour-picker-dropdown-shadow;
+    padding: $hour-picker-dropdown-padding;
   }
 
   // ========================================
@@ -149,29 +149,29 @@
   }
 
   &__month-label {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: $grey-800;
+    font-family: $hour-picker-month-font;
+    font-size: $hour-picker-month-size;
+    font-weight: $hour-picker-month-weight;
+    color: $hour-picker-month-color;
   }
 
   &__nav-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: $hour-picker-nav-btn-size;
+    height: $hour-picker-nav-btn-size;
     padding: 0;
     background: none;
     border: none;
-    border-radius: 6px;
-    color: $grey-400;
+    border-radius: $hour-picker-nav-btn-radius;
+    color: $hour-picker-nav-btn-color;
     cursor: pointer;
     transition: all 0.15s ease;
 
     &:hover {
-      background-color: $primary-50;
-      color: $primary-500;
+      background-color: $hour-picker-nav-btn-hover-bg;
+      color: $hour-picker-nav-btn-hover-color;
     }
 
     &:focus-visible {
@@ -201,11 +201,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: $grey-300;
-    height: 28px;
+    font-family: $hour-picker-weekday-font;
+    font-size: $hour-picker-weekday-size;
+    font-weight: $hour-picker-weekday-weight;
+    color: $hour-picker-weekday-color;
+    height: $hour-picker-weekday-height;
     text-transform: uppercase;
   }
 
@@ -225,15 +225,15 @@
     justify-content: center;
     width: 100%;
     aspect-ratio: 1;
-    max-height: 32px;
+    max-height: $hour-picker-day-max-height;
     padding: 0;
     background: none;
     border: none;
     border-radius: 50%;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    color: $grey-800;
+    font-family: $hour-picker-day-font;
+    font-size: $hour-picker-day-size;
+    font-weight: $hour-picker-day-weight;
+    color: $hour-picker-day-color;
     cursor: pointer;
     transition: all 0.15s ease;
 
@@ -242,19 +242,19 @@
     }
 
     &:not(&--empty):hover {
-      background-color: $primary-50;
-      color: $primary-500;
+      background-color: $hour-picker-day-hover-bg;
+      color: $hour-picker-day-hover-color;
     }
 
     &--today {
-      font-weight: 700;
-      color: $primary-500;
+      font-weight: $hour-picker-day-today-weight;
+      color: $hour-picker-day-today-color;
     }
 
     &--selected {
-      background-color: $primary-500 !important;
-      color: $white-500 !important;
-      font-weight: 600;
+      background-color: $hour-picker-day-selected-bg !important;
+      color: $hour-picker-day-selected-color !important;
+      font-weight: $hour-picker-day-selected-weight;
     }
 
     &:focus-visible {
@@ -269,8 +269,8 @@
 
   &__divider {
     height: 1px;
-    background-color: $grey-50;
-    margin: 14px 0;
+    background-color: $hour-picker-divider-color;
+    margin: $hour-picker-divider-margin 0;
   }
 
   // ========================================
@@ -281,14 +281,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    gap: $hour-picker-time-gap;
   }
 
   &__spinner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: $hour-picker-spinner-gap;
   }
 
   &__spinner-btn {
@@ -299,12 +299,12 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: $grey-300;
+    color: $hour-picker-spinner-btn-color;
     transition: color 0.15s ease;
     line-height: 0;
 
     &:hover {
-      color: $grey-500;
+      color: $hour-picker-spinner-btn-hover-color;
     }
 
     &:focus-visible {
@@ -321,20 +321,20 @@
   }
 
   &__spinner-value {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: $grey-800;
+    font-family: $hour-picker-spinner-value-font;
+    font-size: $hour-picker-spinner-value-size;
+    font-weight: $hour-picker-spinner-value-weight;
+    color: $hour-picker-spinner-value-color;
     user-select: none;
     min-width: 24px;
     text-align: center;
   }
 
   &__colon {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: $grey-800;
+    font-family: $hour-picker-spinner-value-font;
+    font-size: $hour-picker-spinner-value-size;
+    font-weight: $hour-picker-spinner-value-weight;
+    color: $hour-picker-spinner-value-color;
     user-select: none;
     align-self: center;
   }

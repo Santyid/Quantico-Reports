@@ -656,6 +656,89 @@
   // ═══════════════════════════════════════
   // Design Tokens Section
   // ═══════════════════════════════════════
+  &__card-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__token-nav {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  &__token-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #c3c3c3;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3d3d3d;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $primary-500;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: $primary-500;
+      box-shadow: 0 0 0 3px rgba($primary-500, 0.15);
+    }
+
+    lucide-icon {
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__token-nav-chevron--open {
+    transform: rotate(180deg);
+  }
+
+  &__token-nav-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 30;
+    min-width: 220px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    padding: 6px;
+  }
+
+  &__token-nav-item {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3d3d3d;
+    border-radius: 8px;
+    text-align: left;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
   &__token-group {
     margin-bottom: 32px;
 
@@ -1814,4 +1897,221 @@
       }
     }
   }
+}
+
+// ═══════════════════════════════════════
+// Table Component (AdvocatesPro only)
+// ═══════════════════════════════════════
+.sg-table {
+  width: 100%;
+  background: white;
+
+  &__title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #222222;
+    margin: 0 0 24px 0;
+    line-height: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: visible;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &--header {
+      .sg-table__cell {
+        font-family: 'Urbanist', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #3d3d3d;
+        letter-spacing: -0.32px;
+      }
+    }
+
+    &--body {
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      border-bottom: 1px solid #ececec;
+      position: relative;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      .sg-table__cell {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #3d3d3d;
+        letter-spacing: -0.32px;
+      }
+    }
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    min-height: 44px;
+    line-height: 24px;
+    flex: 1 1 0;
+    overflow: hidden;
+
+    &--header {
+      min-height: 44px;
+      border-bottom: 1px solid #ececec;
+    }
+
+    &--actions {
+      flex: 0 0 100px;
+      justify-content: flex-end;
+      gap: 8px;
+      overflow: visible;
+    }
+  }
+
+  // Badge (inline, self-contained)
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 30px;
+    padding: 4px 10px;
+    background: white;
+    border: 1px solid #c3c3c3;
+    border-radius: 50px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3d3d3d;
+    white-space: nowrap;
+  }
+
+  &__badge-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__badge--success .sg-table__badge-dot {
+    background-color: #3ace76;
+  }
+
+  &__badge--error .sg-table__badge-dot {
+    background-color: #f44336;
+  }
+
+  &__badge--warning .sg-table__badge-dot {
+    background-color: #f4b137;
+  }
+
+  &__badge--neutral .sg-table__badge-dot {
+    background-color: #9e9e9e;
+  }
+
+  &__badge--info .sg-table__badge-dot {
+    background-color: $primary-500;
+  }
+
+  // Ellipsis menu
+  &__menu-wrap {
+    position: relative;
+  }
+
+  &__menu-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #222222;
+    border-radius: 8px;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-500;
+      outline-offset: 2px;
+    }
+
+    lucide-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 20;
+    margin-top: 4px;
+  }
+}
+
+// ========================================
+// Métricas section — Tabs & demos
+// ========================================
+.metricas-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid $grey-50;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__tab {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $grey-300;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: $grey-500;
+    }
+
+    &--active {
+      color: $ap-accent-500;
+      border-bottom-color: $ap-accent-500;
+    }
+  }
+}
+
+.metricas-demo {
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid $grey-50;
+  margin-bottom: 16px;
 }

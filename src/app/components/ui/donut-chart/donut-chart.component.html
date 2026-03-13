@@ -1,0 +1,30 @@
+<div
+  class="app-donut-chart"
+  [class]="'app-donut-chart--' + size"
+  [style.width.px]="containerSize"
+  [style.height.px]="containerSize">
+  <svg
+    [attr.viewBox]="'0 0 ' + viewBoxSize + ' ' + viewBoxSize"
+    class="app-donut-chart__svg">
+    <defs>
+      @for (arc of arcs; track arc.gradientId) {
+        <linearGradient
+          [attr.id]="arc.gradientId"
+          [attr.x1]="arc.midX1 + '%'"
+          [attr.y1]="arc.midY1 + '%'"
+          [attr.x2]="arc.midX2 + '%'"
+          [attr.y2]="arc.midY2 + '%'">
+          <stop offset="0%" [attr.stop-color]="arc.color" />
+          <stop offset="100%" [attr.stop-color]="arc.gradientTo" />
+        </linearGradient>
+      }
+    </defs>
+
+    @for (arc of arcs; track arc.gradientId) {
+      <path
+        class="app-donut-chart__segment"
+        [attr.d]="arc.path"
+        [attr.fill]="'url(#' + arc.gradientId + ')'" />
+    }
+  </svg>
+</div>

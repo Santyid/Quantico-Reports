@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../components/navbar/navbar.component';
+import { NavbarComponent, Platform } from '../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-quantico-layout',
@@ -8,6 +8,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
   imports: [RouterOutlet, NavbarComponent],
   template: `
     <app-navbar
+      [platforms]="platforms"
       userAvatarUrl=""
       currentLanguage="ES">
     </app-navbar>
@@ -26,4 +27,11 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
     }
   `]
 })
-export class QuanticoLayoutComponent {}
+export class QuanticoLayoutComponent {
+  readonly platforms: Platform[] = [
+    { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
+    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
+    { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' },
+    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' }
+  ];
+}
