@@ -1,0 +1,49 @@
+@import '../../../../styles/tokens';
+
+.app-sparkline {
+  display: inline-block;
+  line-height: 0;
+
+  &__svg {
+    display: block;
+  }
+
+  &__area {
+    opacity: 1;
+  }
+
+  &__line {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  // ========================================
+  // Variant: Primary (blue)
+  // ========================================
+  &--primary &__line {
+    stroke: $primary-300;
+  }
+
+  // ========================================
+  // Variant: Secondary (pink)
+  // ========================================
+  &--secondary &__line {
+    stroke: $ap-accent-500;
+  }
+
+  // ========================================
+  // Size: Large
+  // ========================================
+  &--large {
+    width: 559px;
+    height: 188px;
+  }
+
+  // ========================================
+  // Size: Small
+  // ========================================
+  &--small {
+    width: 138px;
+    height: 46px;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="app-bar-horizontal" [class]="'app-bar-horizontal--' + size + ' app-bar-horizontal--' + variant">
+  <div class="app-bar-horizontal__bars" [style.gap.px]="gap">
+    @for (item of items; track $index) {
+      <div class="app-bar-horizontal__row">
+        @if (showLabels && labels[$index]) {
+          <span class="app-bar-horizontal__label">{{ labels[$index] }}</span>
+        }
+        <div
+          class="app-bar-horizontal__track"
+          [style.width.px]="width">
+          <div
+            class="app-bar-horizontal__fill"
+            [style.width.%]="getFillPercent(item)">
+            @if (showValue && getFillPercent(item) > 0) {
+              <span class="app-bar-horizontal__value">{{ getDisplayValue(item) }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

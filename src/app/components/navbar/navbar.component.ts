@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { LucideAngularModule, ChevronDown, User } from 'lucide-angular';
@@ -13,7 +13,7 @@ export interface Platform {
   id: string;
   name: string;
   route: string;
-  icon: 'socialgest' | 'quantico' | 'advocatespro';
+  icon: 'socialgest' | 'quantico' | 'advocatespro' | 'tikket';
 }
 
 @Component({
@@ -23,7 +23,7 @@ export interface Platform {
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   private readonly router = inject(Router);
 
   readonly ChevronDownIcon = ChevronDown;
@@ -31,8 +31,9 @@ export class NavbarComponent {
 
   @Input() platforms: Platform[] = [
     { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
-    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' },
-    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' }
+    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
+    { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' },
+    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' }
   ];
 
   @Input() navItems: NavItem[] = [
@@ -54,9 +55,17 @@ export class NavbarComponent {
   @Input() userAvatarUrl: string = '';
   @Input() currentLanguage: string = 'ES';
 
-  selectedPlatform: Platform = this.platforms[0];
+  selectedPlatform!: Platform;
   platformDropdownOpen = false;
   openDropdown: string | null = null;
+
+  ngOnInit(): void {
+    const currentUrl = this.router.url;
+    const matched = this.platforms.find(p =>
+      p.route !== '/' && currentUrl.startsWith(p.route)
+    );
+    this.selectedPlatform = matched || this.platforms[0];
+  }
 
   @Output() languageClick = new EventEmitter<void>();
   @Output() profileClick = new EventEmitter<void>();
@@ -65,10 +74,11 @@ export class NavbarComponent {
     this.platformDropdownOpen = !this.platformDropdownOpen;
   }
 
-  selectPlatform(platform: Platform): void {
+  selectPlatform(platform: Platform, event: MouseEvent): void {
+    event.stopPropagation();
     this.selectedPlatform = platform;
     this.platformDropdownOpen = false;
-    this.router.navigate([platform.route]);
+    this.router.navigateByUrl(platform.route);
   }
 
   @HostListener('document:click', ['$event'])

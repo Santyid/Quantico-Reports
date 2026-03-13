@@ -1,22 +1,29 @@
-@import '../../../styles/tokens';
+@import '../../../../styles/tokens';
 
-// Quantico Header
-.quantico-header {
-  position: sticky;
-  top: 80px;
-  z-index: 100;
-  background: transparent;
-  padding: 14px 32px;
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+.tikket-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px;
 
-  &--scrolled {
-    background: white;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  // Header + Search
+  &__header {
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    background: transparent;
+    margin: 0 -32px;
+    padding: 14px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+
+    &--scrolled {
+      background: white;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
   }
 
   &__title {
@@ -29,7 +36,7 @@
     flex-shrink: 0;
   }
 
-  &__actions {
+  &__header-actions {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -97,6 +104,7 @@
     }
   }
 
+  // Nav Select Dropdown
   &__nav-select-wrapper {
     position: relative;
   }
@@ -168,80 +176,31 @@
     font-size: 14px;
     color: $grey-300;
   }
-}
 
-// Shared demo styles
-.button-demo,
-.select-demo,
-.search-demo,
-.table-demo {
-  padding: 60px 20px;
-  background-color: #f5f5f5;
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  // Sections
+  &__section {
+    margin-bottom: 32px;
   }
 
-  h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #333;
+  &__card {
+    background: white;
+    border: 1px solid $kpi-card-border;
+    border-radius: 16px;
+    padding: 32px;
   }
 
-  .demo-section {
-    margin-bottom: 40px;
-    padding: 30px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-    h3 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #555;
-    }
+  &__card-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0 0 24px 0;
   }
 
-  .button-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: center;
-  }
-}
-
-// Select demo specific styles
-.select-demo {
-  background-color: #e8e8e8;
-
-  .select-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    align-items: flex-start;
-  }
-}
-
-// Search demo specific styles
-.search-demo {
-  background-color: #d8d8d8;
-
-  .search-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    align-items: flex-start;
-  }
-}
-
-// Table demo specific styles
-.table-demo {
-  background-color: #c8c8c8;
-
-  .demo-section {
-    padding: 0;
-    overflow: hidden;
+  &__card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    color: $grey-500;
+    margin: 0;
   }
 }

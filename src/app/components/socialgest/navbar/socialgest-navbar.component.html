@@ -15,8 +15,12 @@
               </svg>
             </div>
             <span class="sg-navbar__logo-text">SocialGest</span>
-          } @else {
+          } @else if (selectedPlatform.icon === 'quantico') {
             <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="sg-navbar__platform-img" />
+          } @else if (selectedPlatform.icon === 'advocatespro') {
+            <img src="images/AdvocatesPro-Imagotipo-Blue.svg" alt="AdvocatesPro" class="sg-navbar__platform-img" />
+          } @else if (selectedPlatform.icon === 'tikket') {
+            <img src="images/Tikket-Imagotipo-Blue.svg" alt="Tikket" class="sg-navbar__platform-img" />
           }
         </div>
         <lucide-icon
@@ -42,8 +46,12 @@
                     <path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-              } @else {
+              } @else if (platform.icon === 'quantico') {
                 <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="sg-navbar__platform-option-img" />
+              } @else if (platform.icon === 'advocatespro') {
+                <img src="images/AdvocatesPro-Imagotipo-Blue.svg" alt="AdvocatesPro" class="sg-navbar__platform-option-img" />
+              } @else if (platform.icon === 'tikket') {
+                <img src="images/Tikket-Imagotipo-Blue.svg" alt="Tikket" class="sg-navbar__platform-option-img" />
               }
               <span class="sg-navbar__platform-option-text">{{ platform.name }}</span>
             </button>

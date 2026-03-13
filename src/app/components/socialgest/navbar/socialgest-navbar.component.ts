@@ -14,7 +14,7 @@ interface Platform {
   id: string;
   name: string;
   route: string;
-  icon: 'socialgest' | 'quantico';
+  icon: 'socialgest' | 'quantico' | 'advocatespro' | 'tikket';
 }
 
 @Component({
@@ -35,7 +35,9 @@ export class SocialgestNavbarComponent {
 
   readonly platforms: Platform[] = [
     { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' },
-    { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' }
+    { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
+    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
+    { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' }
   ];
 
   selectedPlatform: Platform = this.platforms[0];

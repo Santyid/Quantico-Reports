@@ -1703,16 +1703,364 @@
   }
 
   <!-- ═══════════════════════════════════════ -->
+  <!-- METRICAS                                 -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('metricas')) {
+  <section class="style-guide__section" id="sg-metricas">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Métricas</h2>
+      <p class="style-guide__card-desc">Componentes de visualización de datos y métricas para dashboards. Barras con degradado en 4 tamaños, 2 variantes de color y orientación vertical/horizontal.</p>
+
+      <!-- Tabs -->
+      <div class="metricas-tabs">
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'vert-primary'"
+          (click)="metricasActiveTab = 'vert-primary'">
+          Verticales Primary
+        </button>
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'vert-secondary'"
+          (click)="metricasActiveTab = 'vert-secondary'">
+          Verticales Secondary
+        </button>
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'horiz-primary'"
+          (click)="metricasActiveTab = 'horiz-primary'">
+          Horizontales Primary
+        </button>
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'horiz-secondary'"
+          (click)="metricasActiveTab = 'horiz-secondary'">
+          Horizontales Secondary
+        </button>
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'lineales'"
+          (click)="metricasActiveTab = 'lineales'">
+          Gráficas Lineales
+        </button>
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'circulares'"
+          (click)="metricasActiveTab = 'circulares'">
+          Gráficas Circulares
+        </button>
+        <button
+          class="metricas-tabs__tab"
+          [class.metricas-tabs__tab--active]="metricasActiveTab === 'indicadores'"
+          (click)="metricasActiveTab = 'indicadores'">
+          Indicadores
+        </button>
+      </div>
+
+      <!-- ═══ TAB: Verticales Primary ═══ -->
+      @if (metricasActiveTab === 'vert-primary') {
+        <h3 class="style-guide__subtitle">Large (78px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="large" variant="primary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="12"></app-bar-vertical>
+        </div>
+
+        <h3 class="style-guide__subtitle">Medium (35px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="medium" variant="primary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="8"></app-bar-vertical>
+        </div>
+
+        <h3 class="style-guide__subtitle">Small (17px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="small" variant="primary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="6"></app-bar-vertical>
+        </div>
+
+        <h3 class="style-guide__subtitle">X-Small (8px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="x-small" variant="primary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="4"></app-bar-vertical>
+        </div>
+      }
+
+      <!-- ═══ TAB: Verticales Secondary ═══ -->
+      @if (metricasActiveTab === 'vert-secondary') {
+        <h3 class="style-guide__subtitle">Large (78px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="large" variant="secondary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="12"></app-bar-vertical>
+        </div>
+
+        <h3 class="style-guide__subtitle">Medium (35px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="medium" variant="secondary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="8"></app-bar-vertical>
+        </div>
+
+        <h3 class="style-guide__subtitle">Small (17px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="small" variant="secondary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="6"></app-bar-vertical>
+        </div>
+
+        <h3 class="style-guide__subtitle">X-Small (8px)</h3>
+        <div class="metricas-demo">
+          <app-bar-vertical size="x-small" variant="secondary" [items]="barVerticalItems" [labels]="barVerticalLabels" [gap]="4"></app-bar-vertical>
+        </div>
+      }
+
+      <!-- ═══ TAB: Horizontales Primary ═══ -->
+      @if (metricasActiveTab === 'horiz-primary') {
+        <h3 class="style-guide__subtitle">Large (78px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="large" variant="primary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="8"></app-bar-horizontal>
+        </div>
+
+        <h3 class="style-guide__subtitle">Medium (35px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="medium" variant="primary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="6"></app-bar-horizontal>
+        </div>
+
+        <h3 class="style-guide__subtitle">Small (17px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="small" variant="primary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="4"></app-bar-horizontal>
+        </div>
+
+        <h3 class="style-guide__subtitle">X-Small (8px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="x-small" variant="primary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="3"></app-bar-horizontal>
+        </div>
+      }
+
+      <!-- ═══ TAB: Horizontales Secondary ═══ -->
+      @if (metricasActiveTab === 'horiz-secondary') {
+        <h3 class="style-guide__subtitle">Large (78px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="large" variant="secondary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="8"></app-bar-horizontal>
+        </div>
+
+        <h3 class="style-guide__subtitle">Medium (35px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="medium" variant="secondary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="6"></app-bar-horizontal>
+        </div>
+
+        <h3 class="style-guide__subtitle">Small (17px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="small" variant="secondary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="4"></app-bar-horizontal>
+        </div>
+
+        <h3 class="style-guide__subtitle">X-Small (8px)</h3>
+        <div class="metricas-demo">
+          <app-bar-horizontal size="x-small" variant="secondary" [items]="barHorizontalItems" [labels]="barVerticalLabels" [gap]="3"></app-bar-horizontal>
+        </div>
+      }
+
+      <!-- ═══ TAB: Gráficas Lineales ═══ -->
+      @if (metricasActiveTab === 'lineales') {
+        <p class="style-guide__card-desc" style="margin-bottom: 16px;">Gráficas de línea con área degradada. Soporta variantes primary (azul) y secondary (rosa) en 2 tamaños.</p>
+
+        <h3 class="style-guide__subtitle">Primary — Large (559×188)</h3>
+        <div class="metricas-demo">
+          <app-sparkline variant="primary" size="large" [data]="sparklineData1" [showArea]="true"></app-sparkline>
+        </div>
+
+        <h3 class="style-guide__subtitle">Secondary — Large (559×188)</h3>
+        <div class="metricas-demo">
+          <app-sparkline variant="secondary" size="large" [data]="sparklineData2" [showArea]="true"></app-sparkline>
+        </div>
+
+        <h3 class="style-guide__subtitle">Primary — Small (138×46)</h3>
+        <div class="metricas-demo" style="display: flex; gap: 24px; align-items: center;">
+          <app-sparkline variant="primary" size="small" [data]="sparklineData1" [showArea]="true"></app-sparkline>
+          <app-sparkline variant="primary" size="small" [data]="sparklineData2" [showArea]="false"></app-sparkline>
+        </div>
+
+        <h3 class="style-guide__subtitle">Secondary — Small (138×46)</h3>
+        <div class="metricas-demo" style="display: flex; gap: 24px; align-items: center;">
+          <app-sparkline variant="secondary" size="small" [data]="sparklineData1" [showArea]="true"></app-sparkline>
+          <app-sparkline variant="secondary" size="small" [data]="sparklineData2" [showArea]="false"></app-sparkline>
+        </div>
+      }
+
+      <!-- ═══ TAB: Gráficas Circulares ═══ -->
+      @if (metricasActiveTab === 'circulares') {
+        <p class="style-guide__card-desc" style="margin-bottom: 16px;">Gráficas de dona con segmentos degradados. 3 tamaños disponibles (large: 276px, medium: 213px, small: 142px).</p>
+
+        <h3 class="style-guide__subtitle">Large (276px)</h3>
+        <div class="metricas-demo" style="display: flex; justify-content: center;">
+          <app-donut-chart size="large" [segments]="donutSegments"></app-donut-chart>
+        </div>
+
+        <h3 class="style-guide__subtitle">Medium (213px)</h3>
+        <div class="metricas-demo" style="display: flex; justify-content: center;">
+          <app-donut-chart size="medium" [segments]="donutSegments"></app-donut-chart>
+        </div>
+
+        <h3 class="style-guide__subtitle">Small (142px)</h3>
+        <div class="metricas-demo" style="display: flex; justify-content: center;">
+          <app-donut-chart size="small" [segments]="donutSegments"></app-donut-chart>
+        </div>
+
+        <h3 class="style-guide__subtitle">Todos los tamaños</h3>
+        <div class="metricas-demo" style="display: flex; gap: 32px; align-items: center; justify-content: center; flex-wrap: wrap;">
+          <app-donut-chart size="large" [segments]="donutSegments"></app-donut-chart>
+          <app-donut-chart size="medium" [segments]="donutSegments"></app-donut-chart>
+          <app-donut-chart size="small" [segments]="donutSegments"></app-donut-chart>
+        </div>
+      }
+
+      <!-- ═══ TAB: Indicadores ═══ -->
+      @if (metricasActiveTab === 'indicadores') {
+        <p class="style-guide__card-desc" style="margin-bottom: 16px;">Indicadores de tendencia con flecha direccional y porcentaje. Verde para tendencia positiva, rojo para negativa.</p>
+
+        <h3 class="style-guide__subtitle">Positivo</h3>
+        <div class="metricas-demo" style="display: flex; gap: 24px; align-items: center;">
+          <app-trend-indicator direction="up" [value]="50"></app-trend-indicator>
+          <app-trend-indicator direction="up" [value]="25"></app-trend-indicator>
+          <app-trend-indicator direction="up" [value]="12"></app-trend-indicator>
+          <app-trend-indicator direction="up" [value]="5"></app-trend-indicator>
+        </div>
+
+        <h3 class="style-guide__subtitle">Negativo</h3>
+        <div class="metricas-demo" style="display: flex; gap: 24px; align-items: center;">
+          <app-trend-indicator direction="down" [value]="10"></app-trend-indicator>
+          <app-trend-indicator direction="down" [value]="30"></app-trend-indicator>
+          <app-trend-indicator direction="down" [value]="45"></app-trend-indicator>
+          <app-trend-indicator direction="down" [value]="8"></app-trend-indicator>
+        </div>
+
+        <h3 class="style-guide__subtitle">Combinados</h3>
+        <div class="metricas-demo" style="display: flex; gap: 32px; align-items: center;">
+          <app-trend-indicator direction="up" [value]="50"></app-trend-indicator>
+          <app-trend-indicator direction="down" [value]="10"></app-trend-indicator>
+        </div>
+      }
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TABLES                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('tables')) {
+  <section class="style-guide__section" id="sg-tables">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Table</h2>
+      <p class="style-guide__card-desc">Tabla de datos con columnas configurables. Soporta celdas de texto, badges de estado e iconos de accion. Filas con hover y click events.</p>
+
+      <!-- Default Table -->
+      <h3 class="style-guide__subtitle">Default (con badges y acciones)</h3>
+      <div class="style-guide__demo-fullwidth">
+        <div class="sg-table">
+          <h3 class="sg-table__title">Mis ordenes</h3>
+          <div class="sg-table__wrapper">
+            <!-- Header -->
+            <div class="sg-table__row sg-table__row--header">
+              @for (col of tableColumns; track col.key) {
+                <div class="sg-table__cell sg-table__cell--header">{{ col.header }}</div>
+              }
+              <div class="sg-table__cell sg-table__cell--header sg-table__cell--actions"></div>
+            </div>
+            <!-- Body -->
+            @for (row of tableData; track row.orden) {
+              <div class="sg-table__row sg-table__row--body" (click)="onTableRowClick($any(row), $index)">
+                <div class="sg-table__cell">{{ row.orden }}</div>
+                <div class="sg-table__cell">
+                  <span class="sg-table__badge sg-table__badge--{{ row.estatus.variant }}">
+                    <span class="sg-table__badge-dot"></span>
+                    {{ row.estatus.label }}
+                  </span>
+                </div>
+                <div class="sg-table__cell">{{ row.plan }}</div>
+                <div class="sg-table__cell">{{ row.monto }}</div>
+                <div class="sg-table__cell">{{ row.tipo }}</div>
+                <div class="sg-table__cell">{{ row.codigo }}</div>
+                <div class="sg-table__cell sg-table__cell--actions" (click)="$event.stopPropagation()">
+                  <div class="sg-table__menu-wrap">
+                    <button class="sg-table__menu-trigger" aria-label="Opciones" (click)="toggleTableMenu(row.orden, $event)">
+                      <lucide-icon [img]="EllipsisIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                    </button>
+                    @if (openTableMenuId === row.orden) {
+                      <div class="sg-table__menu-dropdown">
+                        <app-menu
+                          type="icon"
+                          [items]="tableMenuItems"
+                          (itemClick)="onTableMenuAction($event)">
+                        </app-menu>
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacer between tables -->
+      <div style="margin-top: 48px;"></div>
+
+      <!-- Minimal Table (sin titulo, sin acciones) -->
+      <h3 class="style-guide__subtitle">Minimal (solo texto)</h3>
+      <div class="style-guide__demo-fullwidth">
+        <div class="sg-table">
+          <div class="sg-table__wrapper">
+            <div class="sg-table__row sg-table__row--header">
+              <div class="sg-table__cell sg-table__cell--header">Nombre</div>
+              <div class="sg-table__cell sg-table__cell--header">Email</div>
+              <div class="sg-table__cell sg-table__cell--header">Rol</div>
+              <div class="sg-table__cell sg-table__cell--header">Ultimo acceso</div>
+            </div>
+            <div class="sg-table__row sg-table__row--body">
+              <div class="sg-table__cell">Maria Garcia</div>
+              <div class="sg-table__cell">maria&#64;empresa.com</div>
+              <div class="sg-table__cell">Administrador</div>
+              <div class="sg-table__cell">Hace 2 horas</div>
+            </div>
+            <div class="sg-table__row sg-table__row--body">
+              <div class="sg-table__cell">Carlos Lopez</div>
+              <div class="sg-table__cell">carlos&#64;empresa.com</div>
+              <div class="sg-table__cell">Editor</div>
+              <div class="sg-table__cell">Hace 1 dia</div>
+            </div>
+            <div class="sg-table__row sg-table__row--body">
+              <div class="sg-table__cell">Ana Martinez</div>
+              <div class="sg-table__cell">ana&#64;empresa.com</div>
+              <div class="sg-table__cell">Viewer</div>
+              <div class="sg-table__cell">Hace 5 dias</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
   <!-- 11. DESIGN TOKENS REFERENCE            -->
   <!-- ═══════════════════════════════════════ -->
   @if (isSectionVisible('tokens')) {
   <section class="style-guide__section" id="sg-tokens">
     <div class="style-guide__card">
-      <h2 class="style-guide__card-title">Design Tokens (SCSS)</h2>
-      <p class="style-guide__card-desc">Variables SCSS disponibles en <code>src/styles/_tokens.scss</code>. Importar con <code>&#64;import 'styles/tokens';</code></p>
+      <div class="style-guide__card-header-row">
+        <div>
+          <h2 class="style-guide__card-title" style="margin-bottom: 8px;">Design Tokens (SCSS)</h2>
+          <p class="style-guide__card-desc" style="margin-bottom: 0;">Variables SCSS disponibles en <code>src/styles/_tokens.scss</code>. Importar con <code>&#64;import 'styles/tokens';</code></p>
+        </div>
+        <div class="style-guide__token-nav" (click)="$event.stopPropagation()">
+          <button class="style-guide__token-nav-btn" (click)="toggleTokenDropdown()">
+            <span>Ir a seccion</span>
+            <lucide-icon [img]="ChevronDownIcon" [size]="16" [strokeWidth]="1.5"
+              [class.style-guide__token-nav-chevron--open]="tokenDropdownOpen"></lucide-icon>
+          </button>
+          @if (tokenDropdownOpen) {
+            <div class="style-guide__token-nav-dropdown">
+              @for (group of tokenGroups; track group.title) {
+                <button class="style-guide__token-nav-item" (click)="scrollToTokenGroup(group.title)">
+                  {{ group.title }}
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
 
       @for (group of tokenGroups; track group.title) {
-        <div class="style-guide__token-group">
+        <div class="style-guide__token-group" [attr.id]="'sg-token-' + group.title.toLowerCase().split(' ').join('-')">
           <h3 class="style-guide__token-group-title">{{ group.title }}</h3>
           <table class="style-guide__table">
             <thead>

@@ -114,6 +114,22 @@ export const routes: Routes = [
       }
     ]
   },
+  // Tikket routes
+  {
+    path: 'tikket',
+    loadComponent: () =>
+      import('./layouts/tikket-layout.component')
+        .then(m => m.TikketLayoutComponent),
+    canActivate: [generalAuthGuard],
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./components/tikket/dashboard/tikket-dashboard.component')
+            .then(m => m.TikketDashboardComponent)
+      }
+    ]
+  },
   // SocialGest routes (new product)
   {
     path: 'socialgest',

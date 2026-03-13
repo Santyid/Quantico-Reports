@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, PlusCircle, Copy, Check, Search, X, Sparkles, CircleCheck, CircleX, CircleCheckBig, TriangleAlert, Info, ChevronDown, User, Globe, Mail, MapPin, Bell, Settings, Home, FileText, BarChart3, Layers, Zap } from 'lucide-angular';
+import { LucideAngularModule, PlusCircle, Copy, Check, Search, X, Sparkles, CircleCheck, CircleX, CircleCheckBig, TriangleAlert, Info, ChevronDown, User, Globe, Mail, MapPin, Bell, Settings, Home, FileText, BarChart3, Layers, Zap, Trash2, Pencil, EllipsisVertical } from 'lucide-angular';
 import { RadioButton } from 'primeng/radiobutton';
 import { SelectUserComponent, SelectUserOption } from '../../ui/select-user/select-user.component';
 import { SelectSegmentComponent, SelectSegmentOption } from '../../ui/select-segment/select-segment.component';
@@ -22,6 +22,11 @@ import { TextInputComponent } from '../../ui/text-input/text-input.component';
 import { CardComponent } from '../../ui/card/card.component';
 import { MenuComponent, MenuItem } from '../../ui/menu/menu.component';
 import { AvatarSocialComponent } from '../../ui/avatar-social/avatar-social.component';
+import { BarVerticalComponent, BarVerticalItem } from '../../ui/bar-vertical/bar-vertical.component';
+import { BarHorizontalComponent, BarHorizontalItem } from '../../ui/bar-horizontal/bar-horizontal.component';
+import { TrendIndicatorComponent } from '../../ui/trend-indicator/trend-indicator.component';
+import { SparklineComponent } from '../../ui/sparkline/sparkline.component';
+import { DonutChartComponent, DonutSegment } from '../../ui/donut-chart/donut-chart.component';
 
 interface ColorSwatch {
   name: string;
@@ -90,7 +95,12 @@ interface ComponentDoc {
     TextInputComponent,
     CardComponent,
     MenuComponent,
-    AvatarSocialComponent
+    AvatarSocialComponent,
+    BarVerticalComponent,
+    BarHorizontalComponent,
+    TrendIndicatorComponent,
+    SparklineComponent,
+    DonutChartComponent
   ],
   templateUrl: './advocatespro-dashboard.component.html',
   styleUrl: './advocatespro-dashboard.component.scss'
@@ -119,6 +129,23 @@ export class AdvocatesproDashboardComponent {
   readonly BarChart3Icon = BarChart3;
   readonly LayersIcon = Layers;
   readonly ZapIcon = Zap;
+  readonly TrashIcon = Trash2;
+  readonly PencilIcon = Pencil;
+  readonly EllipsisIcon = EllipsisVertical;
+
+  // ─── Table menu state ───
+  openTableMenuId: string | null = null;
+
+  toggleTableMenu(rowId: string, event: MouseEvent): void {
+    event.stopPropagation();
+    this.openTableMenuId = this.openTableMenuId === rowId ? null : rowId;
+  }
+
+  @HostListener('document:click')
+  onDocumentClickGlobal(): void {
+    this.openTableMenuId = null;
+    this.tokenDropdownOpen = false;
+  }
 
   copiedToken: string | null = null;
   expandedCode: Record<string, boolean> = {};
@@ -173,11 +200,43 @@ export class AdvocatesproDashboardComponent {
     { id: 'cards', label: 'Cards', keywords: ['card', 'tarjeta', 'container', 'simple', 'titled', 'large'] },
     { id: 'menus', label: 'Menus', keywords: ['menu', 'dropdown', 'icon', 'avatar', 'radio', 'checkbox', 'item', 'list'] },
     { id: 'avatars', label: 'Avatares', keywords: ['avatar', 'social', 'media', 'instagram', 'facebook', 'badge', 'platform', 'foto', 'perfil', 'imagen'] },
+    { id: 'metricas', label: 'Métricas', keywords: ['metrica', 'bar', 'barra', 'vertical', 'horizontal', 'chart', 'grafico', 'gradient', 'blue', 'pink', 'lineal', 'sparkline', 'circular', 'donut', 'indicador', 'trend', 'dato', 'dashboard'] },
+    { id: 'tables', label: 'Tables', keywords: ['tabla', 'table', 'columna', 'fila', 'row', 'column', 'badge', 'action', 'icon', 'data', 'orden'] },
     // ─── Documentacion al final ───
     { id: 'tokens', label: 'Design Tokens', keywords: ['token', 'variable', 'scss', '$', 'status', 'success', 'warning', 'error'] },
     { id: 'icons', label: 'Icons', keywords: ['icono', 'lucide', 'icon', 'svg', 'plus', 'bell', 'search'] },
     { id: 'components', label: 'Component API', keywords: ['componente', 'api', 'input', 'output', 'select', 'table', 'badge', 'search'] },
     { id: 'rules', label: 'Reglas', keywords: ['regla', 'convencion', 'bem', 'archivo', 'estructura', 'chart', 'accesibilidad'] },
+  ];
+
+  // ─── Métricas tab & demo data ───
+  metricasActiveTab: string = 'vert-primary';
+
+  readonly barVerticalItems: BarVerticalItem[] = [
+    { value: 416 }, { value: 380 }, { value: 350 },
+    { value: 310 }, { value: 280 }, { value: 240 },
+    { value: 200 }, { value: 150 }, { value: 100 }, { value: 60 }
+  ];
+  readonly barVerticalLabels = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct'];
+
+  readonly barHorizontalItems: BarHorizontalItem[] = [
+    { value: 416 }, { value: 380 }, { value: 350 },
+    { value: 310 }, { value: 280 }, { value: 240 },
+    { value: 200 }, { value: 150 }, { value: 100 }, { value: 60 }
+  ];
+
+  // Sparkline demo data
+  readonly sparklineData1 = [30, 45, 28, 50, 42, 60, 55, 70, 65, 85];
+  readonly sparklineData2 = [20, 25, 35, 30, 45, 40, 55, 50, 65, 80];
+
+  // Donut chart demo segments
+  readonly donutSegments: DonutSegment[] = [
+    { value: 35, color: '#5cd680', gradientTo: '#8aeab0', label: 'Orgánico' },
+    { value: 12, color: '#f5c842', gradientTo: '#f5d97a', label: 'Referral' },
+    { value: 10, color: '#f47a37', gradientTo: '#f9b48e', label: 'Social' },
+    { value: 15, color: '#ee6fa0', gradientTo: '#f2a5c8', label: 'Email' },
+    { value: 13, color: '#9e7be8', gradientTo: '#c4aff2', label: 'Directo' },
+    { value: 15, color: '#5495fe', gradientTo: '#8ab6ff', label: 'Paid' }
   ];
 
   // ─── Interactive states for new components ───
@@ -223,6 +282,54 @@ export class AdvocatesproDashboardComponent {
     const label = labels[Math.floor(Math.random() * labels.length)];
     const variant = variants[Math.floor(Math.random() * variants.length)];
     this.chips.push({ label, variant });
+  }
+
+  // ─── Table demo data ───
+  readonly tableColumns = [
+    { key: 'orden', header: 'Orden' },
+    { key: 'estatus', header: 'Estatus', type: 'badge' as const },
+    { key: 'plan', header: 'Plan' },
+    { key: 'monto', header: 'Monto' },
+    { key: 'tipo', header: 'Tipo' },
+    { key: 'codigo', header: 'Codigo' },
+  ];
+
+  readonly tableData = [
+    { orden: '121894', estatus: { label: 'Positiva', variant: 'success' }, plan: 'Professional 3.0', monto: '€396,60', tipo: 'Renovacion mensual', codigo: '714' },
+    { orden: '121893', estatus: { label: 'Negativa', variant: 'error' }, plan: 'Enterprise 2.0', monto: '€1.250,00', tipo: 'Nuevo contrato', codigo: '512' },
+    { orden: '121892', estatus: { label: 'Neutra', variant: 'warning' }, plan: 'Starter 1.0', monto: '€99,00', tipo: 'Renovacion anual', codigo: '389' },
+    { orden: '121891', estatus: { label: 'Positiva', variant: 'success' }, plan: 'Professional 3.0', monto: '€396,60', tipo: 'Upgrade', codigo: '271' },
+    { orden: '121890', estatus: { label: 'Desactivado', variant: 'neutral' }, plan: 'Basic 1.0', monto: '€49,00', tipo: 'Cancelacion', codigo: '158' },
+  ];
+
+  readonly tableMenuItems: MenuItem[] = [
+    { id: 'edit', label: 'Editar', icon: Pencil },
+    { id: 'delete', label: 'Eliminar', icon: Trash2 },
+  ];
+
+  onTableRowClick(row: Record<string, unknown>, index: number): void {
+    console.log('Row clicked:', row, 'Index:', index);
+  }
+
+  onTableMenuAction(item: MenuItem): void {
+    console.log('Table action:', item.id, 'Row:', this.openTableMenuId);
+    this.openTableMenuId = null;
+  }
+
+  // ─── Token group selector ───
+  tokenDropdownOpen = false;
+
+  toggleTokenDropdown(): void {
+    this.tokenDropdownOpen = !this.tokenDropdownOpen;
+  }
+
+  scrollToTokenGroup(groupTitle: string): void {
+    this.tokenDropdownOpen = false;
+    const id = 'sg-token-' + groupTitle.toLowerCase().replace(/\s+/g, '-');
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   isSectionVisible(sectionId: string): boolean {
@@ -783,26 +890,33 @@ export class AdvocatesproDashboardComponent {
     },
     {
       name: 'Table',
-      selector: '<app-table>',
-      description: 'Tabla con columnas configurables, soporte para badges e iconos de accion.',
+      selector: '<div class="sg-table">',
+      description: 'Tabla independiente de AdvocatesPro con columnas, badges de estado e iconos de accion. CSS-only, sin dependencias externas.',
       inputs: [
-        { name: 'title', type: 'string', default: '-', description: 'Titulo superior de la tabla' },
-        { name: '[columns]', type: 'TableColumn[]', default: '[]', description: 'Definicion de columnas { key, header, type }' },
-        { name: '[data]', type: 'any[]', default: '[]', description: 'Array de filas de datos' },
-        { name: '(rowClick)', type: 'EventEmitter<any>', default: '-', description: 'Evento al hacer click en fila' },
-        { name: '(actionClick)', type: 'EventEmitter<{row, action}>', default: '-', description: 'Evento al hacer click en accion' },
+        { name: '.sg-table__title', type: 'HTML element', default: '-', description: 'Titulo superior de la tabla' },
+        { name: '.sg-table__row--header', type: 'CSS class', default: '-', description: 'Fila de encabezado con columnas' },
+        { name: '.sg-table__row--body', type: 'CSS class', default: '-', description: 'Fila de datos con hover y click' },
+        { name: '.sg-table__badge--{variant}', type: 'CSS class', default: '-', description: 'Badge inline: success, error, warning, neutral, info' },
+        { name: '.sg-table__action-btn', type: 'CSS class', default: '-', description: 'Boton de accion con icono Lucide' },
       ],
-      codeExample: `<app-table
-  title="Mis ordenes"
-  [columns]="[
-    { key: 'orden', header: 'Orden' },
-    { key: 'estatus', header: 'Estatus', type: 'badge' },
-    { key: 'plan', header: 'Plan' },
-    { key: 'actions', header: '', type: 'icon' }
-  ]"
-  [data]="tableData"
-  (actionClick)="onAction($event)">
-</app-table>`
+      codeExample: `<div class="sg-table">
+  <h3 class="sg-table__title">Mis ordenes</h3>
+  <div class="sg-table__wrapper">
+    <div class="sg-table__row sg-table__row--header">
+      <div class="sg-table__cell sg-table__cell--header">Orden</div>
+      <div class="sg-table__cell sg-table__cell--header">Estatus</div>
+    </div>
+    <div class="sg-table__row sg-table__row--body">
+      <div class="sg-table__cell">121894</div>
+      <div class="sg-table__cell">
+        <span class="sg-table__badge sg-table__badge--success">
+          <span class="sg-table__badge-dot"></span>
+          Positiva
+        </span>
+      </div>
+    </div>
+  </div>
+</div>`
     },
     {
       name: 'AI Button',

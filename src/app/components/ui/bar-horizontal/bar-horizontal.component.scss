@@ -1,0 +1,131 @@
+@import '../../../../styles/tokens';
+
+.app-bar-horizontal {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__bars {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: $grey-300;
+    white-space: nowrap;
+    min-width: 32px;
+    text-align: right;
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: $bar-chart-bg;
+    border-radius: $bar-chart-radius-leading;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(90deg, $bar-chart-primary-to 0%, $bar-chart-primary-from 100%);
+    border-radius: $bar-chart-radius-leading;
+    transition: background 0.2s ease, width 0.4s ease;
+    min-width: 0;
+  }
+
+  &__track:hover &__fill {
+    background: linear-gradient(90deg, $bar-chart-primary-hover-to 0%, $bar-chart-primary-hover-from 100%);
+  }
+
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-family: $bar-chart-value-font;
+    font-size: $bar-chart-value-size-lg;
+    font-weight: $bar-chart-value-weight;
+    color: $bar-chart-value-color;
+    line-height: 1;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  // ========================================
+  // Size variants
+  // ========================================
+
+  &--large &__track {
+    height: $bar-chart-size-lg;
+  }
+
+  &--large &__track {
+    border-radius: $bar-chart-radius-leading $bar-chart-radius-leading $bar-chart-radius-trailing $bar-chart-radius-trailing;
+
+    // Horizontal: leading = left, trailing = right
+    border-radius: $bar-chart-radius-trailing $bar-chart-radius-leading $bar-chart-radius-leading $bar-chart-radius-trailing;
+  }
+
+  &--large &__fill {
+    border-radius: $bar-chart-radius-trailing $bar-chart-radius-leading $bar-chart-radius-leading $bar-chart-radius-trailing;
+  }
+
+  &--medium &__track {
+    height: $bar-chart-size-md;
+    border-radius: $bar-chart-radius-trailing $bar-chart-radius-leading $bar-chart-radius-leading $bar-chart-radius-trailing;
+  }
+
+  &--medium &__fill {
+    border-radius: $bar-chart-radius-trailing $bar-chart-radius-leading $bar-chart-radius-leading $bar-chart-radius-trailing;
+  }
+
+  &--medium &__value {
+    font-size: $bar-chart-value-size-md;
+    padding-right: 8px;
+  }
+
+  &--small &__track {
+    height: $bar-chart-size-sm;
+  }
+
+  &--x-small &__track {
+    height: $bar-chart-size-xs;
+  }
+
+  // Small and x-small use full pill radius
+  &--small &__track,
+  &--x-small &__track {
+    border-radius: $bar-chart-radius-leading;
+  }
+
+  &--small &__fill,
+  &--x-small &__fill {
+    border-radius: $bar-chart-radius-leading;
+  }
+
+  // ========================================
+  // Secondary (pink) variant
+  // ========================================
+
+  &--secondary &__fill {
+    background: linear-gradient(90deg, $bar-chart-secondary-to 0%, $bar-chart-secondary-from 100%);
+  }
+
+  &--secondary &__track:hover &__fill {
+    background: linear-gradient(90deg, $bar-chart-secondary-hover-to 0%, $bar-chart-secondary-hover-from 100%);
+  }
+}

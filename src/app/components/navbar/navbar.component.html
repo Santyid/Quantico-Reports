@@ -13,6 +13,8 @@
               <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-img" />
             } @else if (selectedPlatform.icon === 'advocatespro') {
               <img src="images/AdvocatesPro-Imagotipo-Blue.svg" alt="AdvocatesPro" class="navbar__platform-img" />
+            } @else if (selectedPlatform.icon === 'tikket') {
+              <img src="images/Tikket-Imagotipo-Blue.png" alt="Tikket" class="navbar__platform-img" />
             } @else {
               <div class="navbar__logo-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -38,11 +40,13 @@
               <button
                 class="navbar__platform-option"
                 [class.navbar__platform-option--active]="platform.id === selectedPlatform.id"
-                (click)="selectPlatform(platform)">
+                (click)="selectPlatform(platform, $event)">
                 @if (platform.icon === 'quantico') {
                   <img src="images/Quantico-Imagotipo-Blue.png" alt="Quantico" class="navbar__platform-option-img" />
                 } @else if (platform.icon === 'advocatespro') {
                   <img src="images/AdvocatesPro-Imagotipo-Blue.svg" alt="AdvocatesPro" class="navbar__platform-option-img" />
+                } @else if (platform.icon === 'tikket') {
+                  <img src="images/Tikket-Imagotipo-Blue.png" alt="Tikket" class="navbar__platform-option-img" />
                 } @else {
                   <div class="navbar__logo-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

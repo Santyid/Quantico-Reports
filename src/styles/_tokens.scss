@@ -766,3 +766,308 @@ $avatar-social-offset-xl: 8px;
 
 // Badge border
 $avatar-social-badge-border: 2px solid $white-500;
+
+// ========================================
+// Bar Chart Design Tokens (from Figma)
+// ========================================
+
+// Bar Chart — Shared
+$bar-chart-bg: #fafafa;                              // white-600 — track background
+$bar-chart-value-color: $white-500;                  // #ffffff — value text
+$bar-chart-value-font: 'Urbanist', sans-serif;
+$bar-chart-value-weight: 600;                        // SemiBold
+$bar-chart-radius-leading: 50px;                     // pill-shaped leading edge
+$bar-chart-radius-trailing: 10px;                    // slight rounding trailing edge
+$bar-chart-length: 350px;                            // total bar length (height for vertical, width for horizontal)
+
+// Bar Chart — Primary (Blue) gradient
+$bar-chart-primary-from: $primary-300;               // #5495fe — default
+$bar-chart-primary-to: $primary-100;                 // #b0ceff
+$bar-chart-primary-hover-from: $primary-500;         // #0061fe — hover
+$bar-chart-primary-hover-to: $primary-100;           // #b0ceff
+
+// Bar Chart — Secondary (Pink) gradient
+$bar-chart-secondary-from: #f486a5;                  // secundary-300
+$bar-chart-secondary-to: $ap-accent-50;              // #fdedf2 — secundary-50
+$bar-chart-secondary-hover-from: $ap-accent-500;     // #ee4a79 — secundary-500
+$bar-chart-secondary-hover-to: $ap-accent-50;        // #fdedf2
+
+// Bar Chart — Size tokens (cross-axis width/height)
+$bar-chart-size-lg: 78px;
+$bar-chart-size-md: 35px;
+$bar-chart-size-sm: 17px;
+$bar-chart-size-xs: 8px;
+
+// Bar Chart — Value label area
+$bar-chart-value-size-lg: 20px;
+$bar-chart-value-size-md: 14px;
+$bar-chart-value-area-lg: 45px;
+$bar-chart-value-area-md: 35px;
+
+// Legacy aliases (backward compat for bar-vertical)
+$bar-vertical-bg: $bar-chart-bg;
+$bar-vertical-gradient-from: $bar-chart-primary-from;
+$bar-vertical-gradient-to: $bar-chart-primary-to;
+$bar-vertical-hover-gradient-from: $bar-chart-primary-hover-from;
+$bar-vertical-hover-gradient-to: $bar-chart-primary-hover-to;
+$bar-vertical-value-color: $bar-chart-value-color;
+$bar-vertical-height: $bar-chart-length;
+$bar-vertical-width-lg: $bar-chart-size-lg;
+$bar-vertical-width-md: $bar-chart-size-md;
+$bar-vertical-width-sm: $bar-chart-size-sm;
+$bar-vertical-width-xs: $bar-chart-size-xs;
+$bar-vertical-radius-top: $bar-chart-radius-leading;
+$bar-vertical-radius-bottom: $bar-chart-radius-trailing;
+$bar-vertical-value-font: $bar-chart-value-font;
+$bar-vertical-value-size: $bar-chart-value-size-lg;
+$bar-vertical-value-weight: $bar-chart-value-weight;
+$bar-vertical-value-area-height: $bar-chart-value-area-lg;
+$bar-vertical-step: 39px;
+
+// ========================================
+// Sparkline Design Tokens (from Figma)
+// ========================================
+$sparkline-primary-stroke: $primary-300;            // #5495fe
+$sparkline-primary-area-from: rgba($primary-300, 0.4);
+$sparkline-primary-area-to: rgba($primary-100, 0.02);
+$sparkline-secondary-stroke: $ap-accent-500;        // #ee4a79
+$sparkline-secondary-area-from: rgba(#f486a5, 0.4);
+$sparkline-secondary-area-to: rgba($ap-accent-50, 0.02);
+$sparkline-width-lg: 559px;
+$sparkline-height-lg: 188px;
+$sparkline-width-sm: 138px;
+$sparkline-height-sm: 46px;
+
+// ========================================
+// Donut Chart Design Tokens (from Figma)
+// ========================================
+$donut-size-lg: 276px;
+$donut-size-md: 213px;
+$donut-size-sm: 142px;
+$donut-stroke-lg: 18;
+$donut-stroke-md: 16;
+$donut-stroke-sm: 14;
+
+// Donut segment colors (from Figma — gradient pairs)
+$donut-segment-green: #5cd680;
+$donut-segment-green-to: #8aeab0;
+$donut-segment-yellow: #f5c842;
+$donut-segment-yellow-to: #f5d97a;
+$donut-segment-orange: #f47a37;
+$donut-segment-orange-to: #f9b48e;
+$donut-segment-pink: #ee6fa0;
+$donut-segment-pink-to: #f2a5c8;
+$donut-segment-purple: #9e7be8;
+$donut-segment-purple-to: #c4aff2;
+$donut-segment-blue: #5495fe;
+$donut-segment-blue-to: #8ab6ff;
+
+// ========================================
+// Trend Indicator Design Tokens (from Figma)
+// ========================================
+$trend-positive-color: $success-400;                // #3ace76
+$trend-negative-color: $error-400;                  // #fc3e3e
+$trend-font-family: 'Urbanist', sans-serif;
+$trend-font-size: 16px;
+$trend-font-weight: 600;
+$trend-icon-size: 22px;
+$trend-gap: 4px;
+$trend-height: 19px;
+
+// ========================================
+// Textarea Design Tokens (from Figma)
+// ========================================
+$textarea-gap: 6px;
+$textarea-padding: 14px 20px;
+$textarea-label-font: 'Urbanist', sans-serif;
+$textarea-label-size: 16px;
+$textarea-label-weight: 600;
+$textarea-label-color: $grey-800;
+$textarea-field-font: 'DM Sans', sans-serif;
+$textarea-field-size: 16px;
+$textarea-field-weight: 400;
+$textarea-field-color: $grey-500;
+$textarea-field-tracking: -0.32px;
+$textarea-placeholder-color: $grey-300;
+$textarea-bg: $text-input-bg;
+$textarea-border: $text-input-border;
+$textarea-border-focus: $text-input-border-focus;
+$textarea-border-radius: $text-input-border-radius;
+$textarea-border-width: $text-input-border-width;
+$textarea-disabled-bg: $text-input-disabled-bg;
+$textarea-disabled-border: $text-input-disabled-border;
+$textarea-disabled-text: $text-input-disabled-text;
+$textarea-transition: border-color 0.2s ease-in-out;
+
+// ========================================
+// Number Input Design Tokens (from Figma)
+// ========================================
+$number-input-bg: $white-500;
+$number-input-border: $grey-100;
+$number-input-border-radius: 12px;
+$number-input-border-width: 1px;
+$number-input-value-font: 'Urbanist', sans-serif;
+$number-input-value-color: $grey-800;
+$number-input-btn-color: $grey-300;
+$number-input-btn-hover-bg: $grey-50;
+$number-input-btn-width: 36px;
+$number-input-disabled-opacity: 0.4;
+$number-input-transition: background 0.15s ease;
+
+// Number Input — Heights
+$number-input-height-lg: 48px;
+$number-input-height-md: 40px;
+$number-input-height-sm: 36px;
+
+// Number Input — Typography per size
+$number-input-font-size-lg: 18px;
+$number-input-font-size-md: 16px;
+$number-input-font-size-sm: 16px;
+$number-input-font-weight-lg: 500;
+$number-input-font-weight-md: 500;
+$number-input-font-weight-sm: 400;
+
+// Number Input — Variant widths
+$number-input-buttons-width: 155px;
+$number-input-spinner-width: 119px;
+
+// ========================================
+// Account Counter Design Tokens (from Figma)
+// ========================================
+$account-counter-bg: $grey-50;
+$account-counter-border-radius: 12px;
+$account-counter-padding: 13px;
+$account-counter-icon-color: $grey-300;
+$account-counter-font: 'Urbanist', sans-serif;
+$account-counter-font-size: 18px;
+$account-counter-font-weight: 600;
+$account-counter-color: $grey-300;
+
+// Account Counter — Sizes (width × height)
+$account-counter-lg-width: 80px;
+$account-counter-lg-height: 48px;
+$account-counter-md-width: 67px;
+$account-counter-md-height: 40px;
+$account-counter-sm-width: 61px;
+$account-counter-sm-height: 36px;
+
+// ========================================
+// Select Date Design Tokens (from Figma)
+// ========================================
+$select-date-gap: 8px;
+$select-date-label-font: 'Urbanist', sans-serif;
+$select-date-label-size: 16px;
+$select-date-label-size-sm: 14px;
+$select-date-label-weight: 600;
+$select-date-label-color: $grey-800;
+
+// Select Date — Trigger
+$select-date-trigger-bg: $white-500;
+$select-date-trigger-border: $grey-100;
+$select-date-trigger-border-radius: 12px;
+$select-date-trigger-padding: 0 20px;
+$select-date-trigger-height-lg: 48px;
+$select-date-trigger-height-md: 40px;
+$select-date-trigger-height-sm: 36px;
+$select-date-trigger-hover-border: $grey-300;
+$select-date-trigger-focus-border: $primary-500;
+$select-date-transition: border-color 0.2s ease-in-out;
+
+// Select Date — Value text
+$select-date-value-font: 'Urbanist', sans-serif;
+$select-date-value-weight: 500;
+$select-date-value-size-lg: 18px;
+$select-date-value-size-md: 16px;
+$select-date-value-size-sm: 14px;
+$select-date-value-color: $grey-800;
+$select-date-placeholder-color: $grey-300;
+$select-date-icon-color: $grey-300;
+
+// Select Date — Dropdown / Calendar
+$select-date-dropdown-width: 267px;
+$select-date-dropdown-padding: 24px 41px;
+$select-date-dropdown-bg: $white-500;
+$select-date-dropdown-radius: 12px;
+$select-date-dropdown-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+
+// Select Date — Calendar navigation
+$select-date-nav-font: 'Urbanist', sans-serif;
+$select-date-nav-size: 16px;
+$select-date-nav-weight: 600;
+$select-date-nav-btn-size: 28px;
+$select-date-nav-btn-hover-bg: $grey-50;
+$select-date-divider-color: $grey-50;
+
+// Select Date — Day cells
+$select-date-day-size: 26px;
+$select-date-day-font: 'Urbanist', sans-serif;
+$select-date-day-font-size: 13px;
+$select-date-day-weight: 600;
+$select-date-day-color: $grey-800;
+$select-date-day-other-month-color: $grey-100;
+$select-date-day-today-border: $primary-500;
+$select-date-day-selected-bg: $primary-500;
+$select-date-day-selected-color: $white-500;
+$select-date-day-hover-bg: $grey-50;
+$select-date-day-name-size: 12px;
+
+// Select Date — Disabled state
+$select-date-disabled-opacity: 0.5;
+
+// ========================================
+// Hour Date Picker Design Tokens (from Figma)
+// ========================================
+
+// Hour Date Picker — Dropdown
+$hour-picker-dropdown-width: 267px;
+$hour-picker-dropdown-padding: 16px;
+$hour-picker-dropdown-bg: $white-500;
+$hour-picker-dropdown-border: $grey-50;
+$hour-picker-dropdown-radius: 12px;
+$hour-picker-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+// Hour Date Picker — Calendar header
+$hour-picker-month-font: 'Urbanist', sans-serif;
+$hour-picker-month-size: 14px;
+$hour-picker-month-weight: 700;
+$hour-picker-month-color: $grey-800;
+$hour-picker-nav-btn-size: 28px;
+$hour-picker-nav-btn-radius: 6px;
+$hour-picker-nav-btn-color: $grey-400;
+$hour-picker-nav-btn-hover-bg: $primary-50;
+$hour-picker-nav-btn-hover-color: $primary-500;
+
+// Hour Date Picker — Weekday headers
+$hour-picker-weekday-font: 'Urbanist', sans-serif;
+$hour-picker-weekday-size: 11px;
+$hour-picker-weekday-weight: 600;
+$hour-picker-weekday-color: $grey-300;
+$hour-picker-weekday-height: 28px;
+
+// Hour Date Picker — Day cells
+$hour-picker-day-font: 'DM Sans', sans-serif;
+$hour-picker-day-size: 13px;
+$hour-picker-day-weight: 400;
+$hour-picker-day-color: $grey-800;
+$hour-picker-day-max-height: 32px;
+$hour-picker-day-hover-bg: $primary-50;
+$hour-picker-day-hover-color: $primary-500;
+$hour-picker-day-today-weight: 700;
+$hour-picker-day-today-color: $primary-500;
+$hour-picker-day-selected-bg: $primary-500;
+$hour-picker-day-selected-color: $white-500;
+$hour-picker-day-selected-weight: 600;
+
+// Hour Date Picker — Divider
+$hour-picker-divider-color: $grey-50;
+$hour-picker-divider-margin: 14px;
+
+// Hour Date Picker — Time spinner
+$hour-picker-time-gap: 18px;
+$hour-picker-spinner-gap: 14px;
+$hour-picker-spinner-btn-color: $grey-300;
+$hour-picker-spinner-btn-hover-color: $grey-500;
+$hour-picker-spinner-value-font: 'Urbanist', sans-serif;
+$hour-picker-spinner-value-size: 16px;
+$hour-picker-spinner-value-weight: 600;
+$hour-picker-spinner-value-color: $grey-800;

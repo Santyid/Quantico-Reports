@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent, Platform, NavItem } from '../components/navbar/navbar.component';
 
 @Component({
-  selector: 'app-advocatespro-layout',
+  selector: 'app-tikket-layout',
   standalone: true,
   imports: [RouterOutlet, NavbarComponent],
   template: `
@@ -13,7 +13,7 @@ import { NavbarComponent, Platform, NavItem } from '../components/navbar/navbar.
       userAvatarUrl=""
       currentLanguage="ES">
     </app-navbar>
-    <main class="advocatespro-content">
+    <main class="tikket-content">
       <router-outlet />
     </main>
   `,
@@ -23,16 +23,16 @@ import { NavbarComponent, Platform, NavItem } from '../components/navbar/navbar.
       width: 100%;
       min-height: 100vh;
     }
-    .advocatespro-content {
+    .tikket-content {
       padding-top: 80px;
     }
   `]
 })
-export class AdvocatesproLayoutComponent {
+export class TikketLayoutComponent {
   readonly platforms: Platform[] = [
-    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
-    { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
     { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' },
+    { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
+    { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
     { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' }
   ];
 
