@@ -1747,7 +1747,7 @@
                         <span class="qt-sg__token-swatch" [style.background-color]="extractColor(token.value)"></span>
                       }
                       <code>{{ token.value }}</code>
-                      @if (isStandaloneColor(token.value) && group.title !== 'Colores Base' && group.title !== 'Dashboard UI') {
+                      @if (isStandaloneColor(token.value)) {
                         <lucide-icon [img]="TriangleAlertIcon" [size]="14" [strokeWidth]="1.5" class="qt-sg__token-warning" title="Color no ligado a la paleta de tokens"></lucide-icon>
                       }
                     </div>

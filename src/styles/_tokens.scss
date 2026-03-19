@@ -1172,6 +1172,14 @@ $qt-neutral-100: #f5f7fa;  // rgb(245, 247, 250)
 $qt-neutral-200: #f1f1f1;  // rgb(241, 241, 241)
 
 // ========================================
+// Quantico — IA Color Scale (Cyan)
+// From Figma node 10:3368
+// ========================================
+$qt-ia-50: #e5f6ff;   // rgb(229, 246, 255)
+$qt-ia-100: #c9edff;  // rgb(201, 237, 255)
+$qt-ia-500: #00aaff;  // rgb(0, 170, 255) — Base IA
+
+// ========================================
 // Quantico — White
 // From Figma node 75:211
 // ========================================
@@ -1210,10 +1218,10 @@ $qt-button-white-active: $qt-neutral-200;
 $qt-button-white-disabled-text: $qt-grey-100;
 
 // AI Button
-$qt-button-ai-border: $qt-primary-300;
+$qt-button-ai-border: $qt-ia-500;
 $qt-button-ai-text: $qt-primary-500;
-$qt-button-ai-hover: $qt-primary-50;
-$qt-button-ai-active: $qt-primary-100;
+$qt-button-ai-hover: $qt-ia-50;
+$qt-button-ai-active: $qt-ia-100;
 
 // Button Sizing
 $qt-button-height-large: 48px;
@@ -1549,8 +1557,8 @@ $qt-table-hover-bg: $qt-neutral-50;
 $qt-table-action-icon-color: $qt-grey-800;
 
 // ─── Dashboard UI Tokens ───
-$qt-code-block-bg: #1e1e2e;
-$qt-code-block-text: #cdd6f4;
-$qt-ui-label-color: #8e98a8;
-$qt-ui-light-bg: #f5f5f5;
-$qt-swatch-border: #e9ebf8;
+$qt-code-block-bg: $qt-grey-900;
+$qt-code-block-text: $qt-grey-100;
+$qt-ui-label-color: $qt-grey-200;
+$qt-ui-light-bg: $qt-neutral-200;
+$qt-swatch-border: $qt-grey-50;

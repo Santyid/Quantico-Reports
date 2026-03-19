@@ -109,6 +109,16 @@
 
 ---
 
+## 7.1. IA Color Scale (Cyan)
+
+| Token | Hex | RGB | Usage |
+|-------|-----|-----|-------|
+| `$qt-ia-50` | `#e5f6ff` | rgb(229, 246, 255) | Hover boton AI |
+| `$qt-ia-100` | `#c9edff` | rgb(201, 237, 255) | Active boton AI |
+| `$qt-ia-500` | `#00aaff` | rgb(0, 170, 255) | Base IA — borde boton AI |
+
+---
+
 ## 8. White
 
 | Token | Hex | Usage |
@@ -145,10 +155,10 @@
 | `$qt-button-white-hover` | `$qt-neutral-50` (#fafafa) | Hover boton white |
 | `$qt-button-white-active` | `$qt-neutral-200` (#f1f1f1) | Active boton white |
 | `$qt-button-white-disabled-text` | `$qt-grey-100` (#c3c3c3) | Disabled texto boton white |
-| `$qt-button-ai-border` | `$qt-primary-300` (#5495fe) | Borde boton AI |
+| `$qt-button-ai-border` | `$qt-ia-500` (#00aaff) | Borde boton AI |
 | `$qt-button-ai-text` | `$qt-primary-500` (#0061fe) | Texto boton AI |
-| `$qt-button-ai-hover` | `$qt-primary-50` (#e6efff) | Hover boton AI |
-| `$qt-button-ai-active` | `$qt-primary-100` (#b0ceff) | Active boton AI |
+| `$qt-button-ai-hover` | `$qt-ia-50` (#e5f6ff) | Hover boton AI |
+| `$qt-button-ai-active` | `$qt-ia-100` (#c9edff) | Active boton AI |
 | `$qt-button-height-large` | `48px` | Altura boton large |
 | `$qt-button-height-medium` | `40px` | Altura boton medium |
 | `$qt-button-height-small` | `36px` | Altura boton small |
@@ -579,11 +589,11 @@
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `$qt-code-block-bg` | `#1e1e2e` | Background code blocks |
-| `$qt-code-block-text` | `#cdd6f4` | Color texto code blocks |
-| `$qt-ui-label-color` | `#8e98a8` | Color labels UI del dashboard |
-| `$qt-ui-light-bg` | `#f5f5f5` | Background inline code |
-| `$qt-swatch-border` | `#e9ebf8` | Borde color swatches |
+| `$qt-code-block-bg` | `$qt-grey-900` (#1a1a1a) | Background code blocks |
+| `$qt-code-block-text` | `$qt-grey-100` (#c3c3c3) | Color texto code blocks |
+| `$qt-ui-label-color` | `$qt-grey-200` (#a6a6a6) | Color labels UI del dashboard |
+| `$qt-ui-light-bg` | `$qt-neutral-200` (#f1f1f1) | Background inline code |
+| `$qt-swatch-border` | `$qt-grey-50` (#ececec) | Borde color swatches |
 
 ---
 
