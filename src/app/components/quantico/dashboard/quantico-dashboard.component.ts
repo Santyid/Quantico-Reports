@@ -556,6 +556,14 @@ export class QuanticoDashboardComponent {
       ]
     },
     {
+      title: 'IA (Cyan)',
+      swatches: [
+        { name: 'ia-50', hex: '#e5f6ff', scssVar: '$qt-ia-50' },
+        { name: 'ia-100', hex: '#c9edff', scssVar: '$qt-ia-100' },
+        { name: 'ia-500', hex: '#00aaff', scssVar: '$qt-ia-500', isBase: true }
+      ]
+    },
+    {
       title: 'Neutral',
       swatches: [
         { name: 'neutral-50', hex: '#fafafa', scssVar: '$qt-neutral-50' },
@@ -622,20 +630,102 @@ export class QuanticoDashboardComponent {
   // ═══════════════════════════════════════
   readonly tokenGroups = [
     {
-      title: 'Colores Base',
+      title: 'Primary Scale (Blue)',
       tokens: [
-        { token: '$qt-primary-500', value: '#0061fe', usage: 'Acciones principales, links, focus' },
-        { token: '$qt-secondary-500', value: '#9e54e2', usage: 'Acciones secundarias, acentos' },
-        { token: '$qt-grey-800', value: '#222222', usage: 'Texto principal, headings' },
-        { token: '$qt-grey-300', value: '#7d7d7d', usage: 'Placeholder, texto secundario' },
-        { token: '$qt-grey-50', value: '#ececec', usage: 'Bordes, divisores' },
-        { token: '$qt-success-400', value: '#3ace76', usage: 'Estados exitosos' },
-        { token: '$qt-warning-400', value: '#ff962c', usage: 'Estados de advertencia' },
-        { token: '$qt-error-400', value: '#fc3e3e', usage: 'Estados de error' },
-        { token: '$qt-white-base', value: '#ffffff', usage: 'Fondos' },
-        { token: '$qt-black-base', value: '#000000', usage: 'Texto negro puro' },
-        { token: '$qt-neutral-50', value: '#fafafa', usage: 'Fondos sutiles' },
-        { token: '$qt-neutral-100', value: '#f5f7fa', usage: 'Fondos de seccion' },
+        { token: '$qt-primary-50', value: '$qt-primary-50 (#e6efff)', usage: 'Fondo muy claro primary' },
+        { token: '$qt-primary-100', value: '$qt-primary-100 (#b0ceff)', usage: 'Fondo claro primary' },
+        { token: '$qt-primary-200', value: '$qt-primary-200 (#8ab6ff)', usage: 'Borde claro primary' },
+        { token: '$qt-primary-300', value: '$qt-primary-300 (#5495fe)', usage: 'Acento suave primary' },
+        { token: '$qt-primary-400', value: '$qt-primary-400 (#3381fe)', usage: 'Acento medio primary' },
+        { token: '$qt-primary-500', value: '$qt-primary-500 (#0061fe)', usage: 'Base primary — acciones principales' },
+        { token: '$qt-primary-600', value: '$qt-primary-600 (#0058e7)', usage: 'Hover primary' },
+        { token: '$qt-primary-700', value: '$qt-primary-700 (#0045b4)', usage: 'Active primary' },
+        { token: '$qt-primary-800', value: '$qt-primary-800 (#00358c)', usage: 'Oscuro primary' },
+        { token: '$qt-primary-900', value: '$qt-primary-900 (#00296b)', usage: 'Muy oscuro primary' },
+      ]
+    },
+    {
+      title: 'Secondary Scale (Purple)',
+      tokens: [
+        { token: '$qt-secondary-50', value: '$qt-secondary-50 (#f5eefc)', usage: 'Fondo muy claro secondary' },
+        { token: '$qt-secondary-100', value: '$qt-secondary-100 (#e1caf6)', usage: 'Fondo claro secondary' },
+        { token: '$qt-secondary-200', value: '$qt-secondary-200 (#d2b0f2)', usage: 'Borde claro secondary' },
+        { token: '$qt-secondary-300', value: '$qt-secondary-300 (#be8cec)', usage: 'Acento suave secondary' },
+        { token: '$qt-secondary-400', value: '$qt-secondary-400 (#b176e8)', usage: 'Acento medio secondary' },
+        { token: '$qt-secondary-500', value: '$qt-secondary-500 (#9e54e2)', usage: 'Base secondary — acentos' },
+        { token: '$qt-secondary-600', value: '$qt-secondary-600 (#904cce)', usage: 'Hover secondary' },
+        { token: '$qt-secondary-700', value: '$qt-secondary-700 (#703ca0)', usage: 'Active secondary' },
+        { token: '$qt-secondary-800', value: '$qt-secondary-800 (#572e7c)', usage: 'Oscuro secondary' },
+        { token: '$qt-secondary-900', value: '$qt-secondary-900 (#42235f)', usage: 'Muy oscuro secondary' },
+      ]
+    },
+    {
+      title: 'Grey Scale',
+      tokens: [
+        { token: '$qt-grey-50', value: '$qt-grey-50 (#ececec)', usage: 'Bordes, divisores' },
+        { token: '$qt-grey-100', value: '$qt-grey-100 (#c3c3c3)', usage: 'Bordes inputs, disabled bg' },
+        { token: '$qt-grey-200', value: '$qt-grey-200 (#a6a6a6)', usage: 'Placeholder, iconos' },
+        { token: '$qt-grey-300', value: '$qt-grey-300 (#7d7d7d)', usage: 'Texto secundario' },
+        { token: '$qt-grey-400', value: '$qt-grey-400 (#646464)', usage: 'Texto medio' },
+        { token: '$qt-grey-500', value: '$qt-grey-500 (#3d3d3d)', usage: 'Texto body' },
+        { token: '$qt-grey-600', value: '$qt-grey-600 (#383838)', usage: 'Texto oscuro' },
+        { token: '$qt-grey-700', value: '$qt-grey-700 (#2b2b2b)', usage: 'Texto muy oscuro' },
+        { token: '$qt-grey-800', value: '$qt-grey-800 (#222222)', usage: 'Texto principal, headings' },
+        { token: '$qt-grey-900', value: '$qt-grey-900 (#1a1a1a)', usage: 'Texto casi negro' },
+      ]
+    },
+    {
+      title: 'Success Scale (Green)',
+      tokens: [
+        { token: '$qt-success-50', value: '$qt-success-50 (#ebfaf1)', usage: 'Fondo muy claro success' },
+        { token: '$qt-success-100', value: '$qt-success-100 (#aeebc7)', usage: 'Fondo claro success' },
+        { token: '$qt-success-200', value: '$qt-success-200 (#8de3b0)', usage: 'Borde claro success' },
+        { token: '$qt-success-300', value: '$qt-success-300 (#5bd68d)', usage: 'Acento suave success' },
+        { token: '$qt-success-400', value: '$qt-success-400 (#3ace76)', usage: 'Base success — estados exitosos' },
+        { token: '$qt-success-500', value: '$qt-success-500 (#299053)', usage: 'Hover success' },
+        { token: '$qt-success-600', value: '$qt-success-600 (#237e48)', usage: 'Active success' },
+      ]
+    },
+    {
+      title: 'Warning Scale (Orange)',
+      tokens: [
+        { token: '$qt-warning-50', value: '$qt-warning-50 (#fff5ea)', usage: 'Fondo muy claro warning' },
+        { token: '$qt-warning-100', value: '$qt-warning-100 (#ffd4a8)', usage: 'Fondo claro warning' },
+        { token: '$qt-warning-200', value: '$qt-warning-200 (#ffc285)', usage: 'Borde claro warning' },
+        { token: '$qt-warning-300', value: '$qt-warning-300 (#ffa850)', usage: 'Acento suave warning' },
+        { token: '$qt-warning-400', value: '$qt-warning-400 (#ff962c)', usage: 'Base warning — advertencia' },
+        { token: '$qt-warning-500', value: '$qt-warning-500 (#b3691f)', usage: 'Hover warning' },
+        { token: '$qt-warning-600', value: '$qt-warning-600 (#9c5c1b)', usage: 'Active warning' },
+      ]
+    },
+    {
+      title: 'Error Scale (Red)',
+      tokens: [
+        { token: '$qt-error-50', value: '$qt-error-50 (#ffecec)', usage: 'Fondo muy claro error' },
+        { token: '$qt-error-100', value: '$qt-error-100 (#feb0b0)', usage: 'Fondo claro error' },
+        { token: '$qt-error-200', value: '$qt-error-200 (#fd8f8f)', usage: 'Borde claro error' },
+        { token: '$qt-error-300', value: '$qt-error-300 (#fd5f5f)', usage: 'Acento suave error' },
+        { token: '$qt-error-400', value: '$qt-error-400 (#fc3e3e)', usage: 'Base error — estados de error' },
+        { token: '$qt-error-500', value: '$qt-error-500 (#b02b2b)', usage: 'Hover error' },
+        { token: '$qt-error-600', value: '$qt-error-600 (#9a2626)', usage: 'Active error' },
+      ]
+    },
+    {
+      title: 'IA Scale (Cyan)',
+      tokens: [
+        { token: '$qt-ia-50', value: '$qt-ia-50 (#e5f6ff)', usage: 'Hover boton AI' },
+        { token: '$qt-ia-100', value: '$qt-ia-100 (#c9edff)', usage: 'Active boton AI' },
+        { token: '$qt-ia-500', value: '$qt-ia-500 (#00aaff)', usage: 'Base IA — borde boton AI' },
+      ]
+    },
+    {
+      title: 'Neutral & Base',
+      tokens: [
+        { token: '$qt-neutral-50', value: '$qt-neutral-50 (#fafafa)', usage: 'Fondos sutiles' },
+        { token: '$qt-neutral-100', value: '$qt-neutral-100 (#f5f7fa)', usage: 'Fondos de seccion' },
+        { token: '$qt-neutral-200', value: '$qt-neutral-200 (#f1f1f1)', usage: 'Fondos claros' },
+        { token: '$qt-white-base', value: '$qt-white-base (#ffffff)', usage: 'Fondos blancos' },
+        { token: '$qt-black-base', value: '$qt-black-base (#000000)', usage: 'Texto negro puro' },
       ]
     },
     {
@@ -657,10 +747,10 @@ export class QuanticoDashboardComponent {
         { token: '$qt-button-white-hover', value: '$qt-neutral-50 (#fafafa)', usage: 'Hover boton white' },
         { token: '$qt-button-white-active', value: '$qt-neutral-200 (#f1f1f1)', usage: 'Active boton white' },
         { token: '$qt-button-white-disabled-text', value: '$qt-grey-100 (#c3c3c3)', usage: 'Disabled texto boton white' },
-        { token: '$qt-button-ai-border', value: '$qt-primary-300 (#5495fe)', usage: 'Borde boton AI' },
+        { token: '$qt-button-ai-border', value: '$qt-ia-500 (#00aaff)', usage: 'Borde boton AI' },
         { token: '$qt-button-ai-text', value: '$qt-primary-500 (#0061fe)', usage: 'Texto boton AI' },
-        { token: '$qt-button-ai-hover', value: '$qt-primary-50 (#e6efff)', usage: 'Hover boton AI' },
-        { token: '$qt-button-ai-active', value: '$qt-primary-100 (#b0ceff)', usage: 'Active boton AI' },
+        { token: '$qt-button-ai-hover', value: '$qt-ia-50 (#e5f6ff)', usage: 'Hover boton AI' },
+        { token: '$qt-button-ai-active', value: '$qt-ia-100 (#c9edff)', usage: 'Active boton AI' },
         { token: '$qt-button-border-radius', value: '12px', usage: 'Border radius de botones' },
         { token: '$qt-button-height-large', value: '48px', usage: 'Altura boton large' },
         { token: '$qt-button-height-medium', value: '40px', usage: 'Altura boton medium' },
@@ -1041,11 +1131,11 @@ export class QuanticoDashboardComponent {
     {
       title: 'Dashboard UI',
       tokens: [
-        { token: '$qt-code-block-bg', value: '#1e1e2e', usage: 'Background code blocks' },
-        { token: '$qt-code-block-text', value: '#cdd6f4', usage: 'Color texto code blocks' },
-        { token: '$qt-ui-label-color', value: '#8e98a8', usage: 'Color labels UI del dashboard' },
-        { token: '$qt-ui-light-bg', value: '#f5f5f5', usage: 'Background inline code' },
-        { token: '$qt-swatch-border', value: '#e9ebf8', usage: 'Borde color swatches' },
+        { token: '$qt-code-block-bg', value: '$qt-grey-900 (#1a1a1a)', usage: 'Background code blocks' },
+        { token: '$qt-code-block-text', value: '$qt-grey-100 (#c3c3c3)', usage: 'Color texto code blocks' },
+        { token: '$qt-ui-label-color', value: '$qt-grey-200 (#a6a6a6)', usage: 'Color labels UI del dashboard' },
+        { token: '$qt-ui-light-bg', value: '$qt-neutral-200 (#f1f1f1)', usage: 'Background inline code' },
+        { token: '$qt-swatch-border', value: '$qt-grey-50 (#ececec)', usage: 'Borde color swatches' },
       ]
     },
   ];
