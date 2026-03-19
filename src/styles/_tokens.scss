@@ -1071,3 +1071,486 @@ $hour-picker-spinner-value-font: 'Urbanist', sans-serif;
 $hour-picker-spinner-value-size: 16px;
 $hour-picker-spinner-value-weight: 600;
 $hour-picker-spinner-value-color: $grey-800;
+
+// ========================================
+// ========================================
+//
+//   QUANTICO DESIGN SYSTEM TOKENS
+//   Independent from all other environments
+//   Prefix: $qt-
+//
+// ========================================
+// ========================================
+
+// ========================================
+// Quantico — Primary Color Scale (Blue)
+// From Figma node 52:232
+// ========================================
+$qt-primary-50: #e6efff;   // rgb(230, 239, 255)
+$qt-primary-100: #b0ceff;  // rgb(176, 206, 255)
+$qt-primary-200: #8ab6ff;  // rgb(138, 182, 255)
+$qt-primary-300: #5495fe;  // rgb(84, 149, 254)
+$qt-primary-400: #3381fe;  // rgb(51, 129, 254)
+$qt-primary-500: #0061fe;  // rgb(0, 97, 254) — Base Primary
+$qt-primary-600: #0058e7;  // rgb(0, 88, 231)
+$qt-primary-700: #0045b4;  // rgb(0, 69, 180)
+$qt-primary-800: #00358c;  // rgb(0, 53, 140)
+$qt-primary-900: #00296b;  // rgb(0, 41, 107)
+
+// ========================================
+// Quantico — Secondary Color Scale (Purple)
+// From Figma node 80:475
+// ========================================
+$qt-secondary-50: #f5eefc;   // rgb(245, 238, 252)
+$qt-secondary-100: #e1caf6;  // rgb(225, 202, 246)
+$qt-secondary-200: #d2b0f2;  // rgb(210, 176, 242)
+$qt-secondary-300: #be8cec;  // rgb(190, 140, 236)
+$qt-secondary-400: #b176e8;  // rgb(177, 118, 232)
+$qt-secondary-500: #9e54e2;  // rgb(158, 84, 226) — Base Secondary
+$qt-secondary-600: #904cce;  // rgb(144, 76, 206)
+$qt-secondary-700: #703ca0;  // rgb(112, 60, 160)
+$qt-secondary-800: #572e7c;  // rgb(87, 46, 124)
+$qt-secondary-900: #42235f;  // rgb(66, 35, 95)
+
+// ========================================
+// Quantico — Grey Color Scale
+// From Figma node 52:99
+// ========================================
+$qt-grey-50: #ececec;   // rgb(236, 236, 236)
+$qt-grey-100: #c3c3c3;  // rgb(195, 195, 195)
+$qt-grey-200: #a6a6a6;  // rgb(166, 166, 166)
+$qt-grey-300: #7d7d7d;  // rgb(125, 125, 125)
+$qt-grey-400: #646464;  // rgb(100, 100, 100)
+$qt-grey-500: #3d3d3d;  // rgb(61, 61, 61)
+$qt-grey-600: #383838;  // rgb(56, 56, 56)
+$qt-grey-700: #2b2b2b;  // rgb(43, 43, 43)
+$qt-grey-800: #222222;  // rgb(34, 34, 34)
+$qt-grey-900: #1a1a1a;  // rgb(26, 26, 26)
+
+// ========================================
+// Quantico — Success Color Scale (Green)
+// From Figma node 67:99
+// ========================================
+$qt-success-50: #ebfaf1;   // rgb(235, 250, 241)
+$qt-success-100: #aeebc7;  // rgb(174, 235, 199)
+$qt-success-200: #8de3b0;  // rgb(141, 227, 176)
+$qt-success-300: #5bd68d;  // rgb(91, 214, 141)
+$qt-success-400: #3ace76;  // rgb(58, 206, 118) — Base Success
+$qt-success-500: #299053;  // rgb(41, 144, 83)
+$qt-success-600: #237e48;  // rgb(35, 126, 72)
+
+// ========================================
+// Quantico — Warning Color Scale (Orange)
+// From Figma node 68:367
+// ========================================
+$qt-warning-50: #fff5ea;   // rgb(255, 245, 234)
+$qt-warning-100: #ffd4a8;  // rgb(255, 212, 168)
+$qt-warning-200: #ffc285;  // rgb(255, 194, 133)
+$qt-warning-300: #ffa850;  // rgb(255, 168, 80)
+$qt-warning-400: #ff962c;  // rgb(255, 150, 44) — Base Warning
+$qt-warning-500: #b3691f;  // rgb(179, 105, 31)
+$qt-warning-600: #9c5c1b;  // rgb(156, 92, 27)
+
+// ========================================
+// Quantico — Error Color Scale (Red)
+// From Figma node 67:280
+// ========================================
+$qt-error-50: #ffecec;   // rgb(255, 236, 236)
+$qt-error-100: #feb0b0;  // rgb(254, 176, 176)
+$qt-error-200: #fd8f8f;  // rgb(253, 143, 143)
+$qt-error-300: #fd5f5f;  // rgb(253, 95, 95)
+$qt-error-400: #fc3e3e;  // rgb(252, 62, 62) — Base Error
+$qt-error-500: #b02b2b;  // rgb(176, 43, 43)
+$qt-error-600: #9a2626;  // rgb(154, 38, 38)
+
+// ========================================
+// Quantico — Neutral Color Scale
+// From Figma node 76:192
+// ========================================
+$qt-neutral-50: #fafafa;   // rgb(250, 250, 250)
+$qt-neutral-100: #f5f7fa;  // rgb(245, 247, 250)
+$qt-neutral-200: #f1f1f1;  // rgb(241, 241, 241)
+
+// ========================================
+// Quantico — White
+// From Figma node 75:211
+// ========================================
+$qt-white-base: #ffffff;  // rgb(255, 255, 255)
+
+// ========================================
+// Quantico — Black
+// From Figma node 75:124
+// ========================================
+$qt-black-base: #000000;  // rgb(0, 0, 0)
+
+// ========================================
+// Quantico — Button Tokens
+// ========================================
+
+// Primary Button
+$qt-button-primary-bg: $qt-primary-500;
+$qt-button-primary-text: $qt-neutral-200;
+$qt-button-primary-hover: $qt-primary-600;
+$qt-button-primary-active: $qt-primary-700;
+$qt-button-primary-disabled-bg: $qt-primary-200;
+
+// Secondary Button
+$qt-button-secondary-bg: $qt-secondary-500;
+$qt-button-secondary-text: $qt-white-base;
+$qt-button-secondary-hover: $qt-secondary-600;
+$qt-button-secondary-active: $qt-secondary-700;
+$qt-button-secondary-disabled-bg: $qt-secondary-200;
+
+// White Button
+$qt-button-white-bg: $qt-white-base;
+$qt-button-white-text: $qt-grey-300;
+$qt-button-white-border: $qt-grey-100;
+$qt-button-white-hover: $qt-neutral-50;
+$qt-button-white-active: $qt-neutral-200;
+$qt-button-white-disabled-text: $qt-grey-100;
+
+// AI Button
+$qt-button-ai-border: $qt-primary-300;
+$qt-button-ai-text: $qt-primary-500;
+$qt-button-ai-hover: $qt-primary-50;
+$qt-button-ai-active: $qt-primary-100;
+
+// Button Sizing
+$qt-button-height-large: 48px;
+$qt-button-height-medium: 40px;
+$qt-button-height-small: 36px;
+$qt-button-font-size-large: 18px;
+$qt-button-font-size-medium: 16px;
+$qt-button-font-size-small: 14px;
+
+// Button Shared
+$qt-button-font-family: 'Urbanist', sans-serif;
+$qt-button-font-weight: 700;
+$qt-button-border-radius: 12px;
+$qt-button-padding: 10px 20px;
+$qt-button-gap: 10px;
+$qt-button-transition: all 0.2s ease;
+
+// ========================================
+// Quantico — Toggle / Switch Tokens
+// ========================================
+$qt-toggle-off-bg: $qt-grey-100;
+$qt-toggle-on-bg: $qt-secondary-500;
+$qt-toggle-thumb-bg: $qt-white-base;
+$qt-toggle-thumb-shadow: 0 1px 3px rgba($qt-black-base, 0.15);
+
+// Toggle Sizes
+$qt-toggle-large-width: 56px;
+$qt-toggle-large-height: 32px;
+$qt-toggle-large-thumb: 24px;
+$qt-toggle-medium-width: 48px;
+$qt-toggle-medium-height: 28px;
+$qt-toggle-medium-thumb: 20px;
+$qt-toggle-small-width: 40px;
+$qt-toggle-small-height: 24px;
+$qt-toggle-small-thumb: 18px;
+
+// ========================================
+// Quantico — Checkbox Tokens
+// ========================================
+$qt-checkbox-size: 24px;
+$qt-checkbox-border-radius: 8px;
+$qt-checkbox-border: $qt-grey-100;
+$qt-checkbox-bg: $qt-white-base;
+$qt-checkbox-active-bg: $qt-secondary-500;
+$qt-checkbox-active-border: $qt-secondary-500;
+$qt-checkbox-hover-border: $qt-secondary-500;
+$qt-checkbox-check-color: $qt-white-base;
+
+// ========================================
+// Quantico — Radio Button Tokens (PrimeNG)
+// ========================================
+$qt-radio-checked-bg: $qt-secondary-500;
+$qt-radio-checked-border: $qt-secondary-500;
+$qt-radio-checked-hover-bg: $qt-secondary-600;
+$qt-radio-hover-border: $qt-secondary-300;
+$qt-radio-border: $qt-grey-100;
+$qt-radio-icon-color: $qt-white-base;
+$qt-radio-focus-ring: rgba(158, 84, 226, 0.2);
+
+// ========================================
+// Quantico — Radio Tab Tokens
+// ========================================
+$qt-radio-tab-height: 36px;
+$qt-radio-tab-border-radius: 12px;
+$qt-radio-tab-font-size: 14px;
+$qt-radio-tab-font-weight: 700;
+$qt-radio-tab-color: $qt-grey-300;
+$qt-radio-tab-hover-color: $qt-grey-500;
+$qt-radio-tab-active-border: $qt-secondary-500;
+$qt-radio-tab-active-color: $qt-secondary-500;
+$qt-radio-tab-active-bg: $qt-secondary-50;
+
+// ========================================
+// Quantico — Status Badge Tokens
+// ========================================
+$qt-badge-border: $qt-grey-100;
+$qt-badge-border-radius: 50px;
+$qt-badge-font-family: 'Urbanist', sans-serif;
+$qt-badge-font-size: 14px;
+$qt-badge-font-weight: 600;
+$qt-badge-text-color: $qt-grey-500;
+$qt-badge-padding: 4px 10px;
+$qt-badge-gap: 10px;
+$qt-badge-dot-size: 10px;
+$qt-badge-height-small: 30px;
+$qt-badge-height-large: 36px;
+
+// Badge Dot Colors
+$qt-badge-positiva: $qt-success-400;
+$qt-badge-negativa: $qt-error-400;
+$qt-badge-neutra: $qt-warning-400;
+$qt-badge-desactivado: $qt-grey-200;
+
+// ========================================
+// Quantico — Chip Tokens
+// ========================================
+$qt-chip-height: 26px;
+$qt-chip-border-radius: 23px;
+$qt-chip-padding: 6px 11px;
+$qt-chip-gap: 10px;
+$qt-chip-font-family: 'Urbanist', sans-serif;
+$qt-chip-font-size: 14px;
+$qt-chip-font-weight: 600;
+
+// Chip White
+$qt-chip-white-bg: $qt-white-base;
+$qt-chip-white-border: $qt-grey-100;
+$qt-chip-white-color: $qt-grey-500;
+
+// Chip Primary
+$qt-chip-primary-bg: $qt-primary-100;
+$qt-chip-primary-color: $qt-primary-500;
+
+// Chip Secondary
+$qt-chip-secondary-bg: $qt-secondary-100;
+$qt-chip-secondary-color: $qt-secondary-500;
+
+// Chip Disabled
+$qt-chip-disabled-bg: $qt-grey-50;
+$qt-chip-disabled-border: $qt-grey-100;
+$qt-chip-disabled-color: $qt-grey-300;
+
+// Chip Add Button
+$qt-chip-add-border: $qt-grey-100;
+$qt-chip-add-color: $qt-grey-300;
+$qt-chip-add-hover-border: $qt-primary-500;
+$qt-chip-add-hover-color: $qt-primary-500;
+
+// ─── Toaster Tokens ───
+$qt-toast-border-radius: 10px;
+$qt-toast-accent-width: 13px;
+$qt-toast-shadow: 0 8px 32px rgba($qt-black-base, 0.08);
+$qt-toast-success-stripe: $qt-success-400;
+$qt-toast-success-bg: $qt-success-50;
+$qt-toast-success-color: $qt-success-400;
+$qt-toast-warning-stripe: $qt-warning-400;
+$qt-toast-warning-bg: $qt-warning-50;
+$qt-toast-warning-color: $qt-warning-400;
+$qt-toast-error-stripe: $qt-error-400;
+$qt-toast-error-bg: $qt-error-50;
+$qt-toast-error-color: $qt-error-400;
+$qt-toast-info-stripe: $qt-primary-500;
+$qt-toast-info-bg: $qt-primary-50;
+$qt-toast-info-color: $qt-primary-500;
+$qt-toast-title-color: $qt-grey-800;
+$qt-toast-message-color: $qt-grey-300;
+$qt-toast-close-color: $qt-grey-300;
+
+// ─── Select Segment Tokens ───
+$qt-select-seg-border-color: $qt-grey-100;
+$qt-select-seg-selected-bg: $qt-secondary-50;
+$qt-select-seg-selected-border: $qt-secondary-500;
+$qt-select-seg-hover-border: $qt-secondary-500;
+$qt-select-seg-chip-radius: 23px;
+$qt-select-colorpicker-dot-size: 25px;
+$qt-select-user-avatar-size-lg: 36px;
+
+// ─── Confirm Modal Tokens ───
+$qt-confirm-modal-border-radius: 12px;
+$qt-confirm-modal-max-width: 700px;
+$qt-confirm-modal-icon-size: 56px;
+$qt-confirm-general-btn-bg: $qt-primary-500;
+$qt-confirm-confirmation-icon-color: $qt-success-400;
+$qt-confirm-alert-btn-bg: $qt-warning-400;
+$qt-confirm-error-btn-bg: $qt-error-400;
+
+// ─── Code Modal Tokens ───
+$qt-code-modal-border-radius: 24px;
+$qt-code-modal-icon-bg: $qt-warning-50;
+$qt-code-modal-icon-color: $qt-warning-400;
+$qt-code-modal-btn-bg: $qt-error-400;
+$qt-code-modal-code-size: 40px;
+
+// ─── Stepper Tokens ───
+$qt-stepper-track-height: 5px;
+$qt-stepper-track-bg: $qt-grey-50;
+$qt-stepper-progress-bg: $qt-primary-500;
+$qt-stepper-track-radius: 10px;
+$qt-stepper-label-font: 'DM Sans', sans-serif;
+$qt-stepper-label-color: $qt-grey-300;
+
+// ─── TextArea Tokens ───
+$qt-textarea-border: $qt-grey-100;
+$qt-textarea-border-focus: $qt-primary-500;
+$qt-textarea-border-radius: 10px;
+$qt-textarea-font: 'Urbanist', sans-serif;
+$qt-textarea-font-size: 16px;
+$qt-textarea-label-color: $qt-grey-800;
+$qt-textarea-placeholder-color: $qt-grey-200;
+$qt-textarea-padding: 12px 16px;
+$qt-textarea-disabled-opacity: 0.5;
+
+// ─── Number Input Tokens ───
+$qt-number-input-border: $qt-grey-100;
+$qt-number-input-border-radius: 12px;
+$qt-number-input-height-lg: 48px;
+$qt-number-input-height-md: 40px;
+$qt-number-input-height-sm: 36px;
+$qt-number-input-btn-color: $qt-grey-300;
+$qt-number-input-btn-hover: $qt-primary-500;
+$qt-number-input-font: 'Urbanist', sans-serif;
+$qt-number-input-font-weight: 600;
+
+// ─── Account Counter Tokens ───
+$qt-counter-border: $qt-grey-100;
+$qt-counter-border-radius: 12px;
+$qt-counter-icon-color: $qt-grey-300;
+$qt-counter-text-color: $qt-grey-800;
+$qt-counter-font: 'Urbanist', sans-serif;
+$qt-counter-font-weight: 600;
+$qt-counter-height-lg: 48px;
+$qt-counter-height-md: 40px;
+$qt-counter-height-sm: 36px;
+
+// ─── Select Date Tokens ───
+$qt-select-date-border: $qt-grey-100;
+$qt-select-date-border-radius: 12px;
+$qt-select-date-font: 'Urbanist', sans-serif;
+$qt-select-date-height-lg: 48px;
+$qt-select-date-height-md: 40px;
+$qt-select-date-height-sm: 36px;
+$qt-select-date-dropdown-shadow: 0 4px 15px rgba($qt-black-base, 0.12);
+$qt-select-date-day-selected-bg: $qt-primary-500;
+$qt-select-date-day-other-color: $qt-grey-100;
+
+// ─── Hour Date Picker Tokens ───
+$qt-hour-picker-spinner-gap: 18px;
+$qt-hour-picker-chevron-color: $qt-grey-300;
+$qt-hour-picker-chevron-hover: $qt-grey-500;
+$qt-hour-picker-value-color: $qt-grey-800;
+$qt-hour-picker-divider: $qt-grey-50;
+
+// ─── Select Tokens ───
+$qt-select-bg: $qt-white-base;
+$qt-select-border: $qt-grey-100;
+$qt-select-border-focus: $qt-primary-500;
+$qt-select-border-radius: 10px;
+$qt-select-height-lg: 48px;
+$qt-select-height-md: 40px;
+$qt-select-height-sm: 36px;
+$qt-select-font: 'Urbanist', sans-serif;
+$qt-select-placeholder-color: $qt-grey-300;
+$qt-select-text-color: $qt-grey-800;
+$qt-select-icon-color: $qt-grey-300;
+$qt-select-dropdown-shadow: 0 4px 12px rgba($qt-black-base, 0.1);
+$qt-select-option-hover-bg: $qt-neutral-50;
+$qt-select-disabled-bg: $qt-grey-100;
+$qt-select-disabled-text: $qt-grey-200;
+
+// ─── Search Input Tokens ───
+$qt-search-input-bg: $qt-white-base;
+$qt-search-input-border: $qt-grey-100;
+$qt-search-input-border-focus: $qt-primary-500;
+$qt-search-input-border-radius: 50px;
+$qt-search-input-height-lg: 50px;
+$qt-search-input-height-md: 40px;
+$qt-search-input-height-sm: 36px;
+$qt-search-input-icon-color: $qt-grey-200;
+$qt-search-input-placeholder-color: $qt-grey-200;
+$qt-search-input-font: 'Urbanist', sans-serif;
+$qt-search-input-font-weight: 500;
+$qt-search-input-disabled-bg: $qt-grey-100;
+$qt-search-input-disabled-text: $qt-grey-200;
+
+// ─── Text Input Tokens ───
+$qt-text-input-border: $qt-grey-100;
+$qt-text-input-border-focus: $qt-primary-500;
+$qt-text-input-border-error: $qt-error-400;
+$qt-text-input-border-radius: 10px;
+$qt-text-input-height-lg: 48px;
+$qt-text-input-height-md: 40px;
+$qt-text-input-height-sm: 36px;
+$qt-text-input-font: 'Urbanist', sans-serif;
+$qt-text-input-label-color: $qt-grey-800;
+$qt-text-input-placeholder-color: $qt-grey-200;
+$qt-text-input-icon-color: $qt-grey-300;
+
+// ─── Card Tokens ───
+$qt-card-bg: $qt-white-base;
+$qt-card-border: $qt-grey-50;
+$qt-card-border-radius: 16px;
+$qt-card-padding-simple: 24px;
+$qt-card-padding-large: 32px;
+$qt-card-title-color: $qt-grey-800;
+$qt-card-title-size-titled: 20px;
+$qt-card-title-size-large: 24px;
+
+// ─── Menu Tokens ───
+$qt-menu-bg: $qt-white-base;
+$qt-menu-border: $qt-grey-50;
+$qt-menu-border-radius: 12px;
+$qt-menu-item-hover: $qt-neutral-50;
+$qt-menu-item-color: $qt-grey-500;
+$qt-menu-icon-color: $qt-grey-300;
+$qt-menu-radio-active: $qt-secondary-500;
+$qt-menu-checkbox-active: $qt-secondary-500;
+
+// ─── Avatar Tokens ───
+$qt-avatar-border-radius: 50%;
+$qt-avatar-size-xlarge: 50px;
+$qt-avatar-size-large: 36px;
+$qt-avatar-size-medium: 26px;
+$qt-avatar-size-small: 18px;
+$qt-avatar-badge-size: 16px;
+$qt-avatar-badge-border: $qt-white-base;
+
+// ─── Métricas / Bar Chart Tokens ───
+$qt-bar-primary-from: $qt-primary-300;
+$qt-bar-primary-to: $qt-primary-500;
+$qt-bar-secondary-from: $qt-secondary-300;
+$qt-bar-secondary-to: $qt-secondary-500;
+$qt-bar-size-large: 78px;
+$qt-bar-size-medium: 35px;
+$qt-bar-size-small: 17px;
+$qt-bar-size-xsmall: 8px;
+$qt-bar-label-color: $qt-grey-300;
+$qt-sparkline-primary-color: $qt-primary-500;
+$qt-sparkline-secondary-color: $qt-secondary-500;
+$qt-donut-stroke-width: 30px;
+$qt-trend-up-color: $qt-success-400;
+$qt-trend-down-color: $qt-error-400;
+
+// ─── Table Tokens ───
+$qt-table-bg: $qt-white-base;
+$qt-table-border-color: $qt-grey-50;
+$qt-table-header-color: $qt-grey-500;
+$qt-table-body-color: $qt-grey-500;
+$qt-table-title-color: $qt-grey-800;
+$qt-table-title-size: 24px;
+$qt-table-row-height: 44px;
+$qt-table-cell-padding: 10px 20px;
+$qt-table-hover-bg: $qt-neutral-50;
+$qt-table-action-icon-color: $qt-grey-800;
+
+// ─── Dashboard UI Tokens ───
+$qt-code-block-bg: #1e1e2e;
+$qt-code-block-text: #cdd6f4;
+$qt-ui-label-color: #8e98a8;
+$qt-ui-light-bg: #f5f5f5;
+$qt-swatch-border: #e9ebf8;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent, Platform } from '../components/navbar/navbar.component';
 
 @Component({
@@ -10,7 +10,8 @@ import { NavbarComponent, Platform } from '../components/navbar/navbar.component
     <app-navbar
       [platforms]="platforms"
       userAvatarUrl=""
-      currentLanguage="ES">
+      currentLanguage="ES"
+      (languageClick)="goToComponentsDemo()">
     </app-navbar>
     <main class="quantico-content">
       <router-outlet />
@@ -34,4 +35,10 @@ export class QuanticoLayoutComponent {
     { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' },
     { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' }
   ];
+
+  constructor(private router: Router) {}
+
+  goToComponentsDemo(): void {
+    this.router.navigate(['/components-demo']);
+  }
 }
