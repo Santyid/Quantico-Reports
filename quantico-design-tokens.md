@@ -661,6 +661,54 @@ Search for `Quantico` to find the Quantico section (starts at line ~1085).
 }
 ```
 
+## Flag Component
+
+Country flag icons using the `flag-icons` CSS library. Renders flags via ISO 3166-1 alpha-2 country codes.
+
+### Variants
+
+| Variant | Border Radius | Aspect Ratio | Description |
+|---------|--------------|--------------|-------------|
+| `rect` | 0 | 4:3 | Standard rectangular flag |
+| `rounded-rect` | 2px | 4:3 | Slightly rounded corners |
+| `rounded-square` | 4px | 1:1 | Square with rounded corners |
+| `circle` | 50% | 1:1 | Circular flag |
+
+### Sizes
+
+| Size | Width | Height | Square/Circle Height |
+|------|-------|--------|---------------------|
+| `small` | 16px | 12px | 16px |
+| `medium` | 20px | 15px | 20px |
+| `large` | 28px | 21px | 28px |
+
+### Usage
+
+```html
+<app-flag country="pe" variant="rounded-rect" size="medium"></app-flag>
+<app-flag country="co" variant="circle" size="large"></app-flag>
+<app-flag country="us" variant="rect" size="small"></app-flag>
+```
+
+### Supported Countries
+
+Uses ISO 3166-1 alpha-2 codes. All countries are supported — common examples:
+
+| Code | Country |
+|------|---------|
+| `pe` | Peru |
+| `co` | Colombia |
+| `mx` | Mexico |
+| `cl` | Chile |
+| `ar` | Argentina |
+| `br` | Brazil |
+| `us` | United States |
+| `es` | Spain |
+
+Full list: [flag-icons on GitHub](https://github.com/lipis/flag-icons)
+
+---
+
 ## Naming Convention
 
 All Quantico tokens follow the pattern:

@@ -67,22 +67,10 @@ export const routes: Routes = [
             .then(m => m.MencionesComponent)
       },
       {
-        path: 'alertas',
+        path: 'alertas2',
         loadComponent: () =>
-          import('./components/alertas/alertas.component')
-            .then(m => m.AlertasComponent)
-      },
-      {
-        path: 'alertas/crear',
-        loadComponent: () =>
-          import('./components/crear-alerta/crear-alerta.component')
-            .then(m => m.CrearAlertaComponent)
-      },
-      {
-        path: 'alertas/crear-v2',
-        loadComponent: () =>
-          import('./components/crear-alerta-v2/crear-alerta-v2.component')
-            .then(m => m.CrearAlertaV2Component)
+          import('./components/quantico/alertas2/alertas2.component')
+            .then(m => m.Alertas2Component)
       },
       {
         path: 'segmentos',

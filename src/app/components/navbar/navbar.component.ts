@@ -47,7 +47,7 @@ export class NavbarComponent implements OnInit {
       ]
     },
     { label: 'Menciones', path: '/menciones' },
-    { label: 'Alertas', path: '/alertas' },
+    { label: 'Alertas', path: '/alertas2' },
     { label: 'Segmentos', path: '/segmentos' }
   ];
 
