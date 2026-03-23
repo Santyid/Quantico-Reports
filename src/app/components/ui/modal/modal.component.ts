@@ -32,6 +32,9 @@ import { ButtonComponent } from '../button/button.component';
             <ng-content></ng-content>
           </div>
 
+          <!-- Custom Footer Slot -->
+          <ng-content select="[modal-footer]"></ng-content>
+
           <!-- Footer -->
           @if (showFooter) {
             <div class="modal__footer">

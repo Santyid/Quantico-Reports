@@ -1,0 +1,840 @@
+<div class="alertas2">
+
+  <!-- HEADER -->
+  <div class="alertas2__header">
+    <div class="alertas2__header-left">
+      <div class="alertas2__header-icon">
+        <lucide-icon [img]="BellIcon" [size]="32" [strokeWidth]="1.5"></lucide-icon>
+      </div>
+      <h1 class="alertas2__title">Alertas</h1>
+    </div>
+    <div class="alertas2__header-right">
+      <app-select-date
+        size="medium"
+        [value]="selectedDate"
+        (valueChange)="onDateChange($event)">
+      </app-select-date>
+      <app-button
+        variant="secondary"
+        size="medium"
+        [leftIcon]="PlusIcon"
+        (clicked)="openCreateModal()">
+        Crear alerta
+      </app-button>
+    </div>
+  </div>
+
+  <!-- TABS + FILTERS -->
+  <div class="alertas2__tabs-row">
+    <div class="alertas2__tabs">
+      <button
+        class="alertas2__tab"
+        [class.alertas2__tab--active]="currentTab === 'active'"
+        (click)="switchTab('active')">
+        Activas
+        <span class="alertas2__tab-badge" [class.alertas2__tab-badge--active]="currentTab === 'active'">{{ activeCount }}</span>
+      </button>
+      <button
+        class="alertas2__tab"
+        [class.alertas2__tab--active]="currentTab === 'paused'"
+        (click)="switchTab('paused')">
+        Pausadas
+        <span class="alertas2__tab-badge" [class.alertas2__tab-badge--active]="currentTab === 'paused'">{{ pausedCount }}</span>
+      </button>
+    </div>
+    <div class="alertas2__filters">
+      @if (!showSearchBar) {
+        <button class="alertas2__search-btn" (click)="showSearchBar = true" aria-label="Buscar">
+          <lucide-icon [img]="SearchIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+      } @else {
+        <div class="alertas2__search-expand">
+          <lucide-icon [img]="SearchIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+          <input
+            type="text"
+            placeholder="Buscar alertas..."
+            [(ngModel)]="searchQuery"
+            class="alertas2__search-input">
+          <button type="button" class="alertas2__search-close" (click)="showSearchBar = false; searchQuery = ''">
+            <lucide-icon [img]="XIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- ALERT CARDS GRID -->
+  @if (filteredAlerts.length === 0) {
+    <div class="alertas2__empty">
+      <div class="alertas2__empty-icon">
+        <lucide-icon [img]="BellIcon" [size]="28" [strokeWidth]="1.5"></lucide-icon>
+      </div>
+      <h3 class="alertas2__empty-title">
+        {{ searchQuery ? 'Sin resultados' : 'No hay alertas ' + (currentTab === 'paused' ? 'pausadas' : 'activas') }}
+      </h3>
+      <p class="alertas2__empty-sub">
+        {{ searchQuery ? 'Intenta con otros terminos de busqueda' : 'Crea tu primera alerta para recibir notificaciones' }}
+      </p>
+      @if (!searchQuery) {
+        <app-button variant="secondary" size="medium" [leftIcon]="PlusIcon" (clicked)="openCreateModal()">
+          Crear alerta
+        </app-button>
+      }
+    </div>
+  } @else {
+    <div class="alertas2__grid">
+      @for (alert of filteredAlerts; track alert.id) {
+        <div class="alertas2__card" (click)="openEditModal(alert)">
+          <!-- Row 1: Title + optional WA Pausado badge -->
+          <div class="alertas2__card-row1">
+            <h4 class="alertas2__card-name">{{ alert.name }}</h4>
+            @if (alert.waPaused) {
+              <span class="alertas2__wa-badge">WA Pausado</span>
+            }
+          </div>
+
+          <!-- Row 2: Segment pill -->
+          <div class="alertas2__card-row2">
+            <span class="alertas2__segment-pill alertas2__tooltip" data-tooltip="Segmento monitoreado">{{ alert.segment }}</span>
+          </div>
+
+          <!-- Row 3: Channels + Actions -->
+          <div class="alertas2__card-row3">
+            <div class="alertas2__card-channels">
+              @if (alert.channels.email) {
+                <div class="alertas2__channel-badge alertas2__tooltip" data-tooltip="Notificación por email">
+                  <lucide-icon [img]="MailIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+              }
+              @if (alert.channels.wa) {
+                <div class="alertas2__channel-badge alertas2__tooltip" data-tooltip="Notificación por WhatsApp">
+                  <lucide-icon [img]="MessageCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+              }
+            </div>
+            <div class="alertas2__card-actions" (click)="$event.stopPropagation()">
+              <button class="alertas2__action-btn" (click)="toggleAlertActive(alert, $event)"
+                      [attr.aria-label]="alert.active ? 'Pausar alerta' : 'Activar alerta'">
+                <lucide-icon [img]="alert.active ? PauseIcon : CheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                <span>{{ alert.active ? 'Pausar' : 'Activar' }}</span>
+              </button>
+              <div class="alertas2__more-wrap">
+                <button class="alertas2__more-btn" (click)="toggleCardMenu(alert.id, $event)"
+                        [attr.aria-label]="'Opciones'">
+                  <lucide-icon [img]="MoreHorizontalIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </button>
+                @if (activeMenuId === alert.id) {
+                  <div class="alertas2__dropdown">
+                    <button class="alertas2__dropdown-item" (click)="onMenuAction('edit', alert)">
+                      <lucide-icon [img]="PencilIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Editar</span>
+                    </button>
+                    <button class="alertas2__dropdown-item" (click)="onMenuAction('toggle', alert)">
+                      <lucide-icon [img]="alert.active ? PauseIcon : PlayIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>{{ alert.active ? 'Pausar' : 'Activar' }}</span>
+                    </button>
+                    <button class="alertas2__dropdown-item" (click)="onMenuAction('duplicate', alert)">
+                      <lucide-icon [img]="CopyIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Duplicar</span>
+                    </button>
+                    <button class="alertas2__dropdown-item alertas2__dropdown-item--danger" (click)="onMenuAction('delete', alert)">
+                      <lucide-icon [img]="Trash2Icon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Eliminar</span>
+                    </button>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- CREATE/EDIT MODAL -->
+  <app-modal
+    [isOpen]="showCreateModal"
+    [title]="modalTitle"
+    maxWidth="640px"
+    [showFooter]="false"
+    (close)="closeCreateModal()">
+
+    <!-- Custom Step Indicator -->
+    <div class="alertas2__modal-stepper">
+      <span class="alertas2__modal-step-text">
+        Paso {{ currentStep }} de 2 – {{ currentStep === 1 ? 'Qué monitorear' : 'Cómo avisar' }}
+      </span>
+      <div class="alertas2__modal-progress">
+        <div class="alertas2__modal-progress-fill"
+             [class.alertas2__modal-progress-fill--step2]="currentStep === 2">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    @if (currentStep === 1) {
+      <div class="alertas2__form">
+        <!-- Alert Name -->
+        <app-text-input
+          label="Nombre de la alerta"
+          placeholder="Nombre de la alerta"
+          size="medium"
+          [value]="alertName"
+          [errorMessage]="alertNameError"
+          (valueChange)="onAlertNameChange($event)">
+        </app-text-input>
+
+        <!-- Search Mode Toggle -->
+        <div class="alertas2__form-group">
+          <label class="alertas2__form-label">Base de busqueda</label>
+          <div class="alertas2__mode-toggle">
+            <button
+              class="alertas2__mode-btn"
+              [class.alertas2__mode-btn--active]="searchMode === 'search'"
+              (click)="setSearchMode('search')">
+              Consultas rapidas
+            </button>
+            <button
+              class="alertas2__mode-btn"
+              [class.alertas2__mode-btn--active]="searchMode === 'manual'"
+              (click)="setSearchMode('manual')">
+              Configurar manualmente
+            </button>
+          </div>
+        </div>
+
+        <!-- Consultas rapidas mode -->
+        @if (searchMode === 'search') {
+          <div class="alertas2__consultas-card">
+            <h4 class="alertas2__consultas-title">Consulatas</h4>
+            <div class="alertas2__consultas-tabs">
+              <button
+                class="alertas2__consultas-tab"
+                [class.alertas2__consultas-tab--active]="consultasSubTab === 'sugeridas'"
+                (click)="consultasSubTab = 'sugeridas'">
+                <lucide-icon [img]="SparklesIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                Sugeridas
+              </button>
+              <button
+                class="alertas2__consultas-tab"
+                [class.alertas2__consultas-tab--active]="consultasSubTab === 'guardadas'"
+                (click)="consultasSubTab = 'guardadas'">
+                <lucide-icon [img]="BookmarkIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                Guardadas
+              </button>
+              <button
+                class="alertas2__consultas-tab"
+                [class.alertas2__consultas-tab--active]="consultasSubTab === 'repetidas'"
+                (click)="consultasSubTab = 'repetidas'">
+                <lucide-icon [img]="ClockIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                Repetidas
+              </button>
+            </div>
+
+            <!-- Sugeridas tab -->
+            @if (consultasSubTab === 'sugeridas') {
+              <div class="alertas2__consultas-list">
+                @for (item of sugeridasItems; track item.label) {
+                  <div
+                    class="alertas2__consultas-item"
+                    [class.alertas2__consultas-item--selected]="selectedConsulta === item.label"
+                    (click)="selectedConsulta = item.label">
+                    <div class="alertas2__consultas-item-icon" [ngClass]="'alertas2__consultas-item-icon--' + item.color">
+                      <lucide-icon [img]="item.icon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                    </div>
+                    <span class="alertas2__consultas-item-label">{{ item.label }}</span>
+                    @if (selectedConsulta === item.label) {
+                      <lucide-icon class="alertas2__consultas-item-check" [img]="CheckIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+                    }
+                  </div>
+                }
+              </div>
+            }
+
+            <!-- Guardadas tab -->
+            @if (consultasSubTab === 'guardadas') {
+              <div class="alertas2__consultas-list">
+                @for (item of guardadasItems; track item.label) {
+                  <div class="alertas2__consultas-item">
+                    <div class="alertas2__consultas-item-icon alertas2__consultas-item-icon--purple">
+                      <lucide-icon [img]="BookmarkIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                    </div>
+                    <span class="alertas2__consultas-item-label">{{ item.label }}</span>
+                    <button class="alertas2__consultas-item-delete" (click)="$event.stopPropagation(); removeGuardada($index)" aria-label="Eliminar">
+                      <lucide-icon [img]="Trash2Icon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                    </button>
+                  </div>
+                }
+              </div>
+            }
+
+            <!-- Repetidas tab -->
+            @if (consultasSubTab === 'repetidas') {
+              <div class="alertas2__consultas-list">
+                @for (item of repetidasItems; track item.label) {
+                  <div class="alertas2__consultas-item">
+                    <div class="alertas2__consultas-item-icon alertas2__consultas-item-icon--purple">
+                      <lucide-icon [img]="BookmarkIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                    </div>
+                    <span class="alertas2__consultas-item-label">{{ item.label }}</span>
+                    <span class="alertas2__consultas-item-time">{{ item.time }}</span>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Configurar manualmente mode -->
+        @if (searchMode === 'manual') {
+          <div class="alertas2__manual-card">
+            <!-- Search text -->
+            <div class="alertas2__form-group">
+              <label class="alertas2__form-label">Búsqueda de texto</label>
+              <div class="alertas2__manual-search-wrap">
+                <lucide-icon [img]="SearchIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                <input
+                  type="text"
+                  class="alertas2__manual-search-input"
+                  placeholder="Palabras clave opcionales"
+                  [(ngModel)]="manualSearchText">
+              </div>
+            </div>
+
+            <!-- Segment Select -->
+            <app-select
+              label="Segmento"
+              size="medium"
+              placeholder="Banco Nacional"
+              [options]="segmentOptions"
+              [value]="selectedSegment"
+              (selectionChange)="selectedSegment = $event?.value ?? null">
+            </app-select>
+
+            <!-- Etiquetas -->
+            <div class="alertas2__form-group">
+              <label class="alertas2__form-label">Etiquetas</label>
+              <div class="alertas2__etiquetas-wrap">
+                <button class="alertas2__etiquetas-trigger" type="button" (click)="showEtiquetasPopover = !showEtiquetasPopover">
+                  <span class="alertas2__etiquetas-trigger-text">{{ selectedEtiquetas.length > 0 ? selectedEtiquetas.length + ' seleccionadas' : 'Seleccionar' }}</span>
+                  <lucide-icon [img]="ChevronDownIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </button>
+                @if (showEtiquetasPopover) {
+                  <div class="alertas2__etiquetas-popover">
+                    <div class="alertas2__etiquetas-popover-header">
+                      <span class="alertas2__etiquetas-popover-title">Etiquetas</span>
+                      <button class="alertas2__etiquetas-popover-close" type="button" (click)="showEtiquetasPopover = false">
+                        <lucide-icon [img]="XIcon" [size]="16" [strokeWidth]="2"></lucide-icon>
+                      </button>
+                    </div>
+                    <div class="alertas2__etiquetas-popover-search">
+                      <app-search-input
+                        size="small"
+                        placeholder="Buscar etiqueta..."
+                        (valueChange)="etiquetaSearch = $event">
+                      </app-search-input>
+                    </div>
+                    <div class="alertas2__etiquetas-popover-body">
+                      @for (group of etiquetaGroups; track group.segment) {
+                        <div class="alertas2__etiquetas-group">
+                          <div class="alertas2__etiquetas-group-header">
+                            <span class="alertas2__etiquetas-group-name">{{ group.segment }}</span>
+                            <span class="alertas2__etiquetas-group-count">{{ group.tags.length }} etiquetas</span>
+                          </div>
+                          <div class="alertas2__etiquetas-chips">
+                            @for (tag of group.tags; track tag.label) {
+                              @if (!etiquetaSearch || tag.label.toLowerCase().includes(etiquetaSearch.toLowerCase())) {
+                                <button class="alertas2__etiqueta-chip"
+                                        [class.alertas2__etiqueta-chip--selected]="selectedEtiquetas.includes(tag.label)"
+                                        [style.background]="tag.bg"
+                                        [style.color]="tag.text"
+                                        [style.border-color]="tag.text + '30'"
+                                        type="button"
+                                        (click)="toggleEtiqueta(tag.label)">
+                                  {{ tag.label }}
+                                  @if (selectedEtiquetas.includes(tag.label)) {
+                                    <lucide-icon [img]="CheckIcon" [size]="12" [strokeWidth]="2.5"></lucide-icon>
+                                  }
+                                </button>
+                              }
+                            }
+                          </div>
+                        </div>
+                      }
+                    </div>
+                    <div class="alertas2__etiquetas-popover-footer">
+                      <span class="alertas2__etiquetas-count">{{ selectedEtiquetas.length }} seleccionadas</span>
+                      <app-button variant="primary" size="small" (clicked)="showEtiquetasPopover = false">Aplicar</app-button>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Sources Select -->
+            <app-select
+              label="Fuentes"
+              size="medium"
+              placeholder="Todas"
+              [options]="sourceOptions">
+            </app-select>
+
+            <!-- Sentiment -->
+            <div class="alertas2__form-group">
+              <label class="alertas2__form-label">Sentimiento</label>
+              <div class="alertas2__sentiment-row">
+                <button class="alertas2__sentiment-btn"
+                        [class.alertas2__sentiment-btn--positive]="selectedSentiments.positive"
+                        (click)="toggleSentiment('positive')">
+                  <lucide-icon [img]="CircleCheckIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  Positiva
+                </button>
+                <button class="alertas2__sentiment-btn"
+                        [class.alertas2__sentiment-btn--neutral]="selectedSentiments.neutral"
+                        (click)="toggleSentiment('neutral')">
+                  <lucide-icon [img]="CircleMinusIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  Neutra
+                </button>
+                <button class="alertas2__sentiment-btn"
+                        [class.alertas2__sentiment-btn--negative]="selectedSentiments.negative"
+                        (click)="toggleSentiment('negative')">
+                  <lucide-icon [img]="BanIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  Negativa
+                </button>
+              </div>
+            </div>
+
+            <!-- Advanced Filters Toggle -->
+            <div class="alertas2__adv-toggle-row">
+              <span class="alertas2__adv-toggle-label">Filtros avanzados</span>
+              <button class="alertas2__adv-toggle-btn" (click)="showAdvancedStep1 = !showAdvancedStep1" type="button">
+                <lucide-icon [img]="showAdvancedStep1 ? ChevronUpIcon : ChevronDownIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              </button>
+            </div>
+
+            @if (showAdvancedStep1) {
+              <div class="alertas2__adv-content">
+                <!-- Paises -->
+                <app-select
+                  label="Paises"
+                  size="medium"
+                  placeholder="Todos"
+                  [options]="countryOptions">
+                </app-select>
+
+                <!-- Influencia -->
+                <div class="alertas2__form-group">
+                  <label class="alertas2__form-label">Influencia</label>
+                  <div class="alertas2__influence-row">
+                    @for (inf of influenceOptions; track inf.label) {
+                      <button
+                        class="alertas2__influence-btn"
+                        [class.alertas2__influence-btn--active]="selectedInfluence.includes(inf.label)"
+                        (click)="toggleInfluence(inf.label)">
+                        <span class="alertas2__influence-label">{{ inf.label }}</span>
+                        <span class="alertas2__influence-range">{{ inf.range }}</span>
+                      </button>
+                    }
+                  </div>
+                </div>
+
+                <!-- Propiedad -->
+                <div class="alertas2__form-group">
+                  <label class="alertas2__form-label">Propiedad</label>
+                  <div class="alertas2__toggle-row">
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedPropiedad.includes('terceros')"
+                            (click)="togglePropiedad('terceros')">
+                      Terceros
+                    </button>
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedPropiedad.includes('propio')"
+                            (click)="togglePropiedad('propio')">
+                      Propio
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Interaccion -->
+                <div class="alertas2__form-group">
+                  <label class="alertas2__form-label">Interacción</label>
+                  <div class="alertas2__toggle-row">
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedInteraction.includes('originales')"
+                            (click)="toggleInteraction('originales')">
+                      <lucide-icon [img]="FileTextIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      Originales
+                    </button>
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedInteraction.includes('respuestas')"
+                            (click)="toggleInteraction('respuestas')">
+                      <lucide-icon [img]="MessageSquareIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      Respuestas
+                    </button>
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedInteraction.includes('rts')"
+                            (click)="toggleInteraction('rts')">
+                      <lucide-icon [img]="Share2Icon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      RTs/Shares
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Formato -->
+                <div class="alertas2__form-group">
+                  <label class="alertas2__form-label">Formato</label>
+                  <div class="alertas2__toggle-row">
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedFormats.includes('texto')"
+                            (click)="toggleFormat('texto')">
+                      <lucide-icon [img]="FileTextIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      Texto
+                    </button>
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedFormats.includes('imagen')"
+                            (click)="toggleFormat('imagen')">
+                      <lucide-icon [img]="ImageIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      Imagen
+                    </button>
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedFormats.includes('video')"
+                            (click)="toggleFormat('video')">
+                      <lucide-icon [img]="VideoIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      Video
+                    </button>
+                    <button class="alertas2__filter-toggle"
+                            [class.alertas2__filter-toggle--active]="selectedFormats.includes('link')"
+                            (click)="toggleFormat('link')">
+                      <lucide-icon [img]="LinkIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      Link
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Idioma -->
+                <app-select
+                  label="Idioma"
+                  size="medium"
+                  placeholder="Todos"
+                  [options]="languageOptions">
+                </app-select>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <!-- STEP 2 -->
+    @if (currentStep === 2) {
+      <div class="alertas2__form">
+        <!-- Window Presets -->
+        <div class="alertas2__form-group">
+          <label class="alertas2__form-label">Ventana de envío</label>
+          <div class="alertas2__window-presets">
+            <button class="alertas2__window-btn"
+                    [class.alertas2__window-btn--active]="windowPreset === 'always'"
+                    (click)="setWindowPreset('always')">
+              <span class="alertas2__window-btn-name">Simpre</span>
+              <span class="alertas2__window-btn-sub">L-D 24/7</span>
+            </button>
+            <button class="alertas2__window-btn"
+                    [class.alertas2__window-btn--active]="windowPreset === 'work'"
+                    (click)="setWindowPreset('work')">
+              <span class="alertas2__window-btn-name">Horario laboral</span>
+              <span class="alertas2__window-btn-sub">L-V  8-18h</span>
+            </button>
+            <button class="alertas2__window-btn"
+                    [class.alertas2__window-btn--active]="windowPreset === 'custom'"
+                    (click)="setWindowPreset('custom')">
+              <span class="alertas2__window-btn-name">Personalizado</span>
+              <span class="alertas2__window-btn-sub">Tu defines</span>
+            </button>
+          </div>
+
+          @if (windowPreset === 'custom') {
+            <div class="alertas2__custom-window">
+              <div class="alertas2__form-group" style="width: 100%;">
+                <label class="alertas2__form-label">Días</label>
+                <div class="alertas2__days-row">
+                  @for (day of dayLabelsFull; track $index) {
+                    <button class="alertas2__day-chip"
+                            [class.alertas2__day-chip--active]="customDays[$index]"
+                            (click)="toggleDay($index)">
+                      {{ day }}
+                    </button>
+                  }
+                </div>
+              </div>
+              <div class="alertas2__custom-time-group">
+                <div class="alertas2__time-field">
+                  <label class="alertas2__form-label">De</label>
+                  <div class="alertas2__time-select">
+                    <input type="text" class="alertas2__time-input" [value]="customTimeFrom" placeholder="00:00"
+                           (input)="customTimeFrom = $any($event.target).value">
+                    <lucide-icon [img]="ClockIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  </div>
+                </div>
+                <div class="alertas2__time-field">
+                  <label class="alertas2__form-label">a</label>
+                  <div class="alertas2__time-select">
+                    <input type="text" class="alertas2__time-input" [value]="customTimeTo" placeholder="00:00"
+                           (input)="customTimeTo = $any($event.target).value">
+                    <lucide-icon [img]="ClockIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          <span class="alertas2__tz-link">
+            Zona horaria: UTC-5 Lima
+            <a class="alertas2__tz-change" href="javascript:void(0)">Cambiar</a>
+          </span>
+        </div>
+
+        <!-- Channel Selector -->
+        <div class="alertas2__form-group">
+          <label class="alertas2__form-label">Canal de entrega</label>
+          <div class="alertas2__channel-cards">
+            <button class="alertas2__channel-card"
+                    [class.alertas2__channel-card--active]="selectedChannels.includes('email')"
+                    (click)="toggleChannel('email')">
+              <lucide-icon [img]="MailIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <div class="alertas2__channel-card-info">
+                <span class="alertas2__channel-card-name">Email</span>
+                <span class="alertas2__channel-card-desc">Sin limite mensual</span>
+              </div>
+            </button>
+            <button class="alertas2__channel-card"
+                    [class.alertas2__channel-card--active]="selectedChannels.includes('wa')"
+                    (click)="toggleChannel('wa')">
+              <lucide-icon [img]="MessageCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              <div class="alertas2__channel-card-info">
+                <span class="alertas2__channel-card-name">WhatsApp</span>
+                <span class="alertas2__channel-card-desc">1,753 msgs restantes</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Recipients & Frequency Card -->
+        @if (selectedChannels.includes('email') || selectedChannels.includes('wa')) {
+          <div class="alertas2__recipients-card">
+            @if (selectedChannels.includes('email')) {
+              <div class="alertas2__recipients-header">
+                <span class="alertas2__form-label">Destinatarios email</span>
+                <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Tiempo mínimo entre envíos por email. 'Tiempo real' envía cada vez que el acumulado alcanza el volumen mínimo (~cada 30 min). Opciones más largas agrupan menciones en menos correos.">
+                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                </span>
+              </div>
+              <app-chip-input
+                placeholder="Agregar email..."
+                size="medium">
+              </app-chip-input>
+
+              <div class="alertas2__recipients-header" style="margin-top: 16px;">
+                <span class="alertas2__form-label">Frecuencia Email</span>
+                <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Tiempo mínimo entre envíos por email. 'Tiempo real' envía cada vez que el acumulado alcanza el volumen mínimo (~cada 30 min). Opciones más largas agrupan menciones en menos correos.">
+                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                </span>
+              </div>
+              <div class="alertas2__freq-options">
+                @for (freq of frequencyOptions; track freq) {
+                  <button class="alertas2__freq-btn" [class.alertas2__freq-btn--active]="emailFrequency === freq" (click)="setEmailFrequency(freq)">
+                    {{ freq }}
+                  </button>
+                }
+              </div>
+            }
+
+            @if (selectedChannels.includes('wa')) {
+              @if (selectedChannels.includes('email')) {
+                <div class="alertas2__recipients-divider"></div>
+              }
+              <div class="alertas2__recipients-header">
+                <span class="alertas2__form-label">Destinatarios WhatsApp <span style="font-weight: 400; font-size: 12px; color: #a6a6a6;">(Max 3)</span></span>
+              </div>
+              @if (waRecipients.length > 0) {
+                <div class="alertas2__wa-chips">
+                  @for (num of waRecipients; track $index) {
+                    <span class="alertas2__wa-chip">
+                      {{ num }}
+                      <button type="button" class="alertas2__wa-chip-x" (click)="removeWaRecipient($index)" aria-label="Eliminar">
+                        <lucide-icon [img]="XIcon" [size]="12" [strokeWidth]="2"></lucide-icon>
+                      </button>
+                    </span>
+                  }
+                </div>
+              }
+              <div class="alertas2__wa-phone-row">
+                <div class="alertas2__wa-country-wrap">
+                  <button class="alertas2__wa-country" type="button" (click)="showCountryDropdown = !showCountryDropdown">
+                    <span class="alertas2__wa-flag-emoji">{{ selectedCountry.flag }}</span>
+                    <span>{{ selectedCountry.code }}</span>
+                    <lucide-icon [img]="ChevronDownIcon" [size]="12" [strokeWidth]="1.5"></lucide-icon>
+                  </button>
+                  @if (showCountryDropdown) {
+                    <div class="alertas2__country-dropdown">
+                      <div class="alertas2__country-search">
+                        <lucide-icon [img]="SearchIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                        <input type="text" placeholder="Buscar país..." [(ngModel)]="countrySearchQuery" class="alertas2__country-search-input">
+                      </div>
+                      <div class="alertas2__country-list">
+                        @for (country of filteredCountries; track country.code) {
+                          <button class="alertas2__country-item"
+                                  [class.alertas2__country-item--active]="selectedCountry.code === country.code"
+                                  type="button"
+                                  (click)="selectCountry(country)">
+                            <span class="alertas2__wa-flag-emoji">{{ country.flag }}</span>
+                            <span class="alertas2__country-name">{{ country.name }}</span>
+                            <span class="alertas2__country-code">{{ country.code }}</span>
+                          </button>
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+                <input type="text" class="alertas2__wa-phone-input" placeholder="0" [(ngModel)]="waPhoneNumber">
+                <button class="alertas2__wa-add-btn" type="button" (click)="addWaRecipient()">
+                  Agregar
+                </button>
+              </div>
+
+              <div class="alertas2__recipients-header" style="margin-top: 16px;">
+                <span class="alertas2__form-label">Frecuencia de WhatsApp</span>
+                <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Tiempo mínimo entre envíos por WhatsApp. No se recomienda 'Tiempo real' porque cada envío descuenta de la bolsa mensual del plan y puede agotarla rápidamente. Default: 3h.">
+                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                </span>
+              </div>
+              <div class="alertas2__freq-options">
+                @for (freq of waFrequencyOptions; track freq) {
+                  <button class="alertas2__freq-btn" [class.alertas2__freq-btn--active]="waFrequency === freq" (click)="setWaFrequency(freq)">
+                    {{ freq }}
+                  </button>
+                }
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Advanced Step 2 -->
+        <div class="alertas2__adv-toggle-row">
+          <span class="alertas2__adv-toggle-label">Configuración adicional</span>
+          <button class="alertas2__adv-toggle-btn" type="button" (click)="showAdvancedStep2 = !showAdvancedStep2">
+            <lucide-icon [img]="showAdvancedStep2 ? ChevronUpIcon : ChevronDownIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        </div>
+
+        @if (showAdvancedStep2) {
+          <div class="alertas2__adv-card">
+            <div class="alertas2__form-group">
+              <div class="alertas2__recipients-header">
+                <span class="alertas2__form-label">Volumen mínimo</span>
+                <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="El sistema revisa cada 30 min. Si hay menos de X menciones nuevas, no se envía notificación.">
+                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                </span>
+              </div>
+              <div class="alertas2__vol-wrap">
+                <app-number-input [value]="volumeMin" [min]="1" size="medium" variant="buttons" (valueChange)="volumeMin = $event"></app-number-input>
+                <span>Al menos menciones nuevas</span>
+              </div>
+            </div>
+            <div class="alertas2__adv-row-grid">
+              <app-select label="Idioma" size="medium" placeholder="Todos" [options]="languageOptions"></app-select>
+              <div>
+                <div class="alertas2__recipients-header" style="margin-bottom: 8px;">
+                  <span class="alertas2__form-label">Válida hasta</span>
+                  <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Si se deja vacío, la alerta no tiene fecha de finalización y permanece activa indefinidamente.">
+                    <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                  </span>
+                </div>
+                <app-select-date size="medium"></app-select-date>
+              </div>
+            </div>
+            <div class="alertas2__form-group">
+              <div class="alertas2__sentiment-switch-row">
+                <div class="alertas2__sentiment-switch-label">
+                  <label class="alertas2__form-label">Sentimiento</label>
+                  <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Apagar para no incluir el sentimiento en los listados de menciones ni mensajes de la alerta.">
+                    <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                  </span>
+                </div>
+                <label class="alertas2__switch">
+                  <input type="checkbox" [(ngModel)]="sentimentSwitchOn">
+                  <span class="alertas2__switch-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Custom Footer (outside scroll area) -->
+    <div modal-footer class="alertas2__modal-footer">
+      @if (currentStep === 2 && editingAlertId) {
+        <app-button variant="white" size="medium" (clicked)="onModalCancel()">Atrás</app-button>
+        <div class="alertas2__modal-footer-spacer"></div>
+        <app-button variant="white" size="medium" (clicked)="closeCreateModal()">Cancelar</app-button>
+        <app-button variant="secondary" size="medium" [disabled]="false" (clicked)="onModalConfirm()">Guardar cambios</app-button>
+      } @else if (currentStep === 2) {
+        <app-button variant="white" size="medium" (clicked)="onModalCancel()">Atrás</app-button>
+        <div class="alertas2__modal-footer-spacer"></div>
+        <app-button variant="white" size="medium" (clicked)="closeCreateModal()">Cancelar</app-button>
+        <app-button variant="primary" size="medium" (clicked)="onModalConfirm()">Crear alerta</app-button>
+      } @else {
+        <app-button variant="white" size="medium" (clicked)="closeCreateModal()">Cancelar</app-button>
+        <app-button variant="primary" size="medium" [disabled]="!isStep1Valid" (clicked)="onModalConfirm()">Siguiente</app-button>
+      }
+    </div>
+  </app-modal>
+
+  <!-- HISTORY MODAL -->
+  <app-modal
+    [isOpen]="showHistoryModal"
+    [title]="historyTitle"
+    maxWidth="520px"
+    [showFooter]="false"
+    (close)="closeHistoryModal()">
+    @if (historyEntries.length === 0) {
+      <p class="alertas2__history-empty">Esta alerta aun no ha enviado notificaciones</p>
+    } @else {
+      <div class="alertas2__history-list">
+        @for (entry of historyEntries; track entry.date) {
+          <div class="alertas2__history-item">
+            <div class="alertas2__history-dot"></div>
+            <div class="alertas2__history-info">
+              <span class="alertas2__history-date">{{ entry.date }}</span>
+              <span class="alertas2__history-meta">
+                {{ entry.mentions }} menciones -
+                <span class="alertas2__history-neg">{{ entry.neg }} neg</span> -
+                <span class="alertas2__history-neu">{{ entry.neu }} neu</span> -
+                <span class="alertas2__history-pos">{{ entry.pos }} pos</span>
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </app-modal>
+
+  <!-- DELETE MODAL -->
+  <app-confirm-code-modal
+    [visible]="showDeleteModal"
+    [title]="'Eliminar alerta: ' + deleteAlertName"
+    message="Esta accion no se puede deshacer."
+    [code]="deleteCode"
+    confirmText="Eliminar"
+    cancelText="Cancelar"
+    (confirmed)="onDeleteConfirm()"
+    (cancelled)="closeDeleteModal()">
+  </app-confirm-code-modal>
+
+  <!-- TOAST -->
+  <app-toast
+    [message]="toastMessage"
+    [variant]="toastVariant"
+    [(visible)]="showToast">
+  </app-toast>
+
+</div>
