@@ -168,6 +168,7 @@ import { ButtonComponent } from '../button/button.component';
       &__content {
         padding: 0 24px 24px;
         overflow-y: auto;
+        overflow-x: hidden;
         flex: 1;
       }
 

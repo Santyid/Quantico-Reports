@@ -42,7 +42,7 @@ import {
   Settings,
   X,
   Check,
-  CircleHelp,
+  Info,
   Globe,
   Users,
   MessageSquare,
@@ -140,7 +140,7 @@ export class Alertas2Component {
   readonly SettingsIcon = Settings;
   readonly XIcon = X;
   readonly CheckIcon = Check;
-  readonly CircleHelpIcon = CircleHelp;
+  readonly InfoIcon = Info;
   readonly GlobeIcon = Globe;
   readonly UsersIcon = Users;
   readonly MessageSquareIcon = MessageSquare;
