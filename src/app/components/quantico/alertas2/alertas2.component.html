@@ -227,7 +227,7 @@
                 [class.alertas2__consultas-tab--active]="consultasSubTab === 'repetidas'"
                 (click)="consultasSubTab = 'repetidas'">
                 <lucide-icon [img]="ClockIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
-                Repetidas
+                Recientes
               </button>
             </div>
 
@@ -268,7 +268,7 @@
               </div>
             }
 
-            <!-- Repetidas tab -->
+            <!-- Recientes tab -->
             @if (consultasSubTab === 'repetidas') {
               <div class="alertas2__consultas-list">
                 @for (item of repetidasItems; track item.label) {
@@ -348,7 +348,6 @@
                                         [class.alertas2__etiqueta-chip--selected]="selectedEtiquetas.includes(tag.label)"
                                         [style.background]="tag.bg"
                                         [style.color]="tag.text"
-                                        [style.border-color]="tag.text + '30'"
                                         type="button"
                                         (click)="toggleEtiqueta(tag.label)">
                                   {{ tag.label }}
@@ -624,7 +623,7 @@
               <div class="alertas2__recipients-header">
                 <span class="alertas2__form-label">Destinatarios email</span>
                 <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Tiempo mínimo entre envíos por email. 'Tiempo real' envía cada vez que el acumulado alcanza el volumen mínimo (~cada 30 min). Opciones más largas agrupan menciones en menos correos.">
-                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                  <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
                 </span>
               </div>
               <app-chip-input
@@ -635,7 +634,7 @@
               <div class="alertas2__recipients-header" style="margin-top: 16px;">
                 <span class="alertas2__form-label">Frecuencia Email</span>
                 <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Tiempo mínimo entre envíos por email. 'Tiempo real' envía cada vez que el acumulado alcanza el volumen mínimo (~cada 30 min). Opciones más largas agrupan menciones en menos correos.">
-                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                  <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
                 </span>
               </div>
               <div class="alertas2__freq-options">
@@ -703,7 +702,7 @@
               <div class="alertas2__recipients-header" style="margin-top: 16px;">
                 <span class="alertas2__form-label">Frecuencia de WhatsApp</span>
                 <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Tiempo mínimo entre envíos por WhatsApp. No se recomienda 'Tiempo real' porque cada envío descuenta de la bolsa mensual del plan y puede agotarla rápidamente. Default: 3h.">
-                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                  <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
                 </span>
               </div>
               <div class="alertas2__freq-options">
@@ -731,7 +730,7 @@
               <div class="alertas2__recipients-header">
                 <span class="alertas2__form-label">Volumen mínimo</span>
                 <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="El sistema revisa cada 30 min. Si hay menos de X menciones nuevas, no se envía notificación.">
-                  <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                  <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
                 </span>
               </div>
               <div class="alertas2__vol-wrap">
@@ -739,26 +738,22 @@
                 <span>Al menos menciones nuevas</span>
               </div>
             </div>
-            <div class="alertas2__adv-row-grid">
-              <app-select label="Idioma" size="medium" placeholder="Todos" [options]="languageOptions"></app-select>
+            <div class="alertas2__adv-row-3col">
+              <app-select label="Idioma" size="medium" placeholder="Español" [options]="languageOptions"></app-select>
               <div>
                 <div class="alertas2__recipients-header" style="margin-bottom: 8px;">
                   <span class="alertas2__form-label">Válida hasta</span>
                   <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Si se deja vacío, la alerta no tiene fecha de finalización y permanece activa indefinidamente.">
-                    <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                    <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
                   </span>
                 </div>
                 <app-select-date size="medium"></app-select-date>
               </div>
-            </div>
-            <div class="alertas2__form-group">
-              <div class="alertas2__sentiment-switch-row">
-                <div class="alertas2__sentiment-switch-label">
-                  <label class="alertas2__form-label">Sentimiento</label>
-                  <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Apagar para no incluir el sentimiento en los listados de menciones ni mensajes de la alerta.">
-                    <lucide-icon [img]="CircleHelpIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
-                  </span>
-                </div>
+              <div class="alertas2__sentiment-switch-col">
+                <label class="alertas2__form-label" style="margin: 0; white-space: nowrap;">Sentimiento</label>
+                <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="Apagar para no incluir el sentimiento en los listados de menciones ni mensajes de la alerta.">
+                  <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+                </span>
                 <label class="alertas2__switch">
                   <input type="checkbox" [(ngModel)]="sentimentSwitchOn">
                   <span class="alertas2__switch-slider"></span>
