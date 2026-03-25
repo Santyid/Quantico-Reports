@@ -50,7 +50,9 @@
           [attr.aria-selected]="selectedOption?.value === option.value"
           [attr.aria-disabled]="option.disabled"
           (click)="selectOption(option); $event.stopPropagation()">
-          @if (option.icon) {
+          @if (option.imageUrl) {
+            <img class="app-select__option-img" [src]="option.imageUrl" [alt]="option.label" />
+          } @else if (option.icon) {
             <span class="app-select__option-icon">
               <lucide-icon [img]="option.icon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
             </span>

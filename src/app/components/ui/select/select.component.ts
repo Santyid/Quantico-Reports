@@ -9,6 +9,7 @@ export interface SelectOption {
   label: string;
   disabled?: boolean;
   icon?: LucideIconData;
+  imageUrl?: string;
 }
 
 export interface SelectConfig {

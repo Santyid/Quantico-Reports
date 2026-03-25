@@ -430,7 +430,8 @@
     position: absolute;
     bottom: calc(100% + 4px);
     right: 0;
-    width: 191px;
+    min-width: 220px;
+    white-space: nowrap;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
@@ -782,7 +783,7 @@
     cursor: pointer;
     transition: border-color 0.15s;
 
-    &:hover { border-color: $qt-grey-200; }
+    &:hover { cursor: pointer; }
   }
 
   &__etiquetas-popover {
@@ -1708,6 +1709,20 @@
     color: $qt-grey-500;
   }
 
+  &__vol-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  &__vol-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: $qt-grey-500;
+    white-space: nowrap;
+  }
+
   &__form-row-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1850,11 +1865,15 @@
     }
   }
 
-  &__history-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: $qt-secondary-500;
+  &__history-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: $qt-secondary-50;
+    color: $qt-secondary-500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
   }
 
@@ -1864,14 +1883,14 @@
   }
 
   &__history-date {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
     color: $qt-grey-800;
     display: block;
   }
 
   &__history-meta {
-    font-size: 11px;
+    font-size: 13px;
     color: $qt-grey-300;
     margin-top: 2px;
     display: block;
@@ -1880,6 +1899,52 @@
   &__history-neg { color: $qt-error-400; }
   &__history-neu { color: $qt-grey-300; }
   &__history-pos { color: $qt-success-400; }
+
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $qt-grey-100;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    color: $qt-grey-300;
+    transition: all 0.15s;
+
+    &--small {
+      width: 36px;
+      height: 36px;
+    }
+
+    &:hover {
+      border-color: darken(#c3c3c3, 10%);
+      background: #f9f9f9;
+    }
+  }
+
+  &__history-item .alertas2__icon-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  // === Select overrides for Quantico colors ===
+  .app-select__option:hover:not(.app-select__option--disabled) {
+    background-color: $qt-secondary-50 !important;
+  }
+
+  .app-select__option--selected {
+    background-color: $qt-secondary-50 !important;
+    color: $qt-secondary-500 !important;
+
+    .app-select__option-icon {
+      color: $qt-secondary-500 !important;
+    }
+  }
+
+  .app-select__option--selected .app-select__option-label {
+    color: $qt-secondary-500;
+    font-weight: 600;
+  }
 }
 
 @keyframes alertSearchExpand {

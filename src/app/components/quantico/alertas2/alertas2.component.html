@@ -129,13 +129,17 @@
                       <lucide-icon [img]="PencilIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
                       <span>Editar</span>
                     </button>
-                    <button class="alertas2__dropdown-item" (click)="onMenuAction('toggle', alert)">
-                      <lucide-icon [img]="alert.active ? PauseIcon : PlayIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
-                      <span>{{ alert.active ? 'Pausar' : 'Activar' }}</span>
-                    </button>
                     <button class="alertas2__dropdown-item" (click)="onMenuAction('duplicate', alert)">
                       <lucide-icon [img]="CopyIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
                       <span>Duplicar</span>
+                    </button>
+                    <button class="alertas2__dropdown-item" (click)="onMenuAction('history', alert)">
+                      <lucide-icon [img]="ClockIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>Historial de envíos</span>
+                    </button>
+                    <button class="alertas2__dropdown-item" (click)="onMenuAction('toggle', alert)">
+                      <lucide-icon [img]="alert.active ? PauseIcon : PlayIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                      <span>{{ alert.active ? 'Pausar' : 'Activar' }}</span>
                     </button>
                     <button class="alertas2__dropdown-item alertas2__dropdown-item--danger" (click)="onMenuAction('delete', alert)">
                       <lucide-icon [img]="Trash2Icon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
@@ -274,7 +278,7 @@
                 @for (item of repetidasItems; track item.label) {
                   <div class="alertas2__consultas-item">
                     <div class="alertas2__consultas-item-icon alertas2__consultas-item-icon--purple">
-                      <lucide-icon [img]="BookmarkIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                      <lucide-icon [img]="ClockIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
                     </div>
                     <span class="alertas2__consultas-item-label">{{ item.label }}</span>
                     <span class="alertas2__consultas-item-time">{{ item.time }}</span>
@@ -726,17 +730,14 @@
 
         @if (showAdvancedStep2) {
           <div class="alertas2__adv-card">
-            <div class="alertas2__form-group">
-              <div class="alertas2__recipients-header">
-                <span class="alertas2__form-label">Volumen mínimo</span>
-                <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="El sistema revisa cada 30 min. Si hay menos de X menciones nuevas, no se envía notificación.">
-                  <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
-                </span>
-              </div>
-              <div class="alertas2__vol-wrap">
-                <app-number-input [value]="volumeMin" [min]="1" size="medium" variant="buttons" (valueChange)="volumeMin = $event"></app-number-input>
-                <span>Al menos menciones nuevas</span>
-              </div>
+            <div class="alertas2__vol-row">
+              <span class="alertas2__form-label" style="margin: 0; white-space: nowrap;">Volumen mínimo</span>
+              <span class="alertas2__tooltip alertas2__tooltip--info" data-tooltip="El sistema revisa cada 30 min. Si hay menos de X menciones nuevas, no se envía notificación.">
+                <lucide-icon [img]="InfoIcon" [size]="14" [strokeWidth]="1.5" class="alertas2__info-icon"></lucide-icon>
+              </span>
+              <span class="alertas2__vol-text">Al menos</span>
+              <app-number-input [value]="volumeMin" [min]="1" size="medium" variant="buttons" (valueChange)="volumeMin = $event"></app-number-input>
+              <span class="alertas2__vol-text">menciones nuevas</span>
             </div>
             <div class="alertas2__adv-row-3col">
               <app-select label="Idioma" size="medium" placeholder="Español" [options]="languageOptions"></app-select>
@@ -771,7 +772,7 @@
         <app-button variant="white" size="medium" (clicked)="onModalCancel()">Atrás</app-button>
         <div class="alertas2__modal-footer-spacer"></div>
         <app-button variant="white" size="medium" (clicked)="closeCreateModal()">Cancelar</app-button>
-        <app-button variant="secondary" size="medium" [disabled]="false" (clicked)="onModalConfirm()">Guardar cambios</app-button>
+        <app-button variant="primary" size="medium" [disabled]="false" (clicked)="onModalConfirm()">Guardar cambios</app-button>
       } @else if (currentStep === 2) {
         <app-button variant="white" size="medium" (clicked)="onModalCancel()">Atrás</app-button>
         <div class="alertas2__modal-footer-spacer"></div>
@@ -788,7 +789,7 @@
   <app-modal
     [isOpen]="showHistoryModal"
     [title]="historyTitle"
-    maxWidth="520px"
+    maxWidth="580px"
     [showFooter]="false"
     (close)="closeHistoryModal()">
     @if (historyEntries.length === 0) {
@@ -797,16 +798,23 @@
       <div class="alertas2__history-list">
         @for (entry of historyEntries; track entry.date) {
           <div class="alertas2__history-item">
-            <div class="alertas2__history-dot"></div>
+            <div class="alertas2__history-icon">
+              <lucide-icon [img]="ClockIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+            </div>
             <div class="alertas2__history-info">
               <span class="alertas2__history-date">{{ entry.date }}</span>
               <span class="alertas2__history-meta">
-                {{ entry.mentions }} menciones -
-                <span class="alertas2__history-neg">{{ entry.neg }} neg</span> -
-                <span class="alertas2__history-neu">{{ entry.neu }} neu</span> -
+                {{ entry.mentions }} menciones ·
+                <span class="alertas2__history-neg">{{ entry.neg }} neg</span> ·
+                <span class="alertas2__history-neu">{{ entry.neu }} neu</span> ·
                 <span class="alertas2__history-pos">{{ entry.pos }} pos</span>
               </span>
             </div>
+            <span class="alertas2__tooltip" data-tooltip="Ver menciones">
+              <button class="alertas2__icon-btn alertas2__icon-btn--small" (click)="$event.stopPropagation()">
+                <lucide-icon [img]="ExternalLinkIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              </button>
+            </span>
           </div>
         }
       </div>
