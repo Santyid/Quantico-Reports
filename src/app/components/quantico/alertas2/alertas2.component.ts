@@ -56,6 +56,7 @@ import {
   CircleCheck,
   CircleMinus,
   Ban,
+  ExternalLink,
   LucideIconData
 } from 'lucide-angular';
 
@@ -130,6 +131,7 @@ export class Alertas2Component {
   readonly PencilIcon = Pencil;
   readonly CopyIcon = Copy;
   readonly ClockIcon = Clock;
+  readonly ExternalLinkIcon = ExternalLink;
   readonly PauseIcon = Pause;
   readonly PlayIcon = Play;
   readonly MoreHorizontalIcon = MoreHorizontal;
@@ -269,12 +271,12 @@ export class Alertas2Component {
   ];
 
   readonly sourceOptions: SelectOption[] = [
-    { value: 'twitter', label: 'X / Twitter' },
-    { value: 'facebook', label: 'Facebook' },
-    { value: 'instagram', label: 'Instagram' },
-    { value: 'tiktok', label: 'TikTok' },
-    { value: 'linkedin', label: 'LinkedIn' },
-    { value: 'youtube', label: 'YouTube' }
+    { value: 'twitter', label: 'X / Twitter', imageUrl: 'images/social-x-twitter.svg' },
+    { value: 'facebook', label: 'Facebook', imageUrl: 'images/social-facebook.svg' },
+    { value: 'instagram', label: 'Instagram', imageUrl: 'images/social-instagram.svg' },
+    { value: 'tiktok', label: 'TikTok', imageUrl: 'images/social-tiktok.svg' },
+    { value: 'linkedin', label: 'LinkedIn', imageUrl: 'images/social-linkedin.svg' },
+    { value: 'youtube', label: 'YouTube', imageUrl: 'images/social-youtube.svg' }
   ];
 
   readonly languageOptions: SelectOption[] = [
@@ -454,6 +456,7 @@ export class Alertas2Component {
       case 'edit': this.openEditModal(alert); break;
       case 'toggle': this.toggleAlertActive(alert); break;
       case 'duplicate': this.duplicateAlert(alert); break;
+      case 'history': this.openHistoryModal(alert); break;
       case 'delete': this.openDeleteModal(alert); break;
     }
   }
@@ -476,8 +479,9 @@ export class Alertas2Component {
   getMenuItemsForAlert(alert: Alert): MenuItem[] {
     return [
       { id: 'edit', label: 'Editar', icon: Pencil },
-      { id: 'toggle', label: alert.active ? 'Pausar' : 'Activar', icon: alert.active ? Pause : Play },
       { id: 'duplicate', label: 'Duplicar', icon: Copy },
+      { id: 'history', label: 'Historial de envíos', icon: Clock },
+      { id: 'toggle', label: alert.active ? 'Pausar' : 'Activar', icon: alert.active ? Pause : Play },
       { id: 'delete', label: 'Eliminar', icon: Trash2 }
     ];
   }
