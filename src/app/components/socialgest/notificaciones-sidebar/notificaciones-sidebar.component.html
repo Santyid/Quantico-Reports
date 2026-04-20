@@ -1,0 +1,150 @@
+@if (isOpen) {
+  <div class="notif-sidebar__backdrop" (click)="onBackdropClick()"></div>
+  <aside class="notif-sidebar" [class.notif-sidebar--open]="isOpen">
+    <!-- Header -->
+    <div class="notif-sidebar__header">
+      <div class="notif-sidebar__header-left">
+        <div class="notif-sidebar__header-icon">
+          <lucide-icon [img]="BellRingIcon" [size]="32" [strokeWidth]="1.5" color="#0061fe"></lucide-icon>
+        </div>
+        <h2 class="notif-sidebar__title">Notificaciones</h2>
+      </div>
+      <div class="notif-sidebar__header-right">
+        <button class="notif-sidebar__mark-read-btn" (click)="markAllAsRead()">
+          <lucide-icon [img]="CheckIcon" [size]="16" [strokeWidth]="1.5" color="#0061fe"></lucide-icon>
+          Marcar todas como leidas
+        </button>
+        <button class="notif-sidebar__close-btn" (click)="close()" aria-label="Cerrar notificaciones">
+          <lucide-icon [img]="CloseIcon" [size]="20" [strokeWidth]="1.5" color="#7d7d7d"></lucide-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs & Filter Row -->
+    <div class="notif-sidebar__tabs-row">
+      <div class="notif-sidebar__tabs">
+        <button
+          class="notif-sidebar__tab"
+          [class.notif-sidebar__tab--active]="activeTab === 'nuevas'"
+          (click)="setTab('nuevas')">
+          Nuevas
+        </button>
+        <button
+          class="notif-sidebar__tab"
+          [class.notif-sidebar__tab--active]="activeTab === 'todas'"
+          (click)="setTab('todas')">
+          Todas
+          @if (allCount > 0) {
+            <span class="notif-sidebar__tab-badge">{{ allCount }}</span>
+          }
+        </button>
+      </div>
+      <div class="notif-sidebar__filters">
+        <div class="notif-sidebar__search-input">
+          <lucide-icon [img]="SearchIcon" [size]="18" [strokeWidth]="1.5" color="#a6a6a6"></lucide-icon>
+          <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            placeholder="Buscar..."
+            class="notif-sidebar__search-field"
+            aria-label="Buscar notificaciones"
+          />
+        </div>
+        <div class="notif-sidebar__filter-select-wrapper">
+          <button
+            class="notif-sidebar__filter-trigger"
+            (click)="toggleFilterDropdown()"
+            aria-label="Filtrar notificaciones">
+            <lucide-icon [img]="FilterIcon" [size]="16" [strokeWidth]="1.5" color="#7d7d7d"></lucide-icon>
+            <span class="notif-sidebar__filter-label">{{ selectedFilter }}</span>
+            <lucide-icon
+              [img]="ChevronDownIcon"
+              [size]="16"
+              [strokeWidth]="1.5"
+              color="#7d7d7d"
+              class="notif-sidebar__filter-chevron"
+              [class.notif-sidebar__filter-chevron--open]="isFilterDropdownOpen">
+            </lucide-icon>
+          </button>
+          @if (isFilterDropdownOpen) {
+            <div class="notif-sidebar__filter-backdrop" (click)="closeFilterDropdown()"></div>
+            <div class="notif-sidebar__filter-dropdown">
+              @for (option of filterOptions; track option.value) {
+                <button
+                  class="notif-sidebar__filter-option"
+                  [class.notif-sidebar__filter-option--active]="selectedFilter === option.label"
+                  (click)="selectFilter(option)">
+                  <lucide-icon [img]="option.icon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                  <span>{{ option.label }}</span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification List -->
+    <div class="notif-sidebar__list">
+      @for (group of groupedNotifications; track group.group) {
+        <div class="notif-sidebar__group">
+          <h3 class="notif-sidebar__group-title">{{ group.group }}</h3>
+          <div class="notif-sidebar__group-items">
+            @for (notification of group.items; track notification.id) {
+              <div
+                class="notif-sidebar__item"
+                [class.notif-sidebar__item--unread]="!notification.read"
+                [class.notif-sidebar__item--read]="notification.read">
+                <div class="notif-sidebar__item-icon"
+                  [class.notif-sidebar__item-icon--unread]="!notification.read"
+                  [class.notif-sidebar__item-icon--read]="notification.read">
+                  <lucide-icon
+                    [img]="getIconForType(notification.iconType)"
+                    [size]="20"
+                    [strokeWidth]="1.5"
+                    [attr.color]="!notification.read ? '#0061fe' : '#7d7d7d'">
+                  </lucide-icon>
+                </div>
+                <div class="notif-sidebar__item-content">
+                  <div class="notif-sidebar__item-title-row">
+                    <span class="notif-sidebar__item-title"
+                      [class.notif-sidebar__item-title--unread]="!notification.read"
+                      [class.notif-sidebar__item-title--read]="notification.read">
+                      {{ notification.title }}
+                    </span>
+                    @if (notification.network) {
+                      <span class="notif-sidebar__badge" [ngClass]="getNetworkBadgeClass(notification.network)">
+                        {{ notification.network }}
+                      </span>
+                    }
+                  </div>
+                  <span class="notif-sidebar__item-description"
+                    [class.notif-sidebar__item-description--unread]="!notification.read"
+                    [class.notif-sidebar__item-description--read]="notification.read">
+                    {{ notification.description }}
+                  </span>
+                  <span class="notif-sidebar__item-time">{{ notification.time }}</span>
+                </div>
+                <div class="notif-sidebar__item-right">
+                  <span class="notif-sidebar__item-date">{{ notification.fullDate }}</span>
+                  <button
+                    class="notif-sidebar__item-action"
+                    [class.notif-sidebar__item-action--unread]="!notification.read"
+                    [class.notif-sidebar__item-action--read]="notification.read"
+                    aria-label="Ver detalle">
+                    <lucide-icon
+                      [img]="ExternalLinkIcon"
+                      [size]="9"
+                      [strokeWidth]="1.5"
+                      [attr.color]="!notification.read ? '#ffffff' : '#7d7d7d'">
+                    </lucide-icon>
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </aside>
+}

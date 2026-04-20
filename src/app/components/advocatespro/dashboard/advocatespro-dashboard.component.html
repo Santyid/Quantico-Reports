@@ -2083,6 +2083,9 @@
                         <span class="style-guide__token-swatch" [style.background-color]="hex"></span>
                       }
                       <code>{{ resolveTokenDisplay(token.value) }}</code>
+                      @if (isStandaloneColor(token.value)) {
+                        <lucide-icon [img]="TriangleAlertIcon" [size]="14" [strokeWidth]="1.5" class="style-guide__token-warning" title="Color no ligado a la paleta $ap-*"></lucide-icon>
+                      }
                     </div>
                   </td>
                   <td>{{ token.usage }}</td>

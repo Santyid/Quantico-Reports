@@ -380,7 +380,7 @@ $report-title-color: $grey-800;
 $ap-accent-50: #fdedf2;    // secundary-50 — Selected background
 $ap-accent-100: #fac7d5;   // secundary-100 — Badge background
 $ap-accent-500: #ee4a79;   // secundary-500 — Base accent
-$ap-accent-600: #d9426e;   // secundary-600 — Hover
+$ap-accent-600: #d9436e;   // secundary-600 — Hover
 $ap-accent-700: #a93556;   // secundary-700 — Active/pressed
 
 // ========================================
@@ -1562,3 +1562,536 @@ $qt-code-block-text: $qt-grey-100;
 $qt-ui-label-color: $qt-grey-200;
 $qt-ui-light-bg: $qt-neutral-200;
 $qt-swatch-border: $qt-grey-50;
+
+// ========================================
+// ========================================
+//
+//   ADVOCATESPRO DESIGN SYSTEM TOKENS
+//   Independent from all other environments
+//   Prefix: $ap-
+//   Base secondary color: PINK (#ee4a79)
+//
+// ========================================
+// ========================================
+
+// ========================================
+// AdvocatesPro — Primary Color Scale (Blue)
+// Same values as Quantico primary — both products use blue as primary
+// ========================================
+$ap-primary-50: #e6efff;   // rgb(230, 239, 255)
+$ap-primary-100: #b0ceff;  // rgb(176, 206, 255)
+$ap-primary-200: #8ab6ff;  // rgb(138, 182, 255)
+$ap-primary-300: #5495fe;  // rgb(84, 149, 254)
+$ap-primary-400: #3381fe;  // rgb(51, 129, 254)
+$ap-primary-500: #0061fe;  // rgb(0, 97, 254) — Base Primary
+$ap-primary-600: #0058e7;  // rgb(0, 88, 231)
+$ap-primary-700: #0045b4;  // rgb(0, 69, 180)
+$ap-primary-800: #00358c;  // rgb(0, 53, 140)
+$ap-primary-900: #00296b;  // rgb(0, 41, 107)
+
+// ========================================
+// AdvocatesPro — Secondary Color Scale (Pink/Rose)
+// Base: #ee4a79 — distinctive pink accent for AdvocatesPro
+// ========================================
+$ap-secondary-50: #fdedf2;   // rgb(253, 237, 242)
+$ap-secondary-100: #fac7d5;  // rgb(250, 199, 213)
+$ap-secondary-200: #f7acc1;  // rgb(247, 172, 193)
+$ap-secondary-300: #f38fab;  // rgb(243, 143, 171)
+$ap-secondary-400: #f07090;  // rgb(240, 112, 144)
+$ap-secondary-500: #ee4a79;  // rgb(238, 74, 121) — Base Secondary (pink)
+$ap-secondary-600: #d9436e;  // rgb(217, 67, 110)
+$ap-secondary-700: #b93c5e;  // rgb(185, 60, 94)
+$ap-secondary-800: #8a2c48;  // rgb(138, 44, 72)
+$ap-secondary-900: #5e1c30;  // rgb(94, 28, 48)
+
+// ========================================
+// AdvocatesPro — Grey Color Scale
+// Same values as Quantico grey
+// ========================================
+$ap-grey-50: #ececec;   // rgb(236, 236, 236)
+$ap-grey-100: #c3c3c3;  // rgb(195, 195, 195)
+$ap-grey-200: #a6a6a6;  // rgb(166, 166, 166)
+$ap-grey-300: #7d7d7d;  // rgb(125, 125, 125)
+$ap-grey-400: #646464;  // rgb(100, 100, 100)
+$ap-grey-500: #3d3d3d;  // rgb(61, 61, 61)
+$ap-grey-600: #383838;  // rgb(56, 56, 56)
+$ap-grey-700: #2b2b2b;  // rgb(43, 43, 43)
+$ap-grey-800: #222222;  // rgb(34, 34, 34)
+$ap-grey-900: #1a1a1a;  // rgb(26, 26, 26)
+
+// ========================================
+// AdvocatesPro — Success Color Scale (Green)
+// Same values as Quantico success
+// ========================================
+$ap-success-50: #ebfaf1;   // rgb(235, 250, 241)
+$ap-success-100: #aeebc7;  // rgb(174, 235, 199)
+$ap-success-200: #8de3b0;  // rgb(141, 227, 176)
+$ap-success-300: #5bd68d;  // rgb(91, 214, 141)
+$ap-success-400: #3ace76;  // rgb(58, 206, 118) — Base Success
+$ap-success-500: #299053;  // rgb(41, 144, 83)
+$ap-success-600: #237e48;  // rgb(35, 126, 72)
+
+// ========================================
+// AdvocatesPro — Warning Color Scale (Orange)
+// Same values as Quantico warning
+// ========================================
+$ap-warning-50: #fff5ea;   // rgb(255, 245, 234)
+$ap-warning-100: #ffd4a8;  // rgb(255, 212, 168)
+$ap-warning-200: #ffc285;  // rgb(255, 194, 133)
+$ap-warning-300: #ffa850;  // rgb(255, 168, 80)
+$ap-warning-400: #ff962c;  // rgb(255, 150, 44) — Base Warning
+$ap-warning-500: #b3691f;  // rgb(179, 105, 31)
+$ap-warning-600: #9c5c1b;  // rgb(156, 92, 27)
+
+// ========================================
+// AdvocatesPro — Error Color Scale (Red)
+// Same values as Quantico error
+// ========================================
+$ap-error-50: #ffecec;   // rgb(255, 236, 236)
+$ap-error-100: #feb0b0;  // rgb(254, 176, 176)
+$ap-error-200: #fd8f8f;  // rgb(253, 143, 143)
+$ap-error-300: #fd5f5f;  // rgb(253, 95, 95)
+$ap-error-400: #fc3e3e;  // rgb(252, 62, 62) — Base Error
+$ap-error-500: #b02b2b;  // rgb(176, 43, 43)
+$ap-error-600: #9a2626;  // rgb(154, 38, 38)
+
+// ========================================
+// AdvocatesPro — Neutral Color Scale
+// Same values as Quantico neutral
+// ========================================
+$ap-neutral-50: #fafafa;   // rgb(250, 250, 250)
+$ap-neutral-100: #f5f7fa;  // rgb(245, 247, 250)
+$ap-neutral-200: #f1f1f1;  // rgb(241, 241, 241)
+
+// ========================================
+// AdvocatesPro — White
+// ========================================
+$ap-white-base: #ffffff;  // rgb(255, 255, 255)
+
+// ========================================
+// AdvocatesPro — Black
+// ========================================
+$ap-black-base: #000000;  // rgb(0, 0, 0)
+
+// ========================================
+// AdvocatesPro — AI Color Scale (Cyan)
+// Same values as Quantico IA — usado para botones AI
+// ========================================
+$ap-ai-50: #e5f6ff;   // rgb(229, 246, 255) — Hover boton AI
+$ap-ai-100: #c9edff;  // rgb(201, 237, 255) — Active boton AI
+$ap-ai-500: #00aaff;  // rgb(0, 170, 255) — Base AI — borde boton AI
+
+// ========================================
+// AdvocatesPro — Button Tokens
+// ========================================
+
+// Primary Button
+$ap-button-primary-bg: $ap-primary-500;
+$ap-button-primary-text: $ap-neutral-200;
+$ap-button-primary-hover: $ap-primary-600;
+$ap-button-primary-active: $ap-primary-700;
+$ap-button-primary-disabled-bg: $ap-primary-200;
+
+// Secondary Button (Pink)
+$ap-button-secondary-bg: $ap-secondary-500;
+$ap-button-secondary-text: $ap-white-base;
+$ap-button-secondary-hover: $ap-secondary-600;
+$ap-button-secondary-active: $ap-secondary-700;
+$ap-button-secondary-disabled-bg: $ap-secondary-200;
+
+// White Button
+$ap-button-white-bg: $ap-white-base;
+$ap-button-white-text: $ap-grey-300;
+$ap-button-white-border: $ap-grey-100;
+$ap-button-white-hover: $ap-neutral-50;
+$ap-button-white-active: $ap-neutral-200;
+$ap-button-white-disabled-text: $ap-grey-100;
+
+// Button Sizing
+$ap-button-height-large: 48px;
+$ap-button-height-medium: 40px;
+$ap-button-height-small: 36px;
+$ap-button-font-size-large: 18px;
+$ap-button-font-size-medium: 16px;
+$ap-button-font-size-small: 14px;
+
+// Button Shared
+$ap-button-font-family: 'Urbanist', sans-serif;
+$ap-button-font-weight: 700;
+$ap-button-border-radius: 12px;
+$ap-button-padding: 10px 20px;
+$ap-button-gap: 10px;
+$ap-button-transition: all 0.2s ease;
+
+// ========================================
+// AdvocatesPro — Toggle / Switch Tokens
+// ========================================
+$ap-toggle-off-bg: $ap-grey-100;
+$ap-toggle-on-bg: $ap-secondary-500;
+$ap-toggle-thumb-bg: $ap-white-base;
+$ap-toggle-thumb-shadow: 0 1px 3px rgba($ap-black-base, 0.15);
+
+// Toggle Sizes
+$ap-toggle-large-width: 56px;
+$ap-toggle-large-height: 32px;
+$ap-toggle-large-thumb: 24px;
+$ap-toggle-medium-width: 48px;
+$ap-toggle-medium-height: 28px;
+$ap-toggle-medium-thumb: 20px;
+$ap-toggle-small-width: 40px;
+$ap-toggle-small-height: 24px;
+$ap-toggle-small-thumb: 18px;
+
+// ========================================
+// AdvocatesPro — Checkbox Tokens
+// ========================================
+$ap-checkbox-size: 24px;
+$ap-checkbox-border-radius: 8px;
+$ap-checkbox-border: $ap-grey-100;
+$ap-checkbox-bg: $ap-white-base;
+$ap-checkbox-active-bg: $ap-secondary-500;
+$ap-checkbox-active-border: $ap-secondary-500;
+$ap-checkbox-hover-border: $ap-secondary-500;
+$ap-checkbox-check-color: $ap-white-base;
+
+// ========================================
+// AdvocatesPro — Radio Button Tokens (PrimeNG)
+// ========================================
+$ap-radio-checked-bg: $ap-secondary-500;
+$ap-radio-checked-border: $ap-secondary-500;
+$ap-radio-checked-hover-bg: $ap-secondary-600;
+$ap-radio-hover-border: $ap-secondary-300;
+$ap-radio-border: $ap-grey-100;
+$ap-radio-icon-color: $ap-white-base;
+$ap-radio-focus-ring: rgba(238, 74, 121, 0.2);
+
+// ========================================
+// AdvocatesPro — Radio Tab Tokens
+// ========================================
+$ap-radio-tab-height: 36px;
+$ap-radio-tab-border-radius: 12px;
+$ap-radio-tab-font-size: 14px;
+$ap-radio-tab-font-weight: 700;
+$ap-radio-tab-color: $ap-grey-300;
+$ap-radio-tab-hover-color: $ap-grey-500;
+$ap-radio-tab-active-border: $ap-secondary-500;
+$ap-radio-tab-active-color: $ap-secondary-500;
+$ap-radio-tab-active-bg: $ap-secondary-50;
+
+// ========================================
+// AdvocatesPro — Status Badge Tokens
+// ========================================
+$ap-badge-border: $ap-grey-100;
+$ap-badge-border-radius: 50px;
+$ap-badge-font-family: 'Urbanist', sans-serif;
+$ap-badge-font-size: 14px;
+$ap-badge-font-weight: 600;
+$ap-badge-text-color: $ap-grey-500;
+$ap-badge-padding: 4px 10px;
+$ap-badge-gap: 10px;
+$ap-badge-dot-size: 10px;
+$ap-badge-height-small: 30px;
+$ap-badge-height-large: 36px;
+
+// Badge Dot Colors
+$ap-badge-positiva: $ap-success-400;
+$ap-badge-negativa: $ap-error-400;
+$ap-badge-neutra: $ap-warning-400;
+$ap-badge-desactivado: $ap-grey-200;
+
+// ========================================
+// AdvocatesPro — Chip Tokens
+// ========================================
+$ap-chip-height: 26px;
+$ap-chip-border-radius: 23px;
+$ap-chip-padding: 6px 11px;
+$ap-chip-gap: 10px;
+$ap-chip-font-family: 'Urbanist', sans-serif;
+$ap-chip-font-size: 14px;
+$ap-chip-font-weight: 600;
+
+// Chip White
+$ap-chip-white-bg: $ap-white-base;
+$ap-chip-white-border: $ap-grey-100;
+$ap-chip-white-color: $ap-grey-500;
+
+// Chip Primary
+$ap-chip-primary-bg: $ap-primary-100;
+$ap-chip-primary-color: $ap-primary-500;
+
+// Chip Secondary (Pink)
+$ap-chip-secondary-bg: $ap-secondary-100;
+$ap-chip-secondary-color: $ap-secondary-500;
+
+// Chip Disabled
+$ap-chip-disabled-bg: $ap-grey-50;
+$ap-chip-disabled-border: $ap-grey-100;
+$ap-chip-disabled-color: $ap-grey-300;
+
+// Chip Add Button
+$ap-chip-add-border: $ap-grey-100;
+$ap-chip-add-color: $ap-grey-300;
+$ap-chip-add-hover-border: $ap-primary-500;
+$ap-chip-add-hover-color: $ap-primary-500;
+
+// ========================================
+// AdvocatesPro — Toaster Tokens
+// ========================================
+$ap-toast-border-radius: 10px;
+$ap-toast-accent-width: 13px;
+$ap-toast-shadow: 0 8px 32px rgba($ap-black-base, 0.08);
+$ap-toast-success-stripe: $ap-success-400;
+$ap-toast-success-bg: $ap-success-50;
+$ap-toast-success-color: $ap-success-400;
+$ap-toast-warning-stripe: $ap-warning-400;
+$ap-toast-warning-bg: $ap-warning-50;
+$ap-toast-warning-color: $ap-warning-400;
+$ap-toast-error-stripe: $ap-error-400;
+$ap-toast-error-bg: $ap-error-50;
+$ap-toast-error-color: $ap-error-400;
+$ap-toast-info-stripe: $ap-primary-500;
+$ap-toast-info-bg: $ap-primary-50;
+$ap-toast-info-color: $ap-primary-500;
+$ap-toast-title-color: $ap-grey-800;
+$ap-toast-message-color: $ap-grey-300;
+$ap-toast-close-color: $ap-grey-300;
+
+// ========================================
+// AdvocatesPro — Select Segment Tokens
+// ========================================
+$ap-select-seg-border-color: $ap-grey-100;
+$ap-select-seg-selected-bg: $ap-secondary-50;
+$ap-select-seg-selected-border: $ap-secondary-500;
+$ap-select-seg-hover-border: $ap-secondary-500;
+$ap-select-seg-chip-radius: 23px;
+$ap-select-colorpicker-dot-size: 25px;
+$ap-select-user-avatar-size-lg: 36px;
+
+// ========================================
+// AdvocatesPro — Confirm Modal Tokens
+// ========================================
+$ap-confirm-modal-border-radius: 12px;
+$ap-confirm-modal-max-width: 700px;
+$ap-confirm-modal-icon-size: 56px;
+$ap-confirm-general-btn-bg: $ap-primary-500;
+$ap-confirm-confirmation-icon-color: $ap-success-400;
+$ap-confirm-alert-btn-bg: $ap-secondary-500;  // pink alert button (distinctive AdvocatesPro)
+$ap-confirm-error-btn-bg: $ap-error-400;
+
+// ========================================
+// AdvocatesPro — Code Modal Tokens
+// ========================================
+$ap-code-modal-border-radius: 24px;
+$ap-code-modal-icon-bg: $ap-warning-50;
+$ap-code-modal-icon-color: $ap-warning-400;
+$ap-code-modal-btn-bg: $ap-error-400;
+$ap-code-modal-code-size: 40px;
+
+// ========================================
+// AdvocatesPro — Stepper Tokens
+// ========================================
+$ap-stepper-track-height: 5px;
+$ap-stepper-track-bg: $ap-grey-50;
+$ap-stepper-progress-bg: $ap-primary-500;
+$ap-stepper-track-radius: 10px;
+$ap-stepper-label-font: 'DM Sans', sans-serif;
+$ap-stepper-label-color: $ap-grey-300;
+
+// ========================================
+// AdvocatesPro — TextArea Tokens
+// ========================================
+$ap-textarea-border: $ap-grey-100;
+$ap-textarea-border-focus: $ap-primary-500;
+$ap-textarea-border-radius: 10px;
+$ap-textarea-font: 'Urbanist', sans-serif;
+$ap-textarea-font-size: 16px;
+$ap-textarea-label-color: $ap-grey-800;
+$ap-textarea-placeholder-color: $ap-grey-200;
+$ap-textarea-padding: 12px 16px;
+$ap-textarea-disabled-opacity: 0.5;
+
+// ========================================
+// AdvocatesPro — Number Input Tokens
+// ========================================
+$ap-number-input-border: $ap-grey-100;
+$ap-number-input-border-radius: 12px;
+$ap-number-input-height-lg: 48px;
+$ap-number-input-height-md: 40px;
+$ap-number-input-height-sm: 36px;
+$ap-number-input-btn-color: $ap-grey-300;
+$ap-number-input-btn-hover: $ap-primary-500;
+$ap-number-input-font: 'Urbanist', sans-serif;
+$ap-number-input-font-weight: 600;
+
+// ========================================
+// AdvocatesPro — Account Counter Tokens
+// ========================================
+$ap-counter-border: $ap-grey-100;
+$ap-counter-border-radius: 12px;
+$ap-counter-icon-color: $ap-grey-300;
+$ap-counter-text-color: $ap-grey-800;
+$ap-counter-font: 'Urbanist', sans-serif;
+$ap-counter-font-weight: 600;
+$ap-counter-height-lg: 48px;
+$ap-counter-height-md: 40px;
+$ap-counter-height-sm: 36px;
+
+// ========================================
+// AdvocatesPro — Select Date Tokens
+// ========================================
+$ap-select-date-border: $ap-grey-100;
+$ap-select-date-border-radius: 12px;
+$ap-select-date-font: 'Urbanist', sans-serif;
+$ap-select-date-height-lg: 48px;
+$ap-select-date-height-md: 40px;
+$ap-select-date-height-sm: 36px;
+$ap-select-date-dropdown-shadow: 0 4px 15px rgba($ap-black-base, 0.12);
+$ap-select-date-day-selected-bg: $ap-primary-500;
+$ap-select-date-day-other-color: $ap-grey-100;
+
+// ========================================
+// AdvocatesPro — Hour Date Picker Tokens
+// ========================================
+$ap-hour-picker-spinner-gap: 18px;
+$ap-hour-picker-chevron-color: $ap-grey-300;
+$ap-hour-picker-chevron-hover: $ap-grey-500;
+$ap-hour-picker-value-color: $ap-grey-800;
+$ap-hour-picker-divider: $ap-grey-50;
+
+// ========================================
+// AdvocatesPro — Select Tokens
+// ========================================
+$ap-select-bg: $ap-white-base;
+$ap-select-border: $ap-grey-100;
+$ap-select-border-focus: $ap-primary-500;
+$ap-select-border-radius: 10px;
+$ap-select-height-lg: 48px;
+$ap-select-height-md: 40px;
+$ap-select-height-sm: 36px;
+$ap-select-font: 'Urbanist', sans-serif;
+$ap-select-placeholder-color: $ap-grey-300;
+$ap-select-text-color: $ap-grey-800;
+$ap-select-icon-color: $ap-grey-300;
+$ap-select-dropdown-shadow: 0 4px 12px rgba($ap-black-base, 0.1);
+$ap-select-option-hover-bg: $ap-neutral-50;
+$ap-select-disabled-bg: $ap-grey-100;
+$ap-select-disabled-text: $ap-grey-200;
+
+// ========================================
+// AdvocatesPro — Search Input Tokens
+// ========================================
+$ap-search-input-bg: $ap-white-base;
+$ap-search-input-border: $ap-grey-100;
+$ap-search-input-border-focus: $ap-primary-500;
+$ap-search-input-border-radius: 50px;
+$ap-search-input-height-lg: 50px;
+$ap-search-input-height-md: 40px;
+$ap-search-input-height-sm: 36px;
+$ap-search-input-icon-color: $ap-grey-200;
+$ap-search-input-placeholder-color: $ap-grey-200;
+$ap-search-input-font: 'Urbanist', sans-serif;
+$ap-search-input-font-weight: 500;
+$ap-search-input-disabled-bg: $ap-grey-100;
+$ap-search-input-disabled-text: $ap-grey-200;
+
+// ========================================
+// AdvocatesPro — Text Input Tokens
+// ========================================
+$ap-text-input-border: $ap-grey-100;
+$ap-text-input-border-focus: $ap-primary-500;
+$ap-text-input-border-error: $ap-error-400;
+$ap-text-input-border-radius: 10px;
+$ap-text-input-height-lg: 48px;
+$ap-text-input-height-md: 40px;
+$ap-text-input-height-sm: 36px;
+$ap-text-input-font: 'Urbanist', sans-serif;
+$ap-text-input-label-color: $ap-grey-800;
+$ap-text-input-placeholder-color: $ap-grey-200;
+$ap-text-input-icon-color: $ap-grey-300;
+
+// ========================================
+// AdvocatesPro — Card Tokens
+// ========================================
+$ap-card-bg: $ap-white-base;
+$ap-card-border: $ap-grey-50;
+$ap-card-border-radius: 16px;
+$ap-card-padding-simple: 24px;
+$ap-card-padding-large: 32px;
+$ap-card-title-color: $ap-grey-800;
+$ap-card-title-size-titled: 20px;
+$ap-card-title-size-large: 24px;
+
+// ========================================
+// AdvocatesPro — Menu Tokens
+// ========================================
+$ap-menu-bg: $ap-white-base;
+$ap-menu-border: $ap-grey-50;
+$ap-menu-border-radius: 12px;
+$ap-menu-item-hover: $ap-neutral-50;
+$ap-menu-item-selected-bg: $ap-secondary-50;  // pink tint (distinctive AdvocatesPro)
+$ap-menu-item-color: $ap-grey-500;
+$ap-menu-icon-color: $ap-grey-300;
+$ap-menu-radio-active: $ap-secondary-500;
+$ap-menu-checkbox-active: $ap-secondary-500;
+
+// ========================================
+// AdvocatesPro — Avatar Tokens
+// ========================================
+$ap-avatar-border-radius: 50%;
+$ap-avatar-size-xlarge: 50px;
+$ap-avatar-size-large: 36px;
+$ap-avatar-size-medium: 26px;
+$ap-avatar-size-small: 18px;
+$ap-avatar-badge-size: 16px;
+$ap-avatar-badge-border: $ap-white-base;
+
+// ========================================
+// AdvocatesPro — Metricas / Bar Chart Tokens
+// ========================================
+$ap-bar-primary-from: $ap-primary-300;
+$ap-bar-primary-to: $ap-primary-500;
+$ap-bar-secondary-from: $ap-secondary-300;  // pink gradient
+$ap-bar-secondary-to: $ap-secondary-500;
+$ap-bar-size-large: 78px;
+$ap-bar-size-medium: 35px;
+$ap-bar-size-small: 17px;
+$ap-bar-size-xsmall: 8px;
+$ap-bar-label-color: $ap-grey-300;
+$ap-sparkline-primary-color: $ap-primary-500;
+$ap-sparkline-secondary-color: $ap-secondary-500;  // pink
+$ap-donut-stroke-width: 30px;
+$ap-trend-up-color: $ap-success-400;
+$ap-trend-down-color: $ap-error-400;
+
+// ========================================
+// AdvocatesPro — Table Tokens
+// ========================================
+$ap-table-bg: $ap-white-base;
+$ap-table-border-color: $ap-grey-50;
+$ap-table-header-color: $ap-grey-500;
+$ap-table-body-color: $ap-grey-500;
+$ap-table-title-color: $ap-grey-800;
+$ap-table-title-size: 24px;
+$ap-table-row-height: 44px;
+$ap-table-cell-padding: 10px 20px;
+$ap-table-hover-bg: $ap-neutral-50;
+$ap-table-action-icon-color: $ap-secondary-500;  // pink action icons
+
+// ========================================
+// AdvocatesPro — Dashboard UI Tokens
+// ========================================
+$ap-code-block-bg: $ap-grey-900;
+$ap-code-block-text: $ap-grey-100;
+$ap-ui-label-color: $ap-grey-200;
+$ap-ui-light-bg: $ap-neutral-200;
+$ap-swatch-border: $ap-grey-50;
+
+// ========================================
+// AdvocatesPro — Legacy Accent Aliases
+// (backward compatibility for $ap-accent-* token names)
+// ========================================
+$ap-accent-50: $ap-secondary-50;
+$ap-accent-100: $ap-secondary-100;
+$ap-accent-500: $ap-secondary-500;
+$ap-accent-600: $ap-secondary-600;
+$ap-accent-700: $ap-secondary-700;

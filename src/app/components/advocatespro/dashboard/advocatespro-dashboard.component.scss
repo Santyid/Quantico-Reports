@@ -352,7 +352,7 @@
     gap: 12px;
     margin-bottom: 32px;
     padding: 24px;
-    background: #fafafa;
+    background: $ap-neutral-50;
     border-radius: 12px;
   }
 
@@ -565,18 +565,18 @@
 
     // Secundary
     &--secundary {
-      background-color: #ee4a79;
-      color: #ffffff;
+      background-color: $ap-secondary-500;
+      color: $ap-white-base;
 
-      lucide-icon { color: #ffffff; }
+      lucide-icon { color: $ap-white-base; }
 
-      &:hover:not(:disabled) { background-color: #d9436e; }
-      &:active:not(:disabled) { background-color: #a93556; }
+      &:hover:not(:disabled) { background-color: $ap-secondary-600; }
+      &:active:not(:disabled) { background-color: $ap-secondary-700; }
 
       &:disabled {
-        background-color: #f7acc1;
-        color: #ffffff;
-        lucide-icon { color: #ffffff; }
+        background-color: $ap-secondary-200;
+        color: $ap-white-base;
+        lucide-icon { color: $ap-white-base; }
       }
     }
 
@@ -588,7 +588,7 @@
 
       lucide-icon { color: $grey-300; }
 
-      &:hover:not(:disabled) { background-color: #fafafa; }
+      &:hover:not(:disabled) { background-color: $ap-neutral-50; }
       &:active:not(:disabled) { background-color: $white-800; }
 
       &:disabled {
@@ -784,6 +784,12 @@
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
   }
 
+  &__token-warning {
+    color: $ap-warning-400;
+    flex-shrink: 0;
+    cursor: help;
+  }
+
   &__copy-btn {
     display: flex;
     align-items: center;
@@ -814,7 +820,7 @@
     margin-bottom: 12px;
     border: 1px solid $grey-50;
     border-radius: 8px;
-    background: #fafafa;
+    background: $ap-neutral-50;
     cursor: pointer;
     transition: all 0.15s ease;
 
@@ -986,8 +992,8 @@
 
   &__type-code {
     font-size: 11px !important;
-    color: #a93556 !important;
-    background: #fef2f5 !important;
+    color: $ap-secondary-700 !important;
+    background: $ap-secondary-50 !important;
   }
 
   // ═══════════════════════════════════════
@@ -1057,7 +1063,7 @@
     justify-content: center;
     gap: 10px;
     border-radius: 12px;
-    border: 2px solid #00aaff;
+    border: 2px solid $ap-ai-500;
     background: white;
     cursor: pointer;
     font-family: 'Urbanist', sans-serif;
@@ -1067,8 +1073,8 @@
 
     lucide-icon { color: $primary-500; }
 
-    &:hover:not(:disabled) { background-color: #e5f6ff; }
-    &:active:not(:disabled) { background-color: #c9edff; }
+    &:hover:not(:disabled) { background-color: $ap-ai-50; }
+    &:active:not(:disabled) { background-color: $ap-ai-100; }
 
     &:disabled {
       opacity: 0.5;
@@ -1111,12 +1117,12 @@
 
     // Secundary
     &--secundary {
-      background-color: #ee4a79;
-      lucide-icon { color: #ffffff; }
+      background-color: $ap-secondary-500;
+      lucide-icon { color: $ap-white-base; }
 
-      &:hover:not(:disabled) { background-color: #d9436e; }
-      &:active:not(:disabled) { background-color: #a93556; }
-      &:disabled { background-color: #f7acc1; }
+      &:hover:not(:disabled) { background-color: $ap-secondary-600; }
+      &:active:not(:disabled) { background-color: $ap-secondary-700; }
+      &:disabled { background-color: $ap-secondary-200; }
     }
 
     // White
@@ -1125,7 +1131,7 @@
       border: 1px solid $grey-100;
       lucide-icon { color: $grey-300; }
 
-      &:hover:not(:disabled) { background-color: #fafafa; }
+      &:hover:not(:disabled) { background-color: $ap-neutral-50; }
       &:active:not(:disabled) { background-color: $white-800; }
       &:disabled {
         lucide-icon { color: $grey-100; }
@@ -1149,7 +1155,7 @@
     &--small { width: 40px; height: 24px; }
 
     &--on {
-      background-color: #ee4a79;
+      background-color: $ap-secondary-500;
       justify-content: flex-end;
     }
   }
@@ -1182,30 +1188,30 @@
     lucide-icon { color: white; }
 
     &:hover:not(.style-guide__checkbox--active) {
-      border-color: #ee4a79;
+      border-color: $ap-secondary-500;
     }
 
     &--active {
-      background-color: #ee4a79;
-      border-color: #ee4a79;
+      background-color: $ap-secondary-500;
+      border-color: $ap-secondary-500;
     }
   }
 
   // Radio Button (PrimeNG Lara with custom colors)
   &__primeng-radios {
     // Override PrimeNG Lara theme with project's secundary color
-    --p-radiobutton-checked-background: #ee4a79;
-    --p-radiobutton-checked-border-color: #ee4a79;
-    --p-radiobutton-checked-hover-background: #d9436e;
-    --p-radiobutton-checked-hover-border-color: #d9436e;
-    --p-radiobutton-checked-focus-border-color: #ee4a79;
-    --p-radiobutton-hover-border-color: #f486a5;
-    --p-radiobutton-focus-border-color: #ee4a79;
-    --p-radiobutton-border-color: #c3c3c3;
-    --p-radiobutton-icon-checked-color: #ffffff;
-    --p-radiobutton-icon-checked-hover-color: #ffffff;
-    --p-radiobutton-focus-ring-color: rgba(238, 74, 121, 0.2);
-    --p-radiobutton-focus-ring-shadow: 0 0 0 0.2rem rgba(238, 74, 121, 0.2);
+    --p-radiobutton-checked-background: #{$ap-secondary-500};
+    --p-radiobutton-checked-border-color: #{$ap-secondary-500};
+    --p-radiobutton-checked-hover-background: #{$ap-secondary-600};
+    --p-radiobutton-checked-hover-border-color: #{$ap-secondary-600};
+    --p-radiobutton-checked-focus-border-color: #{$ap-secondary-500};
+    --p-radiobutton-hover-border-color: #{$ap-secondary-300};
+    --p-radiobutton-focus-border-color: #{$ap-secondary-500};
+    --p-radiobutton-border-color: #{$ap-grey-100};
+    --p-radiobutton-icon-checked-color: #{$ap-white-base};
+    --p-radiobutton-icon-checked-hover-color: #{$ap-white-base};
+    --p-radiobutton-focus-ring-color: #{$ap-radio-focus-ring};
+    --p-radiobutton-focus-ring-shadow: 0 0 0 0.2rem #{$ap-radio-focus-ring};
 
     gap: 24px;
   }
@@ -1277,11 +1283,11 @@
     }
 
     &--active {
-      border-color: #f486a5;
-      background: #fdedf2;
-      color: #ee4a79;
+      border-color: $ap-secondary-300;
+      background: $ap-secondary-50;
+      color: $ap-secondary-500;
 
-      lucide-icon { color: #ee4a79; }
+      lucide-icon { color: $ap-secondary-500; }
     }
   }
 
@@ -1308,11 +1314,11 @@
     }
 
     &--active {
-      border-color: #ee4a79;
-      color: #ee4a79;
+      border-color: $ap-secondary-500;
+      color: $ap-secondary-500;
 
       // Inner pill bg
-      background: #fdedf2;
+      background: $ap-secondary-50;
     }
   }
 
@@ -1386,11 +1392,11 @@
 
     // Secundary
     &--secundary {
-      background: #fac7d5;
+      background: $ap-secondary-100;
       border: none;
-      color: #ee4a79;
+      color: $ap-secondary-500;
 
-      lucide-icon { color: #ee4a79; }
+      lucide-icon { color: $ap-secondary-500; }
     }
 
     // Disabled
@@ -1603,13 +1609,13 @@
 
     &:hover:not(&--active) {
       color: $grey-500;
-      background: #fafafa;
+      background: $ap-neutral-50;
     }
 
     &--active {
-      border-color: #ee4a79;
-      color: #ee4a79;
-      background: #fdedf2;
+      border-color: $ap-secondary-500;
+      color: $ap-secondary-500;
+      background: $ap-secondary-50;
     }
   }
 
@@ -1674,9 +1680,9 @@
     }
 
     &--general { border-left: 4px solid $primary-500; }
-    &--confirmation { border-left: 4px solid #3ace76; }
-    &--alert { border-left: 4px solid #ee4a79; }
-    &--error { border-left: 4px solid #fc3e3e; }
+    &--confirmation { border-left: 4px solid $ap-success-400; }
+    &--alert { border-left: 4px solid $ap-secondary-500; }
+    &--error { border-left: 4px solid $ap-error-400; }
     &--warning { border-left: 4px solid #e8922d; }
   }
 
@@ -1774,7 +1780,7 @@
   &__stepper-preview {
     width: 100%;
     padding: 24px;
-    background: #fafafa;
+    background: $ap-neutral-50;
     border-radius: 12px;
     border: 1px solid $grey-50;
   }
@@ -1910,7 +1916,7 @@
     font-family: 'Urbanist', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #222222;
+    color: $ap-grey-800;
     margin: 0 0 24px 0;
     line-height: 24px;
   }
@@ -2038,7 +2044,7 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    color: #222222;
+    color: $ap-grey-800;
     border-radius: 8px;
     transition: background-color 0.15s ease;
 
@@ -2102,8 +2108,8 @@
     }
 
     &--active {
-      color: $ap-accent-500;
-      border-bottom-color: $ap-accent-500;
+      color: $ap-secondary-500;
+      border-bottom-color: $ap-secondary-500;
     }
   }
 }
