@@ -368,102 +368,110 @@ export class AdvocatesproDashboardComponent {
     {
       title: 'Primary',
       swatches: [
-        { name: 'primary-50', hex: '#e6efff', rgb: 'rgb(230, 239, 255)', scssVar: '$primary-50' },
-        { name: 'primary-100', hex: '#b0ceff', rgb: 'rgb(176, 206, 255)', scssVar: '$primary-100' },
-        { name: 'primary-200', hex: '#8ab6ff', rgb: 'rgb(138, 182, 255)', scssVar: '$primary-200' },
-        { name: 'primary-300', hex: '#5495fe', rgb: 'rgb(84, 149, 254)', scssVar: '$primary-300' },
-        { name: 'primary-400', hex: '#3381fe', rgb: 'rgb(51, 129, 254)', scssVar: '$primary-400' },
-        { name: 'primary-500', hex: '#0061fe', rgb: 'rgb(0, 97, 254)', scssVar: '$primary-500', isBase: true },
-        { name: 'primary-600', hex: '#0058e7', rgb: 'rgb(0, 88, 231)', scssVar: '$primary-600' },
-        { name: 'primary-700', hex: '#0045b4', rgb: 'rgb(0, 69, 180)', scssVar: '$primary-700' },
-        { name: 'primary-800', hex: '#00358c', rgb: 'rgb(0, 53, 140)', scssVar: '$primary-800' },
-        { name: 'primary-900', hex: '#00296b', rgb: 'rgb(0, 41, 107)', scssVar: '$primary-900' }
+        { name: 'ap-primary-50', hex: '#e6efff', rgb: 'rgb(230, 239, 255)', scssVar: '$ap-primary-50' },
+        { name: 'ap-primary-100', hex: '#b0ceff', rgb: 'rgb(176, 206, 255)', scssVar: '$ap-primary-100' },
+        { name: 'ap-primary-200', hex: '#8ab6ff', rgb: 'rgb(138, 182, 255)', scssVar: '$ap-primary-200' },
+        { name: 'ap-primary-300', hex: '#5495fe', rgb: 'rgb(84, 149, 254)', scssVar: '$ap-primary-300' },
+        { name: 'ap-primary-400', hex: '#3381fe', rgb: 'rgb(51, 129, 254)', scssVar: '$ap-primary-400' },
+        { name: 'ap-primary-500', hex: '#0061fe', rgb: 'rgb(0, 97, 254)', scssVar: '$ap-primary-500', isBase: true },
+        { name: 'ap-primary-600', hex: '#0058e7', rgb: 'rgb(0, 88, 231)', scssVar: '$ap-primary-600' },
+        { name: 'ap-primary-700', hex: '#0045b4', rgb: 'rgb(0, 69, 180)', scssVar: '$ap-primary-700' },
+        { name: 'ap-primary-800', hex: '#00358c', rgb: 'rgb(0, 53, 140)', scssVar: '$ap-primary-800' },
+        { name: 'ap-primary-900', hex: '#00296b', rgb: 'rgb(0, 41, 107)', scssVar: '$ap-primary-900' }
       ]
     },
     {
-      title: 'Secundary',
+      title: 'Secondary',
       swatches: [
-        { name: 'secundary-50', hex: '#fdedf2', rgb: 'rgb(253, 237, 242)', scssVar: '$secundary-50' },
-        { name: 'secundary-100', hex: '#fac7d5', rgb: 'rgb(250, 199, 213)', scssVar: '$secundary-100' },
-        { name: 'secundary-200', hex: '#f7acc1', rgb: 'rgb(247, 172, 193)', scssVar: '$secundary-200' },
-        { name: 'secundary-300', hex: '#f486a5', rgb: 'rgb(244, 134, 165)', scssVar: '$secundary-300' },
-        { name: 'secundary-400', hex: '#f16e94', rgb: 'rgb(241, 110, 148)', scssVar: '$secundary-400' },
-        { name: 'secundary-500', hex: '#ee4a79', rgb: 'rgb(238, 74, 121)', scssVar: '$secundary-500', isBase: true },
-        { name: 'secundary-600', hex: '#d9436e', rgb: 'rgb(217, 67, 110)', scssVar: '$secundary-600' },
-        { name: 'secundary-700', hex: '#a93556', rgb: 'rgb(169, 53, 86)', scssVar: '$secundary-700' },
-        { name: 'secundary-800', hex: '#832943', rgb: 'rgb(131, 41, 67)', scssVar: '$secundary-800' },
-        { name: 'secundary-900', hex: '#641f33', rgb: 'rgb(100, 31, 51)', scssVar: '$secundary-900' }
+        { name: 'ap-secondary-50', hex: '#fdedf2', rgb: 'rgb(253, 237, 242)', scssVar: '$ap-secondary-50' },
+        { name: 'ap-secondary-100', hex: '#fac7d5', rgb: 'rgb(250, 199, 213)', scssVar: '$ap-secondary-100' },
+        { name: 'ap-secondary-200', hex: '#f7acc1', rgb: 'rgb(247, 172, 193)', scssVar: '$ap-secondary-200' },
+        { name: 'ap-secondary-300', hex: '#f38fab', rgb: 'rgb(243, 143, 171)', scssVar: '$ap-secondary-300' },
+        { name: 'ap-secondary-400', hex: '#f07090', rgb: 'rgb(240, 112, 144)', scssVar: '$ap-secondary-400' },
+        { name: 'ap-secondary-500', hex: '#ee4a79', rgb: 'rgb(238, 74, 121)', scssVar: '$ap-secondary-500', isBase: true },
+        { name: 'ap-secondary-600', hex: '#d9436e', rgb: 'rgb(217, 67, 110)', scssVar: '$ap-secondary-600' },
+        { name: 'ap-secondary-700', hex: '#b93c5e', rgb: 'rgb(185, 60, 94)', scssVar: '$ap-secondary-700' },
+        { name: 'ap-secondary-800', hex: '#8a2c48', rgb: 'rgb(138, 44, 72)', scssVar: '$ap-secondary-800' },
+        { name: 'ap-secondary-900', hex: '#5e1c30', rgb: 'rgb(94, 28, 48)', scssVar: '$ap-secondary-900' }
       ]
     },
     {
       title: 'Grey',
       swatches: [
-        { name: 'grey-50', hex: '#ececec', rgb: 'rgb(236, 236, 236)', scssVar: '$grey-50' },
-        { name: 'grey-100', hex: '#c3c3c3', rgb: 'rgb(195, 195, 195)', scssVar: '$grey-100' },
-        { name: 'grey-200', hex: '#a6a6a6', rgb: 'rgb(166, 166, 166)', scssVar: '$grey-200' },
-        { name: 'grey-300', hex: '#7d7d7d', rgb: 'rgb(125, 125, 125)', scssVar: '$grey-300' },
-        { name: 'grey-400', hex: '#646464', rgb: 'rgb(100, 100, 100)', scssVar: '$grey-400' },
-        { name: 'grey-500', hex: '#3d3d3d', rgb: 'rgb(61, 61, 61)', scssVar: '$grey-500', isBase: true },
-        { name: 'grey-600', hex: '#383838', rgb: 'rgb(56, 56, 56)', scssVar: '$grey-600' },
-        { name: 'grey-700', hex: '#2b2b2b', rgb: 'rgb(43, 43, 43)', scssVar: '$grey-700' },
-        { name: 'grey-800', hex: '#222222', rgb: 'rgb(34, 34, 34)', scssVar: '$grey-800' },
-        { name: 'grey-900', hex: '#1a1a1a', rgb: 'rgb(26, 26, 26)', scssVar: '$grey-900' }
-      ]
-    },
-    {
-      title: 'Error',
-      swatches: [
-        { name: 'error-50', hex: '#ffecec', rgb: 'rgb(255, 236, 236)', scssVar: '$error-50' },
-        { name: 'error-100', hex: '#feb0b0', rgb: 'rgb(254, 176, 176)', scssVar: '$error-100' },
-        { name: 'error-200', hex: '#fd8f8f', rgb: 'rgb(253, 143, 143)', scssVar: '$error-200' },
-        { name: 'error-300', hex: '#fd5f5f', rgb: 'rgb(253, 95, 95)', scssVar: '$error-300' },
-        { name: 'error-400', hex: '#fc3e3e', rgb: 'rgb(252, 62, 62)', scssVar: '$error-400', isBase: true },
-        { name: 'error-500', hex: '#b02b2b', rgb: 'rgb(176, 43, 43)', scssVar: '$error-500' },
-        { name: 'error-600', hex: '#9a2626', rgb: 'rgb(154, 38, 38)', scssVar: '$error-600' }
-      ]
-    },
-    {
-      title: 'Warning',
-      swatches: [
-        { name: 'warning-50', hex: '#fff5ea', rgb: 'rgb(255, 245, 234)', scssVar: '$warning-50' },
-        { name: 'warning-100', hex: '#ffd4a8', rgb: 'rgb(255, 212, 168)', scssVar: '$warning-100' },
-        { name: 'warning-200', hex: '#ffc285', rgb: 'rgb(255, 194, 133)', scssVar: '$warning-200' },
-        { name: 'warning-300', hex: '#ffa850', rgb: 'rgb(255, 168, 80)', scssVar: '$warning-300' },
-        { name: 'warning-400', hex: '#ff962c', rgb: 'rgb(255, 150, 44)', scssVar: '$warning-400', isBase: true },
-        { name: 'warning-500', hex: '#b3691f', rgb: 'rgb(179, 105, 31)', scssVar: '$warning-500' },
-        { name: 'warning-600', hex: '#9c5c1b', rgb: 'rgb(156, 92, 27)', scssVar: '$warning-600' }
+        { name: 'ap-grey-50', hex: '#ececec', rgb: 'rgb(236, 236, 236)', scssVar: '$ap-grey-50' },
+        { name: 'ap-grey-100', hex: '#c3c3c3', rgb: 'rgb(195, 195, 195)', scssVar: '$ap-grey-100' },
+        { name: 'ap-grey-200', hex: '#a6a6a6', rgb: 'rgb(166, 166, 166)', scssVar: '$ap-grey-200' },
+        { name: 'ap-grey-300', hex: '#7d7d7d', rgb: 'rgb(125, 125, 125)', scssVar: '$ap-grey-300' },
+        { name: 'ap-grey-400', hex: '#646464', rgb: 'rgb(100, 100, 100)', scssVar: '$ap-grey-400' },
+        { name: 'ap-grey-500', hex: '#3d3d3d', rgb: 'rgb(61, 61, 61)', scssVar: '$ap-grey-500', isBase: true },
+        { name: 'ap-grey-600', hex: '#383838', rgb: 'rgb(56, 56, 56)', scssVar: '$ap-grey-600' },
+        { name: 'ap-grey-700', hex: '#2b2b2b', rgb: 'rgb(43, 43, 43)', scssVar: '$ap-grey-700' },
+        { name: 'ap-grey-800', hex: '#222222', rgb: 'rgb(34, 34, 34)', scssVar: '$ap-grey-800' },
+        { name: 'ap-grey-900', hex: '#1a1a1a', rgb: 'rgb(26, 26, 26)', scssVar: '$ap-grey-900' }
       ]
     },
     {
       title: 'Success',
       swatches: [
-        { name: 'success-50', hex: '#ebfaf1', rgb: 'rgb(235, 250, 241)', scssVar: '$success-50' },
-        { name: 'success-100', hex: '#aeebc7', rgb: 'rgb(174, 235, 199)', scssVar: '$success-100' },
-        { name: 'success-200', hex: '#8de3b0', rgb: 'rgb(141, 227, 176)', scssVar: '$success-200' },
-        { name: 'success-300', hex: '#5bd68d', rgb: 'rgb(91, 214, 141)', scssVar: '$success-300' },
-        { name: 'success-400', hex: '#3ace76', rgb: 'rgb(58, 206, 118)', scssVar: '$success-400', isBase: true },
-        { name: 'success-500', hex: '#299053', rgb: 'rgb(41, 144, 83)', scssVar: '$success-500' },
-        { name: 'success-600', hex: '#237e48', rgb: 'rgb(35, 126, 72)', scssVar: '$success-600' }
+        { name: 'ap-success-50', hex: '#ebfaf1', rgb: 'rgb(235, 250, 241)', scssVar: '$ap-success-50' },
+        { name: 'ap-success-100', hex: '#aeebc7', rgb: 'rgb(174, 235, 199)', scssVar: '$ap-success-100' },
+        { name: 'ap-success-200', hex: '#8de3b0', rgb: 'rgb(141, 227, 176)', scssVar: '$ap-success-200' },
+        { name: 'ap-success-300', hex: '#5bd68d', rgb: 'rgb(91, 214, 141)', scssVar: '$ap-success-300' },
+        { name: 'ap-success-400', hex: '#3ace76', rgb: 'rgb(58, 206, 118)', scssVar: '$ap-success-400', isBase: true },
+        { name: 'ap-success-500', hex: '#299053', rgb: 'rgb(41, 144, 83)', scssVar: '$ap-success-500' },
+        { name: 'ap-success-600', hex: '#237e48', rgb: 'rgb(35, 126, 72)', scssVar: '$ap-success-600' }
+      ]
+    },
+    {
+      title: 'Warning',
+      swatches: [
+        { name: 'ap-warning-50', hex: '#fff5ea', rgb: 'rgb(255, 245, 234)', scssVar: '$ap-warning-50' },
+        { name: 'ap-warning-100', hex: '#ffd4a8', rgb: 'rgb(255, 212, 168)', scssVar: '$ap-warning-100' },
+        { name: 'ap-warning-200', hex: '#ffc285', rgb: 'rgb(255, 194, 133)', scssVar: '$ap-warning-200' },
+        { name: 'ap-warning-300', hex: '#ffa850', rgb: 'rgb(255, 168, 80)', scssVar: '$ap-warning-300' },
+        { name: 'ap-warning-400', hex: '#ff962c', rgb: 'rgb(255, 150, 44)', scssVar: '$ap-warning-400', isBase: true },
+        { name: 'ap-warning-500', hex: '#b3691f', rgb: 'rgb(179, 105, 31)', scssVar: '$ap-warning-500' },
+        { name: 'ap-warning-600', hex: '#9c5c1b', rgb: 'rgb(156, 92, 27)', scssVar: '$ap-warning-600' }
+      ]
+    },
+    {
+      title: 'Error',
+      swatches: [
+        { name: 'ap-error-50', hex: '#ffecec', rgb: 'rgb(255, 236, 236)', scssVar: '$ap-error-50' },
+        { name: 'ap-error-100', hex: '#feb0b0', rgb: 'rgb(254, 176, 176)', scssVar: '$ap-error-100' },
+        { name: 'ap-error-200', hex: '#fd8f8f', rgb: 'rgb(253, 143, 143)', scssVar: '$ap-error-200' },
+        { name: 'ap-error-300', hex: '#fd5f5f', rgb: 'rgb(253, 95, 95)', scssVar: '$ap-error-300' },
+        { name: 'ap-error-400', hex: '#fc3e3e', rgb: 'rgb(252, 62, 62)', scssVar: '$ap-error-400', isBase: true },
+        { name: 'ap-error-500', hex: '#b02b2b', rgb: 'rgb(176, 43, 43)', scssVar: '$ap-error-500' },
+        { name: 'ap-error-600', hex: '#9a2626', rgb: 'rgb(154, 38, 38)', scssVar: '$ap-error-600' }
       ]
     },
     {
       title: 'Neutral',
       swatches: [
-        { name: 'neutral-50', hex: '#fafafa', rgb: 'rgb(250, 250, 250)', scssVar: '$neutral-50' },
-        { name: 'neutral-100', hex: '#f5f7fa', rgb: 'rgb(245, 247, 250)', scssVar: '$neutral-100' },
-        { name: 'neutral-200', hex: '#f1f1f1', rgb: 'rgb(241, 241, 241)', scssVar: '$neutral-200' }
+        { name: 'ap-neutral-50', hex: '#fafafa', rgb: 'rgb(250, 250, 250)', scssVar: '$ap-neutral-50' },
+        { name: 'ap-neutral-100', hex: '#f5f7fa', rgb: 'rgb(245, 247, 250)', scssVar: '$ap-neutral-100' },
+        { name: 'ap-neutral-200', hex: '#f1f1f1', rgb: 'rgb(241, 241, 241)', scssVar: '$ap-neutral-200' }
+      ]
+    },
+    {
+      title: 'AI',
+      swatches: [
+        { name: 'ap-ai-50', hex: '#e5f6ff', rgb: 'rgb(229, 246, 255)', scssVar: '$ap-ai-50' },
+        { name: 'ap-ai-100', hex: '#c9edff', rgb: 'rgb(201, 237, 255)', scssVar: '$ap-ai-100' },
+        { name: 'ap-ai-500', hex: '#00aaff', rgb: 'rgb(0, 170, 255)', scssVar: '$ap-ai-500', isBase: true }
       ]
     },
     {
       title: 'White',
       swatches: [
-        { name: 'white-base', hex: '#ffffff', rgb: 'rgb(255, 255, 255)', scssVar: '$white-500', isBase: true }
+        { name: 'ap-white-base', hex: '#ffffff', rgb: 'rgb(255, 255, 255)', scssVar: '$ap-white-base', isBase: true }
       ]
     },
     {
       title: 'Black',
       swatches: [
-        { name: 'black-base', hex: '#000000', rgb: 'rgb(0, 0, 0)', scssVar: '$black-base', isBase: true }
+        { name: 'ap-black-base', hex: '#000000', rgb: 'rgb(0, 0, 0)', scssVar: '$ap-black-base', isBase: true }
       ]
     }
   ];
@@ -475,304 +483,509 @@ export class AdvocatesproDashboardComponent {
   // ─── Design Tokens Reference ───
   readonly tokenGroups: { title: string; tokens: TokenRow[] }[] = [
     {
+      title: 'Primary Scale (Blue)',
+      tokens: [
+        { token: '$ap-primary-50', value: '$ap-primary-50 (#e6efff)', usage: 'Fondo muy claro primary' },
+        { token: '$ap-primary-100', value: '$ap-primary-100 (#b0ceff)', usage: 'Fondo claro primary' },
+        { token: '$ap-primary-200', value: '$ap-primary-200 (#8ab6ff)', usage: 'Borde claro primary' },
+        { token: '$ap-primary-300', value: '$ap-primary-300 (#5495fe)', usage: 'Acento suave primary' },
+        { token: '$ap-primary-400', value: '$ap-primary-400 (#3381fe)', usage: 'Acento medio primary' },
+        { token: '$ap-primary-500', value: '$ap-primary-500 (#0061fe)', usage: 'Base primary — acciones principales' },
+        { token: '$ap-primary-600', value: '$ap-primary-600 (#0058e7)', usage: 'Hover primary' },
+        { token: '$ap-primary-700', value: '$ap-primary-700 (#0045b4)', usage: 'Active primary' },
+        { token: '$ap-primary-800', value: '$ap-primary-800 (#00358c)', usage: 'Oscuro primary' },
+        { token: '$ap-primary-900', value: '$ap-primary-900 (#00296b)', usage: 'Muy oscuro primary' },
+      ]
+    },
+    {
+      title: 'Secondary Scale (Pink/Rose)',
+      tokens: [
+        { token: '$ap-secondary-50', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo muy claro secondary' },
+        { token: '$ap-secondary-100', value: '$ap-secondary-100 (#fac7d5)', usage: 'Fondo claro secondary / badges' },
+        { token: '$ap-secondary-200', value: '$ap-secondary-200 (#f7acc1)', usage: 'Borde claro / disabled' },
+        { token: '$ap-secondary-300', value: '$ap-secondary-300 (#f38fab)', usage: 'Acento suave secondary' },
+        { token: '$ap-secondary-400', value: '$ap-secondary-400 (#f07090)', usage: 'Acento medio secondary' },
+        { token: '$ap-secondary-500', value: '$ap-secondary-500 (#ee4a79)', usage: 'Base secondary — rosa distintivo AdvocatesPro' },
+        { token: '$ap-secondary-600', value: '$ap-secondary-600 (#d9436e)', usage: 'Hover secondary' },
+        { token: '$ap-secondary-700', value: '$ap-secondary-700 (#b93c5e)', usage: 'Active secondary' },
+        { token: '$ap-secondary-800', value: '$ap-secondary-800 (#8a2c48)', usage: 'Oscuro secondary' },
+        { token: '$ap-secondary-900', value: '$ap-secondary-900 (#5e1c30)', usage: 'Muy oscuro secondary' },
+      ]
+    },
+    {
+      title: 'Grey Scale',
+      tokens: [
+        { token: '$ap-grey-50', value: '$ap-grey-50 (#ececec)', usage: 'Bordes, divisores' },
+        { token: '$ap-grey-100', value: '$ap-grey-100 (#c3c3c3)', usage: 'Bordes inputs, disabled bg' },
+        { token: '$ap-grey-200', value: '$ap-grey-200 (#a6a6a6)', usage: 'Placeholder, iconos' },
+        { token: '$ap-grey-300', value: '$ap-grey-300 (#7d7d7d)', usage: 'Texto secundario' },
+        { token: '$ap-grey-400', value: '$ap-grey-400 (#646464)', usage: 'Texto labels' },
+        { token: '$ap-grey-500', value: '$ap-grey-500 (#3d3d3d)', usage: 'Texto body' },
+        { token: '$ap-grey-600', value: '$ap-grey-600 (#383838)', usage: 'Texto oscuro' },
+        { token: '$ap-grey-700', value: '$ap-grey-700 (#2b2b2b)', usage: 'Texto muy oscuro' },
+        { token: '$ap-grey-800', value: '$ap-grey-800 (#222222)', usage: 'Texto principal, headings' },
+        { token: '$ap-grey-900', value: '$ap-grey-900 (#1a1a1a)', usage: 'Texto casi negro' },
+      ]
+    },
+    {
+      title: 'Success Scale (Green)',
+      tokens: [
+        { token: '$ap-success-50', value: '$ap-success-50 (#ebfaf1)', usage: 'Fondo muy claro success' },
+        { token: '$ap-success-100', value: '$ap-success-100 (#aeebc7)', usage: 'Fondo claro success' },
+        { token: '$ap-success-200', value: '$ap-success-200 (#8de3b0)', usage: 'Borde claro success' },
+        { token: '$ap-success-300', value: '$ap-success-300 (#5bd68d)', usage: 'Acento suave success' },
+        { token: '$ap-success-400', value: '$ap-success-400 (#3ace76)', usage: 'Base success — estados exitosos' },
+        { token: '$ap-success-500', value: '$ap-success-500 (#299053)', usage: 'Hover success' },
+        { token: '$ap-success-600', value: '$ap-success-600 (#237e48)', usage: 'Active success' },
+      ]
+    },
+    {
+      title: 'Warning Scale (Orange)',
+      tokens: [
+        { token: '$ap-warning-50', value: '$ap-warning-50 (#fff5ea)', usage: 'Fondo muy claro warning' },
+        { token: '$ap-warning-100', value: '$ap-warning-100 (#ffd4a8)', usage: 'Fondo claro warning' },
+        { token: '$ap-warning-200', value: '$ap-warning-200 (#ffc285)', usage: 'Borde claro warning' },
+        { token: '$ap-warning-300', value: '$ap-warning-300 (#ffa850)', usage: 'Acento suave warning' },
+        { token: '$ap-warning-400', value: '$ap-warning-400 (#ff962c)', usage: 'Base warning — advertencia' },
+        { token: '$ap-warning-500', value: '$ap-warning-500 (#b3691f)', usage: 'Hover warning' },
+        { token: '$ap-warning-600', value: '$ap-warning-600 (#9c5c1b)', usage: 'Active warning' },
+      ]
+    },
+    {
+      title: 'Error Scale (Red)',
+      tokens: [
+        { token: '$ap-error-50', value: '$ap-error-50 (#ffecec)', usage: 'Fondo muy claro error' },
+        { token: '$ap-error-100', value: '$ap-error-100 (#feb0b0)', usage: 'Fondo claro error' },
+        { token: '$ap-error-200', value: '$ap-error-200 (#fd8f8f)', usage: 'Borde claro error' },
+        { token: '$ap-error-300', value: '$ap-error-300 (#fd5f5f)', usage: 'Acento suave error' },
+        { token: '$ap-error-400', value: '$ap-error-400 (#fc3e3e)', usage: 'Base error — estados de error' },
+        { token: '$ap-error-500', value: '$ap-error-500 (#b02b2b)', usage: 'Hover error' },
+        { token: '$ap-error-600', value: '$ap-error-600 (#9a2626)', usage: 'Active error' },
+      ]
+    },
+    {
+      title: 'AI Scale (Cyan)',
+      tokens: [
+        { token: '$ap-ai-50', value: '$ap-ai-50 (#e5f6ff)', usage: 'Hover boton AI' },
+        { token: '$ap-ai-100', value: '$ap-ai-100 (#c9edff)', usage: 'Active boton AI' },
+        { token: '$ap-ai-500', value: '$ap-ai-500 (#00aaff)', usage: 'Base AI — borde boton AI' },
+      ]
+    },
+    {
+      title: 'Neutral & Base',
+      tokens: [
+        { token: '$ap-neutral-50', value: '$ap-neutral-50 (#fafafa)', usage: 'Fondos sutiles, message boxes' },
+        { token: '$ap-neutral-100', value: '$ap-neutral-100 (#f5f7fa)', usage: 'Fondos de seccion' },
+        { token: '$ap-neutral-200', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Fondos de cards' },
+        { token: '$ap-white-base', value: '$ap-white-base (#ffffff)', usage: 'Fondos blancos, superficies' },
+        { token: '$ap-black-base', value: '$ap-black-base (#000000)', usage: 'Negro puro, superficies oscuras' },
+      ]
+    },
+    {
       title: 'Button Tokens',
       tokens: [
-        { token: '$button-primary-bg', value: '$primary-500 (#0061fe)', usage: 'Background del boton primary' },
-        { token: '$button-primary-hover', value: '$primary-600 (#0058e7)', usage: 'Hover state primary' },
-        { token: '$button-primary-active', value: '$primary-700 (#0045b4)', usage: 'Active/pressed state primary' },
-        { token: '$button-secondary-bg', value: '$secundary-500 (#ee4a79)', usage: 'Background del boton secondary (rosa AdvocatesPro)' },
-        { token: '$button-border-radius', value: '12px', usage: 'Border radius de todos los botones' },
-        { token: '$button-font-family', value: "'Urbanist', sans-serif", usage: 'Fuente de botones' },
-        { token: '$button-font-weight', value: '600', usage: 'Peso de fuente en botones' },
+        { token: '$ap-button-primary-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Fondo boton primary' },
+        { token: '$ap-button-primary-text', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Texto boton primary' },
+        { token: '$ap-button-primary-hover', value: '$ap-primary-600 (#0058e7)', usage: 'Hover boton primary' },
+        { token: '$ap-button-primary-active', value: '$ap-primary-700 (#0045b4)', usage: 'Active boton primary' },
+        { token: '$ap-button-primary-disabled-bg', value: '$ap-primary-200 (#8ab6ff)', usage: 'Disabled boton primary' },
+        { token: '$ap-button-secondary-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo boton secondary (rosa AdvocatesPro)' },
+        { token: '$ap-button-secondary-text', value: '$ap-white-base (#ffffff)', usage: 'Texto boton secondary' },
+        { token: '$ap-button-secondary-hover', value: '$ap-secondary-600 (#d9436e)', usage: 'Hover boton secondary' },
+        { token: '$ap-button-secondary-active', value: '$ap-secondary-700 (#b93c5e)', usage: 'Active boton secondary' },
+        { token: '$ap-button-secondary-disabled-bg', value: '$ap-secondary-200 (#f7acc1)', usage: 'Disabled boton secondary' },
+        { token: '$ap-button-white-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo boton white' },
+        { token: '$ap-button-white-text', value: '$ap-grey-300 (#7d7d7d)', usage: 'Texto boton white' },
+        { token: '$ap-button-white-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde boton white' },
+        { token: '$ap-button-white-hover', value: '$ap-neutral-50 (#fafafa)', usage: 'Hover boton white' },
+        { token: '$ap-button-white-active', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Active boton white' },
+        { token: '$ap-button-white-disabled-text', value: '$ap-grey-100 (#c3c3c3)', usage: 'Disabled texto boton white' },
+        { token: '$ap-button-height-large', value: '48px', usage: 'Altura boton large' },
+        { token: '$ap-button-height-medium', value: '40px', usage: 'Altura boton medium' },
+        { token: '$ap-button-height-small', value: '36px', usage: 'Altura boton small' },
+        { token: '$ap-button-font-size-large', value: '18px', usage: 'Font size boton large' },
+        { token: '$ap-button-font-size-medium', value: '16px', usage: 'Font size boton medium' },
+        { token: '$ap-button-font-size-small', value: '14px', usage: 'Font size boton small' },
+        { token: '$ap-button-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-button-font-weight', value: '700', usage: 'Peso de fuente' },
+        { token: '$ap-button-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$ap-button-padding', value: '10px 20px', usage: 'Padding' },
+        { token: '$ap-button-gap', value: '10px', usage: 'Gap entre icono y texto' },
+        { token: '$ap-button-transition', value: 'all 0.2s ease', usage: 'Transicion de estados' },
       ]
     },
     {
-      title: 'Component Tokens',
+      title: 'Toggle / Switch Tokens',
       tokens: [
-        { token: '$select-border-radius', value: '10px', usage: 'Border radius de selects' },
-        { token: '$search-input-border-radius', value: '50px', usage: 'Pill shape para search inputs' },
-        { token: '$status-badge-border-radius', value: '50px', usage: 'Pill shape para badges' },
-        { token: '$kpi-card-border-radius', value: '12px', usage: 'Border radius de KPI cards' },
-        { token: '$table-cell-padding', value: '10px 20px', usage: 'Padding interno de celdas' },
-        { token: '$table-row-height', value: '44px', usage: 'Altura de filas de tabla' },
+        { token: '$ap-toggle-off-bg', value: '$ap-grey-100 (#c3c3c3)', usage: 'Fondo toggle apagado' },
+        { token: '$ap-toggle-on-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo toggle encendido (rosa)' },
+        { token: '$ap-toggle-thumb-bg', value: '$ap-white-base (#ffffff)', usage: 'Color thumb del toggle' },
+        { token: '$ap-toggle-thumb-shadow', value: '0 1px 3px rgba(#000, 0.15)', usage: 'Sombra del thumb' },
+        { token: '$ap-toggle-large-width', value: '56px', usage: 'Ancho toggle large' },
+        { token: '$ap-toggle-large-height', value: '32px', usage: 'Altura toggle large' },
+        { token: '$ap-toggle-large-thumb', value: '24px', usage: 'Tamano thumb toggle large' },
+        { token: '$ap-toggle-medium-width', value: '48px', usage: 'Ancho toggle medium' },
+        { token: '$ap-toggle-medium-height', value: '28px', usage: 'Altura toggle medium' },
+        { token: '$ap-toggle-medium-thumb', value: '20px', usage: 'Tamano thumb toggle medium' },
+        { token: '$ap-toggle-small-width', value: '40px', usage: 'Ancho toggle small' },
+        { token: '$ap-toggle-small-height', value: '24px', usage: 'Altura toggle small' },
+        { token: '$ap-toggle-small-thumb', value: '18px', usage: 'Tamano thumb toggle small' },
       ]
     },
     {
-      title: 'Status Colors',
+      title: 'Checkbox Tokens',
       tokens: [
-        { token: '$status-success', value: '$success-400 (#3ace76)', usage: 'Estados positivos, confirmaciones' },
-        { token: '$status-warning', value: '$warning-400 (#f4b137)', usage: 'Alertas, precauciones' },
-        { token: '$status-error', value: '$error-400 (#fc3e3e)', usage: 'Estados de error, validaciones' },
-        { token: '$status-info', value: '$primary-500 (#0061fe)', usage: 'Informacion, estados neutros activos' },
-        { token: '$status-neutral', value: '$grey-200 (#a6a6a6)', usage: 'Estados neutros, inactivos' },
+        { token: '$ap-checkbox-size', value: '24px', usage: 'Tamano del checkbox' },
+        { token: '$ap-checkbox-border-radius', value: '8px', usage: 'Border radius' },
+        { token: '$ap-checkbox-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde default' },
+        { token: '$ap-checkbox-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo default' },
+        { token: '$ap-checkbox-active-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo activo (rosa)' },
+        { token: '$ap-checkbox-active-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde activo' },
+        { token: '$ap-checkbox-hover-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde en hover' },
+        { token: '$ap-checkbox-check-color', value: '$ap-white-base (#ffffff)', usage: 'Color del check' },
       ]
     },
     {
-      title: 'Semantic Colors — Error',
+      title: 'Radio Button Tokens (PrimeNG)',
       tokens: [
-        { token: '$error-50', value: '$error-50 (#ffecec)', usage: 'Background claro para alertas de error' },
-        { token: '$error-400', value: '$error-400 (#fc3e3e)', usage: 'Color base de error (botones, iconos)' },
-        { token: '$error-500', value: '$error-500 (#b02b2b)', usage: 'Hover de error' },
-        { token: '$error-600', value: '$error-600 (#9a2626)', usage: 'Active/pressed de error' },
+        { token: '$ap-radio-checked-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo radio seleccionado' },
+        { token: '$ap-radio-checked-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde radio seleccionado' },
+        { token: '$ap-radio-checked-hover-bg', value: '$ap-secondary-600 (#d9436e)', usage: 'Hover radio seleccionado' },
+        { token: '$ap-radio-hover-border', value: '$ap-secondary-300 (#f38fab)', usage: 'Hover borde radio' },
+        { token: '$ap-radio-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde default' },
+        { token: '$ap-radio-icon-color', value: '$ap-white-base (#ffffff)', usage: 'Color icono radio' },
+        { token: '$ap-radio-focus-ring', value: 'rgba(238, 74, 121, 0.2)', usage: 'Sombra de focus (rosa)' },
       ]
     },
     {
-      title: 'Semantic Colors — Warning',
+      title: 'Radio Tab Tokens',
       tokens: [
-        { token: '$warning-50', value: '$warning-50 (#fff5ea)', usage: 'Background claro para alertas warning' },
-        { token: '$warning-400', value: '$warning-400 (#ff962c)', usage: 'Color base de warning' },
-        { token: '$warning-icon', value: '$warning-icon (#e8922d)', usage: 'Color de icono warning (code modal)' },
+        { token: '$ap-radio-tab-height', value: '36px', usage: 'Altura radio tab' },
+        { token: '$ap-radio-tab-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$ap-radio-tab-font-size', value: '14px', usage: 'Tamano de fuente' },
+        { token: '$ap-radio-tab-font-weight', value: '700', usage: 'Peso de fuente' },
+        { token: '$ap-radio-tab-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color texto inactivo' },
+        { token: '$ap-radio-tab-hover-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto en hover' },
+        { token: '$ap-radio-tab-active-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde tab activo (rosa)' },
+        { token: '$ap-radio-tab-active-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Color texto activo' },
+        { token: '$ap-radio-tab-active-bg', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo tab activo (rosa claro)' },
       ]
     },
     {
-      title: 'Semantic Colors — Success',
+      title: 'Status Badge Tokens',
       tokens: [
-        { token: '$success-50', value: '$success-50 (#ebfaf1)', usage: 'Background claro para estados exitosos' },
-        { token: '$success-400', value: '$success-400 (#3ace76)', usage: 'Color base de success' },
-        { token: '$success-500', value: '$success-500 (#299053)', usage: 'Hover de success' },
+        { token: '$ap-badge-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del badge' },
+        { token: '$ap-badge-border-radius', value: '50px', usage: 'Border radius pill' },
+        { token: '$ap-badge-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-badge-font-size', value: '14px', usage: 'Tamano de fuente' },
+        { token: '$ap-badge-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$ap-badge-text-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto' },
+        { token: '$ap-badge-padding', value: '4px 10px', usage: 'Padding' },
+        { token: '$ap-badge-gap', value: '10px', usage: 'Gap entre dot y texto' },
+        { token: '$ap-badge-dot-size', value: '10px', usage: 'Tamano dot indicador' },
+        { token: '$ap-badge-height-small', value: '30px', usage: 'Altura badge small' },
+        { token: '$ap-badge-height-large', value: '36px', usage: 'Altura badge large' },
+        { token: '$ap-badge-positiva', value: '$ap-success-400 (#3ace76)', usage: 'Dot positiva (verde)' },
+        { token: '$ap-badge-negativa', value: '$ap-error-400 (#fc3e3e)', usage: 'Dot negativa (rojo)' },
+        { token: '$ap-badge-neutra', value: '$ap-warning-400 (#ff962c)', usage: 'Dot neutra (naranja)' },
+        { token: '$ap-badge-desactivado', value: '$ap-grey-200 (#a6a6a6)', usage: 'Dot desactivado (gris)' },
       ]
     },
     {
-      title: 'Semantic Colors — Neutral',
+      title: 'Chip Tokens',
       tokens: [
-        { token: '$neutral-50', value: '$neutral-50 (#fafafa)', usage: 'Background sutil (message boxes, hover states)' },
-        { token: '$neutral-100', value: '$neutral-100 (#f5f7fa)', usage: 'Background intermedio' },
-        { token: '$neutral-200', value: '$neutral-200 (#f1f1f1)', usage: 'Background neutro' },
+        { token: '$ap-chip-height', value: '26px', usage: 'Altura del chip' },
+        { token: '$ap-chip-border-radius', value: '23px', usage: 'Border radius' },
+        { token: '$ap-chip-padding', value: '6px 11px', usage: 'Padding' },
+        { token: '$ap-chip-gap', value: '10px', usage: 'Gap entre dot/icono y texto' },
+        { token: '$ap-chip-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-chip-font-size', value: '14px', usage: 'Tamano de fuente' },
+        { token: '$ap-chip-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$ap-chip-white-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo chip white' },
+        { token: '$ap-chip-white-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde chip white' },
+        { token: '$ap-chip-white-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Texto chip white' },
+        { token: '$ap-chip-primary-bg', value: '$ap-primary-100 (#b0ceff)', usage: 'Fondo chip primary' },
+        { token: '$ap-chip-primary-color', value: '$ap-primary-500 (#0061fe)', usage: 'Texto chip primary' },
+        { token: '$ap-chip-secondary-bg', value: '$ap-secondary-100 (#fac7d5)', usage: 'Fondo chip secondary (rosa)' },
+        { token: '$ap-chip-secondary-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Texto chip secondary' },
+        { token: '$ap-chip-disabled-bg', value: '$ap-grey-50 (#ececec)', usage: 'Fondo chip disabled' },
+        { token: '$ap-chip-disabled-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde chip disabled' },
+        { token: '$ap-chip-disabled-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Texto chip disabled' },
+        { token: '$ap-chip-add-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde boton agregar' },
+        { token: '$ap-chip-add-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color boton agregar' },
+        { token: '$ap-chip-add-hover-border', value: '$ap-primary-500 (#0061fe)', usage: 'Hover borde agregar' },
+        { token: '$ap-chip-add-hover-color', value: '$ap-primary-500 (#0061fe)', usage: 'Hover color agregar' },
       ]
     },
     {
-      title: 'Confirm Modal Tokens',
+      title: 'Toaster Tokens',
       tokens: [
-        { token: '$confirm-modal-border-radius', value: '12px', usage: 'Border radius del confirm modal' },
-        { token: '$confirm-modal-max-width', value: '700px', usage: 'Ancho maximo del modal' },
-        { token: '$confirm-modal-icon-size', value: '56px', usage: 'Tamano del icono circular' },
-        { token: '$confirm-general-btn-bg', value: '$primary-500 (#0061fe)', usage: 'Boton variante general (azul)' },
-        { token: '$confirm-confirmation-icon-color', value: '$success-400 (#3ace76)', usage: 'Icono variante confirmacion (verde)' },
-        { token: '$confirm-alert-btn-bg', value: '$secundary-500 (#ee4a79)', usage: 'Boton variante alerta (rosa)' },
-        { token: '$confirm-error-btn-bg', value: '$error-400 (#fc3e3e)', usage: 'Boton variante error (rojo)' },
-      ]
-    },
-    {
-      title: 'Code Modal Tokens',
-      tokens: [
-        { token: '$code-modal-border-radius', value: '24px', usage: 'Border radius del code modal' },
-        { token: '$code-modal-icon-bg', value: '$warning-50 (#fff5ea)', usage: 'Background del icono warning' },
-        { token: '$code-modal-icon-color', value: '$warning-icon (#e8922d)', usage: 'Color del icono warning' },
-        { token: '$code-modal-btn-bg', value: '$error-400 (#fc3e3e)', usage: 'Boton de confirmacion destructiva' },
-        { token: '$code-modal-code-size', value: '40px', usage: 'Tamano del codigo de verificacion' },
-        { token: '$code-modal-input-width', value: '334px', usage: 'Ancho del input de verificacion' },
-      ]
-    },
-    {
-      title: 'Toast Tokens',
-      tokens: [
-        { token: '$toast-border-radius', value: '10px', usage: 'Border radius del toast' },
-        { token: '$toast-shadow', value: '0 8px 32px rgba(...)', usage: 'Sombra del toast' },
-        { token: '$toast-accent-width', value: '13px', usage: 'Ancho de la barra lateral de color' },
-        { token: '$toast-success-bg', value: '$success-50 (#ebfaf1)', usage: 'Background del icono success' },
-        { token: '$toast-error-bg', value: '$error-50 (#ffecec)', usage: 'Background del icono error' },
-        { token: '$toast-warning-bg', value: '$warning-50 (#fff5ea)', usage: 'Background del icono warning' },
-        { token: '$toast-info-bg', value: '$primary-50 (#e6edff)', usage: 'Background del icono info' },
-      ]
-    },
-    {
-      title: 'Stepper Tokens',
-      tokens: [
-        { token: '$stepper-track-height', value: '5px', usage: 'Altura de la barra de progreso' },
-        { token: '$stepper-track-bg', value: '$grey-50 (#ececec)', usage: 'Background del track (gris)' },
-        { token: '$stepper-progress-bg', value: '$primary-500 (#0061fe)', usage: 'Color de la barra de progreso (azul)' },
-        { token: '$stepper-track-radius', value: '10px', usage: 'Border radius del track' },
-        { token: '$stepper-label-font', value: "'DM Sans'", usage: 'Fuente del label "Paso X de Y"' },
-        { token: '$stepper-label-color', value: '$grey-300 (#7d7d7d)', usage: 'Color del texto del paso' },
-      ]
-    },
-    {
-      title: 'Text Input Tokens',
-      tokens: [
-        { token: '$text-input-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del input' },
-        { token: '$text-input-border-focus', value: '$primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$text-input-border-error', value: '$status-error (#fc3e3e)', usage: 'Borde en estado de error' },
-        { token: '$text-input-border-radius', value: '10px', usage: 'Border radius de inputs' },
-        { token: '$text-input-height-large', value: '48px', usage: 'Altura del input large' },
-      ]
-    },
-    {
-      title: 'Chip Input Tokens',
-      tokens: [
-        { token: '$chip-input-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del contenedor de chips' },
-        { token: '$chip-bg', value: '$primary-50 (#e6edff)', usage: 'Background de cada chip' },
-        { token: '$chip-text-color', value: '$primary-700 (#0045b4)', usage: 'Color del texto del chip' },
-        { token: '$chip-border-radius', value: '6px', usage: 'Border radius de los chips' },
-        { token: '$chip-font-family', value: "'DM Sans'", usage: 'Fuente del texto del chip' },
-      ]
-    },
-    {
-      title: 'Filter Chip Tokens',
-      tokens: [
-        { token: '$filter-chip-border', value: '$grey-50 (#ececec)', usage: 'Borde del chip' },
-        { token: '$filter-chip-border-radius', value: '8px', usage: 'Border radius del chip' },
-        { token: '$filter-chip-hover-bg', value: '$neutral-50 (#fafafa)', usage: 'Background en hover' },
-        { token: '$filter-chip-remove-size', value: '18px', usage: 'Tamano del boton de eliminar' },
+        { token: '$ap-toast-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$ap-toast-accent-width', value: '13px', usage: 'Ancho barra lateral de color' },
+        { token: '$ap-toast-shadow', value: '0 8px 32px rgba(#000, 0.08)', usage: 'Sombra del toast' },
+        { token: '$ap-toast-success-stripe', value: '$ap-success-400 (#3ace76)', usage: 'Barra lateral success' },
+        { token: '$ap-toast-success-bg', value: '$ap-success-50 (#ebfaf1)', usage: 'Fondo icono success' },
+        { token: '$ap-toast-success-color', value: '$ap-success-400 (#3ace76)', usage: 'Color icono success' },
+        { token: '$ap-toast-warning-stripe', value: '$ap-warning-400 (#ff962c)', usage: 'Barra lateral warning' },
+        { token: '$ap-toast-warning-bg', value: '$ap-warning-50 (#fff5ea)', usage: 'Fondo icono warning' },
+        { token: '$ap-toast-warning-color', value: '$ap-warning-400 (#ff962c)', usage: 'Color icono warning' },
+        { token: '$ap-toast-error-stripe', value: '$ap-error-400 (#fc3e3e)', usage: 'Barra lateral error' },
+        { token: '$ap-toast-error-bg', value: '$ap-error-50 (#ffecec)', usage: 'Fondo icono error' },
+        { token: '$ap-toast-error-color', value: '$ap-error-400 (#fc3e3e)', usage: 'Color icono error' },
+        { token: '$ap-toast-info-stripe', value: '$ap-primary-500 (#0061fe)', usage: 'Barra lateral info' },
+        { token: '$ap-toast-info-bg', value: '$ap-primary-50 (#e6efff)', usage: 'Fondo icono info' },
+        { token: '$ap-toast-info-color', value: '$ap-primary-500 (#0061fe)', usage: 'Color icono info' },
+        { token: '$ap-toast-title-color', value: '$ap-grey-800 (#222222)', usage: 'Color titulo' },
+        { token: '$ap-toast-message-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color mensaje' },
+        { token: '$ap-toast-close-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color boton cerrar' },
       ]
     },
     {
       title: 'Select Segment Tokens',
       tokens: [
-        { token: '$select-seg-border-color', value: '$grey-100 (#c3c3c3)', usage: 'Borde de los segmentos' },
-        { token: '$select-seg-selected-bg', value: '$secundary-50 (#fdedf2)', usage: 'Background cuando esta seleccionado' },
-        { token: '$select-seg-hover-border', value: '$secundary-500 (#ee4a79)', usage: 'Borde en hover (rosa)' },
-        { token: '$select-seg-img-placeholder', value: '$grey-100 (#c3c3c3)', usage: 'Placeholder de imagen' },
-        { token: '$select-seg-chip-radius', value: '23px', usage: 'Border radius de chips en segmentos' },
-        { token: '$select-colorpicker-dot-size', value: '25px', usage: 'Tamano del dot de color' },
-        { token: '$select-user-avatar-size-lg', value: '36px', usage: 'Tamano de avatar (large)' },
+        { token: '$ap-select-seg-border-color', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde de los segmentos' },
+        { token: '$ap-select-seg-selected-bg', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo seleccionado (rosa claro)' },
+        { token: '$ap-select-seg-selected-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde seleccionado' },
+        { token: '$ap-select-seg-hover-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde en hover (rosa)' },
+        { token: '$ap-select-seg-chip-radius', value: '23px', usage: 'Border radius de chips' },
+        { token: '$ap-select-colorpicker-dot-size', value: '25px', usage: 'Tamano dot de color' },
+        { token: '$ap-select-user-avatar-size-lg', value: '36px', usage: 'Tamano avatar large' },
+      ]
+    },
+    {
+      title: 'Confirm Modal Tokens',
+      tokens: [
+        { token: '$ap-confirm-modal-border-radius', value: '12px', usage: 'Border radius del modal' },
+        { token: '$ap-confirm-modal-max-width', value: '700px', usage: 'Ancho maximo' },
+        { token: '$ap-confirm-modal-icon-size', value: '56px', usage: 'Tamano icono circular' },
+        { token: '$ap-confirm-general-btn-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Boton variante general (azul)' },
+        { token: '$ap-confirm-confirmation-icon-color', value: '$ap-success-400 (#3ace76)', usage: 'Icono variante confirmacion (verde)' },
+        { token: '$ap-confirm-alert-btn-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Boton variante alerta (rosa AdvocatesPro)' },
+        { token: '$ap-confirm-error-btn-bg', value: '$ap-error-400 (#fc3e3e)', usage: 'Boton variante error (rojo)' },
+      ]
+    },
+    {
+      title: 'Code Modal Tokens',
+      tokens: [
+        { token: '$ap-code-modal-border-radius', value: '24px', usage: 'Border radius' },
+        { token: '$ap-code-modal-icon-bg', value: '$ap-warning-50 (#fff5ea)', usage: 'Fondo icono warning' },
+        { token: '$ap-code-modal-icon-color', value: '$ap-warning-400 (#ff962c)', usage: 'Color icono warning' },
+        { token: '$ap-code-modal-btn-bg', value: '$ap-error-400 (#fc3e3e)', usage: 'Boton confirmacion destructiva' },
+        { token: '$ap-code-modal-code-size', value: '40px', usage: 'Tamano codigo verificacion' },
+      ]
+    },
+    {
+      title: 'Stepper Tokens',
+      tokens: [
+        { token: '$ap-stepper-track-height', value: '5px', usage: 'Altura barra progreso' },
+        { token: '$ap-stepper-track-bg', value: '$ap-grey-50 (#ececec)', usage: 'Fondo del track' },
+        { token: '$ap-stepper-progress-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Color barra progreso (azul)' },
+        { token: '$ap-stepper-track-radius', value: '10px', usage: 'Border radius del track' },
+        { token: '$ap-stepper-label-font', value: "'DM Sans', sans-serif", usage: 'Familia tipografica label' },
+        { token: '$ap-stepper-label-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color texto del paso' },
       ]
     },
     {
       title: 'TextArea Tokens',
       tokens: [
-        { token: '$textarea-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del textarea' },
-        { token: '$textarea-border-focus', value: '$primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$textarea-border-radius', value: '10px', usage: 'Border radius del textarea' },
-        { token: '$textarea-font', value: "'Urbanist', sans-serif", usage: 'Fuente del textarea' },
-        { token: '$textarea-font-size', value: '16px', usage: 'Tamano de fuente' },
-        { token: '$textarea-label-color', value: '$grey-800 (#222222)', usage: 'Color del label' },
-        { token: '$textarea-placeholder-color', value: '$grey-200 (#a6a6a6)', usage: 'Color del placeholder' },
-        { token: '$textarea-padding', value: '12px 16px', usage: 'Padding interno' },
-        { token: '$textarea-disabled-opacity', value: '0.5', usage: 'Opacidad cuando disabled' },
+        { token: '$ap-textarea-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del textarea' },
+        { token: '$ap-textarea-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$ap-textarea-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$ap-textarea-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-textarea-font-size', value: '16px', usage: 'Tamano de fuente' },
+        { token: '$ap-textarea-label-color', value: '$ap-grey-800 (#222222)', usage: 'Color del label' },
+        { token: '$ap-textarea-placeholder-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
+        { token: '$ap-textarea-padding', value: '12px 16px', usage: 'Padding' },
+        { token: '$ap-textarea-disabled-opacity', value: '0.5', usage: 'Opacidad en disabled' },
       ]
     },
     {
       title: 'Number Input Tokens',
       tokens: [
-        { token: '$number-input-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del contenedor' },
-        { token: '$number-input-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$number-input-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$number-input-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$number-input-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$number-input-btn-color', value: '$grey-300 (#7d7d7d)', usage: 'Color de botones −/+' },
-        { token: '$number-input-btn-hover', value: '$primary-500 (#0061fe)', usage: 'Color de botones en hover' },
-        { token: '$number-input-font', value: "'Urbanist', sans-serif", usage: 'Fuente del valor' },
-        { token: '$number-input-font-weight', value: '600 (SemiBold)', usage: 'Peso del valor' },
+        { token: '$ap-number-input-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del contenedor' },
+        { token: '$ap-number-input-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$ap-number-input-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$ap-number-input-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$ap-number-input-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$ap-number-input-btn-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color botones -/+' },
+        { token: '$ap-number-input-btn-hover', value: '$ap-primary-500 (#0061fe)', usage: 'Hover botones -/+' },
+        { token: '$ap-number-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-number-input-font-weight', value: '600', usage: 'Peso de fuente' },
       ]
     },
     {
       title: 'Account Counter Tokens',
       tokens: [
-        { token: '$counter-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del badge' },
-        { token: '$counter-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$counter-icon-color', value: '$grey-300 (#7d7d7d)', usage: 'Color del icono User' },
-        { token: '$counter-text-color', value: '$grey-800 (#222)', usage: 'Color del numero' },
-        { token: '$counter-font', value: "'Urbanist', sans-serif", usage: 'Fuente del numero' },
-        { token: '$counter-font-weight', value: '600 (SemiBold)', usage: 'Peso del numero' },
-        { token: '$counter-height-lg', value: '48px', usage: 'Altura large (80x48)' },
-        { token: '$counter-height-md', value: '40px', usage: 'Altura medium (67x40)' },
-        { token: '$counter-height-sm', value: '36px', usage: 'Altura small (61x36)' },
+        { token: '$ap-counter-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del badge' },
+        { token: '$ap-counter-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$ap-counter-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color icono User' },
+        { token: '$ap-counter-text-color', value: '$ap-grey-800 (#222222)', usage: 'Color del numero' },
+        { token: '$ap-counter-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-counter-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$ap-counter-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$ap-counter-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$ap-counter-height-sm', value: '36px', usage: 'Altura small' },
       ]
     },
     {
       title: 'Select Date Tokens',
       tokens: [
-        { token: '$select-date-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del trigger' },
-        { token: '$select-date-border-radius', value: '12px', usage: 'Border radius del trigger' },
-        { token: '$select-date-font', value: "'Urbanist', sans-serif", usage: 'Fuente del valor y calendario' },
-        { token: '$select-date-label-size-lg', value: '16px', usage: 'Label font size large' },
-        { token: '$select-date-label-size-sm', value: '14px', usage: 'Label font size small/medium' },
-        { token: '$select-date-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$select-date-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$select-date-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$select-date-dropdown-shadow', value: '0 4px 15px rgba(0,0,0,0.12)', usage: 'Sombra del dropdown' },
-        { token: '$select-date-dropdown-width', value: '267px', usage: 'Ancho del calendario' },
-        { token: '$select-date-day-selected-bg', value: '$primary-500 (#0061fe)', usage: 'Background dia seleccionado' },
-        { token: '$select-date-day-other-color', value: '$grey-100 (#c3c3c3)', usage: 'Color dias de otro mes' },
+        { token: '$ap-select-date-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del trigger' },
+        { token: '$ap-select-date-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$ap-select-date-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-select-date-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$ap-select-date-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$ap-select-date-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$ap-select-date-dropdown-shadow', value: '0 4px 15px rgba(#000, 0.12)', usage: 'Sombra dropdown' },
+        { token: '$ap-select-date-day-selected-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Fondo dia seleccionado' },
+        { token: '$ap-select-date-day-other-color', value: '$ap-grey-100 (#c3c3c3)', usage: 'Color dias de otro mes' },
       ]
     },
     {
       title: 'Hour Date Picker Tokens',
       tokens: [
-        { token: '(hereda Select Date)', value: '-', usage: 'Mismos tokens de trigger y calendario' },
-        { token: '$hour-picker-spinner-gap', value: '18px', usage: 'Gap entre columnas de hora' },
-        { token: '$hour-picker-chevron-color', value: '$grey-300 (#7d7d7d)', usage: 'Color de flechas up/down' },
-        { token: '$hour-picker-chevron-hover', value: '$grey-500 (#3d3d3d)', usage: 'Color flechas en hover' },
-        { token: '$hour-picker-value-font', value: "'Urbanist' SemiBold 16px", usage: 'Fuente de valores HH:MM' },
-        { token: '$hour-picker-value-color', value: '$grey-800 (#222222)', usage: 'Color del valor HH:MM' },
-        { token: '$hour-picker-divider', value: '$grey-50 (#ececec)', usage: 'Color del separador calendario/hora' },
+        { token: '$ap-hour-picker-spinner-gap', value: '18px', usage: 'Gap entre spinners' },
+        { token: '$ap-hour-picker-chevron-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color flechas' },
+        { token: '$ap-hour-picker-chevron-hover', value: '$ap-grey-500 (#3d3d3d)', usage: 'Hover flechas' },
+        { token: '$ap-hour-picker-value-color', value: '$ap-grey-800 (#222222)', usage: 'Color valor' },
+        { token: '$ap-hour-picker-divider', value: '$ap-grey-50 (#ececec)', usage: 'Color separador' },
       ]
     },
     {
       title: 'Select Tokens',
       tokens: [
-        { token: '$select-bg', value: '$white-500 (#fff)', usage: 'Background del select' },
-        { token: '$select-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del select' },
-        { token: '$select-border-focus', value: '$primary-500 (#0061fe)', usage: 'Borde en focus/abierto' },
-        { token: '$select-border-radius', value: '10px', usage: 'Border radius' },
-        { token: '$select-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$select-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$select-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$select-font', value: "'Urbanist', sans-serif", usage: 'Fuente del select' },
-        { token: '$select-placeholder-color', value: '$grey-300 (#7d7d7d)', usage: 'Color del placeholder' },
-        { token: '$select-text-color', value: '$grey-800 (#222)', usage: 'Color del texto seleccionado' },
-        { token: '$select-icon-color', value: '$grey-300 (#7d7d7d)', usage: 'Color de iconos izq/chevron' },
-        { token: '$select-dropdown-shadow', value: '0 4px 12px rgba(0,0,0,0.1)', usage: 'Sombra del dropdown' },
-        { token: '$select-option-hover-bg', value: '$neutral-50 (#fafafa)', usage: 'Background opcion en hover' },
+        { token: '$ap-select-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$ap-select-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde' },
+        { token: '$ap-select-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$ap-select-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$ap-select-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$ap-select-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$ap-select-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$ap-select-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-select-placeholder-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color placeholder' },
+        { token: '$ap-select-text-color', value: '$ap-grey-800 (#222222)', usage: 'Color texto seleccionado' },
+        { token: '$ap-select-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color iconos' },
+        { token: '$ap-select-dropdown-shadow', value: '0 4px 12px rgba(#000, 0.1)', usage: 'Sombra dropdown' },
+        { token: '$ap-select-option-hover-bg', value: '$ap-neutral-50 (#fafafa)', usage: 'Hover opcion' },
+        { token: '$ap-select-disabled-bg', value: '$ap-grey-100 (#c3c3c3)', usage: 'Fondo disabled' },
+        { token: '$ap-select-disabled-text', value: '$ap-grey-200 (#a6a6a6)', usage: 'Texto disabled' },
       ]
     },
     {
       title: 'Search Input Tokens',
       tokens: [
-        { token: '$search-input-bg', value: '$white-500 (#fff)', usage: 'Background del input' },
-        { token: '$search-input-border', value: '$grey-100 (#c3c3c3)', usage: 'Borde del input' },
-        { token: '$search-input-border-focus', value: '$primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$search-input-border-radius', value: '50px', usage: 'Pill shape' },
-        { token: '$search-input-height-lg', value: '50px', usage: 'Altura large' },
-        { token: '$search-input-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$search-input-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$search-input-icon-color', value: '$grey-200 (#a6a6a6)', usage: 'Color del icono search' },
-        { token: '$search-input-placeholder-color', value: '$grey-200 (#a6a6a6)', usage: 'Color del placeholder' },
-        { token: '$search-input-font', value: "'Urbanist', sans-serif", usage: 'Fuente del input' },
-        { token: '$search-input-font-weight', value: '500 (Medium)', usage: 'Peso de fuente' },
+        { token: '$ap-search-input-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$ap-search-input-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde' },
+        { token: '$ap-search-input-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$ap-search-input-border-radius', value: '50px', usage: 'Pill shape' },
+        { token: '$ap-search-input-height-lg', value: '50px', usage: 'Altura large' },
+        { token: '$ap-search-input-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$ap-search-input-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$ap-search-input-icon-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color icono search' },
+        { token: '$ap-search-input-placeholder-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
+        { token: '$ap-search-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-search-input-font-weight', value: '500', usage: 'Peso de fuente' },
+        { token: '$ap-search-input-disabled-bg', value: '$ap-grey-100 (#c3c3c3)', usage: 'Fondo disabled' },
+        { token: '$ap-search-input-disabled-text', value: '$ap-grey-200 (#a6a6a6)', usage: 'Texto disabled' },
+      ]
+    },
+    {
+      title: 'Text Input Tokens',
+      tokens: [
+        { token: '$ap-text-input-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde' },
+        { token: '$ap-text-input-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$ap-text-input-border-error', value: '$ap-error-400 (#fc3e3e)', usage: 'Borde en error' },
+        { token: '$ap-text-input-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$ap-text-input-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$ap-text-input-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$ap-text-input-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$ap-text-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$ap-text-input-label-color', value: '$ap-grey-800 (#222222)', usage: 'Color label' },
+        { token: '$ap-text-input-placeholder-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
+        { token: '$ap-text-input-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color iconos' },
       ]
     },
     {
       title: 'Card Tokens',
       tokens: [
-        { token: '$card-simple-radius', value: '10px', usage: 'Border radius de card simple' },
-        { token: '$card-simple-padding', value: '30px 25px', usage: 'Padding de card simple' },
-        { token: '$card-titled-radius', value: '12px', usage: 'Border radius de card con titulo' },
-        { token: '$card-titled-padding', value: '30px', usage: 'Padding de card con titulo' },
-        { token: '$card-titled-title-size', value: '20px', usage: 'Font size del titulo' },
-        { token: '$card-large-radius', value: '24px', usage: 'Border radius de card grande' },
-        { token: '$card-large-padding', value: '40px', usage: 'Padding de card grande' },
-        { token: '$card-large-title-size', value: '24px', usage: 'Font size del titulo grande' },
+        { token: '$ap-card-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$ap-card-border', value: '$ap-grey-50 (#ececec)', usage: 'Borde' },
+        { token: '$ap-card-border-radius', value: '16px', usage: 'Border radius' },
+        { token: '$ap-card-padding-simple', value: '24px', usage: 'Padding variante simple' },
+        { token: '$ap-card-padding-large', value: '32px', usage: 'Padding variante large' },
+        { token: '$ap-card-title-color', value: '$ap-grey-800 (#222222)', usage: 'Color titulo' },
+        { token: '$ap-card-title-size-titled', value: '20px', usage: 'Tamano titulo titled' },
+        { token: '$ap-card-title-size-large', value: '24px', usage: 'Tamano titulo large' },
       ]
     },
     {
       title: 'Menu Tokens',
       tokens: [
-        { token: '$menu-border-radius', value: '10px', usage: 'Border radius del menu' },
-        { token: '$menu-shadow', value: '0 2px 8px rgba(0,0,0,0.1)', usage: 'Sombra del menu' },
-        { token: '$menu-item-height', value: '36px', usage: 'Altura de items' },
-        { token: '$menu-item-hover-bg', value: '$grey-50 (#ececec)', usage: 'Background en hover' },
-        { token: '$menu-item-selected-bg', value: '$secundary-50 (#fdedf2)', usage: 'Background seleccionado (rosa)' },
-        { token: '$menu-avatar-size', value: '36px', usage: 'Tamano del avatar' },
-        { token: '$menu-radio-size', value: '20px', usage: 'Tamano del radio button' },
-        { token: '$menu-checkbox-size', value: '24px', usage: 'Tamano del checkbox' },
-        { token: '$menu-checkbox-radius', value: '8px', usage: 'Border radius del checkbox' },
+        { token: '$ap-menu-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$ap-menu-border', value: '$ap-grey-50 (#ececec)', usage: 'Borde' },
+        { token: '$ap-menu-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$ap-menu-item-hover', value: '$ap-neutral-50 (#fafafa)', usage: 'Hover items' },
+        { token: '$ap-menu-item-selected-bg', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo seleccionado (rosa claro)' },
+        { token: '$ap-menu-item-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto items' },
+        { token: '$ap-menu-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color iconos' },
+        { token: '$ap-menu-radio-active', value: '$ap-secondary-500 (#ee4a79)', usage: 'Radio seleccionado' },
+        { token: '$ap-menu-checkbox-active', value: '$ap-secondary-500 (#ee4a79)', usage: 'Checkbox seleccionado' },
       ]
     },
     {
       title: 'Avatar Tokens',
       tokens: [
-        { token: '$avatar-social-size-sm', value: '18px', usage: 'Avatar small' },
-        { token: '$avatar-social-size-md', value: '26px', usage: 'Avatar medium' },
-        { token: '$avatar-social-size-lg', value: '36px', usage: 'Avatar large' },
-        { token: '$avatar-social-size-xl', value: '50px', usage: 'Avatar extra large' },
-        { token: '$avatar-social-badge-sm', value: '8px', usage: 'Badge social small' },
-        { token: '$avatar-social-badge-md', value: '13px', usage: 'Badge social medium' },
-        { token: '$avatar-social-badge-lg', value: '18px', usage: 'Badge social large/xlarge' },
-        { token: '$avatar-social-offset-sm', value: '3px', usage: 'Overlap offset small' },
-        { token: '$avatar-social-offset-md', value: '6px', usage: 'Overlap offset medium' },
-        { token: '$avatar-social-offset-lg', value: '8px', usage: 'Overlap offset large/xlarge' },
-        { token: '$avatar-social-badge-border', value: '2px solid $white-500', usage: 'Borde blanco del badge' },
+        { token: '$ap-avatar-border-radius', value: '50%', usage: 'Forma circular' },
+        { token: '$ap-avatar-size-xlarge', value: '50px', usage: 'Tamano extra large' },
+        { token: '$ap-avatar-size-large', value: '36px', usage: 'Tamano large' },
+        { token: '$ap-avatar-size-medium', value: '26px', usage: 'Tamano medium' },
+        { token: '$ap-avatar-size-small', value: '18px', usage: 'Tamano small' },
+        { token: '$ap-avatar-badge-size', value: '16px', usage: 'Tamano badge plataforma' },
+        { token: '$ap-avatar-badge-border', value: '$ap-white-base (#ffffff)', usage: 'Borde del badge' },
+      ]
+    },
+    {
+      title: 'Metricas / Bar Chart Tokens',
+      tokens: [
+        { token: '$ap-bar-primary-from', value: '$ap-primary-300 (#5495fe)', usage: 'Gradiente inicio primary' },
+        { token: '$ap-bar-primary-to', value: '$ap-primary-500 (#0061fe)', usage: 'Gradiente fin primary' },
+        { token: '$ap-bar-secondary-from', value: '$ap-secondary-300 (#f38fab)', usage: 'Gradiente inicio secondary (rosa)' },
+        { token: '$ap-bar-secondary-to', value: '$ap-secondary-500 (#ee4a79)', usage: 'Gradiente fin secondary' },
+        { token: '$ap-bar-size-large', value: '78px', usage: 'Ancho barra large' },
+        { token: '$ap-bar-size-medium', value: '35px', usage: 'Ancho barra medium' },
+        { token: '$ap-bar-size-small', value: '17px', usage: 'Ancho barra small' },
+        { token: '$ap-bar-size-xsmall', value: '8px', usage: 'Ancho barra x-small' },
+        { token: '$ap-bar-label-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color labels' },
+        { token: '$ap-sparkline-primary-color', value: '$ap-primary-500 (#0061fe)', usage: 'Color linea primary' },
+        { token: '$ap-sparkline-secondary-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Color linea secondary (rosa)' },
+        { token: '$ap-donut-stroke-width', value: '30px', usage: 'Grosor segmentos dona' },
+        { token: '$ap-trend-up-color', value: '$ap-success-400 (#3ace76)', usage: 'Indicador positivo' },
+        { token: '$ap-trend-down-color', value: '$ap-error-400 (#fc3e3e)', usage: 'Indicador negativo' },
+      ]
+    },
+    {
+      title: 'Table Tokens',
+      tokens: [
+        { token: '$ap-table-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$ap-table-border-color', value: '$ap-grey-50 (#ececec)', usage: 'Borde de filas' },
+        { token: '$ap-table-header-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto header' },
+        { token: '$ap-table-body-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto body' },
+        { token: '$ap-table-title-color', value: '$ap-grey-800 (#222222)', usage: 'Color titulo' },
+        { token: '$ap-table-title-size', value: '24px', usage: 'Tamano titulo' },
+        { token: '$ap-table-row-height', value: '44px', usage: 'Altura de filas' },
+        { token: '$ap-table-cell-padding', value: '10px 20px', usage: 'Padding de celdas' },
+        { token: '$ap-table-hover-bg', value: '$ap-neutral-50 (#fafafa)', usage: 'Fondo hover de fila' },
+        { token: '$ap-table-action-icon-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Color icono acciones (rosa)' },
+      ]
+    },
+    {
+      title: 'Dashboard UI Tokens',
+      tokens: [
+        { token: '$ap-code-block-bg', value: '$ap-grey-900 (#1a1a1a)', usage: 'Fondo code blocks' },
+        { token: '$ap-code-block-text', value: '$ap-grey-100 (#c3c3c3)', usage: 'Color texto code blocks' },
+        { token: '$ap-ui-label-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color labels UI del dashboard' },
+        { token: '$ap-ui-light-bg', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Fondo inline code' },
+        { token: '$ap-swatch-border', value: '$ap-grey-50 (#ececec)', usage: 'Borde color swatches' },
       ]
     }
   ];
@@ -1553,29 +1766,35 @@ imports: [RadioButton, FormsModule]`
   menuCheckboxSelected: string[] = ['c1', 'c2'];
 
   // Map SCSS variable names → hex for color swatch resolution
+  // All AdvocatesPro tokens use the $ap- prefix
   private readonly colorMap: Record<string, string> = {
-    '$primary-50': '#e6edff', '$primary-100': '#b0ceff', '$primary-200': '#8ab6ff',
-    '$primary-300': '#5495fe', '$primary-400': '#338ffe', '$primary-500': '#0061fe',
-    '$primary-600': '#0058e7', '$primary-700': '#0045b4', '$primary-800': '#00358c', '$primary-900': '#00296b',
-    '$secondary-50': '#f5eefc', '$secondary-100': '#e1caf6', '$secondary-200': '#d2b0f2',
-    '$secondary-300': '#be8cec', '$secondary-400': '#b176e8', '$secondary-500': '#9e54e2',
-    '$secondary-600': '#904cce', '$secondary-700': '#703ca0', '$secondary-800': '#572e7c', '$secondary-900': '#42235f',
-    '$grey-50': '#ececec', '$grey-100': '#c3c3c3', '$grey-200': '#a6a6a6',
-    '$grey-300': '#7d7d7d', '$grey-400': '#646464', '$grey-500': '#3d3d3d',
-    '$grey-600': '#383838', '$grey-700': '#2b2b2b', '$grey-800': '#222222', '$grey-900': '#1a1a1a',
-    '$white-500': '#ffffff', '$white-800': '#f1f1f1',
-    '$ap-accent-50': '#fdedf2', '$ap-accent-100': '#fac7d5',
-    '$ap-accent-500': '#ee4a79', '$ap-accent-600': '#d9426e', '$ap-accent-700': '#a93556',
-    '$error-50': '#ffecec', '$error-100': '#feb0b0', '$error-200': '#fd8f8f',
-    '$error-300': '#fd5f5f', '$error-400': '#fc3e3e', '$error-500': '#b02b2b', '$error-600': '#9a2626',
-    '$warning-50': '#fff5ea', '$warning-100': '#ffd4a8', '$warning-200': '#ffc285',
-    '$warning-300': '#ffa850', '$warning-400': '#ff962c', '$warning-500': '#b3691f', '$warning-600': '#9c5c1b',
-    '$warning-icon': '#e8922d',
-    '$success-50': '#ebfaf1', '$success-100': '#aeebc7', '$success-200': '#8de3b0',
-    '$success-300': '#5bd68d', '$success-400': '#3ace76', '$success-500': '#299053', '$success-600': '#237e48',
-    '$neutral-50': '#fafafa', '$neutral-100': '#f5f7fa', '$neutral-200': '#f1f1f1',
-    '$status-success': '#3ace76', '$status-warning': '#f4b137', '$status-error': '#fc3e3e',
-    '$status-info': '#0061fe', '$status-neutral': '#a6a6a6',
+    // Primary (blue)
+    '$ap-primary-50': '#e6efff', '$ap-primary-100': '#b0ceff', '$ap-primary-200': '#8ab6ff',
+    '$ap-primary-300': '#5495fe', '$ap-primary-400': '#3381fe', '$ap-primary-500': '#0061fe',
+    '$ap-primary-600': '#0058e7', '$ap-primary-700': '#0045b4', '$ap-primary-800': '#00358c', '$ap-primary-900': '#00296b',
+    // Secondary (pink)
+    '$ap-secondary-50': '#fdedf2', '$ap-secondary-100': '#fac7d5', '$ap-secondary-200': '#f7acc1',
+    '$ap-secondary-300': '#f38fab', '$ap-secondary-400': '#f07090', '$ap-secondary-500': '#ee4a79',
+    '$ap-secondary-600': '#d9436e', '$ap-secondary-700': '#b93c5e', '$ap-secondary-800': '#8a2c48', '$ap-secondary-900': '#5e1c30',
+    // Grey
+    '$ap-grey-50': '#ececec', '$ap-grey-100': '#c3c3c3', '$ap-grey-200': '#a6a6a6',
+    '$ap-grey-300': '#7d7d7d', '$ap-grey-400': '#646464', '$ap-grey-500': '#3d3d3d',
+    '$ap-grey-600': '#383838', '$ap-grey-700': '#2b2b2b', '$ap-grey-800': '#222222', '$ap-grey-900': '#1a1a1a',
+    // Success
+    '$ap-success-50': '#ebfaf1', '$ap-success-100': '#aeebc7', '$ap-success-200': '#8de3b0',
+    '$ap-success-300': '#5bd68d', '$ap-success-400': '#3ace76', '$ap-success-500': '#299053', '$ap-success-600': '#237e48',
+    // Warning
+    '$ap-warning-50': '#fff5ea', '$ap-warning-100': '#ffd4a8', '$ap-warning-200': '#ffc285',
+    '$ap-warning-300': '#ffa850', '$ap-warning-400': '#ff962c', '$ap-warning-500': '#b3691f', '$ap-warning-600': '#9c5c1b',
+    // Error
+    '$ap-error-50': '#ffecec', '$ap-error-100': '#feb0b0', '$ap-error-200': '#fd8f8f',
+    '$ap-error-300': '#fd5f5f', '$ap-error-400': '#fc3e3e', '$ap-error-500': '#b02b2b', '$ap-error-600': '#9a2626',
+    // Neutral
+    '$ap-neutral-50': '#fafafa', '$ap-neutral-100': '#f5f7fa', '$ap-neutral-200': '#f1f1f1',
+    // AI (cyan)
+    '$ap-ai-50': '#e5f6ff', '$ap-ai-100': '#c9edff', '$ap-ai-500': '#00aaff',
+    // Base
+    '$ap-white-base': '#ffffff', '$ap-black-base': '#000000',
   };
 
   extractHex(value: string): string | null {
@@ -1597,6 +1816,17 @@ imports: [RadioButton, FormsModule]`
       return `${value} (${this.colorMap[varMatch[0]]})`;
     }
     return value;
+  }
+
+  // Returns true when the token value is a raw hex/color not bound to an $ap-* token
+  // (useful to flag tokens not linked to the AdvocatesPro palette)
+  isStandaloneColor(value: string): boolean {
+    if (!value) return false;
+    const trimmed = value.trim();
+    // If it references an $ap- token, it's linked to the palette
+    if (trimmed.startsWith('$ap-')) return false;
+    // Standalone hex value: e.g. #ee4a79, #fff
+    return /^#[0-9a-fA-F]{3,8}$/.test(trimmed);
   }
 
   copyToClipboard(text: string) {

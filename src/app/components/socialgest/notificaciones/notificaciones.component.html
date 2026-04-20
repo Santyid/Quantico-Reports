@@ -1,0 +1,107 @@
+<div class="notificaciones">
+  <!-- Page Header -->
+  <div class="notificaciones__header">
+    <div class="notificaciones__header-icon">
+      <lucide-icon [img]="BellIcon" [size]="24" [strokeWidth]="1.5" color="#0061fe"></lucide-icon>
+    </div>
+    <h1 class="notificaciones__header-title">Notificaciones</h1>
+  </div>
+
+  <!-- Tabs Bar -->
+  <div class="notificaciones__tabs-bar">
+    <div class="notificaciones__tabs">
+      @for (tab of tabs; track tab.key) {
+        <button
+          class="notificaciones__tab"
+          [class.notificaciones__tab--active]="activeTab === tab.key"
+          (click)="setTab(tab.key)">
+          {{ tab.label }}
+          @if (getTabCount(tab) > 0) {
+            <span class="notificaciones__tab-badge">{{ getTabCount(tab) }}</span>
+          }
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Sub-filter Row -->
+  <div class="notificaciones__sub-filters">
+    <div class="notificaciones__filter-pills">
+      <button
+        class="notificaciones__filter-pill"
+        [class.notificaciones__filter-pill--active]="activeFilter === 'todas'"
+        (click)="setFilter('todas')">
+        Todas
+      </button>
+      <button
+        class="notificaciones__filter-pill"
+        [class.notificaciones__filter-pill--active]="activeFilter === 'no-leidos'"
+        (click)="setFilter('no-leidos')">
+        No leidos
+      </button>
+    </div>
+    <div class="notificaciones__filter-actions">
+      <button class="notificaciones__mark-read-btn" (click)="markAllAsRead()">
+        Marcar todas como leidas
+      </button>
+      <button class="notificaciones__search-btn" aria-label="Buscar notificaciones">
+        <lucide-icon [img]="SearchIcon" [size]="18" [strokeWidth]="1.5" color="#7d7d7d"></lucide-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Notification List -->
+  <div class="notificaciones__list">
+    @for (group of groupedNotifications; track group.group) {
+      <div class="notificaciones__group">
+        <h3 class="notificaciones__group-title">{{ group.group }}</h3>
+        @for (notification of group.items; track notification.id) {
+          <div
+            class="notificaciones__row"
+            [class.notificaciones__row--unread]="!notification.read">
+            <div class="notificaciones__row-left">
+              <div class="notificaciones__row-icon"
+                [class.notificaciones__row-icon--error]="notification.type === 'error'"
+                [class.notificaciones__row-icon--info]="notification.type === 'info'"
+                [class.notificaciones__row-icon--warning]="notification.type === 'warning'"
+                [class.notificaciones__row-icon--success]="notification.type === 'success'">
+                <lucide-icon [img]="getIconForType(notification.type)" [size]="18" [strokeWidth]="1.5" color="white"></lucide-icon>
+              </div>
+              <div class="notificaciones__row-content">
+                <span class="notificaciones__row-title">{{ notification.title }}</span>
+                <span class="notificaciones__row-description">{{ notification.description }}</span>
+                @if (notification.network) {
+                  <span class="notificaciones__network-badge" [ngClass]="getNetworkClass(notification.network)">
+                    {{ notification.network }}
+                  </span>
+                }
+              </div>
+            </div>
+            <div class="notificaciones__row-right">
+              <div class="notificaciones__row-date-col">
+                <span class="notificaciones__row-date">{{ notification.fullDate }}</span>
+                <span class="notificaciones__row-time">{{ notification.time }}</span>
+              </div>
+              <app-button
+                [variant]="notification.read ? 'white' : 'primary'"
+                size="small">
+                @if (notification.read) {
+                  Ver publicacion
+                } @else {
+                  Ver publicacion
+                }
+              </app-button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (groupedNotifications.length === 0) {
+      <div class="notificaciones__empty">
+        <lucide-icon [img]="BellIcon" [size]="48" [strokeWidth]="1" color="#c3c3c3"></lucide-icon>
+        <p class="notificaciones__empty-text">No hay notificaciones en esta categoria</p>
+      </div>
+    }
+  </div>
+</div>

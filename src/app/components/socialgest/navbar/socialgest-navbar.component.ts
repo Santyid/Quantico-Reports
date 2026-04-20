@@ -1,4 +1,4 @@
-import { Component, inject, HostListener } from '@angular/core';
+import { Component, inject, HostListener, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { LucideAngularModule, ChevronDown, User, Bell, CircleHelp, Plus } from 'lucide-angular';
@@ -58,6 +58,8 @@ export class SocialgestNavbarComponent {
 
   openDropdown: string | null = null;
 
+  @Output() notificationsClick = new EventEmitter<void>();
+
   togglePlatformDropdown(): void {
     this.platformDropdownOpen = !this.platformDropdownOpen;
   }
@@ -82,5 +84,9 @@ export class SocialgestNavbarComponent {
 
   closeDropdown(): void {
     this.openDropdown = null;
+  }
+
+  onNotificationsClick(): void {
+    this.notificationsClick.emit();
   }
 }

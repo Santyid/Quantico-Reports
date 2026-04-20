@@ -148,6 +148,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./components/socialgest/metricas-facebook/metricas-facebook.component')
             .then(m => m.MetricasFacebookComponent)
+      },
+      {
+        path: 'notificaciones',
+        loadComponent: () =>
+          import('./components/socialgest/notificaciones/notificaciones.component')
+            .then(m => m.NotificacionesComponent)
       }
     ]
   },

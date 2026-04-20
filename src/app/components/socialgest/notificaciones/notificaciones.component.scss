@@ -1,0 +1,379 @@
+@import '../../../../styles/tokens';
+
+.notificaciones {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px;
+
+  // ---- Page Header ----
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  &__header-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba($primary-500, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__header-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: $grey-800;
+    margin: 0;
+  }
+
+  // ---- Tabs Bar ----
+  &__tabs-bar {
+    border-bottom: 1px solid $grey-50;
+    margin-bottom: 0;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 0;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: $grey-300;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: $grey-800;
+    }
+
+    &--active {
+      color: $primary-500;
+      border-bottom-color: $primary-500;
+    }
+  }
+
+  &__tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: #ff4444;
+    border-radius: 50px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: $white-500;
+    line-height: 1;
+  }
+
+  // ---- Sub-filter Row ----
+  &__sub-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid $grey-50;
+  }
+
+  &__filter-pills {
+    display: flex;
+    gap: 4px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 3px;
+  }
+
+  &__filter-pill {
+    padding: 8px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $grey-300;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $grey-800;
+    }
+
+    &--active {
+      background: $white-500;
+      color: $grey-800;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__mark-read-btn {
+    background: none;
+    border: none;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary-500;
+    cursor: pointer;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary-600;
+    }
+  }
+
+  &__search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: $white-500;
+    border: 1px solid $grey-100;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $grey-50;
+    }
+  }
+
+  // ---- Notification List ----
+  &__list {
+    padding-top: 8px;
+  }
+
+  &__group {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__group-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: $grey-300;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 0 10px 0;
+    margin: 0;
+  }
+
+  // ---- Notification Row ----
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba($grey-50, 0.5);
+    }
+
+    &--unread {
+      background: rgba($primary-50, 0.4);
+
+      &:hover {
+        background: rgba($primary-50, 0.6);
+      }
+    }
+
+    & + & {
+      margin-top: 4px;
+    }
+  }
+
+  &__row-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__row-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--error {
+      background: $status-error;
+    }
+
+    &--info {
+      background: $primary-500;
+    }
+
+    &--warning {
+      background: $status-warning;
+    }
+
+    &--success {
+      background: $status-success;
+    }
+  }
+
+  &__row-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__row-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: $grey-800;
+    line-height: 1.3;
+  }
+
+  &__row-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey-300;
+    line-height: 1.4;
+  }
+
+  &__network-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $white-500;
+    width: fit-content;
+    margin-top: 4px;
+
+    &--instagram {
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    }
+
+    &--facebook {
+      background: #1877f2;
+    }
+
+    &--twitter {
+      background: #1da1f2;
+    }
+
+    &--linkedin {
+      background: #0a66c2;
+    }
+
+    &--tiktok {
+      background: #000000;
+    }
+  }
+
+  &__row-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  &__row-date-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+
+  &__row-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-500;
+    white-space: nowrap;
+  }
+
+  &__row-time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $grey-200;
+    white-space: nowrap;
+  }
+
+  // ---- Empty State ----
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    gap: 16px;
+  }
+
+  &__empty-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: $grey-300;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .notificaciones {
+    padding: 24px 16px;
+
+    &__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    &__row-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
