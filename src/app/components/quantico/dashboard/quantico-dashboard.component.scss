@@ -729,34 +729,56 @@
     }
   }
 
-  // AI Button
+  // AI Button (con borde de gradiente IA)
   &__ai-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    border-radius: 12px;
-    border: 2px solid $qt-button-ai-border;
-    background: $qt-white-base;
+    gap: $qt-ai-button-gap;
+    border-radius: $qt-ai-button-border-radius;
+    // Uniform gradient border technique: two-layer background with border
+    background:
+      linear-gradient($qt-ai-button-bg, $qt-ai-button-bg) padding-box,
+      $qt-ai-button-border-gradient border-box;
+    border: $qt-ai-button-border-width solid transparent;
     cursor: pointer;
     font-family: 'Urbanist', sans-serif;
     font-weight: 700;
-    color: $qt-primary-500;
-    transition: background-color 0.2s ease;
+    color: $qt-ai-button-text-color;
+    transition: background 0.2s ease;
 
-    lucide-icon { color: $qt-primary-500; }
+    lucide-icon { color: $qt-ia-500; }
 
-    &:hover:not(:disabled) { background-color: $qt-button-ai-hover; }
-    &:active:not(:disabled) { background-color: $qt-button-ai-active; }
+    &:hover:not(:disabled) {
+      background:
+        linear-gradient($qt-ai-button-hover-bg, $qt-ai-button-hover-bg) padding-box,
+        $qt-ai-button-border-gradient border-box;
+    }
+    &:active:not(:disabled) {
+      background:
+        linear-gradient($qt-ai-button-active-bg, $qt-ai-button-active-bg) padding-box,
+        $qt-ai-button-border-gradient border-box;
+    }
 
     &:disabled {
-      opacity: 0.5;
+      opacity: $qt-ai-button-disabled-opacity;
       cursor: not-allowed;
     }
 
-    &--large { height: 48px; padding: 10px 20px; font-size: 18px; }
-    &--medium { height: 40px; padding: 8px 16px; font-size: 16px; }
-    &--small { height: 36px; padding: 6px 14px; font-size: 14px; }
+    // Sizes
+    &--large { height: $qt-ai-button-large-height; padding: $qt-ai-button-padding; font-size: 18px; }
+    &--medium { height: $qt-ai-button-medium-height; padding: 8px 16px; font-size: 16px; }
+    &--small { height: $qt-ai-button-small-height; padding: 6px 14px; font-size: 14px; }
+  }
+
+  // Mia logo inside AI button
+  &__mia-logo {
+    height: 20px;
+    width: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
   }
 
   // Icon Button (square, icon only)
@@ -1723,6 +1745,271 @@
       }
     }
   }
+
+  // ═══════════════════════════════════════
+  // Gradient swatch (IA gradient in color palette)
+  // ═══════════════════════════════════════
+  &__swatch--gradient {
+    background: $qt-ia-gradient;
+  }
+
+  &__swatch--gradient-row {
+    grid-column: span 2;
+  }
+
+  // ═══════════════════════════════════════
+  // Elementos de IA
+  // ═══════════════════════════════════════
+
+  // Hero title with tri-color text gradient
+  &__ia-hero-wrap {
+    padding: 24px 0;
+  }
+
+  &__ia-hero-title {
+    font-family: $qt-ia-hero-title-font;
+    font-size: $qt-ia-hero-title-size;
+    line-height: $qt-ia-hero-title-line-height;
+    font-weight: $qt-ia-hero-title-weight;
+    letter-spacing: $qt-ia-hero-title-letter-spacing;
+    margin: 0;
+    background: $qt-ia-hero-title-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+  }
+
+  // Nota de IA
+  &__ia-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: $qt-ia-note-padding;
+    background: $qt-ia-note-bg;
+    border-radius: $qt-ia-note-radius;
+  }
+
+  &__ia-note-icon {
+    color: $qt-primary-500;
+    flex-shrink: 0;
+  }
+
+  &__ia-note-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: $qt-ia-note-text-size;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.24px;
+    color: $qt-ia-note-text-color;
+  }
+
+  // Panel: Creando ideas
+  &__ia-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: $qt-ia-panel-padding;
+    border-radius: $qt-ia-panel-radius;
+    background: $qt-ia-panel-bg;
+  }
+
+  &__ia-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__ia-panel-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $qt-ia-panel-icon-size;
+    height: $qt-ia-panel-icon-size;
+    padding: 12px;
+    background: $qt-ia-panel-icon-bg;
+    border-radius: 50px;
+    flex-shrink: 0;
+  }
+
+  &__ia-panel-icon {
+    color: $qt-primary-500;
+  }
+
+  &__ia-panel-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__ia-panel-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: $qt-ia-panel-title-font-size;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    background: $qt-ia-text-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  &__ia-panel-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: $qt-ia-panel-subtitle-font-size;
+    font-weight: 400;
+    letter-spacing: -0.28px;
+    color: $qt-ia-panel-subtitle-color;
+    margin: 0;
+  }
+
+  // Progress bar
+  &__ia-panel-progress {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: $qt-grey-50;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  &__ia-panel-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: $qt-ia-progress-gradient;
+    border-radius: 50px;
+  }
+
+  // Inner status card
+  &__ia-panel-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 60px;
+    padding: 8px;
+    background: $qt-white-base;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  &__ia-panel-status-icon {
+    color: $qt-primary-500;
+    flex-shrink: 0;
+    animation: qt-sg-spin 1.2s linear infinite;
+  }
+
+  &__ia-panel-status-text {
+    flex: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    background: $qt-ia-text-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  &__ia-panel-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: $qt-ia-gradient;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: $qt-white-base;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  // Footer row
+  &__ia-panel-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__ia-panel-footer-icon {
+    color: $qt-grey-300;
+    flex-shrink: 0;
+  }
+
+  &__ia-panel-footer-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $qt-ia-panel-subtitle-color;
+  }
+
+  // ═══════════════════════════════════════
+  // Etiquetas de Colores (Color Labels)
+  // ═══════════════════════════════════════
+  &__labels-grid { display: flex; flex-direction: column; gap: 12px; }
+  &__labels-row {
+    display: grid; grid-template-columns: 120px 1fr; align-items: center;
+    gap: 24px; padding: 8px 0; border-bottom: 1px solid $qt-grey-50;
+    &:last-child { border-bottom: none; }
+  }
+  &__labels-name {
+    font-family: 'Urbanist', sans-serif; font-size: 14px;
+    font-weight: 600; color: $qt-grey-800;
+  }
+  &__labels-samples { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  &__label {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: $qt-label-gap; height: $qt-label-height; padding: $qt-label-padding;
+    border-radius: $qt-label-radius; font-family: 'DM Sans', sans-serif;
+    font-size: $qt-label-font-size; font-weight: $qt-label-font-weight;
+    letter-spacing: $qt-label-letter-spacing; white-space: nowrap; box-sizing: border-box;
+
+    @each $n, $bg, $tx in (
+      (azul, $qt-label-azul-bg, $qt-label-azul-text),
+      (verde, $qt-label-verde-bg, $qt-label-verde-text),
+      (amarillo, $qt-label-amarillo-bg, $qt-label-amarillo-text),
+      (rojo, $qt-label-rojo-bg, $qt-label-rojo-text),
+      (violeta, $qt-label-violeta-bg, $qt-label-violeta-text),
+      (naranja, $qt-label-naranja-bg, $qt-label-naranja-text),
+      (turquesa, $qt-label-turquesa-bg, $qt-label-turquesa-text),
+      (gris, $qt-label-gris-bg, $qt-label-gris-text),
+      (vinotinto, $qt-label-vinotinto-bg, $qt-label-vinotinto-text),
+      (olivo, $qt-label-olivo-bg, $qt-label-olivo-text)
+    ) {
+      &--#{$n} { background: $bg; color: $tx; }
+    }
+
+    &--ia {
+      background: $qt-label-ia-bg; border: 1px solid $qt-label-ia-border;
+      .qt-sg__label-text {
+        background: $qt-label-ia-text-gradient;
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent; -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  &__label-action {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: $qt-label-action-size; height: $qt-label-action-size;
+    border-radius: $qt-label-action-radius; flex-shrink: 0;
+    &--white-bg { background: $qt-white-base; }
+    lucide-icon { width: $qt-label-action-icon-size; height: $qt-label-action-icon-size; }
+  }
+}
+
+@keyframes qt-sg-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 // ========================================

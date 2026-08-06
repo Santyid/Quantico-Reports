@@ -1,7 +1,7 @@
 import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, Search, X, ChevronDown, Copy, Check, PlusCircle, CircleCheck, CircleX, Sparkles, CircleCheckBig, TriangleAlert, Info, User, Globe, Mail, MapPin, Home, FileText, BarChart3, Settings, Layers, Zap, Trash2, Pencil, EllipsisVertical } from 'lucide-angular';
+import { LucideAngularModule, Search, X, ChevronDown, Copy, Check, PlusCircle, CircleCheck, CircleX, Sparkles, CircleCheckBig, TriangleAlert, Info, User, Globe, Mail, MapPin, Home, FileText, BarChart3, Settings, Layers, Zap, Trash2, Pencil, EllipsisVertical, LoaderCircle, MoreHorizontal } from 'lucide-angular';
 import { RadioButton } from 'primeng/radiobutton';
 import { SelectSegmentComponent, SelectSegmentOption } from '../../ui/select-segment/select-segment.component';
 import { SelectSegmentImgComponent, SelectSegmentImgOption } from '../../ui/select-segment-img/select-segment-img.component';
@@ -33,6 +33,7 @@ interface ColorSwatch {
   hex: string;
   scssVar: string;
   isBase?: boolean;
+  isGradient?: boolean;
 }
 
 interface ColorPalette {
@@ -119,6 +120,22 @@ export class QuanticoDashboardComponent {
   readonly TrashIcon = Trash2;
   readonly PencilIcon = Pencil;
   readonly EllipsisIcon = EllipsisVertical;
+  readonly LoaderCircleIcon = LoaderCircle;
+  readonly MoreHorizontalIcon = MoreHorizontal;
+
+  // ─── Color labels demo ───
+  readonly labelVariants = [
+    { key: 'azul', label: 'Azul' },
+    { key: 'verde', label: 'Verde' },
+    { key: 'amarillo', label: 'Amarillo' },
+    { key: 'rojo', label: 'Rojo' },
+    { key: 'violeta', label: 'Violeta' },
+    { key: 'naranja', label: 'Naranja' },
+    { key: 'turquesa', label: 'Turquesa' },
+    { key: 'gris', label: 'Gris' },
+    { key: 'vinotinto', label: 'Vinotinto' },
+    { key: 'olivo', label: 'Olivo' },
+  ] as const;
 
   searchQuery = '';
   copiedToken: string | null = null;
@@ -433,6 +450,8 @@ export class QuanticoDashboardComponent {
     { id: 'spacing', label: 'Spacing', keywords: ['espacio', 'padding', 'margin', 'gap'] },
     { id: 'radius', label: 'Border Radius', keywords: ['border', 'radius', 'redondeo', 'pill', 'circle'] },
     { id: 'buttons', label: 'Buttons', keywords: ['boton', 'button', 'primary', 'secundary', 'white', 'hover', 'active', 'disabled', 'ai', 'icon button', 'toggle button'] },
+    { id: 'ia-elements', label: 'Elementos de IA', keywords: ['ia', 'ai', 'inteligencia', 'artificial', 'gradiente', 'nota', 'titulo', 'generando', 'creando', 'sparkles', 'loader', 'progress', 'hero'] },
+    { id: 'labels', label: 'Etiquetas', keywords: ['etiqueta', 'label', 'badge', 'tag', 'chip', 'color'] },
     { id: 'controls', label: 'Controls', keywords: ['toggle', 'checkbox', 'radio', 'switch', 'check', 'tab', 'primeng'] },
     { id: 'badges', label: 'Status Badge', keywords: ['badge', 'status', 'positiva', 'negativa', 'neutra', 'desactivado', 'dot', 'pill'] },
     { id: 'chips', label: 'Chips', keywords: ['chip', 'tag', 'pill', 'removable', 'filtro', 'label'] },
@@ -582,6 +601,18 @@ export class QuanticoDashboardComponent {
       swatches: [
         { name: 'black-base', hex: '#000000', scssVar: '$qt-black-base' }
       ]
+    },
+    {
+      title: 'IA Gradiente',
+      swatches: [
+        {
+          name: '$qt-ia-gradient',
+          hex: 'linear-gradient(19.84deg, #0061fe → #00aaff)',
+          scssVar: '$qt-ia-gradient',
+          isBase: true,
+          isGradient: true
+        }
+      ]
     }
   ];
 
@@ -716,6 +747,77 @@ export class QuanticoDashboardComponent {
         { token: '$qt-ia-50', value: '$qt-ia-50 (#e5f6ff)', usage: 'Hover boton AI' },
         { token: '$qt-ia-100', value: '$qt-ia-100 (#c9edff)', usage: 'Active boton AI' },
         { token: '$qt-ia-500', value: '$qt-ia-500 (#00aaff)', usage: 'Base IA — borde boton AI' },
+      ]
+    },
+    {
+      title: 'IA Gradiente',
+      tokens: [
+        { token: '$qt-ia-gradient', value: 'linear-gradient(19.84deg, $qt-primary-500 2.99%, $qt-ia-500 105.98%)', usage: 'Gradiente distintivo para elementos de IA (botones, iconos, headers)' }
+      ]
+    },
+    {
+      title: 'Elementos de IA Tokens',
+      tokens: [
+        { token: '$qt-ia-panel-bg', value: 'linear-gradient(108.20deg, rgba(230,239,255,0.7) 0%, $qt-white-base 50.75%, rgba(245,238,252,0.7) 100%)', usage: 'Fondo del panel "Creando ideas"' },
+        { token: '$qt-ia-note-bg', value: 'linear-gradient(161.67deg, rgba(230,239,255,0.33) → rgba(133,177,255,0.33))', usage: 'Fondo de la Nota de IA' },
+        { token: '$qt-ia-text-gradient', value: 'linear-gradient(5.79deg, $qt-primary-500 → $qt-ia-500)', usage: 'Gradiente de texto para titulos/subtitulos de IA' },
+        { token: '$qt-ia-hero-title-gradient', value: 'linear-gradient(to right, $qt-primary-500 → $qt-primary-900 → $qt-secondary-500)', usage: 'Gradiente de texto tricolor para titulos hero de IA (azul → azul oscuro → morado)' },
+        { token: '$qt-ia-progress-gradient', value: 'linear-gradient(90deg, $qt-primary-500 → $qt-primary-100)', usage: 'Fill de la barra de progreso IA' },
+        { token: '$qt-ia-panel-padding', value: '24px 32px', usage: 'Padding del panel IA' },
+        { token: '$qt-ia-panel-radius', value: '16px', usage: 'Border radius del panel IA' },
+        { token: '$qt-ia-panel-icon-size', value: '48px', usage: 'Tamano del contenedor del icono Sparkles' },
+        { token: '$qt-ia-panel-icon-bg', value: '$qt-white-base (#ffffff)', usage: 'Fondo del contenedor del icono' },
+        { token: '$qt-ia-panel-title-color', value: '$qt-primary-900 (#00296b)', usage: 'Color base del titulo (usado con text gradient)' },
+        { token: '$qt-ia-panel-title-font-size', value: '18px', usage: 'Tamano del titulo del panel' },
+        { token: '$qt-ia-panel-subtitle-color', value: '$qt-primary-900 (#00296b)', usage: 'Color del subtitulo del panel' },
+        { token: '$qt-ia-panel-subtitle-font-size', value: '14px', usage: 'Tamano del subtitulo' },
+        { token: '$qt-ia-note-padding', value: '4px 16px', usage: 'Padding de la nota de IA' },
+        { token: '$qt-ia-note-radius', value: '10px', usage: 'Border radius de la nota' },
+        { token: '$qt-ia-note-text-color', value: '$qt-primary-900 (#00296b)', usage: 'Color del texto de la nota' },
+        { token: '$qt-ia-note-text-size', value: '12px', usage: 'Tamano del texto de la nota' },
+        { token: '$qt-ia-hero-title-size', value: '40px', usage: 'Tamano de titulo hero IA' },
+        { token: '$qt-ia-hero-title-line-height', value: '40px', usage: 'Line-height del titulo hero' },
+        { token: '$qt-ia-hero-title-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica del titulo hero' },
+        { token: '$qt-ia-hero-title-weight', value: '600 (SemiBold)', usage: 'Peso de fuente del titulo hero' },
+        { token: '$qt-ia-hero-title-letter-spacing', value: '-0.8px', usage: 'Tracking del titulo hero' },
+      ]
+    },
+    {
+      title: 'Etiquetas de Colores',
+      tokens: [
+        { token: '$qt-label-height', value: '20px', usage: 'Altura de la etiqueta' },
+        { token: '$qt-label-padding', value: '10px 8px', usage: 'Padding interno' },
+        { token: '$qt-label-radius', value: '10px', usage: 'Border radius' },
+        { token: '$qt-label-gap', value: '6px', usage: 'Gap entre texto e icono de accion' },
+        { token: '$qt-label-font-size', value: '10px', usage: 'Tamano de fuente (DM Sans Medium)' },
+        { token: '$qt-label-font-weight', value: '500', usage: 'Peso de fuente (Medium)' },
+        { token: '$qt-label-letter-spacing', value: '-0.2px', usage: 'Tracking del texto' },
+        { token: '$qt-label-azul-bg', value: '#dbeafe', usage: 'Fondo etiqueta azul (default)' },
+        { token: '$qt-label-azul-text', value: '#1e40af', usage: 'Texto etiqueta azul' },
+        { token: '$qt-label-verde-bg', value: '#d1fae5', usage: 'Fondo etiqueta verde' },
+        { token: '$qt-label-verde-text', value: '#065f46', usage: 'Texto etiqueta verde' },
+        { token: '$qt-label-amarillo-bg', value: '#fef3c7', usage: 'Fondo etiqueta amarilla' },
+        { token: '$qt-label-amarillo-text', value: '#92400e', usage: 'Texto etiqueta amarilla' },
+        { token: '$qt-label-rojo-bg', value: '#fee2e2', usage: 'Fondo etiqueta roja' },
+        { token: '$qt-label-rojo-text', value: '#991b1b', usage: 'Texto etiqueta roja' },
+        { token: '$qt-label-violeta-bg', value: '#ede9fe', usage: 'Fondo etiqueta violeta' },
+        { token: '$qt-label-violeta-text', value: '#5b21b6', usage: 'Texto etiqueta violeta' },
+        { token: '$qt-label-naranja-bg', value: '#ffedd5', usage: 'Fondo etiqueta naranja' },
+        { token: '$qt-label-naranja-text', value: '#9a3412', usage: 'Texto etiqueta naranja' },
+        { token: '$qt-label-turquesa-bg', value: '#ccfbf1', usage: 'Fondo etiqueta turquesa' },
+        { token: '$qt-label-turquesa-text', value: '#115e59', usage: 'Texto etiqueta turquesa' },
+        { token: '$qt-label-gris-bg', value: '#f3f4f6', usage: 'Fondo etiqueta gris' },
+        { token: '$qt-label-gris-text', value: '#374151', usage: 'Texto etiqueta gris' },
+        { token: '$qt-label-vinotinto-bg', value: '#fce7f3', usage: 'Fondo etiqueta vinotinto' },
+        { token: '$qt-label-vinotinto-text', value: '#9f1239', usage: 'Texto etiqueta vinotinto' },
+        { token: '$qt-label-olivo-bg', value: '#ecfccb', usage: 'Fondo etiqueta olivo' },
+        { token: '$qt-label-olivo-text', value: '#3f6212', usage: 'Texto etiqueta olivo' },
+        { token: '$qt-label-ia-bg', value: '$qt-white-base (#ffffff)', usage: 'Fondo etiqueta IA' },
+        { token: '$qt-label-ia-border', value: '$qt-primary-500 (#0061fe)', usage: 'Borde etiqueta IA' },
+        { token: '$qt-label-ia-text-gradient', value: '$qt-ia-text-gradient', usage: 'Gradiente de texto etiqueta IA' },
+        { token: '$qt-label-action-size', value: '14px', usage: 'Tamano circulo de accion' },
+        { token: '$qt-label-action-radius', value: '30px', usage: 'Border radius del circulo' },
+        { token: '$qt-label-action-icon-size', value: '10px', usage: 'Tamano del icono Lucide (MoreHorizontal / Check)' },
       ]
     },
     {

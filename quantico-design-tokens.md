@@ -119,6 +119,135 @@
 
 ---
 
+## 7.2. IA Gradiente
+
+Gradiente distintivo para elementos de IA en Quantico.
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$qt-ia-gradient` | `linear-gradient(19.84deg, $qt-primary-500 2.99%, $qt-ia-500 105.98%)` | Botones, iconos, headers de IA |
+
+Se compone del gradiente de `$qt-primary-500` (#0061fe) al `$qt-ia-500` (#00aaff) en un ángulo de 19.84°.
+
+---
+
+## 7.3. Elementos de IA
+
+Coleccion de 3 componentes distintivos para funcionalidades de IA en Quantico: un titulo hero con gradiente tricolor, una nota informativa compacta y un panel grande de progreso "Creando ideas".
+
+### 1. Titulo con degradés para IA
+
+Encabezado grande con texto de gradiente tricolor (azul &rarr; azul oscuro &rarr; morado). Uso: pantallas hero y encabezados destacados de IA.
+
+- Fuente: `Urbanist SemiBold 40px`, line-height 40px, tracking -0.8px
+- Gradiente de texto: `$qt-ia-hero-title-gradient` (blue → dark blue → purple)
+- Aplicado con `background-clip: text; -webkit-text-fill-color: transparent;`
+
+### 2. Nota de IA
+
+Caja compacta para hints o notas informativas debajo de componentes/flujos.
+
+- Fondo: `$qt-ia-note-bg` (gradiente azul suave)
+- Padding: `4px 16px` | Border-radius: `10px`
+- Flex row, gap 12px, items center
+- Icono Sparkles (16px) en `$qt-primary-500`
+- Texto: `DM Sans Regular 12px`, color `$qt-primary-900`, tracking -0.24px, line-height 21px
+
+### 3. Creando ideas (panel)
+
+Panel grande que muestra un proceso de generacion en curso.
+
+- Fondo: `$qt-ia-panel-bg` (gradiente suave primary-white-purple)
+- Padding: `24px 32px` | Border-radius: `16px`
+- Estructura: header (icono + titulo + subtitulo), barra de progreso, card interna de estado y footer informativo
+- Titulos usan `$qt-ia-text-gradient` como texto de gradiente
+- Badge "En progreso" con `$qt-ia-gradient` de fondo
+
+### Tokens
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$qt-ia-panel-bg` | `linear-gradient(108.20deg, rgba(230,239,255,0.7) 0%, $qt-white-base 50.75%, rgba(245,238,252,0.7) 100%)` | Fondo del panel "Creando ideas" |
+| `$qt-ia-note-bg` | `linear-gradient(161.67deg, rgba(230,239,255,0.33) → rgba(133,177,255,0.33))` | Fondo de la Nota de IA |
+| `$qt-ia-text-gradient` | `linear-gradient(5.79deg, $qt-primary-500 2.99%, $qt-ia-500 105.98%)` | Gradiente de texto para titulos/subtitulos de IA |
+| `$qt-ia-hero-title-gradient` | `linear-gradient(to right, $qt-primary-500 1.85%, $qt-primary-900 49.5%, $qt-secondary-500 82.2%)` | Gradiente de texto tricolor para titulos hero de IA (azul → azul oscuro → morado) |
+| `$qt-ia-progress-gradient` | `linear-gradient(90deg, $qt-primary-500, $qt-primary-100)` | Fill de la barra de progreso IA |
+| `$qt-ia-panel-padding` | `24px 32px` | Padding del panel IA |
+| `$qt-ia-panel-radius` | `16px` | Border radius del panel IA |
+| `$qt-ia-panel-icon-size` | `48px` | Tamano del contenedor del icono Sparkles |
+| `$qt-ia-panel-icon-bg` | `$qt-white-base` (#ffffff) | Fondo del contenedor del icono |
+| `$qt-ia-panel-title-color` | `$qt-primary-900` (#00296b) | Color base del titulo (usado con text gradient) |
+| `$qt-ia-panel-title-font-size` | `18px` | Tamano del titulo del panel |
+| `$qt-ia-panel-subtitle-color` | `$qt-primary-900` (#00296b) | Color del subtitulo del panel |
+| `$qt-ia-panel-subtitle-font-size` | `14px` | Tamano del subtitulo |
+| `$qt-ia-note-padding` | `4px 16px` | Padding de la nota de IA |
+| `$qt-ia-note-radius` | `10px` | Border radius de la nota |
+| `$qt-ia-note-text-color` | `$qt-primary-900` (#00296b) | Color del texto de la nota |
+| `$qt-ia-note-text-size` | `12px` | Tamano del texto de la nota |
+| `$qt-ia-hero-title-size` | `40px` | Tamano de titulo hero IA |
+| `$qt-ia-hero-title-line-height` | `40px` | Line-height del titulo hero |
+| `$qt-ia-hero-title-font` | `'Urbanist', sans-serif` | Familia tipografica del titulo hero |
+| `$qt-ia-hero-title-weight` | `600` (SemiBold) | Peso de fuente del titulo hero |
+| `$qt-ia-hero-title-letter-spacing` | `-0.8px` | Tracking del titulo hero |
+
+### Iconos Lucide utilizados
+
+- `Sparkles` — icono del panel y de la nota de IA
+- `LoaderCircle` — icono giratorio de estado dentro del panel
+- `Info` — icono del footer del panel
+
+---
+
+## 7.4. Etiquetas de Colores (Color Labels)
+
+Etiquetas compactas de 20px de alto con 11 variantes de color (10 pastel + 1 IA con gradiente).
+Cada etiqueta puede mostrarse sola o acompanada de un icono de accion (MoreHorizontal o Check) dentro de un circulo blanco.
+
+**Base**
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$qt-label-height` | `20px` | Altura de la etiqueta |
+| `$qt-label-padding` | `10px 8px` | Padding interno |
+| `$qt-label-radius` | `10px` | Border radius |
+| `$qt-label-gap` | `6px` | Gap entre texto e icono de accion |
+| `$qt-label-font-size` | `10px` | Tamano de fuente (DM Sans Medium) |
+| `$qt-label-font-weight` | `500` | Peso de fuente (Medium) |
+| `$qt-label-letter-spacing` | `-0.2px` | Tracking del texto |
+
+**Variantes de color (fondo + texto)**
+
+| Variante | Background | Texto |
+|----------|-----------|-------|
+| `$qt-label-azul-bg` / `$qt-label-azul-text` | `#dbeafe` | `#1e40af` |
+| `$qt-label-verde-bg` / `$qt-label-verde-text` | `#d1fae5` | `#065f46` |
+| `$qt-label-amarillo-bg` / `$qt-label-amarillo-text` | `#fef3c7` | `#92400e` |
+| `$qt-label-rojo-bg` / `$qt-label-rojo-text` | `#fee2e2` | `#991b1b` |
+| `$qt-label-violeta-bg` / `$qt-label-violeta-text` | `#ede9fe` | `#5b21b6` |
+| `$qt-label-naranja-bg` / `$qt-label-naranja-text` | `#ffedd5` | `#9a3412` |
+| `$qt-label-turquesa-bg` / `$qt-label-turquesa-text` | `#ccfbf1` | `#115e59` |
+| `$qt-label-gris-bg` / `$qt-label-gris-text` | `#f3f4f6` | `#374151` |
+| `$qt-label-vinotinto-bg` / `$qt-label-vinotinto-text` | `#fce7f3` | `#9f1239` |
+| `$qt-label-olivo-bg` / `$qt-label-olivo-text` | `#ecfccb` | `#3f6212` |
+
+**Variante IA (fondo blanco + borde + texto en gradiente)**
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$qt-label-ia-bg` | `$qt-white-base` (#ffffff) | Fondo etiqueta IA |
+| `$qt-label-ia-border` | `$qt-primary-500` (#0061fe) | Borde etiqueta IA |
+| `$qt-label-ia-text-gradient` | `$qt-ia-text-gradient` | Gradiente de texto etiqueta IA |
+
+**Circulo de accion (icono opcional a la derecha)**
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$qt-label-action-size` | `14px` | Tamano circulo de accion |
+| `$qt-label-action-radius` | `30px` | Border radius del circulo |
+| `$qt-label-action-icon-size` | `10px` | Tamano del icono Lucide (MoreHorizontal / Check) |
+
+---
+
 ## 8. White
 
 | Token | Hex | Usage |
@@ -171,6 +300,30 @@
 | `$qt-button-padding` | `10px 20px` | Padding |
 | `$qt-button-gap` | `10px` | Gap entre icono y texto |
 | `$qt-button-transition` | `all 0.2s ease` | Transicion de estados |
+
+### AI Button (Cyan con borde gradiente + variante Mia)
+
+Botón blanco con borde de gradiente IA (`$qt-ia-gradient` = `linear-gradient(19.84deg, #0061fe → #00aaff)`). Usado para funcionalidades de IA como "AI" y "Mia". El borde uniforme se logra con la técnica de dos capas de background (padding-box + border-box) y un `border: 2px solid transparent`.
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$qt-ai-button-bg` | `$qt-white-base` (#ffffff) | Fondo del botón AI |
+| `$qt-ai-button-hover-bg` | `$qt-ia-50` (#e5f6ff) | Fondo hover |
+| `$qt-ai-button-active-bg` | `$qt-ia-100` (#c9edff) | Fondo active |
+| `$qt-ai-button-disabled-opacity` | `0.5` | Opacidad estado disabled |
+| `$qt-ai-button-border-width` | `2px` | Grosor del borde gradiente |
+| `$qt-ai-button-border-gradient` | `$qt-ia-gradient` | Gradiente del borde (primary → ia) |
+| `$qt-ai-button-border-radius` | `12px` | Border radius |
+| `$qt-ai-button-text-color` | `$qt-primary-500` (#0061fe) | Color texto |
+| `$qt-ai-button-small-height` | `36px` | Altura small |
+| `$qt-ai-button-medium-height` | `40px` | Altura medium |
+| `$qt-ai-button-large-height` | `48px` | Altura large |
+| `$qt-ai-button-padding` | `10px 20px` | Padding interno |
+| `$qt-ai-button-gap` | `8px` | Espacio entre ícono y contenido |
+
+El ícono `Sparkles` de Lucide utiliza `$qt-ia-500` (#00aaff) como color.
+
+**Variante Mia:** el botón muestra el logo SVG de Mia (`/images/mia-logo.svg`) en lugar del texto "AI". Se renderiza junto al ícono `Sparkles` de Lucide con `z-index: 1` para quedar por encima del borde de gradiente.
 
 ---
 

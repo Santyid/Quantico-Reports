@@ -1,0 +1,253 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "SocialGest Design System Tokens",
+    "prefix": "sg",
+    "version": "1.0.0",
+    "source": "Figma + src/styles/_tokens.scss (SocialGest section, prefix $sg-)",
+    "lastUpdated": "2026-08-03",
+    "notes": "Tokens puros (colores, tipografía, espaciado, radios, sombras, breakpoints) de SocialGest. El color primario (azul) y las escalas semánticas (success/warning/error/grey/neutral) son idénticas a Quantico y AdvocatesPro. El color secundario NARANJA (#f47a37) es distintivo de SocialGest."
+  },
+
+  "color": {
+    "primary": {
+      "50":  { "value": "#e6efff", "rgb": "rgb(230, 239, 255)", "usage": "tinta más clara, fondos" },
+      "100": { "value": "#b0ceff", "rgb": "rgb(176, 206, 255)", "usage": "tinta clara, fondos hover" },
+      "200": { "value": "#8ab6ff", "rgb": "rgb(138, 182, 255)", "usage": "accent suave" },
+      "300": { "value": "#5495fe", "rgb": "rgb(84, 149, 254)", "usage": "accent medio, gradientes" },
+      "400": { "value": "#3381fe", "rgb": "rgb(51, 129, 254)", "usage": "accent fuerte" },
+      "500": { "value": "#0061fe", "rgb": "rgb(0, 97, 254)", "isBase": true, "usage": "botones, links, focus" },
+      "600": { "value": "#0058e7", "rgb": "rgb(0, 88, 231)", "usage": "hover" },
+      "700": { "value": "#0045b4", "rgb": "rgb(0, 69, 180)", "usage": "active/pressed" },
+      "800": { "value": "#00358c", "rgb": "rgb(0, 53, 140)", "usage": "accent oscuro" },
+      "900": { "value": "#00296b", "rgb": "rgb(0, 41, 107)", "usage": "tinta más oscura" }
+    },
+    "secondary": {
+      "50":  { "value": "#fef2eb", "rgb": "rgb(254, 242, 235)", "usage": "tinta más clara, fondos seleccionados" },
+      "100": { "value": "#fcd6c1", "rgb": "rgb(252, 214, 193)", "usage": "tinta clara, badges" },
+      "200": { "value": "#fac2a3", "rgb": "rgb(250, 194, 163)", "usage": "accent suave, disabled" },
+      "300": { "value": "#f8a679", "rgb": "rgb(248, 166, 121)", "usage": "accent medio, gradientes" },
+      "400": { "value": "#f6955f", "rgb": "rgb(246, 149, 95)", "usage": "accent fuerte" },
+      "500": { "value": "#f47a37", "rgb": "rgb(244, 122, 55)", "isBase": true, "usage": "acciones secundarias, acentos naranja (distintivo SocialGest)" },
+      "600": { "value": "#e5641e", "rgb": "rgb(229, 100, 30)", "usage": "hover" },
+      "700": { "value": "#c84802", "rgb": "rgb(200, 72, 2)", "usage": "active/pressed" },
+      "800": { "value": "#b84100", "rgb": "rgb(184, 65, 0)", "usage": "accent oscuro" },
+      "900": { "value": "#9c3700", "rgb": "rgb(156, 55, 0)", "usage": "tinta más oscura" }
+    },
+    "grey": {
+      "50":  { "value": "#ececec", "rgb": "rgb(236, 236, 236)", "usage": "bordes, divisores, fondos" },
+      "100": { "value": "#c3c3c3", "rgb": "rgb(195, 195, 195)", "usage": "bordes de inputs" },
+      "200": { "value": "#a6a6a6", "rgb": "rgb(166, 166, 166)", "usage": "placeholder, iconos" },
+      "300": { "value": "#7d7d7d", "rgb": "rgb(125, 125, 125)", "usage": "texto secundario, iconos" },
+      "400": { "value": "#646464", "rgb": "rgb(100, 100, 100)", "usage": "texto de labels" },
+      "500": { "value": "#3d3d3d", "rgb": "rgb(61, 61, 61)", "isBase": true, "usage": "texto body" },
+      "600": { "value": "#383838", "rgb": "rgb(56, 56, 56)", "usage": "texto oscuro" },
+      "700": { "value": "#2b2b2b", "rgb": "rgb(43, 43, 43)", "usage": "texto muy oscuro" },
+      "800": { "value": "#222222", "rgb": "rgb(34, 34, 34)", "usage": "headings, texto primario" },
+      "900": { "value": "#1a1a1a", "rgb": "rgb(26, 26, 26)", "usage": "texto casi negro" }
+    },
+    "success": {
+      "50":  { "value": "#ebfaf1", "rgb": "rgb(235, 250, 241)", "usage": "fondo claro success" },
+      "100": { "value": "#aeebc7", "rgb": "rgb(174, 235, 199)" },
+      "200": { "value": "#8de3b0", "rgb": "rgb(141, 227, 176)" },
+      "300": { "value": "#5bd68d", "rgb": "rgb(91, 214, 141)" },
+      "400": { "value": "#3ace76", "rgb": "rgb(58, 206, 118)", "isBase": true, "usage": "indicadores, badges" },
+      "500": { "value": "#299053", "rgb": "rgb(41, 144, 83)", "usage": "success oscuro" },
+      "600": { "value": "#237e48", "rgb": "rgb(35, 126, 72)", "usage": "success más oscuro" }
+    },
+    "warning": {
+      "50":  { "value": "#fff5ea", "rgb": "rgb(255, 245, 234)", "usage": "fondo claro warning" },
+      "100": { "value": "#ffd4a8", "rgb": "rgb(255, 212, 168)" },
+      "200": { "value": "#ffc285", "rgb": "rgb(255, 194, 133)" },
+      "300": { "value": "#ffa850", "rgb": "rgb(255, 168, 80)" },
+      "400": { "value": "#ff962c", "rgb": "rgb(255, 150, 44)", "isBase": true, "usage": "alertas, indicadores" },
+      "500": { "value": "#b3691f", "rgb": "rgb(179, 105, 31)", "usage": "warning oscuro" },
+      "600": { "value": "#9c5c1b", "rgb": "rgb(156, 92, 27)", "usage": "warning más oscuro" }
+    },
+    "error": {
+      "50":  { "value": "#ffecec", "rgb": "rgb(255, 236, 236)", "usage": "fondo claro error" },
+      "100": { "value": "#feb0b0", "rgb": "rgb(254, 176, 176)" },
+      "200": { "value": "#fd8f8f", "rgb": "rgb(253, 143, 143)" },
+      "300": { "value": "#fd5f5f", "rgb": "rgb(253, 95, 95)" },
+      "400": { "value": "#fc3e3e", "rgb": "rgb(252, 62, 62)", "isBase": true, "usage": "destructivo, alertas" },
+      "500": { "value": "#b02b2b", "rgb": "rgb(176, 43, 43)", "usage": "error oscuro" },
+      "600": { "value": "#9a2626", "rgb": "rgb(154, 38, 38)", "usage": "error más oscuro" }
+    },
+    "neutral": {
+      "50":  { "value": "#fafafa", "rgb": "rgb(250, 250, 250)", "usage": "fondos sutiles, message boxes" },
+      "100": { "value": "#f5f7fa", "rgb": "rgb(245, 247, 250)", "usage": "fondos claros" },
+      "200": { "value": "#f1f1f1", "rgb": "rgb(241, 241, 241)", "usage": "fondos de cards/secciones" }
+    },
+    "white": {
+      "base": { "value": "#ffffff", "usage": "fondos, superficies de cards" }
+    },
+    "black": {
+      "base": { "value": "#000000", "usage": "negro puro, superficies oscuras" }
+    },
+    "ai": {
+      "50":  { "value": "#e5f6ff", "rgb": "rgb(229, 246, 255)", "usage": "hover botón AI" },
+      "100": { "value": "#c9edff", "rgb": "rgb(201, 237, 255)", "usage": "active botón AI" },
+      "500": { "value": "#00aaff", "rgb": "rgb(0, 170, 255)", "isBase": true, "usage": "borde botón AI" }
+    },
+    "chart": {
+      "sentiment": {
+        "positive": { "value": "#3ECC80" },
+        "neutral":  { "value": "#9EA1A6" },
+        "negative": { "value": "#F61A4A" }
+      },
+      "platforms": {
+        "instagram": { "value": "#E4405F" },
+        "facebook":  { "value": "#1877F2" },
+        "twitter":   { "value": "#1DA1F2" },
+        "tiktok":    { "value": "#000000" },
+        "youtube":   { "value": "#FF0000" },
+        "linkedin":  { "value": "#0A66C2" }
+      },
+      "brands": [
+        "#0061fe", "#f47a37", "#3ace76", "#f4b137", "#9e54e2",
+        "#00bcd4", "#ff5722", "#795548", "#607d8b", "#e91e63"
+      ]
+    },
+    "colorLabels": {
+      "azul":      { "bg": "#dbeafe", "text": "#1e40af" },
+      "verde":     { "bg": "#d1fae5", "text": "#065f46" },
+      "amarillo":  { "bg": "#fef3c7", "text": "#92400e" },
+      "rojo":      { "bg": "#fee2e2", "text": "#991b1b" },
+      "violeta":   { "bg": "#ede9fe", "text": "#5b21b6" },
+      "naranja":   { "bg": "#ffedd5", "text": "#9a3412" },
+      "turquesa":  { "bg": "#ccfbf1", "text": "#115e59" },
+      "gris":      { "bg": "#f3f4f6", "text": "#374151" },
+      "vinotinto": { "bg": "#fce7f3", "text": "#9f1239" },
+      "olivo":     { "bg": "#ecfccb", "text": "#3f6212" }
+    }
+  },
+
+  "gradient": {
+    "ia": {
+      "buttonBorder": {
+        "value": "linear-gradient(19.84deg, #0061fe 2.99%, #00aaff 105.98%)",
+        "usage": "borde de botones AI/Mia, headers de IA"
+      },
+      "text": {
+        "value": "linear-gradient(5.79deg, #0061fe 2.99%, #00aaff 105.98%)",
+        "usage": "gradiente de texto para títulos/subtítulos de IA"
+      },
+      "heroTitle": {
+        "value": "linear-gradient(to right, #0061fe 1.85%, #00296b 49.5%, #f47a37 82.2%)",
+        "usage": "gradiente de texto tricolor para títulos hero de IA (azul → azul oscuro → naranja)"
+      },
+      "progress": {
+        "value": "linear-gradient(90deg, #0061fe, #b0ceff)",
+        "usage": "fill de la barra de progreso IA"
+      },
+      "panelBg": {
+        "value": "linear-gradient(111.48deg, rgba(230,239,255,0.7) 0%, #ffffff 50.75%, rgba(254,242,235,0.7) 100%)",
+        "usage": "fondo del panel 'Generando con IA'"
+      },
+      "noteBg": {
+        "value": "linear-gradient(161.67deg, rgba(230,239,255,0.33) 0.55%, rgba(185,211,255,0.33) 25.4%, rgba(176,206,255,0.33) 69.9%, rgba(133,177,255,0.33) 97.6%)",
+        "usage": "fondo de la nota de IA"
+      }
+    },
+    "barChart": {
+      "primary":   { "from": "#5495fe", "to": "#0061fe" },
+      "secondary": { "from": "#f8a679", "to": "#f47a37" }
+    },
+    "sentimentBars": {
+      "positive": "linear-gradient(90deg, rgba(62, 204, 128, 0.75) 0%, rgba(62, 204, 128, 0.38) 100%)",
+      "neutral":  "linear-gradient(90deg, rgba(168, 213, 229, 0.85) 0%, rgba(168, 213, 229, 0.5) 100%)",
+      "negative": "linear-gradient(90deg, rgba(246, 26, 74, 0.75) 0%, rgba(246, 26, 74, 0.38) 100%)"
+    },
+    "alertCards": {
+      "green":  "linear-gradient(141.6deg, rgba(58, 206, 118, 0) 15.2%, rgba(58, 206, 118, 0.08) 52.7%, rgba(58, 206, 118, 0) 112%)",
+      "yellow": "linear-gradient(141.6deg, rgba(244, 177, 55, 0) 15.2%, rgba(244, 177, 55, 0.08) 52.7%, rgba(244, 177, 55, 0) 112%)",
+      "red":    "linear-gradient(141.6deg, rgba(240, 112, 112, 0) 15.2%, rgba(240, 112, 112, 0.08) 52.7%, rgba(240, 112, 112, 0) 112%)"
+    },
+    "specialModals": {
+      "launchBadgeBg": "linear-gradient(74.11deg, #8ab6ff, #fac2a3)",
+      "circlePrimary":   "radial-gradient(circle, #e6efff 0%, transparent 100%)",
+      "circleSecondary": "radial-gradient(circle, #fef2eb 0%, transparent 100%)"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "heading": "'Urbanist', sans-serif",
+      "body":    "'DM Sans', sans-serif",
+      "mono":    "'Inter', sans-serif"
+    },
+    "fontWeight": {
+      "regular":  400,
+      "medium":   500,
+      "semibold": 600,
+      "bold":     700
+    },
+    "scale": {
+      "h1":         { "size": "28px", "weight": 700, "family": "heading", "usage": "títulos principales" },
+      "h2":         { "size": "24px", "weight": 700, "family": "heading", "usage": "títulos de secciones y cards" },
+      "h3":         { "size": "22px", "weight": 700, "family": "heading", "usage": "subtítulos dentro de cards" },
+      "h4":         { "size": "20px", "weight": 600, "family": "heading", "usage": "títulos de subsecciones" },
+      "body":       { "size": "16px", "weight": 400, "family": "body", "usage": "texto general, cuerpo, tablas" },
+      "bodyBold":   { "size": "16px", "weight": 700, "family": "body", "usage": "texto enfatizado" },
+      "small":      { "size": "14px", "weight": 400, "family": "body", "usage": "texto secundario, labels" },
+      "caption":    { "size": "12px", "weight": 400, "family": "body", "usage": "textos muy pequeños" },
+      "label":      { "size": "14px", "weight": 600, "family": "heading", "usage": "labels de formularios" },
+      "button":     { "size": "14-18px", "weight": 700, "family": "heading", "usage": "texto dentro de botones" },
+      "navLink":    { "size": "15px", "weight": 600, "family": "heading", "usage": "links del navbar" },
+      "tokenCode":  { "size": "13px", "weight": 500, "family": "mono", "usage": "nombres de variables, código" },
+      "iaHeroTitle": { "size": "48px", "weight": 600, "family": "heading", "lineHeight": "48px", "letterSpacing": "-0.96px", "usage": "encabezados hero de IA" }
+    }
+  },
+
+  "spacing": {
+    "unit": 4,
+    "scale": {
+      "2xs": "4px",
+      "xs":  "8px",
+      "sm":  "12px",
+      "md":  "16px",
+      "lg":  "24px",
+      "xl":  "32px",
+      "2xl": "40px",
+      "3xl": "48px"
+    },
+    "gestalt": {
+      "withinGroup": "12-16px",
+      "betweenGroups": "24-32px",
+      "betweenSections": "48px"
+    }
+  },
+
+  "radius": {
+    "none":   "0px",
+    "sm":     "8px",
+    "md":     "10px",
+    "lg":     "12px",
+    "xl":     "16px",
+    "pill":   "50px",
+    "circle": "50%",
+    "specialModal": "40px",
+    "codeModal": "24px"
+  },
+
+  "shadow": {
+    "sm":   "0 2px 4px rgba(0, 0, 0, 0.05)",
+    "md":   "0 4px 12px rgba(0, 0, 0, 0.1)",
+    "lg":   "0 8px 24px rgba(0, 0, 0, 0.1)",
+    "card": "2px 5px 27px 0px rgba(0, 0, 0, 0.05)",
+    "toast": "0 8px 32px rgba(0, 0, 0, 0.08)",
+    "toggleThumb": "0 1px 3px rgba(0, 0, 0, 0.15)",
+    "selectDropdown": "0 4px 12px rgba(0, 0, 0, 0.1)",
+    "selectDateDropdown": "0 4px 15px rgba(0, 0, 0, 0.12)"
+  },
+
+  "breakpoint": {
+    "sm":  "576px",
+    "md":  "768px",
+    "lg":  "992px",
+    "xl":  "1200px",
+    "2xl": "1400px",
+    "max": "1920px",
+    "notes": "SocialGest no define breakpoints propios en Figma; se reutiliza la convención responsive global del repositorio (ver design-tokens.json)."
+  }
+}

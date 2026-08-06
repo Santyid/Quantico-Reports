@@ -1,7 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, PlusCircle, Copy, Check, Search, X, Sparkles, CircleCheck, CircleX, CircleCheckBig, TriangleAlert, Info, ChevronDown, User, Globe, Mail, MapPin, Bell, Settings, Home, FileText, BarChart3, Layers, Zap, Trash2, Pencil, EllipsisVertical, LoaderCircle, MoreHorizontal, Megaphone, Target, Images, Users, Headset, Play } from 'lucide-angular';
+import { LucideAngularModule, PlusCircle, Copy, Check, Search, X, Sparkles, CircleCheck, CircleX, CircleCheckBig, TriangleAlert, Info, ChevronDown, User, Globe, Mail, MapPin, Bell, Settings, Home, FileText, BarChart3, Layers, Zap, Trash2, Pencil, EllipsisVertical, LoaderCircle, MoreHorizontal, PartyPopper, ArrowRight, PlayCircle, ImagePlus, LineChart } from 'lucide-angular';
 import { RadioButton } from 'primeng/radiobutton';
 import { SelectUserComponent, SelectUserOption } from '../../ui/select-user/select-user.component';
 import { SelectSegmentComponent, SelectSegmentOption } from '../../ui/select-segment/select-segment.component';
@@ -77,7 +77,7 @@ interface ComponentDoc {
 }
 
 @Component({
-  selector: 'app-advocatespro-dashboard',
+  selector: 'app-socialgest-dashboard',
   standalone: true,
   imports: [
     CommonModule, FormsModule, LucideAngularModule, RadioButton,
@@ -103,10 +103,11 @@ interface ComponentDoc {
     SparklineComponent,
     DonutChartComponent
   ],
-  templateUrl: './advocatespro-dashboard.component.html',
-  styleUrl: './advocatespro-dashboard.component.scss'
+  templateUrl: './socialgest-dashboard.component.html',
+  styleUrl: './socialgest-dashboard.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
-export class AdvocatesproDashboardComponent {
+export class SocialgestDashboardComponent {
   readonly PlusCircleIcon = PlusCircle;
   readonly CopyIcon = Copy;
   readonly CheckIcon = Check;
@@ -135,12 +136,11 @@ export class AdvocatesproDashboardComponent {
   readonly EllipsisIcon = EllipsisVertical;
   readonly LoaderCircleIcon = LoaderCircle;
   readonly MoreHorizontalIcon = MoreHorizontal;
-  readonly MegaphoneIcon = Megaphone;
-  readonly TargetIcon = Target;
-  readonly ImagesIcon = Images;
-  readonly UsersIcon = Users;
-  readonly HeadsetIcon = Headset;
-  readonly PlayIcon = Play;
+  readonly PartyPopperIcon = PartyPopper;
+  readonly ArrowRightIcon = ArrowRight;
+  readonly PlayCircleIcon = PlayCircle;
+  readonly ImagePlusIcon = ImagePlus;
+  readonly LineChartIcon = LineChart;
 
   // ─── Color labels demo ───
   readonly labelVariants = [
@@ -215,7 +215,7 @@ export class AdvocatesproDashboardComponent {
     { id: 'toasters', label: 'Toasters', keywords: ['toast', 'toaster', 'notificacion', 'alert', 'success', 'error', 'warning', 'info', 'snackbar'] },
     { id: 'selects-seg', label: 'Select Segments', keywords: ['select', 'segment', 'user', 'avatar', 'colorpicker', 'image', 'chips', 'hover', 'selected'] },
     { id: 'modals', label: 'Modals', keywords: ['modal', 'dialog', 'confirm', 'confirmacion', 'alerta', 'error', 'general', 'overlay'] },
-    { id: 'special-modals', label: 'Modales Especiales', keywords: ['modal', 'lanzamiento', 'especial', 'advocates', 'renovo', 'renovó', 'nueva version', 'badge', 'features', 'csm', 'overlay'] },
+    { id: 'special-modals', label: 'Modales Especiales', keywords: ['modal', 'especial', 'bienvenida', 'welcome', 'plan', 'vencido', 'expired', 'lanzamiento', 'launch', 'nuevo', 'socialgest.ai', 'ia', 'ai'] },
     { id: 'steppers', label: 'Steppers', keywords: ['stepper', 'paso', 'step', 'progress', 'wizard', 'barra', 'progreso'] },
     { id: 'form-inputs', label: 'Form Inputs', keywords: ['input', 'text', 'textarea', 'number', 'form', 'campo', 'formulario'] },
     { id: 'date-pickers', label: 'Date Pickers', keywords: ['date', 'fecha', 'calendar', 'calendario', 'hora', 'hour', 'time', 'picker'] },
@@ -394,120 +394,120 @@ export class AdvocatesproDashboardComponent {
     {
       title: 'Primary',
       swatches: [
-        { name: 'ap-primary-50', hex: '#e6efff', rgb: 'rgb(230, 239, 255)', scssVar: '$ap-primary-50' },
-        { name: 'ap-primary-100', hex: '#b0ceff', rgb: 'rgb(176, 206, 255)', scssVar: '$ap-primary-100' },
-        { name: 'ap-primary-200', hex: '#8ab6ff', rgb: 'rgb(138, 182, 255)', scssVar: '$ap-primary-200' },
-        { name: 'ap-primary-300', hex: '#5495fe', rgb: 'rgb(84, 149, 254)', scssVar: '$ap-primary-300' },
-        { name: 'ap-primary-400', hex: '#3381fe', rgb: 'rgb(51, 129, 254)', scssVar: '$ap-primary-400' },
-        { name: 'ap-primary-500', hex: '#0061fe', rgb: 'rgb(0, 97, 254)', scssVar: '$ap-primary-500', isBase: true },
-        { name: 'ap-primary-600', hex: '#0058e7', rgb: 'rgb(0, 88, 231)', scssVar: '$ap-primary-600' },
-        { name: 'ap-primary-700', hex: '#0045b4', rgb: 'rgb(0, 69, 180)', scssVar: '$ap-primary-700' },
-        { name: 'ap-primary-800', hex: '#00358c', rgb: 'rgb(0, 53, 140)', scssVar: '$ap-primary-800' },
-        { name: 'ap-primary-900', hex: '#00296b', rgb: 'rgb(0, 41, 107)', scssVar: '$ap-primary-900' }
+        { name: 'sg-primary-50', hex: '#e6efff', rgb: 'rgb(230, 239, 255)', scssVar: '$sg-primary-50' },
+        { name: 'sg-primary-100', hex: '#b0ceff', rgb: 'rgb(176, 206, 255)', scssVar: '$sg-primary-100' },
+        { name: 'sg-primary-200', hex: '#8ab6ff', rgb: 'rgb(138, 182, 255)', scssVar: '$sg-primary-200' },
+        { name: 'sg-primary-300', hex: '#5495fe', rgb: 'rgb(84, 149, 254)', scssVar: '$sg-primary-300' },
+        { name: 'sg-primary-400', hex: '#3381fe', rgb: 'rgb(51, 129, 254)', scssVar: '$sg-primary-400' },
+        { name: 'sg-primary-500', hex: '#0061fe', rgb: 'rgb(0, 97, 254)', scssVar: '$sg-primary-500', isBase: true },
+        { name: 'sg-primary-600', hex: '#0058e7', rgb: 'rgb(0, 88, 231)', scssVar: '$sg-primary-600' },
+        { name: 'sg-primary-700', hex: '#0045b4', rgb: 'rgb(0, 69, 180)', scssVar: '$sg-primary-700' },
+        { name: 'sg-primary-800', hex: '#00358c', rgb: 'rgb(0, 53, 140)', scssVar: '$sg-primary-800' },
+        { name: 'sg-primary-900', hex: '#00296b', rgb: 'rgb(0, 41, 107)', scssVar: '$sg-primary-900' }
       ]
     },
     {
       title: 'Secondary',
       swatches: [
-        { name: 'ap-secondary-50', hex: '#fdedf2', rgb: 'rgb(253, 237, 242)', scssVar: '$ap-secondary-50' },
-        { name: 'ap-secondary-100', hex: '#fac7d5', rgb: 'rgb(250, 199, 213)', scssVar: '$ap-secondary-100' },
-        { name: 'ap-secondary-200', hex: '#f7acc1', rgb: 'rgb(247, 172, 193)', scssVar: '$ap-secondary-200' },
-        { name: 'ap-secondary-300', hex: '#f38fab', rgb: 'rgb(243, 143, 171)', scssVar: '$ap-secondary-300' },
-        { name: 'ap-secondary-400', hex: '#f07090', rgb: 'rgb(240, 112, 144)', scssVar: '$ap-secondary-400' },
-        { name: 'ap-secondary-500', hex: '#ee4a79', rgb: 'rgb(238, 74, 121)', scssVar: '$ap-secondary-500', isBase: true },
-        { name: 'ap-secondary-600', hex: '#d9436e', rgb: 'rgb(217, 67, 110)', scssVar: '$ap-secondary-600' },
-        { name: 'ap-secondary-700', hex: '#b93c5e', rgb: 'rgb(185, 60, 94)', scssVar: '$ap-secondary-700' },
-        { name: 'ap-secondary-800', hex: '#8a2c48', rgb: 'rgb(138, 44, 72)', scssVar: '$ap-secondary-800' },
-        { name: 'ap-secondary-900', hex: '#5e1c30', rgb: 'rgb(94, 28, 48)', scssVar: '$ap-secondary-900' }
+        { name: 'sg-secondary-50', hex: '#fef2eb', rgb: 'rgb(254, 242, 235)', scssVar: '$sg-secondary-50' },
+        { name: 'sg-secondary-100', hex: '#fcd6c1', rgb: 'rgb(252, 214, 193)', scssVar: '$sg-secondary-100' },
+        { name: 'sg-secondary-200', hex: '#fac2a3', rgb: 'rgb(250, 194, 163)', scssVar: '$sg-secondary-200' },
+        { name: 'sg-secondary-300', hex: '#f8a679', rgb: 'rgb(248, 166, 121)', scssVar: '$sg-secondary-300' },
+        { name: 'sg-secondary-400', hex: '#f6955f', rgb: 'rgb(246, 149, 95)', scssVar: '$sg-secondary-400' },
+        { name: 'sg-secondary-500', hex: '#f47a37', rgb: 'rgb(244, 122, 55)', scssVar: '$sg-secondary-500', isBase: true },
+        { name: 'sg-secondary-600', hex: '#e5641e', rgb: 'rgb(229, 100, 30)', scssVar: '$sg-secondary-600' },
+        { name: 'sg-secondary-700', hex: '#c84802', rgb: 'rgb(200, 72, 2)', scssVar: '$sg-secondary-700' },
+        { name: 'sg-secondary-800', hex: '#b84100', rgb: 'rgb(184, 65, 0)', scssVar: '$sg-secondary-800' },
+        { name: 'sg-secondary-900', hex: '#9c3700', rgb: 'rgb(156, 55, 0)', scssVar: '$sg-secondary-900' }
       ]
     },
     {
       title: 'Grey',
       swatches: [
-        { name: 'ap-grey-50', hex: '#ececec', rgb: 'rgb(236, 236, 236)', scssVar: '$ap-grey-50' },
-        { name: 'ap-grey-100', hex: '#c3c3c3', rgb: 'rgb(195, 195, 195)', scssVar: '$ap-grey-100' },
-        { name: 'ap-grey-200', hex: '#a6a6a6', rgb: 'rgb(166, 166, 166)', scssVar: '$ap-grey-200' },
-        { name: 'ap-grey-300', hex: '#7d7d7d', rgb: 'rgb(125, 125, 125)', scssVar: '$ap-grey-300' },
-        { name: 'ap-grey-400', hex: '#646464', rgb: 'rgb(100, 100, 100)', scssVar: '$ap-grey-400' },
-        { name: 'ap-grey-500', hex: '#3d3d3d', rgb: 'rgb(61, 61, 61)', scssVar: '$ap-grey-500', isBase: true },
-        { name: 'ap-grey-600', hex: '#383838', rgb: 'rgb(56, 56, 56)', scssVar: '$ap-grey-600' },
-        { name: 'ap-grey-700', hex: '#2b2b2b', rgb: 'rgb(43, 43, 43)', scssVar: '$ap-grey-700' },
-        { name: 'ap-grey-800', hex: '#222222', rgb: 'rgb(34, 34, 34)', scssVar: '$ap-grey-800' },
-        { name: 'ap-grey-900', hex: '#1a1a1a', rgb: 'rgb(26, 26, 26)', scssVar: '$ap-grey-900' }
+        { name: 'sg-grey-50', hex: '#ececec', rgb: 'rgb(236, 236, 236)', scssVar: '$sg-grey-50' },
+        { name: 'sg-grey-100', hex: '#c3c3c3', rgb: 'rgb(195, 195, 195)', scssVar: '$sg-grey-100' },
+        { name: 'sg-grey-200', hex: '#a6a6a6', rgb: 'rgb(166, 166, 166)', scssVar: '$sg-grey-200' },
+        { name: 'sg-grey-300', hex: '#7d7d7d', rgb: 'rgb(125, 125, 125)', scssVar: '$sg-grey-300' },
+        { name: 'sg-grey-400', hex: '#646464', rgb: 'rgb(100, 100, 100)', scssVar: '$sg-grey-400' },
+        { name: 'sg-grey-500', hex: '#3d3d3d', rgb: 'rgb(61, 61, 61)', scssVar: '$sg-grey-500', isBase: true },
+        { name: 'sg-grey-600', hex: '#383838', rgb: 'rgb(56, 56, 56)', scssVar: '$sg-grey-600' },
+        { name: 'sg-grey-700', hex: '#2b2b2b', rgb: 'rgb(43, 43, 43)', scssVar: '$sg-grey-700' },
+        { name: 'sg-grey-800', hex: '#222222', rgb: 'rgb(34, 34, 34)', scssVar: '$sg-grey-800' },
+        { name: 'sg-grey-900', hex: '#1a1a1a', rgb: 'rgb(26, 26, 26)', scssVar: '$sg-grey-900' }
       ]
     },
     {
       title: 'Success',
       swatches: [
-        { name: 'ap-success-50', hex: '#ebfaf1', rgb: 'rgb(235, 250, 241)', scssVar: '$ap-success-50' },
-        { name: 'ap-success-100', hex: '#aeebc7', rgb: 'rgb(174, 235, 199)', scssVar: '$ap-success-100' },
-        { name: 'ap-success-200', hex: '#8de3b0', rgb: 'rgb(141, 227, 176)', scssVar: '$ap-success-200' },
-        { name: 'ap-success-300', hex: '#5bd68d', rgb: 'rgb(91, 214, 141)', scssVar: '$ap-success-300' },
-        { name: 'ap-success-400', hex: '#3ace76', rgb: 'rgb(58, 206, 118)', scssVar: '$ap-success-400', isBase: true },
-        { name: 'ap-success-500', hex: '#299053', rgb: 'rgb(41, 144, 83)', scssVar: '$ap-success-500' },
-        { name: 'ap-success-600', hex: '#237e48', rgb: 'rgb(35, 126, 72)', scssVar: '$ap-success-600' }
+        { name: 'sg-success-50', hex: '#ebfaf1', rgb: 'rgb(235, 250, 241)', scssVar: '$sg-success-50' },
+        { name: 'sg-success-100', hex: '#aeebc7', rgb: 'rgb(174, 235, 199)', scssVar: '$sg-success-100' },
+        { name: 'sg-success-200', hex: '#8de3b0', rgb: 'rgb(141, 227, 176)', scssVar: '$sg-success-200' },
+        { name: 'sg-success-300', hex: '#5bd68d', rgb: 'rgb(91, 214, 141)', scssVar: '$sg-success-300' },
+        { name: 'sg-success-400', hex: '#3ace76', rgb: 'rgb(58, 206, 118)', scssVar: '$sg-success-400', isBase: true },
+        { name: 'sg-success-500', hex: '#299053', rgb: 'rgb(41, 144, 83)', scssVar: '$sg-success-500' },
+        { name: 'sg-success-600', hex: '#237e48', rgb: 'rgb(35, 126, 72)', scssVar: '$sg-success-600' }
       ]
     },
     {
       title: 'Warning',
       swatches: [
-        { name: 'ap-warning-50', hex: '#fff5ea', rgb: 'rgb(255, 245, 234)', scssVar: '$ap-warning-50' },
-        { name: 'ap-warning-100', hex: '#ffd4a8', rgb: 'rgb(255, 212, 168)', scssVar: '$ap-warning-100' },
-        { name: 'ap-warning-200', hex: '#ffc285', rgb: 'rgb(255, 194, 133)', scssVar: '$ap-warning-200' },
-        { name: 'ap-warning-300', hex: '#ffa850', rgb: 'rgb(255, 168, 80)', scssVar: '$ap-warning-300' },
-        { name: 'ap-warning-400', hex: '#ff962c', rgb: 'rgb(255, 150, 44)', scssVar: '$ap-warning-400', isBase: true },
-        { name: 'ap-warning-500', hex: '#b3691f', rgb: 'rgb(179, 105, 31)', scssVar: '$ap-warning-500' },
-        { name: 'ap-warning-600', hex: '#9c5c1b', rgb: 'rgb(156, 92, 27)', scssVar: '$ap-warning-600' }
+        { name: 'sg-warning-50', hex: '#fff5ea', rgb: 'rgb(255, 245, 234)', scssVar: '$sg-warning-50' },
+        { name: 'sg-warning-100', hex: '#ffd4a8', rgb: 'rgb(255, 212, 168)', scssVar: '$sg-warning-100' },
+        { name: 'sg-warning-200', hex: '#ffc285', rgb: 'rgb(255, 194, 133)', scssVar: '$sg-warning-200' },
+        { name: 'sg-warning-300', hex: '#ffa850', rgb: 'rgb(255, 168, 80)', scssVar: '$sg-warning-300' },
+        { name: 'sg-warning-400', hex: '#ff962c', rgb: 'rgb(255, 150, 44)', scssVar: '$sg-warning-400', isBase: true },
+        { name: 'sg-warning-500', hex: '#b3691f', rgb: 'rgb(179, 105, 31)', scssVar: '$sg-warning-500' },
+        { name: 'sg-warning-600', hex: '#9c5c1b', rgb: 'rgb(156, 92, 27)', scssVar: '$sg-warning-600' }
       ]
     },
     {
       title: 'Error',
       swatches: [
-        { name: 'ap-error-50', hex: '#ffecec', rgb: 'rgb(255, 236, 236)', scssVar: '$ap-error-50' },
-        { name: 'ap-error-100', hex: '#feb0b0', rgb: 'rgb(254, 176, 176)', scssVar: '$ap-error-100' },
-        { name: 'ap-error-200', hex: '#fd8f8f', rgb: 'rgb(253, 143, 143)', scssVar: '$ap-error-200' },
-        { name: 'ap-error-300', hex: '#fd5f5f', rgb: 'rgb(253, 95, 95)', scssVar: '$ap-error-300' },
-        { name: 'ap-error-400', hex: '#fc3e3e', rgb: 'rgb(252, 62, 62)', scssVar: '$ap-error-400', isBase: true },
-        { name: 'ap-error-500', hex: '#b02b2b', rgb: 'rgb(176, 43, 43)', scssVar: '$ap-error-500' },
-        { name: 'ap-error-600', hex: '#9a2626', rgb: 'rgb(154, 38, 38)', scssVar: '$ap-error-600' }
+        { name: 'sg-error-50', hex: '#ffecec', rgb: 'rgb(255, 236, 236)', scssVar: '$sg-error-50' },
+        { name: 'sg-error-100', hex: '#feb0b0', rgb: 'rgb(254, 176, 176)', scssVar: '$sg-error-100' },
+        { name: 'sg-error-200', hex: '#fd8f8f', rgb: 'rgb(253, 143, 143)', scssVar: '$sg-error-200' },
+        { name: 'sg-error-300', hex: '#fd5f5f', rgb: 'rgb(253, 95, 95)', scssVar: '$sg-error-300' },
+        { name: 'sg-error-400', hex: '#fc3e3e', rgb: 'rgb(252, 62, 62)', scssVar: '$sg-error-400', isBase: true },
+        { name: 'sg-error-500', hex: '#b02b2b', rgb: 'rgb(176, 43, 43)', scssVar: '$sg-error-500' },
+        { name: 'sg-error-600', hex: '#9a2626', rgb: 'rgb(154, 38, 38)', scssVar: '$sg-error-600' }
       ]
     },
     {
       title: 'Neutral',
       swatches: [
-        { name: 'ap-neutral-50', hex: '#fafafa', rgb: 'rgb(250, 250, 250)', scssVar: '$ap-neutral-50' },
-        { name: 'ap-neutral-100', hex: '#f5f7fa', rgb: 'rgb(245, 247, 250)', scssVar: '$ap-neutral-100' },
-        { name: 'ap-neutral-200', hex: '#f1f1f1', rgb: 'rgb(241, 241, 241)', scssVar: '$ap-neutral-200' }
+        { name: 'sg-neutral-50', hex: '#fafafa', rgb: 'rgb(250, 250, 250)', scssVar: '$sg-neutral-50' },
+        { name: 'sg-neutral-100', hex: '#f5f7fa', rgb: 'rgb(245, 247, 250)', scssVar: '$sg-neutral-100' },
+        { name: 'sg-neutral-200', hex: '#f1f1f1', rgb: 'rgb(241, 241, 241)', scssVar: '$sg-neutral-200' }
       ]
     },
     {
       title: 'AI',
       swatches: [
-        { name: 'ap-ai-50', hex: '#e5f6ff', rgb: 'rgb(229, 246, 255)', scssVar: '$ap-ai-50' },
-        { name: 'ap-ai-100', hex: '#c9edff', rgb: 'rgb(201, 237, 255)', scssVar: '$ap-ai-100' },
-        { name: 'ap-ai-500', hex: '#00aaff', rgb: 'rgb(0, 170, 255)', scssVar: '$ap-ai-500', isBase: true }
+        { name: 'sg-ai-50', hex: '#e5f6ff', rgb: 'rgb(229, 246, 255)', scssVar: '$sg-ai-50' },
+        { name: 'sg-ai-100', hex: '#c9edff', rgb: 'rgb(201, 237, 255)', scssVar: '$sg-ai-100' },
+        { name: 'sg-ai-500', hex: '#00aaff', rgb: 'rgb(0, 170, 255)', scssVar: '$sg-ai-500', isBase: true }
       ]
     },
     {
       title: 'White',
       swatches: [
-        { name: 'ap-white-base', hex: '#ffffff', rgb: 'rgb(255, 255, 255)', scssVar: '$ap-white-base', isBase: true }
+        { name: 'sg-white-base', hex: '#ffffff', rgb: 'rgb(255, 255, 255)', scssVar: '$sg-white-base', isBase: true }
       ]
     },
     {
       title: 'Black',
       swatches: [
-        { name: 'ap-black-base', hex: '#000000', rgb: 'rgb(0, 0, 0)', scssVar: '$ap-black-base', isBase: true }
+        { name: 'sg-black-base', hex: '#000000', rgb: 'rgb(0, 0, 0)', scssVar: '$sg-black-base', isBase: true }
       ]
     },
     {
       title: 'IA Gradiente',
       swatches: [
         {
-          name: '$ap-ia-gradient',
+          name: '$sg-ia-gradient',
           hex: 'linear-gradient(19.84deg, #0061fe → #00aaff)',
           rgb: 'primary-500 → ai-500',
-          scssVar: '$ap-ia-gradient',
+          scssVar: '$sg-ia-gradient',
           isBase: true,
           isGradient: true
         }
@@ -524,578 +524,606 @@ export class AdvocatesproDashboardComponent {
     {
       title: 'Primary Scale (Blue)',
       tokens: [
-        { token: '$ap-primary-50', value: '$ap-primary-50 (#e6efff)', usage: 'Fondo muy claro primary' },
-        { token: '$ap-primary-100', value: '$ap-primary-100 (#b0ceff)', usage: 'Fondo claro primary' },
-        { token: '$ap-primary-200', value: '$ap-primary-200 (#8ab6ff)', usage: 'Borde claro primary' },
-        { token: '$ap-primary-300', value: '$ap-primary-300 (#5495fe)', usage: 'Acento suave primary' },
-        { token: '$ap-primary-400', value: '$ap-primary-400 (#3381fe)', usage: 'Acento medio primary' },
-        { token: '$ap-primary-500', value: '$ap-primary-500 (#0061fe)', usage: 'Base primary — acciones principales' },
-        { token: '$ap-primary-600', value: '$ap-primary-600 (#0058e7)', usage: 'Hover primary' },
-        { token: '$ap-primary-700', value: '$ap-primary-700 (#0045b4)', usage: 'Active primary' },
-        { token: '$ap-primary-800', value: '$ap-primary-800 (#00358c)', usage: 'Oscuro primary' },
-        { token: '$ap-primary-900', value: '$ap-primary-900 (#00296b)', usage: 'Muy oscuro primary' },
+        { token: '$sg-primary-50', value: '$sg-primary-50 (#e6efff)', usage: 'Fondo muy claro primary' },
+        { token: '$sg-primary-100', value: '$sg-primary-100 (#b0ceff)', usage: 'Fondo claro primary' },
+        { token: '$sg-primary-200', value: '$sg-primary-200 (#8ab6ff)', usage: 'Borde claro primary' },
+        { token: '$sg-primary-300', value: '$sg-primary-300 (#5495fe)', usage: 'Acento suave primary' },
+        { token: '$sg-primary-400', value: '$sg-primary-400 (#3381fe)', usage: 'Acento medio primary' },
+        { token: '$sg-primary-500', value: '$sg-primary-500 (#0061fe)', usage: 'Base primary — acciones principales' },
+        { token: '$sg-primary-600', value: '$sg-primary-600 (#0058e7)', usage: 'Hover primary' },
+        { token: '$sg-primary-700', value: '$sg-primary-700 (#0045b4)', usage: 'Active primary' },
+        { token: '$sg-primary-800', value: '$sg-primary-800 (#00358c)', usage: 'Oscuro primary' },
+        { token: '$sg-primary-900', value: '$sg-primary-900 (#00296b)', usage: 'Muy oscuro primary' },
       ]
     },
     {
-      title: 'Secondary Scale (Pink/Rose)',
+      title: 'Secondary Scale (Orange)',
       tokens: [
-        { token: '$ap-secondary-50', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo muy claro secondary' },
-        { token: '$ap-secondary-100', value: '$ap-secondary-100 (#fac7d5)', usage: 'Fondo claro secondary / badges' },
-        { token: '$ap-secondary-200', value: '$ap-secondary-200 (#f7acc1)', usage: 'Borde claro / disabled' },
-        { token: '$ap-secondary-300', value: '$ap-secondary-300 (#f38fab)', usage: 'Acento suave secondary' },
-        { token: '$ap-secondary-400', value: '$ap-secondary-400 (#f07090)', usage: 'Acento medio secondary' },
-        { token: '$ap-secondary-500', value: '$ap-secondary-500 (#ee4a79)', usage: 'Base secondary — rosa distintivo AdvocatesPro' },
-        { token: '$ap-secondary-600', value: '$ap-secondary-600 (#d9436e)', usage: 'Hover secondary' },
-        { token: '$ap-secondary-700', value: '$ap-secondary-700 (#b93c5e)', usage: 'Active secondary' },
-        { token: '$ap-secondary-800', value: '$ap-secondary-800 (#8a2c48)', usage: 'Oscuro secondary' },
-        { token: '$ap-secondary-900', value: '$ap-secondary-900 (#5e1c30)', usage: 'Muy oscuro secondary' },
+        { token: '$sg-secondary-50', value: '$sg-secondary-50 (#fef2eb)', usage: 'Fondo muy claro secondary' },
+        { token: '$sg-secondary-100', value: '$sg-secondary-100 (#fcd6c1)', usage: 'Fondo claro secondary / badges' },
+        { token: '$sg-secondary-200', value: '$sg-secondary-200 (#fac2a3)', usage: 'Borde claro / disabled' },
+        { token: '$sg-secondary-300', value: '$sg-secondary-300 (#f8a679)', usage: 'Acento suave secondary' },
+        { token: '$sg-secondary-400', value: '$sg-secondary-400 (#f6955f)', usage: 'Acento medio secondary' },
+        { token: '$sg-secondary-500', value: '$sg-secondary-500 (#f47a37)', usage: 'Base secondary — naranja distintivo SocialGest' },
+        { token: '$sg-secondary-600', value: '$sg-secondary-600 (#e5641e)', usage: 'Hover secondary' },
+        { token: '$sg-secondary-700', value: '$sg-secondary-700 (#c84802)', usage: 'Active secondary' },
+        { token: '$sg-secondary-800', value: '$sg-secondary-800 (#b84100)', usage: 'Oscuro secondary' },
+        { token: '$sg-secondary-900', value: '$sg-secondary-900 (#9c3700)', usage: 'Muy oscuro secondary' },
       ]
     },
     {
       title: 'Grey Scale',
       tokens: [
-        { token: '$ap-grey-50', value: '$ap-grey-50 (#ececec)', usage: 'Bordes, divisores' },
-        { token: '$ap-grey-100', value: '$ap-grey-100 (#c3c3c3)', usage: 'Bordes inputs, disabled bg' },
-        { token: '$ap-grey-200', value: '$ap-grey-200 (#a6a6a6)', usage: 'Placeholder, iconos' },
-        { token: '$ap-grey-300', value: '$ap-grey-300 (#7d7d7d)', usage: 'Texto secundario' },
-        { token: '$ap-grey-400', value: '$ap-grey-400 (#646464)', usage: 'Texto labels' },
-        { token: '$ap-grey-500', value: '$ap-grey-500 (#3d3d3d)', usage: 'Texto body' },
-        { token: '$ap-grey-600', value: '$ap-grey-600 (#383838)', usage: 'Texto oscuro' },
-        { token: '$ap-grey-700', value: '$ap-grey-700 (#2b2b2b)', usage: 'Texto muy oscuro' },
-        { token: '$ap-grey-800', value: '$ap-grey-800 (#222222)', usage: 'Texto principal, headings' },
-        { token: '$ap-grey-900', value: '$ap-grey-900 (#1a1a1a)', usage: 'Texto casi negro' },
+        { token: '$sg-grey-50', value: '$sg-grey-50 (#ececec)', usage: 'Bordes, divisores' },
+        { token: '$sg-grey-100', value: '$sg-grey-100 (#c3c3c3)', usage: 'Bordes inputs, disabled bg' },
+        { token: '$sg-grey-200', value: '$sg-grey-200 (#a6a6a6)', usage: 'Placeholder, iconos' },
+        { token: '$sg-grey-300', value: '$sg-grey-300 (#7d7d7d)', usage: 'Texto secundario' },
+        { token: '$sg-grey-400', value: '$sg-grey-400 (#646464)', usage: 'Texto labels' },
+        { token: '$sg-grey-500', value: '$sg-grey-500 (#3d3d3d)', usage: 'Texto body' },
+        { token: '$sg-grey-600', value: '$sg-grey-600 (#383838)', usage: 'Texto oscuro' },
+        { token: '$sg-grey-700', value: '$sg-grey-700 (#2b2b2b)', usage: 'Texto muy oscuro' },
+        { token: '$sg-grey-800', value: '$sg-grey-800 (#222222)', usage: 'Texto principal, headings' },
+        { token: '$sg-grey-900', value: '$sg-grey-900 (#1a1a1a)', usage: 'Texto casi negro' },
       ]
     },
     {
       title: 'Success Scale (Green)',
       tokens: [
-        { token: '$ap-success-50', value: '$ap-success-50 (#ebfaf1)', usage: 'Fondo muy claro success' },
-        { token: '$ap-success-100', value: '$ap-success-100 (#aeebc7)', usage: 'Fondo claro success' },
-        { token: '$ap-success-200', value: '$ap-success-200 (#8de3b0)', usage: 'Borde claro success' },
-        { token: '$ap-success-300', value: '$ap-success-300 (#5bd68d)', usage: 'Acento suave success' },
-        { token: '$ap-success-400', value: '$ap-success-400 (#3ace76)', usage: 'Base success — estados exitosos' },
-        { token: '$ap-success-500', value: '$ap-success-500 (#299053)', usage: 'Hover success' },
-        { token: '$ap-success-600', value: '$ap-success-600 (#237e48)', usage: 'Active success' },
+        { token: '$sg-success-50', value: '$sg-success-50 (#ebfaf1)', usage: 'Fondo muy claro success' },
+        { token: '$sg-success-100', value: '$sg-success-100 (#aeebc7)', usage: 'Fondo claro success' },
+        { token: '$sg-success-200', value: '$sg-success-200 (#8de3b0)', usage: 'Borde claro success' },
+        { token: '$sg-success-300', value: '$sg-success-300 (#5bd68d)', usage: 'Acento suave success' },
+        { token: '$sg-success-400', value: '$sg-success-400 (#3ace76)', usage: 'Base success — estados exitosos' },
+        { token: '$sg-success-500', value: '$sg-success-500 (#299053)', usage: 'Hover success' },
+        { token: '$sg-success-600', value: '$sg-success-600 (#237e48)', usage: 'Active success' },
       ]
     },
     {
       title: 'Warning Scale (Orange)',
       tokens: [
-        { token: '$ap-warning-50', value: '$ap-warning-50 (#fff5ea)', usage: 'Fondo muy claro warning' },
-        { token: '$ap-warning-100', value: '$ap-warning-100 (#ffd4a8)', usage: 'Fondo claro warning' },
-        { token: '$ap-warning-200', value: '$ap-warning-200 (#ffc285)', usage: 'Borde claro warning' },
-        { token: '$ap-warning-300', value: '$ap-warning-300 (#ffa850)', usage: 'Acento suave warning' },
-        { token: '$ap-warning-400', value: '$ap-warning-400 (#ff962c)', usage: 'Base warning — advertencia' },
-        { token: '$ap-warning-500', value: '$ap-warning-500 (#b3691f)', usage: 'Hover warning' },
-        { token: '$ap-warning-600', value: '$ap-warning-600 (#9c5c1b)', usage: 'Active warning' },
+        { token: '$sg-warning-50', value: '$sg-warning-50 (#fff5ea)', usage: 'Fondo muy claro warning' },
+        { token: '$sg-warning-100', value: '$sg-warning-100 (#ffd4a8)', usage: 'Fondo claro warning' },
+        { token: '$sg-warning-200', value: '$sg-warning-200 (#ffc285)', usage: 'Borde claro warning' },
+        { token: '$sg-warning-300', value: '$sg-warning-300 (#ffa850)', usage: 'Acento suave warning' },
+        { token: '$sg-warning-400', value: '$sg-warning-400 (#ff962c)', usage: 'Base warning — advertencia' },
+        { token: '$sg-warning-500', value: '$sg-warning-500 (#b3691f)', usage: 'Hover warning' },
+        { token: '$sg-warning-600', value: '$sg-warning-600 (#9c5c1b)', usage: 'Active warning' },
       ]
     },
     {
       title: 'Error Scale (Red)',
       tokens: [
-        { token: '$ap-error-50', value: '$ap-error-50 (#ffecec)', usage: 'Fondo muy claro error' },
-        { token: '$ap-error-100', value: '$ap-error-100 (#feb0b0)', usage: 'Fondo claro error' },
-        { token: '$ap-error-200', value: '$ap-error-200 (#fd8f8f)', usage: 'Borde claro error' },
-        { token: '$ap-error-300', value: '$ap-error-300 (#fd5f5f)', usage: 'Acento suave error' },
-        { token: '$ap-error-400', value: '$ap-error-400 (#fc3e3e)', usage: 'Base error — estados de error' },
-        { token: '$ap-error-500', value: '$ap-error-500 (#b02b2b)', usage: 'Hover error' },
-        { token: '$ap-error-600', value: '$ap-error-600 (#9a2626)', usage: 'Active error' },
+        { token: '$sg-error-50', value: '$sg-error-50 (#ffecec)', usage: 'Fondo muy claro error' },
+        { token: '$sg-error-100', value: '$sg-error-100 (#feb0b0)', usage: 'Fondo claro error' },
+        { token: '$sg-error-200', value: '$sg-error-200 (#fd8f8f)', usage: 'Borde claro error' },
+        { token: '$sg-error-300', value: '$sg-error-300 (#fd5f5f)', usage: 'Acento suave error' },
+        { token: '$sg-error-400', value: '$sg-error-400 (#fc3e3e)', usage: 'Base error — estados de error' },
+        { token: '$sg-error-500', value: '$sg-error-500 (#b02b2b)', usage: 'Hover error' },
+        { token: '$sg-error-600', value: '$sg-error-600 (#9a2626)', usage: 'Active error' },
       ]
     },
     {
       title: 'AI Scale (Cyan)',
       tokens: [
-        { token: '$ap-ai-50', value: '$ap-ai-50 (#e5f6ff)', usage: 'Hover boton AI' },
-        { token: '$ap-ai-100', value: '$ap-ai-100 (#c9edff)', usage: 'Active boton AI' },
-        { token: '$ap-ai-500', value: '$ap-ai-500 (#00aaff)', usage: 'Base AI — borde boton AI' },
-      ]
-    },
-    {
-      title: 'IA Gradiente',
-      tokens: [
-        { token: '$ap-ia-gradient', value: 'linear-gradient(19.84deg, $ap-primary-500 2.99%, $ap-ai-500 105.98%)', usage: 'Gradiente distintivo para elementos de IA (botones, iconos, headers)' }
-      ]
-    },
-    {
-      title: 'Elementos de IA Tokens',
-      tokens: [
-        { token: '$ap-ia-panel-bg', value: 'linear-gradient(108.20deg, rgba(230,239,255,0.7) 0%, $ap-white-base 50.75%, rgba(253,237,242,0.7) 100%)', usage: 'Fondo del panel "Creando ideas"' },
-        { token: '$ap-ia-note-bg', value: 'linear-gradient(161.67deg, rgba(230,239,255,0.33) → rgba(133,177,255,0.33))', usage: 'Fondo de la Nota de IA' },
-        { token: '$ap-ia-text-gradient', value: 'linear-gradient(5.79deg, $ap-primary-500 → $ap-ai-500)', usage: 'Gradiente de texto para titulos/subtitulos de IA' },
-        { token: '$ap-ia-hero-title-gradient', value: 'linear-gradient(to right, $ap-primary-500 → $ap-primary-900 → $ap-secondary-500)', usage: 'Gradiente de texto tricolor para titulos hero de IA (azul → azul oscuro → rosa)' },
-        { token: '$ap-ia-progress-gradient', value: 'linear-gradient(90deg, $ap-primary-500 → $ap-primary-100)', usage: 'Fill de la barra de progreso IA' },
-        { token: '$ap-ia-panel-padding', value: '24px 32px', usage: 'Padding del panel IA' },
-        { token: '$ap-ia-panel-radius', value: '16px', usage: 'Border radius del panel IA' },
-        { token: '$ap-ia-panel-icon-size', value: '48px', usage: 'Tamano del contenedor del icono Sparkles' },
-        { token: '$ap-ia-panel-icon-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo del contenedor del icono' },
-        { token: '$ap-ia-panel-title-color', value: '$ap-primary-900 (#00296b)', usage: 'Color base del titulo (usado con text gradient)' },
-        { token: '$ap-ia-panel-title-font-size', value: '18px', usage: 'Tamano del titulo del panel' },
-        { token: '$ap-ia-panel-subtitle-color', value: '$ap-primary-900 (#00296b)', usage: 'Color del subtitulo del panel' },
-        { token: '$ap-ia-panel-subtitle-font-size', value: '14px', usage: 'Tamano del subtitulo' },
-        { token: '$ap-ia-note-padding', value: '4px 16px', usage: 'Padding de la nota de IA' },
-        { token: '$ap-ia-note-radius', value: '10px', usage: 'Border radius de la nota' },
-        { token: '$ap-ia-note-text-color', value: '$ap-primary-900 (#00296b)', usage: 'Color del texto de la nota' },
-        { token: '$ap-ia-note-text-size', value: '12px', usage: 'Tamano del texto de la nota' },
-        { token: '$ap-ia-hero-title-size', value: '40px', usage: 'Tamano de titulo hero IA' },
-        { token: '$ap-ia-hero-title-line-height', value: '40px', usage: 'Line-height del titulo hero' },
-        { token: '$ap-ia-hero-title-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica del titulo hero' },
-        { token: '$ap-ia-hero-title-weight', value: '600 (SemiBold)', usage: 'Peso de fuente del titulo hero' },
-        { token: '$ap-ia-hero-title-letter-spacing', value: '-0.8px', usage: 'Tracking del titulo hero' },
-      ]
-    },
-    {
-      title: 'Etiquetas de Colores',
-      tokens: [
-        { token: '$ap-label-height', value: '20px', usage: 'Altura de la etiqueta' },
-        { token: '$ap-label-padding', value: '10px 8px', usage: 'Padding interno' },
-        { token: '$ap-label-radius', value: '10px', usage: 'Border radius' },
-        { token: '$ap-label-gap', value: '6px', usage: 'Gap entre texto e icono de accion' },
-        { token: '$ap-label-font-size', value: '10px', usage: 'Tamano de fuente (DM Sans Medium)' },
-        { token: '$ap-label-font-weight', value: '500', usage: 'Peso de fuente (Medium)' },
-        { token: '$ap-label-letter-spacing', value: '-0.2px', usage: 'Tracking del texto' },
-        { token: '$ap-label-azul-bg', value: '#dbeafe', usage: 'Fondo etiqueta azul (default)' },
-        { token: '$ap-label-azul-text', value: '#1e40af', usage: 'Texto etiqueta azul' },
-        { token: '$ap-label-verde-bg', value: '#d1fae5', usage: 'Fondo etiqueta verde' },
-        { token: '$ap-label-verde-text', value: '#065f46', usage: 'Texto etiqueta verde' },
-        { token: '$ap-label-amarillo-bg', value: '#fef3c7', usage: 'Fondo etiqueta amarilla' },
-        { token: '$ap-label-amarillo-text', value: '#92400e', usage: 'Texto etiqueta amarilla' },
-        { token: '$ap-label-rojo-bg', value: '#fee2e2', usage: 'Fondo etiqueta roja' },
-        { token: '$ap-label-rojo-text', value: '#991b1b', usage: 'Texto etiqueta roja' },
-        { token: '$ap-label-violeta-bg', value: '#ede9fe', usage: 'Fondo etiqueta violeta' },
-        { token: '$ap-label-violeta-text', value: '#5b21b6', usage: 'Texto etiqueta violeta' },
-        { token: '$ap-label-naranja-bg', value: '#ffedd5', usage: 'Fondo etiqueta naranja' },
-        { token: '$ap-label-naranja-text', value: '#9a3412', usage: 'Texto etiqueta naranja' },
-        { token: '$ap-label-turquesa-bg', value: '#ccfbf1', usage: 'Fondo etiqueta turquesa' },
-        { token: '$ap-label-turquesa-text', value: '#115e59', usage: 'Texto etiqueta turquesa' },
-        { token: '$ap-label-gris-bg', value: '#f3f4f6', usage: 'Fondo etiqueta gris' },
-        { token: '$ap-label-gris-text', value: '#374151', usage: 'Texto etiqueta gris' },
-        { token: '$ap-label-vinotinto-bg', value: '#fce7f3', usage: 'Fondo etiqueta vinotinto' },
-        { token: '$ap-label-vinotinto-text', value: '#9f1239', usage: 'Texto etiqueta vinotinto' },
-        { token: '$ap-label-olivo-bg', value: '#ecfccb', usage: 'Fondo etiqueta olivo' },
-        { token: '$ap-label-olivo-text', value: '#3f6212', usage: 'Texto etiqueta olivo' },
-        { token: '$ap-label-ia-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo etiqueta IA' },
-        { token: '$ap-label-ia-border', value: '$ap-primary-500 (#0061fe)', usage: 'Borde etiqueta IA' },
-        { token: '$ap-label-ia-text-gradient', value: '$ap-ia-text-gradient', usage: 'Gradiente de texto etiqueta IA' },
-        { token: '$ap-label-action-size', value: '14px', usage: 'Tamano circulo de accion' },
-        { token: '$ap-label-action-radius', value: '30px', usage: 'Border radius del circulo' },
-        { token: '$ap-label-action-icon-size', value: '10px', usage: 'Tamano del icono Lucide (MoreHorizontal / Check)' },
+        { token: '$sg-ai-50', value: '$sg-ai-50 (#e5f6ff)', usage: 'Hover boton AI' },
+        { token: '$sg-ai-100', value: '$sg-ai-100 (#c9edff)', usage: 'Active boton AI' },
+        { token: '$sg-ai-500', value: '$sg-ai-500 (#00aaff)', usage: 'Base AI — borde boton AI' },
       ]
     },
     {
       title: 'Neutral & Base',
       tokens: [
-        { token: '$ap-neutral-50', value: '$ap-neutral-50 (#fafafa)', usage: 'Fondos sutiles, message boxes' },
-        { token: '$ap-neutral-100', value: '$ap-neutral-100 (#f5f7fa)', usage: 'Fondos de seccion' },
-        { token: '$ap-neutral-200', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Fondos de cards' },
-        { token: '$ap-white-base', value: '$ap-white-base (#ffffff)', usage: 'Fondos blancos, superficies' },
-        { token: '$ap-black-base', value: '$ap-black-base (#000000)', usage: 'Negro puro, superficies oscuras' },
+        { token: '$sg-neutral-50', value: '$sg-neutral-50 (#fafafa)', usage: 'Fondos sutiles, message boxes' },
+        { token: '$sg-neutral-100', value: '$sg-neutral-100 (#f5f7fa)', usage: 'Fondos de seccion' },
+        { token: '$sg-neutral-200', value: '$sg-neutral-200 (#f1f1f1)', usage: 'Fondos de cards' },
+        { token: '$sg-white-base', value: '$sg-white-base (#ffffff)', usage: 'Fondos blancos, superficies' },
+        { token: '$sg-black-base', value: '$sg-black-base (#000000)', usage: 'Negro puro, superficies oscuras' },
       ]
     },
     {
       title: 'Button Tokens',
       tokens: [
-        { token: '$ap-button-primary-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Fondo boton primary' },
-        { token: '$ap-button-primary-text', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Texto boton primary' },
-        { token: '$ap-button-primary-hover', value: '$ap-primary-600 (#0058e7)', usage: 'Hover boton primary' },
-        { token: '$ap-button-primary-active', value: '$ap-primary-700 (#0045b4)', usage: 'Active boton primary' },
-        { token: '$ap-button-primary-disabled-bg', value: '$ap-primary-200 (#8ab6ff)', usage: 'Disabled boton primary' },
-        { token: '$ap-button-secondary-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo boton secondary (rosa AdvocatesPro)' },
-        { token: '$ap-button-secondary-text', value: '$ap-white-base (#ffffff)', usage: 'Texto boton secondary' },
-        { token: '$ap-button-secondary-hover', value: '$ap-secondary-600 (#d9436e)', usage: 'Hover boton secondary' },
-        { token: '$ap-button-secondary-active', value: '$ap-secondary-700 (#b93c5e)', usage: 'Active boton secondary' },
-        { token: '$ap-button-secondary-disabled-bg', value: '$ap-secondary-200 (#f7acc1)', usage: 'Disabled boton secondary' },
-        { token: '$ap-button-white-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo boton white' },
-        { token: '$ap-button-white-text', value: '$ap-grey-300 (#7d7d7d)', usage: 'Texto boton white' },
-        { token: '$ap-button-white-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde boton white' },
-        { token: '$ap-button-white-hover', value: '$ap-neutral-50 (#fafafa)', usage: 'Hover boton white' },
-        { token: '$ap-button-white-active', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Active boton white' },
-        { token: '$ap-button-white-disabled-text', value: '$ap-grey-100 (#c3c3c3)', usage: 'Disabled texto boton white' },
-        { token: '$ap-button-height-large', value: '48px', usage: 'Altura boton large' },
-        { token: '$ap-button-height-medium', value: '40px', usage: 'Altura boton medium' },
-        { token: '$ap-button-height-small', value: '36px', usage: 'Altura boton small' },
-        { token: '$ap-button-font-size-large', value: '18px', usage: 'Font size boton large' },
-        { token: '$ap-button-font-size-medium', value: '16px', usage: 'Font size boton medium' },
-        { token: '$ap-button-font-size-small', value: '14px', usage: 'Font size boton small' },
-        { token: '$ap-button-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-button-font-weight', value: '700', usage: 'Peso de fuente' },
-        { token: '$ap-button-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$ap-button-padding', value: '10px 20px', usage: 'Padding' },
-        { token: '$ap-button-gap', value: '10px', usage: 'Gap entre icono y texto' },
-        { token: '$ap-button-transition', value: 'all 0.2s ease', usage: 'Transicion de estados' },
+        { token: '$sg-button-primary-bg', value: '$sg-primary-500 (#0061fe)', usage: 'Fondo boton primary' },
+        { token: '$sg-button-primary-text', value: '$sg-neutral-200 (#f1f1f1)', usage: 'Texto boton primary' },
+        { token: '$sg-button-primary-hover', value: '$sg-primary-600 (#0058e7)', usage: 'Hover boton primary' },
+        { token: '$sg-button-primary-active', value: '$sg-primary-700 (#0045b4)', usage: 'Active boton primary' },
+        { token: '$sg-button-primary-disabled-bg', value: '$sg-primary-200 (#8ab6ff)', usage: 'Disabled boton primary' },
+        { token: '$sg-button-secondary-bg', value: '$sg-secondary-500 (#f47a37)', usage: 'Fondo boton secondary (naranja SocialGest)' },
+        { token: '$sg-button-secondary-text', value: '$sg-white-base (#ffffff)', usage: 'Texto boton secondary' },
+        { token: '$sg-button-secondary-hover', value: '$sg-secondary-600 (#e5641e)', usage: 'Hover boton secondary' },
+        { token: '$sg-button-secondary-active', value: '$sg-secondary-700 (#c84802)', usage: 'Active boton secondary' },
+        { token: '$sg-button-secondary-disabled-bg', value: '$sg-secondary-200 (#fac2a3)', usage: 'Disabled boton secondary' },
+        { token: '$sg-button-white-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo boton white' },
+        { token: '$sg-button-white-text', value: '$sg-grey-300 (#7d7d7d)', usage: 'Texto boton white' },
+        { token: '$sg-button-white-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde boton white' },
+        { token: '$sg-button-white-hover', value: '$sg-neutral-50 (#fafafa)', usage: 'Hover boton white' },
+        { token: '$sg-button-white-active', value: '$sg-neutral-200 (#f1f1f1)', usage: 'Active boton white' },
+        { token: '$sg-button-white-disabled-text', value: '$sg-grey-100 (#c3c3c3)', usage: 'Disabled texto boton white' },
+        { token: '$sg-button-height-large', value: '48px', usage: 'Altura boton large' },
+        { token: '$sg-button-height-medium', value: '40px', usage: 'Altura boton medium' },
+        { token: '$sg-button-height-small', value: '36px', usage: 'Altura boton small' },
+        { token: '$sg-button-font-size-large', value: '18px', usage: 'Font size boton large' },
+        { token: '$sg-button-font-size-medium', value: '16px', usage: 'Font size boton medium' },
+        { token: '$sg-button-font-size-small', value: '14px', usage: 'Font size boton small' },
+        { token: '$sg-button-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-button-font-weight', value: '700', usage: 'Peso de fuente' },
+        { token: '$sg-button-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$sg-button-padding', value: '10px 20px', usage: 'Padding' },
+        { token: '$sg-button-gap', value: '10px', usage: 'Gap entre icono y texto' },
+        { token: '$sg-button-transition', value: 'all 0.2s ease', usage: 'Transicion de estados' },
       ]
     },
     {
       title: 'Toggle / Switch Tokens',
       tokens: [
-        { token: '$ap-toggle-off-bg', value: '$ap-grey-100 (#c3c3c3)', usage: 'Fondo toggle apagado' },
-        { token: '$ap-toggle-on-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo toggle encendido (rosa)' },
-        { token: '$ap-toggle-thumb-bg', value: '$ap-white-base (#ffffff)', usage: 'Color thumb del toggle' },
-        { token: '$ap-toggle-thumb-shadow', value: '0 1px 3px rgba(#000, 0.15)', usage: 'Sombra del thumb' },
-        { token: '$ap-toggle-large-width', value: '56px', usage: 'Ancho toggle large' },
-        { token: '$ap-toggle-large-height', value: '32px', usage: 'Altura toggle large' },
-        { token: '$ap-toggle-large-thumb', value: '24px', usage: 'Tamano thumb toggle large' },
-        { token: '$ap-toggle-medium-width', value: '48px', usage: 'Ancho toggle medium' },
-        { token: '$ap-toggle-medium-height', value: '28px', usage: 'Altura toggle medium' },
-        { token: '$ap-toggle-medium-thumb', value: '20px', usage: 'Tamano thumb toggle medium' },
-        { token: '$ap-toggle-small-width', value: '40px', usage: 'Ancho toggle small' },
-        { token: '$ap-toggle-small-height', value: '24px', usage: 'Altura toggle small' },
-        { token: '$ap-toggle-small-thumb', value: '18px', usage: 'Tamano thumb toggle small' },
+        { token: '$sg-toggle-off-bg', value: '$sg-grey-100 (#c3c3c3)', usage: 'Fondo toggle apagado' },
+        { token: '$sg-toggle-on-bg', value: '$sg-secondary-500 (#f47a37)', usage: 'Fondo toggle encendido (naranja)' },
+        { token: '$sg-toggle-thumb-bg', value: '$sg-white-base (#ffffff)', usage: 'Color thumb del toggle' },
+        { token: '$sg-toggle-thumb-shadow', value: '0 1px 3px rgba(#000, 0.15)', usage: 'Sombra del thumb' },
+        { token: '$sg-toggle-large-width', value: '56px', usage: 'Ancho toggle large' },
+        { token: '$sg-toggle-large-height', value: '32px', usage: 'Altura toggle large' },
+        { token: '$sg-toggle-large-thumb', value: '24px', usage: 'Tamano thumb toggle large' },
+        { token: '$sg-toggle-medium-width', value: '48px', usage: 'Ancho toggle medium' },
+        { token: '$sg-toggle-medium-height', value: '28px', usage: 'Altura toggle medium' },
+        { token: '$sg-toggle-medium-thumb', value: '20px', usage: 'Tamano thumb toggle medium' },
+        { token: '$sg-toggle-small-width', value: '40px', usage: 'Ancho toggle small' },
+        { token: '$sg-toggle-small-height', value: '24px', usage: 'Altura toggle small' },
+        { token: '$sg-toggle-small-thumb', value: '18px', usage: 'Tamano thumb toggle small' },
       ]
     },
     {
       title: 'Checkbox Tokens',
       tokens: [
-        { token: '$ap-checkbox-size', value: '24px', usage: 'Tamano del checkbox' },
-        { token: '$ap-checkbox-border-radius', value: '8px', usage: 'Border radius' },
-        { token: '$ap-checkbox-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde default' },
-        { token: '$ap-checkbox-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo default' },
-        { token: '$ap-checkbox-active-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo activo (rosa)' },
-        { token: '$ap-checkbox-active-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde activo' },
-        { token: '$ap-checkbox-hover-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde en hover' },
-        { token: '$ap-checkbox-check-color', value: '$ap-white-base (#ffffff)', usage: 'Color del check' },
+        { token: '$sg-checkbox-size', value: '24px', usage: 'Tamano del checkbox' },
+        { token: '$sg-checkbox-border-radius', value: '8px', usage: 'Border radius' },
+        { token: '$sg-checkbox-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde default' },
+        { token: '$sg-checkbox-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo default' },
+        { token: '$sg-checkbox-active-bg', value: '$sg-secondary-500 (#f47a37)', usage: 'Fondo activo (naranja)' },
+        { token: '$sg-checkbox-active-border', value: '$sg-secondary-500 (#f47a37)', usage: 'Borde activo' },
+        { token: '$sg-checkbox-hover-border', value: '$sg-secondary-500 (#f47a37)', usage: 'Borde en hover' },
+        { token: '$sg-checkbox-check-color', value: '$sg-white-base (#ffffff)', usage: 'Color del check' },
       ]
     },
     {
       title: 'Radio Button Tokens (PrimeNG)',
       tokens: [
-        { token: '$ap-radio-checked-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Fondo radio seleccionado' },
-        { token: '$ap-radio-checked-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde radio seleccionado' },
-        { token: '$ap-radio-checked-hover-bg', value: '$ap-secondary-600 (#d9436e)', usage: 'Hover radio seleccionado' },
-        { token: '$ap-radio-hover-border', value: '$ap-secondary-300 (#f38fab)', usage: 'Hover borde radio' },
-        { token: '$ap-radio-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde default' },
-        { token: '$ap-radio-icon-color', value: '$ap-white-base (#ffffff)', usage: 'Color icono radio' },
-        { token: '$ap-radio-focus-ring', value: 'rgba(238, 74, 121, 0.2)', usage: 'Sombra de focus (rosa)' },
+        { token: '$sg-radio-checked-bg', value: '$sg-secondary-500 (#f47a37)', usage: 'Fondo radio seleccionado' },
+        { token: '$sg-radio-checked-border', value: '$sg-secondary-500 (#f47a37)', usage: 'Borde radio seleccionado' },
+        { token: '$sg-radio-checked-hover-bg', value: '$sg-secondary-600 (#e5641e)', usage: 'Hover radio seleccionado' },
+        { token: '$sg-radio-hover-border', value: '$sg-secondary-300 (#f8a679)', usage: 'Hover borde radio' },
+        { token: '$sg-radio-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde default' },
+        { token: '$sg-radio-icon-color', value: '$sg-white-base (#ffffff)', usage: 'Color icono radio' },
+        { token: '$sg-radio-focus-ring', value: 'rgba(244, 122, 55, 0.2)', usage: 'Sombra de focus (naranja)' },
       ]
     },
     {
       title: 'Radio Tab Tokens',
       tokens: [
-        { token: '$ap-radio-tab-height', value: '36px', usage: 'Altura radio tab' },
-        { token: '$ap-radio-tab-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$ap-radio-tab-font-size', value: '14px', usage: 'Tamano de fuente' },
-        { token: '$ap-radio-tab-font-weight', value: '700', usage: 'Peso de fuente' },
-        { token: '$ap-radio-tab-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color texto inactivo' },
-        { token: '$ap-radio-tab-hover-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto en hover' },
-        { token: '$ap-radio-tab-active-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde tab activo (rosa)' },
-        { token: '$ap-radio-tab-active-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Color texto activo' },
-        { token: '$ap-radio-tab-active-bg', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo tab activo (rosa claro)' },
+        { token: '$sg-radio-tab-height', value: '36px', usage: 'Altura radio tab' },
+        { token: '$sg-radio-tab-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$sg-radio-tab-font-size', value: '14px', usage: 'Tamano de fuente' },
+        { token: '$sg-radio-tab-font-weight', value: '700', usage: 'Peso de fuente' },
+        { token: '$sg-radio-tab-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color texto inactivo' },
+        { token: '$sg-radio-tab-hover-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Color texto en hover' },
+        { token: '$sg-radio-tab-active-border', value: '$sg-secondary-500 (#f47a37)', usage: 'Borde tab activo (naranja)' },
+        { token: '$sg-radio-tab-active-color', value: '$sg-secondary-500 (#f47a37)', usage: 'Color texto activo' },
+        { token: '$sg-radio-tab-active-bg', value: '$sg-secondary-50 (#fef2eb)', usage: 'Fondo tab activo (naranja claro)' },
       ]
     },
     {
       title: 'Status Badge Tokens',
       tokens: [
-        { token: '$ap-badge-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del badge' },
-        { token: '$ap-badge-border-radius', value: '50px', usage: 'Border radius pill' },
-        { token: '$ap-badge-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-badge-font-size', value: '14px', usage: 'Tamano de fuente' },
-        { token: '$ap-badge-font-weight', value: '600', usage: 'Peso de fuente' },
-        { token: '$ap-badge-text-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto' },
-        { token: '$ap-badge-padding', value: '4px 10px', usage: 'Padding' },
-        { token: '$ap-badge-gap', value: '10px', usage: 'Gap entre dot y texto' },
-        { token: '$ap-badge-dot-size', value: '10px', usage: 'Tamano dot indicador' },
-        { token: '$ap-badge-height-small', value: '30px', usage: 'Altura badge small' },
-        { token: '$ap-badge-height-large', value: '36px', usage: 'Altura badge large' },
-        { token: '$ap-badge-positiva', value: '$ap-success-400 (#3ace76)', usage: 'Dot positiva (verde)' },
-        { token: '$ap-badge-negativa', value: '$ap-error-400 (#fc3e3e)', usage: 'Dot negativa (rojo)' },
-        { token: '$ap-badge-neutra', value: '$ap-warning-400 (#ff962c)', usage: 'Dot neutra (naranja)' },
-        { token: '$ap-badge-desactivado', value: '$ap-grey-200 (#a6a6a6)', usage: 'Dot desactivado (gris)' },
+        { token: '$sg-badge-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde del badge' },
+        { token: '$sg-badge-border-radius', value: '50px', usage: 'Border radius pill' },
+        { token: '$sg-badge-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-badge-font-size', value: '14px', usage: 'Tamano de fuente' },
+        { token: '$sg-badge-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$sg-badge-text-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Color texto' },
+        { token: '$sg-badge-padding', value: '4px 10px', usage: 'Padding' },
+        { token: '$sg-badge-gap', value: '10px', usage: 'Gap entre dot y texto' },
+        { token: '$sg-badge-dot-size', value: '10px', usage: 'Tamano dot indicador' },
+        { token: '$sg-badge-height-small', value: '30px', usage: 'Altura badge small' },
+        { token: '$sg-badge-height-large', value: '36px', usage: 'Altura badge large' },
+        { token: '$sg-badge-positiva', value: '$sg-success-400 (#3ace76)', usage: 'Dot positiva (verde)' },
+        { token: '$sg-badge-negativa', value: '$sg-error-400 (#fc3e3e)', usage: 'Dot negativa (rojo)' },
+        { token: '$sg-badge-neutra', value: '$sg-warning-400 (#ff962c)', usage: 'Dot neutra (naranja)' },
+        { token: '$sg-badge-desactivado', value: '$sg-grey-200 (#a6a6a6)', usage: 'Dot desactivado (gris)' },
       ]
     },
     {
       title: 'Chip Tokens',
       tokens: [
-        { token: '$ap-chip-height', value: '26px', usage: 'Altura del chip' },
-        { token: '$ap-chip-border-radius', value: '23px', usage: 'Border radius' },
-        { token: '$ap-chip-padding', value: '6px 11px', usage: 'Padding' },
-        { token: '$ap-chip-gap', value: '10px', usage: 'Gap entre dot/icono y texto' },
-        { token: '$ap-chip-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-chip-font-size', value: '14px', usage: 'Tamano de fuente' },
-        { token: '$ap-chip-font-weight', value: '600', usage: 'Peso de fuente' },
-        { token: '$ap-chip-white-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo chip white' },
-        { token: '$ap-chip-white-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde chip white' },
-        { token: '$ap-chip-white-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Texto chip white' },
-        { token: '$ap-chip-primary-bg', value: '$ap-primary-100 (#b0ceff)', usage: 'Fondo chip primary' },
-        { token: '$ap-chip-primary-color', value: '$ap-primary-500 (#0061fe)', usage: 'Texto chip primary' },
-        { token: '$ap-chip-secondary-bg', value: '$ap-secondary-100 (#fac7d5)', usage: 'Fondo chip secondary (rosa)' },
-        { token: '$ap-chip-secondary-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Texto chip secondary' },
-        { token: '$ap-chip-disabled-bg', value: '$ap-grey-50 (#ececec)', usage: 'Fondo chip disabled' },
-        { token: '$ap-chip-disabled-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde chip disabled' },
-        { token: '$ap-chip-disabled-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Texto chip disabled' },
-        { token: '$ap-chip-add-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde boton agregar' },
-        { token: '$ap-chip-add-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color boton agregar' },
-        { token: '$ap-chip-add-hover-border', value: '$ap-primary-500 (#0061fe)', usage: 'Hover borde agregar' },
-        { token: '$ap-chip-add-hover-color', value: '$ap-primary-500 (#0061fe)', usage: 'Hover color agregar' },
+        { token: '$sg-chip-height', value: '26px', usage: 'Altura del chip' },
+        { token: '$sg-chip-border-radius', value: '23px', usage: 'Border radius' },
+        { token: '$sg-chip-padding', value: '6px 11px', usage: 'Padding' },
+        { token: '$sg-chip-gap', value: '10px', usage: 'Gap entre dot/icono y texto' },
+        { token: '$sg-chip-font-family', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-chip-font-size', value: '14px', usage: 'Tamano de fuente' },
+        { token: '$sg-chip-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$sg-chip-white-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo chip white' },
+        { token: '$sg-chip-white-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde chip white' },
+        { token: '$sg-chip-white-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Texto chip white' },
+        { token: '$sg-chip-primary-bg', value: '$sg-primary-100 (#b0ceff)', usage: 'Fondo chip primary' },
+        { token: '$sg-chip-primary-color', value: '$sg-primary-500 (#0061fe)', usage: 'Texto chip primary' },
+        { token: '$sg-chip-secondary-bg', value: '$sg-secondary-100 (#fcd6c1)', usage: 'Fondo chip secondary (naranja)' },
+        { token: '$sg-chip-secondary-color', value: '$sg-secondary-500 (#f47a37)', usage: 'Texto chip secondary' },
+        { token: '$sg-chip-disabled-bg', value: '$sg-grey-50 (#ececec)', usage: 'Fondo chip disabled' },
+        { token: '$sg-chip-disabled-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde chip disabled' },
+        { token: '$sg-chip-disabled-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Texto chip disabled' },
+        { token: '$sg-chip-add-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde boton agregar' },
+        { token: '$sg-chip-add-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color boton agregar' },
+        { token: '$sg-chip-add-hover-border', value: '$sg-primary-500 (#0061fe)', usage: 'Hover borde agregar' },
+        { token: '$sg-chip-add-hover-color', value: '$sg-primary-500 (#0061fe)', usage: 'Hover color agregar' },
       ]
     },
     {
       title: 'Toaster Tokens',
       tokens: [
-        { token: '$ap-toast-border-radius', value: '10px', usage: 'Border radius' },
-        { token: '$ap-toast-accent-width', value: '13px', usage: 'Ancho barra lateral de color' },
-        { token: '$ap-toast-shadow', value: '0 8px 32px rgba(#000, 0.08)', usage: 'Sombra del toast' },
-        { token: '$ap-toast-success-stripe', value: '$ap-success-400 (#3ace76)', usage: 'Barra lateral success' },
-        { token: '$ap-toast-success-bg', value: '$ap-success-50 (#ebfaf1)', usage: 'Fondo icono success' },
-        { token: '$ap-toast-success-color', value: '$ap-success-400 (#3ace76)', usage: 'Color icono success' },
-        { token: '$ap-toast-warning-stripe', value: '$ap-warning-400 (#ff962c)', usage: 'Barra lateral warning' },
-        { token: '$ap-toast-warning-bg', value: '$ap-warning-50 (#fff5ea)', usage: 'Fondo icono warning' },
-        { token: '$ap-toast-warning-color', value: '$ap-warning-400 (#ff962c)', usage: 'Color icono warning' },
-        { token: '$ap-toast-error-stripe', value: '$ap-error-400 (#fc3e3e)', usage: 'Barra lateral error' },
-        { token: '$ap-toast-error-bg', value: '$ap-error-50 (#ffecec)', usage: 'Fondo icono error' },
-        { token: '$ap-toast-error-color', value: '$ap-error-400 (#fc3e3e)', usage: 'Color icono error' },
-        { token: '$ap-toast-info-stripe', value: '$ap-primary-500 (#0061fe)', usage: 'Barra lateral info' },
-        { token: '$ap-toast-info-bg', value: '$ap-primary-50 (#e6efff)', usage: 'Fondo icono info' },
-        { token: '$ap-toast-info-color', value: '$ap-primary-500 (#0061fe)', usage: 'Color icono info' },
-        { token: '$ap-toast-title-color', value: '$ap-grey-800 (#222222)', usage: 'Color titulo' },
-        { token: '$ap-toast-message-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color mensaje' },
-        { token: '$ap-toast-close-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color boton cerrar' },
+        { token: '$sg-toast-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$sg-toast-accent-width', value: '13px', usage: 'Ancho barra lateral de color' },
+        { token: '$sg-toast-shadow', value: '0 8px 32px rgba(#000, 0.08)', usage: 'Sombra del toast' },
+        { token: '$sg-toast-success-stripe', value: '$sg-success-400 (#3ace76)', usage: 'Barra lateral success' },
+        { token: '$sg-toast-success-bg', value: '$sg-success-50 (#ebfaf1)', usage: 'Fondo icono success' },
+        { token: '$sg-toast-success-color', value: '$sg-success-400 (#3ace76)', usage: 'Color icono success' },
+        { token: '$sg-toast-warning-stripe', value: '$sg-warning-400 (#ff962c)', usage: 'Barra lateral warning' },
+        { token: '$sg-toast-warning-bg', value: '$sg-warning-50 (#fff5ea)', usage: 'Fondo icono warning' },
+        { token: '$sg-toast-warning-color', value: '$sg-warning-400 (#ff962c)', usage: 'Color icono warning' },
+        { token: '$sg-toast-error-stripe', value: '$sg-error-400 (#fc3e3e)', usage: 'Barra lateral error' },
+        { token: '$sg-toast-error-bg', value: '$sg-error-50 (#ffecec)', usage: 'Fondo icono error' },
+        { token: '$sg-toast-error-color', value: '$sg-error-400 (#fc3e3e)', usage: 'Color icono error' },
+        { token: '$sg-toast-info-stripe', value: '$sg-primary-500 (#0061fe)', usage: 'Barra lateral info' },
+        { token: '$sg-toast-info-bg', value: '$sg-primary-50 (#e6efff)', usage: 'Fondo icono info' },
+        { token: '$sg-toast-info-color', value: '$sg-primary-500 (#0061fe)', usage: 'Color icono info' },
+        { token: '$sg-toast-title-color', value: '$sg-grey-800 (#222222)', usage: 'Color titulo' },
+        { token: '$sg-toast-message-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color mensaje' },
+        { token: '$sg-toast-close-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color boton cerrar' },
       ]
     },
     {
       title: 'Select Segment Tokens',
       tokens: [
-        { token: '$ap-select-seg-border-color', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde de los segmentos' },
-        { token: '$ap-select-seg-selected-bg', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo seleccionado (rosa claro)' },
-        { token: '$ap-select-seg-selected-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde seleccionado' },
-        { token: '$ap-select-seg-hover-border', value: '$ap-secondary-500 (#ee4a79)', usage: 'Borde en hover (rosa)' },
-        { token: '$ap-select-seg-chip-radius', value: '23px', usage: 'Border radius de chips' },
-        { token: '$ap-select-colorpicker-dot-size', value: '25px', usage: 'Tamano dot de color' },
-        { token: '$ap-select-user-avatar-size-lg', value: '36px', usage: 'Tamano avatar large' },
+        { token: '$sg-select-seg-border-color', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde de los segmentos' },
+        { token: '$sg-select-seg-selected-bg', value: '$sg-secondary-50 (#fef2eb)', usage: 'Fondo seleccionado (naranja claro)' },
+        { token: '$sg-select-seg-selected-border', value: '$sg-secondary-500 (#f47a37)', usage: 'Borde seleccionado' },
+        { token: '$sg-select-seg-hover-border', value: '$sg-secondary-500 (#f47a37)', usage: 'Borde en hover (naranja)' },
+        { token: '$sg-select-seg-chip-radius', value: '23px', usage: 'Border radius de chips' },
+        { token: '$sg-select-colorpicker-dot-size', value: '25px', usage: 'Tamano dot de color' },
+        { token: '$sg-select-user-avatar-size-lg', value: '36px', usage: 'Tamano avatar large' },
       ]
     },
     {
       title: 'Confirm Modal Tokens',
       tokens: [
-        { token: '$ap-confirm-modal-border-radius', value: '12px', usage: 'Border radius del modal' },
-        { token: '$ap-confirm-modal-max-width', value: '700px', usage: 'Ancho maximo' },
-        { token: '$ap-confirm-modal-icon-size', value: '56px', usage: 'Tamano icono circular' },
-        { token: '$ap-confirm-general-btn-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Boton variante general (azul)' },
-        { token: '$ap-confirm-confirmation-icon-color', value: '$ap-success-400 (#3ace76)', usage: 'Icono variante confirmacion (verde)' },
-        { token: '$ap-confirm-alert-btn-bg', value: '$ap-secondary-500 (#ee4a79)', usage: 'Boton variante alerta (rosa AdvocatesPro)' },
-        { token: '$ap-confirm-error-btn-bg', value: '$ap-error-400 (#fc3e3e)', usage: 'Boton variante error (rojo)' },
+        { token: '$sg-confirm-modal-border-radius', value: '12px', usage: 'Border radius del modal' },
+        { token: '$sg-confirm-modal-max-width', value: '700px', usage: 'Ancho maximo' },
+        { token: '$sg-confirm-modal-icon-size', value: '56px', usage: 'Tamano icono circular' },
+        { token: '$sg-confirm-general-btn-bg', value: '$sg-primary-500 (#0061fe)', usage: 'Boton variante general (azul)' },
+        { token: '$sg-confirm-confirmation-icon-color', value: '$sg-success-400 (#3ace76)', usage: 'Icono variante confirmacion (verde)' },
+        { token: '$sg-confirm-alert-btn-bg', value: '$sg-secondary-500 (#f47a37)', usage: 'Boton variante alerta (naranja SocialGest)' },
+        { token: '$sg-confirm-error-btn-bg', value: '$sg-error-400 (#fc3e3e)', usage: 'Boton variante error (rojo)' },
+      ]
+    },
+    {
+      title: 'Modales Especiales Tokens',
+      tokens: [
+        { token: '$sg-special-modal-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo del contenedor del modal' },
+        { token: '$sg-special-modal-border', value: '1px solid $sg-grey-50', usage: 'Borde del contenedor' },
+        { token: '$sg-special-modal-radius', value: '40px', usage: 'Border radius del contenedor' },
+        { token: '$sg-special-modal-padding', value: '48px 40px', usage: 'Padding del contenedor' },
+        { token: '$sg-special-modal-overlay-bg', value: 'rgba(0, 0, 0, 0.5)', usage: 'Fondo del backdrop' },
+        { token: '$sg-special-modal-circle-size', value: '729px', usage: 'Tamano de los circulos decorativos' },
+        { token: '$sg-special-modal-circle-primary', value: 'radial-gradient primary-50 → transparent', usage: 'Circulo decorativo (top-right)' },
+        { token: '$sg-special-modal-circle-secondary', value: 'radial-gradient secondary-50 → transparent', usage: 'Circulo decorativo (bottom-left)' },
+        { token: '$sg-special-modal-icon-circle-size', value: '80px', usage: 'Circulo del icono del header' },
+        { token: '$sg-special-modal-icon-circle-bg', value: '$sg-secondary-50 (#fef2eb)', usage: 'Fondo del circulo del icono' },
+        { token: '$sg-special-modal-icon-color', value: '$sg-secondary-500 (#f47a37)', usage: 'Color del icono (Lucide)' },
+        { token: '$sg-special-modal-icon-size', value: '49px', usage: 'Tamano del icono' },
+        { token: '$sg-special-modal-title-size', value: '36px', usage: 'Tamano del titulo (bienvenida)' },
+        { token: '$sg-special-modal-title-size-expired', value: '24px', usage: 'Tamano del titulo (plan vencido)' },
+        { token: '$sg-special-modal-title-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Color del titulo' },
+        { token: '$sg-special-modal-body-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo del card de contenido' },
+        { token: '$sg-special-modal-body-radius', value: '12px', usage: 'Border radius del card' },
+        { token: '$sg-special-modal-body-padding', value: '40px 20px', usage: 'Padding del card' },
+        { token: '$sg-special-modal-body-text-color', value: '$sg-primary-800 (#00358c)', usage: 'Color del texto del cuerpo' },
+        { token: '$sg-special-launch-panel-radius', value: '24px', usage: 'Border radius de los paneles del modal lanzamiento' },
+        { token: '$sg-special-launch-badge-bg', value: 'linear-gradient(74.11deg, primary-200 → secondary-200)', usage: 'Fondo del badge "Nuevo lanzamiento"' },
+        { token: '$sg-special-launch-hero-title-size', value: '48px', usage: 'Tamano del titulo hero del lanzamiento' },
+        { token: '$sg-special-launch-overlay-btn-bg', value: '$sg-secondary-500 (#f47a37)', usage: 'Fondo del boton overlay sobre la imagen' },
+        { token: '$sg-special-launch-mia-btn-width', value: '419px', usage: 'Ancho del boton Mia (footer)' },
       ]
     },
     {
       title: 'Code Modal Tokens',
       tokens: [
-        { token: '$ap-code-modal-border-radius', value: '24px', usage: 'Border radius' },
-        { token: '$ap-code-modal-icon-bg', value: '$ap-warning-50 (#fff5ea)', usage: 'Fondo icono warning' },
-        { token: '$ap-code-modal-icon-color', value: '$ap-warning-400 (#ff962c)', usage: 'Color icono warning' },
-        { token: '$ap-code-modal-btn-bg', value: '$ap-error-400 (#fc3e3e)', usage: 'Boton confirmacion destructiva' },
-        { token: '$ap-code-modal-code-size', value: '40px', usage: 'Tamano codigo verificacion' },
+        { token: '$sg-code-modal-border-radius', value: '24px', usage: 'Border radius' },
+        { token: '$sg-code-modal-icon-bg', value: '$sg-warning-50 (#fff5ea)', usage: 'Fondo icono warning' },
+        { token: '$sg-code-modal-icon-color', value: '$sg-warning-400 (#ff962c)', usage: 'Color icono warning' },
+        { token: '$sg-code-modal-btn-bg', value: '$sg-error-400 (#fc3e3e)', usage: 'Boton confirmacion destructiva' },
+        { token: '$sg-code-modal-code-size', value: '40px', usage: 'Tamano codigo verificacion' },
       ]
     },
     {
       title: 'Stepper Tokens',
       tokens: [
-        { token: '$ap-stepper-track-height', value: '5px', usage: 'Altura barra progreso' },
-        { token: '$ap-stepper-track-bg', value: '$ap-grey-50 (#ececec)', usage: 'Fondo del track' },
-        { token: '$ap-stepper-progress-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Color barra progreso (azul)' },
-        { token: '$ap-stepper-track-radius', value: '10px', usage: 'Border radius del track' },
-        { token: '$ap-stepper-label-font', value: "'DM Sans', sans-serif", usage: 'Familia tipografica label' },
-        { token: '$ap-stepper-label-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color texto del paso' },
+        { token: '$sg-stepper-track-height', value: '5px', usage: 'Altura barra progreso' },
+        { token: '$sg-stepper-track-bg', value: '$sg-grey-50 (#ececec)', usage: 'Fondo del track' },
+        { token: '$sg-stepper-progress-bg', value: '$sg-primary-500 (#0061fe)', usage: 'Color barra progreso (azul)' },
+        { token: '$sg-stepper-track-radius', value: '10px', usage: 'Border radius del track' },
+        { token: '$sg-stepper-label-font', value: "'DM Sans', sans-serif", usage: 'Familia tipografica label' },
+        { token: '$sg-stepper-label-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color texto del paso' },
       ]
     },
     {
       title: 'TextArea Tokens',
       tokens: [
-        { token: '$ap-textarea-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del textarea' },
-        { token: '$ap-textarea-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$ap-textarea-border-radius', value: '10px', usage: 'Border radius' },
-        { token: '$ap-textarea-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-textarea-font-size', value: '16px', usage: 'Tamano de fuente' },
-        { token: '$ap-textarea-label-color', value: '$ap-grey-800 (#222222)', usage: 'Color del label' },
-        { token: '$ap-textarea-placeholder-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
-        { token: '$ap-textarea-padding', value: '12px 16px', usage: 'Padding' },
-        { token: '$ap-textarea-disabled-opacity', value: '0.5', usage: 'Opacidad en disabled' },
+        { token: '$sg-textarea-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde del textarea' },
+        { token: '$sg-textarea-border-focus', value: '$sg-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$sg-textarea-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$sg-textarea-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-textarea-font-size', value: '16px', usage: 'Tamano de fuente' },
+        { token: '$sg-textarea-label-color', value: '$sg-grey-800 (#222222)', usage: 'Color del label' },
+        { token: '$sg-textarea-placeholder-color', value: '$sg-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
+        { token: '$sg-textarea-padding', value: '12px 16px', usage: 'Padding' },
+        { token: '$sg-textarea-disabled-opacity', value: '0.5', usage: 'Opacidad en disabled' },
       ]
     },
     {
       title: 'Number Input Tokens',
       tokens: [
-        { token: '$ap-number-input-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del contenedor' },
-        { token: '$ap-number-input-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$ap-number-input-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$ap-number-input-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$ap-number-input-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$ap-number-input-btn-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color botones -/+' },
-        { token: '$ap-number-input-btn-hover', value: '$ap-primary-500 (#0061fe)', usage: 'Hover botones -/+' },
-        { token: '$ap-number-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-number-input-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$sg-number-input-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde del contenedor' },
+        { token: '$sg-number-input-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$sg-number-input-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$sg-number-input-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$sg-number-input-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$sg-number-input-btn-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color botones -/+' },
+        { token: '$sg-number-input-btn-hover', value: '$sg-primary-500 (#0061fe)', usage: 'Hover botones -/+' },
+        { token: '$sg-number-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-number-input-font-weight', value: '600', usage: 'Peso de fuente' },
       ]
     },
     {
       title: 'Account Counter Tokens',
       tokens: [
-        { token: '$ap-counter-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del badge' },
-        { token: '$ap-counter-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$ap-counter-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color icono User' },
-        { token: '$ap-counter-text-color', value: '$ap-grey-800 (#222222)', usage: 'Color del numero' },
-        { token: '$ap-counter-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-counter-font-weight', value: '600', usage: 'Peso de fuente' },
-        { token: '$ap-counter-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$ap-counter-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$ap-counter-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$sg-counter-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde del badge' },
+        { token: '$sg-counter-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$sg-counter-icon-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color icono User' },
+        { token: '$sg-counter-text-color', value: '$sg-grey-800 (#222222)', usage: 'Color del numero' },
+        { token: '$sg-counter-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-counter-font-weight', value: '600', usage: 'Peso de fuente' },
+        { token: '$sg-counter-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$sg-counter-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$sg-counter-height-sm', value: '36px', usage: 'Altura small' },
       ]
     },
     {
       title: 'Select Date Tokens',
       tokens: [
-        { token: '$ap-select-date-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde del trigger' },
-        { token: '$ap-select-date-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$ap-select-date-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-select-date-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$ap-select-date-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$ap-select-date-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$ap-select-date-dropdown-shadow', value: '0 4px 15px rgba(#000, 0.12)', usage: 'Sombra dropdown' },
-        { token: '$ap-select-date-day-selected-bg', value: '$ap-primary-500 (#0061fe)', usage: 'Fondo dia seleccionado' },
-        { token: '$ap-select-date-day-other-color', value: '$ap-grey-100 (#c3c3c3)', usage: 'Color dias de otro mes' },
+        { token: '$sg-select-date-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde del trigger' },
+        { token: '$sg-select-date-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$sg-select-date-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-select-date-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$sg-select-date-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$sg-select-date-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$sg-select-date-dropdown-shadow', value: '0 4px 15px rgba(#000, 0.12)', usage: 'Sombra dropdown' },
+        { token: '$sg-select-date-day-selected-bg', value: '$sg-primary-500 (#0061fe)', usage: 'Fondo dia seleccionado' },
+        { token: '$sg-select-date-day-other-color', value: '$sg-grey-100 (#c3c3c3)', usage: 'Color dias de otro mes' },
       ]
     },
     {
       title: 'Hour Date Picker Tokens',
       tokens: [
-        { token: '$ap-hour-picker-spinner-gap', value: '18px', usage: 'Gap entre spinners' },
-        { token: '$ap-hour-picker-chevron-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color flechas' },
-        { token: '$ap-hour-picker-chevron-hover', value: '$ap-grey-500 (#3d3d3d)', usage: 'Hover flechas' },
-        { token: '$ap-hour-picker-value-color', value: '$ap-grey-800 (#222222)', usage: 'Color valor' },
-        { token: '$ap-hour-picker-divider', value: '$ap-grey-50 (#ececec)', usage: 'Color separador' },
+        { token: '$sg-hour-picker-spinner-gap', value: '18px', usage: 'Gap entre spinners' },
+        { token: '$sg-hour-picker-chevron-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color flechas' },
+        { token: '$sg-hour-picker-chevron-hover', value: '$sg-grey-500 (#3d3d3d)', usage: 'Hover flechas' },
+        { token: '$sg-hour-picker-value-color', value: '$sg-grey-800 (#222222)', usage: 'Color valor' },
+        { token: '$sg-hour-picker-divider', value: '$sg-grey-50 (#ececec)', usage: 'Color separador' },
       ]
     },
     {
       title: 'Select Tokens',
       tokens: [
-        { token: '$ap-select-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
-        { token: '$ap-select-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde' },
-        { token: '$ap-select-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$ap-select-border-radius', value: '10px', usage: 'Border radius' },
-        { token: '$ap-select-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$ap-select-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$ap-select-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$ap-select-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-select-placeholder-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color placeholder' },
-        { token: '$ap-select-text-color', value: '$ap-grey-800 (#222222)', usage: 'Color texto seleccionado' },
-        { token: '$ap-select-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color iconos' },
-        { token: '$ap-select-dropdown-shadow', value: '0 4px 12px rgba(#000, 0.1)', usage: 'Sombra dropdown' },
-        { token: '$ap-select-option-hover-bg', value: '$ap-neutral-50 (#fafafa)', usage: 'Hover opcion' },
-        { token: '$ap-select-disabled-bg', value: '$ap-grey-100 (#c3c3c3)', usage: 'Fondo disabled' },
-        { token: '$ap-select-disabled-text', value: '$ap-grey-200 (#a6a6a6)', usage: 'Texto disabled' },
+        { token: '$sg-select-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$sg-select-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde' },
+        { token: '$sg-select-border-focus', value: '$sg-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$sg-select-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$sg-select-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$sg-select-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$sg-select-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$sg-select-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-select-placeholder-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color placeholder' },
+        { token: '$sg-select-text-color', value: '$sg-grey-800 (#222222)', usage: 'Color texto seleccionado' },
+        { token: '$sg-select-icon-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color iconos' },
+        { token: '$sg-select-dropdown-shadow', value: '0 4px 12px rgba(#000, 0.1)', usage: 'Sombra dropdown' },
+        { token: '$sg-select-option-hover-bg', value: '$sg-neutral-50 (#fafafa)', usage: 'Hover opcion' },
+        { token: '$sg-select-disabled-bg', value: '$sg-grey-100 (#c3c3c3)', usage: 'Fondo disabled' },
+        { token: '$sg-select-disabled-text', value: '$sg-grey-200 (#a6a6a6)', usage: 'Texto disabled' },
       ]
     },
     {
       title: 'Search Input Tokens',
       tokens: [
-        { token: '$ap-search-input-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
-        { token: '$ap-search-input-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde' },
-        { token: '$ap-search-input-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$ap-search-input-border-radius', value: '50px', usage: 'Pill shape' },
-        { token: '$ap-search-input-height-lg', value: '50px', usage: 'Altura large' },
-        { token: '$ap-search-input-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$ap-search-input-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$ap-search-input-icon-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color icono search' },
-        { token: '$ap-search-input-placeholder-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
-        { token: '$ap-search-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-search-input-font-weight', value: '500', usage: 'Peso de fuente' },
-        { token: '$ap-search-input-disabled-bg', value: '$ap-grey-100 (#c3c3c3)', usage: 'Fondo disabled' },
-        { token: '$ap-search-input-disabled-text', value: '$ap-grey-200 (#a6a6a6)', usage: 'Texto disabled' },
+        { token: '$sg-search-input-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$sg-search-input-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde' },
+        { token: '$sg-search-input-border-focus', value: '$sg-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$sg-search-input-border-radius', value: '50px', usage: 'Pill shape' },
+        { token: '$sg-search-input-height-lg', value: '50px', usage: 'Altura large' },
+        { token: '$sg-search-input-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$sg-search-input-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$sg-search-input-icon-color', value: '$sg-grey-200 (#a6a6a6)', usage: 'Color icono search' },
+        { token: '$sg-search-input-placeholder-color', value: '$sg-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
+        { token: '$sg-search-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-search-input-font-weight', value: '500', usage: 'Peso de fuente' },
+        { token: '$sg-search-input-disabled-bg', value: '$sg-grey-100 (#c3c3c3)', usage: 'Fondo disabled' },
+        { token: '$sg-search-input-disabled-text', value: '$sg-grey-200 (#a6a6a6)', usage: 'Texto disabled' },
       ]
     },
     {
       title: 'Text Input Tokens',
       tokens: [
-        { token: '$ap-text-input-border', value: '$ap-grey-100 (#c3c3c3)', usage: 'Borde' },
-        { token: '$ap-text-input-border-focus', value: '$ap-primary-500 (#0061fe)', usage: 'Borde en focus' },
-        { token: '$ap-text-input-border-error', value: '$ap-error-400 (#fc3e3e)', usage: 'Borde en error' },
-        { token: '$ap-text-input-border-radius', value: '10px', usage: 'Border radius' },
-        { token: '$ap-text-input-height-lg', value: '48px', usage: 'Altura large' },
-        { token: '$ap-text-input-height-md', value: '40px', usage: 'Altura medium' },
-        { token: '$ap-text-input-height-sm', value: '36px', usage: 'Altura small' },
-        { token: '$ap-text-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
-        { token: '$ap-text-input-label-color', value: '$ap-grey-800 (#222222)', usage: 'Color label' },
-        { token: '$ap-text-input-placeholder-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
-        { token: '$ap-text-input-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color iconos' },
+        { token: '$sg-text-input-border', value: '$sg-grey-100 (#c3c3c3)', usage: 'Borde' },
+        { token: '$sg-text-input-border-focus', value: '$sg-primary-500 (#0061fe)', usage: 'Borde en focus' },
+        { token: '$sg-text-input-border-error', value: '$sg-error-400 (#fc3e3e)', usage: 'Borde en error' },
+        { token: '$sg-text-input-border-radius', value: '10px', usage: 'Border radius' },
+        { token: '$sg-text-input-height-lg', value: '48px', usage: 'Altura large' },
+        { token: '$sg-text-input-height-md', value: '40px', usage: 'Altura medium' },
+        { token: '$sg-text-input-height-sm', value: '36px', usage: 'Altura small' },
+        { token: '$sg-text-input-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica' },
+        { token: '$sg-text-input-label-color', value: '$sg-grey-800 (#222222)', usage: 'Color label' },
+        { token: '$sg-text-input-placeholder-color', value: '$sg-grey-200 (#a6a6a6)', usage: 'Color placeholder' },
+        { token: '$sg-text-input-icon-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color iconos' },
       ]
     },
     {
       title: 'Card Tokens',
       tokens: [
-        { token: '$ap-card-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
-        { token: '$ap-card-border', value: '$ap-grey-50 (#ececec)', usage: 'Borde' },
-        { token: '$ap-card-border-radius', value: '16px', usage: 'Border radius' },
-        { token: '$ap-card-padding-simple', value: '24px', usage: 'Padding variante simple' },
-        { token: '$ap-card-padding-large', value: '32px', usage: 'Padding variante large' },
-        { token: '$ap-card-title-color', value: '$ap-grey-800 (#222222)', usage: 'Color titulo' },
-        { token: '$ap-card-title-size-titled', value: '20px', usage: 'Tamano titulo titled' },
-        { token: '$ap-card-title-size-large', value: '24px', usage: 'Tamano titulo large' },
+        { token: '$sg-card-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$sg-card-border', value: '$sg-grey-50 (#ececec)', usage: 'Borde' },
+        { token: '$sg-card-border-radius', value: '16px', usage: 'Border radius' },
+        { token: '$sg-card-padding-simple', value: '24px', usage: 'Padding variante simple' },
+        { token: '$sg-card-padding-large', value: '32px', usage: 'Padding variante large' },
+        { token: '$sg-card-title-color', value: '$sg-grey-800 (#222222)', usage: 'Color titulo' },
+        { token: '$sg-card-title-size-titled', value: '20px', usage: 'Tamano titulo titled' },
+        { token: '$sg-card-title-size-large', value: '24px', usage: 'Tamano titulo large' },
       ]
     },
     {
       title: 'Menu Tokens',
       tokens: [
-        { token: '$ap-menu-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
-        { token: '$ap-menu-border', value: '$ap-grey-50 (#ececec)', usage: 'Borde' },
-        { token: '$ap-menu-border-radius', value: '12px', usage: 'Border radius' },
-        { token: '$ap-menu-item-hover', value: '$ap-neutral-50 (#fafafa)', usage: 'Hover items' },
-        { token: '$ap-menu-item-selected-bg', value: '$ap-secondary-50 (#fdedf2)', usage: 'Fondo seleccionado (rosa claro)' },
-        { token: '$ap-menu-item-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto items' },
-        { token: '$ap-menu-icon-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color iconos' },
-        { token: '$ap-menu-radio-active', value: '$ap-secondary-500 (#ee4a79)', usage: 'Radio seleccionado' },
-        { token: '$ap-menu-checkbox-active', value: '$ap-secondary-500 (#ee4a79)', usage: 'Checkbox seleccionado' },
+        { token: '$sg-menu-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$sg-menu-border', value: '$sg-grey-50 (#ececec)', usage: 'Borde' },
+        { token: '$sg-menu-border-radius', value: '12px', usage: 'Border radius' },
+        { token: '$sg-menu-item-hover', value: '$sg-neutral-50 (#fafafa)', usage: 'Hover items' },
+        { token: '$sg-menu-item-selected-bg', value: '$sg-secondary-50 (#fef2eb)', usage: 'Fondo seleccionado (naranja claro)' },
+        { token: '$sg-menu-item-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Color texto items' },
+        { token: '$sg-menu-icon-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color iconos' },
+        { token: '$sg-menu-radio-active', value: '$sg-secondary-500 (#f47a37)', usage: 'Radio seleccionado' },
+        { token: '$sg-menu-checkbox-active', value: '$sg-secondary-500 (#f47a37)', usage: 'Checkbox seleccionado' },
       ]
     },
     {
       title: 'Avatar Tokens',
       tokens: [
-        { token: '$ap-avatar-border-radius', value: '50%', usage: 'Forma circular' },
-        { token: '$ap-avatar-size-xlarge', value: '50px', usage: 'Tamano extra large' },
-        { token: '$ap-avatar-size-large', value: '36px', usage: 'Tamano large' },
-        { token: '$ap-avatar-size-medium', value: '26px', usage: 'Tamano medium' },
-        { token: '$ap-avatar-size-small', value: '18px', usage: 'Tamano small' },
-        { token: '$ap-avatar-badge-size', value: '16px', usage: 'Tamano badge plataforma' },
-        { token: '$ap-avatar-badge-border', value: '$ap-white-base (#ffffff)', usage: 'Borde del badge' },
+        { token: '$sg-avatar-border-radius', value: '50%', usage: 'Forma circular' },
+        { token: '$sg-avatar-size-xlarge', value: '50px', usage: 'Tamano extra large' },
+        { token: '$sg-avatar-size-large', value: '36px', usage: 'Tamano large' },
+        { token: '$sg-avatar-size-medium', value: '26px', usage: 'Tamano medium' },
+        { token: '$sg-avatar-size-small', value: '18px', usage: 'Tamano small' },
+        { token: '$sg-avatar-badge-size', value: '16px', usage: 'Tamano badge plataforma' },
+        { token: '$sg-avatar-badge-border', value: '$sg-white-base (#ffffff)', usage: 'Borde del badge' },
       ]
     },
     {
       title: 'Metricas / Bar Chart Tokens',
       tokens: [
-        { token: '$ap-bar-primary-from', value: '$ap-primary-300 (#5495fe)', usage: 'Gradiente inicio primary' },
-        { token: '$ap-bar-primary-to', value: '$ap-primary-500 (#0061fe)', usage: 'Gradiente fin primary' },
-        { token: '$ap-bar-secondary-from', value: '$ap-secondary-300 (#f38fab)', usage: 'Gradiente inicio secondary (rosa)' },
-        { token: '$ap-bar-secondary-to', value: '$ap-secondary-500 (#ee4a79)', usage: 'Gradiente fin secondary' },
-        { token: '$ap-bar-size-large', value: '78px', usage: 'Ancho barra large' },
-        { token: '$ap-bar-size-medium', value: '35px', usage: 'Ancho barra medium' },
-        { token: '$ap-bar-size-small', value: '17px', usage: 'Ancho barra small' },
-        { token: '$ap-bar-size-xsmall', value: '8px', usage: 'Ancho barra x-small' },
-        { token: '$ap-bar-label-color', value: '$ap-grey-300 (#7d7d7d)', usage: 'Color labels' },
-        { token: '$ap-sparkline-primary-color', value: '$ap-primary-500 (#0061fe)', usage: 'Color linea primary' },
-        { token: '$ap-sparkline-secondary-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Color linea secondary (rosa)' },
-        { token: '$ap-donut-stroke-width', value: '30px', usage: 'Grosor segmentos dona' },
-        { token: '$ap-trend-up-color', value: '$ap-success-400 (#3ace76)', usage: 'Indicador positivo' },
-        { token: '$ap-trend-down-color', value: '$ap-error-400 (#fc3e3e)', usage: 'Indicador negativo' },
+        { token: '$sg-bar-primary-from', value: '$sg-primary-300 (#5495fe)', usage: 'Gradiente inicio primary' },
+        { token: '$sg-bar-primary-to', value: '$sg-primary-500 (#0061fe)', usage: 'Gradiente fin primary' },
+        { token: '$sg-bar-secondary-from', value: '$sg-secondary-300 (#f8a679)', usage: 'Gradiente inicio secondary (naranja)' },
+        { token: '$sg-bar-secondary-to', value: '$sg-secondary-500 (#f47a37)', usage: 'Gradiente fin secondary' },
+        { token: '$sg-bar-size-large', value: '78px', usage: 'Ancho barra large' },
+        { token: '$sg-bar-size-medium', value: '35px', usage: 'Ancho barra medium' },
+        { token: '$sg-bar-size-small', value: '17px', usage: 'Ancho barra small' },
+        { token: '$sg-bar-size-xsmall', value: '8px', usage: 'Ancho barra x-small' },
+        { token: '$sg-bar-label-color', value: '$sg-grey-300 (#7d7d7d)', usage: 'Color labels' },
+        { token: '$sg-sparkline-primary-color', value: '$sg-primary-500 (#0061fe)', usage: 'Color linea primary' },
+        { token: '$sg-sparkline-secondary-color', value: '$sg-secondary-500 (#f47a37)', usage: 'Color linea secondary (naranja)' },
+        { token: '$sg-donut-stroke-width', value: '30px', usage: 'Grosor segmentos dona' },
+        { token: '$sg-trend-up-color', value: '$sg-success-400 (#3ace76)', usage: 'Indicador positivo' },
+        { token: '$sg-trend-down-color', value: '$sg-error-400 (#fc3e3e)', usage: 'Indicador negativo' },
       ]
     },
     {
       title: 'Table Tokens',
       tokens: [
-        { token: '$ap-table-bg', value: '$ap-white-base (#ffffff)', usage: 'Fondo' },
-        { token: '$ap-table-border-color', value: '$ap-grey-50 (#ececec)', usage: 'Borde de filas' },
-        { token: '$ap-table-header-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto header' },
-        { token: '$ap-table-body-color', value: '$ap-grey-500 (#3d3d3d)', usage: 'Color texto body' },
-        { token: '$ap-table-title-color', value: '$ap-grey-800 (#222222)', usage: 'Color titulo' },
-        { token: '$ap-table-title-size', value: '24px', usage: 'Tamano titulo' },
-        { token: '$ap-table-row-height', value: '44px', usage: 'Altura de filas' },
-        { token: '$ap-table-cell-padding', value: '10px 20px', usage: 'Padding de celdas' },
-        { token: '$ap-table-hover-bg', value: '$ap-neutral-50 (#fafafa)', usage: 'Fondo hover de fila' },
-        { token: '$ap-table-action-icon-color', value: '$ap-secondary-500 (#ee4a79)', usage: 'Color icono acciones (rosa)' },
+        { token: '$sg-table-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo' },
+        { token: '$sg-table-border-color', value: '$sg-grey-50 (#ececec)', usage: 'Borde de filas' },
+        { token: '$sg-table-header-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Color texto header' },
+        { token: '$sg-table-body-color', value: '$sg-grey-500 (#3d3d3d)', usage: 'Color texto body' },
+        { token: '$sg-table-title-color', value: '$sg-grey-800 (#222222)', usage: 'Color titulo' },
+        { token: '$sg-table-title-size', value: '24px', usage: 'Tamano titulo' },
+        { token: '$sg-table-row-height', value: '44px', usage: 'Altura de filas' },
+        { token: '$sg-table-cell-padding', value: '10px 20px', usage: 'Padding de celdas' },
+        { token: '$sg-table-hover-bg', value: '$sg-neutral-50 (#fafafa)', usage: 'Fondo hover de fila' },
+        { token: '$sg-table-action-icon-color', value: '$sg-secondary-500 (#f47a37)', usage: 'Color icono acciones (naranja)' },
       ]
     },
     {
       title: 'Dashboard UI Tokens',
       tokens: [
-        { token: '$ap-code-block-bg', value: '$ap-grey-900 (#1a1a1a)', usage: 'Fondo code blocks' },
-        { token: '$ap-code-block-text', value: '$ap-grey-100 (#c3c3c3)', usage: 'Color texto code blocks' },
-        { token: '$ap-ui-label-color', value: '$ap-grey-200 (#a6a6a6)', usage: 'Color labels UI del dashboard' },
-        { token: '$ap-ui-light-bg', value: '$ap-neutral-200 (#f1f1f1)', usage: 'Fondo inline code' },
-        { token: '$ap-swatch-border', value: '$ap-grey-50 (#ececec)', usage: 'Borde color swatches' },
+        { token: '$sg-code-block-bg', value: '$sg-grey-900 (#1a1a1a)', usage: 'Fondo code blocks' },
+        { token: '$sg-code-block-text', value: '$sg-grey-100 (#c3c3c3)', usage: 'Color texto code blocks' },
+        { token: '$sg-ui-label-color', value: '$sg-grey-200 (#a6a6a6)', usage: 'Color labels UI del dashboard' },
+        { token: '$sg-ui-light-bg', value: '$sg-neutral-200 (#f1f1f1)', usage: 'Fondo inline code' },
+        { token: '$sg-swatch-border', value: '$sg-grey-50 (#ececec)', usage: 'Borde color swatches' },
+      ]
+    },
+    {
+      title: 'IA Gradiente',
+      tokens: [
+        { token: '$sg-ia-gradient', value: 'linear-gradient(19.84deg, $sg-primary-500 2.99%, $sg-ai-500 105.98%)', usage: 'Gradiente distintivo para elementos de IA (botones, iconos, headers)' }
+      ]
+    },
+    {
+      title: 'Elementos de IA Tokens',
+      tokens: [
+        { token: '$sg-ia-panel-bg', value: 'linear-gradient(111.48deg, rgba(230,239,255,0.7) 0%, $sg-white-base 50.75%, rgba(254,242,235,0.7) 100%)', usage: 'Fondo del panel "Generando con IA"' },
+        { token: '$sg-ia-note-bg', value: 'linear-gradient(161.67deg, rgba(230,239,255,0.33) → rgba(133,177,255,0.33))', usage: 'Fondo de la Nota de IA' },
+        { token: '$sg-ia-text-gradient', value: 'linear-gradient(5.79deg, $sg-primary-500 → $sg-ai-500)', usage: 'Gradiente de texto para titulos/subtitulos de IA' },
+        { token: '$sg-ia-hero-title-gradient', value: 'linear-gradient(to right, $sg-primary-500 → $sg-primary-900 → $sg-secondary-500)', usage: 'Gradiente de texto tricolor para titulos hero de IA' },
+        { token: '$sg-ia-progress-gradient', value: 'linear-gradient(90deg, $sg-primary-500 → $sg-primary-100)', usage: 'Fill de la barra de progreso IA' },
+        { token: '$sg-ia-panel-padding', value: '24px 32px', usage: 'Padding del panel IA' },
+        { token: '$sg-ia-panel-radius', value: '16px', usage: 'Border radius del panel IA' },
+        { token: '$sg-ia-panel-icon-size', value: '48px', usage: 'Tamano del contenedor del icono Sparkles' },
+        { token: '$sg-ia-panel-icon-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo del contenedor del icono' },
+        { token: '$sg-ia-panel-title-color', value: '$sg-primary-900 (#00296b)', usage: 'Color base del titulo (usado con text gradient)' },
+        { token: '$sg-ia-panel-title-font-size', value: '18px', usage: 'Tamano del titulo del panel' },
+        { token: '$sg-ia-panel-subtitle-color', value: '$sg-primary-900 (#00296b)', usage: 'Color del subtitulo del panel' },
+        { token: '$sg-ia-panel-subtitle-font-size', value: '14px', usage: 'Tamano del subtitulo' },
+        { token: '$sg-ia-note-padding', value: '4px 16px', usage: 'Padding de la nota de IA' },
+        { token: '$sg-ia-note-radius', value: '10px', usage: 'Border radius de la nota' },
+        { token: '$sg-ia-note-text-color', value: '$sg-primary-900 (#00296b)', usage: 'Color del texto de la nota' },
+        { token: '$sg-ia-note-text-size', value: '12px', usage: 'Tamano del texto de la nota' },
+        { token: '$sg-ia-hero-title-size', value: '48px', usage: 'Tamano de titulo hero IA' },
+        { token: '$sg-ia-hero-title-font', value: "'Urbanist', sans-serif", usage: 'Familia tipografica del titulo hero' },
+        { token: '$sg-ia-hero-title-weight', value: '600 (SemiBold)', usage: 'Peso de fuente del titulo hero' },
+        { token: '$sg-ia-hero-title-letter-spacing', value: '-0.96px', usage: 'Tracking del titulo hero' },
+      ]
+    },
+    {
+      title: 'Etiquetas de Colores',
+      tokens: [
+        { token: '$sg-label-height', value: '20px', usage: 'Altura de la etiqueta' },
+        { token: '$sg-label-padding', value: '10px 8px', usage: 'Padding interno' },
+        { token: '$sg-label-radius', value: '10px', usage: 'Border radius' },
+        { token: '$sg-label-gap', value: '6px', usage: 'Gap entre texto e icono de accion' },
+        { token: '$sg-label-font-size', value: '10px', usage: 'Tamano de fuente (DM Sans Medium)' },
+        { token: '$sg-label-font-weight', value: '500', usage: 'Peso de fuente (Medium)' },
+        { token: '$sg-label-letter-spacing', value: '-0.2px', usage: 'Tracking del texto' },
+        { token: '$sg-label-azul-bg', value: '#dbeafe', usage: 'Fondo etiqueta azul (default)' },
+        { token: '$sg-label-azul-text', value: '#1e40af', usage: 'Texto etiqueta azul' },
+        { token: '$sg-label-verde-bg', value: '#d1fae5', usage: 'Fondo etiqueta verde' },
+        { token: '$sg-label-verde-text', value: '#065f46', usage: 'Texto etiqueta verde' },
+        { token: '$sg-label-amarillo-bg', value: '#fef3c7', usage: 'Fondo etiqueta amarilla' },
+        { token: '$sg-label-amarillo-text', value: '#92400e', usage: 'Texto etiqueta amarilla' },
+        { token: '$sg-label-rojo-bg', value: '#fee2e2', usage: 'Fondo etiqueta roja' },
+        { token: '$sg-label-rojo-text', value: '#991b1b', usage: 'Texto etiqueta roja' },
+        { token: '$sg-label-violeta-bg', value: '#ede9fe', usage: 'Fondo etiqueta violeta' },
+        { token: '$sg-label-violeta-text', value: '#5b21b6', usage: 'Texto etiqueta violeta' },
+        { token: '$sg-label-naranja-bg', value: '#ffedd5', usage: 'Fondo etiqueta naranja' },
+        { token: '$sg-label-naranja-text', value: '#9a3412', usage: 'Texto etiqueta naranja' },
+        { token: '$sg-label-turquesa-bg', value: '#ccfbf1', usage: 'Fondo etiqueta turquesa' },
+        { token: '$sg-label-turquesa-text', value: '#115e59', usage: 'Texto etiqueta turquesa' },
+        { token: '$sg-label-gris-bg', value: '#f3f4f6', usage: 'Fondo etiqueta gris' },
+        { token: '$sg-label-gris-text', value: '#374151', usage: 'Texto etiqueta gris' },
+        { token: '$sg-label-vinotinto-bg', value: '#fce7f3', usage: 'Fondo etiqueta vinotinto' },
+        { token: '$sg-label-vinotinto-text', value: '#9f1239', usage: 'Texto etiqueta vinotinto' },
+        { token: '$sg-label-olivo-bg', value: '#ecfccb', usage: 'Fondo etiqueta olivo' },
+        { token: '$sg-label-olivo-text', value: '#3f6212', usage: 'Texto etiqueta olivo' },
+        { token: '$sg-label-ia-bg', value: '$sg-white-base (#ffffff)', usage: 'Fondo etiqueta IA' },
+        { token: '$sg-label-ia-border', value: '$sg-primary-500 (#0061fe)', usage: 'Borde etiqueta IA' },
+        { token: '$sg-label-ia-text-gradient', value: '$sg-ia-text-gradient', usage: 'Gradiente de texto etiqueta IA' },
+        { token: '$sg-label-action-size', value: '14px', usage: 'Tamano circulo de accion' },
+        { token: '$sg-label-action-radius', value: '30px', usage: 'Border radius circulo de accion' },
+        { token: '$sg-label-action-icon-size', value: '10px', usage: 'Tamano del icono dentro del circulo' },
       ]
     }
   ];
@@ -1214,7 +1242,7 @@ export class AdvocatesproDashboardComponent {
     {
       name: 'Table',
       selector: '<div class="sg-table">',
-      description: 'Tabla independiente de AdvocatesPro con columnas, badges de estado e iconos de accion. CSS-only, sin dependencias externas.',
+      description: 'Tabla independiente de SocialGest con columnas, badges de estado e iconos de accion. CSS-only, sin dependencias externas.',
       inputs: [
         { name: '.sg-table__title', type: 'HTML element', default: '-', description: 'Titulo superior de la tabla' },
         { name: '.sg-table__row--header', type: 'CSS class', default: '-', description: 'Fila de encabezado con columnas' },
@@ -1261,7 +1289,7 @@ export class AdvocatesproDashboardComponent {
         { name: 'variant', type: "'primary' | 'secundary' | 'white'", default: "'primary'", description: 'Estilo visual' },
         { name: 'size', type: "'small' | 'medium' | 'large'", default: "'large'", description: 'Tamano del boton' },
       ],
-      codeExample: `<button class="style-guide__icon-btn style-guide__icon-btn--primary style-guide__icon-btn--large">
+      codeExample: `<button class="sg-sg__icon-btn sg-sg__icon-btn--primary sg-sg__icon-btn--large">
   <lucide-icon [img]="PlusCircleIcon" [size]="20"></lucide-icon>
 </button>`
     },
@@ -1411,7 +1439,7 @@ imports: [RadioButton, FormsModule]`
     {
       name: 'Confirm Modal',
       selector: '<app-confirm-modal>',
-      description: 'Modal de confirmacion con 4 variantes: general (azul), confirmation (verde), alert (rosa), error (rojo).',
+      description: 'Modal de confirmacion con 4 variantes: general (azul), confirmation (verde), alert (naranja), error (rojo).',
       inputs: [
         { name: 'variant', type: "'general' | 'confirmation' | 'alert' | 'error'", default: "'general'", description: 'Variante visual' },
         { name: 'title', type: 'string', default: '-', description: 'Titulo del modal' },
@@ -1746,10 +1774,10 @@ imports: [RadioButton, FormsModule]`
   // ─── Confirm Code Modal ───
   codeModalVisible = false;
 
-  // ─── Modales Especiales (Lanzamiento) ───
-  openSpecialModalType: 'launch' | null = null;
+  // ─── Modales Especiales (Bienvenida, Plan Vencido, Lanzamiento) ───
+  openSpecialModalType: 'welcome' | 'expired' | 'launch' | null = null;
 
-  openSpecialModal(type: 'launch'): void {
+  openSpecialModal(type: 'welcome' | 'expired' | 'launch'): void {
     this.openSpecialModalType = type;
   }
 
@@ -1887,35 +1915,35 @@ imports: [RadioButton, FormsModule]`
   menuCheckboxSelected: string[] = ['c1', 'c2'];
 
   // Map SCSS variable names → hex for color swatch resolution
-  // All AdvocatesPro tokens use the $ap- prefix
+  // All SocialGest tokens use the $sg- prefix
   private readonly colorMap: Record<string, string> = {
     // Primary (blue)
-    '$ap-primary-50': '#e6efff', '$ap-primary-100': '#b0ceff', '$ap-primary-200': '#8ab6ff',
-    '$ap-primary-300': '#5495fe', '$ap-primary-400': '#3381fe', '$ap-primary-500': '#0061fe',
-    '$ap-primary-600': '#0058e7', '$ap-primary-700': '#0045b4', '$ap-primary-800': '#00358c', '$ap-primary-900': '#00296b',
+    '$sg-primary-50': '#e6efff', '$sg-primary-100': '#b0ceff', '$sg-primary-200': '#8ab6ff',
+    '$sg-primary-300': '#5495fe', '$sg-primary-400': '#3381fe', '$sg-primary-500': '#0061fe',
+    '$sg-primary-600': '#0058e7', '$sg-primary-700': '#0045b4', '$sg-primary-800': '#00358c', '$sg-primary-900': '#00296b',
     // Secondary (pink)
-    '$ap-secondary-50': '#fdedf2', '$ap-secondary-100': '#fac7d5', '$ap-secondary-200': '#f7acc1',
-    '$ap-secondary-300': '#f38fab', '$ap-secondary-400': '#f07090', '$ap-secondary-500': '#ee4a79',
-    '$ap-secondary-600': '#d9436e', '$ap-secondary-700': '#b93c5e', '$ap-secondary-800': '#8a2c48', '$ap-secondary-900': '#5e1c30',
+    '$sg-secondary-50': '#fef2eb', '$sg-secondary-100': '#fcd6c1', '$sg-secondary-200': '#fac2a3',
+    '$sg-secondary-300': '#f8a679', '$sg-secondary-400': '#f6955f', '$sg-secondary-500': '#f47a37',
+    '$sg-secondary-600': '#e5641e', '$sg-secondary-700': '#c84802', '$sg-secondary-800': '#b84100', '$sg-secondary-900': '#9c3700',
     // Grey
-    '$ap-grey-50': '#ececec', '$ap-grey-100': '#c3c3c3', '$ap-grey-200': '#a6a6a6',
-    '$ap-grey-300': '#7d7d7d', '$ap-grey-400': '#646464', '$ap-grey-500': '#3d3d3d',
-    '$ap-grey-600': '#383838', '$ap-grey-700': '#2b2b2b', '$ap-grey-800': '#222222', '$ap-grey-900': '#1a1a1a',
+    '$sg-grey-50': '#ececec', '$sg-grey-100': '#c3c3c3', '$sg-grey-200': '#a6a6a6',
+    '$sg-grey-300': '#7d7d7d', '$sg-grey-400': '#646464', '$sg-grey-500': '#3d3d3d',
+    '$sg-grey-600': '#383838', '$sg-grey-700': '#2b2b2b', '$sg-grey-800': '#222222', '$sg-grey-900': '#1a1a1a',
     // Success
-    '$ap-success-50': '#ebfaf1', '$ap-success-100': '#aeebc7', '$ap-success-200': '#8de3b0',
-    '$ap-success-300': '#5bd68d', '$ap-success-400': '#3ace76', '$ap-success-500': '#299053', '$ap-success-600': '#237e48',
+    '$sg-success-50': '#ebfaf1', '$sg-success-100': '#aeebc7', '$sg-success-200': '#8de3b0',
+    '$sg-success-300': '#5bd68d', '$sg-success-400': '#3ace76', '$sg-success-500': '#299053', '$sg-success-600': '#237e48',
     // Warning
-    '$ap-warning-50': '#fff5ea', '$ap-warning-100': '#ffd4a8', '$ap-warning-200': '#ffc285',
-    '$ap-warning-300': '#ffa850', '$ap-warning-400': '#ff962c', '$ap-warning-500': '#b3691f', '$ap-warning-600': '#9c5c1b',
+    '$sg-warning-50': '#fff5ea', '$sg-warning-100': '#ffd4a8', '$sg-warning-200': '#ffc285',
+    '$sg-warning-300': '#ffa850', '$sg-warning-400': '#ff962c', '$sg-warning-500': '#b3691f', '$sg-warning-600': '#9c5c1b',
     // Error
-    '$ap-error-50': '#ffecec', '$ap-error-100': '#feb0b0', '$ap-error-200': '#fd8f8f',
-    '$ap-error-300': '#fd5f5f', '$ap-error-400': '#fc3e3e', '$ap-error-500': '#b02b2b', '$ap-error-600': '#9a2626',
+    '$sg-error-50': '#ffecec', '$sg-error-100': '#feb0b0', '$sg-error-200': '#fd8f8f',
+    '$sg-error-300': '#fd5f5f', '$sg-error-400': '#fc3e3e', '$sg-error-500': '#b02b2b', '$sg-error-600': '#9a2626',
     // Neutral
-    '$ap-neutral-50': '#fafafa', '$ap-neutral-100': '#f5f7fa', '$ap-neutral-200': '#f1f1f1',
+    '$sg-neutral-50': '#fafafa', '$sg-neutral-100': '#f5f7fa', '$sg-neutral-200': '#f1f1f1',
     // AI (cyan)
-    '$ap-ai-50': '#e5f6ff', '$ap-ai-100': '#c9edff', '$ap-ai-500': '#00aaff',
+    '$sg-ai-50': '#e5f6ff', '$sg-ai-100': '#c9edff', '$sg-ai-500': '#00aaff',
     // Base
-    '$ap-white-base': '#ffffff', '$ap-black-base': '#000000',
+    '$sg-white-base': '#ffffff', '$sg-black-base': '#000000',
   };
 
   extractHex(value: string): string | null {
@@ -1939,14 +1967,14 @@ imports: [RadioButton, FormsModule]`
     return value;
   }
 
-  // Returns true when the token value is a raw hex/color not bound to an $ap-* token
-  // (useful to flag tokens not linked to the AdvocatesPro palette)
+  // Returns true when the token value is a raw hex/color not bound to an $sg-* token
+  // (useful to flag tokens not linked to the SocialGest palette)
   isStandaloneColor(value: string): boolean {
     if (!value) return false;
     const trimmed = value.trim();
-    // If it references an $ap- token, it's linked to the palette
-    if (trimmed.startsWith('$ap-')) return false;
-    // Standalone hex value: e.g. #ee4a79, #fff
+    // If it references an $sg- token, it's linked to the palette
+    if (trimmed.startsWith('$sg-')) return false;
+    // Standalone hex value: e.g. #f47a37, #fff
     return /^#[0-9a-fA-F]{3,8}$/.test(trimmed);
   }
 

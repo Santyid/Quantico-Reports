@@ -65,9 +65,15 @@
             <h3 class="qt-sg__palette-title">{{ palette.title }}</h3>
             <div class="qt-sg__swatches">
               @for (swatch of palette.swatches; track swatch.name) {
-                <div class="qt-sg__swatch" [class.qt-sg__swatch--base]="swatch.isBase"
+                <div class="qt-sg__swatch"
+                     [class.qt-sg__swatch--base]="swatch.isBase"
+                     [class.qt-sg__swatch--gradient-row]="swatch.isGradient"
                      (click)="copyToClipboard(swatch.scssVar)">
-                  <div class="qt-sg__swatch-color" [style.background-color]="swatch.hex"></div>
+                  @if (swatch.isGradient) {
+                    <div class="qt-sg__swatch-color qt-sg__swatch--gradient"></div>
+                  } @else {
+                    <div class="qt-sg__swatch-color" [style.background-color]="swatch.hex"></div>
+                  }
                   <div class="qt-sg__swatch-info">
                     <span class="qt-sg__swatch-name">{{ swatch.name }}</span>
                     <span class="qt-sg__swatch-var">{{ swatch.scssVar }}</span>
@@ -222,7 +228,7 @@
       <!-- AI Button -->
       <div class="qt-sg__control-group">
         <h3 class="qt-sg__control-title">AI Button</h3>
-        <p class="qt-sg__control-desc">Boton con borde cyan (#00AAFF) e icono AI. Hover y active con fondo celeste. 3 tamanos.</p>
+        <p class="qt-sg__control-desc">Botón blanco con borde de gradiente IA (primary → ai-500) e ícono Sparkles. Hover y active con fondo celeste. 3 tamaños.</p>
 
         @for (size of buttonSizes; track size) {
           <div class="qt-sg__btn-size-group">
@@ -245,6 +251,72 @@
             </div>
           </div>
         }
+      </div>
+
+      <!-- Mia Button -->
+      <div class="qt-sg__control-group">
+        <h3 class="qt-sg__control-title">Botón Mia</h3>
+        <p class="qt-sg__control-desc">Botón especial para funcionalidades de la IA "Mia" con borde de gradiente. Muestra el logo de Mia en lugar del texto "AI". 3 tamaños + disabled.</p>
+
+        <div class="qt-sg__btn-size-group">
+          <span class="qt-sg__btn-size-label">large</span>
+          <div class="qt-sg__btn-states">
+            <div class="qt-sg__btn-state">
+              <button class="qt-sg__ai-btn qt-sg__ai-btn--large">
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="qt-sg__mia-logo" />
+              </button>
+              <span class="qt-sg__btn-state-label">Interactive</span>
+            </div>
+            <div class="qt-sg__btn-state">
+              <button class="qt-sg__ai-btn qt-sg__ai-btn--large" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="qt-sg__mia-logo" />
+              </button>
+              <span class="qt-sg__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="qt-sg__btn-size-group">
+          <span class="qt-sg__btn-size-label">medium</span>
+          <div class="qt-sg__btn-states">
+            <div class="qt-sg__btn-state">
+              <button class="qt-sg__ai-btn qt-sg__ai-btn--medium">
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="qt-sg__mia-logo" />
+              </button>
+              <span class="qt-sg__btn-state-label">Interactive</span>
+            </div>
+            <div class="qt-sg__btn-state">
+              <button class="qt-sg__ai-btn qt-sg__ai-btn--medium" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="qt-sg__mia-logo" />
+              </button>
+              <span class="qt-sg__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="qt-sg__btn-size-group">
+          <span class="qt-sg__btn-size-label">small</span>
+          <div class="qt-sg__btn-states">
+            <div class="qt-sg__btn-state">
+              <button class="qt-sg__ai-btn qt-sg__ai-btn--small">
+                <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="qt-sg__mia-logo" />
+              </button>
+              <span class="qt-sg__btn-state-label">Interactive</span>
+            </div>
+            <div class="qt-sg__btn-state">
+              <button class="qt-sg__ai-btn qt-sg__ai-btn--small" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="qt-sg__mia-logo" />
+              </button>
+              <span class="qt-sg__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Icon Buttons -->
@@ -303,6 +375,128 @@
               <lucide-icon [img]="PlusCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
               <span>Filtro C</span>
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- 5.5. ELEMENTOS DE IA -->
+  @if (isSectionVisible('ia-elements')) {
+  <section class="qt-sg__section" id="qt-ia-elements">
+    <div class="qt-sg__card">
+      <h2 class="qt-sg__card-title">Elementos de IA</h2>
+      <p class="qt-sg__card-desc">Componentes distintivos para funcionalidades de IA: titulo hero con gradiente, nota informativa y panel de progreso "Creando ideas".</p>
+
+      <!-- Titulo con gradiente -->
+      <div class="qt-sg__control-group">
+        <h3 class="qt-sg__control-title">Titulo con degrades para IA</h3>
+        <p class="qt-sg__control-desc">Titulo grande con gradiente de texto tricolor (azul &rarr; azul oscuro &rarr; morado). Uso: pantallas hero y encabezados destacados de IA.</p>
+        <div class="qt-sg__ia-hero-wrap">
+          <h1 class="qt-sg__ia-hero-title">Quantico se renovo,<br>conoce nuestra nueva version</h1>
+        </div>
+      </div>
+
+      <!-- Nota de IA -->
+      <div class="qt-sg__control-group">
+        <h3 class="qt-sg__control-title">Nota de IA</h3>
+        <p class="qt-sg__control-desc">Caja compacta para hints/notas debajo de componentes o flujos. Fondo con gradiente azul suave e icono Sparkles.</p>
+        <div class="qt-sg__ia-note">
+          <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5" class="qt-sg__ia-note-icon"></lucide-icon>
+          <span class="qt-sg__ia-note-text">La IA analizara tus reportes y sugerira insights optimizados para tu marca</span>
+        </div>
+        <div class="qt-sg__ia-note" style="margin-top: 12px;">
+          <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5" class="qt-sg__ia-note-icon"></lucide-icon>
+          <span class="qt-sg__ia-note-text">Puedes usar comandos de IA para generar variaciones automaticas del contenido</span>
+        </div>
+      </div>
+
+      <!-- Creando ideas (panel) -->
+      <div class="qt-sg__control-group">
+        <h3 class="qt-sg__control-title">Creando ideas</h3>
+        <p class="qt-sg__control-desc">Panel grande que muestra un proceso de generacion en curso. Incluye titulo con gradiente, subtitulo, barra de progreso, card interna de estado y footer informativo.</p>
+
+        <div class="qt-sg__ia-panel">
+          <div class="qt-sg__ia-panel-header">
+            <div class="qt-sg__ia-panel-icon-wrap">
+              <lucide-icon [img]="SparklesIcon" [size]="29" [strokeWidth]="1.5" class="qt-sg__ia-panel-icon"></lucide-icon>
+            </div>
+            <div class="qt-sg__ia-panel-heading">
+              <h4 class="qt-sg__ia-panel-title">Creando ideas</h4>
+              <p class="qt-sg__ia-panel-subtitle">Planificando tu proximo reporte . . .</p>
+            </div>
+          </div>
+
+          <div class="qt-sg__ia-panel-progress">
+            <div class="qt-sg__ia-panel-progress-fill"></div>
+          </div>
+
+          <div class="qt-sg__ia-panel-status">
+            <lucide-icon [img]="LoaderCircleIcon" [size]="22" [strokeWidth]="1.75" class="qt-sg__ia-panel-status-icon"></lucide-icon>
+            <span class="qt-sg__ia-panel-status-text">Disenando estrategias de contenido</span>
+            <span class="qt-sg__ia-panel-status-badge">En progreso</span>
+          </div>
+
+          <div class="qt-sg__ia-panel-footer">
+            <lucide-icon [img]="InfoIcon" [size]="16" [strokeWidth]="1.5" class="qt-sg__ia-panel-footer-icon"></lucide-icon>
+            <span class="qt-sg__ia-panel-footer-text">Puedes cerrar este panel &middot; te notificaremos cuando este listo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- 5.6. ETIQUETAS DE COLORES -->
+  @if (isSectionVisible('labels')) {
+  <section class="qt-sg__section" id="qt-labels">
+    <div class="qt-sg__card">
+      <h2 class="qt-sg__card-title">Etiquetas de Colores</h2>
+      <p class="qt-sg__card-desc">Etiquetas compactas con 11 variantes de color (10 pastel + 1 IA con gradiente). Cada etiqueta puede mostrarse sola o con un icono de accion (opciones o confirmacion) dentro de un circulo blanco.</p>
+
+      <div class="qt-sg__control-group">
+        <h3 class="qt-sg__control-title">Variantes de color</h3>
+        <p class="qt-sg__control-desc">Cada fila muestra la etiqueta en tres estados: con icono de opciones (MoreHorizontal), con icono de confirmacion (Check) y sin icono. La variante "IA" usa fondo blanco con borde y texto en gradiente.</p>
+
+        <div class="qt-sg__labels-grid">
+          @for (variant of labelVariants; track variant.key) {
+            <div class="qt-sg__labels-row">
+              <span class="qt-sg__labels-name">{{ variant.label }}</span>
+              <div class="qt-sg__labels-samples">
+                <span class="qt-sg__label qt-sg__label--{{ variant.key }}">
+                  <span class="qt-sg__label-text">Etiqueta</span>
+                  <span class="qt-sg__label-action qt-sg__label-action--white-bg">
+                    <lucide-icon [img]="MoreHorizontalIcon" [size]="10" [strokeWidth]="2"></lucide-icon>
+                  </span>
+                </span>
+                <span class="qt-sg__label qt-sg__label--{{ variant.key }}">
+                  <span class="qt-sg__label-text">Etiqueta</span>
+                  <span class="qt-sg__label-action qt-sg__label-action--white-bg">
+                    <lucide-icon [img]="CheckIcon" [size]="10" [strokeWidth]="2"></lucide-icon>
+                  </span>
+                </span>
+                <span class="qt-sg__label qt-sg__label--{{ variant.key }}">
+                  <span class="qt-sg__label-text">Etiqueta</span>
+                </span>
+              </div>
+            </div>
+          }
+
+          <!-- IA variant -->
+          <div class="qt-sg__labels-row">
+            <span class="qt-sg__labels-name">IA</span>
+            <div class="qt-sg__labels-samples">
+              <span class="qt-sg__label qt-sg__label--ia">
+                <span class="qt-sg__label-text">Generado por IA</span>
+                <span class="qt-sg__label-action">
+                  <lucide-icon [img]="MoreHorizontalIcon" [size]="10" [strokeWidth]="2"></lucide-icon>
+                </span>
+              </span>
+              <span class="qt-sg__label qt-sg__label--ia">
+                <span class="qt-sg__label-text">Generado por IA</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>

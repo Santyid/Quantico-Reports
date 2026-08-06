@@ -34,7 +34,7 @@ export class SocialgestNavbarComponent {
   readonly PlusIcon = Plus;
 
   readonly platforms: Platform[] = [
-    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' },
+    { id: 'socialgest', name: 'SocialGest', route: '/socialgest', icon: 'socialgest' },
     { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
     { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
     { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' }

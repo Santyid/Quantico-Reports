@@ -1180,10 +1180,101 @@ $qt-ia-100: #c9edff;  // rgb(201, 237, 255)
 $qt-ia-500: #00aaff;  // rgb(0, 170, 255) — Base IA
 
 // ========================================
+// Quantico — IA Gradiente
+// From Figma: 19.84deg, primary-500 (#0061fe) → ia-500 (#00aaff)
+// ========================================
+$qt-ia-gradient: linear-gradient(19.84deg, #{$qt-primary-500} 2.99%, #{$qt-ia-500} 105.98%);
+
+// ========================================
 // Quantico — White
 // From Figma node 75:211
 // ========================================
 $qt-white-base: #ffffff;  // rgb(255, 255, 255)
+
+// ========================================
+// Quantico — IA Backgrounds & Text Gradients
+// ========================================
+// Background gradient for IA panels/cards (soft primary-white-purple)
+$qt-ia-panel-bg: linear-gradient(108.20deg, rgba(230, 239, 255, 0.7) 0%, #{$qt-white-base} 50.75%, rgba(245, 238, 252, 0.7) 100%);
+
+// Background gradient for IA notes (soft blue)
+$qt-ia-note-bg: linear-gradient(161.67deg, rgba(230, 239, 255, 0.33) 0.55%, rgba(185, 211, 255, 0.33) 25.4%, rgba(176, 206, 255, 0.33) 69.9%, rgba(133, 177, 255, 0.33) 97.6%);
+
+// Text gradient for IA titles (blue → cyan)
+$qt-ia-text-gradient: linear-gradient(5.79deg, #{$qt-primary-500} 2.99%, #{$qt-ia-500} 105.98%);
+
+// Text gradient for IA hero titles (tri-color: blue → dark blue → purple)
+$qt-ia-hero-title-gradient: linear-gradient(to right, #{$qt-primary-500} 1.85%, #{$qt-primary-900} 49.5%, #{$qt-secondary-500} 82.2%);
+
+// Progress bar gradient
+$qt-ia-progress-gradient: linear-gradient(90deg, #{$qt-primary-500}, #{$qt-primary-100});
+
+// ─── IA Panel (Creando ideas) ───
+$qt-ia-panel-padding: 24px 32px;
+$qt-ia-panel-radius: 16px;
+$qt-ia-panel-icon-size: 48px;
+$qt-ia-panel-icon-bg: $qt-white-base;
+$qt-ia-panel-title-color: $qt-primary-900;
+$qt-ia-panel-title-font-size: 18px;
+$qt-ia-panel-subtitle-color: $qt-primary-900;
+$qt-ia-panel-subtitle-font-size: 14px;
+
+// ─── IA Note ───
+$qt-ia-note-padding: 4px 16px;
+$qt-ia-note-radius: 10px;
+$qt-ia-note-text-color: $qt-primary-900;
+$qt-ia-note-text-size: 12px;
+
+// ─── IA Hero Title ───
+$qt-ia-hero-title-size: 40px;
+$qt-ia-hero-title-line-height: 40px;
+$qt-ia-hero-title-font: 'Urbanist', sans-serif;
+$qt-ia-hero-title-weight: 600;
+$qt-ia-hero-title-letter-spacing: -0.8px;
+
+// ========================================
+// Quantico — Color Labels (Etiquetas)
+// ========================================
+// Base label sizing
+$qt-label-height: 20px;
+$qt-label-padding: 10px 8px;
+$qt-label-radius: 10px;
+$qt-label-gap: 6px;
+$qt-label-font-size: 10px;
+$qt-label-font-weight: 500;
+$qt-label-letter-spacing: -0.2px;
+
+// 10 pastel color variants (bg + text) — same values across products
+$qt-label-azul-bg: #dbeafe;
+$qt-label-azul-text: #1e40af;
+$qt-label-verde-bg: #d1fae5;
+$qt-label-verde-text: #065f46;
+$qt-label-amarillo-bg: #fef3c7;
+$qt-label-amarillo-text: #92400e;
+$qt-label-rojo-bg: #fee2e2;
+$qt-label-rojo-text: #991b1b;
+$qt-label-violeta-bg: #ede9fe;
+$qt-label-violeta-text: #5b21b6;
+$qt-label-naranja-bg: #ffedd5;
+$qt-label-naranja-text: #9a3412;
+$qt-label-turquesa-bg: #ccfbf1;
+$qt-label-turquesa-text: #115e59;
+$qt-label-gris-bg: #f3f4f6;
+$qt-label-gris-text: #374151;
+$qt-label-vinotinto-bg: #fce7f3;
+$qt-label-vinotinto-text: #9f1239;
+$qt-label-olivo-bg: #ecfccb;
+$qt-label-olivo-text: #3f6212;
+
+// IA variant (uses Quantico primary + text gradient)
+$qt-label-ia-bg: $qt-white-base;
+$qt-label-ia-border: $qt-primary-500;
+$qt-label-ia-text-gradient: $qt-ia-text-gradient;
+
+// Action circle
+$qt-label-action-size: 14px;
+$qt-label-action-radius: 30px;
+$qt-label-action-icon-size: 10px;
 
 // ========================================
 // Quantico — Black
@@ -1217,11 +1308,31 @@ $qt-button-white-hover: $qt-neutral-50;
 $qt-button-white-active: $qt-neutral-200;
 $qt-button-white-disabled-text: $qt-grey-100;
 
-// AI Button
+// AI Button (legacy — flat cyan border)
 $qt-button-ai-border: $qt-ia-500;
 $qt-button-ai-text: $qt-primary-500;
 $qt-button-ai-hover: $qt-ia-50;
 $qt-button-ai-active: $qt-ia-100;
+
+// ========================================
+// Quantico — AI Button (Cyan with gradient border)
+// Botón AI/Mia con borde de gradiente IA
+// ========================================
+$qt-ai-button-bg: $qt-white-base;
+$qt-ai-button-hover-bg: $qt-ia-50;         // #e5f6ff
+$qt-ai-button-active-bg: $qt-ia-100;       // #c9edff
+$qt-ai-button-disabled-opacity: 0.5;
+$qt-ai-button-border-width: 2px;
+$qt-ai-button-border-gradient: $qt-ia-gradient;  // Gradient border
+$qt-ai-button-border-radius: 12px;
+$qt-ai-button-text-color: $qt-primary-500;
+
+// Sizes
+$qt-ai-button-small-height: 36px;
+$qt-ai-button-medium-height: 40px;
+$qt-ai-button-large-height: 48px;
+$qt-ai-button-padding: 10px 20px;
+$qt-ai-button-gap: 8px;
 
 // Button Sizing
 $qt-button-height-large: 48px;
@@ -1682,6 +1793,117 @@ $ap-ai-100: #c9edff;  // rgb(201, 237, 255) — Active boton AI
 $ap-ai-500: #00aaff;  // rgb(0, 170, 255) — Base AI — borde boton AI
 
 // ========================================
+// AdvocatesPro — IA Gradiente
+// From Figma: 19.84deg, primary-500 (#0061fe) → ai-500 (#00aaff)
+// ========================================
+$ap-ia-gradient: linear-gradient(19.84deg, #{$ap-primary-500} 2.99%, #{$ap-ai-500} 105.98%);
+
+// ========================================
+// AdvocatesPro — IA Backgrounds & Text Gradients
+// ========================================
+// Background gradient for IA panels/cards (soft primary-white-pink)
+$ap-ia-panel-bg: linear-gradient(108.20deg, rgba(230, 239, 255, 0.7) 0%, #{$ap-white-base} 50.75%, rgba(253, 237, 242, 0.7) 100%);
+
+// Background gradient for IA notes (soft blue)
+$ap-ia-note-bg: linear-gradient(161.67deg, rgba(230, 239, 255, 0.33) 0.55%, rgba(185, 211, 255, 0.33) 25.4%, rgba(176, 206, 255, 0.33) 69.9%, rgba(133, 177, 255, 0.33) 97.6%);
+
+// Text gradient for IA titles (blue → cyan)
+$ap-ia-text-gradient: linear-gradient(5.79deg, #{$ap-primary-500} 2.99%, #{$ap-ai-500} 105.98%);
+
+// Text gradient for IA hero titles (tri-color: blue → dark blue → rose)
+$ap-ia-hero-title-gradient: linear-gradient(to right, #{$ap-primary-500} 1.85%, #{$ap-primary-900} 49.5%, #{$ap-secondary-500} 82.2%);
+
+// Progress bar gradient
+$ap-ia-progress-gradient: linear-gradient(90deg, #{$ap-primary-500}, #{$ap-primary-100});
+
+// ─── IA Panel (Creando ideas) ───
+$ap-ia-panel-padding: 24px 32px;
+$ap-ia-panel-radius: 16px;
+$ap-ia-panel-icon-size: 48px;
+$ap-ia-panel-icon-bg: $ap-white-base;
+$ap-ia-panel-title-color: $ap-primary-900;
+$ap-ia-panel-title-font-size: 18px;
+$ap-ia-panel-subtitle-color: $ap-primary-900;
+$ap-ia-panel-subtitle-font-size: 14px;
+
+// ─── IA Note ───
+$ap-ia-note-padding: 4px 16px;
+$ap-ia-note-radius: 10px;
+$ap-ia-note-text-color: $ap-primary-900;
+$ap-ia-note-text-size: 12px;
+
+// ─── IA Hero Title ───
+$ap-ia-hero-title-size: 40px;
+$ap-ia-hero-title-line-height: 40px;
+$ap-ia-hero-title-font: 'Urbanist', sans-serif;
+$ap-ia-hero-title-weight: 600;
+$ap-ia-hero-title-letter-spacing: -0.8px;
+
+// ========================================
+// AdvocatesPro — Color Labels (Etiquetas)
+// ========================================
+// Base label sizing
+$ap-label-height: 20px;
+$ap-label-padding: 10px 8px;
+$ap-label-radius: 10px;
+$ap-label-gap: 6px;
+$ap-label-font-size: 10px;
+$ap-label-font-weight: 500;
+$ap-label-letter-spacing: -0.2px;
+
+// 10 pastel color variants (bg + text) — same values across products
+$ap-label-azul-bg: #dbeafe;
+$ap-label-azul-text: #1e40af;
+$ap-label-verde-bg: #d1fae5;
+$ap-label-verde-text: #065f46;
+$ap-label-amarillo-bg: #fef3c7;
+$ap-label-amarillo-text: #92400e;
+$ap-label-rojo-bg: #fee2e2;
+$ap-label-rojo-text: #991b1b;
+$ap-label-violeta-bg: #ede9fe;
+$ap-label-violeta-text: #5b21b6;
+$ap-label-naranja-bg: #ffedd5;
+$ap-label-naranja-text: #9a3412;
+$ap-label-turquesa-bg: #ccfbf1;
+$ap-label-turquesa-text: #115e59;
+$ap-label-gris-bg: #f3f4f6;
+$ap-label-gris-text: #374151;
+$ap-label-vinotinto-bg: #fce7f3;
+$ap-label-vinotinto-text: #9f1239;
+$ap-label-olivo-bg: #ecfccb;
+$ap-label-olivo-text: #3f6212;
+
+// IA variant (uses AdvocatesPro primary + text gradient)
+$ap-label-ia-bg: $ap-white-base;
+$ap-label-ia-border: $ap-primary-500;
+$ap-label-ia-text-gradient: $ap-ia-text-gradient;
+
+// Action circle
+$ap-label-action-size: 14px;
+$ap-label-action-radius: 30px;
+$ap-label-action-icon-size: 10px;
+
+// ========================================
+// AdvocatesPro — AI Button (Cyan with gradient border)
+// Botón AI/Mia con borde de gradiente IA
+// ========================================
+$ap-ai-button-bg: $ap-white-base;
+$ap-ai-button-hover-bg: $ap-ai-50;         // #e5f6ff
+$ap-ai-button-active-bg: $ap-ai-100;       // #c9edff
+$ap-ai-button-disabled-opacity: 0.5;
+$ap-ai-button-border-width: 2px;
+$ap-ai-button-border-gradient: $ap-ia-gradient;  // Gradient border
+$ap-ai-button-border-radius: 12px;
+$ap-ai-button-text-color: $ap-primary-500;
+
+// Sizes
+$ap-ai-button-small-height: 36px;
+$ap-ai-button-medium-height: 40px;
+$ap-ai-button-large-height: 48px;
+$ap-ai-button-padding: 10px 20px;
+$ap-ai-button-gap: 8px;
+
+// ========================================
 // AdvocatesPro — Button Tokens
 // ========================================
 
@@ -1886,6 +2108,67 @@ $ap-code-modal-icon-bg: $ap-warning-50;
 $ap-code-modal-icon-color: $ap-warning-400;
 $ap-code-modal-btn-bg: $ap-error-400;
 $ap-code-modal-code-size: 40px;
+
+// ========================================
+// AdvocatesPro — Special Launch Modal Tokens
+// (Modal "Advocates se renovó" — Figma node 11120:370)
+// ========================================
+$ap-special-modal-overlay-bg: rgba(0, 0, 0, 0.5);
+$ap-special-launch-gap: 0;
+$ap-special-launch-panel-radius: 24px;
+$ap-special-launch-panel-padding: 40px 32px;
+$ap-special-launch-left-width: 555px;
+$ap-special-launch-right-width: 718px;
+$ap-special-launch-close-size: 34px;
+
+// Círculos decorativos de fondo (panel izquierdo)
+$ap-special-modal-circle-size: 729px;
+$ap-special-modal-circle-primary: radial-gradient(circle, #{$ap-primary-50} 0%, rgba(230, 239, 255, 0) 70%);
+$ap-special-modal-circle-secondary: radial-gradient(circle, #{$ap-secondary-50} 0%, rgba(253, 237, 242, 0) 70%);
+
+// Badge "Nuevo lanzamiento"
+$ap-special-launch-badge-width: 211px;
+$ap-special-launch-badge-height: 36px;
+$ap-special-launch-badge-radius: 50px;
+$ap-special-launch-badge-border: 1px solid $ap-primary-500;
+$ap-special-launch-badge-bg: linear-gradient(74.11deg, #{$ap-primary-200} 8.33%, #{$ap-primary-50} 12.32%, #{$ap-secondary-50} 92.59%, #{$ap-secondary-200} 109.63%);
+
+// Descripción del hero (el título reutiliza $ap-ia-hero-title-* / $ap-ia-hero-title-gradient)
+$ap-special-launch-desc-size: 20px;
+$ap-special-launch-desc-color: $ap-grey-500;
+$ap-special-launch-desc-line-height: 24px;
+$ap-special-launch-desc-tracking: -0.4px;
+
+// Preview de imagen/video
+$ap-special-launch-image-height: 296px;
+$ap-special-launch-image-radius: 19px;
+$ap-special-launch-image-bg: linear-gradient(135deg, #{$ap-primary-100} 0%, #{$ap-secondary-100} 100%);
+$ap-special-launch-overlay-btn-height: 48px;
+$ap-special-launch-overlay-btn-bg: $ap-secondary-500;
+$ap-special-launch-overlay-btn-hover: $ap-secondary-600;
+
+// Grid de features (panel derecho)
+$ap-special-launch-feature-card-icon-size: 50px;
+$ap-special-launch-feature-title-size: 18px;
+$ap-special-launch-feature-title-color: $ap-grey-500;
+$ap-special-launch-feature-desc-size: 16px;
+$ap-special-launch-feature-desc-color: $ap-grey-300;
+$ap-special-launch-feature-desc-line-height: 20px;
+$ap-special-launch-feature-1-bg: $ap-primary-50;               // Campañas
+$ap-special-launch-feature-1-color: $ap-primary-500;
+$ap-special-launch-feature-2-bg: #d1fae5;                       // Retos
+$ap-special-launch-feature-2-color: #065f46;
+$ap-special-launch-feature-3-bg: $ap-secondary-50;              // Contenido & Posts
+$ap-special-launch-feature-3-color: $ap-secondary-500;
+$ap-special-launch-feature-4-bg: rgba(249, 198, 22, 0.16);      // Grupos & Recompensas
+$ap-special-launch-feature-4-color: #92400e;
+
+// Nota "Tu equipo de CSM te acompaña" (reutiliza $ap-ia-panel-bg / $ap-ia-text-gradient)
+$ap-special-launch-note-radius: 16px;
+$ap-special-launch-note-padding: 24px 32px;
+$ap-special-launch-note-desc-color: $ap-primary-800;
+$ap-special-launch-note-btn-bg: $ap-secondary-500;
+$ap-special-launch-note-btn-hover: $ap-secondary-600;
 
 // ========================================
 // AdvocatesPro — Stepper Tokens
@@ -2095,3 +2378,686 @@ $ap-accent-100: $ap-secondary-100;
 $ap-accent-500: $ap-secondary-500;
 $ap-accent-600: $ap-secondary-600;
 $ap-accent-700: $ap-secondary-700;
+
+// ========================================
+// ========================================
+//
+//   SocialGest ============
+//   Independent from all other environments
+//   Prefix: $sg-
+//   Base secondary color: ORANGE (#f47a37)
+//
+// ========================================
+// ========================================
+
+// ========================================
+// SocialGest — Primary Color Scale (Blue)
+// Same values as Quantico primary — both products use blue as primary
+// ========================================
+$sg-primary-50: #e6efff;   // rgb(230, 239, 255)
+$sg-primary-100: #b0ceff;  // rgb(176, 206, 255)
+$sg-primary-200: #8ab6ff;  // rgb(138, 182, 255)
+$sg-primary-300: #5495fe;  // rgb(84, 149, 254)
+$sg-primary-400: #3381fe;  // rgb(51, 129, 254)
+$sg-primary-500: #0061fe;  // rgb(0, 97, 254) — Base Primary
+$sg-primary-600: #0058e7;  // rgb(0, 88, 231)
+$sg-primary-700: #0045b4;  // rgb(0, 69, 180)
+$sg-primary-800: #00358c;  // rgb(0, 53, 140)
+$sg-primary-900: #00296b;  // rgb(0, 41, 107)
+
+// ========================================
+// SocialGest — Secondary Color Scale (Orange)
+// Base: #f47a37 — distinctive orange accent for SocialGest
+// ========================================
+$sg-secondary-50: #fef2eb;   // rgb(254, 242, 235)
+$sg-secondary-100: #fcd6c1;  // rgb(252, 214, 193)
+$sg-secondary-200: #fac2a3;  // rgb(250, 194, 163)
+$sg-secondary-300: #f8a679;  // rgb(248, 166, 121)
+$sg-secondary-400: #f6955f;  // rgb(246, 149, 95)
+$sg-secondary-500: #f47a37;  // rgb(244, 122, 55) — Base Secondary
+$sg-secondary-600: #e5641e;  // rgb(229, 100, 30)
+$sg-secondary-700: #c84802;  // rgb(200, 72, 2)
+$sg-secondary-800: #b84100;  // rgb(184, 65, 0)
+$sg-secondary-900: #9c3700;  // rgb(156, 55, 0)
+
+// ========================================
+// SocialGest — Grey Color Scale
+// Same values as Quantico grey scale
+// ========================================
+$sg-grey-50: #ececec;   // rgb(236, 236, 236)
+$sg-grey-100: #c3c3c3;  // rgb(195, 195, 195)
+$sg-grey-200: #a6a6a6;  // rgb(166, 166, 166)
+$sg-grey-300: #7d7d7d;  // rgb(125, 125, 125)
+$sg-grey-400: #646464;  // rgb(100, 100, 100)
+$sg-grey-500: #3d3d3d;  // rgb(61, 61, 61)
+$sg-grey-600: #383838;  // rgb(56, 56, 56)
+$sg-grey-700: #2b2b2b;  // rgb(43, 43, 43)
+$sg-grey-800: #222222;  // rgb(34, 34, 34)
+$sg-grey-900: #1a1a1a;  // rgb(26, 26, 26)
+
+// ========================================
+// SocialGest — Success Color Scale (Green)
+// Same values as Quantico
+// ========================================
+$sg-success-50: #ebfaf1;   // rgb(235, 250, 241)
+$sg-success-100: #aeebc7;  // rgb(174, 235, 199)
+$sg-success-200: #8de3b0;  // rgb(141, 227, 176)
+$sg-success-300: #5bd68d;  // rgb(91, 214, 141)
+$sg-success-400: #3ace76;  // rgb(58, 206, 118) — Base Success
+$sg-success-500: #299053;  // rgb(41, 144, 83)
+$sg-success-600: #237e48;  // rgb(35, 126, 72)
+
+// ========================================
+// SocialGest — Warning Color Scale (Orange)
+// Same values as Quantico
+// ========================================
+$sg-warning-50: #fff5ea;   // rgb(255, 245, 234)
+$sg-warning-100: #ffd4a8;  // rgb(255, 212, 168)
+$sg-warning-200: #ffc285;  // rgb(255, 194, 133)
+$sg-warning-300: #ffa850;  // rgb(255, 168, 80)
+$sg-warning-400: #ff962c;  // rgb(255, 150, 44) — Base Warning
+$sg-warning-500: #b3691f;  // rgb(179, 105, 31)
+$sg-warning-600: #9c5c1b;  // rgb(156, 92, 27)
+
+// ========================================
+// SocialGest — Error Color Scale (Red)
+// Same values as Quantico
+// ========================================
+$sg-error-50: #ffecec;   // rgb(255, 236, 236)
+$sg-error-100: #feb0b0;  // rgb(254, 176, 176)
+$sg-error-200: #fd8f8f;  // rgb(253, 143, 143)
+$sg-error-300: #fd5f5f;  // rgb(253, 95, 95)
+$sg-error-400: #fc3e3e;  // rgb(252, 62, 62) — Base Error
+$sg-error-500: #b02b2b;  // rgb(176, 43, 43)
+$sg-error-600: #9a2626;  // rgb(154, 38, 38)
+
+// ========================================
+// SocialGest — Neutral Color Scale
+// Same values as Quantico
+// ========================================
+$sg-neutral-50: #fafafa;   // rgb(250, 250, 250)
+$sg-neutral-100: #f5f7fa;  // rgb(245, 247, 250)
+$sg-neutral-200: #f1f1f1;  // rgb(241, 241, 241)
+
+// ========================================
+// SocialGest — AI Color Scale (Cyan)
+// Same values as Quantico
+// ========================================
+$sg-ai-50: #e5f6ff;   // rgb(229, 246, 255)
+$sg-ai-100: #c9edff;  // rgb(201, 237, 255)
+$sg-ai-500: #00aaff;  // rgb(0, 170, 255) — Base AI
+
+// ========================================
+// SocialGest — IA Gradiente
+// From Figma: 19.84deg, primary-500 (#0061fe) → ai-500 (#00aaff)
+// ========================================
+$sg-ia-gradient: linear-gradient(19.84deg, #{$sg-primary-500} 2.99%, #{$sg-ai-500} 105.98%);
+
+// ========================================
+// SocialGest — White
+// ========================================
+$sg-white-base: #ffffff;  // rgb(255, 255, 255)
+
+// ========================================
+// SocialGest — IA Backgrounds & Text Gradients
+// ========================================
+// Background gradient for IA panels/cards (soft primary-white-secondary)
+$sg-ia-panel-bg: linear-gradient(111.48deg, rgba(230, 239, 255, 0.7) 0%, #{$sg-white-base} 50.75%, rgba(254, 242, 235, 0.7) 100%);
+
+// Background gradient for IA notes (soft blue)
+$sg-ia-note-bg: linear-gradient(161.67deg, rgba(230, 239, 255, 0.33) 0.55%, rgba(185, 211, 255, 0.33) 25.4%, rgba(176, 206, 255, 0.33) 69.9%, rgba(133, 177, 255, 0.33) 97.6%);
+
+// Text gradient for IA titles (blue → cyan)
+$sg-ia-text-gradient: linear-gradient(5.79deg, #{$sg-primary-500} 2.99%, #{$sg-ai-500} 105.98%);
+
+// Text gradient for IA hero titles (tri-color: blue → dark blue → orange)
+$sg-ia-hero-title-gradient: linear-gradient(to right, #{$sg-primary-500} 1.85%, #{$sg-primary-900} 49.5%, #{$sg-secondary-500} 82.2%);
+
+// Progress bar gradient
+$sg-ia-progress-gradient: linear-gradient(90deg, #{$sg-primary-500}, #{$sg-primary-100});
+
+// ─── IA Panel (Generando con IA) ───
+$sg-ia-panel-padding: 24px 32px;
+$sg-ia-panel-radius: 16px;
+$sg-ia-panel-icon-size: 48px;
+$sg-ia-panel-icon-bg: $sg-white-base;
+$sg-ia-panel-title-color: $sg-primary-900;
+$sg-ia-panel-title-font-size: 18px;
+$sg-ia-panel-subtitle-color: $sg-primary-900;
+$sg-ia-panel-subtitle-font-size: 14px;
+
+// ─── IA Note ───
+$sg-ia-note-padding: 4px 16px;
+$sg-ia-note-radius: 10px;
+$sg-ia-note-text-color: $sg-primary-900;
+$sg-ia-note-text-size: 12px;
+
+// ─── IA Hero Title ───
+$sg-ia-hero-title-size: 48px;
+$sg-ia-hero-title-font: 'Urbanist', sans-serif;
+$sg-ia-hero-title-weight: 600;
+$sg-ia-hero-title-letter-spacing: -0.96px;
+
+// ========================================
+// SocialGest — AI Button (Cyan with gradient border)
+// Botón AI/Mia con borde de gradiente IA
+// ========================================
+$sg-ai-button-bg: $sg-white-base;
+$sg-ai-button-hover-bg: $sg-ai-50;         // #e5f6ff
+$sg-ai-button-active-bg: $sg-ai-100;       // #c9edff
+$sg-ai-button-disabled-opacity: 0.5;
+$sg-ai-button-border-width: 2px;
+$sg-ai-button-border-gradient: $sg-ia-gradient;  // Gradient border
+$sg-ai-button-border-radius: 12px;
+$sg-ai-button-text-color: $sg-primary-500;
+
+// Sizes
+$sg-ai-button-small-height: 36px;
+$sg-ai-button-medium-height: 40px;
+$sg-ai-button-large-height: 48px;
+$sg-ai-button-padding: 10px 20px;
+$sg-ai-button-gap: 8px;
+
+// ========================================
+// SocialGest — Color Labels (Etiquetas)
+// ========================================
+// Base label sizing
+$sg-label-height: 20px;
+$sg-label-padding: 10px 8px;
+$sg-label-radius: 10px;
+$sg-label-gap: 6px;
+$sg-label-font-size: 10px;
+$sg-label-font-weight: 500;
+$sg-label-letter-spacing: -0.2px;
+
+// 11 color variants (bg + text)
+$sg-label-azul-bg: #dbeafe;
+$sg-label-azul-text: #1e40af;
+$sg-label-verde-bg: #d1fae5;
+$sg-label-verde-text: #065f46;
+$sg-label-amarillo-bg: #fef3c7;
+$sg-label-amarillo-text: #92400e;
+$sg-label-rojo-bg: #fee2e2;
+$sg-label-rojo-text: #991b1b;
+$sg-label-violeta-bg: #ede9fe;
+$sg-label-violeta-text: #5b21b6;
+$sg-label-naranja-bg: #ffedd5;
+$sg-label-naranja-text: #9a3412;
+$sg-label-turquesa-bg: #ccfbf1;
+$sg-label-turquesa-text: #115e59;
+$sg-label-gris-bg: #f3f4f6;
+$sg-label-gris-text: #374151;
+$sg-label-vinotinto-bg: #fce7f3;
+$sg-label-vinotinto-text: #9f1239;
+$sg-label-olivo-bg: #ecfccb;
+$sg-label-olivo-text: #3f6212;
+
+// IA variant
+$sg-label-ia-bg: $sg-white-base;
+$sg-label-ia-border: $sg-primary-500;
+$sg-label-ia-text-gradient: $sg-ia-text-gradient;
+
+// Action circle
+$sg-label-action-size: 14px;
+$sg-label-action-radius: 30px;
+$sg-label-action-icon-size: 10px;
+
+// ========================================
+// SocialGest — Black
+// ========================================
+$sg-black-base: #000000;  // rgb(0, 0, 0)
+
+// ========================================
+// SocialGest — Dashboard UI Tokens
+// (Used by the SocialGest design-system dashboard)
+// ========================================
+$sg-code-block-bg: $sg-grey-900;
+$sg-code-block-text: $sg-grey-100;
+$sg-ui-label-color: $sg-grey-200;
+$sg-ui-light-bg: $sg-neutral-200;
+$sg-swatch-border: $sg-grey-50;
+
+// ========================================
+// SocialGest — Button Tokens
+// ========================================
+
+// Primary Button
+$sg-button-primary-bg: $sg-primary-500;
+$sg-button-primary-text: $sg-neutral-200;
+$sg-button-primary-hover: $sg-primary-600;
+$sg-button-primary-active: $sg-primary-700;
+$sg-button-primary-disabled-bg: $sg-primary-200;
+
+// Secondary Button
+$sg-button-secondary-bg: $sg-secondary-500;
+$sg-button-secondary-text: $sg-white-base;
+$sg-button-secondary-hover: $sg-secondary-600;
+$sg-button-secondary-active: $sg-secondary-700;
+$sg-button-secondary-disabled-bg: $sg-secondary-200;
+
+// White Button
+$sg-button-white-bg: $sg-white-base;
+$sg-button-white-text: $sg-grey-300;
+$sg-button-white-border: $sg-grey-100;
+$sg-button-white-hover: $sg-neutral-50;
+$sg-button-white-active: $sg-neutral-200;
+$sg-button-white-disabled-text: $sg-grey-100;
+
+// AI Button
+$sg-button-ai-border: $sg-ai-500;
+$sg-button-ai-text: $sg-primary-500;
+$sg-button-ai-hover: $sg-ai-50;
+$sg-button-ai-active: $sg-ai-100;
+
+// Button Sizing
+$sg-button-height-large: 48px;
+$sg-button-height-medium: 40px;
+$sg-button-height-small: 36px;
+$sg-button-font-size-large: 18px;
+$sg-button-font-size-medium: 16px;
+$sg-button-font-size-small: 14px;
+
+// Button Shared
+$sg-button-font-family: 'Urbanist', sans-serif;
+$sg-button-font-weight: 700;
+$sg-button-border-radius: 12px;
+$sg-button-padding: 10px 20px;
+$sg-button-gap: 10px;
+$sg-button-transition: all 0.2s ease;
+
+// ========================================
+// SocialGest — Toggle / Switch Tokens
+// ========================================
+$sg-toggle-off-bg: $sg-grey-100;
+$sg-toggle-on-bg: $sg-secondary-500;
+$sg-toggle-thumb-bg: $sg-white-base;
+$sg-toggle-thumb-shadow: 0 1px 3px rgba($sg-black-base, 0.15);
+
+// Toggle Sizes
+$sg-toggle-large-width: 56px;
+$sg-toggle-large-height: 32px;
+$sg-toggle-large-thumb: 24px;
+$sg-toggle-medium-width: 48px;
+$sg-toggle-medium-height: 28px;
+$sg-toggle-medium-thumb: 20px;
+$sg-toggle-small-width: 40px;
+$sg-toggle-small-height: 24px;
+$sg-toggle-small-thumb: 18px;
+
+// ========================================
+// SocialGest — Checkbox Tokens
+// ========================================
+$sg-checkbox-size: 24px;
+$sg-checkbox-border-radius: 8px;
+$sg-checkbox-border: $sg-grey-100;
+$sg-checkbox-bg: $sg-white-base;
+$sg-checkbox-active-bg: $sg-secondary-500;
+$sg-checkbox-active-border: $sg-secondary-500;
+$sg-checkbox-hover-border: $sg-secondary-500;
+$sg-checkbox-check-color: $sg-white-base;
+
+// ========================================
+// SocialGest — Radio Button Tokens (PrimeNG)
+// ========================================
+$sg-radio-checked-bg: $sg-secondary-500;
+$sg-radio-checked-border: $sg-secondary-500;
+$sg-radio-checked-hover-bg: $sg-secondary-600;
+$sg-radio-hover-border: $sg-secondary-300;
+$sg-radio-border: $sg-grey-100;
+$sg-radio-icon-color: $sg-white-base;
+$sg-radio-focus-ring: rgba(244, 122, 55, 0.2);
+
+// ========================================
+// SocialGest — Radio Tab Tokens
+// ========================================
+$sg-radio-tab-height: 36px;
+$sg-radio-tab-border-radius: 12px;
+$sg-radio-tab-font-size: 14px;
+$sg-radio-tab-font-weight: 700;
+$sg-radio-tab-color: $sg-grey-300;
+$sg-radio-tab-hover-color: $sg-grey-500;
+$sg-radio-tab-active-border: $sg-secondary-500;
+$sg-radio-tab-active-color: $sg-secondary-500;
+$sg-radio-tab-active-bg: $sg-secondary-50;
+
+// ========================================
+// SocialGest — Status Badge Tokens
+// ========================================
+$sg-badge-border: $sg-grey-100;
+$sg-badge-border-radius: 50px;
+$sg-badge-font-family: 'Urbanist', sans-serif;
+$sg-badge-font-size: 14px;
+$sg-badge-font-weight: 600;
+$sg-badge-text-color: $sg-grey-500;
+$sg-badge-padding: 4px 10px;
+$sg-badge-gap: 10px;
+$sg-badge-dot-size: 10px;
+$sg-badge-height-small: 30px;
+$sg-badge-height-large: 36px;
+
+// Badge Dot Colors
+$sg-badge-positiva: $sg-success-400;
+$sg-badge-negativa: $sg-error-400;
+$sg-badge-neutra: $sg-warning-400;
+$sg-badge-desactivado: $sg-grey-200;
+
+// ========================================
+// SocialGest — Chip Tokens
+// ========================================
+$sg-chip-height: 26px;
+$sg-chip-border-radius: 23px;
+$sg-chip-padding: 6px 11px;
+$sg-chip-gap: 10px;
+$sg-chip-font-family: 'Urbanist', sans-serif;
+$sg-chip-font-size: 14px;
+$sg-chip-font-weight: 600;
+
+// Chip White
+$sg-chip-white-bg: $sg-white-base;
+$sg-chip-white-border: $sg-grey-100;
+$sg-chip-white-color: $sg-grey-500;
+
+// Chip Primary
+$sg-chip-primary-bg: $sg-primary-100;
+$sg-chip-primary-color: $sg-primary-500;
+
+// Chip Secondary
+$sg-chip-secondary-bg: $sg-secondary-100;
+$sg-chip-secondary-color: $sg-secondary-500;
+
+// Chip Disabled
+$sg-chip-disabled-bg: $sg-grey-50;
+$sg-chip-disabled-border: $sg-grey-100;
+$sg-chip-disabled-color: $sg-grey-300;
+
+// Chip Add Button
+$sg-chip-add-border: $sg-grey-100;
+$sg-chip-add-color: $sg-grey-300;
+$sg-chip-add-hover-border: $sg-primary-500;
+$sg-chip-add-hover-color: $sg-primary-500;
+
+// ─── Toaster Tokens ───
+$sg-toast-border-radius: 10px;
+$sg-toast-accent-width: 13px;
+$sg-toast-shadow: 0 8px 32px rgba($sg-black-base, 0.08);
+$sg-toast-success-stripe: $sg-success-400;
+$sg-toast-success-bg: $sg-success-50;
+$sg-toast-success-color: $sg-success-400;
+$sg-toast-warning-stripe: $sg-warning-400;
+$sg-toast-warning-bg: $sg-warning-50;
+$sg-toast-warning-color: $sg-warning-400;
+$sg-toast-error-stripe: $sg-error-400;
+$sg-toast-error-bg: $sg-error-50;
+$sg-toast-error-color: $sg-error-400;
+$sg-toast-info-stripe: $sg-primary-500;
+$sg-toast-info-bg: $sg-primary-50;
+$sg-toast-info-color: $sg-primary-500;
+$sg-toast-title-color: $sg-grey-800;
+$sg-toast-message-color: $sg-grey-300;
+$sg-toast-close-color: $sg-grey-300;
+
+// ─── Select Segment Tokens ───
+$sg-select-seg-border-color: $sg-grey-100;
+$sg-select-seg-selected-bg: $sg-secondary-50;
+$sg-select-seg-selected-border: $sg-secondary-500;
+$sg-select-seg-hover-border: $sg-secondary-500;
+$sg-select-seg-chip-radius: 23px;
+$sg-select-colorpicker-dot-size: 25px;
+$sg-select-user-avatar-size-lg: 36px;
+
+// ─── Confirm Modal Tokens ───
+$sg-confirm-modal-border-radius: 12px;
+$sg-confirm-modal-max-width: 700px;
+$sg-confirm-modal-icon-size: 56px;
+$sg-confirm-general-btn-bg: $sg-primary-500;
+$sg-confirm-confirmation-icon-color: $sg-success-400;
+$sg-confirm-alert-btn-bg: $sg-warning-400;
+$sg-confirm-error-btn-bg: $sg-error-400;
+
+// ─── Code Modal Tokens ───
+$sg-code-modal-border-radius: 24px;
+$sg-code-modal-icon-bg: $sg-warning-50;
+$sg-code-modal-icon-color: $sg-warning-400;
+$sg-code-modal-btn-bg: $sg-error-400;
+$sg-code-modal-code-size: 40px;
+
+// ─── Stepper Tokens ───
+$sg-stepper-track-height: 5px;
+$sg-stepper-track-bg: $sg-grey-50;
+$sg-stepper-progress-bg: $sg-primary-500;
+$sg-stepper-track-radius: 10px;
+$sg-stepper-label-font: 'DM Sans', sans-serif;
+$sg-stepper-label-color: $sg-grey-300;
+
+// ─── TextArea Tokens ───
+$sg-textarea-border: $sg-grey-100;
+$sg-textarea-border-focus: $sg-primary-500;
+$sg-textarea-border-radius: 10px;
+$sg-textarea-font: 'Urbanist', sans-serif;
+$sg-textarea-font-size: 16px;
+$sg-textarea-label-color: $sg-grey-800;
+$sg-textarea-placeholder-color: $sg-grey-200;
+$sg-textarea-padding: 12px 16px;
+$sg-textarea-disabled-opacity: 0.5;
+
+// ─── Number Input Tokens ───
+$sg-number-input-border: $sg-grey-100;
+$sg-number-input-border-radius: 12px;
+$sg-number-input-height-lg: 48px;
+$sg-number-input-height-md: 40px;
+$sg-number-input-height-sm: 36px;
+$sg-number-input-btn-color: $sg-grey-300;
+$sg-number-input-btn-hover: $sg-primary-500;
+$sg-number-input-font: 'Urbanist', sans-serif;
+$sg-number-input-font-weight: 600;
+
+// ─── Account Counter Tokens ───
+$sg-counter-border: $sg-grey-100;
+$sg-counter-border-radius: 12px;
+$sg-counter-icon-color: $sg-grey-300;
+$sg-counter-text-color: $sg-grey-800;
+$sg-counter-font: 'Urbanist', sans-serif;
+$sg-counter-font-weight: 600;
+$sg-counter-height-lg: 48px;
+$sg-counter-height-md: 40px;
+$sg-counter-height-sm: 36px;
+
+// ─── Select Date Tokens ───
+$sg-select-date-border: $sg-grey-100;
+$sg-select-date-border-radius: 12px;
+$sg-select-date-font: 'Urbanist', sans-serif;
+$sg-select-date-height-lg: 48px;
+$sg-select-date-height-md: 40px;
+$sg-select-date-height-sm: 36px;
+$sg-select-date-dropdown-shadow: 0 4px 15px rgba($sg-black-base, 0.12);
+$sg-select-date-day-selected-bg: $sg-primary-500;
+$sg-select-date-day-other-color: $sg-grey-100;
+
+// ─── Hour Date Picker Tokens ───
+$sg-hour-picker-spinner-gap: 18px;
+$sg-hour-picker-chevron-color: $sg-grey-300;
+$sg-hour-picker-chevron-hover: $sg-grey-500;
+$sg-hour-picker-value-color: $sg-grey-800;
+$sg-hour-picker-divider: $sg-grey-50;
+
+// ─── Select Tokens ───
+$sg-select-bg: $sg-white-base;
+$sg-select-border: $sg-grey-100;
+$sg-select-border-focus: $sg-primary-500;
+$sg-select-border-radius: 10px;
+$sg-select-height-lg: 48px;
+$sg-select-height-md: 40px;
+$sg-select-height-sm: 36px;
+$sg-select-font: 'Urbanist', sans-serif;
+$sg-select-placeholder-color: $sg-grey-300;
+$sg-select-text-color: $sg-grey-800;
+$sg-select-icon-color: $sg-grey-300;
+$sg-select-dropdown-shadow: 0 4px 12px rgba($sg-black-base, 0.1);
+$sg-select-option-hover-bg: $sg-neutral-50;
+$sg-select-disabled-bg: $sg-grey-100;
+$sg-select-disabled-text: $sg-grey-200;
+
+// ─── Search Input Tokens ───
+$sg-search-input-bg: $sg-white-base;
+$sg-search-input-border: $sg-grey-100;
+$sg-search-input-border-focus: $sg-primary-500;
+$sg-search-input-border-radius: 50px;
+$sg-search-input-height-lg: 50px;
+$sg-search-input-height-md: 40px;
+$sg-search-input-height-sm: 36px;
+$sg-search-input-icon-color: $sg-grey-200;
+$sg-search-input-placeholder-color: $sg-grey-200;
+$sg-search-input-font: 'Urbanist', sans-serif;
+$sg-search-input-font-weight: 500;
+$sg-search-input-disabled-bg: $sg-grey-100;
+$sg-search-input-disabled-text: $sg-grey-200;
+
+// ─── Text Input Tokens ───
+$sg-text-input-border: $sg-grey-100;
+$sg-text-input-border-focus: $sg-primary-500;
+$sg-text-input-border-error: $sg-error-400;
+$sg-text-input-border-radius: 10px;
+$sg-text-input-height-lg: 48px;
+$sg-text-input-height-md: 40px;
+$sg-text-input-height-sm: 36px;
+$sg-text-input-font: 'Urbanist', sans-serif;
+$sg-text-input-label-color: $sg-grey-800;
+$sg-text-input-placeholder-color: $sg-grey-200;
+$sg-text-input-icon-color: $sg-grey-300;
+
+// ─── Card Tokens ───
+$sg-card-bg: $sg-white-base;
+$sg-card-border: $sg-grey-50;
+$sg-card-border-radius: 16px;
+$sg-card-padding-simple: 24px;
+$sg-card-padding-large: 32px;
+$sg-card-title-color: $sg-grey-800;
+$sg-card-title-size-titled: 20px;
+$sg-card-title-size-large: 24px;
+
+// ─── Menu Tokens ───
+$sg-menu-bg: $sg-white-base;
+$sg-menu-border: $sg-grey-50;
+$sg-menu-border-radius: 12px;
+$sg-menu-item-hover: $sg-neutral-50;
+$sg-menu-item-color: $sg-grey-500;
+$sg-menu-icon-color: $sg-grey-300;
+$sg-menu-radio-active: $sg-secondary-500;
+$sg-menu-checkbox-active: $sg-secondary-500;
+
+// ─── Avatar Tokens ───
+$sg-avatar-border-radius: 50%;
+$sg-avatar-size-xlarge: 50px;
+$sg-avatar-size-large: 36px;
+$sg-avatar-size-medium: 26px;
+$sg-avatar-size-small: 18px;
+$sg-avatar-badge-size: 16px;
+$sg-avatar-badge-border: $sg-white-base;
+
+// ─── Métricas / Bar Chart Tokens ───
+$sg-bar-primary-from: $sg-primary-300;
+$sg-bar-primary-to: $sg-primary-500;
+$sg-bar-secondary-from: $sg-secondary-300;
+$sg-bar-secondary-to: $sg-secondary-500;
+$sg-bar-size-large: 78px;
+$sg-bar-size-medium: 35px;
+$sg-bar-size-small: 17px;
+$sg-bar-size-xsmall: 8px;
+$sg-bar-label-color: $sg-grey-300;
+$sg-sparkline-primary-color: $sg-primary-500;
+$sg-sparkline-secondary-color: $sg-secondary-500;
+$sg-donut-stroke-width: 30px;
+$sg-trend-up-color: $sg-success-400;
+$sg-trend-down-color: $sg-error-400;
+
+// ─── Table Tokens ───
+$sg-table-bg: $sg-white-base;
+$sg-table-border-color: $sg-grey-50;
+$sg-table-header-color: $sg-grey-500;
+$sg-table-body-color: $sg-grey-500;
+$sg-table-title-color: $sg-grey-800;
+$sg-table-title-size: 24px;
+$sg-table-row-height: 44px;
+$sg-table-cell-padding: 10px 20px;
+$sg-table-hover-bg: $sg-neutral-50;
+$sg-table-action-icon-color: $sg-grey-800;
+
+// ========================================
+// SocialGest — Modales Especiales
+// (Bienvenida, Plan Vencido, Lanzamiento)
+// ========================================
+// Base container
+$sg-special-modal-bg: $sg-white-base;
+$sg-special-modal-border: 1px solid $sg-grey-50;
+$sg-special-modal-radius: 40px;
+$sg-special-modal-padding: 48px 40px;
+$sg-special-modal-overlay-bg: rgba(0, 0, 0, 0.5);
+
+// Decorative circles (welcome / expired)
+$sg-special-modal-circle-size: 729px;
+$sg-special-modal-circle-primary: radial-gradient(circle, #{$sg-primary-50} 0%, rgba(230, 239, 255, 0) 70%);
+$sg-special-modal-circle-secondary: radial-gradient(circle, #{$sg-secondary-50} 0%, rgba(254, 242, 235, 0) 70%);
+
+// Header icon circle
+$sg-special-modal-icon-circle-size: 80px;
+$sg-special-modal-icon-circle-bg: $sg-secondary-50;
+$sg-special-modal-icon-color: $sg-secondary-500;
+$sg-special-modal-icon-size: 49px;
+
+// Title
+$sg-special-modal-title-font: 'Urbanist', sans-serif;
+$sg-special-modal-title-size: 36px;
+$sg-special-modal-title-weight: 600;
+$sg-special-modal-title-color: $sg-grey-500;
+$sg-special-modal-title-tracking: -0.72px;
+$sg-special-modal-title-size-expired: 24px;
+$sg-special-modal-title-tracking-expired: -0.48px;
+
+// Body card
+$sg-special-modal-body-bg: $sg-white-base;
+$sg-special-modal-body-radius: 12px;
+$sg-special-modal-body-padding: 40px 20px;
+$sg-special-modal-body-text-color: $sg-primary-800;
+$sg-special-modal-body-text-size: 16px;
+$sg-special-modal-body-text-weight: 500;
+$sg-special-modal-body-text-line-height: 24px;
+$sg-special-modal-body-text-tracking: -0.32px;
+
+// Launch modal specific
+$sg-special-launch-gap: 0;
+$sg-special-launch-panel-radius: 24px;
+$sg-special-launch-panel-padding: 40px 32px;
+$sg-special-launch-left-width: 555px;
+$sg-special-launch-right-width: 718px;
+$sg-special-launch-badge-width: 211px;
+$sg-special-launch-badge-height: 36px;
+$sg-special-launch-badge-radius: 50px;
+$sg-special-launch-badge-border: 1px solid $sg-primary-500;
+$sg-special-launch-badge-bg: linear-gradient(74.11deg, #{$sg-primary-100} 0%, #{$sg-primary-50} 30%, #{$sg-secondary-50} 70%, #{$sg-secondary-100} 100%);
+$sg-special-launch-hero-title-size: 48px;
+$sg-special-launch-hero-title-line-height: 48px;
+$sg-special-launch-hero-title-tracking: -0.96px;
+$sg-special-launch-desc-size: 20px;
+$sg-special-launch-desc-color: $sg-grey-500;
+$sg-special-launch-desc-line-height: 24px;
+$sg-special-launch-desc-tracking: -0.4px;
+$sg-special-launch-image-height: 335px;
+$sg-special-launch-image-radius: 19px;
+$sg-special-launch-image-bg: linear-gradient(135deg, #{$sg-primary-100} 0%, #{$sg-secondary-100} 100%);
+$sg-special-launch-overlay-btn-height: 48px;
+$sg-special-launch-overlay-btn-bg: $sg-secondary-500;
+$sg-special-launch-feature-card-icon-size: 50px;
+$sg-special-launch-feature-title-size: 18px;
+$sg-special-launch-feature-title-color: $sg-grey-500;
+$sg-special-launch-feature-desc-size: 16px;
+$sg-special-launch-feature-desc-color: $sg-grey-300;
+$sg-special-launch-feature-desc-line-height: 20px;
+$sg-special-launch-feature-1-bg: $sg-primary-50;
+$sg-special-launch-feature-2-bg: #d1fae5;
+$sg-special-launch-feature-3-bg: $sg-secondary-50;
+$sg-special-launch-feature-4-bg: rgba(249, 198, 22, 0.16);
+$sg-special-launch-note-radius: 16px;
+$sg-special-launch-note-padding: 24px 32px;
+$sg-special-launch-mia-btn-width: 419px;
+$sg-special-launch-mia-btn-height: 40px;
+$sg-special-launch-close-size: 34px;

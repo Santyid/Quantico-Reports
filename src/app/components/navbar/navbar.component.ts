@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
     { id: 'quantico', name: 'Quantico', route: '/', icon: 'quantico' },
     { id: 'advocatespro', name: 'AdvocatesPro', route: '/advocatespro', icon: 'advocatespro' },
     { id: 'tikket', name: 'Tikket', route: '/tikket', icon: 'tikket' },
-    { id: 'socialgest', name: 'SocialGest', route: '/socialgest/metricas', icon: 'socialgest' }
+    { id: 'socialgest', name: 'SocialGest', route: '/socialgest', icon: 'socialgest' }
   ];
 
   @Input() navItems: NavItem[] = [

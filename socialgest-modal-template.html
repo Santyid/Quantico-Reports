@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialGest — Modal de Lanzamiento (Plantilla de referencia)</title>
+<style>
+  /* ============================================================
+     SOCIALGEST — MODAL DE LANZAMIENTO ("SocialGest.ai")
+     Plantilla de referencia autocontenida (sin dependencias externas).
+     Reproduce 1:1 el componente real:
+     src/app/components/socialgest/dashboard/socialgest-dashboard.component.html
+     (bloque "MODAL 3: LANZAMIENTO") y su SCSS correspondiente.
+     Todos los valores (colores, tipografía, espaciados, radios, sombras)
+     provienen de los tokens $sg-* de src/styles/_tokens.scss.
+     ============================================================ */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    /* Fondo de página neutro solo para poder visualizar el modal aislado */
+    background: #f5f7fa;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Botón para reabrir el modal si se cierra, útil solo en esta plantilla de demo */
+  .demo-reopen-btn {
+    display: none;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    background: #0061fe;
+    color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+  }
+  .demo-reopen-btn.is-visible { display: inline-flex; }
+
+  /* ------------------------------------------------------------
+     OVERLAY
+     $sg-special-modal-overlay-bg: rgba(0, 0, 0, 0.5)
+     ------------------------------------------------------------ */
+  .sg-special-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: sg-fade-in 0.2s ease;
+  }
+
+  /* ------------------------------------------------------------
+     CONTENEDOR DEL MODAL (dos columnas: hero + features)
+     $sg-special-launch-left-width:  555px
+     $sg-special-launch-right-width: 718px
+     max-width total: 1293px
+     ------------------------------------------------------------ */
+  .sg-special-modal-launch {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 0; /* $sg-special-launch-gap */
+    max-width: 1293px;
+    width: 100%;
+    animation: sg-scale-in 0.25s ease;
+  }
+
+  /* Botón cerrar (X) — flota fuera del modal, arriba a la derecha */
+  .sg-special-modal-launch-close {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    width: 34px;  /* $sg-special-launch-close-size */
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff; /* $sg-white-base */
+    border: none;
+    cursor: pointer;
+    color: #3d3d3d; /* $sg-grey-500 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  .sg-special-modal-launch-close:hover { background: #fafafa; /* $sg-neutral-50 */ }
+  .sg-special-modal-launch-close svg { width: 24px; height: 24px; }
+
+  /* ============================================================
+     PANEL IZQUIERDO — Hero (badge, título, descripción, imagen)
+     $sg-special-launch-panel-padding: 40px 32px
+     $sg-special-launch-panel-radius:  24px
+     ============================================================ */
+  .sg-special-launch-left {
+    position: relative;
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 24px 0 0 24px;
+    width: 555px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  /* Círculos decorativos radiales — distintivos de los modales especiales SocialGest
+     $sg-special-modal-circle-size: 729px */
+  .sg-special-modal-circle {
+    position: absolute;
+    width: 729px;
+    height: 729px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sg-special-modal-circle--top-right {
+    /* radial-gradient secondary-50 → transparent */
+    background: radial-gradient(circle, #fef2eb 0%, rgba(254, 242, 235, 0) 100%);
+    top: -60%;
+    right: -60%;
+  }
+  .sg-special-modal-circle--bottom-left {
+    /* radial-gradient primary-50 → transparent */
+    background: radial-gradient(circle, #e6efff 0%, rgba(230, 239, 255, 0) 100%);
+    bottom: -60%;
+    left: -60%;
+  }
+
+  .sg-special-launch-left-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Badge "Nuevo lanzamiento"
+     border: 1px solid $sg-primary-500
+     background: linear-gradient(74.11deg, primary-200 → secondary-200) */
+  .sg-special-launch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 211px;
+    height: 36px;
+    border-radius: 50px;
+    border: 1px solid #0061fe;
+    background: linear-gradient(74.11deg, #8ab6ff, #fac2a3);
+    padding: 0 16px;
+  }
+  .sg-special-launch-badge svg { color: #0061fe; flex-shrink: 0; width: 20px; height: 20px; }
+  .sg-special-launch-badge-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    /* Texto con gradiente de IA: $sg-ia-text-gradient */
+    background: linear-gradient(5.79deg, #0061fe 2.99%, #00aaff 105.98%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Título hero — gradiente tricolor $sg-ia-hero-title-gradient
+     azul → azul oscuro → naranja (color de marca SocialGest) */
+  .sg-special-launch-hero-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 48px; /* $sg-special-launch-hero-title-size */
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: -0.96px;
+    background: linear-gradient(to right, #0061fe 1.85%, #00296b 49.5%, #f47a37 82.2%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  .sg-special-launch-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px; /* $sg-special-launch-desc-size */
+    font-weight: 400;
+    color: #3d3d3d; /* $sg-grey-500 */
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  /* Imagen/preview con botón overlay de reproducción
+     $sg-special-launch-image-height: 335px
+     $sg-special-launch-image-radius: 19px */
+  .sg-special-launch-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 335px;
+    border-radius: 19px;
+    overflow: hidden;
+  }
+  .sg-special-launch-image {
+    position: absolute;
+    inset: 0;
+    /* Placeholder de imagen — reemplazar por el screenshot/preview real del producto */
+    background: linear-gradient(135deg, #b0ceff 0%, #fcd6c1 100%);
+    filter: blur(2px);
+    opacity: 0.7;
+  }
+  .sg-special-launch-overlay-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px; /* $sg-special-launch-overlay-btn-height */
+    padding: 0 20px;
+    border-radius: 12px;
+    background: #f47a37; /* $sg-secondary-500 — naranja SocialGest */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 2;
+    transition: background-color 0.2s ease;
+  }
+  .sg-special-launch-overlay-btn svg { color: #ffffff; width: 20px; height: 20px; }
+  .sg-special-launch-overlay-btn:hover { background: #e5641e; /* $sg-secondary-600 */ }
+
+  /* ============================================================
+     PANEL DERECHO — Features + nota de créditos IA + footer
+     ============================================================ */
+  .sg-special-launch-right {
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 0 24px 24px 0;
+    width: 718px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sg-special-launch-right-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222222; /* $sg-grey-800 */
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  /* Cuadrícula 2x2 de features de IA */
+  .sg-special-launch-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .sg-special-launch-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: 2px 5px 13.5px rgba(0, 0, 0, 0.05);
+  }
+  .sg-special-launch-feature-icon {
+    width: 50px; /* $sg-special-launch-feature-card-icon-size */
+    height: 50px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .sg-special-launch-feature-icon svg { width: 24px; height: 24px; }
+  /* Feature 1: Crea contenido con IA — fondo primary-50, icono primary-500 */
+  .sg-special-launch-feature-icon--1 { background: #e6efff; }
+  .sg-special-launch-feature-icon--1 svg { color: #0061fe; }
+  /* Feature 2: Analíticas con IA — fondo verde claro, icono #065f46 */
+  .sg-special-launch-feature-icon--2 { background: #d1fae5; }
+  .sg-special-launch-feature-icon--2 svg { color: #065f46; }
+  /* Feature 3: Publicación sin fricciones — fondo secondary-50 (naranja), icono secondary-500 */
+  .sg-special-launch-feature-icon--3 { background: #fef2eb; }
+  .sg-special-launch-feature-icon--3 svg { color: #f47a37; }
+  /* Feature 4: Reportes analíticos — fondo amarillo translúcido, icono #92400e */
+  .sg-special-launch-feature-icon--4 { background: rgba(249, 198, 22, 0.16); }
+  .sg-special-launch-feature-icon--4 svg { color: #92400e; }
+
+  .sg-special-launch-feature-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #3d3d3d; /* $sg-grey-500 */
+    margin: 0;
+  }
+  .sg-special-launch-feature-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #7d7d7d; /* $sg-grey-300 */
+    line-height: 20px;
+    margin: 0;
+  }
+
+  /* Nota "Créditos de IA gratis" — fondo con gradiente $sg-ia-note-bg */
+  .sg-special-launch-note {
+    background: linear-gradient(161.67deg,
+      rgba(230, 239, 255, 0.33) 0.55%,
+      rgba(185, 211, 255, 0.33) 25.4%,
+      rgba(176, 206, 255, 0.33) 69.9%,
+      rgba(133, 177, 255, 0.33) 97.6%);
+    padding: 24px 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sg-special-launch-note-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sg-special-launch-note-heading svg { color: #0061fe; width: 22px; height: 22px; }
+  .sg-special-launch-note-heading-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    /* Texto con gradiente de IA: $sg-ia-text-gradient */
+    background: linear-gradient(5.79deg, #0061fe 2.99%, #00aaff 105.98%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sg-special-launch-note-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #00358c; /* $sg-primary-800 */
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Footer con acciones */
+  .sg-special-launch-footer {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: auto;
+  }
+
+  /* ------------------------------------------------------------
+     BOTONES — mismas reglas que app-button (ver CLAUDE.md)
+     base: Urbanist 700, radius 12px, padding 10px 20px, gap 10px
+     medium: height 40px, font-size 16px
+     ------------------------------------------------------------ */
+  .sg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    border: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .sg-btn--medium { height: 40px; font-size: 16px; }
+
+  /* Variante primary (azul) */
+  .sg-btn--primary {
+    background-color: #0061fe; /* $sg-primary-500 */
+    color: #f1f1f1;            /* $sg-white-800 */
+  }
+  .sg-btn--primary svg { color: #f1f1f1; width: 16px; height: 16px; }
+  .sg-btn--primary:hover { background-color: #0058e7; /* $sg-primary-600 */ }
+  .sg-btn--primary:active { background-color: #0045b4; /* $sg-primary-700 */ }
+
+  /* Variante white (bordeado) — usado para "Ahora no" */
+  .sg-btn--white {
+    background-color: #ffffff;
+    color: #7d7d7d;            /* $sg-grey-300 */
+    border: 1px solid #c3c3c3; /* $sg-grey-100 */
+  }
+  .sg-btn--white:hover { background-color: #fafafa;  /* $sg-neutral-50 */ }
+  .sg-btn--white:active { background-color: #f1f1f1; /* $sg-neutral-200 */ }
+
+  .sg-special-launch-footer-cancel { flex: 1; }
+
+  /* ------------------------------------------------------------
+     ANIMACIONES
+     ------------------------------------------------------------ */
+  @keyframes sg-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sg-scale-in {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* ------------------------------------------------------------
+     RESPONSIVE — el modal se apila en pantallas angostas
+     (misma regla que en el componente real)
+     ------------------------------------------------------------ */
+  @media (max-width: 1300px) {
+    .sg-special-modal-launch {
+      flex-direction: column;
+      max-width: 720px;
+    }
+    .sg-special-launch-left,
+    .sg-special-launch-right {
+      width: 100%;
+      border-radius: 24px 24px 0 0;
+    }
+    .sg-special-launch-right {
+      border-radius: 0 0 24px 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sg-special-launch-features { grid-template-columns: 1fr; }
+    .sg-special-launch-hero-title { font-size: 34px; line-height: 38px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============================================================
+       OVERLAY + MODAL
+       Estructura: overlay → close button → panel izquierdo (hero) →
+       panel derecho (features + nota + footer)
+       ============================================================ -->
+  <div class="sg-special-modal-overlay" id="sgOverlay">
+    <div class="sg-special-modal-launch" role="dialog" aria-modal="true" aria-labelledby="sgLaunchTitle">
+
+      <!-- Botón cerrar -->
+      <button class="sg-special-modal-launch-close" id="sgCloseBtn" aria-label="Cerrar">
+        <!-- Icono Lucide: X -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+      <!-- ═══ PANEL IZQUIERDO (HERO) ═══ -->
+      <div class="sg-special-launch-left">
+        <!-- Círculos decorativos de fondo -->
+        <span class="sg-special-modal-circle sg-special-modal-circle--top-right"></span>
+        <span class="sg-special-modal-circle sg-special-modal-circle--bottom-left"></span>
+
+        <div class="sg-special-launch-left-content">
+
+          <!-- Badge "Nuevo lanzamiento" -->
+          <div class="sg-special-launch-badge">
+            <!-- Icono Lucide: Sparkles -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              <path d="M20 3v4"/>
+              <path d="M22 5h-4"/>
+              <path d="M4 17v2"/>
+              <path d="M5 18H3"/>
+            </svg>
+            <span class="sg-special-launch-badge-text">Nuevo lanzamiento</span>
+          </div>
+
+          <!-- Título hero -->
+          <h2 class="sg-special-launch-hero-title" id="sgLaunchTitle">El nuevo SocialGest.ai ya está aquí</h2>
+
+          <!-- Descripción — [FECHA] es placeholder dinámico -->
+          <p class="sg-special-launch-description">
+            A partir del <strong>[FECHA]</strong> iniciarás sesión en socialgest.ai. Puedes volver a la versión clásica desde tu configuración cuando quieras.
+          </p>
+
+          <!-- Preview de imagen con botón de reproducción -->
+          <div class="sg-special-launch-image-wrap">
+            <div class="sg-special-launch-image"></div>
+            <button class="sg-special-launch-overlay-btn">
+              <!-- Icono Lucide: PlayCircle -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="10 8 16 12 10 16 10 8"/>
+              </svg>
+              <span>Ver nuevo SocialGest.ia</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ PANEL DERECHO (FEATURES) ═══ -->
+      <div class="sg-special-launch-right">
+        <h3 class="sg-special-launch-right-title">Lo que encuentras en el nuevo SocialGest.ai</h3>
+
+        <!-- Cuadrícula 2x2 de features -->
+        <div class="sg-special-launch-features">
+
+          <div class="sg-special-launch-feature">
+            <div class="sg-special-launch-feature-icon sg-special-launch-feature-icon--1">
+              <!-- Icono Lucide: Sparkles -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              </svg>
+            </div>
+            <h4 class="sg-special-launch-feature-title">Crea contenido con IA</h4>
+            <p class="sg-special-launch-feature-desc">Genera copies, imágenes y calendarios con tu brand voice en segundos.</p>
+          </div>
+
+          <div class="sg-special-launch-feature">
+            <div class="sg-special-launch-feature-icon sg-special-launch-feature-icon--2">
+              <!-- Icono Lucide: BarChart3 -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="M18 17V9"/>
+                <path d="M13 17V5"/>
+                <path d="M8 17v-3"/>
+              </svg>
+            </div>
+            <h4 class="sg-special-launch-feature-title">Analíticas con IA</h4>
+            <p class="sg-special-launch-feature-desc">Recomendaciones claras de lead generation, brand awareness y engagement.</p>
+          </div>
+
+          <div class="sg-special-launch-feature">
+            <div class="sg-special-launch-feature-icon sg-special-launch-feature-icon--3">
+              <!-- Icono Lucide: ImagePlus -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 5h6"/>
+                <path d="M19 2v6"/>
+                <path d="M21 11.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9.5"/>
+                <circle cx="9" cy="9" r="2"/>
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              </svg>
+            </div>
+            <h4 class="sg-special-launch-feature-title">Publicación sin fricciones</h4>
+            <p class="sg-special-launch-feature-desc">Programa en Instagram, TikTok, LinkedIn y más desde un solo lugar.</p>
+          </div>
+
+          <div class="sg-special-launch-feature">
+            <div class="sg-special-launch-feature-icon sg-special-launch-feature-icon--4">
+              <!-- Icono Lucide: LineChart -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="m19 9-5 5-4-4-3 3"/>
+              </svg>
+            </div>
+            <h4 class="sg-special-launch-feature-title">Reportes analíticos</h4>
+            <p class="sg-special-launch-feature-desc">Transforma tus datos en decisiones con reportes que te dicen qué hacer.</p>
+          </div>
+
+        </div>
+
+        <!-- Nota de créditos IA -->
+        <div class="sg-special-launch-note">
+          <div class="sg-special-launch-note-heading">
+            <!-- Icono Lucide: Sparkles -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+            </svg>
+            <span class="sg-special-launch-note-heading-text">Créditos de IA gratis durante tu primer mes</span>
+          </div>
+          <p class="sg-special-launch-note-desc">
+            Durante tu primer mes te regalamos créditos de IA gratis. Úsalos para crear contenido, generar ideas y ahorrar tiempo en tu día a día. Empieza hoy y siente la diferencia del nuevo SocialGest.
+          </p>
+        </div>
+
+        <!-- Footer con acciones -->
+        <div class="sg-special-launch-footer">
+          <button class="sg-btn sg-btn--white sg-btn--medium sg-special-launch-footer-cancel" id="sgCancelBtn">
+            Ahora no
+          </button>
+          <button class="sg-btn sg-btn--primary sg-btn--medium" id="sgPrimaryBtn">
+            <!-- Icono Lucide: ArrowRight -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            Ir al nuevo SocialGest
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Botón de demo para reabrir el modal (no forma parte del componente real) -->
+  <button class="demo-reopen-btn" id="sgReopenBtn">Reabrir modal de lanzamiento</button>
+
+  <script>
+    // Comportamiento mínimo solo para poder previsualizar la plantilla:
+    // cerrar al hacer click en el overlay, en la X, o en cualquiera de los botones del footer.
+    var overlay = document.getElementById('sgOverlay');
+    var reopenBtn = document.getElementById('sgReopenBtn');
+
+    function closeModal() {
+      overlay.style.display = 'none';
+      reopenBtn.classList.add('is-visible');
+    }
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+    document.getElementById('sgCloseBtn').addEventListener('click', closeModal);
+    document.getElementById('sgCancelBtn').addEventListener('click', closeModal);
+    document.getElementById('sgPrimaryBtn').addEventListener('click', closeModal);
+    reopenBtn.addEventListener('click', function () {
+      overlay.style.display = 'flex';
+      reopenBtn.classList.remove('is-visible');
+    });
+  </script>
+
+</body>
+</html>

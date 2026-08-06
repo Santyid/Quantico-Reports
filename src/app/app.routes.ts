@@ -138,6 +138,12 @@ export const routes: Routes = [
     canActivate: [generalAuthGuard],
     children: [
       {
+        path: '',
+        loadComponent: () =>
+          import('./components/socialgest/dashboard/socialgest-dashboard.component')
+            .then(m => m.SocialgestDashboardComponent)
+      },
+      {
         path: 'metricas',
         loadComponent: () =>
           import('./components/socialgest/metricas/metricas-resumen.component')
@@ -154,6 +160,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./components/socialgest/notificaciones/notificaciones.component')
             .then(m => m.NotificacionesComponent)
+      },
+      {
+        path: 'design-system',
+        loadComponent: () =>
+          import('./components/socialgest/dashboard/socialgest-dashboard.component')
+            .then(m => m.SocialgestDashboardComponent)
       }
     ]
   },

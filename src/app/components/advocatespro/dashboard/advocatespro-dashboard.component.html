@@ -59,9 +59,15 @@
             <h3 class="style-guide__palette-title">{{ palette.title }}</h3>
             <div class="style-guide__swatches">
               @for (swatch of palette.swatches; track swatch.name) {
-                <div class="style-guide__swatch" [class.style-guide__swatch--base]="swatch.isBase"
+                <div class="style-guide__swatch"
+                     [class.style-guide__swatch--base]="swatch.isBase"
+                     [class.style-guide__swatch--gradient-row]="swatch.isGradient"
                      (click)="copyToClipboard(swatch.scssVar)">
-                  <div class="style-guide__swatch-color" [style.background-color]="swatch.hex"></div>
+                  @if (swatch.isGradient) {
+                    <div class="style-guide__swatch-color style-guide__swatch--gradient"></div>
+                  } @else {
+                    <div class="style-guide__swatch-color" [style.background-color]="swatch.hex"></div>
+                  }
                   <div class="style-guide__swatch-info">
                     <span class="style-guide__swatch-name">{{ swatch.name }}</span>
                     <span class="style-guide__swatch-hex">{{ swatch.hex }}</span>
@@ -287,6 +293,72 @@
         </div>
       </div>
 
+      <!-- Mia Button -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Botón Mia</h3>
+        <p class="style-guide__control-desc">Botón especial para funcionalidades de la IA "Mia" con borde de gradiente. Muestra el logo de Mia en lugar del texto "AI". 3 tamaños + disabled.</p>
+
+        <div class="style-guide__btn-size-group">
+          <span class="style-guide__btn-size-label">large</span>
+          <div class="style-guide__btn-states">
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--large">
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="style-guide__mia-logo" />
+              </button>
+              <span class="style-guide__btn-state-label">Interactive</span>
+            </div>
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--large" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="style-guide__mia-logo" />
+              </button>
+              <span class="style-guide__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="style-guide__btn-size-group">
+          <span class="style-guide__btn-size-label">medium</span>
+          <div class="style-guide__btn-states">
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--medium">
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="style-guide__mia-logo" />
+              </button>
+              <span class="style-guide__btn-state-label">Interactive</span>
+            </div>
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--medium" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="style-guide__mia-logo" />
+              </button>
+              <span class="style-guide__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="style-guide__btn-size-group">
+          <span class="style-guide__btn-size-label">small</span>
+          <div class="style-guide__btn-states">
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--small">
+                <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="style-guide__mia-logo" />
+              </button>
+              <span class="style-guide__btn-state-label">Interactive</span>
+            </div>
+            <div class="style-guide__btn-state">
+              <button class="style-guide__ai-btn style-guide__ai-btn--small" disabled>
+                <lucide-icon [img]="SparklesIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+                <img src="/images/mia-logo.svg" alt="Mia" class="style-guide__mia-logo" />
+              </button>
+              <span class="style-guide__btn-state-label">Disabled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Icon Buttons -->
       <div class="style-guide__control-group">
         <h3 class="style-guide__control-title">Icon Button</h3>
@@ -343,6 +415,132 @@
               <lucide-icon [img]="PlusCircleIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
               <span>Filtro C</span>
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 4.5. ELEMENTOS DE IA                    -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('ia-elements')) {
+  <section class="style-guide__section" id="sg-ia-elements">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Elementos de IA</h2>
+      <p class="style-guide__card-desc">Componentes distintivos para funcionalidades de IA: titulo hero con gradiente, nota informativa y panel de progreso "Creando ideas".</p>
+
+      <!-- Titulo con gradiente -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Titulo con degrades para IA</h3>
+        <p class="style-guide__control-desc">Titulo grande con gradiente de texto tricolor (azul &rarr; azul oscuro &rarr; rosa). Uso: pantallas hero y encabezados destacados de IA.</p>
+        <div class="style-guide__ia-hero-wrap">
+          <h1 class="style-guide__ia-hero-title">Advocates se renovo,<br>conoce nuestra nueva version</h1>
+        </div>
+      </div>
+
+      <!-- Nota de IA -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Nota de IA</h3>
+        <p class="style-guide__control-desc">Caja compacta para hints/notas debajo de componentes o flujos. Fondo con gradiente azul suave e icono Sparkles.</p>
+        <div class="style-guide__ia-note">
+          <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__ia-note-icon"></lucide-icon>
+          <span class="style-guide__ia-note-text">La IA analizara tus advocates y sugerira campanas optimizadas para tu audiencia</span>
+        </div>
+        <div class="style-guide__ia-note" style="margin-top: 12px;">
+          <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__ia-note-icon"></lucide-icon>
+          <span class="style-guide__ia-note-text">Puedes usar comandos de IA para generar variaciones automaticas del contenido</span>
+        </div>
+      </div>
+
+      <!-- Creando ideas (panel) -->
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Creando ideas</h3>
+        <p class="style-guide__control-desc">Panel grande que muestra un proceso de generacion en curso. Incluye titulo con gradiente, subtitulo, barra de progreso, card interna de estado y footer informativo.</p>
+
+        <div class="style-guide__ia-panel">
+          <div class="style-guide__ia-panel-header">
+            <div class="style-guide__ia-panel-icon-wrap">
+              <lucide-icon [img]="SparklesIcon" [size]="29" [strokeWidth]="1.5" class="style-guide__ia-panel-icon"></lucide-icon>
+            </div>
+            <div class="style-guide__ia-panel-heading">
+              <h4 class="style-guide__ia-panel-title">Creando ideas</h4>
+              <p class="style-guide__ia-panel-subtitle">Planificando tu proxima campana . . .</p>
+            </div>
+          </div>
+
+          <div class="style-guide__ia-panel-progress">
+            <div class="style-guide__ia-panel-progress-fill"></div>
+          </div>
+
+          <div class="style-guide__ia-panel-status">
+            <lucide-icon [img]="LoaderCircleIcon" [size]="22" [strokeWidth]="1.75" class="style-guide__ia-panel-status-icon"></lucide-icon>
+            <span class="style-guide__ia-panel-status-text">Disenando estrategias de campana</span>
+            <span class="style-guide__ia-panel-status-badge">En progreso</span>
+          </div>
+
+          <div class="style-guide__ia-panel-footer">
+            <lucide-icon [img]="InfoIcon" [size]="16" [strokeWidth]="1.5" class="style-guide__ia-panel-footer-icon"></lucide-icon>
+            <span class="style-guide__ia-panel-footer-text">Puedes cerrar este panel &middot; te notificaremos cuando este listo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 4.6. ETIQUETAS DE COLORES              -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('labels')) {
+  <section class="style-guide__section" id="sg-labels">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Etiquetas de Colores</h2>
+      <p class="style-guide__card-desc">Etiquetas compactas con 11 variantes de color (10 pastel + 1 IA con gradiente). Cada etiqueta puede mostrarse sola o con un icono de accion (opciones o confirmacion) dentro de un circulo blanco.</p>
+
+      <div class="style-guide__control-group">
+        <h3 class="style-guide__control-title">Variantes de color</h3>
+        <p class="style-guide__control-desc">Cada fila muestra la etiqueta en tres estados: con icono de opciones (MoreHorizontal), con icono de confirmacion (Check) y sin icono. La variante "IA" usa fondo blanco con borde y texto en gradiente.</p>
+
+        <div class="style-guide__labels-grid">
+          @for (variant of labelVariants; track variant.key) {
+            <div class="style-guide__labels-row">
+              <span class="style-guide__labels-name">{{ variant.label }}</span>
+              <div class="style-guide__labels-samples">
+                <span class="style-guide__label style-guide__label--{{ variant.key }}">
+                  <span class="style-guide__label-text">Etiqueta</span>
+                  <span class="style-guide__label-action style-guide__label-action--white-bg">
+                    <lucide-icon [img]="MoreHorizontalIcon" [size]="10" [strokeWidth]="2"></lucide-icon>
+                  </span>
+                </span>
+                <span class="style-guide__label style-guide__label--{{ variant.key }}">
+                  <span class="style-guide__label-text">Etiqueta</span>
+                  <span class="style-guide__label-action style-guide__label-action--white-bg">
+                    <lucide-icon [img]="CheckIcon" [size]="10" [strokeWidth]="2"></lucide-icon>
+                  </span>
+                </span>
+                <span class="style-guide__label style-guide__label--{{ variant.key }}">
+                  <span class="style-guide__label-text">Etiqueta</span>
+                </span>
+              </div>
+            </div>
+          }
+
+          <!-- IA variant -->
+          <div class="style-guide__labels-row">
+            <span class="style-guide__labels-name">IA</span>
+            <div class="style-guide__labels-samples">
+              <span class="style-guide__label style-guide__label--ia">
+                <span class="style-guide__label-text">Generado por IA</span>
+                <span class="style-guide__label-action">
+                  <lucide-icon [img]="MoreHorizontalIcon" [size]="10" [strokeWidth]="2"></lucide-icon>
+                </span>
+              </span>
+              <span class="style-guide__label style-guide__label--ia">
+                <span class="style-guide__label-text">Generado por IA</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -940,6 +1138,116 @@
     (cancelled)="codeModalVisible = false"
     (confirmed)="codeModalVisible = false">
   </app-confirm-code-modal>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 10b. MODALES ESPECIALES                -->
+  <!-- ═══════════════════════════════════════ -->
+  @if (isSectionVisible('special-modals')) {
+  <section class="style-guide__section" id="sg-special-modals">
+    <div class="style-guide__card">
+      <h2 class="style-guide__card-title">Modales Especiales</h2>
+      <p class="style-guide__card-desc">Modal distintivo de AdvocatesPro: <strong>Lanzamiento</strong> de la nueva versión. Con circulos decorativos, gradiente de titulo IA y layout de dos paneles (hero + features).</p>
+
+      <div class="style-guide__modal-grid">
+        <button class="style-guide__modal-trigger style-guide__modal-trigger--launch"
+          (click)="openSpecialModal('launch')">
+          <span class="style-guide__modal-trigger-label">Lanzamiento</span>
+          <span class="style-guide__modal-trigger-hint">Click para abrir</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- ═══ MODAL: LANZAMIENTO ("Advocates se renovó") ═══ -->
+  @if (openSpecialModalType === 'launch') {
+    <div class="style-guide__special-modal-overlay" (click)="closeSpecialModal()">
+      <div class="style-guide__special-modal-launch" (click)="$event.stopPropagation()">
+        <button class="style-guide__special-modal-launch-close" (click)="closeSpecialModal()" aria-label="Cerrar">
+          <lucide-icon [img]="XIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+
+        <!-- LEFT PANEL -->
+        <div class="style-guide__special-launch-left">
+          <span class="style-guide__special-modal-circle style-guide__special-modal-circle--top-right"></span>
+          <span class="style-guide__special-modal-circle style-guide__special-modal-circle--bottom-left"></span>
+
+          <div class="style-guide__special-launch-left-content">
+            <div class="style-guide__special-launch-badge">
+              <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+              <span class="style-guide__special-launch-badge-text">Nuevo lanzamiento</span>
+            </div>
+
+            <h2 class="style-guide__special-launch-hero-title">Advocates se renovó,<br>conoce nuestra nueva versión</h2>
+
+            <p class="style-guide__special-launch-description">
+              Rediseñamos la plataforma desde cero. A partir de hoy podrás contactar a tu equipo de CSM y solicitar la activación de nuestra nueva versión.
+            </p>
+
+            <div class="style-guide__special-launch-image-wrap">
+              <div class="style-guide__special-launch-image"></div>
+              <button class="style-guide__special-launch-overlay-btn" (click)="closeSpecialModal()">
+                <lucide-icon [img]="PlayIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
+                <span>Ver nuevo Advocates</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="style-guide__special-launch-right">
+          <h3 class="style-guide__special-launch-right-title">Qué encuentras en la nueva versión</h3>
+
+          <div class="style-guide__special-launch-features">
+            <div class="style-guide__special-launch-feature">
+              <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--1">
+                <lucide-icon [img]="MegaphoneIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+              </div>
+              <h4 class="style-guide__special-launch-feature-title">Campañas</h4>
+              <p class="style-guide__special-launch-feature-desc">Tienes sugerencias de campaña con IA</p>
+            </div>
+
+            <div class="style-guide__special-launch-feature">
+              <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--2">
+                <lucide-icon [img]="TargetIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+              </div>
+              <h4 class="style-guide__special-launch-feature-title">Retos</h4>
+              <p class="style-guide__special-launch-feature-desc">Configura las reglas de tu marca para que la IA revise automáticamente cada contenido y defina si aplica antes de aprobarlo y publicarlo.</p>
+            </div>
+
+            <div class="style-guide__special-launch-feature">
+              <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--3">
+                <lucide-icon [img]="ImagesIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+              </div>
+              <h4 class="style-guide__special-launch-feature-title">Contenido &amp; Posts</h4>
+              <p class="style-guide__special-launch-feature-desc">Revisa, aprueba y gestiona todo el contenido generado por tus creadores en un solo lugar.</p>
+            </div>
+
+            <div class="style-guide__special-launch-feature">
+              <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--4">
+                <lucide-icon [img]="UsersIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+              </div>
+              <h4 class="style-guide__special-launch-feature-title">Grupos &amp; Recompensas</h4>
+              <p class="style-guide__special-launch-feature-desc">Administra tus equipos y premia a los embajadores más activos desde una experiencia renovada.</p>
+            </div>
+          </div>
+
+          <div class="style-guide__special-launch-note">
+            <div class="style-guide__special-launch-note-heading">
+              <lucide-icon [img]="HeadsetIcon" [size]="22" [strokeWidth]="1.5"></lucide-icon>
+              <span class="style-guide__special-launch-note-heading-text">Tu equipo de CSM te acompaña en la activación</span>
+            </div>
+            <p class="style-guide__special-launch-note-desc">
+              Inscríbete en la lista prioritaria y accede antes que nadie a la nueva versión de AdvPro.
+            </p>
+            <button class="style-guide__special-launch-note-btn" (click)="closeSpecialModal()">
+              Inscribete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
 
   <!-- ═══════════════════════════════════════ -->
   <!-- STEPPERS                               -->

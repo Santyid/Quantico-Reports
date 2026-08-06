@@ -1,6 +1,6 @@
 @import '../../../../styles/tokens';
 
-.style-guide {
+.sg-sg {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 32px;
@@ -293,6 +293,27 @@
     height: 56px;
   }
 
+  &__swatch--gradient {
+    background: $sg-ia-gradient;
+    min-height: 120px;
+    min-width: 200px;
+  }
+
+  &__swatch--gradient-row {
+    height: auto;
+    align-items: stretch;
+  }
+
+  &__swatch--gradient-row &__swatch-color {
+    width: 200px;
+    min-height: 120px;
+    height: auto;
+  }
+
+  &__swatch--gradient-row.sg-sg__swatch--base &__swatch-color {
+    height: auto;
+  }
+
   &__swatch-info {
     display: flex;
     flex-direction: column;
@@ -352,7 +373,7 @@
     gap: 12px;
     margin-bottom: 32px;
     padding: 24px;
-    background: $ap-neutral-50;
+    background: $sg-neutral-50;
     border-radius: 12px;
   }
 
@@ -565,18 +586,18 @@
 
     // Secundary
     &--secundary {
-      background-color: $ap-secondary-500;
-      color: $ap-white-base;
+      background-color: $sg-secondary-500;
+      color: $sg-white-base;
 
-      lucide-icon { color: $ap-white-base; }
+      lucide-icon { color: $sg-white-base; }
 
-      &:hover:not(:disabled) { background-color: $ap-secondary-600; }
-      &:active:not(:disabled) { background-color: $ap-secondary-700; }
+      &:hover:not(:disabled) { background-color: $sg-secondary-600; }
+      &:active:not(:disabled) { background-color: $sg-secondary-700; }
 
       &:disabled {
-        background-color: $ap-secondary-200;
-        color: $ap-white-base;
-        lucide-icon { color: $ap-white-base; }
+        background-color: $sg-secondary-200;
+        color: $sg-white-base;
+        lucide-icon { color: $sg-white-base; }
       }
     }
 
@@ -588,7 +609,7 @@
 
       lucide-icon { color: $grey-300; }
 
-      &:hover:not(:disabled) { background-color: $ap-neutral-50; }
+      &:hover:not(:disabled) { background-color: $sg-neutral-50; }
       &:active:not(:disabled) { background-color: $white-800; }
 
       &:disabled {
@@ -785,7 +806,7 @@
   }
 
   &__token-warning {
-    color: $ap-warning-400;
+    color: $sg-warning-400;
     flex-shrink: 0;
     cursor: help;
   }
@@ -820,7 +841,7 @@
     margin-bottom: 12px;
     border: 1px solid $grey-50;
     border-radius: 8px;
-    background: $ap-neutral-50;
+    background: $sg-neutral-50;
     cursor: pointer;
     transition: all 0.15s ease;
 
@@ -879,7 +900,7 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
-    .style-guide__copy-btn {
+    .sg-sg__copy-btn {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -992,8 +1013,8 @@
 
   &__type-code {
     font-size: 11px !important;
-    color: $ap-secondary-700 !important;
-    background: $ap-secondary-50 !important;
+    color: $sg-secondary-700 !important;
+    background: $sg-secondary-50 !important;
   }
 
   // ═══════════════════════════════════════
@@ -1062,41 +1083,41 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: $ap-ai-button-gap;
-    border-radius: $ap-ai-button-border-radius;
+    gap: $sg-ai-button-gap;
+    border-radius: $sg-ai-button-border-radius;
     // Uniform gradient border technique: two-layer background with border
     background:
-      linear-gradient($ap-ai-button-bg, $ap-ai-button-bg) padding-box,
-      $ap-ai-button-border-gradient border-box;
-    border: $ap-ai-button-border-width solid transparent;
+      linear-gradient($sg-ai-button-bg, $sg-ai-button-bg) padding-box,
+      $sg-ai-button-border-gradient border-box;
+    border: $sg-ai-button-border-width solid transparent;
     cursor: pointer;
     font-family: 'Urbanist', sans-serif;
     font-weight: 700;
-    color: $ap-ai-button-text-color;
+    color: $sg-ai-button-text-color;
     transition: background 0.2s ease;
 
-    lucide-icon { color: $ap-ai-500; }
+    lucide-icon { color: $sg-ai-500; }
 
     &:hover:not(:disabled) {
       background:
-        linear-gradient($ap-ai-button-hover-bg, $ap-ai-button-hover-bg) padding-box,
-        $ap-ai-button-border-gradient border-box;
+        linear-gradient($sg-ai-button-hover-bg, $sg-ai-button-hover-bg) padding-box,
+        $sg-ai-button-border-gradient border-box;
     }
     &:active:not(:disabled) {
       background:
-        linear-gradient($ap-ai-button-active-bg, $ap-ai-button-active-bg) padding-box,
-        $ap-ai-button-border-gradient border-box;
+        linear-gradient($sg-ai-button-active-bg, $sg-ai-button-active-bg) padding-box,
+        $sg-ai-button-border-gradient border-box;
     }
 
     &:disabled {
-      opacity: $ap-ai-button-disabled-opacity;
+      opacity: $sg-ai-button-disabled-opacity;
       cursor: not-allowed;
     }
 
     // Sizes
-    &--large { height: $ap-ai-button-large-height; padding: $ap-ai-button-padding; font-size: 18px; }
-    &--medium { height: $ap-ai-button-medium-height; padding: 8px 16px; font-size: 16px; }
-    &--small { height: $ap-ai-button-small-height; padding: 6px 14px; font-size: 14px; }
+    &--large { height: $sg-ai-button-large-height; padding: $sg-ai-button-padding; font-size: 18px; }
+    &--medium { height: $sg-ai-button-medium-height; padding: 8px 16px; font-size: 16px; }
+    &--small { height: $sg-ai-button-small-height; padding: 6px 14px; font-size: 14px; }
   }
 
   // Mia logo inside AI button
@@ -1138,12 +1159,12 @@
 
     // Secundary
     &--secundary {
-      background-color: $ap-secondary-500;
-      lucide-icon { color: $ap-white-base; }
+      background-color: $sg-secondary-500;
+      lucide-icon { color: $sg-white-base; }
 
-      &:hover:not(:disabled) { background-color: $ap-secondary-600; }
-      &:active:not(:disabled) { background-color: $ap-secondary-700; }
-      &:disabled { background-color: $ap-secondary-200; }
+      &:hover:not(:disabled) { background-color: $sg-secondary-600; }
+      &:active:not(:disabled) { background-color: $sg-secondary-700; }
+      &:disabled { background-color: $sg-secondary-200; }
     }
 
     // White
@@ -1152,7 +1173,7 @@
       border: 1px solid $grey-100;
       lucide-icon { color: $grey-300; }
 
-      &:hover:not(:disabled) { background-color: $ap-neutral-50; }
+      &:hover:not(:disabled) { background-color: $sg-neutral-50; }
       &:active:not(:disabled) { background-color: $white-800; }
       &:disabled {
         lucide-icon { color: $grey-100; }
@@ -1176,7 +1197,7 @@
     &--small { width: 40px; height: 24px; }
 
     &--on {
-      background-color: $ap-secondary-500;
+      background-color: $sg-secondary-500;
       justify-content: flex-end;
     }
   }
@@ -1187,9 +1208,9 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     transition: all 0.25s ease;
 
-    .style-guide__toggle--large & { width: 24px; height: 24px; }
-    .style-guide__toggle--medium & { width: 20px; height: 20px; }
-    .style-guide__toggle--small & { width: 18px; height: 18px; }
+    .sg-sg__toggle--large & { width: 24px; height: 24px; }
+    .sg-sg__toggle--medium & { width: 20px; height: 20px; }
+    .sg-sg__toggle--small & { width: 18px; height: 18px; }
   }
 
   // Checkbox
@@ -1208,31 +1229,31 @@
 
     lucide-icon { color: white; }
 
-    &:hover:not(.style-guide__checkbox--active) {
-      border-color: $ap-secondary-500;
+    &:hover:not(.sg-sg__checkbox--active) {
+      border-color: $sg-secondary-500;
     }
 
     &--active {
-      background-color: $ap-secondary-500;
-      border-color: $ap-secondary-500;
+      background-color: $sg-secondary-500;
+      border-color: $sg-secondary-500;
     }
   }
 
   // Radio Button (PrimeNG Lara with custom colors)
   &__primeng-radios {
     // Override PrimeNG Lara theme with project's secundary color
-    --p-radiobutton-checked-background: #{$ap-secondary-500};
-    --p-radiobutton-checked-border-color: #{$ap-secondary-500};
-    --p-radiobutton-checked-hover-background: #{$ap-secondary-600};
-    --p-radiobutton-checked-hover-border-color: #{$ap-secondary-600};
-    --p-radiobutton-checked-focus-border-color: #{$ap-secondary-500};
-    --p-radiobutton-hover-border-color: #{$ap-secondary-300};
-    --p-radiobutton-focus-border-color: #{$ap-secondary-500};
-    --p-radiobutton-border-color: #{$ap-grey-100};
-    --p-radiobutton-icon-checked-color: #{$ap-white-base};
-    --p-radiobutton-icon-checked-hover-color: #{$ap-white-base};
-    --p-radiobutton-focus-ring-color: #{$ap-radio-focus-ring};
-    --p-radiobutton-focus-ring-shadow: 0 0 0 0.2rem #{$ap-radio-focus-ring};
+    --p-radiobutton-checked-background: #{$sg-secondary-500};
+    --p-radiobutton-checked-border-color: #{$sg-secondary-500};
+    --p-radiobutton-checked-hover-background: #{$sg-secondary-600};
+    --p-radiobutton-checked-hover-border-color: #{$sg-secondary-600};
+    --p-radiobutton-checked-focus-border-color: #{$sg-secondary-500};
+    --p-radiobutton-hover-border-color: #{$sg-secondary-300};
+    --p-radiobutton-focus-border-color: #{$sg-secondary-500};
+    --p-radiobutton-border-color: #{$sg-grey-100};
+    --p-radiobutton-icon-checked-color: #{$sg-white-base};
+    --p-radiobutton-icon-checked-hover-color: #{$sg-white-base};
+    --p-radiobutton-focus-ring-color: #{$sg-radio-focus-ring};
+    --p-radiobutton-focus-ring-shadow: 0 0 0 0.2rem #{$sg-radio-focus-ring};
 
     gap: 24px;
   }
@@ -1299,16 +1320,16 @@
 
     lucide-icon { color: $grey-300; transition: color 0.2s ease; }
 
-    &:hover:not(.style-guide__toggle-btn--active) {
+    &:hover:not(.sg-sg__toggle-btn--active) {
       background: $grey-50;
     }
 
     &--active {
-      border-color: $ap-secondary-300;
-      background: $ap-secondary-50;
-      color: $ap-secondary-500;
+      border-color: $sg-secondary-300;
+      background: $sg-secondary-50;
+      color: $sg-secondary-500;
 
-      lucide-icon { color: $ap-secondary-500; }
+      lucide-icon { color: $sg-secondary-500; }
     }
   }
 
@@ -1330,16 +1351,16 @@
     color: $grey-300;
     transition: all 0.2s ease;
 
-    &:hover:not(.style-guide__radio-tab--active) {
+    &:hover:not(.sg-sg__radio-tab--active) {
       color: $grey-500;
     }
 
     &--active {
-      border-color: $ap-secondary-500;
-      color: $ap-secondary-500;
+      border-color: $sg-secondary-500;
+      color: $sg-secondary-500;
 
       // Inner pill bg
-      background: $ap-secondary-50;
+      background: $sg-secondary-50;
     }
   }
 
@@ -1413,11 +1434,11 @@
 
     // Secundary
     &--secundary {
-      background: $ap-secondary-100;
+      background: $sg-secondary-100;
       border: none;
-      color: $ap-secondary-500;
+      color: $sg-secondary-500;
 
-      lucide-icon { color: $ap-secondary-500; }
+      lucide-icon { color: $sg-secondary-500; }
     }
 
     // Disabled
@@ -1572,31 +1593,31 @@
 
   // Toaster variants
   &__toaster--success {
-    .style-guide__toaster-stripe { background: #3ace76; }
-    .style-guide__toaster-icon-wrap { background: #ebfaf1; }
+    .sg-sg__toaster-stripe { background: #3ace76; }
+    .sg-sg__toaster-icon-wrap { background: #ebfaf1; }
     lucide-icon { color: #3ace76; }
-    .style-guide__toaster-close lucide-icon { color: $grey-300; }
+    .sg-sg__toaster-close lucide-icon { color: $grey-300; }
   }
 
   &__toaster--warning {
-    .style-guide__toaster-stripe { background: #ff962c; }
-    .style-guide__toaster-icon-wrap { background: #fff5eb; }
+    .sg-sg__toaster-stripe { background: #ff962c; }
+    .sg-sg__toaster-icon-wrap { background: #fff5eb; }
     lucide-icon { color: #ff962c; }
-    .style-guide__toaster-close lucide-icon { color: $grey-300; }
+    .sg-sg__toaster-close lucide-icon { color: $grey-300; }
   }
 
   &__toaster--error {
-    .style-guide__toaster-stripe { background: #fc3e3e; }
-    .style-guide__toaster-icon-wrap { background: #ffedec; }
+    .sg-sg__toaster-stripe { background: #fc3e3e; }
+    .sg-sg__toaster-icon-wrap { background: #ffedec; }
     lucide-icon { color: #fc3e3e; }
-    .style-guide__toaster-close lucide-icon { color: $grey-300; }
+    .sg-sg__toaster-close lucide-icon { color: $grey-300; }
   }
 
   &__toaster--info {
-    .style-guide__toaster-stripe { background: $primary-500; }
-    .style-guide__toaster-icon-wrap { background: #e6efff; }
+    .sg-sg__toaster-stripe { background: $primary-500; }
+    .sg-sg__toaster-icon-wrap { background: #e6efff; }
     lucide-icon { color: $primary-500; }
-    .style-guide__toaster-close lucide-icon { color: $grey-300; }
+    .sg-sg__toaster-close lucide-icon { color: $grey-300; }
   }
 
   // ═══════════════════════════════════════
@@ -1630,13 +1651,13 @@
 
     &:hover:not(&--active) {
       color: $grey-500;
-      background: $ap-neutral-50;
+      background: $sg-neutral-50;
     }
 
     &--active {
-      border-color: $ap-secondary-500;
-      color: $ap-secondary-500;
-      background: $ap-secondary-50;
+      border-color: $sg-secondary-500;
+      color: $sg-secondary-500;
+      background: $sg-secondary-50;
     }
   }
 
@@ -1701,11 +1722,20 @@
     }
 
     &--general { border-left: 4px solid $primary-500; }
-    &--confirmation { border-left: 4px solid $ap-success-400; }
-    &--alert { border-left: 4px solid $ap-secondary-500; }
-    &--error { border-left: 4px solid $ap-error-400; }
+    &--confirmation { border-left: 4px solid $sg-success-400; }
+    &--alert { border-left: 4px solid $sg-secondary-500; }
+    &--error { border-left: 4px solid $sg-error-400; }
     &--warning { border-left: 4px solid #e8922d; }
-    &--launch { border-left: 4px solid $ap-secondary-500; }
+    &--welcome { border-left: 4px solid $sg-secondary-500; }
+    &--expired { border-left: 4px solid $sg-warning-400; }
+    &--launch {
+      border-left: 4px solid transparent;
+      background:
+        linear-gradient(white, white) padding-box,
+        $sg-ia-gradient border-box;
+      border: 1px solid transparent;
+      border-left: 4px solid $sg-ai-500;
+    }
   }
 
   &__modal-trigger-label {
@@ -1719,324 +1749,6 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     color: $grey-300;
-  }
-
-  // ═══════════════════════════════════════
-  // Modal Especial: Lanzamiento ("Advocates se renovó")
-  // ═══════════════════════════════════════
-  &__special-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: $ap-special-modal-overlay-bg;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 20px;
-    animation: ap-modal-fade-in 0.2s ease;
-  }
-
-  &__special-modal-launch {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: $ap-special-launch-gap;
-    max-width: 1293px;
-    width: 100%;
-    animation: ap-modal-scale-in 0.25s ease;
-  }
-
-  &__special-modal-launch-close {
-    position: absolute;
-    top: 0;
-    right: -60px;
-    width: $ap-special-launch-close-size;
-    height: $ap-special-launch-close-size;
-    border-radius: 50%;
-    background: $white-500;
-    border: none;
-    cursor: pointer;
-    color: $grey-500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.2s ease;
-
-    &:hover { background: $neutral-50; }
-  }
-
-  &__special-launch-left {
-    position: relative;
-    background: $white-500;
-    padding: $ap-special-launch-panel-padding;
-    border-radius: $ap-special-launch-panel-radius 0 0 $ap-special-launch-panel-radius;
-    width: $ap-special-launch-left-width;
-    flex-shrink: 0;
-    overflow: hidden;
-  }
-
-  &__special-modal-circle {
-    position: absolute;
-    width: $ap-special-modal-circle-size;
-    height: $ap-special-modal-circle-size;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-
-    &--top-right {
-      background: $ap-special-modal-circle-secondary;
-      top: -60%;
-      right: -60%;
-    }
-
-    &--bottom-left {
-      background: $ap-special-modal-circle-primary;
-      bottom: -60%;
-      left: -60%;
-    }
-  }
-
-  &__special-launch-left-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  &__special-launch-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    width: $ap-special-launch-badge-width;
-    height: $ap-special-launch-badge-height;
-    border-radius: $ap-special-launch-badge-radius;
-    border: $ap-special-launch-badge-border;
-    background: $ap-special-launch-badge-bg;
-    padding: 0 16px;
-
-    lucide-icon { color: $ap-primary-500; flex-shrink: 0; }
-  }
-
-  &__special-launch-badge-text {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    background: $ap-ia-text-gradient;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  &__special-launch-hero-title {
-    font-family: $ap-ia-hero-title-font;
-    font-size: $ap-ia-hero-title-size;
-    font-weight: $ap-ia-hero-title-weight;
-    line-height: $ap-ia-hero-title-line-height;
-    letter-spacing: $ap-ia-hero-title-letter-spacing;
-    background: $ap-ia-hero-title-gradient;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-  }
-
-  &__special-launch-description {
-    font-family: 'DM Sans', sans-serif;
-    font-size: $ap-special-launch-desc-size;
-    font-weight: 400;
-    color: $ap-special-launch-desc-color;
-    line-height: $ap-special-launch-desc-line-height;
-    letter-spacing: $ap-special-launch-desc-tracking;
-    margin: 0;
-  }
-
-  &__special-launch-image-wrap {
-    position: relative;
-    width: 100%;
-    height: $ap-special-launch-image-height;
-    border-radius: $ap-special-launch-image-radius;
-    overflow: hidden;
-  }
-
-  &__special-launch-image {
-    position: absolute;
-    inset: 0;
-    background: $ap-special-launch-image-bg;
-    filter: blur(2px);
-    opacity: 0.7;
-  }
-
-  &__special-launch-overlay-btn {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    height: $ap-special-launch-overlay-btn-height;
-    padding: 0 20px;
-    border-radius: 12px;
-    background: $ap-special-launch-overlay-btn-bg;
-    color: $white-500;
-    border: none;
-    cursor: pointer;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    z-index: 2;
-    transition: background-color 0.2s ease;
-
-    lucide-icon { color: $white-500; }
-
-    &:hover { background: $ap-special-launch-overlay-btn-hover; }
-  }
-
-  &__special-launch-right {
-    background: $white-500;
-    padding: $ap-special-launch-panel-padding;
-    border-radius: 0 $ap-special-launch-panel-radius $ap-special-launch-panel-radius 0;
-    width: $ap-special-launch-right-width;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  &__special-launch-right-title {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: $grey-800;
-    letter-spacing: -0.4px;
-    margin: 0;
-  }
-
-  &__special-launch-features {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  &__special-launch-feature {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: $white-500;
-    border-radius: 16px;
-    padding: 16px 24px;
-    box-shadow: 2px 5px 13.5px rgba(0, 0, 0, 0.05);
-  }
-
-  &__special-launch-feature-icon {
-    width: $ap-special-launch-feature-card-icon-size;
-    height: $ap-special-launch-feature-card-icon-size;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 4px;
-
-    &--1 { background: $ap-special-launch-feature-1-bg; lucide-icon { color: $ap-special-launch-feature-1-color; } }
-    &--2 { background: $ap-special-launch-feature-2-bg; lucide-icon { color: $ap-special-launch-feature-2-color; } }
-    &--3 { background: $ap-special-launch-feature-3-bg; lucide-icon { color: $ap-special-launch-feature-3-color; } }
-    &--4 { background: $ap-special-launch-feature-4-bg; lucide-icon { color: $ap-special-launch-feature-4-color; } }
-  }
-
-  &__special-launch-feature-title {
-    font-family: 'Urbanist', sans-serif;
-    font-size: $ap-special-launch-feature-title-size;
-    font-weight: 600;
-    color: $ap-special-launch-feature-title-color;
-    margin: 0;
-  }
-
-  &__special-launch-feature-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: $ap-special-launch-feature-desc-size;
-    font-weight: 400;
-    color: $ap-special-launch-feature-desc-color;
-    line-height: $ap-special-launch-feature-desc-line-height;
-    margin: 0;
-  }
-
-  &__special-launch-note {
-    background: $ap-ia-panel-bg;
-    padding: $ap-special-launch-note-padding;
-    border-radius: $ap-special-launch-note-radius;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__special-launch-note-heading {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    lucide-icon { color: $ap-primary-500; }
-  }
-
-  &__special-launch-note-heading-text {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    background: $ap-ia-text-gradient;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  &__special-launch-note-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: $ap-special-launch-note-desc-color;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  &__special-launch-note-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    height: 48px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    background: $ap-special-launch-note-btn-bg;
-    color: $white-500;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    transition: background-color 0.2s ease;
-
-    &:hover { background: $ap-special-launch-note-btn-hover; }
-  }
-
-  // Responsive: el modal se apila en pantallas angostas
-  @media (max-width: 1300px) {
-    &__special-modal-launch {
-      flex-direction: column;
-      max-width: 720px;
-    }
-    &__special-launch-left,
-    &__special-launch-right {
-      width: 100%;
-      border-radius: $ap-special-launch-panel-radius $ap-special-launch-panel-radius 0 0;
-    }
-    &__special-launch-right {
-      border-radius: 0 0 $ap-special-launch-panel-radius $ap-special-launch-panel-radius;
-    }
-  }
-
-  @media (max-width: 640px) {
-    &__special-launch-features { grid-template-columns: 1fr; }
   }
 
   // ═══════════════════════════════════════
@@ -2120,7 +1832,7 @@
   &__stepper-preview {
     width: 100%;
     padding: 24px;
-    background: $ap-neutral-50;
+    background: $sg-neutral-50;
     border-radius: 12px;
     border: 1px solid $grey-50;
   }
@@ -2245,17 +1957,6 @@
   }
 
   // ═══════════════════════════════════════
-  // Gradient swatch (IA gradient in color palette)
-  // ═══════════════════════════════════════
-  &__swatch--gradient {
-    background: $ap-ia-gradient;
-  }
-
-  &__swatch--gradient-row {
-    grid-column: span 2;
-  }
-
-  // ═══════════════════════════════════════
   // Elementos de IA
   // ═══════════════════════════════════════
 
@@ -2265,13 +1966,13 @@
   }
 
   &__ia-hero-title {
-    font-family: $ap-ia-hero-title-font;
-    font-size: $ap-ia-hero-title-size;
-    line-height: $ap-ia-hero-title-line-height;
-    font-weight: $ap-ia-hero-title-weight;
-    letter-spacing: $ap-ia-hero-title-letter-spacing;
+    font-family: $sg-ia-hero-title-font;
+    font-size: $sg-ia-hero-title-size;
+    line-height: 48px;
+    font-weight: $sg-ia-hero-title-weight;
+    letter-spacing: $sg-ia-hero-title-letter-spacing;
     margin: 0;
-    background: $ap-ia-hero-title-gradient;
+    background: $sg-ia-hero-title-gradient;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2284,33 +1985,33 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: $ap-ia-note-padding;
-    background: $ap-ia-note-bg;
-    border-radius: $ap-ia-note-radius;
+    padding: $sg-ia-note-padding;
+    background: $sg-ia-note-bg;
+    border-radius: $sg-ia-note-radius;
   }
 
   &__ia-note-icon {
-    color: $ap-primary-500;
+    color: $sg-primary-500;
     flex-shrink: 0;
   }
 
   &__ia-note-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: $ap-ia-note-text-size;
+    font-size: $sg-ia-note-text-size;
     font-weight: 400;
     line-height: 21px;
     letter-spacing: -0.24px;
-    color: $ap-ia-note-text-color;
+    color: $sg-ia-note-text-color;
   }
 
-  // Panel: Creando ideas
+  // Panel: Generando con IA
   &__ia-panel {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: $ap-ia-panel-padding;
-    border-radius: $ap-ia-panel-radius;
-    background: $ap-ia-panel-bg;
+    padding: $sg-ia-panel-padding;
+    border-radius: $sg-ia-panel-radius;
+    background: $sg-ia-panel-bg;
   }
 
   &__ia-panel-header {
@@ -2323,16 +2024,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: $ap-ia-panel-icon-size;
-    height: $ap-ia-panel-icon-size;
+    width: $sg-ia-panel-icon-size;
+    height: $sg-ia-panel-icon-size;
     padding: 12px;
-    background: $ap-ia-panel-icon-bg;
+    background: $sg-ia-panel-icon-bg;
     border-radius: 50px;
     flex-shrink: 0;
   }
 
   &__ia-panel-icon {
-    color: $ap-primary-500;
+    color: $sg-primary-500;
   }
 
   &__ia-panel-heading {
@@ -2344,11 +2045,11 @@
 
   &__ia-panel-title {
     font-family: 'Urbanist', sans-serif;
-    font-size: $ap-ia-panel-title-font-size;
+    font-size: $sg-ia-panel-title-font-size;
     font-weight: 600;
     line-height: 1.2;
     margin: 0;
-    background: $ap-ia-text-gradient;
+    background: $sg-ia-text-gradient;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2357,10 +2058,10 @@
 
   &__ia-panel-subtitle {
     font-family: 'DM Sans', sans-serif;
-    font-size: $ap-ia-panel-subtitle-font-size;
+    font-size: $sg-ia-panel-subtitle-font-size;
     font-weight: 400;
     letter-spacing: -0.28px;
-    color: $ap-ia-panel-subtitle-color;
+    color: $sg-ia-panel-subtitle-color;
     margin: 0;
   }
 
@@ -2369,7 +2070,7 @@
     position: relative;
     width: 100%;
     height: 6px;
-    background: $ap-grey-50;
+    background: $sg-grey-50;
     border-radius: 50px;
     overflow: hidden;
   }
@@ -2379,8 +2080,8 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 50%;
-    background: $ap-ia-progress-gradient;
+    width: 40%;
+    background: $sg-ia-progress-gradient;
     border-radius: 50px;
   }
 
@@ -2391,15 +2092,15 @@
     gap: 12px;
     height: 60px;
     padding: 8px;
-    background: $ap-white-base;
+    background: $sg-white-base;
     border-radius: 10px;
     box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.05);
   }
 
   &__ia-panel-status-icon {
-    color: $ap-primary-500;
+    color: $sg-primary-500;
     flex-shrink: 0;
-    animation: ap-sg-spin 1.2s linear infinite;
+    animation: sg-sg-spin 1.2s linear infinite;
   }
 
   &__ia-panel-status-text {
@@ -2407,7 +2108,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    background: $ap-ia-text-gradient;
+    background: $sg-ia-text-gradient;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2421,11 +2122,11 @@
     height: 20px;
     padding: 8px 10px;
     border-radius: 10px;
-    background: $ap-ia-gradient;
+    background: $sg-ia-gradient;
     font-family: 'DM Sans', sans-serif;
     font-size: 10px;
     font-weight: 500;
-    color: $ap-white-base;
+    color: $sg-white-base;
     flex-shrink: 0;
     white-space: nowrap;
   }
@@ -2438,7 +2139,7 @@
   }
 
   &__ia-panel-footer-icon {
-    color: $ap-grey-300;
+    color: $sg-grey-300;
     flex-shrink: 0;
   }
 
@@ -2446,7 +2147,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 400;
-    color: $ap-ia-panel-subtitle-color;
+    color: $sg-ia-panel-subtitle-color;
   }
 
   // ═══════════════════════════════════════
@@ -2455,41 +2156,41 @@
   &__labels-grid { display: flex; flex-direction: column; gap: 12px; }
   &__labels-row {
     display: grid; grid-template-columns: 120px 1fr; align-items: center;
-    gap: 24px; padding: 8px 0; border-bottom: 1px solid $ap-grey-50;
+    gap: 24px; padding: 8px 0; border-bottom: 1px solid $sg-grey-50;
     &:last-child { border-bottom: none; }
   }
   &__labels-name {
     font-family: 'Urbanist', sans-serif; font-size: 14px;
-    font-weight: 600; color: $ap-grey-800;
+    font-weight: 600; color: $sg-grey-800;
   }
   &__labels-samples { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
   &__label {
     display: inline-flex; align-items: center; justify-content: center;
-    gap: $ap-label-gap; height: $ap-label-height; padding: $ap-label-padding;
-    border-radius: $ap-label-radius; font-family: 'DM Sans', sans-serif;
-    font-size: $ap-label-font-size; font-weight: $ap-label-font-weight;
-    letter-spacing: $ap-label-letter-spacing; white-space: nowrap; box-sizing: border-box;
+    gap: $sg-label-gap; height: $sg-label-height; padding: $sg-label-padding;
+    border-radius: $sg-label-radius; font-family: 'DM Sans', sans-serif;
+    font-size: $sg-label-font-size; font-weight: $sg-label-font-weight;
+    letter-spacing: $sg-label-letter-spacing; white-space: nowrap; box-sizing: border-box;
 
     @each $n, $bg, $tx in (
-      (azul, $ap-label-azul-bg, $ap-label-azul-text),
-      (verde, $ap-label-verde-bg, $ap-label-verde-text),
-      (amarillo, $ap-label-amarillo-bg, $ap-label-amarillo-text),
-      (rojo, $ap-label-rojo-bg, $ap-label-rojo-text),
-      (violeta, $ap-label-violeta-bg, $ap-label-violeta-text),
-      (naranja, $ap-label-naranja-bg, $ap-label-naranja-text),
-      (turquesa, $ap-label-turquesa-bg, $ap-label-turquesa-text),
-      (gris, $ap-label-gris-bg, $ap-label-gris-text),
-      (vinotinto, $ap-label-vinotinto-bg, $ap-label-vinotinto-text),
-      (olivo, $ap-label-olivo-bg, $ap-label-olivo-text)
+      (azul, $sg-label-azul-bg, $sg-label-azul-text),
+      (verde, $sg-label-verde-bg, $sg-label-verde-text),
+      (amarillo, $sg-label-amarillo-bg, $sg-label-amarillo-text),
+      (rojo, $sg-label-rojo-bg, $sg-label-rojo-text),
+      (violeta, $sg-label-violeta-bg, $sg-label-violeta-text),
+      (naranja, $sg-label-naranja-bg, $sg-label-naranja-text),
+      (turquesa, $sg-label-turquesa-bg, $sg-label-turquesa-text),
+      (gris, $sg-label-gris-bg, $sg-label-gris-text),
+      (vinotinto, $sg-label-vinotinto-bg, $sg-label-vinotinto-text),
+      (olivo, $sg-label-olivo-bg, $sg-label-olivo-text)
     ) {
       &--#{$n} { background: $bg; color: $tx; }
     }
 
     &--ia {
-      background: $ap-label-ia-bg; border: 1px solid $ap-label-ia-border;
-      .style-guide__label-text {
-        background: $ap-label-ia-text-gradient;
+      background: $sg-label-ia-bg; border: 1px solid $sg-label-ia-border;
+      .sg-sg__label-text {
+        background: $sg-label-ia-text-gradient;
         -webkit-background-clip: text; background-clip: text;
         color: transparent; -webkit-text-fill-color: transparent;
       }
@@ -2498,20 +2199,461 @@
 
   &__label-action {
     display: inline-flex; align-items: center; justify-content: center;
-    width: $ap-label-action-size; height: $ap-label-action-size;
-    border-radius: $ap-label-action-radius; flex-shrink: 0;
-    &--white-bg { background: $ap-white-base; }
-    lucide-icon { width: $ap-label-action-icon-size; height: $ap-label-action-icon-size; }
+    width: $sg-label-action-size; height: $sg-label-action-size;
+    border-radius: $sg-label-action-radius; flex-shrink: 0;
+    &--white-bg { background: $sg-white-base; }
+    lucide-icon { width: $sg-label-action-icon-size; height: $sg-label-action-icon-size; }
+  }
+
+  // ═══════════════════════════════════════
+  // Modales Especiales (Bienvenida, Plan Vencido, Lanzamiento)
+  // ═══════════════════════════════════════
+  &__special-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: $sg-special-modal-overlay-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: sg-sg-fade-in 0.2s ease;
+  }
+
+  &__special-modal {
+    position: relative;
+    background: $sg-special-modal-bg;
+    border: $sg-special-modal-border;
+    border-radius: $sg-special-modal-radius;
+    padding: $sg-special-modal-padding;
+    max-width: 640px;
+    width: 100%;
+    overflow: hidden;
+    animation: sg-sg-scale-in 0.25s ease;
+  }
+
+  &__special-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $sg-grey-500;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover { background: $sg-neutral-50; }
+  }
+
+  &__special-modal-circle {
+    position: absolute;
+    width: $sg-special-modal-circle-size;
+    height: $sg-special-modal-circle-size;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+
+    &--top-right {
+      background: $sg-special-modal-circle-secondary;
+      top: -60%;
+      right: -60%;
+    }
+
+    &--bottom-left {
+      background: $sg-special-modal-circle-primary;
+      bottom: -60%;
+      left: -60%;
+    }
+  }
+
+  &__special-modal-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+  }
+
+  &__special-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  &__special-modal-icon-circle {
+    width: $sg-special-modal-icon-circle-size;
+    height: $sg-special-modal-icon-circle-size;
+    border-radius: 40px;
+    background: $sg-special-modal-icon-circle-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    lucide-icon {
+      color: $sg-special-modal-icon-color;
+      width: $sg-special-modal-icon-size;
+      height: $sg-special-modal-icon-size;
+    }
+  }
+
+  &__special-modal-title {
+    font-family: $sg-special-modal-title-font;
+    font-size: $sg-special-modal-title-size;
+    font-weight: $sg-special-modal-title-weight;
+    color: $sg-special-modal-title-color;
+    letter-spacing: $sg-special-modal-title-tracking;
+    margin: 0;
+    line-height: 1.1;
+
+    &--expired {
+      font-size: $sg-special-modal-title-size-expired;
+      letter-spacing: $sg-special-modal-title-tracking-expired;
+      font-weight: 400;
+
+      strong {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__special-modal-title-regular {
+    font-weight: 400;
+  }
+
+  &__special-modal-body {
+    background: $sg-special-modal-body-bg;
+    border-radius: $sg-special-modal-body-radius;
+    padding: $sg-special-modal-body-padding;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin: 0 auto;
+
+    &--welcome { max-width: 518px; width: 100%; }
+    &--expired { max-width: 566px; width: 100%; }
+  }
+
+  &__special-modal-body-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: $sg-special-modal-body-text-size;
+    font-weight: $sg-special-modal-body-text-weight;
+    color: $sg-special-modal-body-text-color;
+    line-height: $sg-special-modal-body-text-line-height;
+    letter-spacing: $sg-special-modal-body-text-tracking;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__special-modal-actions {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  // ═══ Modal 3: Lanzamiento ═══
+  &__special-modal-launch {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: $sg-special-launch-gap;
+    max-width: 1293px;
+    width: 100%;
+    animation: sg-sg-scale-in 0.25s ease;
+  }
+
+  &__special-modal-launch-close {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    width: $sg-special-launch-close-size;
+    height: $sg-special-launch-close-size;
+    border-radius: 50%;
+    background: $sg-white-base;
+    border: none;
+    cursor: pointer;
+    color: $sg-grey-500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &:hover { background: $sg-neutral-50; }
+  }
+
+  &__special-launch-left {
+    position: relative;
+    background: $sg-white-base;
+    padding: $sg-special-launch-panel-padding;
+    border-radius: $sg-special-launch-panel-radius 0 0 $sg-special-launch-panel-radius;
+    width: $sg-special-launch-left-width;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  &__special-launch-left-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__special-launch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: $sg-special-launch-badge-width;
+    height: $sg-special-launch-badge-height;
+    border-radius: $sg-special-launch-badge-radius;
+    border: $sg-special-launch-badge-border;
+    background: $sg-special-launch-badge-bg;
+    padding: 0 16px;
+
+    lucide-icon {
+      color: $sg-primary-500;
+      flex-shrink: 0;
+    }
+  }
+
+  &__special-launch-badge-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    background: $sg-ia-text-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__special-launch-hero-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: $sg-special-launch-hero-title-size;
+    font-weight: 600;
+    line-height: $sg-special-launch-hero-title-line-height;
+    letter-spacing: $sg-special-launch-hero-title-tracking;
+    background: $sg-ia-hero-title-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  &__special-launch-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: $sg-special-launch-desc-size;
+    font-weight: 400;
+    color: $sg-special-launch-desc-color;
+    line-height: $sg-special-launch-desc-line-height;
+    letter-spacing: $sg-special-launch-desc-tracking;
+    margin: 0;
+  }
+
+  &__special-launch-image-wrap {
+    position: relative;
+    width: 100%;
+    height: $sg-special-launch-image-height;
+    border-radius: $sg-special-launch-image-radius;
+    overflow: hidden;
+  }
+
+  &__special-launch-image {
+    position: absolute;
+    inset: 0;
+    background: $sg-special-launch-image-bg;
+    filter: blur(2px);
+    opacity: 0.7;
+  }
+
+  &__special-launch-overlay-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: $sg-special-launch-overlay-btn-height;
+    padding: 0 20px;
+    border-radius: 12px;
+    background: $sg-special-launch-overlay-btn-bg;
+    color: $sg-white-base;
+    border: none;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 2;
+
+    lucide-icon { color: $sg-white-base; }
+
+    &:hover { background: $sg-secondary-600; }
+  }
+
+  &__special-launch-right {
+    background: $sg-white-base;
+    padding: $sg-special-launch-panel-padding;
+    border-radius: 0 $sg-special-launch-panel-radius $sg-special-launch-panel-radius 0;
+    width: $sg-special-launch-right-width;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__special-launch-right-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: $sg-grey-800;
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  &__special-launch-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  &__special-launch-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: $sg-white-base;
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: 2px 5px 13.5px rgba(0, 0, 0, 0.05);
+  }
+
+  &__special-launch-feature-icon {
+    width: $sg-special-launch-feature-card-icon-size;
+    height: $sg-special-launch-feature-card-icon-size;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+
+    &--1 { background: $sg-special-launch-feature-1-bg; lucide-icon { color: $sg-primary-500; } }
+    &--2 { background: $sg-special-launch-feature-2-bg; lucide-icon { color: #065f46; } }
+    &--3 { background: $sg-special-launch-feature-3-bg; lucide-icon { color: $sg-secondary-500; } }
+    &--4 { background: $sg-special-launch-feature-4-bg; lucide-icon { color: #92400e; } }
+  }
+
+  &__special-launch-feature-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: $sg-special-launch-feature-title-size;
+    font-weight: 600;
+    color: $sg-special-launch-feature-title-color;
+    margin: 0;
+  }
+
+  &__special-launch-feature-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: $sg-special-launch-feature-desc-size;
+    font-weight: 400;
+    color: $sg-special-launch-feature-desc-color;
+    line-height: $sg-special-launch-feature-desc-line-height;
+    margin: 0;
+  }
+
+  &__special-launch-note {
+    background: $sg-ia-note-bg;
+    padding: $sg-special-launch-note-padding;
+    border-radius: $sg-special-launch-note-radius;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__special-launch-note-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    lucide-icon { color: $sg-primary-500; }
+  }
+
+  &__special-launch-note-heading-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    background: $sg-ia-text-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__special-launch-note-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $sg-primary-800;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__special-launch-footer {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: auto;
+  }
+
+  &__special-launch-footer-cancel {
+    flex: 1;
+  }
+
+  &__special-launch-footer-mia {
+    width: $sg-special-launch-mia-btn-width;
+    max-width: 100%;
+    height: $sg-special-launch-mia-btn-height;
   }
 }
 
-@keyframes ap-sg-spin {
+@keyframes sg-sg-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sg-sg-scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+// Responsive: stack the launch modal on smaller screens
+@media (max-width: 1300px) {
+  .sg-sg__special-modal-launch {
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .sg-sg__special-launch-left,
+  .sg-sg__special-launch-right {
+    width: 100%;
+    border-radius: $sg-special-launch-panel-radius $sg-special-launch-panel-radius 0 0;
+  }
+  .sg-sg__special-launch-right {
+    border-radius: 0 0 $sg-special-launch-panel-radius $sg-special-launch-panel-radius;
+  }
+}
+
+@keyframes sg-sg-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
 // ═══════════════════════════════════════
-// Table Component (AdvocatesPro only)
+// Table Component (SocialGest only)
 // ═══════════════════════════════════════
 .sg-table {
   width: 100%;
@@ -2521,7 +2663,7 @@
     font-family: 'Urbanist', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: $ap-grey-800;
+    color: $sg-grey-800;
     margin: 0 0 24px 0;
     line-height: 24px;
   }
@@ -2649,7 +2791,7 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    color: $ap-grey-800;
+    color: $sg-grey-800;
     border-radius: 8px;
     transition: background-color 0.15s ease;
 
@@ -2713,8 +2855,8 @@
     }
 
     &--active {
-      color: $ap-secondary-500;
-      border-bottom-color: $ap-secondary-500;
+      color: $sg-secondary-500;
+      border-bottom-color: $sg-secondary-500;
     }
   }
 }
@@ -2727,12 +2869,127 @@
   margin-bottom: 16px;
 }
 
-@keyframes ap-modal-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+// ========================================
+// SocialGest Color Overrides for Shared UI Components
+// Replaces AdvocatesPro pink (#ee4a79) → SocialGest orange ($sg-secondary-*)
+// ========================================
+
+// --- Bar Vertical: secondary variant ---
+.sg-sg .app-bar-vertical--secondary .app-bar-vertical__fill {
+  background: linear-gradient(180deg, $sg-secondary-300 0%, $sg-secondary-50 100%) !important;
+}
+.sg-sg .app-bar-vertical--secondary .app-bar-vertical__track:hover .app-bar-vertical__fill {
+  background: linear-gradient(180deg, $sg-secondary-500 0%, $sg-secondary-50 100%) !important;
 }
 
-@keyframes ap-modal-scale-in {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+// --- Bar Horizontal: secondary variant ---
+.sg-sg .app-bar-horizontal--secondary .app-bar-horizontal__fill {
+  background: linear-gradient(90deg, $sg-secondary-50 0%, $sg-secondary-300 100%) !important;
+}
+.sg-sg .app-bar-horizontal--secondary .app-bar-horizontal__track:hover .app-bar-horizontal__fill {
+  background: linear-gradient(90deg, $sg-secondary-50 0%, $sg-secondary-500 100%) !important;
+}
+
+// --- Sparkline: secondary variant ---
+.sg-sg .app-sparkline--secondary .app-sparkline__line {
+  stroke: $sg-secondary-500 !important;
+}
+.sg-sg .app-sparkline--secondary .app-sparkline__area {
+  fill: url(#sg-sparkline-secondary-area) !important;
+}
+
+// --- Menu: radio & checkbox selected states + selected row background ---
+.sg-sg .app-menu__item--selected {
+  background: $sg-secondary-50 !important;
+}
+.sg-sg .app-menu__radio--selected {
+  border-color: $sg-secondary-500 !important;
+}
+.sg-sg .app-menu__radio-dot {
+  background: $sg-secondary-500 !important;
+}
+.sg-sg .app-menu__checkbox--selected {
+  background: $sg-secondary-500 !important;
+  border-color: $sg-secondary-500 !important;
+}
+
+// --- Select Segment (all variants): hover & selected border ---
+.sg-sg .select-segment__item:hover,
+.sg-sg .select-segment__item--hover,
+.sg-sg .select-segment-img__item:hover,
+.sg-sg .select-segment-img__item--hover,
+.sg-sg .select-chips__item:hover,
+.sg-sg .select-chips__item--hover,
+.sg-sg .select-colorpicker__item:hover,
+.sg-sg .select-colorpicker__item--hover,
+.sg-sg .select-user__item:hover,
+.sg-sg .select-user__item--hover {
+  border-color: $sg-secondary-500 !important;
+}
+
+.sg-sg .select-segment__item--selected,
+.sg-sg .select-segment-img__item--selected,
+.sg-sg .select-chips__item--selected,
+.sg-sg .select-colorpicker__item--selected,
+.sg-sg .select-user__item--selected {
+  border-color: $sg-secondary-500 !important;
+}
+
+// --- Select Segment (all variants): selected inner background ---
+.sg-sg .select-segment__inner--selected,
+.sg-sg .select-segment-img__inner--selected,
+.sg-sg .select-chips__inner--selected,
+.sg-sg .select-colorpicker__inner--selected,
+.sg-sg .select-user__inner--selected {
+  background: $sg-secondary-50 !important;
+}
+
+// --- Select Segment: badge/chip colors ---
+.sg-sg .select-segment__badge {
+  background: $sg-secondary-100 !important;
+
+  lucide-icon {
+    color: $sg-secondary-500 !important;
+  }
+}
+.sg-sg .select-segment__badge span {
+  color: $sg-secondary-500 !important;
+}
+
+// --- Confirm Modal: alert variant (pink → warning/orange per SocialGest) ---
+.sg-sg .confirm-modal--alert .confirm-modal__icon-wrap {
+  background: $sg-warning-50 !important;
+  color: $sg-warning-400 !important;
+}
+.sg-sg .confirm-modal--alert .confirm-modal__message-box {
+  background: $sg-warning-50 !important;
+}
+.sg-sg .confirm-modal--alert .confirm-modal__confirm-btn {
+  background: $sg-warning-400 !important;
+
+  &:hover { background: $sg-warning-500 !important; }
+  &:active { background: $sg-warning-600 !important; }
+}
+
+// --- Select: disabled state ---
+.sg-sg .app-select--disabled {
+  background-color: $sg-grey-100 !important;
+  border-color: $sg-grey-100 !important;
+
+  .app-select__value,
+  .app-select__icon {
+    color: $sg-grey-200 !important;
+  }
+}
+
+// --- Search Input: disabled state ---
+.sg-sg .search-input--disabled {
+  background-color: $sg-grey-100 !important;
+  border-color: $sg-grey-100 !important;
+
+  .search-input__field,
+  .search-input__field::placeholder,
+  .search-input__icon {
+    color: $sg-grey-200 !important;
+  }
 }

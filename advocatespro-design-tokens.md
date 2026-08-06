@@ -147,6 +147,135 @@ Mismos valores hex que Quantico (reservado para botones AI).
 
 ---
 
+## 9.2. IA Gradiente
+
+Gradiente distintivo para elementos de IA en AdvocatesPro.
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$ap-ia-gradient` | `linear-gradient(19.84deg, $ap-primary-500 2.99%, $ap-ai-500 105.98%)` | Botones, iconos, headers de IA |
+
+Se compone del gradiente de `$ap-primary-500` (#0061fe) al `$ap-ai-500` (#00aaff) en un ángulo de 19.84°.
+
+---
+
+## 9.3. Elementos de IA
+
+Coleccion de 3 componentes distintivos para funcionalidades de IA en AdvocatesPro: un titulo hero con gradiente tricolor, una nota informativa compacta y un panel grande de progreso "Creando ideas".
+
+### 1. Titulo con degradés para IA
+
+Encabezado grande con texto de gradiente tricolor (azul &rarr; azul oscuro &rarr; rosa). Uso: pantallas hero y encabezados destacados de IA.
+
+- Fuente: `Urbanist SemiBold 40px`, line-height 40px, tracking -0.8px
+- Gradiente de texto: `$ap-ia-hero-title-gradient` (blue → dark blue → rose)
+- Aplicado con `background-clip: text; -webkit-text-fill-color: transparent;`
+
+### 2. Nota de IA
+
+Caja compacta para hints o notas informativas debajo de componentes/flujos.
+
+- Fondo: `$ap-ia-note-bg` (gradiente azul suave)
+- Padding: `4px 16px` | Border-radius: `10px`
+- Flex row, gap 12px, items center
+- Icono Sparkles (16px) en `$ap-primary-500`
+- Texto: `DM Sans Regular 12px`, color `$ap-primary-900`, tracking -0.24px, line-height 21px
+
+### 3. Creando ideas (panel)
+
+Panel grande que muestra un proceso de generacion en curso.
+
+- Fondo: `$ap-ia-panel-bg` (gradiente suave primary-white-pink)
+- Padding: `24px 32px` | Border-radius: `16px`
+- Estructura: header (icono + titulo + subtitulo), barra de progreso, card interna de estado y footer informativo
+- Titulos usan `$ap-ia-text-gradient` como texto de gradiente
+- Badge "En progreso" con `$ap-ia-gradient` de fondo
+
+### Tokens
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$ap-ia-panel-bg` | `linear-gradient(108.20deg, rgba(230,239,255,0.7) 0%, $ap-white-base 50.75%, rgba(253,237,242,0.7) 100%)` | Fondo del panel "Creando ideas" |
+| `$ap-ia-note-bg` | `linear-gradient(161.67deg, rgba(230,239,255,0.33) → rgba(133,177,255,0.33))` | Fondo de la Nota de IA |
+| `$ap-ia-text-gradient` | `linear-gradient(5.79deg, $ap-primary-500 2.99%, $ap-ai-500 105.98%)` | Gradiente de texto para titulos/subtitulos de IA |
+| `$ap-ia-hero-title-gradient` | `linear-gradient(to right, $ap-primary-500 1.85%, $ap-primary-900 49.5%, $ap-secondary-500 82.2%)` | Gradiente de texto tricolor para titulos hero de IA (azul → azul oscuro → rosa) |
+| `$ap-ia-progress-gradient` | `linear-gradient(90deg, $ap-primary-500, $ap-primary-100)` | Fill de la barra de progreso IA |
+| `$ap-ia-panel-padding` | `24px 32px` | Padding del panel IA |
+| `$ap-ia-panel-radius` | `16px` | Border radius del panel IA |
+| `$ap-ia-panel-icon-size` | `48px` | Tamano del contenedor del icono Sparkles |
+| `$ap-ia-panel-icon-bg` | `$ap-white-base` (#ffffff) | Fondo del contenedor del icono |
+| `$ap-ia-panel-title-color` | `$ap-primary-900` (#00296b) | Color base del titulo (usado con text gradient) |
+| `$ap-ia-panel-title-font-size` | `18px` | Tamano del titulo del panel |
+| `$ap-ia-panel-subtitle-color` | `$ap-primary-900` (#00296b) | Color del subtitulo del panel |
+| `$ap-ia-panel-subtitle-font-size` | `14px` | Tamano del subtitulo |
+| `$ap-ia-note-padding` | `4px 16px` | Padding de la nota de IA |
+| `$ap-ia-note-radius` | `10px` | Border radius de la nota |
+| `$ap-ia-note-text-color` | `$ap-primary-900` (#00296b) | Color del texto de la nota |
+| `$ap-ia-note-text-size` | `12px` | Tamano del texto de la nota |
+| `$ap-ia-hero-title-size` | `40px` | Tamano de titulo hero IA |
+| `$ap-ia-hero-title-line-height` | `40px` | Line-height del titulo hero |
+| `$ap-ia-hero-title-font` | `'Urbanist', sans-serif` | Familia tipografica del titulo hero |
+| `$ap-ia-hero-title-weight` | `600` (SemiBold) | Peso de fuente del titulo hero |
+| `$ap-ia-hero-title-letter-spacing` | `-0.8px` | Tracking del titulo hero |
+
+### Iconos Lucide utilizados
+
+- `Sparkles` — icono del panel y de la nota de IA
+- `LoaderCircle` — icono giratorio de estado dentro del panel
+- `Info` — icono del footer del panel
+
+---
+
+## 9.4. Etiquetas de Colores (Color Labels)
+
+Etiquetas compactas de 20px de alto con 11 variantes de color (10 pastel + 1 IA con gradiente).
+Cada etiqueta puede mostrarse sola o acompanada de un icono de accion (MoreHorizontal o Check) dentro de un circulo blanco.
+
+**Base**
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$ap-label-height` | `20px` | Altura de la etiqueta |
+| `$ap-label-padding` | `10px 8px` | Padding interno |
+| `$ap-label-radius` | `10px` | Border radius |
+| `$ap-label-gap` | `6px` | Gap entre texto e icono de accion |
+| `$ap-label-font-size` | `10px` | Tamano de fuente (DM Sans Medium) |
+| `$ap-label-font-weight` | `500` | Peso de fuente (Medium) |
+| `$ap-label-letter-spacing` | `-0.2px` | Tracking del texto |
+
+**Variantes de color (fondo + texto)**
+
+| Variante | Background | Texto |
+|----------|-----------|-------|
+| `$ap-label-azul-bg` / `$ap-label-azul-text` | `#dbeafe` | `#1e40af` |
+| `$ap-label-verde-bg` / `$ap-label-verde-text` | `#d1fae5` | `#065f46` |
+| `$ap-label-amarillo-bg` / `$ap-label-amarillo-text` | `#fef3c7` | `#92400e` |
+| `$ap-label-rojo-bg` / `$ap-label-rojo-text` | `#fee2e2` | `#991b1b` |
+| `$ap-label-violeta-bg` / `$ap-label-violeta-text` | `#ede9fe` | `#5b21b6` |
+| `$ap-label-naranja-bg` / `$ap-label-naranja-text` | `#ffedd5` | `#9a3412` |
+| `$ap-label-turquesa-bg` / `$ap-label-turquesa-text` | `#ccfbf1` | `#115e59` |
+| `$ap-label-gris-bg` / `$ap-label-gris-text` | `#f3f4f6` | `#374151` |
+| `$ap-label-vinotinto-bg` / `$ap-label-vinotinto-text` | `#fce7f3` | `#9f1239` |
+| `$ap-label-olivo-bg` / `$ap-label-olivo-text` | `#ecfccb` | `#3f6212` |
+
+**Variante IA (fondo blanco + borde + texto en gradiente)**
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$ap-label-ia-bg` | `$ap-white-base` (#ffffff) | Fondo etiqueta IA |
+| `$ap-label-ia-border` | `$ap-primary-500` (#0061fe) | Borde etiqueta IA |
+| `$ap-label-ia-text-gradient` | `$ap-ia-text-gradient` | Gradiente de texto etiqueta IA |
+
+**Circulo de accion (icono opcional a la derecha)**
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$ap-label-action-size` | `14px` | Tamano circulo de accion |
+| `$ap-label-action-radius` | `30px` | Border radius del circulo |
+| `$ap-label-action-icon-size` | `10px` | Tamano del icono Lucide (MoreHorizontal / Check) |
+
+---
+
 ## 10. Button Tokens
 
 | Token | Valor | Uso |
@@ -179,6 +308,30 @@ Mismos valores hex que Quantico (reservado para botones AI).
 | `$ap-button-padding` | `10px 20px` | Padding |
 | `$ap-button-gap` | `10px` | Gap entre icono y texto |
 | `$ap-button-transition` | `all 0.2s ease` | Transicion de estados |
+
+### AI Button (Cyan con borde gradiente + variante Mia)
+
+Botón blanco con borde de gradiente IA (`$ap-ia-gradient` = `linear-gradient(19.84deg, #0061fe → #00aaff)`). Usado para funcionalidades de IA como "AI" y "Mia". El borde uniforme se logra con la técnica de dos capas de background (padding-box + border-box) y un `border: 2px solid transparent`.
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `$ap-ai-button-bg` | `$ap-white-base` (#ffffff) | Fondo del botón AI |
+| `$ap-ai-button-hover-bg` | `$ap-ai-50` (#e5f6ff) | Fondo hover |
+| `$ap-ai-button-active-bg` | `$ap-ai-100` (#c9edff) | Fondo active |
+| `$ap-ai-button-disabled-opacity` | `0.5` | Opacidad estado disabled |
+| `$ap-ai-button-border-width` | `2px` | Grosor del borde gradiente |
+| `$ap-ai-button-border-gradient` | `$ap-ia-gradient` | Gradiente del borde (primary → ai) |
+| `$ap-ai-button-border-radius` | `12px` | Border radius |
+| `$ap-ai-button-text-color` | `$ap-primary-500` (#0061fe) | Color texto |
+| `$ap-ai-button-small-height` | `36px` | Altura small |
+| `$ap-ai-button-medium-height` | `40px` | Altura medium |
+| `$ap-ai-button-large-height` | `48px` | Altura large |
+| `$ap-ai-button-padding` | `10px 20px` | Padding interno |
+| `$ap-ai-button-gap` | `8px` | Espacio entre ícono y contenido |
+
+El ícono `Sparkles` de Lucide utiliza `$ap-ai-500` (#00aaff) como color.
+
+**Variante Mia:** el botón muestra el logo SVG de Mia (`/images/mia-logo.svg`) en lugar del texto "AI". Se renderiza junto al ícono `Sparkles` de Lucide con `z-index: 1` para quedar por encima del borde de gradiente.
 
 ---
 
