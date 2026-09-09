@@ -2111,7 +2111,9 @@ $ap-code-modal-code-size: 40px;
 
 // ========================================
 // AdvocatesPro — Special Launch Modal Tokens
-// (Modal "Advocates se renovó" — Figma node 11120:370)
+// (Estilo base del modal especial de AdvocatesPro: gradientes IA,
+// circulos decorativos y grid de features multicolor. El contenido
+// del modal "Webinar en vivo" se apoya en estos mismos tokens.)
 // ========================================
 $ap-special-modal-overlay-bg: rgba(0, 0, 0, 0.5);
 $ap-special-launch-gap: 0;
@@ -2126,8 +2128,7 @@ $ap-special-modal-circle-size: 729px;
 $ap-special-modal-circle-primary: radial-gradient(circle, #{$ap-primary-50} 0%, rgba(230, 239, 255, 0) 70%);
 $ap-special-modal-circle-secondary: radial-gradient(circle, #{$ap-secondary-50} 0%, rgba(253, 237, 242, 0) 70%);
 
-// Badge "Nuevo lanzamiento"
-$ap-special-launch-badge-width: 211px;
+// Badge (pill con borde/gradiente IA)
 $ap-special-launch-badge-height: 36px;
 $ap-special-launch-badge-radius: 50px;
 $ap-special-launch-badge-border: 1px solid $ap-primary-500;
@@ -2139,6 +2140,15 @@ $ap-special-launch-desc-color: $ap-grey-500;
 $ap-special-launch-desc-line-height: 24px;
 $ap-special-launch-desc-tracking: -0.4px;
 
+// Agenda del evento (fecha + horarios) — contenido nuevo, misma paleta de marca
+$ap-special-launch-date-bg: $ap-secondary-500;
+$ap-special-launch-date-color: $ap-white-base;
+$ap-special-launch-date-radius: 16px;
+$ap-special-launch-date-size: 64px;
+$ap-special-launch-schedule-label-color: $ap-grey-300;
+$ap-special-launch-time-chip-border: 1px solid $ap-grey-50;
+$ap-special-launch-time-chip-color: $ap-grey-800;
+
 // Preview de imagen/video
 $ap-special-launch-image-height: 296px;
 $ap-special-launch-image-radius: 19px;
@@ -2147,28 +2157,30 @@ $ap-special-launch-overlay-btn-height: 48px;
 $ap-special-launch-overlay-btn-bg: $ap-secondary-500;
 $ap-special-launch-overlay-btn-hover: $ap-secondary-600;
 
-// Grid de features (panel derecho)
+// Grid de features (panel derecho) — 4 colores como en el resto del sistema
 $ap-special-launch-feature-card-icon-size: 50px;
 $ap-special-launch-feature-title-size: 18px;
 $ap-special-launch-feature-title-color: $ap-grey-500;
 $ap-special-launch-feature-desc-size: 16px;
 $ap-special-launch-feature-desc-color: $ap-grey-300;
 $ap-special-launch-feature-desc-line-height: 20px;
-$ap-special-launch-feature-1-bg: $ap-primary-50;               // Campañas
+$ap-special-launch-feature-1-bg: $ap-primary-50;
 $ap-special-launch-feature-1-color: $ap-primary-500;
-$ap-special-launch-feature-2-bg: #d1fae5;                       // Retos
+$ap-special-launch-feature-2-bg: #d1fae5;
 $ap-special-launch-feature-2-color: #065f46;
-$ap-special-launch-feature-3-bg: $ap-secondary-50;              // Contenido & Posts
+$ap-special-launch-feature-3-bg: $ap-secondary-50;
 $ap-special-launch-feature-3-color: $ap-secondary-500;
-$ap-special-launch-feature-4-bg: rgba(249, 198, 22, 0.16);      // Grupos & Recompensas
+$ap-special-launch-feature-4-bg: rgba(249, 198, 22, 0.16);
 $ap-special-launch-feature-4-color: #92400e;
 
-// Nota "Tu equipo de CSM te acompaña" (reutiliza $ap-ia-panel-bg / $ap-ia-text-gradient)
+// Nota destacada "Cupos limitados" (reutiliza $ap-ia-panel-bg / $ap-ia-text-gradient)
 $ap-special-launch-note-radius: 16px;
 $ap-special-launch-note-padding: 24px 32px;
 $ap-special-launch-note-desc-color: $ap-primary-800;
-$ap-special-launch-note-btn-bg: $ap-secondary-500;
-$ap-special-launch-note-btn-hover: $ap-secondary-600;
+
+// Footer (mismo patrón cancelar/confirmar que app-confirm-modal)
+$ap-special-launch-footer-primary-bg: $ap-secondary-500;
+$ap-special-launch-footer-primary-hover: $ap-secondary-600;
 
 // ========================================
 // AdvocatesPro — Stepper Tokens
@@ -2557,6 +2569,44 @@ $sg-ai-button-medium-height: 40px;
 $sg-ai-button-large-height: 48px;
 $sg-ai-button-padding: 10px 20px;
 $sg-ai-button-gap: 8px;
+
+// ========================================
+// SocialGest — Credits Popover (navbar)
+// Pop-up de detalle de créditos de IA, se abre al pasar el mouse sobre el
+// badge "3.5K" del navbar.
+// ========================================
+$sg-credits-popover-width: 320px;
+$sg-credits-popover-radius: 16px;
+$sg-credits-popover-border: $sg-grey-50;
+$sg-credits-popover-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+$sg-credits-popover-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1); // ícono de header + botón CTA
+
+$sg-credits-popover-header-bg: rgba($sg-primary-500, 0.06);
+$sg-credits-popover-header-border: $sg-primary-50;
+$sg-credits-popover-icon-bg: $sg-primary-500;
+$sg-credits-popover-icon-radius: 8px;
+
+$sg-credits-popover-plan-bg: $sg-primary-50;
+$sg-credits-popover-plan-color: $sg-primary-700;
+
+$sg-credits-popover-figure-color: $sg-grey-800;
+$sg-credits-popover-total-color: $sg-grey-300;
+$sg-credits-popover-desc-color: $sg-grey-400;
+
+$sg-credits-popover-progress-track-bg: $sg-grey-50;
+$sg-credits-popover-progress-fill-bg: $sg-primary-500;
+$sg-credits-popover-progress-label-color: $sg-grey-300;
+
+$sg-credits-popover-renewal-border: $sg-grey-50;
+$sg-credits-popover-renewal-color: $sg-grey-400;
+$sg-credits-popover-renewal-icon-color: $sg-grey-300;
+$sg-credits-popover-renewal-strong-color: $sg-grey-800;
+
+$sg-credits-popover-cta-bg: $sg-grey-900;
+$sg-credits-popover-cta-hover: $sg-grey-700;
+$sg-credits-popover-cta-color: $sg-white-base;
+$sg-credits-popover-cta-radius: 12px;
+$sg-credits-popover-cta-icon-color: $sg-warning-400;
 
 // ========================================
 // SocialGest — Color Labels (Etiquetas)

@@ -104,21 +104,77 @@
     </div>
 
     <div class="sg-navbar__right">
-      <app-button variant="primary" size="medium">
-        Crear publicacion
+      <button class="sg-navbar__mia-btn" aria-label="Abrir Mia">
+        <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+        <span>Mia</span>
+      </button>
+
+      <app-button variant="primary" size="medium" [leftIcon]="PlusIcon">
+        Crear publicación
       </app-button>
+
+      <div
+        class="sg-navbar__credits-wrap"
+        (mouseenter)="creditsPopoverOpen = true"
+        (mouseleave)="creditsPopoverOpen = false">
+        <div class="sg-navbar__credits" aria-label="Creditos de IA disponibles">
+          <lucide-icon [img]="SparklesIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+          <span>{{ aiCreditsLabel }}</span>
+        </div>
+
+        @if (creditsPopoverOpen) {
+          <div class="sg-navbar__credits-popover">
+            <div class="sg-navbar__credits-popover-header">
+              <div class="sg-navbar__credits-popover-title">
+                <span class="sg-navbar__credits-popover-icon">
+                  <lucide-icon [img]="SparklesIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </span>
+                <span>Tus créditos IA</span>
+              </div>
+              <span class="sg-navbar__credits-popover-plan">{{ aiCreditsPlanLabel }}</span>
+            </div>
+
+            <div class="sg-navbar__credits-popover-body">
+              <div class="sg-navbar__credits-popover-figure-group">
+                <div class="sg-navbar__credits-popover-figure">
+                  <span class="sg-navbar__credits-popover-available">{{ aiCreditsAvailable | number }}</span>
+                  <span class="sg-navbar__credits-popover-total">/ {{ aiCreditsTotal | number }} cr</span>
+                </div>
+                <p class="sg-navbar__credits-popover-desc">Créditos disponibles para usar</p>
+              </div>
+
+              <div class="sg-navbar__credits-popover-progress-group">
+                <div class="sg-navbar__credits-popover-progress-track">
+                  <div class="sg-navbar__credits-popover-progress-fill" [style.width.%]="aiCreditsAvailablePercent"></div>
+                </div>
+                <div class="sg-navbar__credits-popover-progress-labels">
+                  <span>Usados: {{ aiCreditsUsed | number }}</span>
+                  <span>{{ aiCreditsAvailablePercent }}% disponible</span>
+                </div>
+              </div>
+
+              <div class="sg-navbar__credits-popover-renewal">
+                <lucide-icon [img]="CalendarClockIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                <span>Renuevan el <strong>{{ aiCreditsRenewalDate }}</strong></span>
+              </div>
+
+              <button class="sg-navbar__credits-popover-cta">
+                <lucide-icon [img]="ZapIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+                <span>Conseguir más créditos</span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
 
       <button class="sg-navbar__icon-btn" aria-label="Notificaciones" (click)="onNotificationsClick()">
         <lucide-icon [img]="BellIcon" [size]="22" [strokeWidth]="1.5" color="#222222"></lucide-icon>
         <span class="sg-navbar__notification-badge">2</span>
       </button>
 
-      <button class="sg-navbar__icon-btn" aria-label="Ayuda">
-        <lucide-icon [img]="HelpIcon" [size]="22" [strokeWidth]="1.5" color="#222222"></lucide-icon>
-      </button>
-
       <button class="sg-navbar__language-btn" aria-label="Cambiar idioma">
         <span class="sg-navbar__language-text">ES</span>
+        <lucide-icon [img]="ChevronDownIcon" [size]="14" [strokeWidth]="2"></lucide-icon>
       </button>
 
       <button class="sg-navbar__avatar-btn" aria-label="Perfil de usuario">

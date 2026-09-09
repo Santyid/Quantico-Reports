@@ -1,7 +1,7 @@
 import { Component, inject, HostListener, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { LucideAngularModule, ChevronDown, User, Bell, CircleHelp, Plus } from 'lucide-angular';
+import { LucideAngularModule, ChevronDown, User, Bell, Plus, Sparkles, CalendarClock, Zap } from 'lucide-angular';
 import { ButtonComponent } from '../../ui/button/button.component';
 
 interface NavItem {
@@ -30,8 +30,27 @@ export class SocialgestNavbarComponent {
   readonly ChevronDownIcon = ChevronDown;
   readonly UserIcon = User;
   readonly BellIcon = Bell;
-  readonly HelpIcon = CircleHelp;
   readonly PlusIcon = Plus;
+  readonly SparklesIcon = Sparkles;
+  readonly CalendarClockIcon = CalendarClock;
+  readonly ZapIcon = Zap;
+
+  // TODO: reemplazar por el saldo real de créditos de IA cuando exista esa fuente de datos
+  readonly aiCreditsLabel = '3.5K';
+  readonly aiCreditsUsed = 35;
+  readonly aiCreditsTotal = 3500;
+  readonly aiCreditsPlanLabel = 'Plan Activo';
+  readonly aiCreditsRenewalDate = '7 de sep.';
+
+  get aiCreditsAvailable(): number {
+    return this.aiCreditsTotal - this.aiCreditsUsed;
+  }
+
+  get aiCreditsAvailablePercent(): number {
+    return Math.round((this.aiCreditsAvailable / this.aiCreditsTotal) * 100);
+  }
+
+  creditsPopoverOpen = false;
 
   readonly platforms: Platform[] = [
     { id: 'socialgest', name: 'SocialGest', route: '/socialgest', icon: 'socialgest' },
@@ -43,17 +62,19 @@ export class SocialgestNavbarComponent {
   selectedPlatform: Platform = this.platforms[0];
   platformDropdownOpen = false;
 
+  // Orden y etiquetas alineadas al diseño de referencia. El enlace de "Metricas"
+  // (dentro de "Analizar") se mantiene igual — es la única ruta real de este menú.
   readonly navItems: NavItem[] = [
-    { label: 'Crear', path: '/socialgest/crear' },
     { label: 'Publicar', path: '/socialgest/publicar' },
+    { label: 'Crear', path: '/socialgest/crear' },
     {
       label: 'Analizar',
       children: [
         { label: 'Metricas', path: '/socialgest/metricas' }
       ]
     },
-    { label: 'Equipos', path: '/socialgest/equipos' },
-    { label: 'Canales', path: '/socialgest/canales' }
+    { label: 'Colaborar', path: '/socialgest/equipos' },
+    { label: 'Redes sociales', path: '/socialgest/canales' }
   ];
 
   openDropdown: string | null = null;

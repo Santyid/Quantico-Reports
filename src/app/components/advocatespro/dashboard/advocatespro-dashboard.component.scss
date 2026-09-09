@@ -1722,7 +1722,7 @@
   }
 
   // ═══════════════════════════════════════
-  // Modal Especial: Lanzamiento ("Advocates se renovó")
+  // Modal Especial: Webinar en vivo (estilo base de AdvocatesPro)
   // ═══════════════════════════════════════
   &__special-modal-overlay {
     position: fixed;
@@ -1810,7 +1810,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    width: $ap-special-launch-badge-width;
+    width: fit-content;
     height: $ap-special-launch-badge-height;
     border-radius: $ap-special-launch-badge-radius;
     border: $ap-special-launch-badge-border;
@@ -1828,6 +1828,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    white-space: nowrap;
   }
 
   &__special-launch-hero-title {
@@ -1851,6 +1852,76 @@
     line-height: $ap-special-launch-desc-line-height;
     letter-spacing: $ap-special-launch-desc-tracking;
     margin: 0;
+
+    strong { font-weight: 700; color: $ap-grey-800; }
+  }
+
+  // Agenda del evento (fecha + horarios)
+  &__special-launch-schedule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__special-launch-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: $ap-special-launch-date-size;
+    height: $ap-special-launch-date-size;
+    border-radius: $ap-special-launch-date-radius;
+    background: $ap-special-launch-date-bg;
+    color: $ap-special-launch-date-color;
+    flex-shrink: 0;
+  }
+
+  &__special-launch-date-day {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__special-launch-date-month {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__special-launch-schedule-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__special-launch-schedule-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: $ap-special-launch-schedule-label-color;
+  }
+
+  &__special-launch-time-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__special-launch-time-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: $ap-special-launch-time-chip-border;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: $ap-special-launch-time-chip-color;
+    white-space: nowrap;
   }
 
   &__special-launch-image-wrap {
@@ -1999,24 +2070,55 @@
     line-height: 1.5;
   }
 
-  &__special-launch-note-btn {
+  &__special-launch-footer {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: auto;
+  }
+
+  &__special-launch-footer-cancel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 12px;
+    border: 1px solid $ap-grey-100;
+    cursor: pointer;
+    background: $white-500;
+    color: $grey-300;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+
+    &:hover { background: $neutral-50; }
+  }
+
+  &__special-launch-footer-primary {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 100%;
     height: 48px;
+    padding: 0 24px;
     border-radius: 12px;
     border: none;
     cursor: pointer;
-    background: $ap-special-launch-note-btn-bg;
+    background: $ap-special-launch-footer-primary-bg;
     color: $white-500;
     font-family: 'Urbanist', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
+    white-space: nowrap;
     transition: background-color 0.2s ease;
 
-    &:hover { background: $ap-special-launch-note-btn-hover; }
+    lucide-icon { color: $white-500; }
+
+    &:hover { background: $ap-special-launch-footer-primary-hover; }
   }
 
   // Responsive: el modal se apila en pantallas angostas
@@ -2037,6 +2139,353 @@
 
   @media (max-width: 640px) {
     &__special-launch-features { grid-template-columns: 1fr; }
+    &__special-launch-schedule { flex-wrap: wrap; }
+  }
+
+  // ═══════════════════════════════════════
+  // Modal Especial: Webinar "Rol Embajador" (variante compacta, 1 panel, 480px)
+  // Medidas y composición calcadas de la plantilla de referencia aprobada
+  // (modal-webinar-rol-embajador-advocatespro-compacto.html) — no del Modal de
+  // Lanzamiento de 2 paneles, que es una familia de modal más grande y aparte.
+  // ═══════════════════════════════════════
+  &__ambassador-modal {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 528px;
+    width: 100%;
+    animation: ap-modal-scale-in 0.25s ease;
+  }
+
+  &__ambassador-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: $ap-white-base;
+    border: none;
+    cursor: pointer;
+    color: $ap-grey-500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+
+    &:hover { background: $ap-neutral-50; }
+  }
+
+  &__ambassador-card {
+    display: flex;
+    flex-direction: column;
+    background: $ap-white-base;
+    border-radius: 24px;
+    overflow: hidden; // solo redondea bordes — el scroll vive únicamente en __ambassador-body
+    width: 480px;
+    max-width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    // Límite de altura para que en pantallas bajas el contenido haga scroll
+    // internamente en vez de cortarse arriba/abajo de la ventana.
+    max-height: calc(100vh - 40px);
+  }
+
+  // Cabecera: badge + título + descripción. Wash plano en diagonal (azul → blanco → rosa,
+  // igual que $ap-ia-panel-bg pero a 108.2°) — se reparte solo, sin necesitar círculos
+  // decorativos. Fija (sticky) arriba: al hacer scroll, solo se mueve el contenido de en medio.
+  &__ambassador-header {
+    background: linear-gradient(108.2deg, #{$ap-primary-100} 0%, #{$ap-white-base} 55%, #{$ap-secondary-100} 100%);
+    border-radius: 24px 24px 0 0;
+    padding: 32px 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-shrink: 0; // fuera del bloque que scrollea: siempre visible arriba
+  }
+
+  &__ambassador-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid $ap-primary-500;
+    background: $ap-white-base;
+    padding: 0 14px;
+
+    lucide-icon { color: $ap-primary-500; flex-shrink: 0; }
+  }
+
+  &__ambassador-badge-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: $ap-primary-500;
+    white-space: nowrap;
+  }
+
+  // Degradado tricolor ($ap-ia-hero-title-gradient) — mismo componente que "Elementos de IA",
+  // solo se ajustó el tamaño de letra a 25px para esta variante compacta.
+  &__ambassador-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: -0.4px;
+    background: $ap-ia-hero-title-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  &__ambassador-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $ap-grey-500;
+    line-height: 19px;
+    margin: 0;
+
+    strong { font-weight: 700; color: $ap-grey-800; }
+  }
+
+  // Cuerpo: agenda, features y nota (el footer se separó para poder fijarlo abajo)
+  // Único bloque que scrollea. min-height:0 es imprescindible: sin eso, un hijo
+  // flex nunca se encoge por debajo de su contenido y el overflow-y:auto no hace nada.
+  &__ambassador-body {
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  // Agenda del evento
+  &__ambassador-schedule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: $ap-secondary-50;
+    border-radius: 16px;
+    padding: 12px 16px;
+  }
+
+  &__ambassador-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: $ap-secondary-500;
+    color: $ap-white-base;
+    flex-shrink: 0;
+  }
+
+  &__ambassador-date-day {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__ambassador-date-month {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__ambassador-schedule-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__ambassador-schedule-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: $ap-secondary-700;
+  }
+
+  &__ambassador-time-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__ambassador-time-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid $ap-secondary-200;
+    background: $ap-white-base;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: $ap-secondary-800;
+    white-space: nowrap;
+  }
+
+  // Lista de features (columna única, ícono circular en línea, 4 colores como en el
+  // resto del sistema — igual criterio que el grid 2×2 del Modal de Lanzamiento)
+  &__ambassador-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background: $ap-neutral-50;
+    border-radius: 16px;
+  }
+
+  &__ambassador-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  &__ambassador-feature-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &--1 { background: $ap-primary-50; lucide-icon { color: $ap-primary-500; } }
+    &--2 { background: #d1fae5; lucide-icon { color: #065f46; } }
+    &--3 { background: $ap-secondary-50; lucide-icon { color: $ap-secondary-500; } }
+    &--4 { background: rgba(249, 198, 22, 0.16); lucide-icon { color: #92400e; } }
+  }
+
+  &__ambassador-feature-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 4px;
+  }
+
+  &__ambassador-feature-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $ap-grey-800;
+    margin: 0;
+  }
+
+  &__ambassador-feature-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: $ap-grey-300;
+    line-height: 17px;
+    margin: 0;
+  }
+
+  // Nota destacada — reutiliza el wash $ap-ia-panel-bg de la nota del Modal de Lanzamiento
+  &__ambassador-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: $ap-ia-panel-bg;
+
+    lucide-icon { color: $ap-primary-500; flex-shrink: 0; }
+  }
+
+  &__ambassador-note-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: $ap-special-launch-note-desc-color;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  // Footer — fijo (sticky) abajo: el scroll queda solo entre la cabecera y el footer,
+  // ambos siempre visibles.
+  &__ambassador-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: $ap-white-base;
+    border-top: 1px solid $ap-grey-50;
+    border-radius: 0 0 24px 24px;
+    padding: 16px 32px 20px;
+    flex-shrink: 0; // fuera del bloque que scrollea: siempre visible abajo
+  }
+
+  &__ambassador-footer-cancel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid $ap-grey-100;
+    cursor: pointer;
+    background: $ap-white-base;
+    color: $ap-grey-300;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+
+    &:hover { background: $ap-neutral-50; }
+  }
+
+  &__ambassador-footer-primary {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: $ap-special-launch-footer-primary-bg;
+    color: $ap-white-base;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+
+    lucide-icon { color: $ap-white-base; }
+
+    &:hover { background: $ap-special-launch-footer-primary-hover; }
+  }
+
+  // Responsive
+  @media (max-width: 480px) {
+    &__ambassador-footer {
+      flex-direction: column;
+    }
+
+    &__ambassador-footer-cancel,
+    &__ambassador-footer-primary {
+      flex: 1;
+      width: 100%;
+    }
   }
 
   // ═══════════════════════════════════════

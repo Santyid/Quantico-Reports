@@ -230,8 +230,250 @@ $sg-navbar-font-family: 'Urbanist', sans-serif;
   &__right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     flex-shrink: 0;
+  }
+
+  // Botón "Mia" — misma técnica de borde con degradado que el resto de los
+  // botones AI del sistema ($sg-ai-button-*), en tamaño compacto para el navbar.
+  &__mia-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: $sg-ai-button-small-height;
+    padding: 0 16px;
+    border-radius: $sg-ai-button-border-radius;
+    background:
+      linear-gradient($sg-ai-button-bg, $sg-ai-button-bg) padding-box,
+      $sg-ai-button-border-gradient border-box;
+    border: $sg-ai-button-border-width solid transparent;
+    cursor: pointer;
+    font-family: $sg-navbar-font-family;
+    font-size: 14px;
+    font-weight: 700;
+    color: $sg-ai-button-text-color;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+
+    lucide-icon { color: $sg-ai-500; }
+
+    &:hover {
+      background:
+        linear-gradient($sg-ai-button-hover-bg, $sg-ai-button-hover-bg) padding-box,
+        $sg-ai-button-border-gradient border-box;
+    }
+  }
+
+  // Badge de créditos de IA disponibles — pill simple, junto al botón Mia
+  &__credits-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__credits {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 50px;
+    background: $grey-50;
+    font-family: $sg-navbar-font-family;
+    font-size: 12px;
+    font-weight: 700;
+    color: $grey-800;
+    cursor: default;
+
+    lucide-icon { color: $sg-ai-500; }
+  }
+
+  // Pop-up de detalle de créditos — aparece al pasar el mouse sobre el badge
+  &__credits-popover {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: $sg-credits-popover-width;
+    background: $sg-white-base;
+    border: 1px solid $sg-credits-popover-border;
+    border-radius: $sg-credits-popover-radius;
+    box-shadow: $sg-credits-popover-shadow;
+    overflow: hidden;
+    z-index: 1001;
+    font-family: 'DM Sans', sans-serif;
+
+    // Flechita apuntando al badge, mismo criterio visual que el resto de dropdowns
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 18px;
+      width: 12px;
+      height: 12px;
+      background: $sg-white-base;
+      border: 1px solid $sg-credits-popover-border;
+      border-bottom: none;
+      border-right: none;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__credits-popover-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 14px 20px;
+    background: $sg-credits-popover-header-bg;
+    border-bottom: 1px solid $sg-credits-popover-header-border;
+  }
+
+  &__credits-popover-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $sg-navbar-font-family;
+    font-size: 14px;
+    font-weight: 600;
+    color: $sg-grey-800;
+  }
+
+  &__credits-popover-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: $sg-credits-popover-icon-radius;
+    background: $sg-credits-popover-icon-bg;
+    box-shadow: $sg-credits-popover-shadow-sm;
+
+    lucide-icon { color: $sg-white-base; }
+  }
+
+  &__credits-popover-plan {
+    flex-shrink: 0;
+    padding: 2px 10px;
+    border-radius: 50px;
+    background: $sg-credits-popover-plan-bg;
+    color: $sg-credits-popover-plan-color;
+    font-family: $sg-navbar-font-family;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__credits-popover-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  &__credits-popover-figure-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__credits-popover-figure {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  &__credits-popover-available {
+    font-family: $sg-navbar-font-family;
+    font-size: 30px;
+    font-weight: 800;
+    color: $sg-credits-popover-figure-color;
+    letter-spacing: -0.3px;
+  }
+
+  &__credits-popover-total {
+    font-family: $sg-navbar-font-family;
+    font-size: 12px;
+    font-weight: 700;
+    color: $sg-credits-popover-total-color;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  &__credits-popover-desc {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: $sg-credits-popover-desc-color;
+  }
+
+  &__credits-popover-progress-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__credits-popover-progress-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 50px;
+    background: $sg-credits-popover-progress-track-bg;
+    overflow: hidden;
+  }
+
+  &__credits-popover-progress-fill {
+    height: 100%;
+    border-radius: 50px;
+    background: $sg-credits-popover-progress-fill-bg;
+    transition: width 0.4s ease;
+  }
+
+  &__credits-popover-progress-labels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    color: $sg-credits-popover-progress-label-color;
+  }
+
+  &__credits-popover-renewal {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid $sg-credits-popover-renewal-border;
+    font-size: 12px;
+    color: $sg-credits-popover-renewal-color;
+
+    lucide-icon { color: $sg-credits-popover-renewal-icon-color; flex-shrink: 0; }
+
+    strong { color: $sg-credits-popover-renewal-strong-color; font-weight: 700; }
+  }
+
+  &__credits-popover-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-radius: $sg-credits-popover-cta-radius;
+    background: $sg-credits-popover-cta-bg;
+    color: $sg-credits-popover-cta-color;
+    font-family: $sg-navbar-font-family;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: $sg-credits-popover-shadow-sm;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    lucide-icon { color: $sg-credits-popover-cta-icon-color; }
+
+    &:hover { background: $sg-credits-popover-cta-hover; }
+    &:active { transform: scale(0.98); }
   }
 
   &__icon-btn {

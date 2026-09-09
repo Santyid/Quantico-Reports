@@ -1,0 +1,635 @@
+{
+  "$meta": {
+    "product": "AdvocatesPro",
+    "description": "Tokens de diseño puros de AdvocatesPro, extraídos de src/styles/_tokens.scss (variables con prefijo $ap-). No incluye tokens de Quantico, SocialGest ni ninguna otra marca del mismo repositorio.",
+    "source": "src/styles/_tokens.scss (bloque 'AdvocatesPro —', líneas ~1689-2392)",
+    "prefix": "$ap-",
+    "version": "1.0.0",
+    "notes": [
+      "Existe una definición legacy duplicada de $ap-accent-* (líneas ~378-384 de _tokens.scss) con valores distintos a la definición activa (líneas ~2385-2392). En SCSS la última declaración gana, por lo que el valor EFECTIVO es el documentado aquí (alias de la escala secondary). La definición legacy debería eliminarse para evitar confusión.",
+      "Los breakpoints no están tokenizados como variables SCSS; son valores usados de forma consistente en los @media de advocatespro-dashboard.component.scss. Se documentan igual para que sirvan como referencia oficial.",
+      "Algunas sombras (box-shadow) se usan inline en los componentes (no como variable $ap-*); se documentan por separado en 'shadow.componentInline' para no mezclarlas con los tokens reales."
+    ]
+  },
+
+  "color": {
+    "primary": {
+      "50": "#e6efff",
+      "100": "#b0ceff",
+      "200": "#8ab6ff",
+      "300": "#5495fe",
+      "400": "#3381fe",
+      "500": "#0061fe",
+      "600": "#0058e7",
+      "700": "#0045b4",
+      "800": "#00358c",
+      "900": "#00296b",
+      "_base": "500",
+      "_description": "Azul — mismos valores que Quantico. Uso: acciones primarias, focus, enlaces."
+    },
+    "secondary": {
+      "50": "#fdedf2",
+      "100": "#fac7d5",
+      "200": "#f7acc1",
+      "300": "#f38fab",
+      "400": "#f07090",
+      "500": "#ee4a79",
+      "600": "#d9436e",
+      "700": "#b93c5e",
+      "800": "#8a2c48",
+      "900": "#5e1c30",
+      "_base": "500",
+      "_description": "Rosa — acento distintivo de AdvocatesPro (a diferencia de SocialGest=naranja y Quantico=púrpura)."
+    },
+    "grey": {
+      "50": "#ececec",
+      "100": "#c3c3c3",
+      "200": "#a6a6a6",
+      "300": "#7d7d7d",
+      "400": "#646464",
+      "500": "#3d3d3d",
+      "600": "#383838",
+      "700": "#2b2b2b",
+      "800": "#222222",
+      "900": "#1a1a1a"
+    },
+    "success": {
+      "50": "#ebfaf1",
+      "100": "#aeebc7",
+      "200": "#8de3b0",
+      "300": "#5bd68d",
+      "400": "#3ace76",
+      "500": "#299053",
+      "600": "#237e48",
+      "_base": "400"
+    },
+    "warning": {
+      "50": "#fff5ea",
+      "100": "#ffd4a8",
+      "200": "#ffc285",
+      "300": "#ffa850",
+      "400": "#ff962c",
+      "500": "#b3691f",
+      "600": "#9c5c1b",
+      "_base": "400"
+    },
+    "error": {
+      "50": "#ffecec",
+      "100": "#feb0b0",
+      "200": "#fd8f8f",
+      "300": "#fd5f5f",
+      "400": "#fc3e3e",
+      "500": "#b02b2b",
+      "600": "#9a2626",
+      "_base": "400"
+    },
+    "neutral": {
+      "50": "#fafafa",
+      "100": "#f5f7fa",
+      "200": "#f1f1f1"
+    },
+    "ai": {
+      "50": "#e5f6ff",
+      "100": "#c9edff",
+      "500": "#00aaff",
+      "_description": "Escala cian usada exclusivamente para el botón/borde AI (Mia)."
+    },
+    "base": {
+      "white": "#ffffff",
+      "black": "#000000"
+    },
+    "accentLegacy": {
+      "50": { "value": "#fdedf2", "ref": "color.secondary.50" },
+      "100": { "value": "#fac7d5", "ref": "color.secondary.100" },
+      "500": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "600": { "value": "#d9436e", "ref": "color.secondary.600" },
+      "700": { "value": "#b93c5e", "ref": "color.secondary.700" },
+      "_description": "Alias de compatibilidad hacia atrás ($ap-accent-*) para nombres de token antiguos. Usar color.secondary.* en código nuevo."
+    }
+  },
+
+  "gradient": {
+    "ia": {
+      "value": "linear-gradient(19.84deg, #0061fe 2.99%, #00aaff 105.98%)",
+      "description": "De Figma: primary-500 → ai-500. Usado como borde de gradiente del botón AI/Mia."
+    },
+    "iaPanelBg": {
+      "value": "linear-gradient(108.20deg, rgba(230,239,255,0.7) 0%, #ffffff 50.75%, rgba(253,237,242,0.7) 100%)",
+      "description": "Fondo suave azul-blanco-rosa para paneles/cards de IA (ej. panel 'Creando ideas', nota de webinar)."
+    },
+    "iaNoteBg": {
+      "value": "linear-gradient(161.67deg, rgba(230,239,255,0.33) 0.55%, rgba(185,211,255,0.33) 25.4%, rgba(176,206,255,0.33) 69.9%, rgba(133,177,255,0.33) 97.6%)",
+      "description": "Fondo azul suave para notas de IA compactas."
+    },
+    "iaTextGradient": {
+      "value": "linear-gradient(5.79deg, #0061fe 2.99%, #00aaff 105.98%)",
+      "description": "Gradiente de texto (azul → cian) para títulos/badges de IA."
+    },
+    "iaHeroTitleGradient": {
+      "value": "linear-gradient(to right, #0061fe 1.85%, #00296b 49.5%, #ee4a79 82.2%)",
+      "description": "Gradiente tricolor (azul → azul oscuro → rosa) para títulos hero de IA y modales especiales."
+    },
+    "iaProgressGradient": {
+      "value": "linear-gradient(90deg, #0061fe, #b0ceff)",
+      "description": "Barra de progreso de paneles de IA."
+    },
+    "specialLaunchBadgeBg": {
+      "value": "linear-gradient(74.11deg, #8ab6ff 8.33%, #e6efff 12.32%, #fdedf2 92.59%, #f7acc1 109.63%)",
+      "description": "Fondo del badge pill de los modales especiales (ej. 'Webinar en vivo · Gratis')."
+    },
+    "specialLaunchCirclePrimary": {
+      "value": "radial-gradient(circle, #e6efff 0%, rgba(230,239,255,0) 70%)",
+      "description": "Círculo decorativo inferior-izquierdo de los modales especiales."
+    },
+    "specialLaunchCircleSecondary": {
+      "value": "radial-gradient(circle, #fdedf2 0%, rgba(253,237,242,0) 70%)",
+      "description": "Círculo decorativo superior-derecho de los modales especiales."
+    },
+    "specialLaunchImageBg": {
+      "value": "linear-gradient(135deg, #b0ceff 0%, #fac7d5 100%)",
+      "description": "Placeholder de imagen/video en el modal de lanzamiento."
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "primary": "'Urbanist', sans-serif",
+      "secondary": "'DM Sans', sans-serif",
+      "_usage": "Urbanist: títulos, botones, badges, chips, labels de UI. DM Sans: texto de cuerpo, inputs, tablas, descripciones."
+    },
+    "fontWeight": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "fontSize": {
+      "xs": "12px",
+      "sm": "14px",
+      "md": "16px",
+      "lg": "18px",
+      "xl": "20px",
+      "2xl": "24px",
+      "display": "40px",
+      "_description": "Escala derivada de los tokens de tamaño de fuente por componente ($ap-*-font-size / $ap-*-size). No existe una escala tipográfica global separada; cada componente referencia uno de estos valores."
+    },
+    "lineHeight": {
+      "tight": "1",
+      "heroTitle": "40px",
+      "body": "20px",
+      "bodyLarge": "24px"
+    },
+    "letterSpacing": {
+      "heroTitle": "-0.8px",
+      "description": "-0.4px",
+      "label": "-0.2px"
+    }
+  },
+
+  "spacing": {
+    "0": "0px",
+    "1": "4px",
+    "1.5": "6px",
+    "2": "8px",
+    "2.5": "10px",
+    "3": "12px",
+    "4": "16px",
+    "4.5": "18px",
+    "5": "20px",
+    "6": "24px",
+    "8": "32px",
+    "10": "40px",
+    "12": "48px",
+    "_description": "Escala base derivada de los paddings/gaps usados en los tokens de componentes ($ap-*-padding, $ap-*-gap). Valores atípicos de un solo componente (ej. 11px en chip padding, 13px en toast accent-width) se documentan en 'component' en vez de forzarlos a la escala base."
+  },
+
+  "radius": {
+    "sm": "8px",
+    "md": "10px",
+    "lg": "12px",
+    "xl": "16px",
+    "pill-chip": "23px",
+    "2xl": "24px",
+    "full": "50px",
+    "circle": "50%",
+    "_description": "Escala derivada de los $ap-*-border-radius de cada componente. 'full' = pills/badges/search-input; 'circle' = avatares."
+  },
+
+  "shadow": {
+    "toast": "0 8px 32px rgba(0, 0, 0, 0.08)",
+    "selectDateDropdown": "0 4px 15px rgba(0, 0, 0, 0.12)",
+    "selectDropdown": "0 4px 12px rgba(0, 0, 0, 0.1)",
+    "toggleThumb": "0 1px 3px rgba(0, 0, 0, 0.15)",
+    "componentInline": {
+      "_description": "Sombras usadas inline en componentes (no tokenizadas como variable SCSS). Se listan aquí solo como referencia de valores reales en uso.",
+      "modalContainer": "0 20px 60px rgba(0, 0, 0, 0.3)",
+      "featureCard": "2px 5px 13.5px rgba(0, 0, 0, 0.05)",
+      "floatingCloseButton": "0 2px 8px rgba(0, 0, 0, 0.1)",
+      "modalTriggerHover": "0 4px 16px rgba(0, 0, 0, 0.08)"
+    }
+  },
+
+  "breakpoint": {
+    "mobile": "640px",
+    "tablet": "1300px",
+    "_description": "No son variables SCSS; son los valores usados de forma consistente en los @media de advocatespro-dashboard.component.scss para apilar layouts de dos columnas (modales especiales, grids de features)."
+  },
+
+  "component": {
+    "button": {
+      "primary": { "bg": { "value": "#0061fe", "ref": "color.primary.500" }, "text": { "value": "#f1f1f1", "ref": "color.neutral.200" }, "hover": { "value": "#0058e7", "ref": "color.primary.600" }, "active": { "value": "#0045b4", "ref": "color.primary.700" }, "disabledBg": { "value": "#8ab6ff", "ref": "color.primary.200" } },
+      "secondary": { "bg": { "value": "#ee4a79", "ref": "color.secondary.500" }, "text": { "value": "#ffffff", "ref": "color.base.white" }, "hover": { "value": "#d9436e", "ref": "color.secondary.600" }, "active": { "value": "#b93c5e", "ref": "color.secondary.700" }, "disabledBg": { "value": "#f7acc1", "ref": "color.secondary.200" } },
+      "white": { "bg": { "value": "#ffffff", "ref": "color.base.white" }, "text": { "value": "#7d7d7d", "ref": "color.grey.300" }, "border": { "value": "#c3c3c3", "ref": "color.grey.100" }, "hover": { "value": "#fafafa", "ref": "color.neutral.50" }, "active": { "value": "#f1f1f1", "ref": "color.neutral.200" }, "disabledText": { "value": "#c3c3c3", "ref": "color.grey.100" } },
+      "size": {
+        "large": { "height": "48px", "fontSize": "18px" },
+        "medium": { "height": "40px", "fontSize": "16px" },
+        "small": { "height": "36px", "fontSize": "14px" }
+      },
+      "shared": { "fontFamily": "'Urbanist', sans-serif", "fontWeight": 700, "borderRadius": "12px", "padding": "10px 20px", "gap": "10px", "transition": "all 0.2s ease" }
+    },
+
+    "aiButton": {
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "hoverBg": { "value": "#e5f6ff", "ref": "color.ai.50" },
+      "activeBg": { "value": "#c9edff", "ref": "color.ai.100" },
+      "disabledOpacity": 0.5,
+      "borderWidth": "2px",
+      "borderGradient": { "ref": "gradient.ia" },
+      "borderRadius": "12px",
+      "textColor": { "value": "#0061fe", "ref": "color.primary.500" },
+      "size": { "small": "36px", "medium": "40px", "large": "48px" },
+      "padding": "10px 20px",
+      "gap": "8px"
+    },
+
+    "toggle": {
+      "offBg": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "onBg": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "thumbBg": { "value": "#ffffff", "ref": "color.base.white" },
+      "thumbShadow": { "ref": "shadow.toggleThumb" },
+      "size": {
+        "large": { "width": "56px", "height": "32px", "thumb": "24px" },
+        "medium": { "width": "48px", "height": "28px", "thumb": "20px" },
+        "small": { "width": "40px", "height": "24px", "thumb": "18px" }
+      }
+    },
+
+    "checkbox": {
+      "size": "24px",
+      "borderRadius": "8px",
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "activeBg": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "activeBorder": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "hoverBorder": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "checkColor": { "value": "#ffffff", "ref": "color.base.white" }
+    },
+
+    "radioButton": {
+      "checkedBg": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "checkedBorder": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "checkedHoverBg": { "value": "#d9436e", "ref": "color.secondary.600" },
+      "hoverBorder": { "value": "#f38fab", "ref": "color.secondary.300" },
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "iconColor": { "value": "#ffffff", "ref": "color.base.white" },
+      "focusRing": "rgba(238, 74, 121, 0.2)"
+    },
+
+    "radioTab": {
+      "height": "36px",
+      "borderRadius": "12px",
+      "fontSize": "14px",
+      "fontWeight": 700,
+      "color": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "hoverColor": { "value": "#3d3d3d", "ref": "color.grey.500" },
+      "activeBorder": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "activeColor": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "activeBg": { "value": "#fdedf2", "ref": "color.secondary.50" }
+    },
+
+    "statusBadge": {
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderRadius": "50px",
+      "fontFamily": "'Urbanist', sans-serif",
+      "fontSize": "14px",
+      "fontWeight": 600,
+      "textColor": { "value": "#3d3d3d", "ref": "color.grey.500" },
+      "padding": "4px 10px",
+      "gap": "10px",
+      "dotSize": "10px",
+      "height": { "small": "30px", "large": "36px" },
+      "dot": {
+        "positiva": { "value": "#3ace76", "ref": "color.success.400" },
+        "negativa": { "value": "#fc3e3e", "ref": "color.error.400" },
+        "neutra": { "value": "#ff962c", "ref": "color.warning.400" },
+        "desactivado": { "value": "#a6a6a6", "ref": "color.grey.200" }
+      }
+    },
+
+    "chip": {
+      "height": "26px",
+      "borderRadius": "23px",
+      "padding": "6px 11px",
+      "gap": "10px",
+      "fontFamily": "'Urbanist', sans-serif",
+      "fontSize": "14px",
+      "fontWeight": 600,
+      "white": { "bg": { "value": "#ffffff", "ref": "color.base.white" }, "border": { "value": "#c3c3c3", "ref": "color.grey.100" }, "color": { "value": "#3d3d3d", "ref": "color.grey.500" } },
+      "primary": { "bg": { "value": "#b0ceff", "ref": "color.primary.100" }, "color": { "value": "#0061fe", "ref": "color.primary.500" } },
+      "secondary": { "bg": { "value": "#fac7d5", "ref": "color.secondary.100" }, "color": { "value": "#ee4a79", "ref": "color.secondary.500" } },
+      "disabled": { "bg": { "value": "#ececec", "ref": "color.grey.50" }, "border": { "value": "#c3c3c3", "ref": "color.grey.100" }, "color": { "value": "#7d7d7d", "ref": "color.grey.300" } },
+      "add": { "border": { "value": "#c3c3c3", "ref": "color.grey.100" }, "color": { "value": "#7d7d7d", "ref": "color.grey.300" }, "hoverBorder": { "value": "#0061fe", "ref": "color.primary.500" }, "hoverColor": { "value": "#0061fe", "ref": "color.primary.500" } }
+    },
+
+    "toaster": {
+      "borderRadius": "10px",
+      "accentWidth": "13px",
+      "shadow": { "ref": "shadow.toast" },
+      "success": { "stripe": { "value": "#3ace76", "ref": "color.success.400" }, "bg": { "value": "#ebfaf1", "ref": "color.success.50" }, "color": { "value": "#3ace76", "ref": "color.success.400" } },
+      "warning": { "stripe": { "value": "#ff962c", "ref": "color.warning.400" }, "bg": { "value": "#fff5ea", "ref": "color.warning.50" }, "color": { "value": "#ff962c", "ref": "color.warning.400" } },
+      "error": { "stripe": { "value": "#fc3e3e", "ref": "color.error.400" }, "bg": { "value": "#ffecec", "ref": "color.error.50" }, "color": { "value": "#fc3e3e", "ref": "color.error.400" } },
+      "info": { "stripe": { "value": "#0061fe", "ref": "color.primary.500" }, "bg": { "value": "#e6efff", "ref": "color.primary.50" }, "color": { "value": "#0061fe", "ref": "color.primary.500" } },
+      "titleColor": { "value": "#222222", "ref": "color.grey.800" },
+      "messageColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "closeColor": { "value": "#7d7d7d", "ref": "color.grey.300" }
+    },
+
+    "selectSegment": {
+      "borderColor": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "selectedBg": { "value": "#fdedf2", "ref": "color.secondary.50" },
+      "selectedBorder": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "hoverBorder": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "chipRadius": "23px",
+      "colorpickerDotSize": "25px",
+      "userAvatarSizeLarge": "36px"
+    },
+
+    "confirmModal": {
+      "borderRadius": "12px",
+      "maxWidth": "700px",
+      "iconSize": "56px",
+      "general": { "btnBg": { "value": "#0061fe", "ref": "color.primary.500" } },
+      "confirmation": { "iconColor": { "value": "#3ace76", "ref": "color.success.400" } },
+      "alert": { "btnBg": { "value": "#ee4a79", "ref": "color.secondary.500" }, "_description": "Botón rosa — variante distintiva de AdvocatesPro." },
+      "error": { "btnBg": { "value": "#fc3e3e", "ref": "color.error.400" } }
+    },
+
+    "codeModal": {
+      "borderRadius": "24px",
+      "iconBg": { "value": "#fff5ea", "ref": "color.warning.50" },
+      "iconColor": { "value": "#ff962c", "ref": "color.warning.400" },
+      "btnBg": { "value": "#fc3e3e", "ref": "color.error.400" },
+      "codeSize": "40px",
+      "_description": "Modal de confirmación destructiva con código de doble factor (app-confirm-code-modal)."
+    },
+
+    "specialLaunchModal": {
+      "_description": "Modal especial de dos paneles (badge + hero + agenda/video a la izquierda, features + CTA a la derecha). Usado hoy para el modal 'Webinar en vivo'.",
+      "overlayBg": "rgba(0, 0, 0, 0.5)",
+      "panelRadius": "24px",
+      "panelPadding": "40px 32px",
+      "leftWidth": "555px",
+      "rightWidth": "718px",
+      "closeButtonSize": "34px",
+      "decorativeCircle": { "size": "729px", "primary": { "ref": "gradient.specialLaunchCirclePrimary" }, "secondary": { "ref": "gradient.specialLaunchCircleSecondary" } },
+      "badge": { "height": "36px", "borderRadius": "50px", "border": "1px solid #0061fe", "bg": { "ref": "gradient.specialLaunchBadgeBg" } },
+      "description": { "fontSize": "20px", "color": { "value": "#3d3d3d", "ref": "color.grey.500" }, "lineHeight": "24px", "letterSpacing": "-0.4px" },
+      "schedule": {
+        "dateBox": { "bg": { "value": "#ee4a79", "ref": "color.secondary.500" }, "color": { "value": "#ffffff", "ref": "color.base.white" }, "borderRadius": "16px", "size": "64px" },
+        "labelColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+        "timeChip": { "border": "1px solid #ececec", "color": { "value": "#222222", "ref": "color.grey.800" } }
+      },
+      "imagePreview": { "height": "296px", "borderRadius": "19px", "bg": { "ref": "gradient.specialLaunchImageBg" } },
+      "overlayButton": { "height": "48px", "bg": { "value": "#ee4a79", "ref": "color.secondary.500" }, "hoverBg": { "value": "#d9436e", "ref": "color.secondary.600" } },
+      "feature": {
+        "cardIconSize": "50px",
+        "titleSize": "18px", "titleColor": { "value": "#3d3d3d", "ref": "color.grey.500" },
+        "descSize": "16px", "descColor": { "value": "#7d7d7d", "ref": "color.grey.300" }, "descLineHeight": "20px",
+        "variant1": { "bg": { "value": "#e6efff", "ref": "color.primary.50" }, "iconColor": { "value": "#0061fe", "ref": "color.primary.500" } },
+        "variant2": { "bg": "#d1fae5", "iconColor": "#065f46" },
+        "variant3": { "bg": { "value": "#fdedf2", "ref": "color.secondary.50" }, "iconColor": { "value": "#ee4a79", "ref": "color.secondary.500" } },
+        "variant4": { "bg": "rgba(249, 198, 22, 0.16)", "iconColor": "#92400e" }
+      },
+      "note": { "borderRadius": "16px", "padding": "24px 32px", "bg": { "ref": "gradient.iaPanelBg" }, "descColor": { "value": "#00358c", "ref": "color.primary.800" } },
+      "footer": { "primaryBg": { "value": "#ee4a79", "ref": "color.secondary.500" }, "primaryHoverBg": { "value": "#d9436e", "ref": "color.secondary.600" } }
+    },
+
+    "stepper": {
+      "trackHeight": "5px",
+      "trackBg": { "value": "#ececec", "ref": "color.grey.50" },
+      "progressBg": { "value": "#0061fe", "ref": "color.primary.500" },
+      "trackRadius": "10px",
+      "labelFont": "'DM Sans', sans-serif",
+      "labelColor": { "value": "#7d7d7d", "ref": "color.grey.300" }
+    },
+
+    "textarea": {
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderFocus": { "value": "#0061fe", "ref": "color.primary.500" },
+      "borderRadius": "10px",
+      "font": "'Urbanist', sans-serif",
+      "fontSize": "16px",
+      "labelColor": { "value": "#222222", "ref": "color.grey.800" },
+      "placeholderColor": { "value": "#a6a6a6", "ref": "color.grey.200" },
+      "padding": "12px 16px",
+      "disabledOpacity": 0.5
+    },
+
+    "numberInput": {
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderRadius": "12px",
+      "height": { "large": "48px", "medium": "40px", "small": "36px" },
+      "btnColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "btnHover": { "value": "#0061fe", "ref": "color.primary.500" },
+      "font": "'Urbanist', sans-serif",
+      "fontWeight": 600
+    },
+
+    "accountCounter": {
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderRadius": "12px",
+      "iconColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "textColor": { "value": "#222222", "ref": "color.grey.800" },
+      "font": "'Urbanist', sans-serif",
+      "fontWeight": 600,
+      "height": { "large": "48px", "medium": "40px", "small": "36px" }
+    },
+
+    "selectDate": {
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderRadius": "12px",
+      "font": "'Urbanist', sans-serif",
+      "height": { "large": "48px", "medium": "40px", "small": "36px" },
+      "dropdownShadow": { "ref": "shadow.selectDateDropdown" },
+      "daySelectedBg": { "value": "#0061fe", "ref": "color.primary.500" },
+      "dayOtherColor": { "value": "#c3c3c3", "ref": "color.grey.100" }
+    },
+
+    "hourDatePicker": {
+      "spinnerGap": "18px",
+      "chevronColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "chevronHover": { "value": "#3d3d3d", "ref": "color.grey.500" },
+      "valueColor": { "value": "#222222", "ref": "color.grey.800" },
+      "divider": { "value": "#ececec", "ref": "color.grey.50" }
+    },
+
+    "select": {
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderFocus": { "value": "#0061fe", "ref": "color.primary.500" },
+      "borderRadius": "10px",
+      "height": { "large": "48px", "medium": "40px", "small": "36px" },
+      "font": "'Urbanist', sans-serif",
+      "placeholderColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "textColor": { "value": "#222222", "ref": "color.grey.800" },
+      "iconColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "dropdownShadow": { "ref": "shadow.selectDropdown" },
+      "optionHoverBg": { "value": "#fafafa", "ref": "color.neutral.50" },
+      "disabledBg": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "disabledText": { "value": "#a6a6a6", "ref": "color.grey.200" }
+    },
+
+    "searchInput": {
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderFocus": { "value": "#0061fe", "ref": "color.primary.500" },
+      "borderRadius": "50px",
+      "height": { "large": "50px", "medium": "40px", "small": "36px" },
+      "iconColor": { "value": "#a6a6a6", "ref": "color.grey.200" },
+      "placeholderColor": { "value": "#a6a6a6", "ref": "color.grey.200" },
+      "font": "'Urbanist', sans-serif",
+      "fontWeight": 500,
+      "disabledBg": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "disabledText": { "value": "#a6a6a6", "ref": "color.grey.200" }
+    },
+
+    "textInput": {
+      "border": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "borderFocus": { "value": "#0061fe", "ref": "color.primary.500" },
+      "borderError": { "value": "#fc3e3e", "ref": "color.error.400" },
+      "borderRadius": "10px",
+      "height": { "large": "48px", "medium": "40px", "small": "36px" },
+      "font": "'Urbanist', sans-serif",
+      "labelColor": { "value": "#222222", "ref": "color.grey.800" },
+      "placeholderColor": { "value": "#a6a6a6", "ref": "color.grey.200" },
+      "iconColor": { "value": "#7d7d7d", "ref": "color.grey.300" }
+    },
+
+    "card": {
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "border": { "value": "#ececec", "ref": "color.grey.50" },
+      "borderRadius": "16px",
+      "padding": { "simple": "24px", "large": "32px" },
+      "titleColor": { "value": "#222222", "ref": "color.grey.800" },
+      "titleSize": { "titled": "20px", "large": "24px" }
+    },
+
+    "menu": {
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "border": { "value": "#ececec", "ref": "color.grey.50" },
+      "borderRadius": "12px",
+      "itemHover": { "value": "#fafafa", "ref": "color.neutral.50" },
+      "itemSelectedBg": { "value": "#fdedf2", "ref": "color.secondary.50" },
+      "itemColor": { "value": "#3d3d3d", "ref": "color.grey.500" },
+      "iconColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "radioActive": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "checkboxActive": { "value": "#ee4a79", "ref": "color.secondary.500" }
+    },
+
+    "avatar": {
+      "borderRadius": "50%",
+      "size": { "xlarge": "50px", "large": "36px", "medium": "26px", "small": "18px" },
+      "badgeSize": "16px",
+      "badgeBorder": { "value": "#ffffff", "ref": "color.base.white" }
+    },
+
+    "metrics": {
+      "barPrimary": { "from": { "value": "#5495fe", "ref": "color.primary.300" }, "to": { "value": "#0061fe", "ref": "color.primary.500" } },
+      "barSecondary": { "from": { "value": "#f38fab", "ref": "color.secondary.300" }, "to": { "value": "#ee4a79", "ref": "color.secondary.500" } },
+      "barSize": { "large": "78px", "medium": "35px", "small": "17px", "xsmall": "8px" },
+      "barLabelColor": { "value": "#7d7d7d", "ref": "color.grey.300" },
+      "sparklinePrimary": { "value": "#0061fe", "ref": "color.primary.500" },
+      "sparklineSecondary": { "value": "#ee4a79", "ref": "color.secondary.500" },
+      "donutStrokeWidth": "30px",
+      "trendUp": { "value": "#3ace76", "ref": "color.success.400" },
+      "trendDown": { "value": "#fc3e3e", "ref": "color.error.400" }
+    },
+
+    "table": {
+      "bg": { "value": "#ffffff", "ref": "color.base.white" },
+      "borderColor": { "value": "#ececec", "ref": "color.grey.50" },
+      "headerColor": { "value": "#3d3d3d", "ref": "color.grey.500" },
+      "bodyColor": { "value": "#3d3d3d", "ref": "color.grey.500" },
+      "titleColor": { "value": "#222222", "ref": "color.grey.800" },
+      "titleSize": "24px",
+      "rowHeight": "44px",
+      "cellPadding": "10px 20px",
+      "hoverBg": { "value": "#fafafa", "ref": "color.neutral.50" },
+      "actionIconColor": { "value": "#ee4a79", "ref": "color.secondary.500" }
+    },
+
+    "dashboardUi": {
+      "codeBlockBg": { "value": "#1a1a1a", "ref": "color.grey.900" },
+      "codeBlockText": { "value": "#c3c3c3", "ref": "color.grey.100" },
+      "labelColor": { "value": "#a6a6a6", "ref": "color.grey.200" },
+      "lightBg": { "value": "#f1f1f1", "ref": "color.neutral.200" },
+      "swatchBorder": { "value": "#ececec", "ref": "color.grey.50" }
+    },
+
+    "iaElements": {
+      "panel": {
+        "padding": "24px 32px",
+        "borderRadius": "16px",
+        "iconSize": "48px",
+        "iconBg": { "value": "#ffffff", "ref": "color.base.white" },
+        "titleColor": { "value": "#00296b", "ref": "color.primary.900" },
+        "titleFontSize": "18px",
+        "subtitleColor": { "value": "#00296b", "ref": "color.primary.900" },
+        "subtitleFontSize": "14px"
+      },
+      "note": {
+        "padding": "4px 16px",
+        "borderRadius": "10px",
+        "textColor": { "value": "#00296b", "ref": "color.primary.900" },
+        "textSize": "12px"
+      },
+      "heroTitle": {
+        "fontSize": "40px",
+        "lineHeight": "40px",
+        "fontFamily": "'Urbanist', sans-serif",
+        "fontWeight": 600,
+        "letterSpacing": "-0.8px",
+        "gradient": { "ref": "gradient.iaHeroTitleGradient" }
+      }
+    },
+
+    "colorLabels": {
+      "height": "20px",
+      "padding": "10px 8px",
+      "borderRadius": "10px",
+      "gap": "6px",
+      "fontSize": "10px",
+      "fontWeight": 500,
+      "letterSpacing": "-0.2px",
+      "actionCircle": { "size": "14px", "borderRadius": "30px", "iconSize": "10px" },
+      "variants": {
+        "azul": { "bg": "#dbeafe", "text": "#1e40af" },
+        "verde": { "bg": "#d1fae5", "text": "#065f46" },
+        "amarillo": { "bg": "#fef3c7", "text": "#92400e" },
+        "rojo": { "bg": "#fee2e2", "text": "#991b1b" },
+        "violeta": { "bg": "#ede9fe", "text": "#5b21b6" },
+        "naranja": { "bg": "#ffedd5", "text": "#9a3412" },
+        "turquesa": { "bg": "#ccfbf1", "text": "#115e59" },
+        "gris": { "bg": "#f3f4f6", "text": "#374151" },
+        "vinotinto": { "bg": "#fce7f3", "text": "#9f1239" },
+        "olivo": { "bg": "#ecfccb", "text": "#3f6212" },
+        "ia": {
+          "bg": { "value": "#ffffff", "ref": "color.base.white" },
+          "border": { "value": "#0061fe", "ref": "color.primary.500" },
+          "textGradient": { "ref": "gradient.iaTextGradient" },
+          "_description": "Única variante con fondo blanco + borde + texto en gradiente, en vez de fondo pastel plano."
+        }
+      }
+    }
+  }
+}

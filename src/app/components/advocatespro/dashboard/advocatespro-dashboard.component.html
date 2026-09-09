@@ -1146,12 +1146,17 @@
   <section class="style-guide__section" id="sg-special-modals">
     <div class="style-guide__card">
       <h2 class="style-guide__card-title">Modales Especiales</h2>
-      <p class="style-guide__card-desc">Modal distintivo de AdvocatesPro: <strong>Lanzamiento</strong> de la nueva versión. Con circulos decorativos, gradiente de titulo IA y layout de dos paneles (hero + features).</p>
+      <p class="style-guide__card-desc">Modal distintivo de AdvocatesPro: <strong>Webinar en vivo</strong>. Layout de dos paneles (hero + agenda del evento a la izquierda, features + CTA a la derecha).</p>
 
       <div class="style-guide__modal-grid">
         <button class="style-guide__modal-trigger style-guide__modal-trigger--launch"
           (click)="openSpecialModal('launch')">
-          <span class="style-guide__modal-trigger-label">Lanzamiento</span>
+          <span class="style-guide__modal-trigger-label">Webinar</span>
+          <span class="style-guide__modal-trigger-hint">Click para abrir</span>
+        </button>
+        <button class="style-guide__modal-trigger style-guide__modal-trigger--launch"
+          (click)="openSpecialModal('ambassador')">
+          <span class="style-guide__modal-trigger-label">Webinar Embajador</span>
           <span class="style-guide__modal-trigger-hint">Click para abrir</span>
         </button>
       </div>
@@ -1159,7 +1164,7 @@
   </section>
   }
 
-  <!-- ═══ MODAL: LANZAMIENTO ("Advocates se renovó") ═══ -->
+  <!-- ═══ MODAL: WEBINAR EN VIVO ═══ -->
   @if (openSpecialModalType === 'launch') {
     <div class="style-guide__special-modal-overlay" (click)="closeSpecialModal()">
       <div class="style-guide__special-modal-launch" (click)="$event.stopPropagation()">
@@ -1175,20 +1180,36 @@
           <div class="style-guide__special-launch-left-content">
             <div class="style-guide__special-launch-badge">
               <lucide-icon [img]="SparklesIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
-              <span class="style-guide__special-launch-badge-text">Nuevo lanzamiento</span>
+              <span class="style-guide__special-launch-badge-text">Webinar en vivo · Gratis</span>
             </div>
 
-            <h2 class="style-guide__special-launch-hero-title">Advocates se renovó,<br>conoce nuestra nueva versión</h2>
+            <h2 class="style-guide__special-launch-hero-title">Tu canal orgánico más potente,<br>es tu gente</h2>
 
             <p class="style-guide__special-launch-description">
-              Rediseñamos la plataforma desde cero. A partir de hoy podrás contactar a tu equipo de CSM y solicitar la activación de nuestra nueva versión.
+              Conoce nuestra nueva versión, el motor que transforma a tu equipo en el <strong>canal orgánico más potente</strong> de tu empresa.
             </p>
+
+            <div class="style-guide__special-launch-schedule">
+              <div class="style-guide__special-launch-date-box">
+                <span class="style-guide__special-launch-date-day">05</span>
+                <span class="style-guide__special-launch-date-month">Ago</span>
+              </div>
+              <div class="style-guide__special-launch-schedule-info">
+                <span class="style-guide__special-launch-schedule-label">Miércoles 5 de agosto</span>
+                <div class="style-guide__special-launch-time-chips">
+                  <span class="style-guide__special-launch-time-chip">11:00 MX</span>
+                  <span class="style-guide__special-launch-time-chip">12:00 COL·PE</span>
+                  <span class="style-guide__special-launch-time-chip">13:00 VE·CH</span>
+                  <span class="style-guide__special-launch-time-chip">14:00 ARG</span>
+                </div>
+              </div>
+            </div>
 
             <div class="style-guide__special-launch-image-wrap">
               <div class="style-guide__special-launch-image"></div>
               <button class="style-guide__special-launch-overlay-btn" (click)="closeSpecialModal()">
                 <lucide-icon [img]="PlayIcon" [size]="20" [strokeWidth]="1.5"></lucide-icon>
-                <span>Ver nuevo Advocates</span>
+                <span>Ver preview del webinar</span>
               </button>
             </div>
           </div>
@@ -1196,55 +1217,172 @@
 
         <!-- RIGHT PANEL -->
         <div class="style-guide__special-launch-right">
-          <h3 class="style-guide__special-launch-right-title">Qué encuentras en la nueva versión</h3>
+          <h3 class="style-guide__special-launch-right-title">Qué vas a ver en el webinar</h3>
 
           <div class="style-guide__special-launch-features">
             <div class="style-guide__special-launch-feature">
               <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--1">
-                <lucide-icon [img]="MegaphoneIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+                <lucide-icon [img]="TrophyIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
               </div>
-              <h4 class="style-guide__special-launch-feature-title">Campañas</h4>
-              <p class="style-guide__special-launch-feature-desc">Tienes sugerencias de campaña con IA</p>
+              <h4 class="style-guide__special-launch-feature-title">Gamificación completa</h4>
+              <p class="style-guide__special-launch-feature-desc">Badges, niveles y ranking en tiempo real para tus embajadores.</p>
             </div>
 
             <div class="style-guide__special-launch-feature">
               <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--2">
-                <lucide-icon [img]="TargetIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+                <lucide-icon [img]="SparklesIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
               </div>
-              <h4 class="style-guide__special-launch-feature-title">Retos</h4>
-              <p class="style-guide__special-launch-feature-desc">Configura las reglas de tu marca para que la IA revise automáticamente cada contenido y defina si aplica antes de aprobarlo y publicarlo.</p>
+              <h4 class="style-guide__special-launch-feature-title">IA entrenada en tu marca</h4>
+              <p class="style-guide__special-launch-feature-desc">Genera propuestas de campañas y automatiza la aprobación de contenidos.</p>
             </div>
 
             <div class="style-guide__special-launch-feature">
               <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--3">
-                <lucide-icon [img]="ImagesIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+                <lucide-icon [img]="BarChart3Icon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
               </div>
-              <h4 class="style-guide__special-launch-feature-title">Contenido &amp; Posts</h4>
-              <p class="style-guide__special-launch-feature-desc">Revisa, aprueba y gestiona todo el contenido generado por tus creadores en un solo lugar.</p>
+              <h4 class="style-guide__special-launch-feature-title">Reporte de impacto real</h4>
+              <p class="style-guide__special-launch-feature-desc">Alcance, participación y engagement en un solo dashboard.</p>
             </div>
 
             <div class="style-guide__special-launch-feature">
               <div class="style-guide__special-launch-feature-icon style-guide__special-launch-feature-icon--4">
-                <lucide-icon [img]="UsersIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
+                <lucide-icon [img]="SmartphoneIcon" [size]="24" [strokeWidth]="1.5"></lucide-icon>
               </div>
-              <h4 class="style-guide__special-launch-feature-title">Grupos &amp; Recompensas</h4>
-              <p class="style-guide__special-launch-feature-desc">Administra tus equipos y premia a los embajadores más activos desde una experiencia renovada.</p>
+              <h4 class="style-guide__special-launch-feature-title">Publica en 3 clics</h4>
+              <p class="style-guide__special-launch-feature-desc">Una app pensada para que tu equipo publique en segundos.</p>
             </div>
           </div>
 
           <div class="style-guide__special-launch-note">
             <div class="style-guide__special-launch-note-heading">
-              <lucide-icon [img]="HeadsetIcon" [size]="22" [strokeWidth]="1.5"></lucide-icon>
-              <span class="style-guide__special-launch-note-heading-text">Tu equipo de CSM te acompaña en la activación</span>
+              <lucide-icon [img]="TicketIcon" [size]="22" [strokeWidth]="1.5"></lucide-icon>
+              <span class="style-guide__special-launch-note-heading-text">Cupos limitados · entrada gratis</span>
             </div>
             <p class="style-guide__special-launch-note-desc">
-              Inscríbete en la lista prioritaria y accede antes que nadie a la nueva versión de AdvPro.
+              Actívalo antes que nadie — regístrate y te enviaremos la grabación si no puedes en vivo.
             </p>
-            <button class="style-guide__special-launch-note-btn" (click)="closeSpecialModal()">
-              Inscribete
+          </div>
+
+          <div class="style-guide__special-launch-footer">
+            <button class="style-guide__special-launch-footer-cancel" (click)="closeSpecialModal()">
+              Ahora no
+            </button>
+            <button class="style-guide__special-launch-footer-primary" (click)="closeSpecialModal()">
+              <lucide-icon [img]="ArrowRightIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+              Reservar mi lugar gratis
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  }
+
+  <!-- ═══ MODAL: WEBINAR "ROL EMBAJADOR" (variante compacta, 1 panel, 480px) ═══ -->
+  @if (openSpecialModalType === 'ambassador') {
+    <div class="style-guide__special-modal-overlay" (click)="closeSpecialModal()">
+      <div class="style-guide__ambassador-modal" role="dialog" aria-modal="true" aria-labelledby="apAmbassadorTitle" (click)="$event.stopPropagation()">
+
+        <div class="style-guide__ambassador-card">
+          <!-- Cabecera: badge + título + descripción -->
+          <div class="style-guide__ambassador-header">
+            <div class="style-guide__ambassador-badge">
+              <lucide-icon [img]="SparklesIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+              <span class="style-guide__ambassador-badge-text">Webinar en vivo · Gratis</span>
+            </div>
+
+            <h2 class="style-guide__ambassador-title" id="apAmbassadorTitle">El rol Embajador, reinventado en AdvocatesPro</h2>
+
+            <p class="style-guide__ambassador-description">
+              Continuamos la capacitación de la nueva versión con un webinar enfocado en cómo vive el <strong>Embajador</strong> la nueva AdvocatesPro.
+            </p>
+          </div>
+
+          <div class="style-guide__ambassador-body">
+
+            <!-- Agenda del evento -->
+            <div class="style-guide__ambassador-schedule">
+              <div class="style-guide__ambassador-date-box">
+                <span class="style-guide__ambassador-date-day">19</span>
+                <span class="style-guide__ambassador-date-month">Ago</span>
+              </div>
+              <div class="style-guide__ambassador-schedule-info">
+                <span class="style-guide__ambassador-schedule-label">Miércoles 19 de agosto</span>
+                <div class="style-guide__ambassador-time-chips">
+                  <span class="style-guide__ambassador-time-chip">2:00 pm AR</span>
+                  <span class="style-guide__ambassador-time-chip">12:00 pm CO·PE</span>
+                  <span class="style-guide__ambassador-time-chip">1:00 pm VE·CH</span>
+                  <span class="style-guide__ambassador-time-chip">7:00 pm ARG</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lista de features -->
+            <div class="style-guide__ambassador-features">
+              <div class="style-guide__ambassador-feature">
+                <div class="style-guide__ambassador-feature-icon style-guide__ambassador-feature-icon--1">
+                  <lucide-icon [img]="UserIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+                <div class="style-guide__ambassador-feature-text">
+                  <h4 class="style-guide__ambassador-feature-title">Nuevo perfil del Embajador</h4>
+                  <p class="style-guide__ambassador-feature-desc">Progreso, insignias y próximos retos.</p>
+                </div>
+              </div>
+
+              <div class="style-guide__ambassador-feature">
+                <div class="style-guide__ambassador-feature-icon style-guide__ambassador-feature-icon--2">
+                  <lucide-icon [img]="TrophyIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+                <div class="style-guide__ambassador-feature-text">
+                  <h4 class="style-guide__ambassador-feature-title">Gamificación y recompensas</h4>
+                  <p class="style-guide__ambassador-feature-desc">Niveles y ranking en tiempo real.</p>
+                </div>
+              </div>
+
+              <div class="style-guide__ambassador-feature">
+                <div class="style-guide__ambassador-feature-icon style-guide__ambassador-feature-icon--3">
+                  <lucide-icon [img]="SmartphoneIcon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+                <div class="style-guide__ambassador-feature-text">
+                  <h4 class="style-guide__ambassador-feature-title">Publica en 3 clics</h4>
+                  <p class="style-guide__ambassador-feature-desc">Desde la app móvil, en segundos.</p>
+                </div>
+              </div>
+
+              <div class="style-guide__ambassador-feature">
+                <div class="style-guide__ambassador-feature-icon style-guide__ambassador-feature-icon--4">
+                  <lucide-icon [img]="BarChart3Icon" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+                </div>
+                <div class="style-guide__ambassador-feature-text">
+                  <h4 class="style-guide__ambassador-feature-title">Su reporte de impacto</h4>
+                  <p class="style-guide__ambassador-feature-desc">Alcance, participación y recompensas.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nota destacada -->
+            <div class="style-guide__ambassador-note">
+              <lucide-icon [img]="TicketIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+              <p class="style-guide__ambassador-note-desc">Cupos limitados. Si no puedes en vivo, te enviamos la grabación.</p>
+            </div>
+
+          </div>
+
+          <!-- Footer (fijo abajo) -->
+          <div class="style-guide__ambassador-footer">
+            <button class="style-guide__ambassador-footer-cancel" (click)="closeSpecialModal()">
+              Ahora no
+            </button>
+            <button class="style-guide__ambassador-footer-primary" (click)="closeSpecialModal()">
+              <lucide-icon [img]="ArrowRightIcon" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+              Reserva mi lugar
+            </button>
+          </div>
+        </div>
+
+        <button class="style-guide__ambassador-close" (click)="closeSpecialModal()" aria-label="Cerrar">
+          <lucide-icon [img]="XIcon" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+        </button>
+
       </div>
     </div>
   }

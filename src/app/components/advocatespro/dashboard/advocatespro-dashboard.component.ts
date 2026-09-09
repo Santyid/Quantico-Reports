@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, PlusCircle, Copy, Check, Search, X, Sparkles, CircleCheck, CircleX, CircleCheckBig, TriangleAlert, Info, ChevronDown, User, Globe, Mail, MapPin, Bell, Settings, Home, FileText, BarChart3, Layers, Zap, Trash2, Pencil, EllipsisVertical, LoaderCircle, MoreHorizontal, Megaphone, Target, Images, Users, Headset, Play } from 'lucide-angular';
+import { LucideAngularModule, PlusCircle, Copy, Check, Search, X, Sparkles, CircleCheck, CircleX, CircleCheckBig, TriangleAlert, Info, ChevronDown, User, Globe, Mail, MapPin, Bell, Settings, Home, FileText, BarChart3, Layers, Zap, Trash2, Pencil, EllipsisVertical, LoaderCircle, MoreHorizontal, Play, Trophy, Ticket, Smartphone, ArrowRight } from 'lucide-angular';
 import { RadioButton } from 'primeng/radiobutton';
 import { SelectUserComponent, SelectUserOption } from '../../ui/select-user/select-user.component';
 import { SelectSegmentComponent, SelectSegmentOption } from '../../ui/select-segment/select-segment.component';
@@ -135,12 +135,11 @@ export class AdvocatesproDashboardComponent {
   readonly EllipsisIcon = EllipsisVertical;
   readonly LoaderCircleIcon = LoaderCircle;
   readonly MoreHorizontalIcon = MoreHorizontal;
-  readonly MegaphoneIcon = Megaphone;
-  readonly TargetIcon = Target;
-  readonly ImagesIcon = Images;
-  readonly UsersIcon = Users;
-  readonly HeadsetIcon = Headset;
   readonly PlayIcon = Play;
+  readonly TrophyIcon = Trophy;
+  readonly TicketIcon = Ticket;
+  readonly SmartphoneIcon = Smartphone;
+  readonly ArrowRightIcon = ArrowRight;
 
   // ─── Color labels demo ───
   readonly labelVariants = [
@@ -215,7 +214,7 @@ export class AdvocatesproDashboardComponent {
     { id: 'toasters', label: 'Toasters', keywords: ['toast', 'toaster', 'notificacion', 'alert', 'success', 'error', 'warning', 'info', 'snackbar'] },
     { id: 'selects-seg', label: 'Select Segments', keywords: ['select', 'segment', 'user', 'avatar', 'colorpicker', 'image', 'chips', 'hover', 'selected'] },
     { id: 'modals', label: 'Modals', keywords: ['modal', 'dialog', 'confirm', 'confirmacion', 'alerta', 'error', 'general', 'overlay'] },
-    { id: 'special-modals', label: 'Modales Especiales', keywords: ['modal', 'lanzamiento', 'especial', 'advocates', 'renovo', 'renovó', 'nueva version', 'badge', 'features', 'csm', 'overlay'] },
+    { id: 'special-modals', label: 'Modales Especiales', keywords: ['modal', 'webinar', 'especial', 'evento', 'en vivo', 'badge', 'features', 'agenda', 'horario', 'reservar', 'overlay'] },
     { id: 'steppers', label: 'Steppers', keywords: ['stepper', 'paso', 'step', 'progress', 'wizard', 'barra', 'progreso'] },
     { id: 'form-inputs', label: 'Form Inputs', keywords: ['input', 'text', 'textarea', 'number', 'form', 'campo', 'formulario'] },
     { id: 'date-pickers', label: 'Date Pickers', keywords: ['date', 'fecha', 'calendar', 'calendario', 'hora', 'hour', 'time', 'picker'] },
@@ -1747,9 +1746,9 @@ imports: [RadioButton, FormsModule]`
   codeModalVisible = false;
 
   // ─── Modales Especiales (Lanzamiento) ───
-  openSpecialModalType: 'launch' | null = null;
+  openSpecialModalType: 'launch' | 'ambassador' | null = null;
 
-  openSpecialModal(type: 'launch'): void {
+  openSpecialModal(type: 'launch' | 'ambassador'): void {
     this.openSpecialModalType = type;
   }
 

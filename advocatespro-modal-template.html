@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdvocatesPro — Modal de Lanzamiento (Plantilla de referencia)</title>
+<style>
+  /* ============================================================
+     ADVOCATESPRO — MODAL ESPECIAL DE LANZAMIENTO ("Webinar en vivo")
+     Plantilla de referencia autocontenida (sin dependencias externas).
+     Reproduce 1:1 el componente real:
+       src/app/components/advocatespro/dashboard/advocatespro-dashboard.component.html
+       (bloque "MODAL: WEBINAR EN VIVO") y su SCSS correspondiente
+       (clases .style-guide__special-*).
+     Todos los valores (colores, tipografía, espaciados, radios, sombras)
+     provienen de los tokens $ap-* de src/styles/_tokens.scss.
+     Ver también: advocatespro-design-tokens.json / advocatespro-design-system-guide.md
+     ============================================================ */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    /* Fondo de página neutro solo para poder visualizar el modal aislado */
+    background: #f5f7fa;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Botón para reabrir el modal si se cierra — solo existe en esta plantilla de demo */
+  .demo-reopen-btn {
+    display: none;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    background: #0061fe;
+    color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+  }
+  .demo-reopen-btn.is-visible { display: inline-flex; }
+
+  /* ------------------------------------------------------------
+     OVERLAY
+     $ap-special-modal-overlay-bg: rgba(0, 0, 0, 0.5)
+     ------------------------------------------------------------ */
+  .ap-special-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: ap-modal-fade-in 0.2s ease;
+  }
+
+  /* ------------------------------------------------------------
+     CONTENEDOR DEL MODAL (dos paneles fijos: hero+agenda | features+CTA)
+     $ap-special-launch-left-width:  555px
+     $ap-special-launch-right-width: 718px
+     $ap-special-launch-gap: 0 (los paneles quedan pegados, se perciben
+     como un solo bloque gracias a los radios partidos de cada panel)
+     ------------------------------------------------------------ */
+  .ap-special-modal-launch {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    max-width: 1293px;
+    width: 100%;
+    animation: ap-modal-scale-in 0.25s ease;
+  }
+
+  /* Botón cerrar (X) — flota FUERA del modal, arriba a la derecha.
+     $ap-special-launch-close-size: 34px */
+  .ap-special-modal-launch-close {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff;             /* $ap-white-base */
+    border: none;
+    cursor: pointer;
+    color: #3d3d3d;                  /* $ap-grey-500 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  .ap-special-modal-launch-close:hover { background: #fafafa; /* $ap-neutral-50 */ }
+  .ap-special-modal-launch-close svg { width: 24px; height: 24px; }
+
+  /* ============================================================
+     PANEL IZQUIERDO — "Header" del modal: badge, título, descripción,
+     agenda del evento, preview de imagen/video con CTA.
+     $ap-special-launch-panel-padding: 40px 32px
+     $ap-special-launch-panel-radius:  24px (partido: 24px 0 0 24px)
+     ============================================================ */
+  .ap-special-launch-left {
+    position: relative;
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 24px 0 0 24px;
+    width: 555px;
+    flex-shrink: 0;
+    overflow: hidden; /* recorta los círculos decorativos que se salen del panel */
+  }
+
+  /* Círculos decorativos radiales — distintivos de los modales especiales
+     de AdvocatesPro. $ap-special-modal-circle-size: 729px */
+  .ap-special-modal-circle {
+    position: absolute;
+    width: 729px;
+    height: 729px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ap-special-modal-circle--top-right {
+    /* radial-gradient secondary-50 (rosa) → transparente */
+    background: radial-gradient(circle, #fdedf2 0%, rgba(253, 237, 242, 0) 70%);
+    top: -60%;
+    right: -60%;
+  }
+  .ap-special-modal-circle--bottom-left {
+    /* radial-gradient primary-50 (azul) → transparente */
+    background: radial-gradient(circle, #e6efff 0%, rgba(230, 239, 255, 0) 70%);
+    bottom: -60%;
+    left: -60%;
+  }
+
+  .ap-special-launch-left-content {
+    position: relative;
+    z-index: 1; /* por encima de los círculos decorativos */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Badge "Webinar en vivo · Gratis"
+     border: 1px solid $ap-primary-500
+     background: linear-gradient(74.11deg, primary-200 → primary-50 → secondary-50 → secondary-200) */
+  .ap-special-launch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    height: 36px;
+    border-radius: 50px;
+    border: 1px solid #0061fe;
+    background: linear-gradient(74.11deg, #8ab6ff 8.33%, #e6efff 12.32%, #fdedf2 92.59%, #f7acc1 109.63%);
+    padding: 0 16px;
+  }
+  .ap-special-launch-badge svg { color: #0061fe; flex-shrink: 0; width: 20px; height: 20px; }
+  .ap-special-launch-badge-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    /* Texto con gradiente de IA: $ap-ia-text-gradient */
+    background: linear-gradient(5.79deg, #0061fe 2.99%, #00aaff 105.98%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Título hero — gradiente tricolor $ap-ia-hero-title-gradient
+     azul → azul oscuro → rosa (color de marca AdvocatesPro) */
+  .ap-special-launch-hero-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 40px;              /* $ap-ia-hero-title-size */
+    font-weight: 600;             /* $ap-ia-hero-title-weight */
+    line-height: 40px;            /* $ap-ia-hero-title-line-height */
+    letter-spacing: -0.8px;       /* $ap-ia-hero-title-letter-spacing */
+    background: linear-gradient(to right, #0061fe 1.85%, #00296b 49.5%, #ee4a79 82.2%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  .ap-special-launch-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;              /* $ap-special-launch-desc-size */
+    font-weight: 400;
+    color: #3d3d3d;               /* $ap-grey-500 */
+    line-height: 24px;            /* $ap-special-launch-desc-line-height */
+    letter-spacing: -0.4px;       /* $ap-special-launch-desc-tracking */
+    margin: 0;
+  }
+  .ap-special-launch-description strong { font-weight: 700; color: #222222; /* $ap-grey-800 */ }
+
+  /* Agenda del evento: caja de fecha + horarios por país.
+     Contenido dinámico de ejemplo — reemplazar por los datos reales del evento. */
+  .ap-special-launch-schedule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ap-special-launch-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64px;                  /* $ap-special-launch-date-size */
+    height: 64px;
+    border-radius: 16px;          /* $ap-special-launch-date-radius */
+    background: #ee4a79;          /* $ap-special-launch-date-bg = $ap-secondary-500 */
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+  .ap-special-launch-date-day { font-family: 'Urbanist', sans-serif; font-size: 22px; font-weight: 700; line-height: 1; }
+  .ap-special-launch-date-month { font-family: 'Urbanist', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+  .ap-special-launch-schedule-info { display: flex; flex-direction: column; gap: 6px; }
+  .ap-special-launch-schedule-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #7d7d7d; /* $ap-special-launch-schedule-label-color = $ap-grey-300 */
+  }
+  .ap-special-launch-time-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ap-special-launch-time-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #ececec; /* $ap-special-launch-time-chip-border = $ap-grey-50 */
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #222222; /* $ap-special-launch-time-chip-color = $ap-grey-800 */
+    white-space: nowrap;
+  }
+
+  /* Preview de imagen/video con botón overlay de reproducción.
+     $ap-special-launch-image-height: 296px
+     $ap-special-launch-image-radius: 19px */
+  .ap-special-launch-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 296px;
+    border-radius: 19px;
+    overflow: hidden;
+  }
+  .ap-special-launch-image {
+    position: absolute;
+    inset: 0;
+    /* Placeholder de imagen — reemplazar por el screenshot/preview real del evento */
+    background: linear-gradient(135deg, #b0ceff 0%, #fac7d5 100%);
+    filter: blur(2px);
+    opacity: 0.7;
+  }
+  .ap-special-launch-overlay-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px; /* $ap-special-launch-overlay-btn-height */
+    padding: 0 20px;
+    border-radius: 12px;
+    background: #ee4a79; /* $ap-special-launch-overlay-btn-bg = $ap-secondary-500 */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 2;
+    transition: background-color 0.2s ease;
+  }
+  .ap-special-launch-overlay-btn svg { color: #ffffff; width: 20px; height: 20px; }
+  .ap-special-launch-overlay-btn:hover { background: #d9436e; /* $ap-special-launch-overlay-btn-hover = $ap-secondary-600 */ }
+
+  /* ============================================================
+     PANEL DERECHO — "Body" (features + nota destacada) y "Footer" (CTA)
+     ============================================================ */
+  .ap-special-launch-right {
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 0 24px 24px 0;
+    width: 718px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ap-special-launch-right-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222222; /* $ap-grey-800 */
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  /* Cuadrícula 2×2 de features del evento */
+  .ap-special-launch-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .ap-special-launch-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: 2px 5px 13.5px rgba(0, 0, 0, 0.05);
+  }
+  .ap-special-launch-feature-icon {
+    width: 50px; /* $ap-special-launch-feature-card-icon-size */
+    height: 50px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .ap-special-launch-feature-icon svg { width: 24px; height: 24px; }
+  /* Feature 1: azul — $ap-special-launch-feature-1-bg / -color */
+  .ap-special-launch-feature-icon--1 { background: #e6efff; }
+  .ap-special-launch-feature-icon--1 svg { color: #0061fe; }
+  /* Feature 2: verde — $ap-special-launch-feature-2-bg / -color */
+  .ap-special-launch-feature-icon--2 { background: #d1fae5; }
+  .ap-special-launch-feature-icon--2 svg { color: #065f46; }
+  /* Feature 3: rosa (acento AdvocatesPro) — $ap-special-launch-feature-3-bg / -color */
+  .ap-special-launch-feature-icon--3 { background: #fdedf2; }
+  .ap-special-launch-feature-icon--3 svg { color: #ee4a79; }
+  /* Feature 4: ámbar — $ap-special-launch-feature-4-bg / -color */
+  .ap-special-launch-feature-icon--4 { background: rgba(249, 198, 22, 0.16); }
+  .ap-special-launch-feature-icon--4 svg { color: #92400e; }
+
+  .ap-special-launch-feature-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;              /* $ap-special-launch-feature-title-size */
+    font-weight: 600;
+    color: #3d3d3d;               /* $ap-special-launch-feature-title-color = $ap-grey-500 */
+    margin: 0;
+  }
+  .ap-special-launch-feature-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;              /* $ap-special-launch-feature-desc-size */
+    font-weight: 400;
+    color: #7d7d7d;               /* $ap-special-launch-feature-desc-color = $ap-grey-300 */
+    line-height: 20px;
+    margin: 0;
+  }
+
+  /* Nota destacada "Cupos limitados" — fondo $ap-ia-panel-bg */
+  .ap-special-launch-note {
+    background: linear-gradient(108.20deg, rgba(230, 239, 255, 0.7) 0%, #ffffff 50.75%, rgba(253, 237, 242, 0.7) 100%);
+    padding: 24px 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ap-special-launch-note-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ap-special-launch-note-heading svg { color: #0061fe; width: 22px; height: 22px; }
+  .ap-special-launch-note-heading-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    /* Texto con gradiente de IA: $ap-ia-text-gradient */
+    background: linear-gradient(5.79deg, #0061fe 2.99%, #00aaff 105.98%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ap-special-launch-note-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #00358c; /* $ap-special-launch-note-desc-color = $ap-primary-800 */
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Footer con acciones — mismo patrón cancelar/confirmar que app-confirm-modal */
+  .ap-special-launch-footer {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: auto; /* empuja el footer al fondo del panel derecho */
+  }
+
+  /* ------------------------------------------------------------
+     BOTONES — mismas reglas que app-button (ver advocatespro-design-system-guide.md)
+     base: Urbanist 700, radius 12px, altura 48px
+     ------------------------------------------------------------ */
+  .ap-special-launch-footer-cancel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 12px;
+    border: 1px solid #c3c3c3;   /* $ap-grey-100 */
+    cursor: pointer;
+    background: #ffffff;
+    color: #7d7d7d;              /* $ap-grey-300 */
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+  .ap-special-launch-footer-cancel:hover { background: #fafafa; /* $ap-neutral-50 */ }
+
+  .ap-special-launch-footer-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #ee4a79;         /* $ap-special-launch-footer-primary-bg = $ap-secondary-500 (rosa distintivo) */
+    color: #ffffff;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+  .ap-special-launch-footer-primary svg { color: #ffffff; width: 16px; height: 16px; }
+  .ap-special-launch-footer-primary:hover { background: #d9436e; /* $ap-special-launch-footer-primary-hover = $ap-secondary-600 */ }
+
+  /* ------------------------------------------------------------
+     ANIMACIONES
+     ------------------------------------------------------------ */
+  @keyframes ap-modal-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes ap-modal-scale-in {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* ------------------------------------------------------------
+     RESPONSIVE — el modal se apila en pantallas angostas
+     (misma regla que en el componente real)
+     ------------------------------------------------------------ */
+  @media (max-width: 1300px) {
+    .ap-special-modal-launch {
+      flex-direction: column;
+      max-width: 720px;
+    }
+    .ap-special-launch-left,
+    .ap-special-launch-right {
+      width: 100%;
+      border-radius: 24px 24px 0 0;
+    }
+    .ap-special-launch-right {
+      border-radius: 0 0 24px 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ap-special-launch-features { grid-template-columns: 1fr; }
+    .ap-special-launch-schedule { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============================================================
+       OVERLAY + MODAL
+       Estructura: overlay → close button flotante →
+         panel izquierdo ("header": badge, hero title, descripción, agenda, video) →
+         panel derecho ("body": título + grid de features + nota destacada,
+                         "footer": botones de acción)
+       ============================================================ -->
+  <div class="ap-special-modal-overlay" id="apOverlay">
+    <div class="ap-special-modal-launch" role="dialog" aria-modal="true" aria-labelledby="apLaunchTitle">
+
+      <!-- Botón cerrar -->
+      <button class="ap-special-modal-launch-close" id="apCloseBtn" aria-label="Cerrar">
+        <!-- Icono Lucide: X -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+      <!-- ═══ PANEL IZQUIERDO ("HEADER": hero + agenda + video) ═══ -->
+      <div class="ap-special-launch-left">
+        <!-- Círculos decorativos de fondo -->
+        <span class="ap-special-modal-circle ap-special-modal-circle--top-right"></span>
+        <span class="ap-special-modal-circle ap-special-modal-circle--bottom-left"></span>
+
+        <div class="ap-special-launch-left-content">
+
+          <!-- Badge "Webinar en vivo · Gratis" — placeholder de contenido dinámico -->
+          <div class="ap-special-launch-badge">
+            <!-- Icono Lucide: Sparkles -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              <path d="M20 3v4"/>
+              <path d="M22 5h-4"/>
+              <path d="M4 17v2"/>
+              <path d="M5 18H3"/>
+            </svg>
+            <span class="ap-special-launch-badge-text">Webinar en vivo · Gratis</span>
+          </div>
+
+          <!-- Título hero — contenido de ejemplo -->
+          <h2 class="ap-special-launch-hero-title" id="apLaunchTitle">Tu canal orgánico más potente,<br>es tu gente</h2>
+
+          <!-- Descripción — texto de ejemplo -->
+          <p class="ap-special-launch-description">
+            Conoce nuestra nueva versión, el motor que transforma a tu equipo en el <strong>canal orgánico más potente</strong> de tu empresa.
+          </p>
+
+          <!-- Agenda del evento — fecha/hora de ejemplo, reemplazar por datos reales -->
+          <div class="ap-special-launch-schedule">
+            <div class="ap-special-launch-date-box">
+              <span class="ap-special-launch-date-day">05</span>
+              <span class="ap-special-launch-date-month">Ago</span>
+            </div>
+            <div class="ap-special-launch-schedule-info">
+              <span class="ap-special-launch-schedule-label">Miércoles 5 de agosto</span>
+              <div class="ap-special-launch-time-chips">
+                <span class="ap-special-launch-time-chip">11:00 MX</span>
+                <span class="ap-special-launch-time-chip">12:00 COL·PE</span>
+                <span class="ap-special-launch-time-chip">13:00 VE·CH</span>
+                <span class="ap-special-launch-time-chip">14:00 ARG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview de imagen/video con botón de reproducción -->
+          <div class="ap-special-launch-image-wrap">
+            <div class="ap-special-launch-image"></div>
+            <button class="ap-special-launch-overlay-btn">
+              <!-- Icono Lucide: Play -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="6 3 20 12 6 21 6 3"/>
+              </svg>
+              <span>Ver preview del webinar</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ PANEL DERECHO ("BODY": features + nota, "FOOTER": CTA) ═══ -->
+      <div class="ap-special-launch-right">
+
+        <!-- "Body" — título de sección -->
+        <h3 class="ap-special-launch-right-title">Qué vas a ver en el webinar</h3>
+
+        <!-- Cuadrícula 2×2 de features — contenido de ejemplo -->
+        <div class="ap-special-launch-features">
+
+          <div class="ap-special-launch-feature">
+            <div class="ap-special-launch-feature-icon ap-special-launch-feature-icon--1">
+              <!-- Icono Lucide: Trophy -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                <path d="M4 22h16"/>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+              </svg>
+            </div>
+            <h4 class="ap-special-launch-feature-title">Gamificación completa</h4>
+            <p class="ap-special-launch-feature-desc">Badges, niveles y ranking en tiempo real para tus embajadores.</p>
+          </div>
+
+          <div class="ap-special-launch-feature">
+            <div class="ap-special-launch-feature-icon ap-special-launch-feature-icon--2">
+              <!-- Icono Lucide: Sparkles -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              </svg>
+            </div>
+            <h4 class="ap-special-launch-feature-title">IA entrenada en tu marca</h4>
+            <p class="ap-special-launch-feature-desc">Genera propuestas de campañas y automatiza la aprobación de contenidos.</p>
+          </div>
+
+          <div class="ap-special-launch-feature">
+            <div class="ap-special-launch-feature-icon ap-special-launch-feature-icon--3">
+              <!-- Icono Lucide: BarChart3 -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="M18 17V9"/>
+                <path d="M13 17V5"/>
+                <path d="M8 17v-3"/>
+              </svg>
+            </div>
+            <h4 class="ap-special-launch-feature-title">Reporte de impacto real</h4>
+            <p class="ap-special-launch-feature-desc">Alcance, participación y engagement en un solo dashboard.</p>
+          </div>
+
+          <div class="ap-special-launch-feature">
+            <div class="ap-special-launch-feature-icon ap-special-launch-feature-icon--4">
+              <!-- Icono Lucide: Smartphone -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                <path d="M12 18h.01"/>
+              </svg>
+            </div>
+            <h4 class="ap-special-launch-feature-title">Publica en 3 clics</h4>
+            <p class="ap-special-launch-feature-desc">Una app pensada para que tu equipo publique en segundos.</p>
+          </div>
+
+        </div>
+
+        <!-- Nota destacada — contenido de ejemplo -->
+        <div class="ap-special-launch-note">
+          <div class="ap-special-launch-note-heading">
+            <!-- Icono Lucide: Ticket -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 9a3 3 0 1 0 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+              <path d="M13 5v2"/>
+              <path d="M13 17v2"/>
+              <path d="M13 11v2"/>
+            </svg>
+            <span class="ap-special-launch-note-heading-text">Cupos limitados · entrada gratis</span>
+          </div>
+          <p class="ap-special-launch-note-desc">
+            Actívalo antes que nadie — regístrate y te enviaremos la grabación si no puedes en vivo.
+          </p>
+        </div>
+
+        <!-- "Footer" — acciones -->
+        <div class="ap-special-launch-footer">
+          <button class="ap-special-launch-footer-cancel" id="apCancelBtn">
+            Ahora no
+          </button>
+          <button class="ap-special-launch-footer-primary" id="apPrimaryBtn">
+            <!-- Icono Lucide: ArrowRight -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+            Reservar mi lugar gratis
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Botón de demo para reabrir el modal (no forma parte del componente real) -->
+  <button class="demo-reopen-btn" id="apReopenBtn">Reabrir modal de lanzamiento</button>
+
+  <script>
+    // Comportamiento mínimo solo para poder previsualizar la plantilla:
+    // cerrar al hacer click en el overlay, en la X, o en cualquiera de los botones del footer.
+    var overlay = document.getElementById('apOverlay');
+    var reopenBtn = document.getElementById('apReopenBtn');
+
+    function closeModal() {
+      overlay.style.display = 'none';
+      reopenBtn.classList.add('is-visible');
+    }
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+    document.getElementById('apCloseBtn').addEventListener('click', closeModal);
+    document.getElementById('apCancelBtn').addEventListener('click', closeModal);
+    document.getElementById('apPrimaryBtn').addEventListener('click', closeModal);
+    reopenBtn.addEventListener('click', function () {
+      overlay.style.display = 'flex';
+      reopenBtn.classList.remove('is-visible');
+    });
+  </script>
+
+</body>
+</html>

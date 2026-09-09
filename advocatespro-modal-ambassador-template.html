@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdvocatesPro — Modal Especial Compacto (referencia final)</title>
+<style>
+  /* ============================================================
+     ADVOCATESPRO — MODAL ESPECIAL, VARIANTE COMPACTA (1 panel, 480px)
+     Plantilla de referencia autocontenida — reproduce 1:1 el componente real:
+       src/app/components/advocatespro/dashboard/advocatespro-dashboard.component.html
+       (bloque "MODAL: WEBINAR ROL EMBAJADOR") y su SCSS correspondiente
+       (clases .style-guide__ambassador-*).
+     Todos los valores (colores, tipografía, espaciados, radios) provienen
+     de los tokens $ap-* de src/styles/_tokens.scss — ninguno es nuevo,
+     todos ya existen en la paleta.
+
+     ESTA es la plantilla de referencia para CONSTRUIR MÁS MODALES de esta
+     misma familia (contenido distinto, misma estructura/estilo). Ver
+     advocatespro-modal-ambassador-guide.md para la guía de implementación
+     y qué partes cambiar vs. cuáles dejar fijas.
+     ============================================================ */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f7fa; /* fondo neutro solo para visualizar el modal aislado */
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .demo-reopen-btn {
+    display: none;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    background: #0061fe;
+    color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+  }
+  .demo-reopen-btn.is-visible { display: inline-flex; }
+
+  /* ------------------------------------------------------------
+     OVERLAY — igual patrón que el resto de "Modales Especiales"
+     ------------------------------------------------------------ */
+  .ap-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: ap-fade-in 0.2s ease;
+  }
+
+  /* ------------------------------------------------------------
+     WRAPPER (.style-guide__ambassador-modal) — tarjeta + botón cerrar,
+     como dos hijos flex en fila. El botón cerrar NO está posicionado
+     absoluto: es un hermano flex con gap. Esto evita que se corte en
+     pantallas angostas (a diferencia de un `right: -Npx` absoluto).
+     ------------------------------------------------------------ */
+  .ap-modal {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 528px; /* 480 (tarjeta) + 14 (gap) + 34 (botón cerrar) */
+    width: 100%;
+    animation: ap-scale-in 0.25s ease;
+  }
+
+  .ap-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    color: #3d3d3d; /* $ap-grey-500 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  .ap-close:hover { background: #fafafa; } /* $ap-neutral-50 */
+  .ap-close svg { width: 18px; height: 18px; }
+
+  /* ------------------------------------------------------------
+     TARJETA (.style-guide__ambassador-card) — flex-column con altura
+     máxima. overflow:hidden SOLO redondea bordes: el scroll real vive
+     únicamente en .ap-body (el bloque de en medio).
+     ------------------------------------------------------------ */
+  .ap-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 480px;
+    max-width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-height: calc(100vh - 40px);
+  }
+
+  /* ------------------------------------------------------------
+     HEADER (.style-guide__ambassador-header) — FIJO, nunca scrollea.
+     Wash plano en diagonal (108.2°, azul→blanco→rosa). flex-shrink:0
+     es lo que lo saca del reparto de espacio flexible.
+     ------------------------------------------------------------ */
+  .ap-header {
+    background: linear-gradient(108.2deg, #b0ceff 0%, #ffffff 55%, #fac7d5 100%); /* primary-100 → white → secondary-100 */
+    border-radius: 24px 24px 0 0;
+    padding: 32px 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .ap-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid #0061fe; /* $ap-primary-500 */
+    background: #ffffff;
+    padding: 0 14px;
+  }
+  .ap-badge svg { color: #0061fe; flex-shrink: 0; width: 14px; height: 14px; }
+  .ap-badge-text {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0061fe;
+    white-space: nowrap;
+  }
+
+  /* Título — degradado tricolor $ap-ia-hero-title-gradient, MISMO componente
+     que "Elementos de IA" (título hero grande). Solo cambia el font-size (25px
+     en vez de 40px) para esta variante compacta. IMPORTANTE: texto en un solo
+     nodo, sin <span> partidos — separarlo en spans puede perder el espacio
+     entre palabras (Angular colapsa espacios en blanco entre elementos). */
+  .ap-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: -0.4px;
+    background: linear-gradient(to right, #0061fe 1.85%, #00296b 49.5%, #ee4a79 82.2%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  .ap-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #3d3d3d; /* $ap-grey-500 */
+    line-height: 19px;
+    margin: 0;
+  }
+  .ap-description strong { font-weight: 700; color: #222222; } /* $ap-grey-800 */
+
+  /* ------------------------------------------------------------
+     BODY (.style-guide__ambassador-body) — ÚNICO bloque que scrollea.
+     flex:1 + min-height:0 + overflow-y:auto es el patrón completo:
+     sin min-height:0, un hijo flex nunca se encoge por debajo de la
+     altura de su contenido y el overflow-y:auto no tiene ningún efecto.
+     ------------------------------------------------------------ */
+  .ap-body {
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  /* Agenda del evento */
+  .ap-schedule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fdedf2; /* $ap-secondary-50 */
+    border-radius: 16px;
+    padding: 12px 16px;
+  }
+  .ap-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #ee4a79; /* $ap-secondary-500 */
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+  .ap-date-day { font-family: 'Urbanist', sans-serif; font-size: 18px; font-weight: 700; line-height: 1; }
+  .ap-date-month { font-family: 'Urbanist', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; }
+  .ap-schedule-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .ap-schedule-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #b93c5e; /* $ap-secondary-700 */
+  }
+  .ap-time-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ap-time-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #f7acc1; /* $ap-secondary-200 */
+    background: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #8a2c48; /* $ap-secondary-800 */
+    white-space: nowrap;
+  }
+
+  /* Lista de features — columna única, ícono circular en línea, 4 colores
+     (igual criterio que el grid 2×2 del Modal de Lanzamiento de 2 paneles) */
+  .ap-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background: #fafafa; /* $ap-neutral-50 */
+    border-radius: 16px;
+  }
+  .ap-feature { display: flex; align-items: flex-start; gap: 10px; }
+  .ap-feature-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .ap-feature-icon svg { width: 16px; height: 16px; }
+  .ap-feature-icon--1 { background: #e6efff; } .ap-feature-icon--1 svg { color: #0061fe; }   /* primary-50 / primary-500 */
+  .ap-feature-icon--2 { background: #d1fae5; } .ap-feature-icon--2 svg { color: #065f46; }   /* verde */
+  .ap-feature-icon--3 { background: #fdedf2; } .ap-feature-icon--3 svg { color: #ee4a79; }   /* secondary-50 / secondary-500 */
+  .ap-feature-icon--4 { background: rgba(249, 198, 22, 0.16); } .ap-feature-icon--4 svg { color: #92400e; } /* ámbar */
+  .ap-feature-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; padding-top: 4px; }
+  .ap-feature-title { font-family: 'Urbanist', sans-serif; font-size: 14px; font-weight: 600; color: #222222; margin: 0; }
+  .ap-feature-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; color: #7d7d7d; line-height: 17px; margin: 0; }
+
+  /* Nota destacada — reutiliza el wash $ap-ia-panel-bg */
+  .ap-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: linear-gradient(108.2deg, rgba(230, 239, 255, 0.7) 0%, #ffffff 50.75%, rgba(253, 237, 242, 0.7) 100%);
+  }
+  .ap-note svg { color: #0061fe; width: 18px; height: 18px; flex-shrink: 0; }
+  .ap-note-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #00358c; line-height: 1.4; margin: 0; }
+
+  /* ------------------------------------------------------------
+     FOOTER (.style-guide__ambassador-footer) — FIJO, nunca scrollea
+     (flex-shrink:0, igual que el header).
+     ------------------------------------------------------------ */
+  .ap-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border-top: 1px solid #ececec; /* $ap-grey-50 */
+    border-radius: 0 0 24px 24px;
+    padding: 16px 32px 20px;
+    flex-shrink: 0;
+  }
+  .ap-footer-cancel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid #c3c3c3; /* $ap-grey-100 */
+    cursor: pointer;
+    background: #ffffff;
+    color: #7d7d7d; /* $ap-grey-300 */
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+  .ap-footer-cancel:hover { background: #fafafa; }
+  .ap-footer-primary {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #ee4a79; /* $ap-secondary-500 */
+    color: #ffffff;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+  .ap-footer-primary svg { color: #ffffff; width: 14px; height: 14px; }
+  .ap-footer-primary:hover { background: #d9436e; } /* $ap-secondary-600 */
+
+  @keyframes ap-fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ap-scale-in { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  @media (max-width: 480px) {
+    .ap-footer { flex-direction: column; }
+    .ap-footer-cancel, .ap-footer-primary { flex: 1; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="ap-overlay" id="apOverlay">
+    <div class="ap-modal" role="dialog" aria-modal="true" aria-labelledby="apTitle">
+
+      <div class="ap-card">
+
+        <!-- HEADER (fijo) -->
+        <div class="ap-header">
+          <div class="ap-badge">
+            <!-- Icono Lucide: Sparkles -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              <path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>
+            </svg>
+            <span class="ap-badge-text">Webinar en vivo · Gratis</span>
+          </div>
+
+          <h2 class="ap-title" id="apTitle">El rol Embajador, reinventado en AdvocatesPro</h2>
+
+          <p class="ap-description">
+            Continuamos la capacitación de la nueva versión con un webinar enfocado en cómo vive el <strong>Embajador</strong> la nueva AdvocatesPro.
+          </p>
+        </div>
+
+        <!-- BODY (único bloque que scrollea) -->
+        <div class="ap-body">
+
+          <div class="ap-schedule">
+            <div class="ap-date-box">
+              <span class="ap-date-day">19</span>
+              <span class="ap-date-month">Ago</span>
+            </div>
+            <div class="ap-schedule-info">
+              <span class="ap-schedule-label">Miércoles 19 de agosto</span>
+              <div class="ap-time-chips">
+                <span class="ap-time-chip">2:00 pm AR</span>
+                <span class="ap-time-chip">12:00 pm CO·PE</span>
+                <span class="ap-time-chip">1:00 pm VE·CH</span>
+                <span class="ap-time-chip">7:00 pm ARG</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ap-features">
+
+            <div class="ap-feature">
+              <div class="ap-feature-icon ap-feature-icon--1">
+                <!-- Icono Lucide: User -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>
+                </svg>
+              </div>
+              <div class="ap-feature-text">
+                <h4 class="ap-feature-title">Nuevo perfil del Embajador</h4>
+                <p class="ap-feature-desc">Progreso, insignias y próximos retos.</p>
+              </div>
+            </div>
+
+            <div class="ap-feature">
+              <div class="ap-feature-icon ap-feature-icon--2">
+                <!-- Icono Lucide: Trophy -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                  <path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                </svg>
+              </div>
+              <div class="ap-feature-text">
+                <h4 class="ap-feature-title">Gamificación y recompensas</h4>
+                <p class="ap-feature-desc">Niveles y ranking en tiempo real.</p>
+              </div>
+            </div>
+
+            <div class="ap-feature">
+              <div class="ap-feature-icon ap-feature-icon--3">
+                <!-- Icono Lucide: Smartphone -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+                </svg>
+              </div>
+              <div class="ap-feature-text">
+                <h4 class="ap-feature-title">Publica en 3 clics</h4>
+                <p class="ap-feature-desc">Desde la app móvil, en segundos.</p>
+              </div>
+            </div>
+
+            <div class="ap-feature">
+              <div class="ap-feature-icon ap-feature-icon--4">
+                <!-- Icono Lucide: BarChart3 -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+                </svg>
+              </div>
+              <div class="ap-feature-text">
+                <h4 class="ap-feature-title">Su reporte de impacto</h4>
+                <p class="ap-feature-desc">Alcance, participación y recompensas.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ap-note">
+            <!-- Icono Lucide: Ticket -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 9a3 3 0 1 0 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+              <path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
+            </svg>
+            <p class="ap-note-desc">Cupos limitados. Si no puedes en vivo, te enviamos la grabación.</p>
+          </div>
+
+        </div>
+
+        <!-- FOOTER (fijo) -->
+        <div class="ap-footer">
+          <button class="ap-footer-cancel" id="apCancelBtn">Ahora no</button>
+          <button class="ap-footer-primary" id="apPrimaryBtn">
+            <!-- Icono Lucide: ArrowRight -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+            Reserva mi lugar
+          </button>
+        </div>
+
+      </div>
+
+      <button class="ap-close" id="apCloseBtn" aria-label="Cerrar">
+        <!-- Icono Lucide: X -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <button class="demo-reopen-btn" id="apReopenBtn">Reabrir modal</button>
+
+  <script>
+    var overlay = document.getElementById('apOverlay');
+    var reopenBtn = document.getElementById('apReopenBtn');
+    function closeModal() { overlay.style.display = 'none'; reopenBtn.classList.add('is-visible'); }
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+    document.getElementById('apCloseBtn').addEventListener('click', closeModal);
+    document.getElementById('apCancelBtn').addEventListener('click', closeModal);
+    document.getElementById('apPrimaryBtn').addEventListener('click', closeModal);
+    reopenBtn.addEventListener('click', function () { overlay.style.display = 'flex'; reopenBtn.classList.remove('is-visible'); });
+  </script>
+
+</body>
+</html>
